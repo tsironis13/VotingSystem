@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- NAVIGATION DRAWER -->
+    <dimen name="nav_drawer_titleAndLogo_height">185dp</dimen>
+    <dimen name="nav_drawer_logo_height">80dp</dimen>
+</resources>

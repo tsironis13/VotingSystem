@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <LinearLayout
+        android:layout_width="@dimen/container_width"
+        android:layout_height="@dimen/container_height"
+        android:orientation="vertical"
+        android:gravity="center">
+
+        <ImageView
+            android:layout_width="@dimen/logo_dimens_portrait"
+            android:layout_height="@dimen/logo_dimens_portrait"
+            android:layout_marginTop="@dimen/logo_marginTop"
+            android:layout_marginBottom="@dimen/logo_marginBottom"
+            android:background="@drawable/app_logo"
+            android:contentDescription="@string/app_logo"/>
+
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="@dimen/input_container_height_portrait"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/input_logo_dimens_portrait"
+                android:layout_height="@dimen/input_logo_dimens_portrait"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/username_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <EditText
+                android:id="@+id/usernameEdt"
+                android:layout_width="@dimen/input_edt_width"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:hint="@string/username" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="290dp"
+            android:layout_height="@dimen/input_container_height_portrait"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/password_container_marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/input_logo_dimens_portrait"
+                android:layout_height="@dimen/input_logo_dimens_portrait"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/password_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <EditText
+                android:id="@+id/passwordEdt"
+                android:layout_width="@dimen/input_edt_width"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:hint="@string/password" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/signInBtn"
+            android:layout_width="@dimen/signIn_btn_width"
+            android:layout_height="@dimen/signIn_btn_height"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:textColor="@android:color/white"
+            android:background="@color/signInBtnColor"
+            android:text="@string/signin" />
+
+        <TextView
+            android:id="@+id/forgotPasswordTtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white"
+            android:text="@string/forgotpassword" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="250dp"
+        android:layout_height="1dp"
+        android:layout_marginBottom="@dimen/marginBottom"
+        android:background="@color/viewBackgroundColor" />
+
+    <TextView
+        android:id="@+id/registerTtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/white" />
+
+</LinearLayout>
