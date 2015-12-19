@@ -10,8 +10,8 @@
     <string name="sendEmail">Αποστολή</string>
     <string name="signInHere">Διαθέτεις λογαριασμό?\nΣυνδέσου εδώ</string>
     <string name="submit">Εγγραφή</string>
-
     <string name="firmcode">Κωδικός Εταιρείας</string>
+    <string name="confirmpassword">Επιβεβαίωση κωδικού</string>
 
     <!-- ERRORS -->
     <string name="empty_fields">Παρακαλώ συμπλήρωσε όλα τα πεδία.</string>

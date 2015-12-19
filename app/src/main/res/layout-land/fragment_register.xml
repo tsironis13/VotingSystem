@@ -4,207 +4,209 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-<LinearLayout
-
-    android:orientation="vertical"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
-
-    <ImageView
-        android:layout_width="75dp"
-        android:layout_height="75dp"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="20dp"
-        android:background="@drawable/app_logo"
-        android:contentDescription="@string/app_logo"/>
-
     <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="55dp"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:orientation="horizontal">
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
 
         <ImageView
-            android:layout_width="@dimen/input_logo_dimens_portrait"
-            android:layout_height="@dimen/input_logo_dimens_portrait"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
-            android:layout_marginRight="@dimen/input_logo_marginLeftRight"
-            android:background="@drawable/username_icon"
-            android:contentDescription="@string/input_logo" />
+            android:layout_width="@dimen/register_logo_dimens"
+            android:layout_height="@dimen/register_logo_dimens"
+            android:layout_marginTop="@dimen/register_logo_marginTop"
+            android:layout_marginBottom="@dimen/register_logo_marginBottom"
+            android:background="@drawable/app_logo"
+            android:contentDescription="@string/app_logo"/>
 
-        <EditText
-            android:id="@+id/usernameEdt"
-            android:layout_width="245dp"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/input_edt_textSize"
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/logo_dimens_andBottom"
+                android:layout_height="@dimen/logo_dimens_andBottom"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/username_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <EditText
+                android:id="@+id/usernameEdt"
+                android:layout_width="@dimen/common_width"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:hint="@string/username" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/logo_dimens_andBottom"
+                android:layout_height="@dimen/logo_dimens_andBottom"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/password_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <EditText
+                android:id="@+id/passwordEdt"
+                android:layout_width="@dimen/common_width"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:hint="@string/password" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/logo_dimens_andBottom"
+                android:layout_height="@dimen/logo_dimens_andBottom"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/password_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <EditText
+                android:id="@+id/confirmPasswordEdt"
+                android:layout_width="@dimen/common_width"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:hint="@string/confirmpassword" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/logo_dimens_andBottom"
+                android:layout_height="@dimen/logo_dimens_andBottom"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/email_icon"
+                android:contentDescription="@string/input_logo"/>
+
+            <EditText
+                android:id="@+id/emailEdt"
+                android:layout_width="@dimen/common_width"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress"/>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/logo_dimens_andBottom"
+                android:layout_height="@dimen/logo_dimens_andBottom"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/firm_icon"
+                android:contentDescription="@string/input_logo"/>
+
+            <Spinner
+                android:layout_width="@dimen/common_width"
+                android:layout_height="match_parent"
+                android:prompt="@string/signInHere" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/logo_dimens_andBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="@dimen/logo_dimens_andBottom"
+                android:layout_height="@dimen/logo_dimens_andBottom"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/password_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <EditText
+                android:id="@+id/firmCodeEdt"
+                android:layout_width="@dimen/common_width"
+                android:layout_height="match_parent"
+                android:inputType="textPassword"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:hint="@string/firmcode" />
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="@dimen/action_btn_width"
+            android:layout_height="@dimen/action_btn_height"
+            android:layout_marginBottom="@dimen/forgotPassword_Ttv_marginBottom"
             android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:hint="@string/username" />
+            android:background="@color/actionBtnColor"
+            android:text="@string/submit" />
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="55dp"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="@dimen/input_logo_dimens_portrait"
-            android:layout_height="@dimen/input_logo_dimens_portrait"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
-            android:layout_marginRight="@dimen/input_logo_marginLeftRight"
-            android:background="@drawable/password_icon"
-            android:contentDescription="@string/input_logo" />
-
-        <EditText
-            android:id="@+id/passwordEdt"
-            android:layout_width="245dp"
-            android:layout_height="match_parent"
-            android:inputType="textPassword"
-            android:textSize="@dimen/input_edt_textSize"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:hint="@string/password" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="55dp"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="@dimen/input_logo_dimens_portrait"
-            android:layout_height="@dimen/input_logo_dimens_portrait"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
-            android:layout_marginRight="@dimen/input_logo_marginLeftRight"
-            android:background="@drawable/password_icon"
-            android:contentDescription="@string/input_logo" />
-
-        <EditText
-            android:id="@+id/confirmPasswordEdt"
+        <TextView
+            android:id="@+id/signInHereTtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:textSize="@dimen/input_edt_textSize"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:hint="Επιβεβαίωση κωδικού πρόσβασης" />
+            android:gravity="center"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:lineSpacingMultiplier="1"
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="55dp"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/email_icon" />
-
-        <EditText
-            android:id="@+id/emailEdt"
-            android:layout_width="245dp"
-            android:layout_height="match_parent"
-            android:textSize="13sp"
-            android:textColor="#fff"
-            android:textColorHint="#fff"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:hint="@string/email" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="55dp"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="40dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="6dp"
-            android:layout_marginRight="6dp"
-            android:background="@drawable/firm_icon" />
-
-        <Spinner
-            android:layout_width="265dp"
-            android:layout_height="53dp"
-            android:prompt="@string/signInHere" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="350dp"
-        android:layout_height="55dp"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="40dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="@dimen/input_logo_dimens_portrait"
-            android:layout_height="@dimen/input_logo_dimens_portrait"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
-            android:layout_marginRight="@dimen/input_logo_marginLeftRight"
-            android:background="@drawable/password_icon"
-            android:contentDescription="@string/input_logo" />
-
-        <EditText
-            android:id="@+id/firmCodeEdt"
-            android:layout_width="245dp"
-            android:layout_height="match_parent"
-            android:inputType="textPassword"
-            android:textSize="@dimen/input_edt_textSize"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:hint="Κωδικός εταιρείας" />
-
-    </LinearLayout>
-
-    <Button
-        android:id="@+id/submitBtn"
-        android:layout_width="@dimen/signIn_btn_width"
-        android:layout_height="@dimen/signIn_btn_height"
-        android:layout_marginBottom="10dp"
-        android:textColor="@android:color/white"
-        android:background="@color/signInBtnColor"
-        android:text="@string/submit" />
-
-    <TextView
-        android:id="@+id/signInHereTtv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:layout_marginBottom="15dp"
-        android:lineSpacingMultiplier="1"
-        android:textColor="@android:color/white" />
-
-</LinearLayout>
 </ScrollView>

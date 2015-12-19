@@ -121,7 +121,7 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     private HashMap<String, Integer> getNavDrawersMetricsInPx() {
-        int vertical_spacing = (int) getResources().getDimension(R.dimen.nav_drawer_vertical_spacing);
+        int vertical_spacing = (int) getResources().getDimension(R.dimen.in_common_1);
         int row_height = (int) getResources().getDimension(R.dimen.nav_drawer_row_height);
         navDrawerMetricsHash = new HashMap<>();
         navDrawerMetricsHash.put("vertical spacing", vertical_spacing);

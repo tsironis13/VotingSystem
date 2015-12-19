@@ -13,23 +13,23 @@
         android:gravity="center">
 
         <ImageView
-            android:layout_width="@dimen/logo_dimens_portrait"
-            android:layout_height="@dimen/logo_dimens_portrait"
+            android:layout_width="@dimen/logo_dimens"
+            android:layout_height="@dimen/logo_dimens"
             android:layout_marginTop="@dimen/logo_marginTop"
             android:layout_marginBottom="@dimen/logo_marginBottom"
             android:background="@drawable/app_logo"
             android:contentDescription="@string/app_logo"/>
 
         <LinearLayout
-            android:layout_width="290dp"
-            android:layout_height="@dimen/input_container_height_portrait"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/input_logo_dimens_portrait"
-                android:layout_height="@dimen/input_logo_dimens_portrait"
+                android:layout_width="@dimen/logo_dimens_andBottom"
+                android:layout_height="@dimen/logo_dimens_andBottom"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
                 android:layout_marginRight="@dimen/input_logo_marginLeftRight"
@@ -38,7 +38,7 @@
 
             <EditText
                 android:id="@+id/usernameEdt"
-                android:layout_width="@dimen/input_edt_width"
+                android:layout_width="@dimen/common_width"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/input_edt_textSize"
                 android:textColor="@android:color/white"
@@ -50,15 +50,15 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="290dp"
-            android:layout_height="@dimen/input_container_height_portrait"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/input_container_height"
             android:background="@drawable/login_fields_container"
-            android:layout_marginBottom="@dimen/password_container_marginBottom"
+            android:layout_marginBottom="@dimen/logo_dimens_andBottom"
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/input_logo_dimens_portrait"
-                android:layout_height="@dimen/input_logo_dimens_portrait"
+                android:layout_width="@dimen/logo_dimens_andBottom"
+                android:layout_height="@dimen/logo_dimens_andBottom"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
                 android:layout_marginRight="@dimen/input_logo_marginLeftRight"
@@ -67,7 +67,7 @@
 
             <EditText
                 android:id="@+id/passwordEdt"
-                android:layout_width="@dimen/input_edt_width"
+                android:layout_width="@dimen/common_width"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
                 android:textSize="@dimen/input_edt_textSize"
@@ -81,11 +81,11 @@
 
         <Button
             android:id="@+id/signInBtn"
-            android:layout_width="@dimen/signIn_btn_width"
-            android:layout_height="@dimen/signIn_btn_height"
+            android:layout_width="@dimen/action_btn_width"
+            android:layout_height="@dimen/action_btn_height"
             android:layout_marginBottom="@dimen/marginBottom"
             android:textColor="@android:color/white"
-            android:background="@color/signInBtnColor"
+            android:background="@color/actionBtnColor"
             android:text="@string/signin" />
 
         <TextView
@@ -98,8 +98,8 @@
     </LinearLayout>
 
     <View
-        android:layout_width="250dp"
-        android:layout_height="1dp"
+        android:layout_width="@dimen/common_width"
+        android:layout_height="@dimen/view_height"
         android:layout_marginBottom="@dimen/marginBottom"
         android:background="@color/viewBackgroundColor" />
 
