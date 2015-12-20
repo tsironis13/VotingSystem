@@ -9,6 +9,7 @@ public class AppConfig {
 
     public static final String SESSION_PREFS                    =   "sessionPrefs";
     public static final String KEY_USER_LEARNED_PREFS           =   "user_learned_prefs";
+    public static final int NO_CONNECTION_TYPE                  =   -1;
 
     public static final int NAVDRAWER_ITEM_VERTICAL_HEIGHT      =   48;
     public static final int NAVDRAWER_DEFAULT_SELECTED_POSITION =   0;

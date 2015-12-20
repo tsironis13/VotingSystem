@@ -26,6 +26,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.votingsystem.tsiro.ObserverPattern.ConnectivityObserver;
+import com.votingsystem.tsiro.app.ConnectivitySingleton;
 import com.votingsystem.tsiro.deserializer.FirmsDeserializer;
 import com.votingsystem.tsiro.POJO.Firm;
 import com.votingsystem.tsiro.POJO.User;
@@ -37,6 +39,8 @@ import com.votingsystem.tsiro.rest.ApiService;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Observable;
+import java.util.Observer;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -58,6 +62,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     private SharedPreferences sessionPrefs;
     private View view;
     private LoginActivityCommonElements loginActivityCommonElements;
+    private ConnectivityObserver connectivityObserver;
 
     @Override
     public void onAttach(Context context) {
@@ -68,13 +73,13 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if ( view == null ) view = inflater.inflate(R.layout.fragment_signin, container, false);
-       // errorresponseTtv = (TextView) view.findViewById(R.id.errorresponseTtv);
-        usernameEdt         =   (EditText) view.findViewById(R.id. usernameEdt);
-        passwordEdt         =   (EditText) view.findViewById(R.id.passwordEdt);
-        signInBtn           =   (Button) view.findViewById(R.id.signInBtn);
-        forgotPasswordTtV   =   (TextView) view.findViewById(R.id.forgotPasswordTtv);
-        registerTtv         =   (TextView) view.findViewById(R.id.registerTtv);
-
+        errorresponseTtv = (TextView) view.findViewById(R.id.errorresponseTtv);
+        usernameEdt             =   (EditText) view.findViewById(R.id. usernameEdt);
+        passwordEdt             =   (EditText) view.findViewById(R.id.passwordEdt);
+        signInBtn               =   (Button) view.findViewById(R.id.signInBtn);
+        forgotPasswordTtV       =   (TextView) view.findViewById(R.id.forgotPasswordTtv);
+        registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
+        connectivityObserver    =   getArguments().getParcelable("connectivityObserver");
         return view;
     }
 
@@ -92,6 +97,8 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.e(debugTag, "CONNECTION: "+LoginActivity.connectionStatusUpdated);
+                Log.d(debugTag, "CONNECTIVITY STATUS: "+connectivityObserver.getConnectivityStatus(getActivity()));
                 if (usernameEdt.getText().toString().isEmpty() || passwordEdt.getText().toString().isEmpty()) {
                     String encoded = encodeUtf8(getResources().getString(R.string.empty_fields));
                     errorresponseTtv.setText(decodeUtf8(encoded));
@@ -152,11 +159,6 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         loginActivityCommonElements.setLoginActivitySpan(registerTtv, getResources().getString(R.string.register), 16, 23, 0);
     }
 
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
     private String encodeUtf8(String text){
         try {
             byte[] data = text.getBytes("UTF-8");
@@ -194,14 +196,16 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                     sessionPrefsEditor.putString("username", response.body().getUsername());
                     sessionPrefsEditor.apply();
 
-                    Log.d(debugTag, "user id: "+ response.body().getId() + "email: " + response.body().getEmail() + " username: " + response.body().getUsername());
+                    Log.d(debugTag, "user id: " + response.body().getId() + "email: " + response.body().getEmail() + " username: " + response.body().getUsername());
                     inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View popup = inflater.inflate(R.layout.popup_login, null);
                     createPopUpWindow(popup);
                 }
             }
+
             @Override
-            public void onFailure(Throwable t) {}
+            public void onFailure(Throwable t) {
+            }
         });
     }
 
