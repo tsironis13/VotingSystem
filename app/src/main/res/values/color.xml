@@ -2,11 +2,13 @@
 <resources>
     <!-- GLOBAL -->
 
-    <!-- SIGN IN -->
+    <!-- LOGIN IN -->
     <color name="loginFieldsContainerColor">#8001579B</color>
     <color name="loginSpanColor">#EF6C00</color>
     <color name="actionBtnColor">#CCEF6C00</color>
     <color name="viewBackgroundColor">#CCFFFFFF</color>
+    <color name="txVerrorColor">#DD2C00</color>
+    <color name="input_hintColor">#80FFFFFF</color>
 
     <color name="list_item_title">#fff</color>
     <color name="list_background">#303030</color>

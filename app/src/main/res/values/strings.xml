@@ -12,7 +12,8 @@
     <string name="submit">Εγγραφή</string>
     <string name="firmcode">Κωδικός Εταιρείας</string>
     <string name="confirmpassword">Επιβεβαίωση κωδικού</string>
-
+    <string name="showPassword">ΕΜΦΑΝΙΣΗ</string>
+    <string name="hidePassword">ΑΠΟΚΡΥΨΗ</string>
     <!-- ERRORS -->
     <string name="empty_fields">Παρακαλώ συμπλήρωσε όλα τα πεδία.</string>
     <string name="empty_firm_code">Παρακαλώ συμπλήρωσε τον κωδικό της εταιρείας</string>

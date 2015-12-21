@@ -8,7 +8,11 @@ import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.text.TextWatcher;
+import android.text.method.HideReturnsTransformationMethod;
+import android.text.method.PasswordTransformationMethod;
 import android.util.Base64;
 import android.util.Log;
 import android.view.Gravity;
@@ -27,6 +31,7 @@ import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.votingsystem.tsiro.ObserverPattern.ConnectivityObserver;
+import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.ConnectivitySingleton;
 import com.votingsystem.tsiro.deserializer.FirmsDeserializer;
 import com.votingsystem.tsiro.POJO.Firm;
@@ -53,7 +58,7 @@ import retrofit.Retrofit;
 public class SignInFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private static final String debugTag = SignInFragment.class.getSimpleName();
-    private TextView forgotPasswordTtV, registerTtv, errorresponseTtv, popupErrorresponseTtv;
+    private TextView forgotPasswordTtV, registerTtv, errorresponseTtv, popupErrorresponseTtv, showHidePasswordTtv;
     private EditText usernameEdt, passwordEdt, firmcodeEdt;
     private Button signInBtn, popUpLoginBtn;
     private Spinner firmSpnr;
@@ -73,12 +78,13 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if ( view == null ) view = inflater.inflate(R.layout.fragment_signin, container, false);
-        errorresponseTtv = (TextView) view.findViewById(R.id.errorresponseTtv);
         usernameEdt             =   (EditText) view.findViewById(R.id. usernameEdt);
         passwordEdt             =   (EditText) view.findViewById(R.id.passwordEdt);
         signInBtn               =   (Button) view.findViewById(R.id.signInBtn);
         forgotPasswordTtV       =   (TextView) view.findViewById(R.id.forgotPasswordTtv);
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
+        errorresponseTtv        =   (TextView) view.findViewById(R.id.errorresponseTtv);
+        showHidePasswordTtv     =   (TextView) view.findViewById(R.id.showHidePasswordTtv);
         connectivityObserver    =   getArguments().getParcelable("connectivityObserver");
         return view;
     }
@@ -97,8 +103,8 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(debugTag, "CONNECTION: "+LoginActivity.connectionStatusUpdated);
-                Log.d(debugTag, "CONNECTIVITY STATUS: "+connectivityObserver.getConnectivityStatus(getActivity()));
+                Log.e(debugTag, "CONNECTION: " + LoginActivity.connectionStatusUpdated);
+                Log.d(debugTag, "CONNECTIVITY STATUS: " + connectivityObserver.getConnectivityStatus(getActivity()));
                 if (usernameEdt.getText().toString().isEmpty() || passwordEdt.getText().toString().isEmpty()) {
                     String encoded = encodeUtf8(getResources().getString(R.string.empty_fields));
                     errorresponseTtv.setText(decodeUtf8(encoded));
@@ -120,7 +126,8 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
             }
 
             @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) { //errorresponseTtv.setText("");
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+                errorresponseTtv.setText("");
             }
 
             @Override
@@ -134,13 +141,36 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                //errorresponseTtv.setText("");
+                if (!TextUtils.isEmpty(errorresponseTtv.getText())) errorresponseTtv.setText("");
+                if ( start >= 0 ) {
+                        if ( passwordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod ) {
+                            showHidePasswordTtv.setText(getResources().getString(R.string.hidePassword));
+                        } else if ( passwordEdt.getTransformationMethod() instanceof PasswordTransformationMethod ) {
+                            showHidePasswordTtv.setText(getResources().getString(R.string.showPassword));
+                        }
+                }
+                if ( start == 0 && before == 1 ) showHidePasswordTtv.setText(null);
             }
 
             @Override
-            public void afterTextChanged(Editable s) {}
-        });
+            public void afterTextChanged(Editable s) {
 
+            }
+        });
+        showHidePasswordTtv.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ( passwordEdt.getTransformationMethod() instanceof PasswordTransformationMethod ) {
+                    //use HideReturnsTransformationMethod to make password visible
+                    passwordEdt.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    showHidePasswordTtv.setText(getResources().getString(R.string.hidePassword));
+                } else if ( passwordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod ){
+                    passwordEdt.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                    showHidePasswordTtv.setText(getResources().getString(R.string.showPassword));
+                }
+                passwordEdt.setSelection(passwordEdt.getText().length());
+            }
+        });
         forgotPasswordTtV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

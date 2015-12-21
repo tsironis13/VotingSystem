@@ -23,6 +23,7 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_container_height"
+            android:paddingRight="8dp"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
             android:orientation="horizontal">
@@ -38,11 +39,13 @@
 
             <EditText
                 android:id="@+id/usernameEdt"
-                android:layout_width="@dimen/common_width"
+                android:layout_width="wrap_content"
                 android:layout_height="match_parent"
+                android:minWidth="@dimen/common_width"
+                android:inputType="textPersonName"
                 android:textSize="@dimen/input_edt_textSize"
                 android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
+                android:textColorHint="@color/input_hintColor"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
                 android:hint="@string/username" />
@@ -53,7 +56,6 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_container_height"
             android:background="@drawable/login_fields_container"
-            android:layout_marginBottom="@dimen/logo_dimens_andBottom"
             android:orientation="horizontal">
 
             <ImageView
@@ -67,23 +69,36 @@
 
             <EditText
                 android:id="@+id/passwordEdt"
-                android:layout_width="@dimen/common_width"
+                android:layout_width="163dp"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
                 android:textSize="@dimen/input_edt_textSize"
                 android:textColor="@android:color/white"
-                android:textColorHint="@android:color/white"
+                android:textColorHint="@color/input_hintColor"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
                 android:hint="@string/password" />
 
             <TextView
-                android:id="@+id/errorresponseTtv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:id="@+id/showHidePasswordTtv"
+                android:layout_width="77dp"
+                android:layout_height="match_parent"
+                android:padding="8dp"
+                android:gravity="center"
+                android:textSize="10sp"
                 android:textColor="@android:color/white" />
 
         </LinearLayout>
+
+        <TextView
+            android:id="@+id/errorresponseTtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:layout_marginBottom="25dp"
+            android:textSize="@dimen/txVerror_textSize"
+            android:textStyle="bold"
+            android:textColor="@color/txVerrorColor"/>
 
         <Button
             android:id="@+id/signInBtn"
@@ -95,11 +110,10 @@
             android:text="@string/signin" />
 
         <TextView
-            android:id="@+id/forgotPasswordTtv"
+            android:id="@+id/registerTtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white"
-            android:text="@string/forgotpassword" />
+            android:textColor="@android:color/white" />
 
     </LinearLayout>
 
@@ -110,9 +124,10 @@
         android:background="@color/viewBackgroundColor" />
 
     <TextView
-        android:id="@+id/registerTtv"
+        android:id="@+id/forgotPasswordTtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@android:color/white" />
+        android:textColor="@android:color/white"
+        android:text="@string/forgotpassword" />
 
 </LinearLayout>
