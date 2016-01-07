@@ -12,9 +12,11 @@ import android.text.SpannableStringBuilder;
 import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
+import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import com.squareup.leakcanary.RefWatcher;
@@ -25,13 +27,14 @@ import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.fragments.ForgotPasswordFragment;
 import com.votingsystem.tsiro.fragments.RegisterFragment;
 import com.votingsystem.tsiro.fragments.SignInFragment;
-import com.votingsystem.tsiro.interfaces.LoginActivityCommonElements;
+import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.votingsystem.R;
 
+import java.io.UnsupportedEncodingException;
 import java.util.Observable;
 import java.util.Observer;
 
-public class LoginActivity extends AppCompatActivity implements LoginActivityCommonElements, Observer {
+public class LoginActivity extends AppCompatActivity implements LoginActivityCommonElementsAndMuchMore, Observer {
 
     private static final String debugTag = LoginActivity.class.getSimpleName();
     private SpannableStringBuilder spannableStringBuilder;
@@ -153,7 +156,35 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
     }
 
     @Override
-    public void update(Observable observable, Object data) {
-        connectionStatusUpdated = true;
+    public void update(Observable observable, Object data) { connectionStatusUpdated = true; }
+
+    @Override
+    public boolean validateEditText(EditText[] fields) {
+        for ( int i = 0 ; i < fields.length; i++ ) {
+            if ( fields[i].getText().toString().isEmpty() && fields[i].getTag().equals(getResources().getString(R.string.required))) return false;
+        }
+        return true;
+    }
+
+    @Override
+    public String encodeUtf8(String text) {
+        try {
+            byte[] data = text.getBytes("UTF-8");
+            return Base64.encodeToString(data, Base64.DEFAULT);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    @Override
+    public String decodeUtf8(String text) {
+        try {
+            byte[] data = Base64.decode(text, Base64.DEFAULT);
+            return new String(data, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            return null;
+        }
     }
 }

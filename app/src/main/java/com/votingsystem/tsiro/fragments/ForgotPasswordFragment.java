@@ -12,7 +12,7 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.votingsystem.tsiro.ObserverPattern.ConnectivityObserver;
-import com.votingsystem.tsiro.interfaces.LoginActivityCommonElements;
+import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.votingsystem.R;
 
 /**
@@ -24,13 +24,13 @@ public class ForgotPasswordFragment extends Fragment {
     private Button sendEmailBtn;
     private TextView signInHereTtv, registerTtv;
     private View view;
-    private LoginActivityCommonElements loginActivityCommonElements;
+    private LoginActivityCommonElementsAndMuchMore commonElements;
     private ConnectivityObserver connectivityObserver;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if ( context instanceof Activity ) this.loginActivityCommonElements = (LoginActivityCommonElements) context;
+        if ( context instanceof Activity ) this.commonElements = (LoginActivityCommonElementsAndMuchMore) context;
     }
 
     @Override
@@ -52,13 +52,13 @@ public class ForgotPasswordFragment extends Fragment {
         signInHereTtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (v instanceof TextView) loginActivityCommonElements.signInHereOnClick();
+                if (v instanceof TextView) commonElements.signInHereOnClick();
             }
         });
         registerTtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( v instanceof TextView ) loginActivityCommonElements.registerOnClick();
+                if ( v instanceof TextView ) commonElements.registerOnClick();
             }
         });
         sendEmailBtn.setOnClickListener(new View.OnClickListener() {
@@ -69,6 +69,6 @@ public class ForgotPasswordFragment extends Fragment {
         });
     }
 
-    private void setSignInHereSpan(){ loginActivityCommonElements.setLoginActivitySpan(signInHereTtv, getResources().getString(R.string.signInHere), 22, 34, 1); }
-    private void setRegisterSpan() { loginActivityCommonElements.setLoginActivitySpan(registerTtv, getResources().getString(R.string.register), 16, 23, 0); }
+    private void setSignInHereSpan(){ commonElements.setLoginActivitySpan(signInHereTtv, getResources().getString(R.string.signInHere), 22, 34, 1); }
+    private void setRegisterSpan() { commonElements.setLoginActivitySpan(registerTtv, getResources().getString(R.string.register), 16, 23, 0); }
 }

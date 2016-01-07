@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/registerBaseLlt"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -39,6 +40,8 @@
             android:textColorHint="@android:color/white"
             android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
+            android:tag="@string/required"
+            android:inputType="textPersonName"
             android:hint="@string/username" />
 
     </LinearLayout>
@@ -63,12 +66,13 @@
             android:id="@+id/passwordEdt"
             android:layout_width="@dimen/common_width"
             android:layout_height="match_parent"
-            android:inputType="textPassword"
             android:textSize="@dimen/input_edt_textSize"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
             android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
+            android:tag="@string/required"
+            android:inputType="textPassword"
             android:hint="@string/password" />
 
     </LinearLayout>
@@ -93,12 +97,13 @@
             android:id="@+id/confirmPasswordEdt"
             android:layout_width="@dimen/common_width"
             android:layout_height="wrap_content"
-            android:inputType="textPassword"
             android:textSize="@dimen/input_edt_textSize"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
             android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
+            android:tag="@string/required"
+            android:inputType="textPassword"
             android:hint="@string/confirmpassword" />
 
     </LinearLayout>
@@ -128,6 +133,7 @@
             android:textColorHint="@android:color/white"
             android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
+            android:tag="@string/required"
             android:inputType="textEmailAddress"
             android:hint="@string/email" />
 
@@ -151,6 +157,7 @@
 
         <Spinner
             android:layout_width="@dimen/common_width"
+            android:tag="@string/required"
             android:layout_height="match_parent"
             android:prompt="@string/signInHere" />
 
@@ -176,15 +183,25 @@
             android:id="@+id/firmCodeEdt"
             android:layout_width="@dimen/common_width"
             android:layout_height="match_parent"
-            android:inputType="textPassword"
             android:textSize="@dimen/input_edt_textSize"
             android:textColor="@android:color/white"
             android:textColorHint="@android:color/white"
             android:layout_gravity="center_vertical"
             android:background="@android:color/transparent"
+            android:tag="@string/required"
+            android:inputType="textPassword"
             android:hint="@string/firmcode" />
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/errorresponseTtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="4dp"
+        android:textSize="@dimen/txVerror_textSize"
+        android:textStyle="bold"
+        android:textColor="@color/txVerrorColor"/>
 
     <Button
         android:id="@+id/submitBtn"

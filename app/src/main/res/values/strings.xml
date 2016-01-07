@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">VotingSystem</string>
     <!-- LOGIN -->
+    <string name="app_logo">app_logo</string>
+    <string name="input_logo">input_logo</string>
     <string name="username">Όνομα χρήστη</string>
     <string name="password">Κωδικός πρόσβασης</string>
     <string name="signin">Είσοδος</string>
@@ -14,12 +16,11 @@
     <string name="confirmpassword">Επιβεβαίωση κωδικού</string>
     <string name="showPassword">ΕΜΦΑΝΙΣΗ</string>
     <string name="hidePassword">ΑΠΟΚΡΥΨΗ</string>
+    <string name="required">required</string>
     <!-- ERRORS -->
     <string name="empty_fields">Παρακαλώ συμπλήρωσε όλα τα πεδία.</string>
     <string name="empty_firm_code">Παρακαλώ συμπλήρωσε τον κωδικό της εταιρείας</string>
-    <!-- LOGIN -->
-    <string name="app_logo">app_logo</string>
-    <string name="input_logo">input_logo</string>
+    <string name="no_connection">Χωρίς πρόσβαση στο Internet. Παρακαλώ ξαναπροσπάθησε.</string>
     <!-- NAVIGATION DRAWER ITEMS -->
     <string name="firm">Η Εταιρεία</string>
     <string name="mysurveys">Οι Έρευνες μου</string>

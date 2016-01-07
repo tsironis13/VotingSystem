@@ -10,6 +10,8 @@ public class AppConfig {
     public static final String SESSION_PREFS                    =   "sessionPrefs";
     public static final String KEY_USER_LEARNED_PREFS           =   "user_learned_prefs";
     public static final int NO_CONNECTION_TYPE                  =   -1;
+    public static final int WIFI_CONNECTION                     =   1;
+    public static final int CECULAR_CONNECTION                  =   0;
     public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
     public static final int PASSWORD_INPUT_TYPE                 =   129;
 

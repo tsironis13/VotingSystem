@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -100,14 +101,18 @@
             android:textStyle="bold"
             android:textColor="@color/txVerrorColor"/>
 
-        <Button
+        <com.rey.material.widget.Button
             android:id="@+id/signInBtn"
             android:layout_width="@dimen/action_btn_width"
             android:layout_height="@dimen/action_btn_height"
             android:layout_marginBottom="@dimen/marginBottom"
             android:textColor="@android:color/white"
             android:background="@color/actionBtnColor"
-            android:text="@string/signin" />
+            android:text="@string/signin"
+            app:rd_enable="true"
+            app:rd_maxRippleRadius="match_view"
+            app:rd_rippleColor="#c2c2a3"
+            app:rd_rippleType="wave" />
 
         <TextView
             android:id="@+id/registerTtv"
