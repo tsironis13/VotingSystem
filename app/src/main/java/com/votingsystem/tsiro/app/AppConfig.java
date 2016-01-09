@@ -1,15 +1,23 @@
 package com.votingsystem.tsiro.app;
 
+import android.util.SparseArray;
+import android.util.SparseIntArray;
+
+import com.votingsystem.tsiro.votingsystem.R;
+
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * Created by user on 10/10/2015.
  */
 public class AppConfig {
-
+    //TODO REMOVE STRING TO STRING resources
     public static final String BASE_URL                         =   "http://aetos.it.teithe.gr/~tsironis/Ptixiaki/";
 
     public static final String SESSION_PREFS                    =   "sessionPrefs";
     public static final String KEY_USER_LEARNED_PREFS           =   "user_learned_prefs";
-    public static final int NO_CONNECTION_TYPE                  =   -1;
+    public static final int NO_CONNECTION                       =   -1;
     public static final int WIFI_CONNECTION                     =   1;
     public static final int CECULAR_CONNECTION                  =   0;
     public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
@@ -18,12 +26,10 @@ public class AppConfig {
     public static final int NAVDRAWER_ITEM_VERTICAL_HEIGHT      =   48;
     public static final int NAVDRAWER_DEFAULT_SELECTED_POSITION =   0;
 
-    public static final String URL_LOGIN = "http://aetos.it.teithe.gr/~tsironis/Ptixiaki/login/login.php";
-    public static final String TAG_LOGIN_REQUEST = "login_request"; //tag for canceling specific request
-    public static final String URL_FIRMNAMES = "http://aetos.it.teithe.gr/~tsironis/Ptixiaki/functions/firmNamesRequest.php";
-    public static final String TAG_FIRMNAMES_REQUEST = "firmnames_request";
-    public static final String URL_FIRM = "http://aetos.it.teithe.gr/~tsironis/Ptixiaki/functions/firmPopupRequest.php";
-    public static final String TAG_FIRM_REQUEST = "firm_request";
+    public static final int EMAIL_OK                            =   10;
+    public static final int ERROR_INVALID_EMAIL                 =   -10;
+    public static final int ERROR_UNAVAILABLE_EMAIL             =   -11;
+
     //JSON node names
     public static final String TAG_FIRM_ARRAY = "firms"; // json array
     public static final String TAG_SUCCESS = "success";
@@ -34,4 +40,12 @@ public class AppConfig {
     public static final String TAG_USERNAME = "username";
     public static final String TAG_PASSWORD = "password";
     public static final String TAG_EMAIL = "email";
+
+    public static final SparseIntArray emailCodes = new SparseIntArray(3);
+    public static SparseIntArray getEmailCodes() {
+        emailCodes.put(EMAIL_OK, R.string.email_ok);
+        emailCodes.put(ERROR_INVALID_EMAIL, R.string.invalid_email);
+        emailCodes.put(ERROR_UNAVAILABLE_EMAIL, R.string.email_exists);
+        return emailCodes;
+    }
 }

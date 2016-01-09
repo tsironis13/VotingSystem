@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Firm {
 
-    private String firm_name, city, address, error_msg, action;
+    private String firm_name, city, address, description, action;
     private boolean error;
     private List<FirmElement> firm_element;
 
@@ -27,9 +27,9 @@ public class Firm {
 
     public void setAddress(String address) { this.address = address; }
 
-    public String getError_msg() { return error_msg; }
+    public String getDescription() { return description; }
 
-    public void setError_msg(String error_msg) { this.error_msg = error_msg; }
+    public void setDescription(String description) { this.description = description; }
 
     public Boolean getError() { return error; }
 

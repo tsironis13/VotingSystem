@@ -11,9 +11,9 @@
     <dimen name="container_height">500dp</dimen>
     <dimen name="marginBottom">15dp</dimen>
     <dimen name="logo_dimens_andBottom">40dp</dimen>
-    <dimen name="input_logo_marginLeftRight">6dp</dimen>
+    <dimen name="input_logo_marginLeftRight">8dp</dimen>
     <dimen name="input_container_height">53dp</dimen>
-    <dimen name="common_width">250dp</dimen>
+    <dimen name="common_width">265dp</dimen>
     <dimen name="input_edt_textSize">13sp</dimen>
     <dimen name="txVerror_textSize">12sp</dimen>
     <dimen name="action_btn_width">150dp</dimen>

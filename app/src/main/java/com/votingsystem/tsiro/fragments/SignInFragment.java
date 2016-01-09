@@ -253,8 +253,8 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                                 @Override
                                 public void onResponse(Response<Firm> response, Retrofit retrofit) {
                                     if (response.body().getError()) {
-                                        popupErrorresponseTtv.setText(response.body().getError_msg());
-                                        Log.d(debugTag, response.body().getError_msg());
+                                        popupErrorresponseTtv.setText(response.body().getDescription());
+                                        Log.d(debugTag, response.body().getDescription());
                                     } else {
                                         startBaseActivity();
                                         Log.d(debugTag, String.valueOf(response.isSuccess()));
@@ -283,7 +283,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
 
         ApiService apiService = RetrofitSingleton.getInstanceWithCustoGson(firmsGson).getApiService();
         Log.d(debugTag, "Custom Gson ApiService Singleton: " + apiService.toString());
-        Call<Firm> call = apiService.getFirm_name("getFirmNames");
+        Call<Firm> call = apiService.getFirmNames("getFirmNames");
         call.enqueue(new Callback<Firm>() {
             @Override
             public void onResponse(retrofit.Response<Firm> response, Retrofit retrofit) {
@@ -291,7 +291,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                 //for (int i = 0; i<firmNames.length; i++ ) {
 
                 Log.d(debugTag, String.valueOf(response.body().getError()));
-                Log.d(debugTag, String.valueOf(response.body().getError_msg()));
+                Log.d(debugTag, String.valueOf(response.body().getDescription()));
                 List<Firm.FirmElement> firmElements = response.body().getFirm_element();
 
                 for (int i = 0; i < firmElements.size(); i++) {

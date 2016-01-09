@@ -16,7 +16,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.EditText;
+import com.rey.material.widget.EditText;
 import android.widget.TextView;
 
 import com.squareup.leakcanary.RefWatcher;

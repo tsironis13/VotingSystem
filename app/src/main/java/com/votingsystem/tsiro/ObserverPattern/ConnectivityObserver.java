@@ -42,7 +42,7 @@ public class ConnectivityObserver extends Observable implements Parcelable{
         connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
 
-        connectionType = activeNetworkInfo != null ? activeNetworkInfo.getType() : AppConfig.NO_CONNECTION_TYPE;
+        connectionType = activeNetworkInfo != null ? activeNetworkInfo.getType() : AppConfig.NO_CONNECTION;
         return connectionType;
     }
 

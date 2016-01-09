@@ -1,6 +1,6 @@
 package com.votingsystem.tsiro.interfaces;
 
-import android.widget.EditText;
+import com.rey.material.widget.EditText;
 import android.widget.TextView;
 
 import java.security.PublicKey;

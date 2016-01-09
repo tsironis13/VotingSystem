@@ -35,7 +35,7 @@ public class NetworkState extends BroadcastReceiver implements Observer{
         if ( activeNetworkInfo != null ) {
             connectivityObserver.setConnectivityStatus(activeNetworkInfo.getType());
         } else {
-            connectivityObserver.setConnectivityStatus(AppConfig.NO_CONNECTION_TYPE);
+            connectivityObserver.setConnectivityStatus(AppConfig.NO_CONNECTION);
         }
     }
 
