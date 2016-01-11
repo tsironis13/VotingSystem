@@ -1,21 +1,23 @@
 <resources>
     <string name="app_name">VotingSystem</string>
     <!-- ACTIONS -->
+    <string name="usernameValidation">usernameValidation</string>
+    <string name="emailValidation">emailValidation</string>
     <string name="get_firm_names">getFirmNames</string>
     <!-- LOGIN -->
     <string name="app_logo">app_logo</string>
     <string name="input_logo">input_logo</string>
-    <string name="username">*Όνομα χρήστη</string>
-    <string name="password">Κωδικός πρόσβασης</string>
+    <string name="username">* Όνομα χρήστη</string>
+    <string name="password">* Κωδικός πρόσβασης</string>
     <string name="signin">Είσοδος</string>
     <string name="forgotpassword">Ξέχασες τον κωδικό σου?</string>
     <string name="register">Πρώτη φορά εδώ? Εγγραφή</string>
-    <string name="email">E-mail</string>
+    <string name="email">* E-mail</string>
     <string name="sendEmail">Αποστολή</string>
     <string name="signInHere">Διαθέτεις λογαριασμό?\nΣυνδέσου εδώ</string>
     <string name="submit">Εγγραφή</string>
-    <string name="firmcode">Κωδικός Εταιρείας</string>
-    <string name="confirmpassword">Επιβεβαίωση κωδικού</string>
+    <string name="firmcode">* Κωδικός Εταιρείας</string>
+    <string name="confirmpassword">* Επιβεβαίωση κωδικού</string>
     <string name="showPassword">ΕΜΦΑΝΙΣΗ</string>
     <string name="hidePassword">ΑΠΟΚΡΥΨΗ</string>
     <string name="required">required</string>
@@ -24,10 +26,15 @@
     <string name="empty_firm_code">Παρακαλώ συμπλήρωσε τον κωδικό της εταιρείας</string>
     <string name="no_connection">Χωρίς πρόσβαση στο Internet. Παρακαλώ ξαναπροσπάθησε.</string>
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>
+    <!-- USERNAME HANDLING -->
+    <string name="invalid_username">Επιτρεπτή λατινικοί χαρακτήρες και νούμερα</string>
+    <!-- PASSWORD HANGLING -->
+    <string name="passwords_mismatch">Ασυμφωνία κωδικών</string>
+    <string name="invalid_password_length">Μη επιτρεπτό μέγεθος κωδικού</string>
     <!-- EMAIL HANDLING -->
-    <string name="email_ok">Έγκυρη διεύθυνση</string>
-    <string name="invalid_email">Μη έγκυρη διεύθυνση.</string>
-    <string name="email_exists">Μη διαθέσιμη διεύθυνση.</string>
+    <string name="email_ok">Διαθέσιμο</string>
+    <string name="invalid_email">Μη έγκυρη διεύθυνση</string>
+    <string name="email_exists">Μη διαθέσιμο</string>
     <!-- NAVIGATION DRAWER ITEMS -->
     <string name="firm">Η Εταιρεία</string>
     <string name="mysurveys">Οι Έρευνες μου</string>

@@ -1,6 +1,7 @@
 package com.votingsystem.tsiro.mainClasses;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v4.app.FragmentManager;
@@ -18,7 +19,6 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.rey.material.widget.EditText;
 import android.widget.TextView;
-
 import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.ObserverPattern.ConnectivityObserver;
 import com.votingsystem.tsiro.app.AppConfig;
@@ -29,7 +29,6 @@ import com.votingsystem.tsiro.fragments.RegisterFragment;
 import com.votingsystem.tsiro.fragments.SignInFragment;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.votingsystem.R;
-
 import java.io.UnsupportedEncodingException;
 import java.util.Observable;
 import java.util.Observer;
@@ -46,6 +45,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
     private ConnectivityObserver connectivityObserver;
     private Bundle loginActivityBundle;
     public static boolean connectionStatusUpdated;
+    private Intent intent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
             loginActivityBundle.putParcelable("connectivityObserver", connectivityObserver);
             signInFragment.setArguments(loginActivityBundle);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame_container, signInFragment, "signInFgmt")
+                    .replace(R.id.frame_container, signInFragment, AppConfig.SINGIN_FRAGMENT_TAG)
                     .commit();
         }
         getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
@@ -120,8 +120,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
         loginActivityBundle.putParcelable("connectivityObserver", connectivityObserver);
         forgotPasswordFgmt.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_container, forgotPasswordFgmt, "forgotPasswordFgmt")
-                .addToBackStack("forgotPasswordFgmt")
+                .replace(R.id.frame_container, forgotPasswordFgmt, AppConfig.FORGOT_PASSWORD_FRAGMENT)
+                .addToBackStack(AppConfig.FORGOT_PASSWORD_FRAGMENT)
                 .commit();
     }
 
@@ -132,8 +132,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
         loginActivityBundle.putParcelable("connectivityObserver", connectivityObserver);
         registerFragment.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_container, registerFragment, "registerFgmt")
-                .addToBackStack("registerFgmt")
+                .replace(R.id.frame_container, registerFragment, AppConfig.REGISTER_FRAGMENT_TAG)
+                .addToBackStack(AppConfig.REGISTER_FRAGMENT_TAG)
                 .commit();
     }
 
@@ -156,7 +156,12 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
     }
 
     @Override
-    public void update(Observable observable, Object data) { connectionStatusUpdated = true; }
+    public void update(Observable observable, Object data) {
+        connectionStatusUpdated = true;
+        intent = new Intent("networkStateUpdated");
+        intent.putExtra("connectivityStatus", connectivityObserver.getConnectivityStatus(getApplicationContext()));
+        sendBroadcast(intent);
+    }
 
     @Override
     public boolean validateEditText(EditText[] fields) {

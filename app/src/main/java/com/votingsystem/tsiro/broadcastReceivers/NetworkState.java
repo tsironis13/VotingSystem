@@ -24,6 +24,7 @@ public class NetworkState extends BroadcastReceiver implements Observer{
     private NetworkInfo activeNetworkInfo;
     private boolean isConnected;
     private ConnectivityObserver connectivityObserver;
+    private static boolean firstConnect = true;
 
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -31,10 +32,15 @@ public class NetworkState extends BroadcastReceiver implements Observer{
         activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
         connectivityObserver = ConnectivitySingleton.getInstance();
         connectivityObserver.addObserver(this);
-
         if ( activeNetworkInfo != null ) {
-            connectivityObserver.setConnectivityStatus(activeNetworkInfo.getType());
+            Log.e(debugTag, "firstconnect: "+firstConnect);
+            if ( firstConnect ) {
+                Log.e(debugTag, "firstconnect: "+firstConnect);
+                connectivityObserver.setConnectivityStatus(activeNetworkInfo.getType());
+                firstConnect = false;
+            }
         } else {
+            firstConnect = true;
             connectivityObserver.setConnectivityStatus(AppConfig.NO_CONNECTION);
         }
     }

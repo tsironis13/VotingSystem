@@ -38,8 +38,8 @@
                 android:background="@drawable/username_icon"
                 android:contentDescription="@string/input_logo" />
 
-            <EditText
-                android:id="@+id/usernameEdt"
+            <com.rey.material.widget.EditText
+                android:id="@+id/signInUsernameEdt"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:minWidth="@dimen/common_width"
@@ -49,7 +49,8 @@
                 android:textColorHint="@color/input_hintColor"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
-                android:hint="@string/username" />
+                android:hint="@string/username"
+                app:et_inputId="@+id/usernameEdt" />
 
         </LinearLayout>
 
@@ -68,8 +69,8 @@
                 android:background="@drawable/password_icon"
                 android:contentDescription="@string/input_logo" />
 
-            <EditText
-                android:id="@+id/passwordEdt"
+            <com.rey.material.widget.EditText
+                android:id="@+id/signInPasswordEdt"
                 android:layout_width="163dp"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
@@ -78,7 +79,8 @@
                 android:textColorHint="@color/input_hintColor"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
-                android:hint="@string/password" />
+                android:hint="@string/password"
+                app:et_inputId="@+id/passwordEdt" />
 
             <TextView
                 android:id="@+id/showHidePasswordTtv"

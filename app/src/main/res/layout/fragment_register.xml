@@ -32,8 +32,8 @@
             android:contentDescription="@string/input_logo" />
 
         <com.rey.material.widget.EditText
-            android:id="@+id/usernameEdt"
-            android:layout_width="@dimen/common_width"
+            android:id="@+id/registerUsernameEdt"
+            android:layout_width="216dp"
             android:layout_height="match_parent"
             android:textSize="@dimen/input_edt_textSize"
             android:textColor="@android:color/white"
@@ -44,10 +44,23 @@
             android:inputType="textPersonName"
             android:hint="@string/username"
             style="@style/Material.Widget.EditText.Light"
+            app:et_inputId="@+id/usernameEdt"
+            app:et_supportMode="helper"
+            app:et_supportTextSize="9sp"
+            app:et_supportSingleLine="true"
             app:et_labelEnable="true"
             app:et_labelTextSize="10sp"
             app:et_labelTextColor="@color/accentColor"
             app:et_dividerColor="@android:color/transparent" />
+
+        <com.rey.material.widget.ProgressView
+            android:id="@+id/usernameProgressView"
+            android:layout_width="26dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center_vertical"
+            app:pv_circular="true"
+            app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
+            app:pv_progressMode="indeterminate" />
 
     </LinearLayout>
 
@@ -68,9 +81,9 @@
             android:contentDescription="@string/input_logo" />
 
         <com.rey.material.widget.EditText
-            android:id="@+id/passwordEdt"
+            android:id="@+id/registerPasswordEdt"
             android:layout_width="178dp"
-            android:layout_height="45dp"
+            android:layout_height="match_parent"
             android:textSize="@dimen/input_edt_textSize"
             android:textColor="@android:color/white"
             android:textColorHint="@color/input_hintColor"
@@ -80,14 +93,16 @@
             android:inputType="textPassword"
             android:hint="@string/password"
             style="@style/Material.Widget.EditText.Light"
+            app:et_inputId="@+id/passwordEdt"
             app:et_labelEnable="true"
             app:et_labelTextSize="10sp"
             app:et_dividerColor="@android:color/transparent"
             app:et_dividerHeight="1dp"
             app:et_labelTextColor="@color/accentColor"
             app:et_supportMode="charCounter"
+            app:et_supportSingleLine="true"
             app:et_supportTextColor="@android:color/darker_gray"
-            app:et_supportTextSize="9sp"
+            app:et_supportTextSize="10sp"
             app:et_supportMaxChars="8" />
 
         <com.rey.material.widget.TextView
@@ -120,7 +135,7 @@
         <com.rey.material.widget.EditText
             android:id="@+id/confirmPasswordEdt"
             android:layout_width="@dimen/common_width"
-            android:layout_height="45dp"
+            android:layout_height="match_parent"
             android:textSize="@dimen/input_edt_textSize"
             android:textColor="@android:color/white"
             android:textColorHint="@color/input_hintColor"
@@ -130,8 +145,10 @@
             android:inputType="textPassword"
             android:hint="@string/confirmpassword"
             style="@style/Material.Widget.EditText.Light"
+            app:et_inputId="@+id/confPasswordEdt"
             app:et_supportMode="helper"
-            app:et_supportTextSize="9sp"
+            app:et_supportSingleLine="true"
+            app:et_supportTextSize="10sp"
             app:et_labelEnable="true"
             app:et_labelTextSize="10sp"
             app:et_labelTextColor="@color/accentColor"
@@ -169,6 +186,7 @@
             android:inputType="textEmailAddress"
             android:hint="@string/email"
             style="@style/Material.Widget.EditText.Light"
+            app:et_inputId="@+id/mailEdt"
             app:et_supportMode="helper"
             app:et_labelEnable="true"
             app:et_labelTextSize="10sp"
@@ -176,7 +194,7 @@
             app:et_dividerColor="@android:color/transparent" />
 
         <com.rey.material.widget.ProgressView
-            android:id="@+id/progressView"
+            android:id="@+id/emailProgressView"
             android:layout_width="26dp"
             android:layout_height="26dp"
             android:layout_gravity="center_vertical"
@@ -232,7 +250,7 @@
             android:background="@drawable/firmcode_icon"
             android:contentDescription="@string/input_logo" />
 
-        <EditText
+        <com.rey.material.widget.EditText
             android:id="@+id/firmCodeEdt"
             android:layout_width="@dimen/common_width"
             android:layout_height="match_parent"
@@ -243,7 +261,9 @@
             android:background="@android:color/transparent"
             android:tag="@string/required"
             android:inputType="textPassword"
-            android:hint="@string/firmcode" />
+            android:hint="@string/firmcode"
+            style="@style/Material.Widget.EditText.Light"
+            app:et_inputId="@+id/fircodeEdt" />
 
     </LinearLayout>
 

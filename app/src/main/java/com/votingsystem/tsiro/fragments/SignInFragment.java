@@ -21,7 +21,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.EditText;
+import com.rey.material.widget.EditText;
 import android.widget.PopupWindow;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -52,7 +52,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     private static final String debugTag = SignInFragment.class.getSimpleName();
     private static String error_no_connection, empty_fields;
     private TextView forgotPasswordTtV, registerTtv, errorresponseTtv, popupErrorresponseTtv, showHidePasswordTtv;
-    private EditText usernameEdt, passwordEdt, firmcodeEdt;
+    private EditText signInUsernameEdt, signInPasswordEdt, firmcodeEdt;
     private Button signInBtn, popUpLoginBtn;
     private Spinner firmSpnr;
     private PopupWindow popupWindow;
@@ -71,8 +71,8 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if ( view == null ) view = inflater.inflate(R.layout.fragment_signin, container, false);
-        usernameEdt             =   (EditText) view.findViewById(R.id. usernameEdt);
-        passwordEdt             =   (EditText) view.findViewById(R.id.passwordEdt);
+        signInUsernameEdt       =   (EditText) view.findViewById(R.id. signInUsernameEdt);
+        signInPasswordEdt       =   (EditText) view.findViewById(R.id.signInPasswordEdt);
         signInBtn               =   (Button) view.findViewById(R.id.signInBtn);
         forgotPasswordTtV       =   (TextView) view.findViewById(R.id.forgotPasswordTtv);
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
@@ -90,7 +90,6 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         int value = sessionPrefs.getInt("17", 0);
         Toast.makeText(getContext(), "key, value" + key + " " + value, Toast.LENGTH_SHORT).show();
         if ( sessionPrefs.contains("user_id") ) startBaseActivity();
-
         signInBtn.setTransformationMethod(null);
         setRegisterSpan();
         signInBtn.setOnClickListener(new View.OnClickListener() {
@@ -98,7 +97,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
             public void onClick(View v) {
                 Log.e(debugTag, "CONNECTION: " + LoginActivity.connectionStatusUpdated);
                 Log.d(debugTag, "CONNECTIVITY STATUS: " + connectivityObserver.getConnectivityStatus(getActivity()));
-                if (usernameEdt.getText().toString().isEmpty() || passwordEdt.getText().toString().isEmpty()) {
+                if (signInUsernameEdt.getText().toString().isEmpty() || signInPasswordEdt.getText().toString().isEmpty()) {
                     empty_fields = commonElements.encodeUtf8(getResources().getString(R.string.empty_fields));
                     errorresponseTtv.setText(commonElements.decodeUtf8(empty_fields));
                 } else {
@@ -108,12 +107,12 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    checkLogin(usernameEdt.getText().toString(), passwordEdt.getText().toString());
+                    checkLogin(signInUsernameEdt.getText().toString(), signInPasswordEdt.getText().toString());
                 }
             }
         });
 
-        usernameEdt.addTextChangedListener(new TextWatcher() {
+        signInUsernameEdt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
             }
@@ -128,7 +127,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
             }
         });
 
-        passwordEdt.addTextChangedListener(new TextWatcher() {
+        signInPasswordEdt.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
@@ -136,9 +135,9 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!TextUtils.isEmpty(errorresponseTtv.getText())) errorresponseTtv.setText("");
                 if ( start >= 0 ) {
-                        if ( passwordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod ) {
+                        if ( signInPasswordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod ) {
                             showHidePasswordTtv.setText(getResources().getString(R.string.hidePassword));
-                        } else if ( passwordEdt.getTransformationMethod() instanceof PasswordTransformationMethod ) {
+                        } else if ( signInPasswordEdt.getTransformationMethod() instanceof PasswordTransformationMethod ) {
                             showHidePasswordTtv.setText(getResources().getString(R.string.showPassword));
                         }
                 }
@@ -153,15 +152,15 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         showHidePasswordTtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( passwordEdt.getTransformationMethod() instanceof PasswordTransformationMethod ) {
+                if ( signInPasswordEdt.getTransformationMethod() instanceof PasswordTransformationMethod ) {
                     //use HideReturnsTransformationMethod to make password visible
-                    passwordEdt.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                    signInPasswordEdt.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
                     showHidePasswordTtv.setText(getResources().getString(R.string.hidePassword));
-                } else if ( passwordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod ){
-                    passwordEdt.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                } else if ( signInPasswordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod ){
+                    signInPasswordEdt.setTransformationMethod(PasswordTransformationMethod.getInstance());
                     showHidePasswordTtv.setText(getResources().getString(R.string.showPassword));
                 }
-                passwordEdt.setSelection(passwordEdt.getText().length());
+                signInPasswordEdt.setSelection(signInPasswordEdt.getText().length());
             }
         });
         forgotPasswordTtV.setOnClickListener(new View.OnClickListener() {
@@ -258,7 +257,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                                     } else {
                                         startBaseActivity();
                                         Log.d(debugTag, String.valueOf(response.isSuccess()));
-                                        Log.d(debugTag, response.body().getFirm_name() + " " + response.body().getCity() + " " + response.body().getAddress());
+                                        //Log.d(debugTag, response.body().getFirm_name() + " " + response.body().getCity() + " " + response.body().getAddress());
                                     }
                                 }
 

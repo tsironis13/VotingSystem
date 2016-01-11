@@ -35,7 +35,7 @@
                 android:contentDescription="@string/input_logo" />
 
             <EditText
-                android:id="@+id/usernameEdt"
+                android:id="@+id/registerUsernameEdt"
                 android:layout_width="@dimen/common_width"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/input_edt_textSize"

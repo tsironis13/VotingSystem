@@ -99,7 +99,7 @@ public class AdminBaseFragment extends Fragment{
                 call.enqueue(new Callback<Survey>() {
                     @Override
                     public void onResponse(Response<Survey> response, Retrofit retrofit) {
-                        Log.d(debugTag, response.body().getError().toString());
+                        Log.d(debugTag, response.body().getError());
                     }
 
                     @Override

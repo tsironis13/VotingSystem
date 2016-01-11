@@ -34,7 +34,7 @@
                 android:contentDescription="@string/input_logo" />
 
             <EditText
-                android:id="@+id/usernameEdt"
+                android:id="@+id/signInUsernameEdt"
                 android:layout_width="@dimen/common_width"
                 android:layout_height="match_parent"
                 android:textSize="@dimen/input_edt_textSize"
@@ -63,7 +63,7 @@
                 android:contentDescription="@string/input_logo" />
 
             <EditText
-                android:id="@+id/passwordEdt"
+                android:id="@+id/signInPasswordEdt"
                 android:layout_width="@dimen/common_width"
                 android:layout_height="match_parent"
                 android:inputType="textPassword"
