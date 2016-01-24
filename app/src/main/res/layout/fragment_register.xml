@@ -1,297 +1,358 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/registerBaseLlt"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:gravity="center">
-
-    <ImageView
-        android:layout_width="@dimen/register_logo_dimens"
-        android:layout_height="@dimen/register_logo_dimens"
-        android:layout_marginBottom="@dimen/in_common_2"
-        android:background="@drawable/app_logo"
-        android:contentDescription="@string/app_logo"/>
+    android:layout_height="match_parent">
 
     <LinearLayout
-        android:layout_width="@dimen/container_width"
-        android:layout_height="@dimen/register_input_container_height"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:orientation="horizontal">
+        android:id="@+id/registerBaseLlt"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center">
 
         <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
-            android:layout_marginRight="@dimen/input_logo_marginLeftRight"
-            android:background="@drawable/username_icon"
-            android:contentDescription="@string/input_logo" />
+            android:layout_width="@dimen/register_logo_dimens"
+            android:layout_height="@dimen/register_logo_dimens"
+            android:layout_marginBottom="@dimen/in_common_2"
+            android:background="@drawable/app_logo"
+            android:contentDescription="@string/app_logo"/>
 
-        <com.rey.material.widget.EditText
-            android:id="@+id/registerUsernameEdt"
-            android:layout_width="216dp"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/input_edt_textSize"
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/username_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <RelativeLayout
+                android:layout_width="252dp"
+                android:layout_height="match_parent"
+                android:paddingRight="5dp" >
+
+                <com.rey.material.widget.EditText
+                    android:id="@+id/registerUsernameEdt"
+                    android:layout_width="222dp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/input_edt_textSize"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/input_hintColor"
+                    android:background="@android:color/transparent"
+                    android:tag="@string/required"
+                    android:inputType="textPersonName"
+                    android:hint="@string/username"
+                    style="@style/Material.Widget.EditText.Light"
+                    app:et_inputId="@+id/usernameEdt"
+                    app:et_supportMode="helper"
+                    app:et_supportTextSize="10sp"
+                    app:et_supportTextErrorColor="#DD2C00"
+                    app:et_supportSingleLine="true"
+                    app:et_labelEnable="true"
+                    app:et_labelTextSize="10sp"
+                    app:et_labelTextColor="@color/accentColor"
+                    app:et_dividerColor="@android:color/transparent" />
+
+                <com.rey.material.widget.ProgressView
+                    android:id="@+id/usernameProgressView"
+                    android:layout_width="28dp"
+                    android:layout_height="24dp"
+                    android:layout_toRightOf="@+id/registerUsernameEdt"
+                    android:layout_centerVertical="true"
+                    app:pv_circular="true"
+                    app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
+                    app:pv_progressMode="indeterminate" />
+
+                <RelativeLayout
+                    android:id="@+id/acceptUsernameRlt"
+                    android:layout_width="28dp"
+                    android:layout_height="24dp"
+                    android:layout_toRightOf="@+id/registerUsernameEdt"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/accept_drawable"
+                    android:visibility="gone"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="-13"
+                    android:shadowDy="-4"
+                    android:shadowRadius="11" >
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/ic_action_accept"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/password_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <RelativeLayout
+                android:layout_width="252dp"
+                android:layout_height="match_parent"
+                android:paddingRight="5dp" >
+
+                <com.rey.material.widget.EditText
+                    android:id="@+id/registerPasswordEdt"
+                    android:layout_width="186dp"
+                    android:layout_height="match_parent"
+                    android:textSize="@dimen/input_edt_textSize"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/input_hintColor"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    android:tag="@string/required"
+                    android:inputType="textPassword"
+                    android:hint="@string/password"
+                    style="@style/Material.Widget.EditText.Light"
+                    app:et_inputId="@+id/passwordEdt"
+                    app:et_labelEnable="true"
+                    app:et_labelTextSize="10sp"
+                    app:et_dividerColor="@android:color/transparent"
+                    app:et_labelTextColor="@color/accentColor"
+                    app:et_supportMode="helper"
+                    app:et_supportTextErrorColor="#DD2C00"
+                    app:et_supportSingleLine="true"
+                    app:et_supportTextSize="10sp" />
+
+                <com.rey.material.widget.TextView
+                    android:id="@+id/showHidePasswordTtv"
+                    android:layout_width="77dp"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/registerPasswordEdt"
+                    android:gravity="center"
+                    android:textSize="10sp"
+                    android:textColor="@android:color/white" />
+
+                <RelativeLayout
+                    android:id="@+id/acceptPasswordRlt"
+                    android:layout_width="26dp"
+                    android:layout_height="24dp"
+                    android:layout_toRightOf="@+id/registerPasswordEdt"
+                    android:layout_marginLeft="36dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/accept_drawable"
+                    android:visibility="gone"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="-13"
+                    android:shadowDy="-4"
+                    android:shadowRadius="11" >
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/ic_action_accept"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/password_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/confirmPasswordEdt"
+                android:layout_width="@dimen/common_width"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/input_hintColor"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:tag="@string/required"
+                android:inputType="textPassword"
+                android:hint="@string/confirmpassword"
+                style="@style/Material.Widget.EditText.Light"
+                app:et_inputId="@+id/confPasswordEdt"
+                app:et_supportMode="helper"
+                app:et_supportSingleLine="true"
+                app:et_supportTextSize="10sp"
+                app:et_labelEnable="true"
+                app:et_labelTextSize="10sp"
+                app:et_labelTextColor="@color/accentColor"
+                app:et_dividerColor="@android:color/transparent" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/email_icon"
+                android:contentDescription="@string/input_logo"/>
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/emailEdt"
+                android:layout_width="216dp"
+                android:layout_height="match_parent"
+                android:paddingRight="5dp"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/input_hintColor"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:tag="@string/required"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email"
+                style="@style/Material.Widget.EditText.Light"
+                app:et_inputId="@+id/mailEdt"
+                app:et_supportMode="helper"
+                app:et_labelEnable="true"
+                app:et_labelTextSize="10sp"
+                app:et_labelTextColor="@color/accentColor"
+                app:et_dividerColor="@android:color/transparent" />
+
+            <com.rey.material.widget.ProgressView
+                android:id="@+id/emailProgressView"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:layout_gravity="center_vertical"
+                app:pv_circular="true"
+                app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
+                app:pv_progressMode="indeterminate" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/firm_icon"
+                android:contentDescription="@string/input_logo"/>
+
+            <com.rey.material.widget.Spinner
+                android:id="@+id/registerSpnr"
+                android:layout_width="250dp"
+                android:layout_height="match_parent"
+                android:tag="@string/required"
+                android:prompt="@string/signInHere"
+                style="@style/Material.Widget.Spinner"
+                app:rd_style="@style/Material.Drawable.Ripple.Wave"
+                app:spn_arrowSwitchMode="true"
+                app:spn_arrowAnimClockwise="true"
+                app:spn_arrowAnimDuration="400" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="25dp"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/firmcode_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/firmCodeEdt"
+                android:layout_width="@dimen/common_width"
+                android:layout_height="match_parent"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@android:color/white"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:tag="@string/required"
+                android:inputType="textPassword"
+                android:hint="@string/firmcode"
+                style="@style/Material.Widget.EditText.Light"
+                app:et_inputId="@+id/fircodeEdt" />
+
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/errorresponseTtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingTop="4dp"
+            android:textSize="@dimen/txVerror_textSize"
+            android:textStyle="bold"
+            android:textColor="@color/txVerrorColor"/>
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="@dimen/action_btn_width"
+            android:layout_height="@dimen/action_btn_height"
+            android:layout_marginBottom="@dimen/submit_btn_marginBottom"
             android:textColor="@android:color/white"
-            android:textColorHint="@color/input_hintColor"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:tag="@string/required"
-            android:inputType="textPersonName"
-            android:hint="@string/username"
-            style="@style/Material.Widget.EditText.Light"
-            app:et_inputId="@+id/usernameEdt"
-            app:et_supportMode="helper"
-            app:et_supportTextSize="9sp"
-            app:et_supportSingleLine="true"
-            app:et_labelEnable="true"
-            app:et_labelTextSize="10sp"
-            app:et_labelTextColor="@color/accentColor"
-            app:et_dividerColor="@android:color/transparent" />
+            android:background="@color/actionBtnColor"
+            android:text="@string/submit" />
 
-        <com.rey.material.widget.ProgressView
-            android:id="@+id/usernameProgressView"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:layout_gravity="center_vertical"
-            app:pv_circular="true"
-            app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
-            app:pv_progressMode="indeterminate" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="@dimen/container_width"
-        android:layout_height="@dimen/register_input_container_height"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
-            android:layout_marginRight="@dimen/input_logo_marginLeftRight"
-            android:background="@drawable/password_icon"
-            android:contentDescription="@string/input_logo" />
-
-        <com.rey.material.widget.EditText
-            android:id="@+id/registerPasswordEdt"
-            android:layout_width="178dp"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/input_edt_textSize"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/input_hintColor"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:tag="@string/required"
-            android:inputType="textPassword"
-            android:hint="@string/password"
-            style="@style/Material.Widget.EditText.Light"
-            app:et_inputId="@+id/passwordEdt"
-            app:et_labelEnable="true"
-            app:et_labelTextSize="10sp"
-            app:et_dividerColor="@android:color/transparent"
-            app:et_dividerHeight="1dp"
-            app:et_labelTextColor="@color/accentColor"
-            app:et_supportMode="charCounter"
-            app:et_supportSingleLine="true"
-            app:et_supportTextColor="@android:color/darker_gray"
-            app:et_supportTextSize="10sp"
-            app:et_supportMaxChars="8" />
-
-        <com.rey.material.widget.TextView
-            android:id="@+id/showHidePasswordTtv"
-            android:layout_width="77dp"
-            android:layout_height="match_parent"
-            android:padding="8dp"
+        <TextView
+            android:id="@+id/signInHereTtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="15dp"
             android:gravity="center"
-            android:textSize="10sp"
+            android:lineSpacingMultiplier="1"
             android:textColor="@android:color/white" />
 
     </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="@dimen/container_width"
-        android:layout_height="@dimen/register_input_container_height"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
-            android:layout_marginRight="@dimen/input_logo_marginLeftRight"
-            android:background="@drawable/password_icon"
-            android:contentDescription="@string/input_logo" />
-
-        <com.rey.material.widget.EditText
-            android:id="@+id/confirmPasswordEdt"
-            android:layout_width="@dimen/common_width"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/input_edt_textSize"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/input_hintColor"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:tag="@string/required"
-            android:inputType="textPassword"
-            android:hint="@string/confirmpassword"
-            style="@style/Material.Widget.EditText.Light"
-            app:et_inputId="@+id/confPasswordEdt"
-            app:et_supportMode="helper"
-            app:et_supportSingleLine="true"
-            app:et_supportTextSize="10sp"
-            app:et_labelEnable="true"
-            app:et_labelTextSize="10sp"
-            app:et_labelTextColor="@color/accentColor"
-            app:et_dividerColor="@android:color/transparent" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="@dimen/container_width"
-        android:layout_height="@dimen/register_input_container_height"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
-            android:layout_marginRight="@dimen/input_logo_marginLeftRight"
-            android:background="@drawable/email_icon"
-            android:contentDescription="@string/input_logo"/>
-
-        <com.rey.material.widget.EditText
-            android:id="@+id/emailEdt"
-            android:layout_width="216dp"
-            android:layout_height="match_parent"
-            android:paddingRight="5dp"
-            android:textSize="@dimen/input_edt_textSize"
-            android:textColor="@android:color/white"
-            android:textColorHint="@color/input_hintColor"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:tag="@string/required"
-            android:inputType="textEmailAddress"
-            android:hint="@string/email"
-            style="@style/Material.Widget.EditText.Light"
-            app:et_inputId="@+id/mailEdt"
-            app:et_supportMode="helper"
-            app:et_labelEnable="true"
-            app:et_labelTextSize="10sp"
-            app:et_labelTextColor="@color/accentColor"
-            app:et_dividerColor="@android:color/transparent" />
-
-        <com.rey.material.widget.ProgressView
-            android:id="@+id/emailProgressView"
-            android:layout_width="26dp"
-            android:layout_height="26dp"
-            android:layout_gravity="center_vertical"
-            app:pv_circular="true"
-            app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
-            app:pv_progressMode="indeterminate" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="@dimen/container_width"
-        android:layout_height="@dimen/register_input_container_height"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="@dimen/marginBottom"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
-            android:layout_marginRight="@dimen/input_logo_marginLeftRight"
-            android:background="@drawable/firm_icon"
-            android:contentDescription="@string/input_logo"/>
-
-        <com.rey.material.widget.Spinner
-            android:id="@+id/registerSpnr"
-            android:layout_width="250dp"
-            android:layout_height="match_parent"
-            android:tag="@string/required"
-            android:prompt="@string/signInHere"
-            style="@style/Material.Widget.Spinner"
-            app:rd_style="@style/Material.Drawable.Ripple.Wave"
-            app:spn_arrowSwitchMode="true"
-            app:spn_arrowAnimClockwise="true"
-            app:spn_arrowAnimDuration="400" />
-
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="@dimen/container_width"
-        android:layout_height="@dimen/register_input_container_height"
-        android:background="@drawable/login_fields_container"
-        android:layout_marginBottom="25dp"
-        android:orientation="horizontal">
-
-        <ImageView
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_gravity="center_vertical"
-            android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
-            android:layout_marginRight="@dimen/input_logo_marginLeftRight"
-            android:background="@drawable/firmcode_icon"
-            android:contentDescription="@string/input_logo" />
-
-        <com.rey.material.widget.EditText
-            android:id="@+id/firmCodeEdt"
-            android:layout_width="@dimen/common_width"
-            android:layout_height="match_parent"
-            android:textSize="@dimen/input_edt_textSize"
-            android:textColor="@android:color/white"
-            android:textColorHint="@android:color/white"
-            android:layout_gravity="center_vertical"
-            android:background="@android:color/transparent"
-            android:tag="@string/required"
-            android:inputType="textPassword"
-            android:hint="@string/firmcode"
-            style="@style/Material.Widget.EditText.Light"
-            app:et_inputId="@+id/fircodeEdt" />
-
-    </LinearLayout>
-
-    <TextView
-        android:id="@+id/errorresponseTtv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingTop="4dp"
-        android:textSize="@dimen/txVerror_textSize"
-        android:textStyle="bold"
-        android:textColor="@color/txVerrorColor"/>
-
-    <Button
-        android:id="@+id/submitBtn"
-        android:layout_width="@dimen/action_btn_width"
-        android:layout_height="@dimen/action_btn_height"
-        android:layout_marginBottom="@dimen/submit_btn_marginBottom"
-        android:textColor="@android:color/white"
-        android:background="@color/actionBtnColor"
-        android:text="@string/submit" />
-
-    <TextView
-        android:id="@+id/signInHereTtv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingBottom="15dp"
-        android:gravity="center"
-        android:lineSpacingMultiplier="1"
-        android:textColor="@android:color/white" />
-
-</LinearLayout>
+</ScrollView>

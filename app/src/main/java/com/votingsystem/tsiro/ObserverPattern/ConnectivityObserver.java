@@ -12,14 +12,14 @@ import java.util.Observable;
 /**
  * Created by user on 19/12/2015.
  */
-public class ConnectivityObserver extends Observable implements Parcelable{
+public class ConnectivityObserver extends Observable implements Parcelable {
 
     private ConnectivityManager connectivityManager;
     private NetworkInfo activeNetworkInfo;
     private int connectivityStatus;
     private int connectionType;
 
-    public ConnectivityObserver(){}
+    public ConnectivityObserver() {}
 
     public ConnectivityObserver(Parcel source){
         connectivityStatus = source.readInt();
@@ -27,9 +27,9 @@ public class ConnectivityObserver extends Observable implements Parcelable{
 
     public int getConnectivityStatus(Context context){
         if ( !LoginActivity.connectionStatusUpdated ) {
-            this.connectivityStatus = isConnected(context);
+            connectivityStatus = isConnected(context);
         }
-        return this.connectivityStatus;
+        return connectivityStatus;
     }
 
     public void setConnectivityStatus(int connectivityStatus) {

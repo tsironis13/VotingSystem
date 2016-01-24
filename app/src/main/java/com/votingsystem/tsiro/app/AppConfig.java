@@ -23,6 +23,8 @@ public class AppConfig {
     public static final int NO_CONNECTION                       =   -1;
     public static final int WIFI_CONNECTION                     =   1;
     public static final int CECULAR_CONNECTION                  =   0;
+    public static final int REQUEST_OK                          =   200;
+    public static final int SERVICE_NOT_AVAILABLE               =   503;
     public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
     public static final int PASSWORD_INPUT_TYPE                 =   129;
 

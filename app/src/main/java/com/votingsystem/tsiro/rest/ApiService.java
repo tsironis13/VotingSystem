@@ -5,6 +5,8 @@ import com.votingsystem.tsiro.POJO.Survey;
 import com.votingsystem.tsiro.POJO.User;
 import com.votingsystem.tsiro.POJO.UserConnectionStaff;
 
+import java.util.Observable;
+
 import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.Field;
@@ -17,8 +19,12 @@ import retrofit.http.POST;
 public interface ApiService {
 
     @FormUrlEncoded
-    @POST("connectionStaff/registration/registration-requests.php")
+    @POST("requests/registration/registration-requests.php")
     Call<UserConnectionStaff> isUsernameValid(@Field("action") String action, @Field("username") String username);
+
+    @FormUrlEncoded
+    @POST("requests/registration/registration-requests.php")
+    Call<UserConnectionStaff> isPasswordValid(@Field("action") String action, @Field("password") String password);
 
     @FormUrlEncoded
     @POST("connectionStaff/registration/registration-requests.php")
@@ -33,7 +39,7 @@ public interface ApiService {
     Call<User> validateUser(@Field("username") String username, @Field("password") String password);
 
     @FormUrlEncoded
-    @POST("functions/firmRequests.php")
+    @POST("requests/firms/firmRequests.php")
     Call<Firm> getFirmNames(@Field("action") String action);
 
     @FormUrlEncoded

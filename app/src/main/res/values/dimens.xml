@@ -7,7 +7,7 @@
     <dimen name="in_common_2">20dp</dimen>
     <dimen name="in_common_3">36dp</dimen>
     <!-- LOGIN IN -->
-    <dimen name="container_width">290dp</dimen>
+    <dimen name="container_width">293dp</dimen>
     <dimen name="container_height">500dp</dimen>
     <dimen name="marginBottom">15dp</dimen>
     <dimen name="logo_dimens_andBottom">40dp</dimen>
