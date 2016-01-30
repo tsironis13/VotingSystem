@@ -19,6 +19,7 @@ import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewTreeObserver;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
@@ -58,7 +59,7 @@ public class RegisterFragment extends Fragment {
     private static String error_no_connection, empty_fields;
     private LinearLayout registerBaseLlt;
     private RelativeLayout acceptUsernameRlt, acceptPasswordRlt;
-    private TextView signInHereTtv, errorresponseTtv, showHidePasswordTtv;
+    private TextView signInHereTtv, errorresponseTtv, showHidePasswordTtv, passwordErrorTtv;
     private EditText registerUsernameEdt, registerPasswordEdt, confirmPasswordEdt, emailEdt, firmCodeEdt;
     private Button submitBtn;
     private ProgressView usernameProgressView, emailProgressView;
@@ -95,6 +96,7 @@ public class RegisterFragment extends Fragment {
         signInHereTtv           =   (TextView) view.findViewById(R.id.signInHereTtv);
         errorresponseTtv        =   (TextView) view.findViewById(R.id.errorresponseTtv);
         showHidePasswordTtv     =   (TextView) view.findViewById(R.id.showHidePasswordTtv);
+        passwordErrorTtv        =   (TextView) view.findViewById(R.id.passwordErrorTtv);
         submitBtn               =   (Button) view.findViewById(R.id.submitBtn);
         usernameProgressView    =   (ProgressView) view.findViewById(R.id.usernameProgressView);
         emailProgressView       =   (ProgressView) view.findViewById(R.id.emailProgressView);
@@ -104,7 +106,7 @@ public class RegisterFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onActivityCreated(final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if ( savedInstanceState == null ) {
             inputValidationCodes = AppConfig.getEmailCodes();
@@ -115,7 +117,6 @@ public class RegisterFragment extends Fragment {
                 firmsLoaded = false;
             }
             broadcastReceiver = new BroadcastReceiver() {
-
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     connectivityStatus = intent.getExtras().getInt("connectivityStatus");
@@ -129,8 +130,7 @@ public class RegisterFragment extends Fragment {
             setSignInHereSpan();
             registerUsernameEdt.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -140,8 +140,7 @@ public class RegisterFragment extends Fragment {
                 }
 
                 @Override
-                public void afterTextChanged(Editable s) {
-                }
+                public void afterTextChanged(Editable s) {}
             });
             registerUsernameEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
@@ -162,7 +161,7 @@ public class RegisterFragment extends Fragment {
                                     if ( isAdded() ) {
                                         if (response.body().getError_code() != AppConfig.INPUT_OK) {
                                             if ( response.body().getError_code() == AppConfig.ERROR_INVALID_INPUT ) {
-                                                setText("error", registerUsernameEdt, commonElements.encodeUtf8(getResources().getString(R.string.invalid_username)), "#DD2C00");
+                                                setText("error", registerUsernameEdt, commonElements.encodeUtf8(getResources().getString(R.string.invalid_usernamepassword)), "#DD2C00");
                                             } else {
                                                 setText("error", registerUsernameEdt, commonElements.encodeUtf8(getResources().getString(resource_message)), "#DD2C00");
                                             }
@@ -172,12 +171,12 @@ public class RegisterFragment extends Fragment {
                                         progressViewActions("stop", usernameProgressView);
                                     }
                                 }
-
                                 @Override
                                 public void onFailure(Throwable t) {
                                     if ( isAdded() ) {
                                         if ( t instanceof IOException ) {
-                                            setToastHelperMsg(getResources().getString(R.string.no_connection));
+                                            setToastHelperMsg(getResources().getString(R.string.unavailable_service));
+                                            Log.e(debugTag, ""+t.toString());
                                         } else {
                                             setToastHelperMsg(getResources().getString(R.string.error_occured));
                                         }
@@ -199,6 +198,10 @@ public class RegisterFragment extends Fragment {
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if ( !passwordErrorTtv.getText().toString().isEmpty() ) {
+                        passwordErrorTtv.setText(null);
+                        registerPasswordEdt.getChildAt(1).setVisibility(View.VISIBLE);
+                    }
                     if ( acceptPasswordRlt.getVisibility() == View.VISIBLE ) animationStaff(acceptPasswordRlt, 1.0f, 0.0f, "gone");
                     if ( registerPasswordEdt.getHelper() != null ) clearEditext(registerPasswordEdt);
                     showHidePasswordTtv.setVisibility(View.VISIBLE);
@@ -218,53 +221,55 @@ public class RegisterFragment extends Fragment {
                 }
 
                 @Override
-                public void afterTextChanged(Editable s) {
-                }
+                public void afterTextChanged(Editable s) {}
             });
             registerPasswordEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if ( !hasFocus ) {
                         if ( registerPasswordEdt.getText().toString().isEmpty() ) {
-                            setText("error", registerPasswordEdt, commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field)), "#DD2C00");
-                            return;
-                        }
-                        if ( connectivityObserver.getConnectivityStatus(getActivity()) != AppConfig.NO_CONNECTION ) {
-                            Call<UserConnectionStaff> call = apiService.isPasswordValid(getResources().getString(R.string.passwordValidation), registerPasswordEdt.getText().toString());
-                            call.enqueue(new Callback<UserConnectionStaff>() {
-                                @Override
-                                public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
-                                    int resource_message = inputValidationCodes.get(response.body().getError_code());
-                                    if ( isAdded() ) {
-                                        if ( response.body().getError_code() != AppConfig.INPUT_OK ) {
-                                            if (response.body().getError_code() == AppConfig.ERROR_INVALID_INPUT) {
-                                                setText("error", registerPasswordEdt, commonElements.encodeUtf8(getResources().getString(R.string.invalid_username)), "#DD2C00");
-                                            } else {
-                                                setText("error", registerPasswordEdt, commonElements.encodeUtf8(getResources().getString(resource_message)), "#DD2C00");
-                                            }
-                                        } else {
-                                            animationStaff(acceptPasswordRlt, 0.0f, 1.0f, "visible");
-                                            showHidePasswordTtv.setText(null);
-                                        }
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Throwable t) {
-                                    if (isAdded()) {
-                                        if (t instanceof IOException) {
-                                            setToastHelperMsg(getResources().getString(R.string.no_connection));
-                                        } else {
-                                            setToastHelperMsg(getResources().getString(R.string.error_occured));
-                                        }
-                                        registerUsernameEdt.setText(null);
-                                        progressViewActions("stop", usernameProgressView);
-                                    }
-                                }
-                            });
+                            passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))));
+                        } else if ( registerPasswordEdt.getText().length() != 8 ) {
+                            passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.invalid_password_length))));
                         } else {
-                            if ( isAdded() ) setToastHelperMsg(getResources().getString(R.string.no_connection));
+                            if ( connectivityObserver.getConnectivityStatus(getActivity()) != AppConfig.NO_CONNECTION ) {
+                                Call<UserConnectionStaff> call = apiService.isPasswordValid(getResources().getString(R.string.passwordValidation), registerPasswordEdt.getText().toString());
+                                call.enqueue(new Callback<UserConnectionStaff>() {
+                                    @Override
+                                    public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
+                                        int resource_message = inputValidationCodes.get(response.body().getError_code());
+                                        if ( isAdded() ) {
+                                            if ( response.body().getError_code() != AppConfig.INPUT_OK ) {
+                                                if (response.body().getError_code() == AppConfig.ERROR_INVALID_INPUT) {
+                                                    passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.invalid_usernamepassword))));
+                                                } else {
+                                                    //passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.resource_message))));
+                                                }
+                                            } else {
+                                                animationStaff(acceptPasswordRlt, 0.0f, 1.0f, "visible");
+                                                showHidePasswordTtv.setText(null);
+                                            }
+                                        }
+                                    }
+                                    @Override
+                                    public void onFailure(Throwable t) {
+                                        if (isAdded()) {
+                                            if (t instanceof IOException) {
+                                                setToastHelperMsg(getResources().getString(R.string.no_connection));
+                                            } else {
+                                                setToastHelperMsg(getResources().getString(R.string.error_occured));
+                                            }
+                                            registerUsernameEdt.setText(null);
+                                            progressViewActions("stop", usernameProgressView);
+                                        }
+                                    }
+                                });
+                            } else {
+                                if ( isAdded() ) setToastHelperMsg(getResources().getString(R.string.no_connection));
+                            }
                         }
+                        Log.d(debugTag, registerPasswordEdt.getChildAt(1).toString()+""+passwordErrorTtv.getText().toString().isEmpty());
+                        registerPasswordEdt.getChildAt(1).setVisibility(View.GONE);
                     }
                 }
             });
@@ -334,7 +339,6 @@ public class RegisterFragment extends Fragment {
                                         progressViewActions("stop", emailProgressView);
                                     }
                                 }
-
                                 @Override
                                 public void onFailure(Throwable t) {
                                     if (isAdded()) {
@@ -408,7 +412,6 @@ public class RegisterFragment extends Fragment {
                 registerSpnr.setAdapter(spinnerAdapter);
                 firmsLoaded = true;
             }
-
             @Override
             public void onFailure(Throwable t) {
             }

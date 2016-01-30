@@ -30,10 +30,10 @@
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>
     <string name="empty_requried_field">Το πεδίο είναι υποχρεωτικό</string>
     <!-- USERNAME HANDLING -->
-    <string name="invalid_username">Αποδεκτοί λατινικοί χαρακτήρες, νούμερα</string>
+    <string name="invalid_usernamepassword">Αποδεκτοί λατινικοί χαρακτήρες, νούμερα</string>
     <!-- PASSWORD HANGLING -->
+    <string name="invalid_password_length">Αποδεκτό μέγεθος κωδικού, 8 χαρακτήρες</string>
     <string name="passwords_mismatch">Ασυμφωνία κωδικών</string>
-    <string name="invalid_password_length">Μη επιτρεπτό μέγεθος κωδικού</string>
     <!-- EMAIL HANDLING -->
     <string name="email_ok">Διαθέσιμο</string>
     <string name="invalid_email">Μη έγκυρη διεύθυνση</string>

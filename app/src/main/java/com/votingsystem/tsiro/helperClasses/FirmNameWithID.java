@@ -6,9 +6,9 @@ package com.votingsystem.tsiro.helperClasses;
 public class FirmNameWithID {
 
     private String firm_name;
-    private Object id;
+    private int id;
 
-    public FirmNameWithID(String firm_name, Object id) {
+    public FirmNameWithID(String firm_name, int id) {
         this.firm_name  = firm_name;
         this.id         = id;
     }
@@ -17,9 +17,9 @@ public class FirmNameWithID {
 
     public void setFirm_name(String firm_name) { this.firm_name = firm_name; }
 
-    public Object getId() { return id; }
+    public int getId() { return id; }
 
-    public void setId(Object id) { this.id = id; }
+    public void setId(int id) { this.id = id; }
 
     @Override
     public String toString() {

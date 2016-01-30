@@ -122,6 +122,7 @@
                     android:id="@+id/registerPasswordEdt"
                     android:layout_width="186dp"
                     android:layout_height="match_parent"
+                    android:paddingRight="5dp"
                     android:textSize="@dimen/input_edt_textSize"
                     android:textColor="@android:color/white"
                     android:textColorHint="@color/input_hintColor"
@@ -134,12 +135,24 @@
                     app:et_inputId="@+id/passwordEdt"
                     app:et_labelEnable="true"
                     app:et_labelTextSize="10sp"
+                    app:et_dividerHeight="1dp"
                     app:et_dividerColor="@android:color/transparent"
+                    app:et_dividerErrorColor="#DD2C00"
                     app:et_labelTextColor="@color/accentColor"
-                    app:et_supportMode="helper"
+                    app:et_supportMode="charCounter"
+                    app:et_supportMaxChars="8"
+                    app:et_supportTextColor="@color/accentColor"
                     app:et_supportTextErrorColor="#DD2C00"
                     app:et_supportSingleLine="true"
                     app:et_supportTextSize="10sp" />
+
+                <com.rey.material.widget.TextView
+                    android:id="@+id/passwordErrorTtv"
+                    android:layout_width="222dp"
+                    android:layout_height="15dp"
+                    android:layout_alignParentBottom="true"
+                    android:textSize="10sp"
+                    android:textColor="#DD2C00" />
 
                 <com.rey.material.widget.TextView
                     android:id="@+id/showHidePasswordTtv"
