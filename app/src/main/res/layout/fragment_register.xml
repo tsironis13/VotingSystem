@@ -245,35 +245,66 @@
                 android:background="@drawable/email_icon"
                 android:contentDescription="@string/input_logo"/>
 
-            <com.rey.material.widget.EditText
-                android:id="@+id/emailEdt"
-                android:layout_width="216dp"
+            <RelativeLayout
+                android:layout_width="252dp"
                 android:layout_height="match_parent"
-                android:paddingRight="5dp"
-                android:textSize="@dimen/input_edt_textSize"
-                android:textColor="@android:color/white"
-                android:textColorHint="@color/input_hintColor"
-                android:layout_gravity="center_vertical"
-                android:background="@android:color/transparent"
-                android:tag="@string/required"
-                android:inputType="textEmailAddress"
-                android:hint="@string/email"
-                style="@style/Material.Widget.EditText.Light"
-                app:et_inputId="@+id/mailEdt"
-                app:et_supportMode="helper"
-                app:et_labelEnable="true"
-                app:et_labelTextSize="10sp"
-                app:et_labelTextColor="@color/accentColor"
-                app:et_dividerColor="@android:color/transparent" />
+                android:paddingRight="5dp" >
 
-            <com.rey.material.widget.ProgressView
-                android:id="@+id/emailProgressView"
-                android:layout_width="26dp"
-                android:layout_height="26dp"
-                android:layout_gravity="center_vertical"
-                app:pv_circular="true"
-                app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
-                app:pv_progressMode="indeterminate" />
+                <com.rey.material.widget.EditText
+                    android:id="@+id/registerEmailEdt"
+                    android:layout_width="222dp"
+                    android:layout_height="match_parent"
+                    android:paddingRight="5dp"
+                    android:textSize="@dimen/input_edt_textSize"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/input_hintColor"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    android:tag="@string/required"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/email"
+                    style="@style/Material.Widget.EditText.Light"
+                    app:et_inputId="@+id/mailEdt"
+                    app:et_supportMode="helper"
+                    app:et_supportTextSize="10sp"
+                    app:et_supportTextErrorColor="#DD2C00"
+                    app:et_supportSingleLine="true"
+                    app:et_labelEnable="true"
+                    app:et_labelTextSize="10sp"
+                    app:et_labelTextColor="@color/accentColor"
+                    app:et_dividerColor="@android:color/transparent" />
+
+                <com.rey.material.widget.ProgressView
+                    android:id="@+id/emailProgressView"
+                    android:layout_width="26dp"
+                    android:layout_height="26dp"
+                    android:layout_gravity="center_vertical"
+                    app:pv_circular="true"
+                    app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
+                    app:pv_progressMode="indeterminate" />
+
+                <RelativeLayout
+                    android:id="@+id/acceptEmailRlt"
+                    android:layout_width="28dp"
+                    android:layout_height="24dp"
+                    android:layout_toRightOf="@+id/registerEmailEdt"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/accept_drawable"
+                    android:visibility="gone"
+                    android:shadowColor="#A8A8A8"
+                    android:shadowDx="-13"
+                    android:shadowDy="-4"
+                    android:shadowRadius="11" >
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:background="@drawable/ic_action_accept"
+                        android:layout_centerInParent="true" />
+
+                </RelativeLayout>
+
+            </RelativeLayout>
 
         </LinearLayout>
 

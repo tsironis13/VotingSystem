@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
             loginActivityBundle.putParcelable("connectivityObserver", connectivityObserver);
             signInFragment.setArguments(loginActivityBundle);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame_container, signInFragment, AppConfig.SINGIN_FRAGMENT_TAG)
+                    .replace(R.id.frame_container, signInFragment, getResources().getString(R.string.signInFgmt))
                     .commit();
         }
         getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
@@ -120,8 +120,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
         loginActivityBundle.putParcelable("connectivityObserver", connectivityObserver);
         forgotPasswordFgmt.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_container, forgotPasswordFgmt, AppConfig.FORGOT_PASSWORD_FRAGMENT)
-                .addToBackStack(AppConfig.FORGOT_PASSWORD_FRAGMENT)
+                .replace(R.id.frame_container, forgotPasswordFgmt, getResources().getString(R.string.forgotPasswordFgmt))
+                .addToBackStack(getResources().getString(R.string.forgotPasswordFgmt))
                 .commit();
     }
 
@@ -132,8 +132,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
         loginActivityBundle.putParcelable("connectivityObserver", connectivityObserver);
         registerFragment.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_container, registerFragment, AppConfig.REGISTER_FRAGMENT_TAG)
-                .addToBackStack(AppConfig.REGISTER_FRAGMENT_TAG)
+                .replace(R.id.frame_container, registerFragment, getResources().getString(R.string.registerFgmt))
+                .addToBackStack(getResources().getString(R.string.registerFgmt))
                 .commit();
     }
 

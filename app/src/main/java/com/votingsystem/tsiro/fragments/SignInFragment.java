@@ -242,8 +242,8 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                     @Override
                     public void onClick(View v) {
                         if (firmcodeEdt.getText().toString().isEmpty()) {
-                            String encoded = commonElements.encodeUtf8(getResources().getString(R.string.empty_firm_code));
-                            popupErrorresponseTtv.setText(commonElements.decodeUtf8(encoded));
+                            //String encoded = commonElements.encodeUtf8(getResources().getString(R.string.empty_firm_code));
+                            //popupErrorresponseTtv.setText(commonElements.decodeUtf8(encoded));
                         } else {
                             ApiService apiService = RetrofitSingleton.getInstance().getApiService();
                             Log.d(debugTag, "ApiService Singleton: " + apiService.toString());

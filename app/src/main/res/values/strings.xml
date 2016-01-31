@@ -1,5 +1,9 @@
 <resources>
     <string name="app_name">VotingSystem</string>
+    <!-- TAG -->
+    <string name="signInFgmt">signInFgmt</string>
+    <string name="forgotPasswordFgmt">forgotPasswordFgmt</string>
+    <string name="registerFgmt">registerFgmt</string>
     <!-- ACTIONS -->
     <string name="usernameValidation">usernameValidation</string>
     <string name="passwordValidation">passwordValidation</string>
@@ -24,20 +28,29 @@
     <string name="required">required</string>
     <!-- ERRORS -->
     <string name="empty_fields">Παρακαλώ συμπλήρωσε όλα τα πεδία.</string>
-    <string name="empty_firm_code">Παρακαλώ συμπλήρωσε τον κωδικό της εταιρείας</string>
     <string name="no_connection">Χωρίς πρόσβαση στο Internet. Παρακαλώ ξαναπροσπάθησε.</string>
     <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Παρακαλώ ξαναπροσπάθησε σύντομα.</string>
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>
     <string name="empty_requried_field">Το πεδίο είναι υποχρεωτικό</string>
-    <!-- USERNAME HANDLING -->
-    <string name="invalid_usernamepassword">Αποδεκτοί λατινικοί χαρακτήρες, νούμερα</string>
     <!-- PASSWORD HANGLING -->
     <string name="invalid_password_length">Αποδεκτό μέγεθος κωδικού, 8 χαρακτήρες</string>
     <string name="passwords_mismatch">Ασυμφωνία κωδικών</string>
-    <!-- EMAIL HANDLING -->
-    <string name="email_ok">Διαθέσιμο</string>
-    <string name="invalid_email">Μη έγκυρη διεύθυνση</string>
-    <string name="email_exists">Μη διαθέσιμο</string>
+    <!-- INPUT STAFF HANDLING -->
+    <string name="input_ok">Διαθέσιμο</string>
+    <string name="invalid_usernamepassword">Αποδεκτοί λατινικοί χαρακτήρες, νούμερα</string>
+    <string name="invalid_email_input">Μη έγκυρη διεύθυνση</string>
+    <string name="input_exists">Μη διαθέσιμο</string>
+    <!-- INPUT FIELDS -->
+    <string name="username_tag">username</string>
+    <string name="password_tag">password</string>
+    <string name="email_tag">email</string>
+    <string name="firmcode_tag">firmcode</string>
+    <string-array name="input_fields_array">
+        <item>username</item>
+        <item>password</item>
+        <item>email</item>
+        <item>firmcode</item>
+    </string-array>
     <!-- NAVIGATION DRAWER ITEMS -->
     <string name="firm">Η Εταιρεία</string>
     <string name="mysurveys">Οι Έρευνες μου</string>

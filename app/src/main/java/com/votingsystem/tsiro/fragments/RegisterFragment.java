@@ -5,8 +5,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.database.sqlite.SQLiteCantOpenDatabaseException;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
 import android.text.Html;
@@ -19,14 +20,10 @@ import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.ViewTreeObserver;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-
-import com.rey.material.drawable.DividerDrawable;
-import com.rey.material.util.ViewUtil;
 import com.rey.material.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -41,10 +38,12 @@ import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
+import com.votingsystem.tsiro.interfaces.UpdateInputMapValue;
 import com.votingsystem.tsiro.rest.ApiService;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import retrofit.Call;
 import retrofit.Callback;
@@ -58,9 +57,9 @@ public class RegisterFragment extends Fragment {
     private static final String debugTag = RegisterFragment.class.getSimpleName();
     private static String error_no_connection, empty_fields;
     private LinearLayout registerBaseLlt;
-    private RelativeLayout acceptUsernameRlt, acceptPasswordRlt;
+    private RelativeLayout acceptUsernameRlt, acceptPasswordRlt, acceptEmailRlt;
     private TextView signInHereTtv, errorresponseTtv, showHidePasswordTtv, passwordErrorTtv;
-    private EditText registerUsernameEdt, registerPasswordEdt, confirmPasswordEdt, emailEdt, firmCodeEdt;
+    private EditText registerUsernameEdt, registerPasswordEdt, confirmPasswordEdt, registerEmailEdt, firmCodeEdt;
     private Button submitBtn;
     private ProgressView usernameProgressView, emailProgressView;
     private Spinner registerSpnr;
@@ -75,6 +74,11 @@ public class RegisterFragment extends Fragment {
     private BroadcastReceiver broadcastReceiver;
     private static int connectivityStatus;
     private static boolean firmsLoaded;
+    private HashMap<String, Boolean> inputValidityMap;
+    private static Handler mainThreadHandler;
+    private UpdateInputMapValue updateInputMapInterface;
+    private static long showhideAcceptPasswordAnimationTargetTimeinMillis;
+    private Runnable showhideAcceptPasswordAnimationRunnable;
 
     @Override
     public void onAttach(Context context) {
@@ -91,7 +95,7 @@ public class RegisterFragment extends Fragment {
         registerUsernameEdt     =   (EditText) view.findViewById(R.id.registerUsernameEdt);
         registerPasswordEdt     =   (EditText) view.findViewById(R.id.registerPasswordEdt);
         confirmPasswordEdt      =   (EditText) view.findViewById(R.id.confirmPasswordEdt);
-        emailEdt                =   (EditText) view.findViewById(R.id.emailEdt);
+        registerEmailEdt        =   (EditText) view.findViewById(R.id.registerEmailEdt);
         firmCodeEdt             =   (EditText) view.findViewById(R.id.firmCodeEdt);
         signInHereTtv           =   (TextView) view.findViewById(R.id.signInHereTtv);
         errorresponseTtv        =   (TextView) view.findViewById(R.id.errorresponseTtv);
@@ -109,7 +113,8 @@ public class RegisterFragment extends Fragment {
     public void onActivityCreated(final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if ( savedInstanceState == null ) {
-            inputValidationCodes = AppConfig.getEmailCodes();
+            fillValidityInputMap(getResources().getStringArray(R.array.input_fields_array));
+            inputValidationCodes = AppConfig.getCodes();
             apiService = RetrofitSingleton.getInstance().getApiService();
             if ( connectivityObserver.getConnectivityStatus(getActivity()) != AppConfig.NO_CONNECTION ) {
                 getFirmNames();
@@ -120,9 +125,7 @@ public class RegisterFragment extends Fragment {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     connectivityStatus = intent.getExtras().getInt("connectivityStatus");
-                    if (connectivityStatus != AppConfig.NO_CONNECTION && !firmsLoaded) {
-                        getFirmNames();
-                    }
+                    if ( connectivityStatus != AppConfig.NO_CONNECTION && !firmsLoaded ) getFirmNames();
                 }
             };
             firmNamesList = new ArrayList<FirmNameWithID>();
@@ -131,14 +134,13 @@ public class RegisterFragment extends Fragment {
             registerUsernameEdt.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    inputValidityMap.put(getResources().getString(R.string.username_tag), false);
                     if ( acceptUsernameRlt.getVisibility() == View.VISIBLE ) animationStaff(acceptUsernameRlt, 1.0f, 0.0f, "gone");
-                    if ( registerUsernameEdt.getHelper() != null ) clearEditext(registerUsernameEdt);
-                    if ( start == 0 && before == 1 ) registerUsernameEdt.setHelper("");
+                    if ( registerUsernameEdt.getHelper() != null ) clearEditextHelper(registerUsernameEdt);
+                    if ( start == 0 && before == 1 ) registerUsernameEdt.setHelper(null);
                 }
-
                 @Override
                 public void afterTextChanged(Editable s) {}
             });
@@ -146,48 +148,49 @@ public class RegisterFragment extends Fragment {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if ( !hasFocus ) {
-                        Log.e(debugTag, "focus lost!");
-                        if ( registerUsernameEdt.getText().toString().isEmpty() ) {
-                            setText("error", registerUsernameEdt, commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field)), "#DD2C00");
-                            return;
-                        }
-                        if (connectivityObserver.getConnectivityStatus(getActivity()) != AppConfig.NO_CONNECTION) {
-                            progressViewActions("start", usernameProgressView);
-                            Call<UserConnectionStaff> call = apiService.isUsernameValid(getResources().getString(R.string.usernameValidation), registerUsernameEdt.getText().toString());
-                            call.enqueue(new Callback<UserConnectionStaff>() {
-                                @Override
-                                public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
-                                    int resource_message = inputValidationCodes.get(response.body().getError_code());
-                                    if ( isAdded() ) {
-                                        if (response.body().getError_code() != AppConfig.INPUT_OK) {
-                                            if ( response.body().getError_code() == AppConfig.ERROR_INVALID_INPUT ) {
-                                                setText("error", registerUsernameEdt, commonElements.encodeUtf8(getResources().getString(R.string.invalid_usernamepassword)), "#DD2C00");
-                                            } else {
-                                                setText("error", registerUsernameEdt, commonElements.encodeUtf8(getResources().getString(resource_message)), "#DD2C00");
+                        if ( !inputValidityMap.get(getResources().getString(R.string.username_tag)) ) {
+                            if (registerUsernameEdt.getText().toString().isEmpty()) {
+                                setText("error", registerUsernameEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))), "#DD2C00");
+                            } else {
+                                if (connectivityObserver.getConnectivityStatus(getActivity()) != AppConfig.NO_CONNECTION) {
+                                    progressViewActions("start", usernameProgressView);
+                                    Call<UserConnectionStaff> call = apiService.isUsernameValid(getResources().getString(R.string.usernameValidation), registerUsernameEdt.getText().toString());
+                                    call.enqueue(new Callback<UserConnectionStaff>() {
+                                        @Override
+                                        public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
+                                            int resource_message = inputValidationCodes.get(response.body().getError_code());
+                                            if (isAdded()) {
+                                                if (response.body().getError_code() != AppConfig.INPUT_OK) {
+                                                    if (response.body().getError_code() == AppConfig.ERROR_INVALID_INPUT) {
+                                                        setText("error", registerUsernameEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(resource_message))), "#DD2C00");
+                                                    } else {
+                                                        setText("error", registerUsernameEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(resource_message))), "#DD2C00");
+                                                    }
+                                                } else {
+                                                    animationStaff(acceptUsernameRlt, 0.0f, 1.0f, "visible");
+                                                    inputValidityMap.put(getResources().getString(R.string.username_tag), true);
+                                                }
+                                                progressViewActions("stop", usernameProgressView);
                                             }
-                                        } else {
-                                            animationStaff(acceptUsernameRlt, 0.0f, 1.0f, "visible");
                                         }
-                                        progressViewActions("stop", usernameProgressView);
-                                    }
-                                }
-                                @Override
-                                public void onFailure(Throwable t) {
-                                    if ( isAdded() ) {
-                                        if ( t instanceof IOException ) {
-                                            setToastHelperMsg(getResources().getString(R.string.unavailable_service));
-                                            Log.e(debugTag, ""+t.toString());
-                                        } else {
-                                            setToastHelperMsg(getResources().getString(R.string.error_occured));
+                                        @Override
+                                        public void onFailure(Throwable t) {
+                                            if (isAdded()) {
+                                                if (t instanceof IOException) {
+                                                    setToastHelperMsg(getResources().getString(R.string.unavailable_service));
+                                                } else {
+                                                    setToastHelperMsg(getResources().getString(R.string.error_occured));
+                                                }
+                                                registerUsernameEdt.setText(null);
+                                                progressViewActions("stop", usernameProgressView);
+                                            }
                                         }
-                                        registerUsernameEdt.setText(null);
-                                        progressViewActions("stop", usernameProgressView);
-                                    }
+                                    });
+                                } else {
+                                    if (isAdded())
+                                        setToastHelperMsg(getResources().getString(R.string.no_connection));
                                 }
-                            });
-                        } else {
-                            if (isAdded())
-                                setToastHelperMsg(getResources().getString(R.string.no_connection));
+                            }
                         }
                     }
                 }
@@ -195,15 +198,16 @@ public class RegisterFragment extends Fragment {
             registerPasswordEdt.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
+                    if ( System.currentTimeMillis() < showhideAcceptPasswordAnimationTargetTimeinMillis ) handlerStaff().removeCallbacks(showhideAcceptPasswordAnimationRunnable);
+                    inputValidityMap.put(getResources().getString(R.string.password_tag), false);
                     if ( !passwordErrorTtv.getText().toString().isEmpty() ) {
                         passwordErrorTtv.setText(null);
                         registerPasswordEdt.getChildAt(1).setVisibility(View.VISIBLE);
                     }
                     if ( acceptPasswordRlt.getVisibility() == View.VISIBLE ) animationStaff(acceptPasswordRlt, 1.0f, 0.0f, "gone");
-                    if ( registerPasswordEdt.getHelper() != null ) clearEditext(registerPasswordEdt);
+                    if ( registerPasswordEdt.getHelper() != null ) clearEditextHelper(registerPasswordEdt);
                     showHidePasswordTtv.setVisibility(View.VISIBLE);
                     if (!TextUtils.isEmpty(errorresponseTtv.getText()))
                         errorresponseTtv.setText("");
@@ -214,12 +218,8 @@ public class RegisterFragment extends Fragment {
                             showHidePasswordTtv.setText(getResources().getString(R.string.showPassword));
                         }
                     }
-                    if (start == 0 && before == 1) {
-                        confirmPasswordEdt.setHelper("");
-                        showHidePasswordTtv.setText(null);
-                    }
+                    if (start == 0 && before == 1) showHidePasswordTtv.setText(null);
                 }
-
                 @Override
                 public void afterTextChanged(Editable s) {}
             });
@@ -227,49 +227,74 @@ public class RegisterFragment extends Fragment {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if ( !hasFocus ) {
-                        if ( registerPasswordEdt.getText().toString().isEmpty() ) {
-                            passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))));
-                        } else if ( registerPasswordEdt.getText().length() != 8 ) {
-                            passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.invalid_password_length))));
-                        } else {
-                            if ( connectivityObserver.getConnectivityStatus(getActivity()) != AppConfig.NO_CONNECTION ) {
-                                Call<UserConnectionStaff> call = apiService.isPasswordValid(getResources().getString(R.string.passwordValidation), registerPasswordEdt.getText().toString());
-                                call.enqueue(new Callback<UserConnectionStaff>() {
+                        if ( !inputValidityMap.get(getResources().getString(R.string.password_tag)) ) {
+                            if (registerPasswordEdt.getText().toString().isEmpty()) {
+                                passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))));
+                            } else if (registerPasswordEdt.getText().length() != 8) {
+                                passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.invalid_password_length))));
+                                Runnable updateinputvalueRunnable = new Runnable() {
                                     @Override
-                                    public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
-                                        int resource_message = inputValidationCodes.get(response.body().getError_code());
-                                        if ( isAdded() ) {
-                                            if ( response.body().getError_code() != AppConfig.INPUT_OK ) {
-                                                if (response.body().getError_code() == AppConfig.ERROR_INVALID_INPUT) {
-                                                    passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.invalid_usernamepassword))));
-                                                } else {
-                                                    //passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.resource_message))));
-                                                }
-                                            } else {
-                                                animationStaff(acceptPasswordRlt, 0.0f, 1.0f, "visible");
-                                                showHidePasswordTtv.setText(null);
-                                            }
-                                        }
+                                    public void run() {
+                                        updateInputMapInterface.updatevalue(false);
                                     }
-                                    @Override
-                                    public void onFailure(Throwable t) {
-                                        if (isAdded()) {
-                                            if (t instanceof IOException) {
-                                                setToastHelperMsg(getResources().getString(R.string.no_connection));
-                                            } else {
-                                                setToastHelperMsg(getResources().getString(R.string.error_occured));
-                                            }
-                                            registerUsernameEdt.setText(null);
-                                            progressViewActions("stop", usernameProgressView);
-                                        }
-                                    }
-                                });
+                                };
+                                handlerStaff().post(updateinputvalueRunnable);
                             } else {
-                                if ( isAdded() ) setToastHelperMsg(getResources().getString(R.string.no_connection));
+                                if (connectivityObserver.getConnectivityStatus(getActivity()) != AppConfig.NO_CONNECTION) {
+                                    Call<UserConnectionStaff> call = apiService.isPasswordValid(getResources().getString(R.string.passwordValidation), registerPasswordEdt.getText().toString());
+                                    call.enqueue(new Callback<UserConnectionStaff>() {
+                                        @Override
+                                        public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
+                                            int resource_message = inputValidationCodes.get(response.body().getError_code());
+                                            if (isAdded()) {
+                                                if (response.body().getError_code() != AppConfig.INPUT_OK) {
+                                                    if (response.body().getError_code() == AppConfig.ERROR_INVALID_INPUT) {
+                                                        passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(resource_message))));
+                                                    } else {
+                                                        passwordErrorTtv.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(resource_message))));
+                                                    }
+                                                    updateInputMapInterface.updatevalue(false);
+                                                } else {
+                                                    animationStaff(acceptPasswordRlt, 0.0f, 1.0f, "visible");
+                                                    animationStaff(showHidePasswordTtv, 1.0f, 0.0f, "gone");
+                                                    updateInputMapInterface.updatevalue(true);
+                                                    showhideAcceptPasswordAnimationRunnable = new Runnable() {
+                                                        @Override
+                                                        public void run() {
+                                                            animationStaff(showHidePasswordTtv, 0.0f, 1.0f, "visible");
+                                                            animationStaff(acceptPasswordRlt, 1.0f, 0.0f, "gone");
+                                                        }
+                                                    };
+                                                    handlerStaff().postDelayed(showhideAcceptPasswordAnimationRunnable, AppConfig.showhideAcceptDelay);
+                                                    showhideAcceptPasswordAnimationTargetTimeinMillis = System.currentTimeMillis() + AppConfig.showhideAcceptDelay;
+                                                }
+                                            }
+                                        }
+                                        @Override
+                                        public void onFailure(Throwable t) {
+                                            if (isAdded()) {
+                                                if (t instanceof IOException) {
+                                                    setToastHelperMsg(getResources().getString(R.string.unavailable_service));
+                                                } else {
+                                                    setToastHelperMsg(getResources().getString(R.string.error_occured));
+                                                }
+                                                registerUsernameEdt.setText(null);
+                                                progressViewActions("stop", usernameProgressView);
+                                            }
+                                        }
+                                    });
+                                } else {
+                                    if ( isAdded() ) setToastHelperMsg(getResources().getString(R.string.no_connection));
+                                }
                             }
                         }
-                        Log.d(debugTag, registerPasswordEdt.getChildAt(1).toString()+""+passwordErrorTtv.getText().toString().isEmpty());
-                        registerPasswordEdt.getChildAt(1).setVisibility(View.GONE);
+                        updateInputMapInterface = new UpdateInputMapValue() {
+                            @Override
+                            public void updatevalue(boolean value) {
+                                inputValidityMap.put(getResources().getString(R.string.password_tag), value);
+                                if ( !inputValidityMap.get(getResources().getString(R.string.password_tag)) ) registerPasswordEdt.getChildAt(1).setVisibility(View.GONE);
+                            }
+                        };
                     }
                 }
             });
@@ -296,65 +321,70 @@ public class RegisterFragment extends Fragment {
             confirmPasswordEdt.addTextChangedListener(new TextWatcher() {
                 @Override
                 public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    if (start >= 0 && !registerPasswordEdt.getText().toString().isEmpty())
-                        setConfirmPasswordEdtErrorMsg();
-                    if (start == 0 && before == 1) confirmPasswordEdt.setHelper("");
+                    Log.d(debugTag, inputValidityMap.get(getResources().getString(R.string.password_tag))+"");
+                    if ( start >= 2 && inputValidityMap.get(getResources().getString(R.string.password_tag)) ) {
+                      if ( !confirmPasswordEdt.getText().toString().equals(registerPasswordEdt.getText().toString()) ) {
+                          setText("error", confirmPasswordEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.passwords_mismatch))), "#DD2C00");
+                      } else {
+                          if ( confirmPasswordEdt.getHelper() != null ) clearEditextHelper(confirmPasswordEdt);
+                      }
+                    }
+                    if (start == 0 && before == 1) if ( confirmPasswordEdt.getHelper() != null ) clearEditextHelper(confirmPasswordEdt);
                 }
-
                 @Override
                 public void afterTextChanged(Editable s) {}
             });
             confirmPasswordEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus && registerPasswordEdt.getText().length() < 9) {
-                        setConfirmPasswordEdtErrorMsg();
-                    } else if (hasFocus && !registerPasswordEdt.getText().toString().isEmpty() && !confirmPasswordEdt.getText().toString().isEmpty()) {
-                        setConfirmPasswordEdtErrorMsg();
-                    } else if (hasFocus && registerPasswordEdt.getText().length() > 8) {
-                        setConfirmPasswordEdtErrorMsg();
-                    }
+                    if ( !hasFocus ) if ( confirmPasswordEdt.getText().toString().isEmpty() ) setText("error", confirmPasswordEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))), "#DD2C00");
                 }
             });
-            emailEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+            registerEmailEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if ( !hasFocus ) {
-                        if (connectivityObserver.getConnectivityStatus(getActivity()) != AppConfig.NO_CONNECTION ) {
-                            progressViewActions("start", emailProgressView);
-                            Call<UserConnectionStaff> call = apiService.isEmailValid(getResources().getString(R.string.emailValidation), emailEdt.getText().toString());
-                            call.enqueue(new Callback<UserConnectionStaff>() {
-                                @Override
-                                public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
-                                    int resource_message = inputValidationCodes.get(response.body().getError_code());
-                                    if (isAdded()) {
-                                        if (response.body().getError_code() != AppConfig.INPUT_OK) {
-                                            setText("sddss", emailEdt, commonElements.encodeUtf8(getResources().getString(resource_message)), "red");
-                                        } else {
-                                            setText("sddss", emailEdt, commonElements.encodeUtf8(getResources().getString(resource_message)), "green");
+                        if ( !inputValidityMap.get(getResources().getString(R.string.email_tag)) ) {
+                            if (registerPasswordEdt.getText().toString().isEmpty()) {
+                                setText("error", registerEmailEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))), "#DD2C00");
+                            } else {
+                                if (connectivityObserver.getConnectivityStatus(getActivity()) != AppConfig.NO_CONNECTION) {
+                                    progressViewActions("start", emailProgressView);
+                                    Call<UserConnectionStaff> call = apiService.isEmailValid(getResources().getString(R.string.emailValidation), registerEmailEdt.getText().toString());
+                                    call.enqueue(new Callback<UserConnectionStaff>() {
+                                        @Override
+                                        public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
+                                            int resource_message = inputValidationCodes.get(response.body().getError_code());
+                                            if (isAdded()) {
+                                                if (response.body().getError_code() != AppConfig.INPUT_OK) {
+                                                    setText("sddss", registerEmailEdt, commonElements.encodeUtf8(getResources().getString(resource_message)), "red");
+                                                } else {
+                                                    setText("sddss", registerEmailEdt, commonElements.encodeUtf8(getResources().getString(resource_message)), "green");
+                                                }
+                                                progressViewActions("stop", emailProgressView);
+                                            }
                                         }
-                                        progressViewActions("stop", emailProgressView);
-                                    }
-                                }
-                                @Override
-                                public void onFailure(Throwable t) {
-                                    if (isAdded()) {
-                                        if (t instanceof IOException) {
-                                            setToastHelperMsg(getResources().getString(R.string.no_connection));
-                                        } else {
-                                            setToastHelperMsg(getResources().getString(R.string.error_occured));
+
+                                        @Override
+                                        public void onFailure(Throwable t) {
+                                            if (isAdded()) {
+                                                if (t instanceof IOException) {
+                                                    setToastHelperMsg(getResources().getString(R.string.no_connection));
+                                                } else {
+                                                    setToastHelperMsg(getResources().getString(R.string.error_occured));
+                                                }
+                                                registerEmailEdt.setText(null);
+                                                progressViewActions("stop", emailProgressView);
+                                            }
                                         }
-                                        emailEdt.setText(null);
-                                        progressViewActions("stop", emailProgressView);
-                                    }
+                                    });
+                                } else {
+                                    if (isAdded())
+                                        setToastHelperMsg(getResources().getString(R.string.no_connection));
                                 }
-                            });
-                        } else {
-                            if (isAdded())
-                                setToastHelperMsg(getResources().getString(R.string.no_connection));
+                            }
                         }
                     }
                 }
@@ -372,10 +402,10 @@ public class RegisterFragment extends Fragment {
                         spinnerState = (FirmNameWithID) registerSpnr.getSelectedItem();
                         Log.d(debugTag, spinnerState.getId() + "");
                         empty_fields = commonElements.encodeUtf8(getResources().getString(R.string.empty_fields));
-                        if (!commonElements.validateEditText(new EditText[]{registerUsernameEdt, registerPasswordEdt, confirmPasswordEdt, emailEdt, firmCodeEdt})) {
+                        if (!commonElements.validateEditText(new EditText[]{registerUsernameEdt, registerPasswordEdt, confirmPasswordEdt, registerEmailEdt, firmCodeEdt})) {
                             errorresponseTtv.setText(commonElements.decodeUtf8(empty_fields));
                         } else {
-                            checkRegister(registerUsernameEdt.getText().toString(), registerPasswordEdt.getText().toString(), confirmPasswordEdt.getText().toString(), emailEdt.getText().toString(), firmCodeEdt.getText().toString());
+                            checkRegister(registerUsernameEdt.getText().toString(), registerPasswordEdt.getText().toString(), confirmPasswordEdt.getText().toString(), registerEmailEdt.getText().toString(), firmCodeEdt.getText().toString());
                         }
                     } else {
                         error_no_connection = commonElements.encodeUtf8(getResources().getString(R.string.no_connection));
@@ -412,25 +442,34 @@ public class RegisterFragment extends Fragment {
                 registerSpnr.setAdapter(spinnerAdapter);
                 firmsLoaded = true;
             }
+
             @Override
             public void onFailure(Throwable t) {
             }
         });
     }
 
+    private static Handler handlerStaff() {
+        if ( mainThreadHandler == null ) mainThreadHandler = new Handler(Looper.getMainLooper());
+        return mainThreadHandler;
+    }
+
     private void checkRegister(String username, String password, String confirm_password, String email, String firm_code) {
         Call<UserConnectionStaff> call = apiService.registerUser(username, password, confirm_password, email, "Arx.net", firm_code);
         call.enqueue(new Callback<UserConnectionStaff>() {
             @Override
-            public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
-
-            }
+            public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {}
 
             @Override
-            public void onFailure(Throwable t) {
-
-            }
+            public void onFailure(Throwable t) {}
         });
+    }
+
+    private void fillValidityInputMap(String[] fieldsArray) {
+        inputValidityMap = new HashMap<>();
+        for ( int i = 0; i < fieldsArray.length; i++ ) {
+            inputValidityMap.put(fieldsArray[i], false);
+        }
     }
 
     private void setSignInHereSpan(){ commonElements.setLoginActivitySpan(signInHereTtv, getResources().getString(R.string.signInHere), 22, 34, 1); }
@@ -446,8 +485,8 @@ public class RegisterFragment extends Fragment {
         view.startAnimation(fadeAnimation);
     }
 
-    private static void clearEditext(EditText editText) {
-        if ( !editText.getHelper().toString().isEmpty() ) editText.setHelper("");
+    private static void clearEditextHelper(EditText editText) {
+        if ( !editText.getHelper().toString().isEmpty() ) editText.setHelper(null);
     }
 
     private static void progressViewActions(String action, ProgressView progressView) {
@@ -468,11 +507,11 @@ public class RegisterFragment extends Fragment {
         }
     }
 
-    private void setText(String action, EditText editText, String message, String color) {
+    private void setText(String action, EditText editText, String decodedMessage, String color) {
         if ( action.equals("error") ) {
-            editText.setHelper(Html.fromHtml("<font color=" + color + ">" + commonElements.decodeUtf8(message) + "</font>"));
+            editText.setHelper(Html.fromHtml("<font color=" + color + ">" + decodedMessage + "</font>"));
         } else {
-            editText.setHelper(Html.fromHtml("<font color=" + color + ">" + commonElements.decodeUtf8(message) + "</font>"));
+            editText.setHelper(Html.fromHtml("<font color=" + color + ">" + decodedMessage + "</font>"));
         }
     }
 
