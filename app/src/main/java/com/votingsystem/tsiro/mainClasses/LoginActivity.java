@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Spannable;
@@ -43,8 +44,8 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
     private ForgotPasswordFragment forgotPasswordFgmt;
     private ClickableSpan clickableSpan;
     private ConnectivityObserver connectivityObserver;
+    private static int initialGloabalConnectivityStatus;
     private Bundle loginActivityBundle;
-    public static boolean connectionStatusUpdated;
     private Intent intent;
 
     @Override
@@ -52,6 +53,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
         connectivityObserver = ConnectivitySingleton.getInstance();
+
         loginActivityBundle = new Bundle();
         if ( savedInstanceState == null ) {
             signInFragment = new SignInFragment();
@@ -130,6 +132,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
         registerFragment = new RegisterFragment();
         if ( getSupportFragmentManager().getBackStackEntryCount() > 0 ) getSupportFragmentManager().popBackStack();
         loginActivityBundle.putParcelable("connectivityObserver", connectivityObserver);
+        loginActivityBundle.putInt("initialConnectivityStatus", connectivityObserver.getConnectivityStatus(getApplicationContext()));
         registerFragment.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_container, registerFragment, getResources().getString(R.string.registerFgmt))
@@ -156,11 +159,11 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
     }
 
     @Override
-    public void update(Observable observable, Object data) {
-        connectionStatusUpdated = true;
+    public void update(Observable observable, Object connectionStatus) {
+        Log.e(debugTag, connectionStatus+"");
         intent = new Intent("networkStateUpdated");
-        intent.putExtra("connectivityStatus", connectivityObserver.getConnectivityStatus(getApplicationContext()));
-        sendBroadcast(intent);
+        intent.putExtra("connectivityStatus", (int) connectionStatus);
+        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
     }
 
     @Override

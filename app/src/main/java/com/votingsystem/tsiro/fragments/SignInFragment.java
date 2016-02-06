@@ -1,8 +1,10 @@
 package com.votingsystem.tsiro.fragments;
 
 import android.app.Activity;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
@@ -61,6 +63,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     private View view;
     private LoginActivityCommonElementsAndMuchMore commonElements;
     private ConnectivityObserver connectivityObserver;
+    BroadcastReceiver broadcastReceiver;
 
     @Override
     public void onAttach(Context context) {
@@ -85,6 +88,14 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        broadcastReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                //Log.d(debugTag, "here");
+            }
+        };
+
+
         sessionPrefs = LoginActivity.getSessionPrefs(getActivity());
         boolean key = sessionPrefs.contains("17");
         int value = sessionPrefs.getInt("17", 0);
@@ -95,8 +106,8 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         signInBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.e(debugTag, "CONNECTION: " + LoginActivity.connectionStatusUpdated);
-                Log.d(debugTag, "CONNECTIVITY STATUS: " + connectivityObserver.getConnectivityStatus(getActivity()));
+                //Log.e(debugTag, "CONNECTION: " + LoginActivity.connectionStatusUpdated);
+                //Log.d(debugTag, "CONNECTIVITY STATUS: " + connectivityObserver.getConnectivityStatus(getActivity()));
                 if (signInUsernameEdt.getText().toString().isEmpty() || signInPasswordEdt.getText().toString().isEmpty()) {
                     empty_fields = commonElements.encodeUtf8(getResources().getString(R.string.empty_fields));
                     errorresponseTtv.setText(commonElements.decodeUtf8(empty_fields));
@@ -129,19 +140,20 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
 
         signInPasswordEdt.addTextChangedListener(new TextWatcher() {
             @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+            }
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 if (!TextUtils.isEmpty(errorresponseTtv.getText())) errorresponseTtv.setText("");
-                if ( start >= 0 ) {
-                        if ( signInPasswordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod ) {
-                            showHidePasswordTtv.setText(getResources().getString(R.string.hidePassword));
-                        } else if ( signInPasswordEdt.getTransformationMethod() instanceof PasswordTransformationMethod ) {
-                            showHidePasswordTtv.setText(getResources().getString(R.string.showPassword));
-                        }
+                if (start >= 0) {
+                    if (signInPasswordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod) {
+                        showHidePasswordTtv.setText(getResources().getString(R.string.hidePassword));
+                    } else if (signInPasswordEdt.getTransformationMethod() instanceof PasswordTransformationMethod) {
+                        showHidePasswordTtv.setText(getResources().getString(R.string.showPassword));
+                    }
                 }
-                if ( start == 0 && before == 1 ) showHidePasswordTtv.setText(null);
+                if (start == 0 && before == 1) showHidePasswordTtv.setText(null);
             }
 
             @Override
@@ -335,4 +347,15 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         void getFirmNames(List<Firm.FirmElement> firmNames);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        //getActivity().registerReceiver(broadcastReceiver, new IntentFilter("networkStateUpdated"));
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+       // getActivity().unregisterReceiver(broadcastReceiver);
+    }
 }

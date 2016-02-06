@@ -5,10 +5,14 @@ package com.votingsystem.tsiro.POJO;
  */
 public class UserConnectionStaff {
 
-    String username, password, confirm_password, email, firm_name, firm_code;
+    private String inputField, username, password, confirm_password, email, firm_name, firm_code;
     private int error_code;
 
     public UserConnectionStaff() {}
+
+    public String getInputField() { return inputField; }
+
+    public void setInputField(String inputField) { this.inputField = inputField; }
 
     public String getUsername() { return username; }
 

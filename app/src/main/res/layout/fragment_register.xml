@@ -325,10 +325,11 @@
                 android:contentDescription="@string/input_logo"/>
 
             <com.rey.material.widget.Spinner
-                android:id="@+id/registerSpnr"
+                android:id="@+id/pickFirmSpnr"
                 android:layout_width="250dp"
                 android:layout_height="match_parent"
                 android:tag="@string/required"
+                android:spinnerMode="dropdown"
                 android:prompt="@string/signInHere"
                 style="@style/Material.Widget.Spinner"
                 app:rd_style="@style/Material.Drawable.Ripple.Wave"

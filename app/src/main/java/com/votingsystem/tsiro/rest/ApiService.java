@@ -20,14 +20,14 @@ public interface ApiService {
 
     @FormUrlEncoded
     @POST("requests/registration/registration-requests.php")
-    Call<UserConnectionStaff> isUsernameValid(@Field("action") String action, @Field("username") String username);
+    Call<UserConnectionStaff> isInputFieldValid(@Field("action") String action, @Field("inputField") String inputField);
 
     @FormUrlEncoded
     @POST("requests/registration/registration-requests.php")
     Call<UserConnectionStaff> isPasswordValid(@Field("action") String action, @Field("password") String password);
 
     @FormUrlEncoded
-    @POST("connectionStaff/registration/registration-requests.php")
+    @POST("requests/registration/registration-requests.php")
     Call<UserConnectionStaff> isEmailValid(@Field("action") String action, @Field("email") String email);
 
     @FormUrlEncoded

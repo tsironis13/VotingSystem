@@ -3,8 +3,6 @@ package com.votingsystem.tsiro.interfaces;
 import com.rey.material.widget.EditText;
 import android.widget.TextView;
 
-import java.security.PublicKey;
-
 /**
  * Created by user on 10/12/2015.
  */

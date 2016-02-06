@@ -25,17 +25,11 @@ public class ConnectivityObserver extends Observable implements Parcelable {
         connectivityStatus = source.readInt();
     }
 
-    public int getConnectivityStatus(Context context){
-        if ( !LoginActivity.connectionStatusUpdated ) {
-            connectivityStatus = isConnected(context);
-        }
-        return connectivityStatus;
-    }
+    public int getConnectivityStatus(Context context){ return connectivityStatus = isConnected(context); }
 
     public void setConnectivityStatus(int connectivityStatus) {
         this.connectivityStatus = connectivityStatus;
-        setChanged();
-        notifyObservers();
+        notifyRegisteredObservers(connectivityStatus);
     }
 
     private int isConnected(Context context){
@@ -44,6 +38,12 @@ public class ConnectivityObserver extends Observable implements Parcelable {
 
         connectionType = activeNetworkInfo != null ? activeNetworkInfo.getType() : AppConfig.NO_CONNECTION;
         return connectionType;
+    }
+
+    private void notifyRegisteredObservers(int connectivityStatus) {
+        setChanged();
+        notifyObservers(connectivityStatus);
+        clearChanged();
     }
 
     @Override
