@@ -39,14 +39,14 @@ public class RegisterInteractorImpl implements RegisterInteractor {
 
     @Override
     public void validateInputField(final RegisterPresenterParamsObj registerPresenterParamsObj, final RegisterInputFieldFinishedListener registerInputFieldFinishedListener) {
-        if ( TextUtils.isEmpty(registerPresenterParamsObj.getInputField()) ) {
+        if ( TextUtils.isEmpty(registerPresenterParamsObj.getInputEditText().getText().toString()) ) {
             registerInputFieldFinishedListener.onInputFieldError(AppConfig.ERROR_EMPTY_INPUT, registerPresenterParamsObj.getErrorView());
         } else {
             if ( registerPresenterParamsObj.getTag().equals("password") && registerPresenterParamsObj.getInputEditText() != null && registerPresenterParamsObj.getInputEditText().getText().length() != 8 ) {
                 registerInputFieldFinishedListener.onInputFieldError(AppConfig.ERROR_INVALID_PASSWORD_LENGTH, registerPresenterParamsObj.getErrorView());
             } else {
                 if ( !registerPresenterParamsObj.getTag().equals("password") ) registerInputFieldFinishedListener.startProgressLoader(registerPresenterParamsObj.getInputFieldProgressView());
-                Call<UserConnectionStaff> call = apiService.isInputFieldValid(registerPresenterParamsObj.getRetrofitAction(), registerPresenterParamsObj.getInputField());
+                Call<UserConnectionStaff> call = apiService.isInputFieldValid(registerPresenterParamsObj.getRetrofitAction(), registerPresenterParamsObj.getInputEditText().getText().toString());
                 call.enqueue(new Callback<UserConnectionStaff>() {
                     @Override
                     public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
@@ -76,6 +76,11 @@ public class RegisterInteractorImpl implements RegisterInteractor {
     }
 
     @Override
+    public void validateFirmCode(RegisterInputFieldFinishedListener registerInputFieldFinishedListener) {
+
+    }
+
+    @Override
     public void populateFirmNamesSpnr(final ArrayList<FirmNameWithID> firmNameWithIDArrayList, final RegisterInputFieldFinishedListener registerInputFieldFinishedListener) {
         Call<Firm> call = apiService.getFirmNames("getFirmNames");
         call.enqueue(new Callback<Firm>() {
@@ -86,10 +91,9 @@ public class RegisterInteractorImpl implements RegisterInteractor {
                     Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());
                     firmNameWithIDArrayList.add(new FirmNameWithID(firmElementList.get(i).getFirm_name(), firmElementList.get(i).getFirm_id()));
                 }
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+
                 registerInputFieldFinishedListener.onSuccessfirmNamesSpnrLoad(firmNameWithIDArrayList);
-                //spinnerAdapter = new ArrayAdapter<FirmNameWithID>(getActivity(), android.R.layout.simple_spinner_item, firmNamesList);
-                //pickFirmSpnr.setAdapter(spinnerAdapter);
-                //firmsLoaded = true;
             }
 
             @Override

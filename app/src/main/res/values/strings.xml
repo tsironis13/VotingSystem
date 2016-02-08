@@ -38,7 +38,7 @@
     <!-- INPUT STAFF HANDLING -->
     <string name="input_ok">Διαθέσιμο</string>
     <string name="invalid_usernamepassword">Αποδεκτοί λατινικοί χαρακτήρες, νούμερα</string>
-    <string name="invalid_email_input">Μη έγκυρη διεύθυνση</string>
+    <string name="invalid_email">Μη έγκυρη διεύθυνση</string>
     <string name="input_exists">Μη διαθέσιμο</string>
     <!-- INPUT FIELDS -->
     <string name="username_tag">username</string>

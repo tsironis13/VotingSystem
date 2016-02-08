@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- GLOBAL -->
+    <color name="white">#FFF</color>
 
     <!-- LOGIN IN -->
     <color name="loginFieldsContainerColor">#8001579B</color>

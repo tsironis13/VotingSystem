@@ -1,7 +1,9 @@
 package com.votingsystem.tsiro.Register;
 
+import android.text.method.TransformationMethod;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;
@@ -14,6 +16,8 @@ import java.util.ArrayList;
  */
 public interface RegisterView {
     public void clearEditextHelpersAndSuccessIcon(String action, RelativeLayout acceptRlt, EditText inputEdt);
+    public void handlePasswordTextChanges(String text, TextView showHidePasswordTtv);
+    public void changeTransformationMethod(TransformationMethod transformationMethod, String text);
     public void showFieldValidationProgress(ProgressView inputFieldPrgv);
     public void hideFieldValidationProgress(ProgressView inputFieldPrgv);
     public void setInputFieldError(int code, View view);

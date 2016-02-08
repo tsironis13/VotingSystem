@@ -5,6 +5,7 @@ import android.util.SparseIntArray;
 
 import com.votingsystem.tsiro.votingsystem.R;
 
+import java.security.interfaces.RSAKey;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -33,6 +34,8 @@ public class AppConfig {
     public static final int ERROR_INVALID_INPUT                 =   -10;
     public static final int ERROR_UNAVAILABLE_INPUT             =   -11;
     public static final int ERROR_INVALID_PASSWORD_LENGTH       =   -12;
+    public static final int ERROR_PASSWORD_MISMATCH             =   -13;
+    public static final int ERROR_INVALID_EMAIL_ADDRESS         =   -14;
 
     public static final long showhideAcceptDelay                =   4000;
 
@@ -47,6 +50,8 @@ public class AppConfig {
         inputValidationCodes.put(ERROR_INVALID_INPUT, R.string.invalid_usernamepassword);
         inputValidationCodes.put(ERROR_UNAVAILABLE_INPUT, R.string.input_exists);
         inputValidationCodes.put(ERROR_INVALID_PASSWORD_LENGTH, R.string.invalid_password_length);
+        inputValidationCodes.put(ERROR_PASSWORD_MISMATCH, R.string.passwords_mismatch);
+        inputValidationCodes.put(ERROR_INVALID_EMAIL_ADDRESS, R.string.invalid_email);
         return inputValidationCodes;
     }
 }

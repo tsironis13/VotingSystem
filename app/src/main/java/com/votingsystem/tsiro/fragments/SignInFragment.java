@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
@@ -30,7 +29,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.votingsystem.tsiro.ObserverPattern.ConnectivityObserver;
+import com.squareup.leakcanary.RefWatcher;
+import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.deserializer.FirmsDeserializer;
 import com.votingsystem.tsiro.POJO.Firm;
 import com.votingsystem.tsiro.POJO.User;
@@ -62,7 +62,6 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     private SharedPreferences sessionPrefs;
     private View view;
     private LoginActivityCommonElementsAndMuchMore commonElements;
-    private ConnectivityObserver connectivityObserver;
     BroadcastReceiver broadcastReceiver;
 
     @Override
@@ -81,7 +80,6 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
         errorresponseTtv        =   (TextView) view.findViewById(R.id.errorresponseTtv);
         showHidePasswordTtv     =   (TextView) view.findViewById(R.id.showHidePasswordTtv);
-        connectivityObserver    =   getArguments().getParcelable("connectivityObserver");
         return view;
     }
 
@@ -357,5 +355,13 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     public void onPause() {
         super.onPause();
        // getActivity().unregisterReceiver(broadcastReceiver);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.commonElements = null;
+        RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 }

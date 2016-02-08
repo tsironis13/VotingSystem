@@ -6,43 +6,53 @@ import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.votingsystem.tsiro.ObserverPattern.ConnectivityObserver;
+import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.app.AppConfig;
-import com.votingsystem.tsiro.app.ConnectivitySingleton;
 
-import java.util.Observable;
-import java.util.Observer;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by user on 19/12/2015.
  */
-public class NetworkState extends BroadcastReceiver implements Observer {
+public class NetworkState extends BroadcastReceiver {
 
     private static final String debugTag = NetworkState.class.getName();
     private ConnectivityManager connectivityManager;
     private NetworkInfo activeNetworkInfo;
-    private boolean isConnected;
-    private ConnectivityObserver connectivityObserver;
-    private static boolean firstConnect = true;
+    private List<NetworkStateListeners> networkStateListenerList;
+
+    public NetworkState() {
+        networkStateListenerList = new ArrayList<>();
+    }
 
     @Override
     public void onReceive(Context context, Intent intent) {
         connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        connectivityObserver = ConnectivitySingleton.getInstance();
-        connectivityObserver.addObserver(this);
-        if ( activeNetworkInfo != null ) {
-            if ( firstConnect ) {
-                connectivityObserver.setConnectivityStatus(activeNetworkInfo.getType());
-                firstConnect = false;
-            }
-        } else {
-            firstConnect = true;
-            connectivityObserver.setConnectivityStatus(AppConfig.NO_CONNECTION);
+        notifyStateToAll();
+    }
+
+    private void notifyStateToAll() {
+        for ( NetworkStateListeners networkStateListeners : networkStateListenerList ) {
+            notifyState(networkStateListeners);
         }
     }
 
-    @Override
-    public void update(Observable observable, Object data) {}
+    public void notifyState(NetworkStateListeners networkStateListeners) {
+        if ( activeNetworkInfo == null ) {
+            networkStateListeners.networkStatus(AppConfig.NO_CONNECTION);
+        } else {
+            networkStateListeners.networkStatus(activeNetworkInfo.getType());
+        }
+    }
 
+    public void addListener(NetworkStateListeners networkStateListeners) {
+        networkStateListenerList.add(networkStateListeners);
+        notifyState(networkStateListeners);
+    }
+
+    public void removeListener(NetworkStateListeners networkStateListeners) {
+        networkStateListenerList.remove(networkStateListeners);
+    }
 }

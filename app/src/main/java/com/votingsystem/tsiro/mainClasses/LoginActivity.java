@@ -2,6 +2,7 @@ package com.votingsystem.tsiro.mainClasses;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.support.v4.app.FragmentManager;
@@ -21,10 +22,10 @@ import android.view.inputmethod.InputMethodManager;
 import com.rey.material.widget.EditText;
 import android.widget.TextView;
 import com.squareup.leakcanary.RefWatcher;
-import com.votingsystem.tsiro.ObserverPattern.ConnectivityObserver;
+import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.app.AppConfig;
-import com.votingsystem.tsiro.app.ConnectivitySingleton;
 import com.votingsystem.tsiro.app.MyApplication;
+import com.votingsystem.tsiro.broadcastReceivers.NetworkState;
 import com.votingsystem.tsiro.fragments.ForgotPasswordFragment;
 import com.votingsystem.tsiro.fragments.RegisterFragment;
 import com.votingsystem.tsiro.fragments.SignInFragment;
@@ -34,7 +35,7 @@ import java.io.UnsupportedEncodingException;
 import java.util.Observable;
 import java.util.Observer;
 
-public class LoginActivity extends AppCompatActivity implements LoginActivityCommonElementsAndMuchMore, Observer {
+public class LoginActivity extends AppCompatActivity implements NetworkStateListeners, LoginActivityCommonElementsAndMuchMore {
 
     private static final String debugTag = LoginActivity.class.getSimpleName();
     private SpannableStringBuilder spannableStringBuilder;
@@ -43,48 +44,51 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
     private RegisterFragment registerFragment;
     private ForgotPasswordFragment forgotPasswordFgmt;
     private ClickableSpan clickableSpan;
-    private ConnectivityObserver connectivityObserver;
-    private static int initialGloabalConnectivityStatus;
     private Bundle loginActivityBundle;
-    private Intent intent;
+    private int connectionStatus;
+    private NetworkState networkState;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
-        connectivityObserver = ConnectivitySingleton.getInstance();
 
-        loginActivityBundle = new Bundle();
         if ( savedInstanceState == null ) {
+            networkState = new NetworkState();
+
+            loginActivityBundle = new Bundle();
+
             signInFragment = new SignInFragment();
-            loginActivityBundle.putParcelable("connectivityObserver", connectivityObserver);
             signInFragment.setArguments(loginActivityBundle);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.frame_container, signInFragment, getResources().getString(R.string.signInFgmt))
                     .commit();
-        }
-        getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
-            @Override
-            public void onBackStackChanged() {
-                Log.d(debugTag, "BACK STACK CHANGED!");
-                Log.d(debugTag, "BACK STACK COUNT: " + getSupportFragmentManager().getBackStackEntryCount());
-                for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
-                    Log.d(debugTag, "BACK STACK ENTRIES: " + getSupportFragmentManager().getBackStackEntryAt(i).getName());
+
+            getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
+                @Override
+                public void onBackStackChanged() {
+                    Log.d(debugTag, "BACK STACK CHANGED!");
+                    Log.d(debugTag, "BACK STACK COUNT: " + getSupportFragmentManager().getBackStackEntryCount());
+                    for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
+                        Log.d(debugTag, "BACK STACK ENTRIES: " + getSupportFragmentManager().getBackStackEntryAt(i).getName());
+                    }
                 }
-            }
-        });
+            });
+        }
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        connectivityObserver.addObserver(this);
+        networkState.addListener(this);
+        this.registerReceiver(networkState, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        connectivityObserver.deleteObserver(this);
+        networkState.removeListener(this);
+        this.unregisterReceiver(networkState);
     }
 
     @Override
@@ -119,7 +123,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
     @Override
     public void forgotPasswordOnClick() {
         forgotPasswordFgmt = new ForgotPasswordFragment();
-        loginActivityBundle.putParcelable("connectivityObserver", connectivityObserver);
         forgotPasswordFgmt.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_container, forgotPasswordFgmt, getResources().getString(R.string.forgotPasswordFgmt))
@@ -131,8 +134,7 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
     public void registerOnClick() {
         registerFragment = new RegisterFragment();
         if ( getSupportFragmentManager().getBackStackEntryCount() > 0 ) getSupportFragmentManager().popBackStack();
-        loginActivityBundle.putParcelable("connectivityObserver", connectivityObserver);
-        loginActivityBundle.putInt("initialConnectivityStatus", connectivityObserver.getConnectivityStatus(getApplicationContext()));
+        loginActivityBundle.putInt("connectivityStatus", connectionStatus);
         registerFragment.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_container, registerFragment, getResources().getString(R.string.registerFgmt))
@@ -156,14 +158,6 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
             InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(INPUT_METHOD_SERVICE);
             inputMethodManager.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
         }
-    }
-
-    @Override
-    public void update(Observable observable, Object connectionStatus) {
-        Log.e(debugTag, connectionStatus+"");
-        intent = new Intent("networkStateUpdated");
-        intent.putExtra("connectivityStatus", (int) connectionStatus);
-        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
     }
 
     @Override
@@ -194,5 +188,14 @@ public class LoginActivity extends AppCompatActivity implements LoginActivityCom
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public void networkStatus(int connectionType) {
+        Log.e(debugTag, "listeners: "+connectionType);
+        connectionStatus = connectionType;
+        Intent intent = new Intent("networkStateUpdated");
+        intent.putExtra("connectivityStatus", connectionStatus);
+        LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
     }
 }

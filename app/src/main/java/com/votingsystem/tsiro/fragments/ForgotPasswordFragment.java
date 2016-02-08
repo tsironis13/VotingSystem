@@ -10,7 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import com.votingsystem.tsiro.ObserverPattern.ConnectivityObserver;
+import com.squareup.leakcanary.RefWatcher;
+import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.votingsystem.R;
 
@@ -24,7 +25,6 @@ public class ForgotPasswordFragment extends Fragment {
     private TextView signInHereTtv, registerTtv;
     private View view;
     private LoginActivityCommonElementsAndMuchMore commonElements;
-    private ConnectivityObserver connectivityObserver;
 
     @Override
     public void onAttach(Context context) {
@@ -38,7 +38,6 @@ public class ForgotPasswordFragment extends Fragment {
         sendEmailBtn            =   (Button) view.findViewById(R.id.sendEmailBtn);
         signInHereTtv           =   (TextView) view.findViewById(R.id.signInHereTtv);
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
-        connectivityObserver    =   getArguments().getParcelable("connectivityObserver");
         return view;
     }
 
@@ -63,9 +62,17 @@ public class ForgotPasswordFragment extends Fragment {
         sendEmailBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Log.d(debugTag, "CONNECTIVITY STATUS: " + connectivityObserver.getConnectivityStatus(getActivity()));
+                
             }
         });
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.commonElements = null;
+        RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
+        refWatcher.watch(this);
     }
 
     private void setSignInHereSpan(){ commonElements.setLoginActivitySpan(signInHereTtv, getResources().getString(R.string.signInHere), 22, 34, 1); }

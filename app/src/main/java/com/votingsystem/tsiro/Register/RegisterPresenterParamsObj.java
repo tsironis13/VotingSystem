@@ -13,10 +13,10 @@ public class RegisterPresenterParamsObj {
 
     private int connectionStatus;
     private boolean isAdded;
-    private String inputField, action, retrofitAction, tag;
+    private EditText inputEditText;
+    private String action, retrofitAction, tag;
     private ProgressView inputFieldProgressView;
     private RelativeLayout validInputRlt;
-    private EditText inputEditText;
     private View errorView;
 
     public RegisterPresenterParamsObj(){}
@@ -35,13 +35,9 @@ public class RegisterPresenterParamsObj {
         this.isAdded = isAdded;
     }
 
-    public String getInputField() {
-        return inputField;
-    }
+    public EditText getInputEditText() { return inputEditText; }
 
-    public void setInputField(String inputField) {
-        this.inputField = inputField;
-    }
+    public void setInputEditText(EditText inputEditText) { this.inputEditText = inputEditText; }
 
     public ProgressView getInputFieldProgressView() {
         return inputFieldProgressView;
@@ -57,13 +53,9 @@ public class RegisterPresenterParamsObj {
         this.action = action;
     }
 
-    public String getRetrofitAction() {
-        return retrofitAction;
-    }
+    public String getRetrofitAction() { return retrofitAction; }
 
-    public void setRetrofitAction(String retrofitAction) {
-        this.retrofitAction = retrofitAction;
-    }
+    public void setRetrofitAction(String retrofitAction) { this.retrofitAction = retrofitAction; }
 
     public RelativeLayout getValidInputRlt() { return validInputRlt; }
 
@@ -72,10 +64,6 @@ public class RegisterPresenterParamsObj {
     public String getTag() { return tag; }
 
     public void setTag(String tag) { this.tag = tag; }
-
-    public EditText getInputEditText() { return inputEditText; }
-
-    public void setInputEditText(EditText inputEditText) { this.inputEditText = inputEditText; }
 
     public View getErrorView() { return errorView; }
 
