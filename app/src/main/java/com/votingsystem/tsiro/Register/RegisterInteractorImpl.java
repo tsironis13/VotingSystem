@@ -92,6 +92,26 @@ public class RegisterInteractorImpl implements RegisterInteractor {
                     firmNameWithIDArrayList.add(new FirmNameWithID(firmElementList.get(i).getFirm_name(), firmElementList.get(i).getFirm_id()));
                 }
                 firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+                firmNameWithIDArrayList.add(new FirmNameWithID("Επιλογή Εταιρείας", -1));
+
+
+
 
                 registerInputFieldFinishedListener.onSuccessfirmNamesSpnrLoad(firmNameWithIDArrayList);
             }

@@ -5,6 +5,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -28,6 +29,7 @@ import android.widget.Button;
 import com.rey.material.widget.EditText;
 
 import android.widget.LinearLayout;
+import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -288,9 +290,30 @@ public class RegisterFragment extends Fragment implements RegisterView{
         showHidePasswordTtv.setText(text);
     }
 
+
     @Override
     public void onSuccessfulFirmNamesSpnrLoad(ArrayList<FirmNameWithID> firmNameWithIDArrayList) {
-        ArrayAdapter<FirmNameWithID> spinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList);
+
+        ArrayAdapter<FirmNameWithID> spinnerAdapter = new ArrayAdapter<FirmNameWithID>(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList){
+
+            @Override
+            public void setDropDownViewResource(int resource) {
+                super.setDropDownViewResource(resource);
+            }
+
+            @Override
+            public View getDropDownView(int position, View convertView, ViewGroup parent) {
+
+
+                return super.getDropDownView(position, convertView, parent);
+            }
+
+            @Override
+            public int getCount() {
+                Log.e(debugTag,super.getCount()+"");
+                return super.getCount();
+            }
+        };
         spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         pickFirmSpnr.setAdapter(spinnerAdapter);
         //pickFirmSpnr.setSelection(spinnerAdapter.getCount()+ 1);
