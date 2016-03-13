@@ -10,8 +10,6 @@ public class Firm {
     private boolean error;
     private List<FirmElement> firm_element;
 
-    int x = 10;
-    int y =10;
     public Firm() {}
 
     public String getAction() { return action; }
