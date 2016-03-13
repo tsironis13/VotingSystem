@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- LOGIN IN -->
+    <dimen name="container_width">350dp</dimen>
+    <dimen name="common_width">317dp</dimen>
+    <!-- SIGN IN -->
+    <dimen name="logo_dimens">65dp</dimen>
+    <dimen name="input_container_height">50dp</dimen>
+    <dimen name="logo_dimens_andBottom">33dp</dimen>
+    <dimen name="forgotPassword_Ttv_marginBottom">10dp</dimen>
+    <!-- FORGOT PASSWORD -->
+    <dimen name="forgot_pass_logo_marginBottom">25dp</dimen>
+    <!-- REGISTER -->
+    <dimen name="register_logo_marginTop">15dp</dimen>
+    <dimen name="register_logo_marginBottom">20dp</dimen>
+    <dimen name="register_container_height">55dp</dimen>
+    <!-- NAVIGATION DRAWER -->
+    <dimen name="nav_drawer_titleAndLogo_height">185dp</dimen>
+    <dimen name="nav_drawer_logo_height">80dp</dimen>
+</resources>
