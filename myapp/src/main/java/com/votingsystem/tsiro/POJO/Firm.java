@@ -9,7 +9,7 @@ public class Firm {
     private String description, action;
     private boolean error;
     private List<FirmElement> firm_element;
-//dkjdskjdskjdsjkds
+
     public Firm() {}
 
     public String getAction() { return action; }
