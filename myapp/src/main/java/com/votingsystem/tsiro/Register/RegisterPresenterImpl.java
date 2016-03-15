@@ -2,6 +2,7 @@ package com.votingsystem.tsiro.Register;
 
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -45,14 +46,15 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     }
 
     public void validateInputFieldOnFocusChange(RegisterPresenterParamsObj registerPresenterParamsObj){
-        if ( registerPresenterParamsObj.getConnectionStatus() == AppConfig.NO_CONNECTION ) {
-            if ( registerPresenterParamsObj.isAdded() && registerView != null ) registerView.setToastMsg(AppConfig.NO_CONNECTION);
+        if (registerPresenterParamsObj.getConnectionStatus() == AppConfig.NO_CONNECTION) {
+            if (registerPresenterParamsObj.isAdded() && registerView != null) registerView.setToastMsg(AppConfig.NO_CONNECTION);
         } else {
             registerInteractorImpl.validateInputField(registerPresenterParamsObj, this);
         }
     }
 
-    public void validateFirmCode(String firm, String code) {
+    public void validateFirmCode(int firmId, String code) {
+        Log.e(debugTag,firmId+"");
         registerInteractorImpl.validateFirmCode(this);
     }
 
@@ -82,10 +84,10 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     }
 
     public void getFirmNamesToPopulateSpnr(int connectionStatus) {
-        if ( connectionStatus == AppConfig.NO_CONNECTION ) {
-            if ( !firmsLoaded && registerView != null ) registerView.onFailure();
+        if (connectionStatus == AppConfig.NO_CONNECTION) {
+            if (!firmsLoaded && registerView != null) registerView.onFailure();
         } else {
-            if ( !firmsLoaded ) registerInteractorImpl.populateFirmNamesSpnr(new ArrayList<FirmNameWithID>(), this);
+            if (!firmsLoaded) registerInteractorImpl.populateFirmNamesSpnr(new ArrayList<FirmNameWithID>(), this);
         }
     }
 

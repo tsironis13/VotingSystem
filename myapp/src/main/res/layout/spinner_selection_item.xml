@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.rey.material.widget.TextView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/here2"
+    style="?android:attr/spinnerDropDownItemStyle"
+    android:id="@+id/pickFirm"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:singleLine="true"
     android:textSize="13sp"
     android:textColor="@color/input_hintColor"
     android:ellipsize="marquee"
-    style="?android:attr/spinnerDropDownItemStyle" />
+    android:text="@string/pickFirm" />

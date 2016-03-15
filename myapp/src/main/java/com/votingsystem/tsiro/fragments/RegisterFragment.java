@@ -39,6 +39,7 @@ import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.Register.RegisterPresenterImpl;
 import com.votingsystem.tsiro.Register.RegisterPresenterParamsObj;
 import com.votingsystem.tsiro.Register.RegisterView;
+import com.votingsystem.tsiro.adapters.FirmNamesSpnrNothingSelectedAdapter;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
@@ -70,7 +71,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
     private Runnable showhideAcceptPasswordAnimationRunnable;
     private TextWatcher registerPasswordEdtTextWatcher;
     private int connectionStatus, initialConnectionStatus;
-    private RegisterPresenterImpl registerPresenter;
+    private RegisterPresenterImpl registerPresenterImpl;
 
     @Override
     public void onAttach(Context context) {
@@ -105,18 +106,18 @@ public class RegisterFragment extends Fragment implements RegisterView{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if ( savedInstanceState == null ) {
-            registerPresenter = new RegisterPresenterImpl(this);
+            registerPresenterImpl = new RegisterPresenterImpl(this);
             registerPasswordEdt.addTextChangedListener(handleRegisterPasswordTextChanges());
             fillValidityInputMap(getResources().getStringArray(R.array.input_fields_array));
             inputValidationCodes = AppConfig.getCodes();
 
-            registerPresenter.getFirmNamesToPopulateSpnr(initialConnectionStatus);
+            registerPresenterImpl.getFirmNamesToPopulateSpnr(initialConnectionStatus);
             connectionStatus = initialConnectionStatus;
             broadcastReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     connectionStatus = intent.getExtras().getInt("connectivityStatus");
-                    registerPresenter.getFirmNamesToPopulateSpnr(connectionStatus);
+                    registerPresenterImpl.getFirmNamesToPopulateSpnr(connectionStatus);
                 }
             };
             submitBtn.setTransformationMethod(null);
@@ -129,7 +130,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     inputValidityMap.put(getResources().getString(R.string.username_tag), false);
-                    registerPresenter.handleInputFieldTextChanges(start, before, registerUsernameEdt, acceptUsernameRlt, null, "username");
+                    registerPresenterImpl.handleInputFieldTextChanges(start, before, registerUsernameEdt, acceptUsernameRlt, null, "username");
                 }
 
                 @Override
@@ -142,7 +143,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus)
                         if (!inputValidityMap.get(getResources().getString(R.string.username_tag)))
-                            registerPresenter.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), registerUsernameEdt, usernameProgressView, getResources().getString(R.string.usernameValidation), acceptUsernameRlt, getResources().getString(R.string.username_tag), registerUsernameEdt));
+                            registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), registerUsernameEdt, usernameProgressView, getResources().getString(R.string.usernameValidation), acceptUsernameRlt, getResources().getString(R.string.username_tag), registerUsernameEdt));
                 }
             });
             registerPasswordEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -150,7 +151,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus)
                         if (!inputValidityMap.get(getResources().getString(R.string.password_tag)))
-                            registerPresenter.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), registerPasswordEdt, null, getResources().getString(R.string.passwordValidation), acceptPasswordRlt, getResources().getString(R.string.password_tag), passwordErrorTtv));
+                            registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), registerPasswordEdt, null, getResources().getString(R.string.passwordValidation), acceptPasswordRlt, getResources().getString(R.string.password_tag), passwordErrorTtv));
                 }
 
             });
@@ -158,7 +159,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 @Override
                 public void onClick(View v) {
                     registerPasswordEdt.removeTextChangedListener(registerPasswordEdtTextWatcher);
-                    registerPresenter.handleShowHidePasswordTtv(registerPasswordEdt);
+                    registerPresenterImpl.handleShowHidePasswordTtv(registerPasswordEdt);
                     registerPasswordEdt.addTextChangedListener(registerPasswordEdtTextWatcher);
                 }
             });
@@ -169,7 +170,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    registerPresenter.handleInputFieldTextChanges(start, before, confirmPasswordEdt, null, registerPasswordEdt, "confirmpassword");
+                    registerPresenterImpl.handleInputFieldTextChanges(start, before, confirmPasswordEdt, null, registerPasswordEdt, "confirmpassword");
                 }
 
                 @Override
@@ -191,7 +192,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     inputValidityMap.put(getResources().getString(R.string.email_tag), false);
-                    registerPresenter.handleInputFieldTextChanges(start, before, registerEmailEdt, acceptEmailRlt, null, "email");
+                    registerPresenterImpl.handleInputFieldTextChanges(start, before, registerEmailEdt, acceptEmailRlt, null, "email");
                 }
 
                 @Override
@@ -203,15 +204,18 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus)
                         if (!inputValidityMap.get(getResources().getString(R.string.email_tag)))
-                            registerPresenter.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), registerEmailEdt, emailProgressView, getResources().getString(R.string.emailValidation), acceptEmailRlt, getResources().getString(R.string.email_tag), registerEmailEdt));
+                            registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), registerEmailEdt, emailProgressView, getResources().getString(R.string.emailValidation), acceptEmailRlt, getResources().getString(R.string.email_tag), registerEmailEdt));
                 }
             });
             pickFirmSpnr.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(Spinner parent, View view, int position, long id) {
-                    if ( view instanceof TextView ) ((TextView) view).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-                    Log.e(debugTag, "Spinner item selected: " + parent.getSelectedItem().toString());
-                    if ( !firmCodeEdt.getText().toString().isEmpty() ) registerPresenter.validateFirmCode(parent.getSelectedItem().toString(), firmCodeEdt.getText().toString());
+                    if (view instanceof TextView) ((TextView) view).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                    if (position != 0) {
+                        FirmNamesSpnrNothingSelectedAdapter firmNamesSpnrNothingSelectedAdapter = (FirmNamesSpnrNothingSelectedAdapter) parent.getAdapter();
+                        FirmNameWithID firmNameWithID = (FirmNameWithID) firmNamesSpnrNothingSelectedAdapter.getUnderlinedSpinnerAdapter().getItem(position - 1);
+                        if (!firmCodeEdt.getText().toString().isEmpty()) registerPresenterImpl.validateFirmCode(firmNameWithID.getId(), firmCodeEdt.getText().toString());
+                    }
                 }
             });
             submitBtn.setOnClickListener(new View.OnClickListener() {
@@ -258,7 +262,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
     @Override
     public void onDestroy() {
         super.onDestroy();
-        registerPresenter.onDestroy();
+        registerPresenterImpl.onDestroy();
         this.commonElements = null;
         RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
         refWatcher.watch(this);
@@ -290,33 +294,11 @@ public class RegisterFragment extends Fragment implements RegisterView{
         showHidePasswordTtv.setText(text);
     }
 
-
     @Override
     public void onSuccessfulFirmNamesSpnrLoad(ArrayList<FirmNameWithID> firmNameWithIDArrayList) {
-
-        ArrayAdapter<FirmNameWithID> spinnerAdapter = new ArrayAdapter<FirmNameWithID>(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList){
-
-            @Override
-            public void setDropDownViewResource(int resource) {
-                super.setDropDownViewResource(resource);
-            }
-
-            @Override
-            public View getDropDownView(int position, View convertView, ViewGroup parent) {
-
-
-                return super.getDropDownView(position, convertView, parent);
-            }
-
-            @Override
-            public int getCount() {
-                Log.e(debugTag,super.getCount()+"");
-                return super.getCount();
-            }
-        };
+        ArrayAdapter<FirmNameWithID> spinnerAdapter = new ArrayAdapter<FirmNameWithID>(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList);
         spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        pickFirmSpnr.setAdapter(spinnerAdapter);
-        //pickFirmSpnr.setSelection(spinnerAdapter.getCount()+ 1);
+        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(spinnerAdapter, R.layout.spinner_selection_item, getActivity()));
     }
 
     @Override
@@ -402,7 +384,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
             public void onTextChanged(CharSequence s, int start, int before, int count) {
                 inputValidityMap.put(getResources().getString(R.string.password_tag), false);
                 if ( System.currentTimeMillis() < showhideAcceptPasswordAnimationTargetTimeinMillis ) handlerStaff().removeCallbacks(showhideAcceptPasswordAnimationRunnable);
-                registerPresenter.handleRegisterPasswordEdtTextChanges(start, before, registerPasswordEdt, acceptPasswordRlt, showHidePasswordTtv);
+                registerPresenterImpl.handleRegisterPasswordEdtTextChanges(start, before, registerPasswordEdt, acceptPasswordRlt, showHidePasswordTtv);
                 if ( !passwordErrorTtv.getText().toString().isEmpty() ) {
                     passwordErrorTtv.setText(null);
                     registerPasswordEdt.getChildAt(1).setVisibility(View.VISIBLE);

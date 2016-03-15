@@ -26,6 +26,7 @@
     <string name="showPassword">ΕΜΦΑΝΙΣΗ</string>
     <string name="hidePassword">ΑΠΟΚΡΥΨΗ</string>
     <string name="required">required</string>
+    <string name="pickFirm">Επιλογή Εταιρείας</string>
     <!-- ERRORS -->
     <string name="empty_fields">Παρακαλώ συμπλήρωσε όλα τα πεδία.</string>
     <string name="no_connection">Χωρίς πρόσβαση στο Internet. Παρακαλώ ξαναπροσπάθησε.</string>
