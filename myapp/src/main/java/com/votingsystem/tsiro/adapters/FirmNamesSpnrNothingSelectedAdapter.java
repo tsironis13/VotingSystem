@@ -37,6 +37,7 @@ public class FirmNamesSpnrNothingSelectedAdapter implements SpinnerAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.e(debugTag, "ConvertView: "+convertView+" Parent: "+parent+" Position: "+position);
         if (position == 0) return getNothingSelectedView(parent);
         return adapter.getView(position - EXTRA, convertView, parent);
     }
@@ -51,7 +52,7 @@ public class FirmNamesSpnrNothingSelectedAdapter implements SpinnerAdapter {
 
     @Override
     public int getCount() {
-        int count = adapter.getCount();
+        int count = (adapter != null) ? adapter.getCount() : 0;
         return count == 0 ? 0 : count + EXTRA;
     }
 
@@ -67,7 +68,7 @@ public class FirmNamesSpnrNothingSelectedAdapter implements SpinnerAdapter {
 
     @Override
     public boolean hasStableIds() {
-        return adapter.hasStableIds();
+        return adapter != null && adapter.hasStableIds();
     }
 
     @Override
@@ -77,7 +78,7 @@ public class FirmNamesSpnrNothingSelectedAdapter implements SpinnerAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return 1;
+        return 0;
     }
 
     @Override

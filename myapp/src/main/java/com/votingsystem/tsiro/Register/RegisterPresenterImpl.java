@@ -84,6 +84,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     }
 
     public void getFirmNamesToPopulateSpnr(int connectionStatus) {
+
         if (connectionStatus == AppConfig.NO_CONNECTION) {
             if (!firmsLoaded && registerView != null) registerView.onFailure();
         } else {

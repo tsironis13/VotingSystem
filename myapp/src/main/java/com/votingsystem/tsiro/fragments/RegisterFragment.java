@@ -46,6 +46,7 @@ import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.util.ArrayList;
+import java.util.FormatFlagsConversionMismatchException;
 import java.util.HashMap;
 
 /**
@@ -219,8 +220,15 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 }
             });
             submitBtn.setOnClickListener(new View.OnClickListener() {
+                //ArrayList<FirmNameWithID> arrayList = new ArrayList<FirmNameWithID>();
                 @Override
                 public void onClick(View v) {
+                    //arrayList.add(new FirmNameWithID("dfsddsds", 0));
+                    //arrayList.add(new FirmNameWithID("ddsddsds", 1));
+                    //arrayList.add(new FirmNameWithID("dddd4433", 2));
+                    //ArrayAdapter<FirmNameWithID> spinnerAdapter = new ArrayAdapter<FirmNameWithID>(getActivity(), R.layout.spinner_selection_item, arrayList);
+                    //pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(spinnerAdapter, R.layout.spinner_selection_item, getActivity()));
+
                     /*// ) {
                         spinnerState = (FirmNameWithID) pickFirmSpnr.getSelectedItem();
                         Log.d(debugTag, spinnerState.getId() + "");
@@ -296,14 +304,21 @@ public class RegisterFragment extends Fragment implements RegisterView{
 
     @Override
     public void onSuccessfulFirmNamesSpnrLoad(ArrayList<FirmNameWithID> firmNameWithIDArrayList) {
-        ArrayAdapter<FirmNameWithID> spinnerAdapter = new ArrayAdapter<FirmNameWithID>(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList);
+        ArrayAdapter<FirmNameWithID> spinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList);
         spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(spinnerAdapter, R.layout.spinner_selection_item, getActivity()));
+        if (pickFirmSpnr.getAdapter() != null) {
+            ///pickFirmSpnr.setAdapter(spinnerAdapter);
+
+        } else {
+            pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(spinnerAdapter, R.layout.spinner_selection_item, getActivity()));
+
+        }
     }
 
     @Override
     public void onFailure() {
-        Log.e(debugTag, "onFailure"); }
+        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(null, R.layout.spinner_selection_item, getActivity()));
+    }
 
     @Override
     public void setToastMsg(int code) { Toast.makeText(getActivity(), commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(inputValidationCodes.get(code)))), Toast.LENGTH_SHORT).show(); }
