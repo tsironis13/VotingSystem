@@ -1,19 +1,22 @@
 package com.votingsystem.tsiro.adapters;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
-import android.widget.ListAdapter;
 import android.widget.SpinnerAdapter;
+import com.rey.material.widget.TextView;
+import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
+import com.votingsystem.tsiro.votingsystem.R;
+import java.util.ArrayList;
+
 
 /**
  * Created by giannis on 15/3/2016.
  */
-public class FirmNamesSpnrNothingSelectedAdapter implements SpinnerAdapter {
+public class FirmNamesSpnrNothingSelectedAdapter extends ArrayAdapter<FirmNameWithID> implements SpinnerAdapter {
 
     private static final String debugTag = FirmNamesSpnrNothingSelectedAdapter.class.getSimpleName();
     protected static final int EXTRA = 1;
@@ -22,13 +25,78 @@ public class FirmNamesSpnrNothingSelectedAdapter implements SpinnerAdapter {
     protected int nothingSelectedLayout;
     protected int nothingSelectedDropdownLayout;
     protected LayoutInflater layoutInflater;
+    protected ArrayList<FirmNameWithID> firmNameWithIDs;
 
-    public FirmNamesSpnrNothingSelectedAdapter(SpinnerAdapter spinnerAdapter, int nothingSelectedLayout, Context context){
-        this(spinnerAdapter, nothingSelectedLayout, -1, context);
+    public FirmNamesSpnrNothingSelectedAdapter(Context context, int resource, ArrayList<FirmNameWithID> objects) {
+        super(context, resource, objects);
+        this.firmNameWithIDs                = objects;
+        //this.adapter                        = spinnerAdapter;
+        this.nothingSelectedLayout          = resource;
+        this.context                        = context;
+        this.layoutInflater                 = LayoutInflater.from(context);
+    }
+
+    @Override
+    public View getView(int position, View convertView, ViewGroup parent) {
+        Log.e(debugTag, "Position: " + position + " ConvertView: " + convertView);
+        //return getNothingSelectedView(parent);
+        if (position == 0) {
+            //return super.getView(0, convertView, parent);
+            return getNothingSelectedView(parent);
+        } else {
+            return super.getView(position, convertView, parent);
+        }
+    }
+
+    @Override
+    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+        Log.e(debugTag, "getDropDownView: " + position + " " + convertView);
+        View view = convertView;
+        ViewHolder viewHolder;
+        if (view == null) {
+            view                 = layoutInflater.inflate(R.layout.spinner_dropdown_item, parent, false);
+            viewHolder           = new ViewHolder(view);
+            view.setTag(R.layout.spinner_dropdown_item, viewHolder);
+        } else {
+            viewHolder = (ViewHolder) view.getTag(R.layout.spinner_dropdown_item);
+        }
+        FirmNameWithID firmNameWithID = firmNameWithIDs.get(position);
+        viewHolder.dropdownItemTtv.setText(firmNameWithID.getFirm_name());
+        //if (position == 0) return new View(context);
+        //if (position == 0) return nothingSelectedDropdownLayout == -1 ? new View(context) : getNothingSelectedDropdownView(parent);
+        //Could re-use the convertView if possible, use setTag...
+        return view;
+    }
+
+    @Override
+    public int getCount() {
+        int count = (firmNameWithIDs != null) ? firmNameWithIDs.size() : 0;
+        return count == 0 ? 0 : count;
+    }
+
+    /*@Override
+    public FirmNameWithID getItem(int position) {
+        return position == 0 ? null : firmNameWithIDs.get(position - EXTRA);
+    }*/
+
+    protected View getNothingSelectedView(ViewGroup parent) {
+        return layoutInflater.inflate(nothingSelectedLayout, parent, false);
+    }
+
+    static class ViewHolder {
+        TextView dropdownItemTtv;
+
+        public ViewHolder(View view) {
+            dropdownItemTtv = (TextView) view.findViewById(R.id.spnrDropdownItem);
+        }
+    }
+    /*public FirmNamesSpnrNothingSelectedAdapter(ArrayList<FirmNameWithID> firmNameWithIDs, int nothingSelectedLayout, Context context){
+        this(firmNameWithIDs, nothingSelectedLayout, -1, context);
     };
 
-    public FirmNamesSpnrNothingSelectedAdapter(SpinnerAdapter spinnerAdapter, int nothingSelectedLayout, int nothingSelectedDropdownLayout, Context context){
-        this.adapter                        = spinnerAdapter;
+    public FirmNamesSpnrNothingSelectedAdapter(ArrayList<FirmNameWithID> firmNameWithIDs, int nothingSelectedLayout, int nothingSelectedDropdownLayout, Context context){
+        this.firmNameWithIDs                = firmNameWithIDs;
+        //this.adapter                        = spinnerAdapter;
         this.nothingSelectedLayout          = nothingSelectedLayout;
         this.nothingSelectedDropdownLayout  = nothingSelectedDropdownLayout;
         this.context                        = context;
@@ -38,16 +106,29 @@ public class FirmNamesSpnrNothingSelectedAdapter implements SpinnerAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Log.e(debugTag, "ConvertView: "+convertView+" Parent: "+parent+" Position: "+position);
-        if (position == 0) return getNothingSelectedView(parent);
-        return adapter.getView(position - EXTRA, convertView, parent);
+        //if (position == 0) return getNothingSelectedView(parent);
+        //return adapter.getView(position - EXTRA, convertView, parent);
+        return getNothingSelectedView(parent);
     }
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
         Log.e(debugTag,"getDropDownView: "+position+" "+convertView);
-        if (position == 0) return nothingSelectedDropdownLayout == -1 ? new View(context) : getNothingSelectedDropdownView(parent);
+        View view = convertView;
+        ViewHolder viewHolder;
+        if (convertView == null) {
+            view                 = layoutInflater.inflate(R.layout.spinner_dropdown_item, parent, false);
+            viewHolder           = new ViewHolder(view);
+            view.setTag(viewHolder);
+        } else {
+            viewHolder = (ViewHolder) view.getTag();
+        }
+        FirmNameWithID firmNameWithID = firmNameWithIDs.get(position);
+        viewHolder.dropdownItemTtv.setText(firmNameWithID.getFirm_name());
+        viewHolder.dropdownItemTtv.setTag(firmNameWithID.getId());
+        //if (position == 0) return nothingSelectedDropdownLayout == -1 ? new View(context) : getNothingSelectedDropdownView(parent);
         //Could re-use the convertView if possible, use setTag...
-        return adapter.getDropDownView(position - EXTRA, null, parent);
+        return view;
     }
 
     @Override
@@ -78,7 +159,7 @@ public class FirmNamesSpnrNothingSelectedAdapter implements SpinnerAdapter {
 
     @Override
     public int getViewTypeCount() {
-        return 0;
+        return 1;
     }
 
     @Override
@@ -103,4 +184,13 @@ public class FirmNamesSpnrNothingSelectedAdapter implements SpinnerAdapter {
     public SpinnerAdapter getUnderlinedSpinnerAdapter() {
         return this.adapter;
     }
+
+    static class ViewHolder {
+        TextView dropdownItemTtv;
+
+        public ViewHolder(View view) {
+            dropdownItemTtv = (TextView) view.findViewById(R.id.spnrDropdownItem);
+        }
+    }
+    */
 }

@@ -213,9 +213,9 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 public void onItemSelected(Spinner parent, View view, int position, long id) {
                     if (view instanceof TextView) ((TextView) view).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                     if (position != 0) {
-                        FirmNamesSpnrNothingSelectedAdapter firmNamesSpnrNothingSelectedAdapter = (FirmNamesSpnrNothingSelectedAdapter) parent.getAdapter();
-                        FirmNameWithID firmNameWithID = (FirmNameWithID) firmNamesSpnrNothingSelectedAdapter.getUnderlinedSpinnerAdapter().getItem(position - 1);
-                        if (!firmCodeEdt.getText().toString().isEmpty()) registerPresenterImpl.validateFirmCode(firmNameWithID.getId(), firmCodeEdt.getText().toString());
+                        //FirmNamesSpnrNothingSelectedAdapter firmNamesSpnrNothingSelectedAdapter = (FirmNamesSpnrNothingSelectedAdapter) parent.getAdapter();
+                        //FirmNameWithID firmNameWithID = (FirmNameWithID) firmNamesSpnrNothingSelectedAdapter.getUnderlinedSpinnerAdapter().getItem(position - 1);
+                        //if (!firmCodeEdt.getText().toString().isEmpty()) registerPresenterImpl.validateFirmCode(firmNameWithID.getId(), firmCodeEdt.getText().toString());
                     }
                 }
             });
@@ -304,20 +304,21 @@ public class RegisterFragment extends Fragment implements RegisterView{
 
     @Override
     public void onSuccessfulFirmNamesSpnrLoad(ArrayList<FirmNameWithID> firmNameWithIDArrayList) {
-        ArrayAdapter<FirmNameWithID> spinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList);
-        spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        //ArrayAdapter<FirmNameWithID> spinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList);
+        //spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        //pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(spinnerAdapter, R.layout.spinner_selection_item, getActivity()));
+        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList));
         if (pickFirmSpnr.getAdapter() != null) {
-            ///pickFirmSpnr.setAdapter(spinnerAdapter);
 
         } else {
-            pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(spinnerAdapter, R.layout.spinner_selection_item, getActivity()));
-
+            //pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(spinnerAdapter, R.layout.spinner_selection_item, getActivity()));
         }
     }
 
     @Override
     public void onFailure() {
-        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(null, R.layout.spinner_selection_item, getActivity()));
+        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(getActivity(), R.layout.spinner_selection_item, null));
+       // pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(null, R.layout.spinner_selection_item, getActivity()));
     }
 
     @Override

@@ -87,10 +87,12 @@ public class RegisterInteractorImpl implements RegisterInteractor {
             @Override
             public void onResponse(Response<Firm> response, Retrofit retrofit) {
                 List<Firm.FirmElement> firmElementList = response.body().getFirm_element();
+                //firmNameWithIDArrayList.add(new FirmNameWithID("aaaaa",-1));
                 for (int i = 0; i < firmElementList.size(); i++) {
                     Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());
                     firmNameWithIDArrayList.add(new FirmNameWithID(firmElementList.get(i).getFirm_name(), firmElementList.get(i).getFirm_id()));
                 }
+
                 registerInputFieldFinishedListener.onSuccessfirmNamesSpnrLoad(firmNameWithIDArrayList);
             }
             @Override
