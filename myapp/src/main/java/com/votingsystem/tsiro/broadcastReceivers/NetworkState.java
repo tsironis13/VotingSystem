@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.Log;
 
 import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.app.AppConfig;
@@ -34,13 +35,13 @@ public class NetworkState extends BroadcastReceiver {
     }
 
     private void notifyStateToAll() {
-        for ( NetworkStateListeners networkStateListeners : networkStateListenerList ) {
+        for (NetworkStateListeners networkStateListeners : networkStateListenerList) {
             notifyState(networkStateListeners);
         }
     }
 
     public void notifyState(NetworkStateListeners networkStateListeners) {
-        if ( activeNetworkInfo == null ) {
+        if (activeNetworkInfo == null) {
             networkStateListeners.networkStatus(AppConfig.NO_CONNECTION);
         } else {
             networkStateListeners.networkStatus(activeNetworkInfo.getType());
@@ -49,7 +50,6 @@ public class NetworkState extends BroadcastReceiver {
 
     public void addListener(NetworkStateListeners networkStateListeners) {
         networkStateListenerList.add(networkStateListeners);
-        notifyState(networkStateListeners);
     }
 
     public void removeListener(NetworkStateListeners networkStateListeners) {

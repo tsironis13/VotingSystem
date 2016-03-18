@@ -263,7 +263,6 @@ public class RegisterFragment extends Fragment implements RegisterView{
     @Override
     public void onPause() {
         super.onPause();
-        Log.e(debugTag, "onPause");
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(broadcastReceiver);
     }
 
@@ -304,10 +303,10 @@ public class RegisterFragment extends Fragment implements RegisterView{
 
     @Override
     public void onSuccessfulFirmNamesSpnrLoad(ArrayList<FirmNameWithID> firmNameWithIDArrayList) {
-        //ArrayAdapter<FirmNameWithID> spinnerAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList);
-        //spinnerAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+        ArrayAdapter<FirmNameWithID> pickFirmArrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList);
+        pickFirmArrayAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         //pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(spinnerAdapter, R.layout.spinner_selection_item, getActivity()));
-        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList));
+        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(pickFirmArrayAdapter, R.layout.spinner_selection_item, getActivity()));
         if (pickFirmSpnr.getAdapter() != null) {
 
         } else {
@@ -317,8 +316,8 @@ public class RegisterFragment extends Fragment implements RegisterView{
 
     @Override
     public void onFailure() {
-        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(getActivity(), R.layout.spinner_selection_item, null));
-       // pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(null, R.layout.spinner_selection_item, getActivity()));
+        Log.e(debugTag, "onFailure " + " Adapter: " + pickFirmSpnr.getAdapter());
+        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(null, R.layout.spinner_selection_item, getActivity()));
     }
 
     @Override

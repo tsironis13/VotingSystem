@@ -80,8 +80,9 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     protected void onResume() {
         super.onResume();
+        Log.e(debugTag, "onResume");
         networkState.addListener(this);
-        this.registerReceiver(networkState, new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE"));
+        this.registerReceiver(networkState, new IntentFilter(getResources().getString(R.string.connectivity_change)));
     }
 
     @Override
