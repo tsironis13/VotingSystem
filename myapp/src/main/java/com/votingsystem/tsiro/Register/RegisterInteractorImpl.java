@@ -91,12 +91,11 @@ public class RegisterInteractorImpl implements RegisterInteractor {
                     Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());
                     firmNameWithIDArrayList.add(new FirmNameWithID(firmElementList.get(i).getFirm_name(), firmElementList.get(i).getFirm_id()));
                 }
-
                 registerInputFieldFinishedListener.onSuccessfirmNamesSpnrLoad(firmNameWithIDArrayList);
             }
             @Override
             public void onFailure(Throwable t) {
-                registerInputFieldFinishedListener.onFailurefirmNamesSpnrLoad();
+                registerInputFieldFinishedListener.onFailurefirmNamesSpnrLoad(firmNameWithIDArrayList);
             }
         });
     }

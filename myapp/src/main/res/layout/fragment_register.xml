@@ -410,19 +410,11 @@
                 android:maxHeight="100dp"
                 android:dropDownWidth="wrap_content"
                 android:tag="@string/required"
-                style="@style/Material.Widget.Spinner"
-                app:rd_style="@style/Material.Drawable.Ripple.Wave"
-                app:spn_dividerColor="@android:color/transparent"
-                app:spn_arrowPadding="14dp"
-                app:spn_arrowColor="@color/accentColor"
-                app:spn_arrowSize="4dp"
-                app:spn_arrowSwitchMode="true"
-                app:spn_arrowAnimClockwise="true"
-                app:spn_arrowAnimDuration="400" />
+                style="@style/Spinner" />
 
         </LinearLayout>
 
-        <TextView
+        <com.rey.material.widget.TextView
             android:id="@+id/errorresponseTtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -440,7 +432,7 @@
             android:background="@color/actionBtnColor"
             android:text="@string/submit" />
 
-        <TextView
+        <com.rey.material.widget.TextView
             android:id="@+id/signInHereTtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

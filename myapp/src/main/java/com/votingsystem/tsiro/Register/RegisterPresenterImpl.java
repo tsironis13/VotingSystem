@@ -5,12 +5,13 @@ import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;
+import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by user on 5/2/2016.
@@ -21,6 +22,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     private RegisterView registerView;
     private RegisterInteractorImpl registerInteractorImpl;
     private boolean firmsLoaded;
+    private ArrayList<FirmNameWithID> firmNameWithIDArrayList = new ArrayList<>();
 
     public RegisterPresenterImpl(RegisterView registerView) {
         this.registerView = registerView;
@@ -83,12 +85,11 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
         }
     }
 
-    public void getFirmNamesToPopulateSpnr(int connectionStatus) {
-
+    public void firmNamesSpnrActions(int connectionStatus) {
         if (connectionStatus == AppConfig.NO_CONNECTION) {
-            if (!firmsLoaded && registerView != null) registerView.onFailure();
+            if (!firmsLoaded && registerView != null) registerView.onFailure(firmNameWithIDArrayList);
         } else {
-            if (!firmsLoaded) registerInteractorImpl.populateFirmNamesSpnr(new ArrayList<FirmNameWithID>(), this);
+            if (!firmsLoaded) registerInteractorImpl.populateFirmNamesSpnr(firmNameWithIDArrayList, this);
         }
     }
 
@@ -108,7 +109,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     public void onSuccess(RelativeLayout validInputRlt, String tag) { if ( registerView != null ) registerView.onSuccess(validInputRlt, tag); }
 
     @Override
-    public void onSuccessfirmNamesSpnrLoad(ArrayList<FirmNameWithID> firmNameWithIDArrayList) {
+    public void onSuccessfirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) {
         if ( registerView != null ) {
             registerView.onSuccessfulFirmNamesSpnrLoad(firmNameWithIDArrayList);
             firmsLoaded = true;
@@ -116,7 +117,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     }
 
     @Override
-    public void onFailurefirmNamesSpnrLoad() { if ( registerView != null ) registerView.onFailure(); }
+    public void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) { if ( registerView != null ) registerView.onFailure(firmNameWithIDArrayList); }
 
     @Override
     public void onDestroy() {

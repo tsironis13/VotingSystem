@@ -1,99 +1,61 @@
 package com.votingsystem.tsiro.adapters;
 
 import android.content.Context;
-import android.database.DataSetObserver;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.SpinnerAdapter;
+import android.widget.ArrayAdapter;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
+import java.util.List;
 
 /**
  * Created by giannis on 15/3/2016.
  */
-public class FirmNamesSpnrNothingSelectedAdapter implements SpinnerAdapter {
+public class FirmNamesSpnrNothingSelectedAdapter extends ArrayAdapter<FirmNameWithID> {
 
     private static final String debugTag = FirmNamesSpnrNothingSelectedAdapter.class.getSimpleName();
     private static final int EXTRA = 1;
-    private SpinnerAdapter spinnerAdapter;
     private Context context;
     private int nothingSelectedLayout;
+    private List<FirmNameWithID> firmNameWithIDArrayList;
     private LayoutInflater layoutInflater;
 
-    public FirmNamesSpnrNothingSelectedAdapter(SpinnerAdapter spinnerAdapter, int nothingSelectedLayout, Context context) {
-        this.spinnerAdapter                 = spinnerAdapter;
-        this.nothingSelectedLayout          = nothingSelectedLayout;
-        this.context                        = context;
-        this.layoutInflater                 = LayoutInflater.from(context);
+    public FirmNamesSpnrNothingSelectedAdapter(Context context, int nothingSelectedLayout, List<FirmNameWithID> firmNameWithIDArrayList) {
+        super(context, nothingSelectedLayout, firmNameWithIDArrayList);
+        this.context                    =   context;
+        this.nothingSelectedLayout      =   nothingSelectedLayout;
+        this.firmNameWithIDArrayList    =   firmNameWithIDArrayList;
+        this.layoutInflater             =   LayoutInflater.from(context);
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        Log.e(debugTag, "Position: " + position + " ConvertView: " + convertView);
         if (position == 0) {
             return getNothingSelectedView(parent);
         } else {
-            return spinnerAdapter.getView(position - EXTRA, convertView, parent);
+            return super.getView(position - EXTRA, convertView, parent);
         }
     }
 
     @Override
     public View getDropDownView(int position, View convertView, ViewGroup parent) {
-        //Log.e(debugTag, "getDropDownView: " + position + " " + convertView);
+        int positionToReturn;
         if (position == 0) {
             return new View(context);
         } else {
-            return spinnerAdapter.getDropDownView(position - EXTRA, null, parent);
+            positionToReturn = position - EXTRA;
         }
+        return super.getDropDownView(positionToReturn, null, parent);
     }
 
     @Override
     public int getCount() {
-        int count = (spinnerAdapter == null) ? 0 : spinnerAdapter.getCount();
+        int count = (firmNameWithIDArrayList == null) ? 0 : firmNameWithIDArrayList.size();
         return count == 0 ? 0 : count + EXTRA;
     }
 
-    @Override
-    public FirmNameWithID getItem(int position) {
-        //return position == 0 ? null : spinnerAdapter.getItem(position + EXTRA);
-        return null;
-    }
-
-    @Override
-    public long getItemId(int position) {
-        //return position >= EXTRA ? super.getItemId(position + EXTRA) : position + EXTRA;
-        return 0;
-    }
-
-    @Override
-    public int getItemViewType(int position) {
-        return 0;
-    }
-
-    @Override
-    public int getViewTypeCount() {
-        return 0;
-    }
-
-    @Override
-    public boolean isEmpty() {
-        return spinnerAdapter.isEmpty();
-    }
-
-    @Override
-    public boolean hasStableIds() {
-        return false;
-    }
-
-    @Override
-    public void registerDataSetObserver(DataSetObserver observer) {}
-
-    @Override
-    public void unregisterDataSetObserver(DataSetObserver observer) {}
-
-    protected View getNothingSelectedView(ViewGroup parent) {
+    private View getNothingSelectedView(ViewGroup parent) {
         return layoutInflater.inflate(nothingSelectedLayout, parent, false);
     }
-
 }

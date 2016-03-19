@@ -5,7 +5,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -18,23 +17,18 @@ import android.text.TextWatcher;
 import android.text.method.TransformationMethod;
 import android.util.Log;
 import android.util.SparseIntArray;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import com.rey.material.widget.EditText;
-
-import android.widget.LinearLayout;
-import android.widget.PopupWindow;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.Spinner;
+import com.rey.material.widget.TextView;
 import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.Register.RegisterPresenterImpl;
 import com.votingsystem.tsiro.Register.RegisterPresenterParamsObj;
@@ -45,9 +39,8 @@ import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.votingsystem.R;
-import java.util.ArrayList;
-import java.util.FormatFlagsConversionMismatchException;
 import java.util.HashMap;
+import java.util.List;
 
 /**
  * Created by user on 11/12/2015.
@@ -112,13 +105,13 @@ public class RegisterFragment extends Fragment implements RegisterView{
             fillValidityInputMap(getResources().getStringArray(R.array.input_fields_array));
             inputValidationCodes = AppConfig.getCodes();
 
-            registerPresenterImpl.getFirmNamesToPopulateSpnr(initialConnectionStatus);
+            registerPresenterImpl.firmNamesSpnrActions(initialConnectionStatus);
             connectionStatus = initialConnectionStatus;
             broadcastReceiver = new BroadcastReceiver() {
                 @Override
                 public void onReceive(Context context, Intent intent) {
                     connectionStatus = intent.getExtras().getInt("connectivityStatus");
-                    registerPresenterImpl.getFirmNamesToPopulateSpnr(connectionStatus);
+                    registerPresenterImpl.firmNamesSpnrActions(connectionStatus);
                 }
             };
             submitBtn.setTransformationMethod(null);
@@ -212,6 +205,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 @Override
                 public void onItemSelected(Spinner parent, View view, int position, long id) {
                     if (view instanceof TextView) ((TextView) view).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                    Log.e(debugTag,position+"");
                     if (position != 0) {
                         //FirmNamesSpnrNothingSelectedAdapter firmNamesSpnrNothingSelectedAdapter = (FirmNamesSpnrNothingSelectedAdapter) parent.getAdapter();
                         //FirmNameWithID firmNameWithID = (FirmNameWithID) firmNamesSpnrNothingSelectedAdapter.getUnderlinedSpinnerAdapter().getItem(position - 1);
@@ -302,22 +296,17 @@ public class RegisterFragment extends Fragment implements RegisterView{
     }
 
     @Override
-    public void onSuccessfulFirmNamesSpnrLoad(ArrayList<FirmNameWithID> firmNameWithIDArrayList) {
-        ArrayAdapter<FirmNameWithID> pickFirmArrayAdapter = new ArrayAdapter<>(getActivity(), R.layout.spinner_selection_item, firmNameWithIDArrayList);
-        pickFirmArrayAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        //pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(spinnerAdapter, R.layout.spinner_selection_item, getActivity()));
-        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(pickFirmArrayAdapter, R.layout.spinner_selection_item, getActivity()));
-        if (pickFirmSpnr.getAdapter() != null) {
-
-        } else {
-            //pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(spinnerAdapter, R.layout.spinner_selection_item, getActivity()));
+    public void onSuccessfulFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDList) {
+        if (pickFirmSpnr.getAdapter() == null) {
+            pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(getActivity(), R.layout.spinner_selection_item, firmNameWithIDList));
+            setpickFirmSpnrDropDownViewRes(pickFirmSpnr);
         }
     }
 
     @Override
-    public void onFailure() {
-        Log.e(debugTag, "onFailure " + " Adapter: " + pickFirmSpnr.getAdapter());
-        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(null, R.layout.spinner_selection_item, getActivity()));
+    public void onFailure(List<FirmNameWithID> firmNameWithIDList) {
+        pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(getActivity(), R.layout.spinner_selection_item, firmNameWithIDList));
+        setpickFirmSpnrDropDownViewRes(pickFirmSpnr);
     }
 
     @Override
@@ -420,6 +409,11 @@ public class RegisterFragment extends Fragment implements RegisterView{
         Animation fadeAnimation = new AlphaAnimation(fromAlpha, toAlpha);
         fadeAnimation.setDuration(400);
         view.startAnimation(fadeAnimation);
+    }
+
+    private static void setpickFirmSpnrDropDownViewRes(Spinner pickFirmSpnr) {
+        FirmNamesSpnrNothingSelectedAdapter firmNamesSpnrNothingSelectedAdapter = (FirmNamesSpnrNothingSelectedAdapter) pickFirmSpnr.getAdapter();
+        firmNamesSpnrNothingSelectedAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
     }
 
     private static void clearEditextHelper(EditText editText) {
