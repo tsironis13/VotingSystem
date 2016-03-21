@@ -211,108 +211,11 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                     Log.d(debugTag, "user id: " + response.body().getId() + "email: " + response.body().getEmail() + " username: " + response.body().getUsername());
                     inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                     View popup = inflater.inflate(R.layout.popup_login, null);
-                    createPopUpWindow(popup);
                 }
             }
 
             @Override
             public void onFailure(Throwable t) {
-            }
-        });
-    }
-
-    private void createPopUpWindow(View popup) {
-                popupWindow = new PopupWindow(popup,
-                                              ViewGroup.LayoutParams.WRAP_CONTENT,
-                                              ViewGroup.LayoutParams.WRAP_CONTENT,
-                                              true);
-                firmSpnr = (Spinner) popup.findViewById(R.id.firmSpnr);
-                firmcodeEdt = (EditText) popup.findViewById(R.id.firmcodeEdt);
-                popupErrorresponseTtv = (TextView) popup.findViewById(R.id.popupErrorresponseTtv);
-                popUpLoginBtn = (Button) popup.findViewById(R.id.popUpLoingSpnrBtn);
-                //populate spinner from server request results
-                getFirmNamesToPopulateSpinner(new FirmNamesRequestCallback() {
-                    @Override
-                    public void getFirmNames(List<Firm.FirmElement> firmNames) {
-                        //ArrayList<Firm> firmNamesList = new ArrayList<Firm>(Arrays.asList(firmNames));
-                        ArrayAdapter<Firm.FirmElement> loginInSpinnerAdapter = new ArrayAdapter<Firm.FirmElement>(getActivity(), android.R.layout.simple_spinner_item, firmNames);
-                        loginInSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                        loginInSpinnerAdapter.notifyDataSetChanged();
-                        firmSpnr.setAdapter(loginInSpinnerAdapter);
-                    }
-                });
-
-                firmSpnr.setOnItemSelectedListener(this);
-                popupWindow.setOutsideTouchable(true);
-                popupWindow.setBackgroundDrawable(new ShapeDrawable());
-                popupWindow.showAtLocation(popup, Gravity.CENTER, 0, 0);
-               // popupWindow.update();
-
-                popUpLoginBtn.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        if (firmcodeEdt.getText().toString().isEmpty()) {
-                            //String encoded = commonElements.encodeUtf8(getResources().getString(R.string.empty_firm_code));
-                            //popupErrorresponseTtv.setText(commonElements.decodeUtf8(encoded));
-                        } else {
-                            ApiService apiService = RetrofitSingleton.getInstance().getApiService();
-                            Log.d(debugTag, "ApiService Singleton: " + apiService.toString());
-                            Call<Firm> calls = apiService.getFirmByNameAndCode("getFirmByNameAndCode", firmSpnr.getSelectedItem().toString(), firmcodeEdt.getText().toString());
-                            calls.enqueue(new Callback<Firm>() {
-                                @Override
-                                public void onResponse(Response<Firm> response, Retrofit retrofit) {
-                                    if (response.body().getError()) {
-                                        popupErrorresponseTtv.setText(response.body().getDescription());
-                                        Log.d(debugTag, response.body().getDescription());
-                                    } else {
-                                        startBaseActivity();
-                                        Log.d(debugTag, String.valueOf(response.isSuccess()));
-                                        //Log.d(debugTag, response.body().getFirm_name() + " " + response.body().getCity() + " " + response.body().getAddress());
-                                    }
-                                }
-
-                                @Override
-                                public void onFailure(Throwable t) {
-                                }
-                            });
-                        }
-                    }
-                });
-    }
-
-    private void getFirmNamesToPopulateSpinner(final FirmNamesRequestCallback firmNamesRequestCallback) {
-        /*
-         * create an instance of Gson object through GsonBuilder
-         * Using the registerTypeAdapter() method, we are registering our deserializer and instructing Gson to use our deserializer
-         * when deserializing objects of type Firms
-         */
-        Gson firmsGson = new GsonBuilder()
-                        .registerTypeAdapter(Firm[].class, new FirmsDeserializer())
-                        .create();
-
-        ApiService apiService = RetrofitSingleton.getInstanceWithCustoGson(firmsGson).getApiService();
-        Log.d(debugTag, "Custom Gson ApiService Singleton: " + apiService.toString());
-        Call<Firm> call = apiService.getFirmNames("getFirmNames");
-        call.enqueue(new Callback<Firm>() {
-            @Override
-            public void onResponse(retrofit.Response<Firm> response, Retrofit retrofit) {
-                Firm firmNames = response.body();
-                //for (int i = 0; i<firmNames.length; i++ ) {
-
-                Log.d(debugTag, String.valueOf(response.body().getError()));
-                Log.d(debugTag, String.valueOf(response.body().getDescription()));
-                List<Firm.FirmElement> firmElements = response.body().getFirm_element();
-
-                for (int i = 0; i < firmElements.size(); i++) {
-                    Log.d(debugTag, firmElements.get(i).getFirm_name());
-                }
-
-                firmNamesRequestCallback.getFirmNames(firmElements);
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-
             }
         });
     }

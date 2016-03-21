@@ -20,8 +20,8 @@ public class NetworkState extends BroadcastReceiver {
 
     private static final String debugTag = NetworkState.class.getName();
     private ConnectivityManager connectivityManager;
-    private NetworkInfo activeNetworkInfo;
     private List<NetworkStateListeners> networkStateListenerList;
+    private int status;
 
     public NetworkState() {
         networkStateListenerList = new ArrayList<>();
@@ -31,23 +31,19 @@ public class NetworkState extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         Log.e(debugTag, "onReceive");
         connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
-        notifyStateToAll();
+        status = (connectivityManager.getActiveNetworkInfo() != null) ? connectivityManager.getActiveNetworkInfo().getType() : AppConfig.NO_CONNECTION;
+        notifyStateToAll(status);
     }
 
-    private void notifyStateToAll() {
+    private void notifyStateToAll(int status) {
         for (NetworkStateListeners networkStateListeners : networkStateListenerList) {
-            notifyState(networkStateListeners);
+            notifyState(networkStateListeners, status);
         }
     }
 
-    public void notifyState(NetworkStateListeners networkStateListeners) {
+    public void notifyState(NetworkStateListeners networkStateListeners, int status) {
         Log.e(debugTag, "notifyState Called");
-        if (activeNetworkInfo == null) {
-            networkStateListeners.networkStatus(AppConfig.NO_CONNECTION);
-        } else {
-            networkStateListeners.networkStatus(activeNetworkInfo.getType());
-        }
+        networkStateListeners.networkStatus(status);
     }
 
     public void addListener(NetworkStateListeners networkStateListeners) {

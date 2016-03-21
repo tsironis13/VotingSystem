@@ -251,7 +251,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
     public void onResume() {
         super.onResume();
         Log.e(debugTag, "onResume");
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter("networkStateUpdated"));
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter(getResources().getString(R.string.network_state_update)));
     }
 
     @Override
@@ -274,7 +274,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
      */
     @Override
     public void clearEditextHelpersAndSuccessIcon(String action, RelativeLayout acceptRlt, EditText inputEdt) {
-        if ( action.equals("clearSuccessIcon") ) {
+        if (action.equals("clearSuccessIcon")) {
             animationStaff(acceptRlt, 1.0f, 0.0f, "gone");
         } else {
             if ( !inputEdt.getHelper().toString().isEmpty() ) inputEdt.setHelper(null);

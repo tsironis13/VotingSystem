@@ -135,7 +135,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     public void registerOnClick() {
         registerFragment = new RegisterFragment();
         if ( getSupportFragmentManager().getBackStackEntryCount() > 0 ) getSupportFragmentManager().popBackStack();
-        loginActivityBundle.putInt("connectivityStatus", connectionStatus);
+        loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
         registerFragment.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.frame_container, registerFragment, getResources().getString(R.string.registerFgmt))
@@ -195,8 +195,8 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     public void networkStatus(int connectionType) {
         Log.e(debugTag, "listeners: "+connectionType);
         connectionStatus = connectionType;
-        Intent intent = new Intent("networkStateUpdated");
-        intent.putExtra("connectivityStatus", connectionStatus);
+        Intent intent = new Intent(getResources().getString(R.string.network_state_update));
+        intent.putExtra(getResources().getString(R.string.connectivity_status), connectionStatus);
         LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
     }
 }

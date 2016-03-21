@@ -52,8 +52,10 @@
         <item>email</item>
         <item>firmcode</item>
     </string-array>
-    <!-- INTENT FILTERS -->
+    <!-- INTENT FILTERS STAFF -->
     <string name="connectivity_change">android.net.conn.CONNECTIVITY_CHANGE</string>
+    <string name="network_state_update">networkStateUpdated</string>
+    <string name="connectivity_status">connectivityStatus</string>
     <!-- NAVIGATION DRAWER ITEMS -->
     <string name="firm">Η Εταιρεία</string>
     <string name="mysurveys">Οι Έρευνες μου</string>
