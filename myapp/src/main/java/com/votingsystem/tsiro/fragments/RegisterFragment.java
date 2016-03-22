@@ -23,10 +23,13 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
+
+import com.rey.material.app.BottomSheetDialog;
 import com.rey.material.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 import com.rey.material.widget.ProgressView;
+import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.Spinner;
 import com.rey.material.widget.TextView;
 import com.squareup.leakcanary.RefWatcher;
@@ -38,6 +41,7 @@ import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
+import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.util.HashMap;
 import java.util.List;
@@ -58,7 +62,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
     private LoginActivityCommonElementsAndMuchMore commonElements;
     private SparseIntArray inputValidationCodes;
     private FirmNameWithID spinnerState;
-    private BroadcastReceiver broadcastReceiver;
+    private BroadcastReceiver connectionStatusReceiver;
     private HashMap<String, Boolean> inputValidityMap;
     private static Handler mainThreadHandler;
     private static long showhideAcceptPasswordAnimationTargetTimeinMillis;
@@ -66,6 +70,8 @@ public class RegisterFragment extends Fragment implements RegisterView{
     private TextWatcher registerPasswordEdtTextWatcher;
     private int connectionStatus, initialConnectionStatus;
     private RegisterPresenterImpl registerPresenterImpl;
+    private SnackBar snackBar;
+    private BottomSheetDialog connectionSettingsDialog;
 
     @Override
     public void onAttach(Context context) {
@@ -92,6 +98,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
         usernameProgressView        =   (ProgressView) view.findViewById(R.id.usernameProgressView);
         emailProgressView           =   (ProgressView) view.findViewById(R.id.emailProgressView);
         pickFirmSpnr                =   (Spinner) view.findViewById(R.id.pickFirmSpnr);
+        snackBar                    =   ((LoginActivity)getActivity()).getSnackBar();
         initialConnectionStatus     =   getArguments().getInt("connectivityStatus");
         return view;
     }
@@ -100,6 +107,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if ( savedInstanceState == null ) {
+            if (snackBar.isShown()) snackBar.dismiss();
             registerPresenterImpl = new RegisterPresenterImpl(this);
             registerPasswordEdt.addTextChangedListener(handleRegisterPasswordTextChanges());
             fillValidityInputMap(getResources().getStringArray(R.array.input_fields_array));
@@ -107,13 +115,8 @@ public class RegisterFragment extends Fragment implements RegisterView{
 
             registerPresenterImpl.firmNamesSpnrActions(initialConnectionStatus);
             connectionStatus = initialConnectionStatus;
-            broadcastReceiver = new BroadcastReceiver() {
-                @Override
-                public void onReceive(Context context, Intent intent) {
-                    connectionStatus = intent.getExtras().getInt("connectivityStatus");
-                    registerPresenterImpl.firmNamesSpnrActions(connectionStatus);
-                }
-            };
+            initializeBroadcastReceivers();
+
             submitBtn.setTransformationMethod(null);
             setSignInHereSpan();
             registerUsernameEdt.addTextChangedListener(new TextWatcher() {
@@ -204,8 +207,8 @@ public class RegisterFragment extends Fragment implements RegisterView{
             pickFirmSpnr.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(Spinner parent, View view, int position, long id) {
-                    if (view instanceof TextView) ((TextView) view).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
-                    Log.e(debugTag,position+"");
+                    if (view instanceof TextView)
+                        ((TextView) view).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                     if (position != 0) {
                         //FirmNamesSpnrNothingSelectedAdapter firmNamesSpnrNothingSelectedAdapter = (FirmNamesSpnrNothingSelectedAdapter) parent.getAdapter();
                         //FirmNameWithID firmNameWithID = (FirmNameWithID) firmNamesSpnrNothingSelectedAdapter.getUnderlinedSpinnerAdapter().getItem(position - 1);
@@ -217,6 +220,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 //ArrayList<FirmNameWithID> arrayList = new ArrayList<FirmNameWithID>();
                 @Override
                 public void onClick(View v) {
+                    if (connectionStatus == AppConfig.NO_CONNECTION) showSnackBar();
                     //arrayList.add(new FirmNameWithID("dfsddsds", 0));
                     //arrayList.add(new FirmNameWithID("ddsddsds", 1));
                     //arrayList.add(new FirmNameWithID("dddd4433", 2));
@@ -244,6 +248,15 @@ public class RegisterFragment extends Fragment implements RegisterView{
                     if (v instanceof TextView) commonElements.signInHereOnClick();
                 }
             });
+            snackBar.actionClickListener(new SnackBar.OnActionClickListener() {
+                @Override
+                public void onActionClick(SnackBar sb, int actionId) {
+                    connectionSettingsDialog = new BottomSheetDialog(getActivity(), R.style.ConnectionSettingsBottomSheetDialog);
+                    View dialogView = LayoutInflater.from(getActivity()).inflate(R.layout.connection_settings_bottom_sheet_dialog, null);
+                    connectionSettingsDialog.setContentView(dialogView);
+                    connectionSettingsDialog.show();
+                }
+            });
         }
     }
 
@@ -251,13 +264,13 @@ public class RegisterFragment extends Fragment implements RegisterView{
     public void onResume() {
         super.onResume();
         Log.e(debugTag, "onResume");
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(broadcastReceiver, new IntentFilter(getResources().getString(R.string.network_state_update)));
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(connectionStatusReceiver, new IntentFilter(getResources().getString(R.string.network_state_update)));
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(broadcastReceiver);
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
     }
 
     @Override
@@ -310,7 +323,9 @@ public class RegisterFragment extends Fragment implements RegisterView{
     }
 
     @Override
-    public void setToastMsg(int code) { Toast.makeText(getActivity(), commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(inputValidationCodes.get(code)))), Toast.LENGTH_SHORT).show(); }
+    public void displayFeedbackMsg(int code) {
+        showSnackBar();
+    }
 
     @Override
     public void showFieldValidationProgress(ProgressView inputFieldPrgv) { inputFieldPrgv.start(); }
@@ -343,6 +358,17 @@ public class RegisterFragment extends Fragment implements RegisterView{
             showhideAcceptPasswordAnimationTargetTimeinMillis = System.currentTimeMillis() + AppConfig.showhideAcceptDelay;
         }
         inputValidityMap.put(tag, true);
+    }
+
+    private void initializeBroadcastReceivers() {
+        connectionStatusReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                connectionStatus = intent.getExtras().getInt("connectivityStatus");
+                if (connectionStatus != AppConfig.NO_CONNECTION && snackBar.isShown()) snackBar.dismiss();
+                registerPresenterImpl.firmNamesSpnrActions(connectionStatus);
+            }
+        };
     }
 
     private RegisterPresenterParamsObj setPresenterObjParams(int connectionStatus, boolean isAdded, EditText inputEditext, ProgressView inputFieldProgressView, String retrofitAction, RelativeLayout validInputRlt, String tag, View errorView) {
@@ -414,6 +440,11 @@ public class RegisterFragment extends Fragment implements RegisterView{
     private static void setpickFirmSpnrDropDownViewRes(Spinner pickFirmSpnr) {
         FirmNamesSpnrNothingSelectedAdapter firmNamesSpnrNothingSelectedAdapter = (FirmNamesSpnrNothingSelectedAdapter) pickFirmSpnr.getAdapter();
         firmNamesSpnrNothingSelectedAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
+    }
+
+    private void showSnackBar() {
+        snackBar.applyStyle(R.style.SnackBarNoConnection);
+        snackBar.show();
     }
 
     private static void clearEditextHelper(EditText editText) {

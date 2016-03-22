@@ -19,7 +19,7 @@ public interface RegisterView {
     public void showFieldValidationProgress(ProgressView inputFieldPrgv);
     public void hideFieldValidationProgress(ProgressView inputFieldPrgv);
     public void setInputFieldError(int code, View view);
-    public void setToastMsg(int code);
+    public void displayFeedbackMsg(int code);
     public void onSuccess(RelativeLayout inputValidRlt, String tag);
     public void onSuccessfulFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList);
     public void onFailure(List<FirmNameWithID> firmNameWithIDArrayList);

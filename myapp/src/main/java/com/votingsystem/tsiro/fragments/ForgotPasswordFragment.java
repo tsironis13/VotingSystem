@@ -10,9 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
+
+import com.rey.material.widget.SnackBar;
 import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
+import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.votingsystem.R;
 
 /**
@@ -23,6 +26,7 @@ public class ForgotPasswordFragment extends Fragment {
     private static final String debugTag = ForgotPasswordFragment.class.getSimpleName();
     private Button sendEmailBtn;
     private TextView signInHereTtv, registerTtv;
+    private SnackBar snackBar;
     private View view;
     private LoginActivityCommonElementsAndMuchMore commonElements;
 
@@ -38,12 +42,14 @@ public class ForgotPasswordFragment extends Fragment {
         sendEmailBtn            =   (Button) view.findViewById(R.id.sendEmailBtn);
         signInHereTtv           =   (TextView) view.findViewById(R.id.signInHereTtv);
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
+        snackBar                =   ((LoginActivity)getActivity()).getSnackBar();
         return view;
     }
 
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        if (snackBar.isShown()) snackBar.dismiss();
         sendEmailBtn.setTransformationMethod(null);
         setSignInHereSpan();
         setRegisterSpan();

@@ -10,7 +10,7 @@ import java.util.List;
  * Created by user on 5/2/2016.
  */
 public interface RegisterInputFieldFinishedListener {
-    public void showToastMsg(int code);
+    public void displayFeedbackMsg(int code);
     public void startProgressLoader(ProgressView inputFieldProgressView);
     public void hideProgressLoader(ProgressView inputFieldProgressView);
     public void onInputFieldError(int code, View view);

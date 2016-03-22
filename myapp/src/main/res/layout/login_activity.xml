@@ -11,6 +11,21 @@
         android:id="@+id/frame_container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fitsSystemWindows="true" />
+        android:fitsSystemWindows="true" >
+
+        <LinearLayout
+            android:id="@+id/loginActivityFgmtContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" />
+
+        <com.rey.material.widget.SnackBar
+            android:id="@+id/loginActivitySnkBar"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:visibility="invisible"
+            android:layout_gravity="bottom" />
+
+    </FrameLayout>
 
 </RelativeLayout>

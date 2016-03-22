@@ -8,13 +8,41 @@
         <item name="colorPrimaryDark">@color/primaryColorDark</item>
         <item name="colorAccent">@color/accentColor</item>
     </style>
-    <!-- Spinner -->
+    <!-- REGISTER -->
+    <style name="Editext" parent="Material.Widget.EditText.Light">
+        <item name="et_supportTextErrorColor">@color/et_supportTextErrorColor</item>
+        <item name="et_supportTextSize">@dimen/et_supportTextSize</item>
+        <item name="et_labelEnable">true</item>
+        <item name="et_labelTextColor">@color/accentColor</item>
+        <item name="et_labelTextSize">@dimen/et_labelTextSize</item>
+        <item name="et_supportSingleLine">true</item>
+        <item name="et_dividerColor">@android:color/transparent</item>
+    </style>
+    <style name="EditextUsername" parent="Editext">
+        <item name="et_supportMode">helper</item>
+    </style>
+    <style name="EditextPassword" parent="Editext">
+        <item name="et_dividerHeight">@dimen/et_dividerHeight</item>
+        <item name="et_dividerErrorColor">@color/divider_errorColor</item>
+        <item name="et_supportMode">charCounter</item>
+        <item name="et_supportMaxChars">8</item>
+        <item name="et_supportTextColor">@color/accentColor</item>
+    </style>
+    <style name="EditextConfirmPassword" parent="Editext">
+        <item name="et_supportMode">helper</item>
+    </style>
+    <style name="EditextEmail" parent="Editext">
+        <item name="et_supportMode">helper</item>
+    </style>
+    <style name="EditextFirmCode" parent="Editext">
+        <item name="et_supportMode">helper</item>
+    </style>
+    <!-- SPINNER -->
     <style name="Spinner" parent="Material.Drawable.Ripple">
-        <item name="rd_cornerRadius">0dp</item>
         <item name="spn_dividerColor">@android:color/transparent</item>
-        <item name="spn_arrowPadding">14dp</item>
+        <item name="spn_arrowPadding">@dimen/spn_arrowPadding</item>
         <item name="spn_arrowColor">@color/accentColor</item>
-        <item name="spn_arrowSize">4dp</item>
+        <item name="spn_arrowSize">@dimen/spn_arrowSize</item>
         <item name="spn_arrowSwitchMode">true</item>
         <item name="spn_arrowAnimDuration">@android:integer/config_shortAnimTime</item>
         <item name="spn_arrowInterpolator">@android:anim/decelerate_interpolator</item>
@@ -26,8 +54,28 @@
         <item name="rd_rippleColor">@color/primaryColor</item>
         <item name="rd_rippleAnimDuration">380</item>
         <item name="rd_maskType">rectangle</item>
-        <item name="rd_cornerRadius">0dp</item>
+        <item name="rd_cornerRadius">@dimen/rd_cornerRadius</item>
         <item name="rd_delayClick">afterRelease</item>
         <item name="android:textColor">@color/abc_primary_text_material_light</item>
+    </style>
+    <!-- SNACKBARS -->
+    <style name="SnackBarNoConnection" parent="Material.Widget.SnackBar.Mobile">
+        <item name="sb_text">@string/no_connection</item>
+        <item name="sb_horizontalPadding">@dimen/sb_horizontalPadding</item>
+        <item name="sb_actionText">@string/more</item>
+        <item name="sb_textSize">@dimen/sb_textSize</item>
+        <item name="sb_duration">25500</item>
+    </style>
+    <!-- DIALOS -->
+    <style name="ConnectionSettingsBottomSheetDialog">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:windowIsFloating">false</item>
+        <item name="bsd_inDuration">@android:integer/config_mediumAnimTime</item>
+        <item name="bsd_inInterpolator">@android:anim/decelerate_interpolator</item>
+        <item name="bsd_outDuration">@android:integer/config_mediumAnimTime</item>
+        <item name="bsd_outInterpolator">@android:anim/accelerate_interpolator</item>
+        <item name="bsd_cancelable">true</item>
+        <item name="bsd_canceledOnTouchOutside">true</item>
+        <item name="bsd_dimAmount">0.5</item>
     </style>
 </resources>

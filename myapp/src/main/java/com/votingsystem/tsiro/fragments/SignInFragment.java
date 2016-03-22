@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
@@ -29,6 +30,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.rey.material.widget.SnackBar;
 import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.deserializer.FirmsDeserializer;
@@ -53,11 +55,10 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
 
     private static final String debugTag = SignInFragment.class.getSimpleName();
     private static String error_no_connection, empty_fields;
-    private TextView forgotPasswordTtV, registerTtv, errorresponseTtv, popupErrorresponseTtv, showHidePasswordTtv;
-    private EditText signInUsernameEdt, signInPasswordEdt, firmcodeEdt;
-    private Button signInBtn, popUpLoginBtn;
-    private Spinner firmSpnr;
-    private PopupWindow popupWindow;
+    private TextView forgotPasswordTtV, registerTtv, errorresponseTtv, showHidePasswordTtv;
+    private EditText signInUsernameEdt, signInPasswordEdt;
+    private Button signInBtn;
+    private SnackBar snackBar;
     private LayoutInflater inflater;
     private SharedPreferences sessionPrefs;
     private View view;
@@ -80,6 +81,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
         errorresponseTtv        =   (TextView) view.findViewById(R.id.errorresponseTtv);
         showHidePasswordTtv     =   (TextView) view.findViewById(R.id.showHidePasswordTtv);
+        snackBar                =   ((LoginActivity)getActivity()).getSnackBar();
         return view;
     }
 
@@ -92,7 +94,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                 //Log.d(debugTag, "here");
             }
         };
-
+        if (snackBar.isShown()) snackBar.dismiss();
 
         sessionPrefs = LoginActivity.getSessionPrefs(getActivity());
         boolean key = sessionPrefs.contains("17");
@@ -251,13 +253,13 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onResume() {
         super.onResume();
-        //getActivity().registerReceiver(broadcastReceiver, new IntentFilter("networkStateUpdated"));
+        getActivity().registerReceiver(broadcastReceiver, new IntentFilter("networkStateUpdated"));
     }
 
     @Override
     public void onPause() {
         super.onPause();
-       // getActivity().unregisterReceiver(broadcastReceiver);
+        getActivity().unregisterReceiver(broadcastReceiver);
     }
 
     @Override

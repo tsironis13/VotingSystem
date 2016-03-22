@@ -9,6 +9,8 @@
     <string name="passwordValidation">passwordValidation</string>
     <string name="emailValidation">emailValidation</string>
     <string name="get_firm_names">getFirmNames</string>
+    <string name="more">Περισσοτερα</string>
+    <string name="check_connection">Έλεγξε τη σύνδεση σου</string>
     <!-- LOGIN -->
     <string name="app_logo">app_logo</string>
     <string name="input_logo">input_logo</string>
@@ -29,7 +31,7 @@
     <string name="pickFirm">Επιλογή Εταιρείας</string>
     <!-- ERRORS -->
     <string name="empty_fields">Παρακαλώ συμπλήρωσε όλα τα πεδία.</string>
-    <string name="no_connection">Χωρίς πρόσβαση στο Internet. Παρακαλώ ξαναπροσπάθησε.</string>
+    <string name="no_connection">Αδυναμία σύνδεσης στο δίκτυο.</string>
     <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Παρακαλώ ξαναπροσπάθησε σύντομα.</string>
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>
     <string name="empty_requried_field">Το πεδίο είναι υποχρεωτικό</string>
@@ -56,6 +58,7 @@
     <string name="connectivity_change">android.net.conn.CONNECTIVITY_CHANGE</string>
     <string name="network_state_update">networkStateUpdated</string>
     <string name="connectivity_status">connectivityStatus</string>
+    <string name="back_pressed">backpressed</string>
     <!-- NAVIGATION DRAWER ITEMS -->
     <string name="firm">Η Εταιρεία</string>
     <string name="mysurveys">Οι Έρευνες μου</string>

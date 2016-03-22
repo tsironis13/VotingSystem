@@ -61,14 +61,14 @@ public class RegisterInteractorImpl implements RegisterInteractor {
                     }
                     @Override
                     public void onFailure(Throwable t) {
-                        if ( registerPresenterParamsObj.isAdded() ) {
-                            if ( t instanceof IOException ) {
-                                registerInputFieldFinishedListener.showToastMsg(AppConfig.UNAVAILABLE_SERVICE);
+                        if (registerPresenterParamsObj.isAdded()) {
+                            if (t instanceof IOException) {
+                                registerInputFieldFinishedListener.displayFeedbackMsg(AppConfig.UNAVAILABLE_SERVICE);
                             } else {
-                                registerInputFieldFinishedListener.showToastMsg(AppConfig.INTERNAL_ERROR);
+                                registerInputFieldFinishedListener.displayFeedbackMsg(AppConfig.INTERNAL_ERROR);
                             }
                         }
-                        if ( !registerPresenterParamsObj.getTag().equals("password") ) registerInputFieldFinishedListener.hideProgressLoader(registerPresenterParamsObj.getInputFieldProgressView());
+                        if (!registerPresenterParamsObj.getTag().equals("password")) registerInputFieldFinishedListener.hideProgressLoader(registerPresenterParamsObj.getInputFieldProgressView());
                     }
                 });
             }

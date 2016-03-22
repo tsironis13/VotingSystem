@@ -49,7 +49,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
 
     public void validateInputFieldOnFocusChange(RegisterPresenterParamsObj registerPresenterParamsObj){
         if (registerPresenterParamsObj.getConnectionStatus() == AppConfig.NO_CONNECTION) {
-            if (registerPresenterParamsObj.isAdded() && registerView != null) registerView.setToastMsg(AppConfig.NO_CONNECTION);
+            if (registerPresenterParamsObj.isAdded() && registerView != null) registerView.displayFeedbackMsg(AppConfig.NO_CONNECTION);
         } else {
             registerInteractorImpl.validateInputField(registerPresenterParamsObj, this);
         }
@@ -100,7 +100,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     public void hideProgressLoader(ProgressView inputFieldPrgv) { if ( registerView != null ) registerView.hideFieldValidationProgress(inputFieldPrgv); }
 
     @Override
-    public void showToastMsg(int code) { if ( registerView != null ) registerView.setToastMsg(code); }
+    public void displayFeedbackMsg(int code) { if ( registerView != null ) registerView.displayFeedbackMsg(code); }
 
     @Override
     public void onInputFieldError(int code, View view) { if ( registerView != null ) registerView.setInputFieldError(code, view); }

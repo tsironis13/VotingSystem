@@ -21,6 +21,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import com.rey.material.widget.EditText;
 import android.widget.TextView;
+
+import com.rey.material.widget.SnackBar;
 import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.app.AppConfig;
@@ -47,6 +49,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     private Bundle loginActivityBundle;
     private int connectionStatus;
     private NetworkState networkState;
+    private SnackBar loginActivitySnkBar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +57,15 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         setContentView(R.layout.login_activity);
 
         if ( savedInstanceState == null ) {
-            networkState = new NetworkState();
-
+            networkState        = new NetworkState();
             loginActivityBundle = new Bundle();
+
+            loginActivitySnkBar = (SnackBar) findViewById(R.id.loginActivitySnkBar);
 
             signInFragment = new SignInFragment();
             signInFragment.setArguments(loginActivityBundle);
             getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.frame_container, signInFragment, getResources().getString(R.string.signInFgmt))
+                    .replace(R.id.loginActivityFgmtContainer, signInFragment, getResources().getString(R.string.signInFgmt))
                     .commit();
 
             getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
@@ -102,7 +106,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if ( getSupportFragmentManager().getBackStackEntryCount() > 0 ) getSupportFragmentManager().popBackStack(0, 0);
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) getSupportFragmentManager().popBackStack(0, 0);
     }
 
     @Override
@@ -126,7 +130,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         forgotPasswordFgmt = new ForgotPasswordFragment();
         forgotPasswordFgmt.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_container, forgotPasswordFgmt, getResources().getString(R.string.forgotPasswordFgmt))
+                .replace(R.id.loginActivityFgmtContainer, forgotPasswordFgmt, getResources().getString(R.string.forgotPasswordFgmt))
                 .addToBackStack(getResources().getString(R.string.forgotPasswordFgmt))
                 .commit();
     }
@@ -138,7 +142,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
         registerFragment.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.frame_container, registerFragment, getResources().getString(R.string.registerFgmt))
+                .replace(R.id.loginActivityFgmtContainer, registerFragment, getResources().getString(R.string.registerFgmt))
                 .addToBackStack(getResources().getString(R.string.registerFgmt))
                 .commit();
     }
@@ -146,6 +150,10 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     public void signInHereOnClick() {
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) getSupportFragmentManager().popBackStack();
+    }
+
+    public SnackBar getSnackBar() {
+        return loginActivitySnkBar;
     }
 
     public static SharedPreferences getSessionPrefs(Context context) {
@@ -163,8 +171,8 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
     @Override
     public boolean validateEditText(EditText[] fields) {
-        for ( int i = 0 ; i < fields.length; i++ ) {
-            if ( fields[i].getText().toString().isEmpty() && fields[i].getTag().equals(getResources().getString(R.string.required))) return false;
+        for (EditText field : fields) {
+            if (field.getText().toString().isEmpty() && field.getTag().equals(getResources().getString(R.string.required))) return false;
         }
         return true;
     }
