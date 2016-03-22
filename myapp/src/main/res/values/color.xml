@@ -15,16 +15,20 @@
     <color name="accept_field_shadowColor">#A8A8A8</color>
     <color name="password_error_Ttv_textColor">#DD2C00</color>
     <color name="divider_errorColor">#DD2C00</color>
+    <color name="submitBtnRippleColor">#FB8C00</color>
 
     <color name="list_item_title">#fff</color>
     <color name="list_background">#303030</color>
     <color name="list_background_pressed">#992416</color>
     <color name="list_divider">#272727</color>
     <color name="counter_text_bg">#626262</color>
-    <color name="counter_text_color">#c5c4c4</color>
+    <color name="counter_textColor">#c5c4c4</color>
     <color name="primaryColor">#2196F3</color>
     <color name="primaryColorDark">#1976D2</color>
     <color name="accentColor">#FF5722</color>
+    <!-- DIALOGS -->
+    <color name="connection_settings_textColor">#424242</color>
+    <color name="connection_settings_rippleColor">#E0E0E0</color>
     <!-- NAV DRAWER -->
     <color name="navdrawerMainColor">#FB8C00</color>
     <color name="navdrawerRcVColor">#EEE</color>

@@ -55,11 +55,6 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
         }
     }
 
-    public void validateFirmCode(int firmId, String code) {
-        Log.e(debugTag,firmId+"");
-        registerInteractorImpl.validateFirmCode(this);
-    }
-
     public void handleShowHidePasswordTtv(EditText registerPasswordEdt) {
         if ( !registerPasswordEdt.getText().toString().isEmpty() && registerView != null ) {
             if (registerPasswordEdt.getTransformationMethod() instanceof PasswordTransformationMethod) {

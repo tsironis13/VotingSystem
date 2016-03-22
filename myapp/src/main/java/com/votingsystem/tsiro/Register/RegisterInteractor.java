@@ -10,6 +10,5 @@ import java.util.ArrayList;
  */
 public interface RegisterInteractor {
     public void validateInputField(RegisterPresenterParamsObj registerPresenterParamsObj, RegisterInputFieldFinishedListener registerInputFieldFinishedListener);
-    public void validateFirmCode(RegisterInputFieldFinishedListener registerInputFieldFinishedListener);
     public void populateFirmNamesSpnr(ArrayList<FirmNameWithID> firmNameWithIDArrayList,  RegisterInputFieldFinishedListener registerInputFieldFinishedListener);
 }

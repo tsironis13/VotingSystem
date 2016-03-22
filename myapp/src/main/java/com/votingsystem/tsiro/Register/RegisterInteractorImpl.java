@@ -52,6 +52,7 @@ public class RegisterInteractorImpl implements RegisterInteractor {
                     public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
                         if ( registerPresenterParamsObj.isAdded() ) {
                             if (response.body().getError_code() != AppConfig.INPUT_OK) {
+                                Log.e(debugTag, response.body().getError_code()+"");
                                 registerInputFieldFinishedListener.onInputFieldError(response.body().getError_code(), registerPresenterParamsObj.getErrorView());
                             } else {
                                 registerInputFieldFinishedListener.onSuccess(registerPresenterParamsObj.getValidInputRlt(), registerPresenterParamsObj.getTag());
@@ -73,11 +74,6 @@ public class RegisterInteractorImpl implements RegisterInteractor {
                 });
             }
         }
-    }
-
-    @Override
-    public void validateFirmCode(RegisterInputFieldFinishedListener registerInputFieldFinishedListener) {
-
     }
 
     @Override

@@ -18,6 +18,7 @@ import android.text.method.TransformationMethod;
 import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
@@ -53,7 +54,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
     private static final String debugTag = RegisterFragment.class.getSimpleName();
     private static String error_no_connection, empty_fields;
     private RelativeLayout acceptUsernameRlt, acceptPasswordRlt, acceptEmailRlt;
-    private TextView signInHereTtv, errorresponseTtv, showHidePasswordTtv, passwordErrorTtv;
+    private TextView signInHereTtv, showHidePasswordTtv, passwordErrorTtv;
     private EditText registerUsernameEdt, registerPasswordEdt, confirmPasswordEdt, registerEmailEdt, firmCodeEdt;
     private Button submitBtn;
     private ProgressView usernameProgressView, emailProgressView;
@@ -71,7 +72,6 @@ public class RegisterFragment extends Fragment implements RegisterView{
     private int connectionStatus, initialConnectionStatus;
     private RegisterPresenterImpl registerPresenterImpl;
     private SnackBar snackBar;
-    private BottomSheetDialog connectionSettingsDialog;
 
     @Override
     public void onAttach(Context context) {
@@ -91,7 +91,6 @@ public class RegisterFragment extends Fragment implements RegisterView{
         registerEmailEdt            =   (EditText) view.findViewById(R.id.registerEmailEdt);
         firmCodeEdt                 =   (EditText) view.findViewById(R.id.firmCodeEdt);
         signInHereTtv               =   (TextView) view.findViewById(R.id.signInHereTtv);
-        errorresponseTtv            =   (TextView) view.findViewById(R.id.errorresponseTtv);
         showHidePasswordTtv         =   (TextView) view.findViewById(R.id.showHidePasswordTtv);
         passwordErrorTtv            =   (TextView) view.findViewById(R.id.passwordErrorTtv);
         submitBtn                   =   (Button) view.findViewById(R.id.submitBtn);
@@ -121,8 +120,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
             setSignInHereSpan();
             registerUsernameEdt.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -131,8 +129,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 }
 
                 @Override
-                public void afterTextChanged(Editable s) {
-                }
+                public void afterTextChanged(Editable s) {}
             });
 
             registerUsernameEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -204,9 +201,11 @@ public class RegisterFragment extends Fragment implements RegisterView{
                             registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), registerEmailEdt, emailProgressView, getResources().getString(R.string.emailValidation), acceptEmailRlt, getResources().getString(R.string.email_tag), registerEmailEdt));
                 }
             });
+            //pickFirmSpnr.setClickable(false);
             pickFirmSpnr.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(Spinner parent, View view, int position, long id) {
+                    Log.e(debugTag, "onItemSelected");
                     if (view instanceof TextView)
                         ((TextView) view).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                     if (position != 0) {
@@ -220,7 +219,11 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 //ArrayList<FirmNameWithID> arrayList = new ArrayList<FirmNameWithID>();
                 @Override
                 public void onClick(View v) {
-                    if (connectionStatus == AppConfig.NO_CONNECTION) showSnackBar();
+                    if (connectionStatus == AppConfig.NO_CONNECTION) {
+                        showSnackBar(AppConfig.NO_CONNECTION);
+                    } else {
+
+                    }
                     //arrayList.add(new FirmNameWithID("dfsddsds", 0));
                     //arrayList.add(new FirmNameWithID("ddsddsds", 1));
                     //arrayList.add(new FirmNameWithID("dddd4433", 2));
@@ -242,19 +245,11 @@ public class RegisterFragment extends Fragment implements RegisterView{
                   //  }*/
                 }
             });
+
             signInHereTtv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (v instanceof TextView) commonElements.signInHereOnClick();
-                }
-            });
-            snackBar.actionClickListener(new SnackBar.OnActionClickListener() {
-                @Override
-                public void onActionClick(SnackBar sb, int actionId) {
-                    connectionSettingsDialog = new BottomSheetDialog(getActivity(), R.style.ConnectionSettingsBottomSheetDialog);
-                    View dialogView = LayoutInflater.from(getActivity()).inflate(R.layout.connection_settings_bottom_sheet_dialog, null);
-                    connectionSettingsDialog.setContentView(dialogView);
-                    connectionSettingsDialog.show();
                 }
             });
         }
@@ -314,17 +309,20 @@ public class RegisterFragment extends Fragment implements RegisterView{
             pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(getActivity(), R.layout.spinner_selection_item, firmNameWithIDList));
             setpickFirmSpnrDropDownViewRes(pickFirmSpnr);
         }
+        pickFirmSpnr.setClickable(true);
     }
 
     @Override
     public void onFailure(List<FirmNameWithID> firmNameWithIDList) {
         pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(getActivity(), R.layout.spinner_selection_item, firmNameWithIDList));
         setpickFirmSpnrDropDownViewRes(pickFirmSpnr);
+        pickFirmSpnr.setClickable(false);
     }
 
     @Override
     public void displayFeedbackMsg(int code) {
-        showSnackBar();
+        Log.e(debugTag, "Feedback code: "+code);
+        showSnackBar(code);
     }
 
     @Override
@@ -365,7 +363,9 @@ public class RegisterFragment extends Fragment implements RegisterView{
             @Override
             public void onReceive(Context context, Intent intent) {
                 connectionStatus = intent.getExtras().getInt("connectivityStatus");
-                if (connectionStatus != AppConfig.NO_CONNECTION && snackBar.isShown()) snackBar.dismiss();
+                if (connectionStatus != AppConfig.NO_CONNECTION) {
+                    if (snackBar.isShown()) snackBar.dismiss();
+                }
                 registerPresenterImpl.firmNamesSpnrActions(connectionStatus);
             }
         };
@@ -442,8 +442,21 @@ public class RegisterFragment extends Fragment implements RegisterView{
         firmNamesSpnrNothingSelectedAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
     }
 
-    private void showSnackBar() {
-        snackBar.applyStyle(R.style.SnackBarNoConnection);
+    private void showSnackBar(int code) {
+        snackBar.actionText("");
+        if (code == AppConfig.NO_CONNECTION) {
+            snackBar
+                    .text(getResources().getString(R.string.no_connection))
+                    .applyStyle(R.style.SnackBarNoConnection);
+        } else if (code == AppConfig.UNAVAILABLE_SERVICE) {
+            snackBar
+                    .text(getResources().getString(R.string.unavailable_service))
+                    .applyStyle(R.style.SnackBarUnavailableService);
+        } else if (code == AppConfig.INTERNAL_ERROR) {
+            snackBar
+                    .text(getResources().getString(R.string.error_occured))
+                    .applyStyle(R.style.SnackBarInternalError);
+        }
         snackBar.show();
     }
 

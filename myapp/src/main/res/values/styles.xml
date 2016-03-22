@@ -60,11 +60,20 @@
     </style>
     <!-- SNACKBARS -->
     <style name="SnackBarNoConnection" parent="Material.Widget.SnackBar.Mobile">
-        <item name="sb_text">@string/no_connection</item>
         <item name="sb_horizontalPadding">@dimen/sb_horizontalPadding</item>
         <item name="sb_actionText">@string/more</item>
-        <item name="sb_textSize">@dimen/sb_textSize</item>
-        <item name="sb_duration">25500</item>
+        <item name="sb_textSize">@dimen/no_connection_sb_textSize</item>
+        <item name="sb_duration">5000</item>
+    </style>
+    <style name="SnackBarUnavailableService" parent="Material.Widget.SnackBar.Mobile">
+        <item name="sb_horizontalPadding">@dimen/unavailable_service_internal_error_sb_horizontalPadding</item>
+        <item name="sb_textSize">@dimen/unavailable_service_sb_textSize</item>
+        <item name="sb_duration">2000</item>
+    </style>
+    <style name="SnackBarInternalError" parent="Material.Widget.SnackBar.Mobile">
+        <item name="sb_horizontalPadding">@dimen/unavailable_service_internal_error_sb_horizontalPadding</item>
+        <item name="sb_textSize">@dimen/internal_error_sb_textSize</item>
+        <item name="sb_duration">2000</item>
     </style>
     <!-- DIALOS -->
     <style name="ConnectionSettingsBottomSheetDialog">
@@ -77,5 +86,10 @@
         <item name="bsd_cancelable">true</item>
         <item name="bsd_canceledOnTouchOutside">true</item>
         <item name="bsd_dimAmount">0.5</item>
+    </style>
+    <style name="ConnectionSettingsBottomSheetDialogLlt" parent="Material.Drawable.Ripple.Wave">
+        <item name="android:background">@android:color/white</item>
+        <item name="rd_rippleColor">@color/connection_settings_rippleColor</item>
+        <item name="rd_rippleAnimDuration">400</item>
     </style>
 </resources>

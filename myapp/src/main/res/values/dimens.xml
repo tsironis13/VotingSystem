@@ -52,6 +52,7 @@
     <dimen name="firmname_Imv_marginLeft">11dp</dimen>
     <dimen name="firmname_Imv_marginRight">0dp</dimen>
     <dimen name="pickFirm_Spnr_maxHeight">100dp</dimen>
+    <dimen name="pickFirm_Spnr_marginBottom">8dp</dimen>
     <dimen name="submit_btn_marginBottom">10dp</dimen>
     <dimen name="signInHere_Ttv_paddingBottom">15dp</dimen>
 
@@ -63,7 +64,15 @@
     <dimen name="et_dividerHeight">1dp</dimen>
     <!-- SNACKBARS -->
     <dimen name="sb_horizontalPadding">15dp</dimen>
-    <dimen name="sb_textSize">3sp</dimen>
+    <dimen name="no_connection_sb_textSize">3sp</dimen>
+    <dimen name="unavailable_service_sb_textSize">2sp</dimen>
+    <dimen name="internal_error_sb_textSize">2sp</dimen>
+    <dimen name="unavailable_service_internal_error_sb_horizontalPadding">30dp</dimen>
+    <!-- DIALOGS -->
+    <!-- Connection Settings Dialog -->
+    <dimen name="container_paddingTopBottom">20dp</dimen>
+    <dimen name="setting_Imv_dimens">23dp</dimen>
+    <dimen name="setting_Imv_marginLeftRight">15dp</dimen>
     <!-- TOOLBAR -->
     <dimen name="toolbar_padding_top">0dp</dimen>
     <!-- NAVIGATION DRAWER -->

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
+import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
@@ -17,9 +18,15 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Base64;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
+
+import com.rey.material.app.BottomSheetDialog;
 import com.rey.material.widget.EditText;
+
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.rey.material.widget.SnackBar;
@@ -50,6 +57,8 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     private int connectionStatus;
     private NetworkState networkState;
     private SnackBar loginActivitySnkBar;
+    private BottomSheetDialog connectionSettingsDialog;
+    private View connectionSettingsDialogView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,7 +69,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
             networkState        = new NetworkState();
             loginActivityBundle = new Bundle();
 
-            loginActivitySnkBar = (SnackBar) findViewById(R.id.loginActivitySnkBar);
+            loginActivitySnkBar     =   (SnackBar) findViewById(R.id.loginActivitySnkBar);
 
             signInFragment = new SignInFragment();
             signInFragment.setArguments(loginActivityBundle);
@@ -78,7 +87,21 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
                     }
                 }
             });
+            loginActivitySnkBar.actionClickListener(new SnackBar.OnActionClickListener() {
+                @Override
+                public void onActionClick(SnackBar sb, int actionId) {
+                    connectionSettingsDialog        =   new BottomSheetDialog(LoginActivity.this, R.style.ConnectionSettingsBottomSheetDialog);
+                    connectionSettingsDialogView    =   LayoutInflater.from(LoginActivity.this).inflate(R.layout.connection_settings_bottom_sheet_dialog, null);
+                    connectionSettingsDialog.setContentView(connectionSettingsDialogView);
+                    connectionSettingsDialog.show();
+                }
+            });
         }
+    }
+
+    public void connectionSettingsLltOnClick(View view){
+        startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
+        connectionSettingsDialog.dismiss();
     }
 
     @Override
@@ -202,6 +225,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     public void networkStatus(int connectionType) {
         Log.e(debugTag, "listeners: "+connectionType);
+        if (connectionType != AppConfig.NO_CONNECTION) if (connectionSettingsDialog != null && connectionSettingsDialog.isShowing()) connectionSettingsDialog.dismiss();
         connectionStatus = connectionType;
         Intent intent = new Intent(getResources().getString(R.string.network_state_update));
         intent.putExtra(getResources().getString(R.string.connectivity_status), connectionStatus);
