@@ -63,7 +63,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     private SharedPreferences sessionPrefs;
     private View view;
     private LoginActivityCommonElementsAndMuchMore commonElements;
-    BroadcastReceiver broadcastReceiver;
+    private BroadcastReceiver broadcastReceiver;
 
     @Override
     public void onAttach(Context context) {
@@ -81,7 +81,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
         errorresponseTtv        =   (TextView) view.findViewById(R.id.errorresponseTtv);
         showHidePasswordTtv     =   (TextView) view.findViewById(R.id.showHidePasswordTtv);
-        snackBar                =   ((LoginActivity)getActivity()).getSnackBar();
+        snackBar                =   ((LoginActivity) getActivity()).getSnackBar();
         return view;
     }
 

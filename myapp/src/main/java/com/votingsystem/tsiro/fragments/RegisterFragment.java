@@ -1,5 +1,7 @@
 package com.votingsystem.tsiro.fragments;
 
+import android.animation.ValueAnimator;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -7,6 +9,7 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
 import android.graphics.Typeface;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -26,7 +29,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
+
+import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.RelativeLayout;
 import com.rey.material.widget.LinearLayout;
@@ -42,6 +48,7 @@ import com.votingsystem.tsiro.adapters.FirmNamesSpnrNothingSelectedAdapter;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
+import com.votingsystem.tsiro.interfaces.DismissErrorContainerSnackBar;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.votingsystem.R;
@@ -54,7 +61,7 @@ import java.util.List;
 public class RegisterFragment extends Fragment implements RegisterView{
     private static final String debugTag = RegisterFragment.class.getSimpleName();
     private static String error_no_connection, empty_fields;
-    private LinearLayout registerBaseLlt, errorcontainerLlt;
+    private LinearLayout baseLlt;
     private RelativeLayout acceptUsernameRlt, acceptPasswordRlt, acceptEmailRlt;
     private TextView signInHereTtv, showHidePasswordTtv, passwordErrorTtv;
     private EditText usernameEdt, passwordEdt, confirmPasswordEdt, emailEdt, firmCodeEdt;
@@ -74,18 +81,22 @@ public class RegisterFragment extends Fragment implements RegisterView{
     private RegisterPresenterImpl registerPresenterImpl;
     private SnackBar snackBar;
     private boolean firmsLoaded;
+    private TSnackbar errorContainerSnackbar;
+    private DismissErrorContainerSnackBar dismissErrorContainerSnackBar;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if ( context instanceof Activity ) this.commonElements = (LoginActivityCommonElementsAndMuchMore) context;
+        if ( context instanceof Activity ) {
+            this.commonElements                 =   (LoginActivityCommonElementsAndMuchMore) context;
+            this.dismissErrorContainerSnackBar  =   (DismissErrorContainerSnackBar) context;
+        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if ( view == null ) view = inflater.inflate(R.layout.fragment_register, container, false);
-        registerBaseLlt             =   (LinearLayout) view.findViewById(R.id.registerBaseLlt);
-        errorcontainerLlt           =   (LinearLayout) view.findViewById(R.id.errorcontainerLlt);
+        baseLlt                     =   (LinearLayout) view.findViewById(R.id.baseLlt);
         acceptUsernameRlt           =   (RelativeLayout) view.findViewById(R.id.acceptUsernameRlt);
         acceptPasswordRlt           =   (RelativeLayout) view.findViewById(R.id.acceptPasswordRlt);
         acceptEmailRlt              =   (RelativeLayout) view.findViewById(R.id.acceptEmailRlt);
@@ -102,7 +113,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
         emailProgressView           =   (ProgressView) view.findViewById(R.id.emailProgressView);
         registerUserProgressView    =   (ProgressView) view.findViewById(R.id.registerUserProgressView);
         pickFirmSpnr                =   (Spinner) view.findViewById(R.id.pickFirmSpnr);
-        snackBar                    =   ((LoginActivity)getActivity()).getSnackBar();
+        snackBar                    =   ((LoginActivity) getActivity()).getSnackBar();
         initialConnectionStatus     =   getArguments().getInt(getResources().getString(R.string.connectivity_status));
         return view;
     }
@@ -210,7 +221,6 @@ public class RegisterFragment extends Fragment implements RegisterView{
             pickFirmSpnr.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(Spinner parent, View view, int position, long id) {
-                    Log.e(debugTag, "onItemSelected, position: "+ position);
                     if (view instanceof TextView)
                         ((TextView) view).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
                     if (position != 0) {
@@ -234,8 +244,8 @@ public class RegisterFragment extends Fragment implements RegisterView{
                     if (connectionStatus == AppConfig.NO_CONNECTION) {
                         showSnackBar(AppConfig.NO_CONNECTION);
                     } else {
-                        registerUserProgressView.start();
-                        registerPresenterImpl.validateForm(registerBaseLlt);
+                        //registerUserProgressView.start();
+                        registerPresenterImpl.validateForm(baseLlt);
                     }
                 }
             });
@@ -243,6 +253,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
             signInHereTtv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (errorContainerSnackbar != null) errorContainerSnackbar.dismiss();
                     if (v instanceof TextView) commonElements.signInHereOnClick();
                 }
             });
@@ -354,17 +365,14 @@ public class RegisterFragment extends Fragment implements RegisterView{
 
     @Override
     public void onFormValidationFailure(String field, String errorType) {
-        LinearLayout.LayoutParams params = (LinearLayout.LayoutParams) errorcontainerLlt.getLayoutParams();
-        params.setMargins(0, 0, 0, 87);
-        errorcontainerLlt.setLayoutParams(params);
-        TextView textView = new TextView(getActivity());
-        textView.setPadding(50, 80, 35, 80);
-        textView.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-        textView.setTextColor(Color.parseColor("#DD2C00"));
-        textView.setText(getResources().getString(R.string.empty_fields, field));
-        com.rey.material.widget.RelativeLayout.LayoutParams lp  = new  com.rey.material.widget.RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        textView.setLayoutParams(lp);
-        errorcontainerLlt.addView(textView);
+        errorContainerSnackbar = TSnackbar.make(((LoginActivity) getActivity()).getErrorContainerRlt(), getResources().getString(R.string.empty_fields, field), TSnackbar.LENGTH_INDEFINITE);
+        View snackBarView = errorContainerSnackbar.getView();
+        snackBarView.setBackgroundColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_background_color)));
+        android.widget.TextView snackBarTtv = (android.widget.TextView) snackBarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
+        snackBarTtv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        snackBarTtv.setTextColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_Ttv_color)));
+        errorContainerSnackbar.show();
+        dismissErrorContainerSnackBar.dismissErrorContainerSnackBar(errorContainerSnackbar);
     }
 
     @Override

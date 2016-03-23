@@ -13,16 +13,22 @@
         android:layout_height="match_parent"
         android:fitsSystemWindows="true" >
 
-        <LinearLayout
+        <FrameLayout
             android:id="@+id/loginActivityFgmtContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical" />
 
+        <RelativeLayout
+            android:id="@+id/errorContainerRlt"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/errorContainer_Rlt_height"
+            android:layout_gravity="top" />
+
         <com.rey.material.widget.SnackBar
             android:id="@+id/loginActivitySnkBar"
             android:layout_width="match_parent"
-            android:layout_height="48dp"
+            android:layout_height="@dimen/loginActivity_SnkBar_height"
             android:visibility="invisible"
             android:layout_gravity="bottom" />
 

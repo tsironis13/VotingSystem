@@ -27,12 +27,6 @@
             android:label="@string/adminBaseActivity">
         </activity>
 
-       <!-- <receiver android:name="com.votingsystem.tsiro.broadcastReceivers.NetworkState">
-            <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
-            </intent-filter>
-        </receiver> -->
-
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->
         <meta-data

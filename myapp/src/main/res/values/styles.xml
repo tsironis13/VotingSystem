@@ -60,6 +60,7 @@
     </style>
     <!-- SNACKBARS -->
     <style name="SnackBarNoConnection" parent="Material.Widget.SnackBar.Mobile">
+        <item name="android:layout_gravity">top</item>
         <item name="sb_horizontalPadding">@dimen/sb_horizontalPadding</item>
         <item name="sb_actionText">@string/more</item>
         <item name="sb_textSize">@dimen/no_connection_sb_textSize</item>

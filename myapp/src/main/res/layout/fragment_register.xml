@@ -6,19 +6,11 @@
     android:layout_height="match_parent">
 
     <com.rey.material.widget.LinearLayout
-        android:id="@+id/registerBaseLlt"
+        android:id="@+id/baseLlt"
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center">
-
-        <com.rey.material.widget.LinearLayout
-            android:id="@+id/errorcontainerLlt"
-            android:orientation="vertical"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:animateLayoutChanges="true"
-            android:background="#99ECEFF1" />
+        android:gravity="center" >
 
         <ImageView
             android:layout_width="@dimen/register_logo_dimens"
@@ -32,8 +24,7 @@
             android:layout_height="@dimen/register_input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
-            android:orientation="horizontal"
-            android:tag="@string/editext" >
+            android:orientation="horizontal" >
 
             <ImageView
                 android:layout_width="@dimen/input_field_logo_dimens"
@@ -100,8 +91,7 @@
             android:layout_height="@dimen/register_input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
-            android:orientation="horizontal"
-            android:tag="@string/editext" >
+            android:orientation="horizontal" >
 
             <ImageView
                 android:layout_width="@dimen/input_field_logo_dimens"
@@ -181,8 +171,7 @@
             android:layout_height="@dimen/register_input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
-            android:orientation="horizontal"
-            android:tag="@string/editext" >
+            android:orientation="horizontal" >
 
             <ImageView
                 android:layout_width="@dimen/input_field_logo_dimens"
@@ -215,8 +204,7 @@
             android:layout_height="@dimen/register_input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
-            android:orientation="horizontal"
-            android:tag="@string/editext" >
+            android:orientation="horizontal" >
 
             <ImageView
                 android:layout_width="@dimen/input_field_logo_dimens"
@@ -285,8 +273,7 @@
             android:layout_height="@dimen/register_input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
-            android:orientation="horizontal"
-            android:tag="@string/editext" >
+            android:orientation="horizontal" >
 
             <ImageView
                 android:layout_width="@dimen/input_field_logo_dimens"
@@ -353,8 +340,7 @@
             android:layout_height="@dimen/register_input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/pickFirm_Spnr_marginBottom"
-            android:orientation="horizontal"
-            android:tag="@string/spinner" >
+            android:orientation="horizontal" >
 
             <ImageView
                 android:layout_width="@dimen/input_field_logo_dimens"
@@ -378,8 +364,8 @@
 
         <com.rey.material.widget.ProgressView
             android:id="@+id/registerUserProgressView"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="@dimen/registerUser_progressView_dimens"
+            android:layout_height="@dimen/registerUser_progressView_dimens"
             app:pv_circular="true"
             app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
             app:pv_progressMode="indeterminate"/>
@@ -388,7 +374,7 @@
             android:id="@+id/submitBtn"
             android:layout_width="@dimen/action_btn_width"
             android:layout_height="@dimen/action_btn_height"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="@dimen/submit_btn_marginTop"
             android:layout_marginBottom="@dimen/submit_btn_marginBottom"
             android:textColor="@android:color/white"
             android:text="@string/submit"
@@ -404,4 +390,5 @@
             android:textColor="@android:color/white" />
 
     </com.rey.material.widget.LinearLayout>
+
 </ScrollView>

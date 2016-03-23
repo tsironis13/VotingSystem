@@ -92,14 +92,14 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
         }
     }
 
-    public void validateForm(LinearLayout registerBaseLlt) {
-        for (int i=0; i < registerBaseLlt.getChildCount(); i++) {
-            View container = registerBaseLlt.getChildAt(i);
-            if (container instanceof LinearLayout) {
-                for (int j=0; j < ((LinearLayout) container).getChildCount(); j++) {
-                    View containerChild = ((LinearLayout) container).getChildAt(j);
-                    if (containerChild instanceof RelativeLayout){
-                        for (int k=0; k < ((RelativeLayout) containerChild).getChildCount(); k++) {
+    public void validateForm(LinearLayout baseLlt) {
+        for (int i = 0; i < baseLlt.getChildCount(); i++) {
+            View formChild = baseLlt.getChildAt(i);
+            if (formChild instanceof LinearLayout) {
+                for (int j = 0; j < ((LinearLayout) formChild).getChildCount(); j++) {
+                    View containerChild = ((LinearLayout) formChild).getChildAt(j);
+                    if (containerChild instanceof RelativeLayout) {
+                        for (int k = 0; k < ((RelativeLayout) containerChild).getChildCount(); k++) {
                             View innerContainerChild = ((RelativeLayout) containerChild).getChildAt(k);
                             if (innerContainerChild instanceof EditText && innerContainerChild.getTag().equals("required")) {
                                 if (TextUtils.isEmpty(((EditText) innerContainerChild).getText())) {
@@ -114,11 +114,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
                             return;
                         }
                     } else if (containerChild instanceof Spinner) {
-                        if (((Spinner) containerChild).getSelectedItemPosition() != 0) {
-                            //Log.e(debugTag, ((Spinner) containerChild).getAdapter().getItem(((Spinner) containerChild).getSelectedItemPosition() - 1).toString());
-                        } else {
-                            registerView.onFormValidationFailure("Epilogi Etaireias", "empty_fields");
-                        }
+                        if (((Spinner) containerChild).getSelectedItemPosition() == 0) registerView.onFormValidationFailure("Επιλογή Εταιρείας", "empty_fields");
                     }
                 }
             }

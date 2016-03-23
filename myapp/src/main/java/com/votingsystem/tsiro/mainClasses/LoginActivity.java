@@ -23,10 +23,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 
+import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.app.BottomSheetDialog;
 import com.rey.material.widget.EditText;
 
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.rey.material.widget.SnackBar;
@@ -38,13 +41,14 @@ import com.votingsystem.tsiro.broadcastReceivers.NetworkState;
 import com.votingsystem.tsiro.fragments.ForgotPasswordFragment;
 import com.votingsystem.tsiro.fragments.RegisterFragment;
 import com.votingsystem.tsiro.fragments.SignInFragment;
+import com.votingsystem.tsiro.interfaces.DismissErrorContainerSnackBar;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.io.UnsupportedEncodingException;
 import java.util.Observable;
 import java.util.Observer;
 
-public class LoginActivity extends AppCompatActivity implements NetworkStateListeners, LoginActivityCommonElementsAndMuchMore {
+public class LoginActivity extends AppCompatActivity implements NetworkStateListeners, LoginActivityCommonElementsAndMuchMore, DismissErrorContainerSnackBar {
 
     private static final String debugTag = LoginActivity.class.getSimpleName();
     private SpannableStringBuilder spannableStringBuilder;
@@ -56,9 +60,11 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     private Bundle loginActivityBundle;
     private int connectionStatus;
     private NetworkState networkState;
+    private RelativeLayout errorContainerRlt;
     private SnackBar loginActivitySnkBar;
     private BottomSheetDialog connectionSettingsDialog;
     private View connectionSettingsDialogView;
+    private TSnackbar errorContainerSnackbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +75,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
             networkState        = new NetworkState();
             loginActivityBundle = new Bundle();
 
+            errorContainerRlt       =   (RelativeLayout) findViewById(R.id.errorContainerRlt);
             loginActivitySnkBar     =   (SnackBar) findViewById(R.id.loginActivitySnkBar);
 
             signInFragment = new SignInFragment();
@@ -107,17 +114,6 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     }
 
     @Override
-    protected void onResume() {
-        super.onResume();
-        Log.e(debugTag, "onResume");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-    }
-
-    @Override
     protected void onDestroy() {
         super.onDestroy();
         networkState.removeListener(this);
@@ -130,6 +126,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     public void onBackPressed() {
         super.onBackPressed();
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) getSupportFragmentManager().popBackStack(0, 0);
+        if (errorContainerSnackbar != null) errorContainerSnackbar.dismiss();
     }
 
     @Override
@@ -178,6 +175,8 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     public SnackBar getSnackBar() {
         return loginActivitySnkBar;
     }
+
+    public RelativeLayout getErrorContainerRlt() { return errorContainerRlt; }
 
     public static SharedPreferences getSessionPrefs(Context context) {
         //Mode private so only this app can modify this SharedPreferences file
@@ -230,5 +229,10 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         Intent intent = new Intent(getResources().getString(R.string.network_state_update));
         intent.putExtra(getResources().getString(R.string.connectivity_status), connectionStatus);
         LocalBroadcastManager.getInstance(getApplicationContext()).sendBroadcast(intent);
+    }
+
+    @Override
+    public void dismissErrorContainerSnackBar(TSnackbar errorContainerSnackbar) {
+        if (errorContainerSnackbar != null) this.errorContainerSnackbar = errorContainerSnackbar;
     }
 }

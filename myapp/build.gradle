@@ -6,7 +6,7 @@ android {
 
     defaultConfig {
         applicationId "com.votingsystem.tsiro.votingsystem"
-        minSdkVersion 9
+        minSdkVersion 10
         targetSdkVersion 23
         versionCode 1
         versionName "1.0"
@@ -29,6 +29,7 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.0.1'
     compile 'com.android.support:recyclerview-v7:+'
     compile 'com.github.rey5137:material:1.2.2'
+    compile 'com.androidadvance:topsnackbar:0.0.9'
 
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }

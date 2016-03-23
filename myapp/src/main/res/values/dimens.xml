@@ -7,6 +7,9 @@
     <dimen name="in_common_2">20dp</dimen>
     <dimen name="in_common_3">36dp</dimen>
     <!-- LOGIN -->
+    <dimen name="errorContainer_Rlt_height">89dp</dimen>
+    <dimen name="loginActivity_SnkBar_height">48dp</dimen>
+
     <dimen name="container_width">293dp</dimen>
     <dimen name="container_height">500dp</dimen>
     <dimen name="marginBottom">15dp</dimen>
@@ -53,8 +56,11 @@
     <dimen name="firmname_Imv_marginRight">0dp</dimen>
     <dimen name="pickFirm_Spnr_maxHeight">100dp</dimen>
     <dimen name="pickFirm_Spnr_marginBottom">8dp</dimen>
+    <dimen name="registerUser_progressView_dimens">24dp</dimen>
     <dimen name="submit_btn_marginBottom">10dp</dimen>
+    <dimen name="submit_btn_marginTop">8dp</dimen>
     <dimen name="signInHere_Ttv_paddingBottom">15dp</dimen>
+
 
     <dimen name="spn_arrowPadding">14dp</dimen>
     <dimen name="spn_arrowSize">4dp</dimen>

@@ -35,13 +35,15 @@
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>
+    <string name="errorContainer_Snackbar_background_color">#BF263238</string>
+    <string name="errorContainer_Snackbar_Ttv_color">#DD2C00</string>
     <!-- VISIBILITY -->
     <string name="visible">visible</string>
     <string name="gone">gone</string>
     <!-- ERRORS -->
-    <string name="empty_fields">Παρακαλώ συμπλήρωσε τα παρακάτω πεδία: %1$s</string>
+    <string name="empty_fields">Παρακαλώ συμπλήρωσε τα παρακάτω πεδία: %1$s.</string>
     <string name="no_connection">Αδυναμία σύνδεσης στο δίκτυο.</string>
-    <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Παρακαλώ ξαναπροσπάθησε σύντομα.</string>
+    <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Ξαναπροσπάθησε σύντομα.</string>
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>
     <string name="empty_requried_field">Το πεδίο είναι υποχρεωτικό</string>
     <!-- PASSWORD HANGLING -->
