@@ -90,12 +90,14 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
             loginActivitySnkBar.actionClickListener(new SnackBar.OnActionClickListener() {
                 @Override
                 public void onActionClick(SnackBar sb, int actionId) {
-                    connectionSettingsDialog        =   new BottomSheetDialog(LoginActivity.this, R.style.ConnectionSettingsBottomSheetDialog);
-                    connectionSettingsDialogView    =   LayoutInflater.from(LoginActivity.this).inflate(R.layout.connection_settings_bottom_sheet_dialog, null);
+                    connectionSettingsDialog = new BottomSheetDialog(LoginActivity.this, R.style.ConnectionSettingsBottomSheetDialog);
+                    connectionSettingsDialogView = LayoutInflater.from(LoginActivity.this).inflate(R.layout.connection_settings_bottom_sheet_dialog, null);
                     connectionSettingsDialog.setContentView(connectionSettingsDialogView);
                     connectionSettingsDialog.show();
                 }
             });
+            networkState.addListener(this);
+            this.registerReceiver(networkState, new IntentFilter(getResources().getString(R.string.connectivity_change)));
         }
     }
 
@@ -108,20 +110,18 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     protected void onResume() {
         super.onResume();
         Log.e(debugTag, "onResume");
-        networkState.addListener(this);
-        this.registerReceiver(networkState, new IntentFilter(getResources().getString(R.string.connectivity_change)));
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        networkState.removeListener(this);
-        this.unregisterReceiver(networkState);
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        networkState.removeListener(this);
+        this.unregisterReceiver(networkState);
         RefWatcher refWatcher = MyApplication.getRefWatcher(this);
         refWatcher.watch(this);
     }

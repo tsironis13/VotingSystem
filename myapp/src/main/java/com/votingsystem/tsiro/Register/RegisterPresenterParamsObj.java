@@ -1,7 +1,7 @@
 package com.votingsystem.tsiro.Register;
 
 import android.view.View;
-import android.widget.RelativeLayout;
+import com.rey.material.widget.RelativeLayout;
 
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;

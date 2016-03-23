@@ -1,12 +1,16 @@
 package com.votingsystem.tsiro.Register;
 
+import android.text.TextUtils;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
 import android.view.View;
-import android.widget.RelativeLayout;
+
+import com.rey.material.widget.LinearLayout;
+import com.rey.material.widget.RelativeLayout;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;
+import com.rey.material.widget.Spinner;
 import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
@@ -82,9 +86,42 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
 
     public void firmNamesSpnrActions(int connectionStatus) {
         if (connectionStatus == AppConfig.NO_CONNECTION) {
-            if (!firmsLoaded && registerView != null) registerView.onFailure(firmNameWithIDArrayList);
+            if (!firmsLoaded && registerView != null) registerView.onFailure(firmNameWithIDArrayList, false);
         } else {
             if (!firmsLoaded) registerInteractorImpl.populateFirmNamesSpnr(firmNameWithIDArrayList, this);
+        }
+    }
+
+    public void validateForm(LinearLayout registerBaseLlt) {
+        for (int i=0; i < registerBaseLlt.getChildCount(); i++) {
+            View container = registerBaseLlt.getChildAt(i);
+            if (container instanceof LinearLayout) {
+                for (int j=0; j < ((LinearLayout) container).getChildCount(); j++) {
+                    View containerChild = ((LinearLayout) container).getChildAt(j);
+                    if (containerChild instanceof RelativeLayout){
+                        for (int k=0; k < ((RelativeLayout) containerChild).getChildCount(); k++) {
+                            View innerContainerChild = ((RelativeLayout) containerChild).getChildAt(k);
+                            if (innerContainerChild instanceof EditText && innerContainerChild.getTag().equals("required")) {
+                                if (TextUtils.isEmpty(((EditText) innerContainerChild).getText())) {
+                                    registerView.onFormValidationFailure(((EditText) innerContainerChild).getHint().toString(), "empty_fields");
+                                    return;
+                                }
+                            }
+                        }
+                    } else if (containerChild instanceof EditText) {
+                        if (TextUtils.isEmpty(((EditText) containerChild).getText())) {
+                            registerView.onFormValidationFailure(((EditText) containerChild).getHint().toString(), "empty_fields");
+                            return;
+                        }
+                    } else if (containerChild instanceof Spinner) {
+                        if (((Spinner) containerChild).getSelectedItemPosition() != 0) {
+                            //Log.e(debugTag, ((Spinner) containerChild).getAdapter().getItem(((Spinner) containerChild).getSelectedItemPosition() - 1).toString());
+                        } else {
+                            registerView.onFormValidationFailure("Epilogi Etaireias", "empty_fields");
+                        }
+                    }
+                }
+            }
         }
     }
 
@@ -106,13 +143,13 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     @Override
     public void onSuccessfirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) {
         if ( registerView != null ) {
-            registerView.onSuccessfulFirmNamesSpnrLoad(firmNameWithIDArrayList);
+            registerView.onSuccessfulFirmNamesSpnrLoad(firmNameWithIDArrayList, true);
             firmsLoaded = true;
         }
     }
 
     @Override
-    public void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) { if ( registerView != null ) registerView.onFailure(firmNameWithIDArrayList); }
+    public void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) { if ( registerView != null ) registerView.onFailure(firmNameWithIDArrayList, false); }
 
     @Override
     public void onDestroy() {

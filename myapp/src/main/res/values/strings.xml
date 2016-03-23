@@ -4,6 +4,9 @@
     <string name="signInFgmt">signInFgmt</string>
     <string name="forgotPasswordFgmt">forgotPasswordFgmt</string>
     <string name="registerFgmt">registerFgmt</string>
+    <string name="editext">editext</string>
+    <string name="spinner">spinner</string>
+    <string name="required">required</string>
     <!-- ACTIONS -->
     <string name="usernameValidation">usernameValidation</string>
     <string name="passwordValidation">passwordValidation</string>
@@ -11,6 +14,7 @@
     <string name="get_firm_names">getFirmNames</string>
     <string name="more">Περισσοτερα</string>
     <string name="check_connection">Έλεγξε τη σύνδεση σου</string>
+    <string name="error">error</string>
     <!-- LOGIN -->
     <string name="app_logo">app_logo</string>
     <string name="input_logo">input_logo</string>
@@ -27,10 +31,15 @@
     <string name="confirmpassword">Επιβεβαίωση κωδικού</string>
     <string name="showPassword">ΕΜΦΑΝΙΣΗ</string>
     <string name="hidePassword">ΑΠΟΚΡΥΨΗ</string>
-    <string name="required">required</string>
     <string name="pickFirm">Επιλογή Εταιρείας</string>
+    <!-- REGISTER -->
+    <string name="clear_success_icon">clearSuccessIcon</string>
+    <string name="confirm_password">confirmpassword</string>
+    <!-- VISIBILITY -->
+    <string name="visible">visible</string>
+    <string name="gone">gone</string>
     <!-- ERRORS -->
-    <string name="empty_fields">Παρακαλώ συμπλήρωσε όλα τα πεδία.</string>
+    <string name="empty_fields">Παρακαλώ συμπλήρωσε τα παρακάτω πεδία: %1$s</string>
     <string name="no_connection">Αδυναμία σύνδεσης στο δίκτυο.</string>
     <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Παρακαλώ ξαναπροσπάθησε σύντομα.</string>
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>

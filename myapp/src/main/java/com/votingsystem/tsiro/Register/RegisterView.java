@@ -2,7 +2,7 @@ package com.votingsystem.tsiro.Register;
 
 import android.text.method.TransformationMethod;
 import android.view.View;
-import android.widget.RelativeLayout;
+import com.rey.material.widget.RelativeLayout;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.TextView;
@@ -21,6 +21,8 @@ public interface RegisterView {
     public void setInputFieldError(int code, View view);
     public void displayFeedbackMsg(int code);
     public void onSuccess(RelativeLayout inputValidRlt, String tag);
-    public void onSuccessfulFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList);
-    public void onFailure(List<FirmNameWithID> firmNameWithIDArrayList);
+    public void onSuccessfulFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded);
+    public void onFailure(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded);
+    public void onFormValidationFailure(String field, String errorType);
+    public void onFormValidationSuccess();
 }
