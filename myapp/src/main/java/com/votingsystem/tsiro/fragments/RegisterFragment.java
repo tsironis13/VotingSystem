@@ -1,15 +1,11 @@
 package com.votingsystem.tsiro.fragments;
 
-import android.animation.ValueAnimator;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.graphics.Color;
-import android.graphics.Typeface;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -29,9 +25,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
-import android.view.animation.DecelerateInterpolator;
 import android.widget.Button;
-
 import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.RelativeLayout;
@@ -137,7 +131,8 @@ public class RegisterFragment extends Fragment implements RegisterView{
             setSignInHereSpan();
             usernameEdt.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+                }
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -146,7 +141,8 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 }
 
                 @Override
-                public void afterTextChanged(Editable s) {}
+                public void afterTextChanged(Editable s) {
+                }
             });
 
             usernameEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
@@ -233,7 +229,6 @@ public class RegisterFragment extends Fragment implements RegisterView{
             pickFirmSpnr.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
-                    Log.e(debugTag, "on touch called");
                     if (!firmsLoaded) showSnackBar(AppConfig.NO_CONNECTION);
                     return false;
                 }
@@ -241,6 +236,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
             submitBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
                     if (connectionStatus == AppConfig.NO_CONNECTION) {
                         showSnackBar(AppConfig.NO_CONNECTION);
                     } else {
@@ -249,7 +245,6 @@ public class RegisterFragment extends Fragment implements RegisterView{
                     }
                 }
             });
-
             signInHereTtv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -257,24 +252,24 @@ public class RegisterFragment extends Fragment implements RegisterView{
                     if (v instanceof TextView) commonElements.signInHereOnClick();
                 }
             });
+            LocalBroadcastManager.getInstance(getActivity()).registerReceiver(connectionStatusReceiver, new IntentFilter(getResources().getString(R.string.network_state_update)));
         }
     }
 
     @Override
     public void onResume() {
         super.onResume();
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(connectionStatusReceiver, new IntentFilter(getResources().getString(R.string.network_state_update)));
     }
 
     @Override
     public void onPause() {
         super.onPause();
-        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
         registerPresenterImpl.onDestroy();
         this.commonElements = null;
         RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
@@ -353,8 +348,10 @@ public class RegisterFragment extends Fragment implements RegisterView{
             showhideAcceptPasswordAnimationRunnable = new Runnable() {
                 @Override
                 public void run() {
-                    animationStaff(showHidePasswordTtv, 0.0f, 1.0f, getResources().getString(R.string.visible));
-                    animationStaff(acceptPasswordRlt, 1.0f, 0.0f, getResources().getString(R.string.gone));
+                    if (isAdded()) {
+                        animationStaff(showHidePasswordTtv, 0.0f, 1.0f, getResources().getString(R.string.visible));
+                        animationStaff(acceptPasswordRlt, 1.0f, 0.0f, getResources().getString(R.string.gone));
+                    }
                 }
             };
             handlerStaff().postDelayed(showhideAcceptPasswordAnimationRunnable, AppConfig.showhideAcceptDelay);

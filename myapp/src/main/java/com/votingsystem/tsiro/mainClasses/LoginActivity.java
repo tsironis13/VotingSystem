@@ -109,8 +109,8 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     }
 
     public void connectionSettingsLltOnClick(View view){
+        if (connectionSettingsDialog != null && connectionSettingsDialog.isShowing()) connectionSettingsDialog.dismiss();
         startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
-        connectionSettingsDialog.dismiss();
     }
 
     @Override
