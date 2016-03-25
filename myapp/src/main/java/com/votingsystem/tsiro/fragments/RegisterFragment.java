@@ -14,6 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.Editable;
 import android.text.Html;
+import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.TransformationMethod;
 import android.util.Log;
@@ -46,8 +47,11 @@ import com.votingsystem.tsiro.interfaces.DismissErrorContainerSnackBar;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.votingsystem.R;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by user on 11/12/2015.
@@ -131,8 +135,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
             setSignInHereSpan();
             usernameEdt.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -141,26 +144,29 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 }
 
                 @Override
-                public void afterTextChanged(Editable s) {
-                }
+                public void afterTextChanged(Editable s) {}
             });
-
             usernameEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus)
-                        if (!inputValidityMap.get(getResources().getString(R.string.username_tag)))
+                        if (!inputValidityMap.get(getResources().getString(R.string.username_tag)) && !TextUtils.isEmpty(usernameEdt.getText().toString())) {
                             registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), usernameEdt, usernameProgressView, getResources().getString(R.string.usernameValidation), acceptUsernameRlt, getResources().getString(R.string.username_tag), usernameEdt));
+                        } else if (!inputValidityMap.get(getResources().getString(R.string.username_tag)) && TextUtils.isEmpty(usernameEdt.getText().toString())) {
+                            setText(getResources().getString(R.string.error), usernameEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))), "#DD2C00");
+                        }
                 }
             });
             passwordEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus)
-                        if (!inputValidityMap.get(getResources().getString(R.string.password_tag)))
+                        if (!inputValidityMap.get(getResources().getString(R.string.password_tag)) && !TextUtils.isEmpty(passwordEdt.getText().toString())) {
                             registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), passwordEdt, null, getResources().getString(R.string.passwordValidation), acceptPasswordRlt, getResources().getString(R.string.password_tag), passwordErrorTtv));
+                        } else if (!inputValidityMap.get(getResources().getString(R.string.password_tag)) && TextUtils.isEmpty(passwordEdt.getText().toString())){
+                            setText(getResources().getString(R.string.error), passwordErrorTtv, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))), "#DD2C00");
+                        }
                 }
-
             });
             showHidePasswordTtv.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -172,8 +178,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
             });
             confirmPasswordEdt.addTextChangedListener(new TextWatcher() {
                 @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                }
+                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
                 @Override
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
@@ -181,13 +186,12 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 }
 
                 @Override
-                public void afterTextChanged(Editable s) {
-                }
+                public void afterTextChanged(Editable s) {}
             });
             confirmPasswordEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) if (confirmPasswordEdt.getText().toString().isEmpty())
+                    if (!hasFocus) if (TextUtils.isEmpty(confirmPasswordEdt.getText().toString()))
                         setText(getResources().getString(R.string.error), confirmPasswordEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))), "#DD2C00");
                 }
             });
@@ -210,8 +214,17 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 @Override
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus)
-                        if (!inputValidityMap.get(getResources().getString(R.string.email_tag)))
+                        if (!inputValidityMap.get(getResources().getString(R.string.email_tag)) && !TextUtils.isEmpty(emailEdt.getText().toString())) {
                             registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), emailEdt, emailProgressView, getResources().getString(R.string.emailValidation), acceptEmailRlt, getResources().getString(R.string.email_tag), emailEdt));
+                        } else if (!inputValidityMap.get(getResources().getString(R.string.email_tag)) && TextUtils.isEmpty(emailEdt.getText().toString())) {
+                            setText(getResources().getString(R.string.error), emailEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))), "#DD2C00");
+                        }
+                }
+            });
+            firmCodeEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
+                @Override
+                public void onFocusChange(View v, boolean hasFocus) {
+                    if (!hasFocus) if (TextUtils.isEmpty(firmCodeEdt.getText().toString())) setText(getResources().getString(R.string.error), firmCodeEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))), "#DD2C00");
                 }
             });
             pickFirmSpnr.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
@@ -236,11 +249,12 @@ public class RegisterFragment extends Fragment implements RegisterView{
             submitBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
+                    if (errorContainerSnackbar != null && errorContainerSnackbar.isShown())
+                        errorContainerSnackbar.dismiss();
                     if (connectionStatus == AppConfig.NO_CONNECTION) {
                         showSnackBar(AppConfig.NO_CONNECTION);
                     } else {
-                        //registerUserProgressView.start();
+                        registerUserProgressView.start();
                         registerPresenterImpl.validateForm(baseLlt);
                     }
                 }
@@ -254,16 +268,6 @@ public class RegisterFragment extends Fragment implements RegisterView{
             });
             LocalBroadcastManager.getInstance(getActivity()).registerReceiver(connectionStatusReceiver, new IntentFilter(getResources().getString(R.string.network_state_update)));
         }
-    }
-
-    @Override
-    public void onResume() {
-        super.onResume();
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
     }
 
     @Override
@@ -284,7 +288,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
         if (action.equals(getResources().getString(R.string.clear_success_icon))) {
             animationStaff(acceptRlt, 1.0f, 0.0f, getResources().getString(R.string.gone));
         } else {
-            if ( !inputEdt.getHelper().toString().isEmpty() ) inputEdt.setHelper(null);
+            if (!TextUtils.isEmpty(inputEdt.getHelper().toString())) inputEdt.setHelper(null);
         }
     }
 
@@ -333,9 +337,9 @@ public class RegisterFragment extends Fragment implements RegisterView{
 
     @Override
     public void setInputFieldError(int code, View view) {
-        if ( view instanceof TextView ) {
+        if (view instanceof TextView) {
             inputValidityMap.put(getResources().getString(R.string.password_tag), false);
-            if ( !inputValidityMap.get(getResources().getString(R.string.password_tag)) ) passwordEdt.getChildAt(1).setVisibility(View.GONE);
+            if (!inputValidityMap.get(getResources().getString(R.string.password_tag))) passwordEdt.getChildAt(1).setVisibility(View.GONE);
         }
         setText(getResources().getString(R.string.error), view, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(inputValidationCodes.get(code)))), "#DD2C00");
     }
@@ -369,12 +373,14 @@ public class RegisterFragment extends Fragment implements RegisterView{
         snackBarTtv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         snackBarTtv.setTextColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_Ttv_color)));
         errorContainerSnackbar.show();
+        if (registerUserProgressView != null && registerUserProgressView.isShown()) registerUserProgressView.stop();
         dismissErrorContainerSnackBar.dismissErrorContainerSnackBar(errorContainerSnackbar);
     }
 
     @Override
     public void onFormValidationSuccess() {
-
+        if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
+        if (registerUserProgressView != null && registerUserProgressView.isShown()) registerUserProgressView.stop();
     }
 
     private void initializeBroadcastReceivers() {
@@ -434,7 +440,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 inputValidityMap.put(getResources().getString(R.string.password_tag), false);
                 if ( System.currentTimeMillis() < showhideAcceptPasswordAnimationTargetTimeinMillis ) handlerStaff().removeCallbacks(showhideAcceptPasswordAnimationRunnable);
                 registerPresenterImpl.handleRegisterPasswordEdtTextChanges(start, before, passwordEdt, acceptPasswordRlt, showHidePasswordTtv);
-                if ( !passwordErrorTtv.getText().toString().isEmpty() ) {
+                if (!TextUtils.isEmpty(passwordErrorTtv.getText().toString())) {
                     passwordErrorTtv.setText(null);
                     passwordEdt.getChildAt(1).setVisibility(View.VISIBLE);
                 }

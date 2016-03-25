@@ -7,7 +7,7 @@
     <dimen name="in_common_2">20dp</dimen>
     <dimen name="in_common_3">36dp</dimen>
     <!-- LOGIN -->
-    <dimen name="errorContainer_Rlt_height">89dp</dimen>
+    <dimen name="errorContainer_Rlt_height">86dp</dimen>
     <dimen name="loginActivity_SnkBar_height">48dp</dimen>
 
     <dimen name="container_width">293dp</dimen>

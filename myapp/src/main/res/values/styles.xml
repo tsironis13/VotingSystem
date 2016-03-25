@@ -58,6 +58,30 @@
         <item name="rd_delayClick">afterRelease</item>
         <item name="android:textColor">@color/abc_primary_text_material_light</item>
     </style>
+    <!-- PROGRESS VIEWS -->
+    <style name="CircularProgressDrawable" parent="Material.Drawable.CircularProgress">
+        <item name="cpd_strokeColor">@color/accentColor</item>
+    </style>
+
+    <style name="CircularProgressView">
+        <item name="pv_autostart">false</item>
+        <item name="pv_circular">true</item>
+        <item name="pv_progressStyle">@style/CircularProgressDrawable</item>
+        <item name="pv_progressMode">indeterminate</item>
+    </style>
+
+    <style name="InCircularProgressDrawable" parent="Material.Drawable.CircularProgress">
+        <item name="cpd_strokeColor">@color/actionBtnColor</item>
+        <item name="cpd_inAnimDuration">600</item>
+        <item name="cpd_inStepPercent">0.4</item>
+        <item name="cpd_inStepColors">@array/in_circular_progress_colors</item>
+        <item name="cpd_outAnimDuration">600</item>
+    </style>
+
+    <style name="InCircularProgressView" parent="CircularProgressView">
+        <item name="pv_progressStyle">@style/InCircularProgressDrawable</item>
+    </style>
+
     <!-- SNACKBARS -->
     <style name="SnackBarNoConnection" parent="Material.Widget.SnackBar.Mobile">
         <item name="android:layout_gravity">top</item>

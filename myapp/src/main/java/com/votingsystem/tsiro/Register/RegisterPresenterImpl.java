@@ -52,11 +52,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     }
 
     public void validateInputFieldOnFocusChange(RegisterPresenterParamsObj registerPresenterParamsObj){
-        if (registerPresenterParamsObj.getConnectionStatus() == AppConfig.NO_CONNECTION) {
-            if (registerPresenterParamsObj.isAdded() && registerView != null) registerView.displayFeedbackMsg(AppConfig.NO_CONNECTION);
-        } else {
-            registerInteractorImpl.validateInputField(registerPresenterParamsObj, this);
-        }
+        if (registerPresenterParamsObj.getConnectionStatus() != AppConfig.NO_CONNECTION) registerInteractorImpl.validateInputField(registerPresenterParamsObj, this);
     }
 
     public void handleShowHidePasswordTtv(EditText registerPasswordEdt) {

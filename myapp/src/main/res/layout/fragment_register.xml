@@ -366,9 +366,7 @@
             android:id="@+id/registerUserProgressView"
             android:layout_width="@dimen/registerUser_progressView_dimens"
             android:layout_height="@dimen/registerUser_progressView_dimens"
-            app:pv_circular="true"
-            app:pv_progressStyle="@style/Material.Drawable.CircularProgress"
-            app:pv_progressMode="indeterminate"/>
+            style="@style/InCircularProgressView" />
 
         <Button
             android:id="@+id/submitBtn"
