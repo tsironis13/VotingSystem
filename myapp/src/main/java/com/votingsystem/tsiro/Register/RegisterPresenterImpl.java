@@ -15,7 +15,9 @@ import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by user on 5/2/2016.
@@ -40,7 +42,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
                     registerView.clearEditextHelpersAndSuccessIcon("clearSuccessIcon", acceptRlt, null);
             } else if (tag.equals("confirmpassword")) {
                 if (start >= 2 && !inputEdt.getText().toString().equals(auxEdt.getText().toString())) {
-                    registerView.setInputFieldError(AppConfig.ERROR_PASSWORD_MISMATCH, inputEdt);
+                    registerView.onFailure(AppConfig.ERROR_PASSWORD_MISMATCH, inputEdt);
                     return;
                 } else if (start >= 2 && inputEdt.getText().toString().equals(auxEdt.getText().toString()) && inputEdt.getHelper() != null) {
                     registerView.clearEditextHelpersAndSuccessIcon("clearHelper", null, inputEdt);
@@ -82,13 +84,14 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
 
     public void firmNamesSpnrActions(int connectionStatus) {
         if (connectionStatus == AppConfig.NO_CONNECTION) {
-            if (!firmsLoaded && registerView != null) registerView.onFailure(firmNameWithIDArrayList, false);
+            if (!firmsLoaded && registerView != null) registerView.onFailureFirmNamesSpnrLoad(firmNameWithIDArrayList, false);
         } else {
             if (!firmsLoaded) registerInteractorImpl.populateFirmNamesSpnr(firmNameWithIDArrayList, this);
         }
     }
 
-    public void validateForm(LinearLayout baseLlt) {
+    public void emptyFieldsValidation(LinearLayout baseLlt) {
+        boolean empty_field = false;
         for (int i = 0; i < baseLlt.getChildCount(); i++) {
             View formChild = baseLlt.getChildAt(i);
             if (formChild instanceof LinearLayout) {
@@ -99,21 +102,33 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
                             View innerContainerChild = ((RelativeLayout) containerChild).getChildAt(k);
                             if (innerContainerChild instanceof EditText && innerContainerChild.getTag().equals("required")) {
                                 if (TextUtils.isEmpty(((EditText) innerContainerChild).getText())) {
-                                    registerView.onFormValidationFailure(((EditText) innerContainerChild).getHint().toString(), "empty_fields");
+                                    registerView.onEmptyFieldsValidationFailure(((EditText) innerContainerChild).getHint().toString(), "empty_fields");
+                                    empty_field = true;
                                     return;
                                 }
                             }
                         }
                     } else if (containerChild instanceof EditText) {
                         if (TextUtils.isEmpty(((EditText) containerChild).getText())) {
-                            registerView.onFormValidationFailure(((EditText) containerChild).getHint().toString(), "empty_fields");
+                            registerView.onEmptyFieldsValidationFailure(((EditText) containerChild).getHint().toString(), "empty_fields");
+                            empty_field = true;
                             return;
                         }
                     } else if (containerChild instanceof Spinner) {
-                        if (((Spinner) containerChild).getSelectedItemPosition() == 0) registerView.onFormValidationFailure("Επιλογή Εταιρείας", "empty_fields");
+                        if (((Spinner) containerChild).getSelectedItemPosition() == 0) {
+                            empty_field = true;
+                            registerView.onEmptyFieldsValidationFailure("Επιλογή Εταιρείας", "empty_fields");
+                        }
                     }
                 }
             }
+        }
+        if (!empty_field) registerView.onEmptyFieldsValidationSuccess();
+    }
+
+    public void validateForm(HashMap<String, Boolean> inputValidityMap){
+        for (Map.Entry<String, Boolean> cursor : inputValidityMap.entrySet()) {
+            Log.e(debugTag, "Key: "+cursor.getKey()+" Value: "+ cursor.getValue());
         }
     }
 
@@ -127,7 +142,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     public void displayFeedbackMsg(int code) { if ( registerView != null ) registerView.displayFeedbackMsg(code); }
 
     @Override
-    public void onInputFieldError(int code, View view) { if ( registerView != null ) registerView.setInputFieldError(code, view); }
+    public void onInputFieldError(int code, View view) { if ( registerView != null ) registerView.onFailure(code, view); }
 
     @Override
     public void onSuccess(RelativeLayout validInputRlt, String tag) { if ( registerView != null ) registerView.onSuccess(validInputRlt, tag); }
@@ -141,7 +156,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     }
 
     @Override
-    public void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) { if ( registerView != null ) registerView.onFailure(firmNameWithIDArrayList, false); }
+    public void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) { if ( registerView != null ) registerView.onFailureFirmNamesSpnrLoad(firmNameWithIDArrayList, false); }
 
     @Override
     public void onDestroy() {

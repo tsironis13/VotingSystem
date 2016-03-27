@@ -18,11 +18,13 @@ public interface RegisterView {
     public void changeTransformationMethod(TransformationMethod transformationMethod, String text);
     public void showFieldValidationProgress(ProgressView inputFieldPrgv);
     public void hideFieldValidationProgress(ProgressView inputFieldPrgv);
-    public void setInputFieldError(int code, View view);
     public void displayFeedbackMsg(int code);
     public void onSuccess(RelativeLayout inputValidRlt, String tag);
+    public void onFailure(int code, View view);
     public void onSuccessfulFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded);
-    public void onFailure(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded);
-    public void onFormValidationFailure(String field, String errorType);
+    public void onFailureFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded);
+    public void onEmptyFieldsValidationSuccess();
+    public void onEmptyFieldsValidationFailure(String field, String errorType);
     public void onFormValidationSuccess();
+    public void onFormValidationFailure();
 }

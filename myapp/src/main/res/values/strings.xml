@@ -57,13 +57,13 @@
     <!-- INPUT FIELDS -->
     <string name="username_tag">username</string>
     <string name="password_tag">password</string>
+    <string name="confirm_password_tag">confirm_password</string>
     <string name="email_tag">email</string>
-    <string name="firmcode_tag">firmcode</string>
     <string-array name="input_fields_array">
         <item>username</item>
         <item>password</item>
+        <item>confirm_password</item>
         <item>email</item>
-        <item>firmcode</item>
     </string-array>
     <!-- INTENT FILTERS STAFF -->
     <string name="connectivity_change">android.net.conn.CONNECTIVITY_CHANGE</string>

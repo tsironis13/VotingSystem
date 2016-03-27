@@ -18,17 +18,12 @@ public class AppConfig {
     public static final String SESSION_PREFS                    =   "sessionPrefs";
     public static final String KEY_USER_LEARNED_PREFS           =   "user_learned_prefs";
 
+    //CODES
     public static final int NO_CONNECTION                       =   -1;
     public static final int WIFI_CONNECTION                     =   1;
     public static final int CECULAR_CONNECTION                  =   0;
     public static final int REQUEST_OK                          =   200;
     public static final int UNAVAILABLE_SERVICE                 =   503;
-    public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
-    public static final int PASSWORD_INPUT_TYPE                 =   129;
-
-    public static final int NAVDRAWER_ITEM_VERTICAL_HEIGHT      =   48;
-    public static final int NAVDRAWER_DEFAULT_SELECTED_POSITION =   0;
-
     public static final int INPUT_OK                            =   10;
     public static final int INTERNAL_ERROR                      =   -8;
     public static final int ERROR_EMPTY_INPUT                   =   -9;
@@ -37,6 +32,15 @@ public class AppConfig {
     public static final int ERROR_INVALID_PASSWORD_LENGTH       =   -12;
     public static final int ERROR_PASSWORD_MISMATCH             =   -13;
     public static final int ERROR_INVALID_EMAIL_ADDRESS         =   -14;
+
+    //LOGIN ACTIVITY
+    public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
+    public static final int PASSWORD_INPUT_TYPE                 =   129;
+    public static final int PASSWORD_LENGTH                     =   8;
+
+
+    public static final int NAVDRAWER_ITEM_VERTICAL_HEIGHT      =   48;
+    public static final int NAVDRAWER_DEFAULT_SELECTED_POSITION =   0;
 
     public static final long showhideAcceptDelay                =   4000;
 
