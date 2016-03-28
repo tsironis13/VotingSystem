@@ -13,8 +13,8 @@ import java.util.Map;
  * Created by user on 10/10/2015.
  */
 public class AppConfig {
-    public static final String BASE_URL                         =   "http://christosioannidis.com/giannis/Ptixiaki/";
-    //public static final String BASE_URL                         =   "http://192.168.100.192/Ptixiaki/";
+    //public static final String BASE_URL                         =   "http://christosioannidis.com/giannis/Ptixiaki/";
+    public static final String BASE_URL                         =   "http://192.168.100.192/Ptixiaki/";
     public static final String SESSION_PREFS                    =   "sessionPrefs";
     public static final String KEY_USER_LEARNED_PREFS           =   "user_learned_prefs";
 
@@ -36,8 +36,6 @@ public class AppConfig {
     //LOGIN ACTIVITY
     public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
     public static final int PASSWORD_INPUT_TYPE                 =   129;
-    public static final int PASSWORD_LENGTH                     =   8;
-
 
     public static final int NAVDRAWER_ITEM_VERTICAL_HEIGHT      =   48;
     public static final int NAVDRAWER_DEFAULT_SELECTED_POSITION =   0;

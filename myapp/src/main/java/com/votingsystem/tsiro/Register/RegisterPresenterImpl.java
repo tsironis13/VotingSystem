@@ -40,14 +40,14 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
             if (tag.equals("username") || tag.equals("email")) {
                 if (acceptRlt.getVisibility() == View.VISIBLE)
                     registerView.clearEditextHelpersAndSuccessIcon("clearSuccessIcon", acceptRlt, null);
-            } else if (tag.equals("confirmpassword")) {
+            } /*else if (tag.equals("confirmpassword")) {
                 if (start >= 2 && !inputEdt.getText().toString().equals(auxEdt.getText().toString())) {
                     registerView.onFailure(AppConfig.ERROR_PASSWORD_MISMATCH, inputEdt);
                     return;
                 } else if (start >= 2 && inputEdt.getText().toString().equals(auxEdt.getText().toString()) && inputEdt.getHelper() != null) {
                     registerView.clearEditextHelpersAndSuccessIcon("clearHelper", null, inputEdt);
                 }
-            }
+            }*/
             if ((before == 1 || before == 0) && inputEdt.getHelper() != null)
                 registerView.clearEditextHelpersAndSuccessIcon("clearHelper", null, inputEdt);
         }

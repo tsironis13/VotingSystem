@@ -62,7 +62,6 @@
     <string-array name="input_fields_array">
         <item>username</item>
         <item>password</item>
-        <item>confirm_password</item>
         <item>email</item>
     </string-array>
     <!-- INTENT FILTERS STAFF -->
