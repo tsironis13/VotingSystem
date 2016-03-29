@@ -36,6 +36,8 @@ import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.Spinner;
 import com.rey.material.widget.TextView;
 import com.squareup.leakcanary.RefWatcher;
+import com.votingsystem.tsiro.POJO.RegisterFormBody;
+import com.votingsystem.tsiro.POJO.RegisterFormField;
 import com.votingsystem.tsiro.Register.RegisterPresenterImpl;
 import com.votingsystem.tsiro.Register.RegisterPresenterParamsObj;
 import com.votingsystem.tsiro.Register.RegisterView;
@@ -47,6 +49,8 @@ import com.votingsystem.tsiro.interfaces.DismissErrorContainerSnackBar;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.votingsystem.R;
+
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
@@ -78,6 +82,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
     private boolean firmsLoaded, validationMapChanged, formSubmitted;
     private TSnackbar errorContainerSnackbar;
     private DismissErrorContainerSnackBar dismissErrorContainerSnackBar;
+    private EditText[] formEdts;
 
     @Override
     public void onAttach(Context context) {
@@ -117,6 +122,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if ( savedInstanceState == null ) {
+            formEdts = new EditText[]{usernameEdt, passwordEdt, confirmPasswordEdt, emailEdt, firmCodeEdt};
             firmsLoaded = false;
             if (snackBar.isShown()) snackBar.dismiss();
             registerPresenterImpl = new RegisterPresenterImpl(this);
@@ -151,7 +157,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus)
                         if (!inputValidityMap.get(getResources().getString(R.string.username_tag)) && !TextUtils.isEmpty(usernameEdt.getText().toString())) {
-                            registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), usernameEdt, usernameProgressView, getResources().getString(R.string.usernameValidation), acceptUsernameRlt, getResources().getString(R.string.username_tag), usernameEdt));
+                            //registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), usernameEdt, usernameProgressView, getResources().getString(R.string.usernameValidation), acceptUsernameRlt, getResources().getString(R.string.username_tag), usernameEdt));
                         } else if (!inputValidityMap.get(getResources().getString(R.string.username_tag)) && TextUtils.isEmpty(usernameEdt.getText().toString())) {
                             setText(getResources().getString(R.string.error), usernameEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))), "#DD2C00");
                         }
@@ -163,7 +169,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus)
                         if (!inputValidityMap.get(getResources().getString(R.string.password_tag)) && !TextUtils.isEmpty(passwordEdt.getText().toString())) {
-                            registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), passwordEdt, null, getResources().getString(R.string.passwordValidation), acceptPasswordRlt, getResources().getString(R.string.password_tag), passwordErrorTtv));
+                            //registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), passwordEdt, null, getResources().getString(R.string.passwordValidation), acceptPasswordRlt, getResources().getString(R.string.password_tag), passwordErrorTtv));
                             Log.e(debugTag, "here");
                         } else if (!inputValidityMap.get(getResources().getString(R.string.password_tag)) && TextUtils.isEmpty(passwordEdt.getText().toString())){
                             setText(getResources().getString(R.string.error), passwordErrorTtv, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))), "#DD2C00");
@@ -229,7 +235,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 public void onFocusChange(View v, boolean hasFocus) {
                     if (!hasFocus)
                         if (!inputValidityMap.get(getResources().getString(R.string.email_tag)) && !TextUtils.isEmpty(emailEdt.getText().toString())) {
-                            registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), emailEdt, emailProgressView, getResources().getString(R.string.emailValidation), acceptEmailRlt, getResources().getString(R.string.email_tag), emailEdt));
+                            //registerPresenterImpl.validateInputFieldOnFocusChange(setPresenterObjParams(connectionStatus, isAdded(), emailEdt, emailProgressView, getResources().getString(R.string.emailValidation), acceptEmailRlt, getResources().getString(R.string.email_tag), emailEdt));
                         } else if (!inputValidityMap.get(getResources().getString(R.string.email_tag)) && TextUtils.isEmpty(emailEdt.getText().toString())) {
                             setText(getResources().getString(R.string.error), emailEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.empty_requried_field))), "#DD2C00");
                         }
@@ -367,7 +373,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
         }
         setText(getResources().getString(R.string.error), view, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(inputValidationCodes.get(code)))), "#DD2C00");
         if (validationMapChanged && formSubmitted) {
-            registerPresenterImpl.validateForm(inputValidityMap);
+            //registerPresenterImpl.validateForm(inputValidityMap);
         }
         formSubmitted = false;
     }
@@ -391,7 +397,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
         }
         inputValidityMap.put(tag, true);
         if (validationMapChanged && formSubmitted) {
-            registerPresenterImpl.validateForm(inputValidityMap);
+            //registerPresenterImpl.validateForm(inputValidityMap);
         }
         formSubmitted = false;
     }
@@ -413,8 +419,12 @@ public class RegisterFragment extends Fragment implements RegisterView{
     public void onEmptyFieldsValidationSuccess() {
         if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
         if (registerUserProgressView != null && registerUserProgressView.isShown()) registerUserProgressView.stop();
-
-
+        List<RegisterFormField> fields = new ArrayList<>();
+        fields.add(new RegisterFormField("username", usernameEdt.getText().toString()));
+        fields.add(new RegisterFormField("password", passwordEdt.getText().toString()));
+        fields.add(new RegisterFormField("confirm_password", confirmPasswordEdt.getText().toString()));
+        RegisterFormBody registerFormBody = new RegisterFormBody(getResources().getString(R.string.register_user), fields, null);
+        registerPresenterImpl.validateForm(registerFormBody, setPresenterObjParams(connectionStatus, isAdded(), formEdts, emailProgressView, getResources().getString(R.string.register_user), acceptEmailRlt, getResources().getString(R.string.email_tag), emailEdt));
         /*View current = getActivity().getCurrentFocus();
         if (current != null) {
             Log.e(debugTag, "current focus: "+current);
@@ -449,11 +459,12 @@ public class RegisterFragment extends Fragment implements RegisterView{
         };
     }
 
-    private RegisterPresenterParamsObj setPresenterObjParams(int connectionStatus, boolean isAdded, EditText inputEditext, ProgressView inputFieldProgressView, String retrofitAction, RelativeLayout validInputRlt, String tag, View errorView) {
+    private RegisterPresenterParamsObj setPresenterObjParams(int connectionStatus, boolean isAdded, EditText[] formEdts, ProgressView inputFieldProgressView, String retrofitAction, RelativeLayout validInputRlt, String tag, View errorView) {
         RegisterPresenterParamsObj registerPresenterParamsObj  = new RegisterPresenterParamsObj();
         registerPresenterParamsObj.setConnectionStatus(connectionStatus);
         registerPresenterParamsObj.setIsAdded(isAdded);
-        registerPresenterParamsObj.setInputEditText(inputEditext);
+        registerPresenterParamsObj.setFormEdts(formEdts);
+        //registerPresenterParamsObj.setInputEditText(inputEditext);
         registerPresenterParamsObj.setInputFieldProgressView(inputFieldProgressView);
         registerPresenterParamsObj.setRetrofitAction(retrofitAction);
         registerPresenterParamsObj.setValidInputRlt(validInputRlt);

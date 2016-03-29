@@ -12,6 +12,7 @@ import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.Spinner;
 import com.rey.material.widget.TextView;
+import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
 import java.util.ArrayList;
@@ -126,10 +127,12 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
         if (!empty_field) registerView.onEmptyFieldsValidationSuccess();
     }
 
-    public void validateForm(HashMap<String, Boolean> inputValidityMap){
-        for (Map.Entry<String, Boolean> cursor : inputValidityMap.entrySet()) {
-            Log.e(debugTag, "Key: "+cursor.getKey()+" Value: "+ cursor.getValue());
-        }
+    public void validateForm(RegisterFormBody registerFormBody, RegisterPresenterParamsObj registerPresenterParamsObj){
+        if (registerPresenterParamsObj.getConnectionStatus() != AppConfig.NO_CONNECTION) registerInteractorImpl.validateForm(registerFormBody, registerPresenterParamsObj);
+
+        //for (Map.Entry<String, Boolean> cursor : inputValidityMap.entrySet()) {
+        //    Log.e(debugTag, "Key: "+cursor.getKey()+" Value: "+ cursor.getValue());
+        //}
     }
 
     @Override

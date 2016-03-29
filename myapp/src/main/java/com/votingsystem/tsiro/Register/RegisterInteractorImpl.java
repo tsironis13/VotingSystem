@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 
 import com.rey.material.widget.ProgressView;
 import com.votingsystem.tsiro.POJO.Firm;
+import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.POJO.UserConnectionStaff;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
@@ -39,8 +40,33 @@ public class RegisterInteractorImpl implements RegisterInteractor {
     }
 
     @Override
+    public void validateForm(RegisterFormBody registerFormFieldsBody, final RegisterPresenterParamsObj registerPresenterParamsObj) {
+        call = apiService.registerUser(registerFormFieldsBody);
+        call.enqueue(new Callback<UserConnectionStaff>() {
+            @Override
+            public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
+                if (registerPresenterParamsObj.isAdded()) {
+                    Log.e(debugTag, "Code: "+response.body().getCode());
+                    //Log.e(debugTag, "Data: "+response.body().getData());
+                    //Log.e(debugTag, "Error code: "+response.body().getError_code());
+                    //Log.e(debugTag, response.body().getData().size()+"");
+                    //Log.e(debugTag, response.body().getKa());
+                    //for (int i = 0; i < response.body().getData().size(); i++) {
+                    //    Log.e(debugTag, "Tag: "+response.body().getData().get(i).getTag()+" Code: "+response.body().getData().get(i).getCode());
+                    //}
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                Log.e(debugTag, t.toString());
+            }
+        });
+    }
+
+    @Override
     public void validateInputField(final RegisterPresenterParamsObj registerPresenterParamsObj, final RegisterInputFieldFinishedListener registerInputFieldFinishedListener) {
-            if ( registerPresenterParamsObj.getTag().equals("password") && registerPresenterParamsObj.getInputEditText() != null && registerPresenterParamsObj.getInputEditText().getText().length() != 8 ) {
+            /*if ( registerPresenterParamsObj.getTag().equals("password") && registerPresenterParamsObj.getInputEditText() != null && registerPresenterParamsObj.getInputEditText().getText().length() != 8 ) {
                 registerInputFieldFinishedListener.onInputFieldError(AppConfig.ERROR_INVALID_PASSWORD_LENGTH, registerPresenterParamsObj.getErrorView());
             } else {
                 if (!registerPresenterParamsObj.getTag().equals("password")) registerInputFieldFinishedListener.startProgressLoader(registerPresenterParamsObj.getInputFieldProgressView());
@@ -70,7 +96,7 @@ public class RegisterInteractorImpl implements RegisterInteractor {
                         if (!registerPresenterParamsObj.getTag().equals("password")) registerInputFieldFinishedListener.hideProgressLoader(registerPresenterParamsObj.getInputFieldProgressView());
                     }
                 });
-            }
+            }*/
         }
 
     @Override
@@ -80,6 +106,7 @@ public class RegisterInteractorImpl implements RegisterInteractor {
             @Override
             public void onResponse(Response<Firm> response, Retrofit retrofit) {
                 List<Firm.FirmElement> firmElementList = response.body().getFirm_element();
+                Log.e(debugTag, "Firms list: "+firmElementList);
                 for (int i = 0; i < firmElementList.size(); i++) {
                     Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());
                     firmNameWithIDArrayList.add(new FirmNameWithID(firmElementList.get(i).getFirm_name(), firmElementList.get(i).getFirm_id()));

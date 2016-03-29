@@ -1,10 +1,12 @@
 package com.votingsystem.tsiro.rest;
 
 import com.votingsystem.tsiro.POJO.Firm;
+import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.POJO.Survey;
 import com.votingsystem.tsiro.POJO.User;
 import com.votingsystem.tsiro.POJO.UserConnectionStaff;
 
+import java.util.List;
 import java.util.Observable;
 
 import retrofit.Call;
@@ -18,9 +20,9 @@ import retrofit.http.POST;
  */
 public interface ApiService {
 
-    @FormUrlEncoded
     @POST("requests/registration/registration-requests.php")
-    Call<UserConnectionStaff> registerUser(@Field("action") String action, @Field("username") String username, @Field("password") String password, @Field("confirm_password") String confirm_password, @Field("email") String email, @Field("firm_code") String firm_code, @Field("firm_name") String firm_name);
+    Call<UserConnectionStaff> registerUser(@Body RegisterFormBody registerFormBody);
+    //Call<UserConnectionStaff> registerUser(@Field("action") String action, @Field("username") String username, @Field("password") String password, @Field("confirm_password") String confirm_password, @Field("email") String email, @Field("firm_code") String firm_code, @Field("firm_name") String firm_name);
 
     @FormUrlEncoded
     @POST("requests/registration/registration-requests.php")

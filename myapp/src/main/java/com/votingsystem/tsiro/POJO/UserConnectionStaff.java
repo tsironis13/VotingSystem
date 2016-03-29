@@ -1,16 +1,26 @@
 package com.votingsystem.tsiro.POJO;
 
+import java.util.List;
+
 /**
  * Created by user on 10/1/2016.
  */
 public class UserConnectionStaff {
 
-    private String inputField, username, password, confirm_password, email, firm_name, firm_code;
-    private int error_code;
+    private String inputField, username, password, confirm_password, email, firm_name, firm_code, ka;
+    private int code;
+    private List<Data> data;
 
     public UserConnectionStaff() {}
 
-    public String getInputField() { return inputField; }
+    public void setCode(int code) { this.code = code; }
+
+    public int getCode() { return code; }
+
+    public void setData(List<Data> data) { this.data = data; }
+
+    public List<Data> getData() { return data; }
+    /*public String getInputField() { return inputField; }
 
     public void setInputField(String inputField) { this.inputField = inputField; }
 
@@ -54,5 +64,24 @@ public class UserConnectionStaff {
 
     public int getError_code() { return error_code; }
 
-    public void setError_code(int error_code) { this.error_code = error_code; }
+    public void setError_code(int error_code) { this.error_code = error_code; }*/
+
+    public class Data {
+        private String tag;
+        private int code, error_code;
+
+        public Data() {}
+
+        public String getTag() { return tag; }
+
+        public void setTag(String tag) { this.tag = tag; }
+
+        public int getCode() { return code; }
+
+        public void setCode(int code) { this.code = code; }
+
+        public int getError_code() { return error_code; }
+
+        public void setError_code(int error_code) { this.error_code = error_code; }
+    }
 }

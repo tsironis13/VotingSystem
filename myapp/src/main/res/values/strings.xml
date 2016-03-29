@@ -8,6 +8,7 @@
     <string name="spinner">spinner</string>
     <string name="required">required</string>
     <!-- ACTIONS -->
+    <string name="register_user">register_user</string>
     <string name="usernameValidation">usernameValidation</string>
     <string name="passwordValidation">passwordValidation</string>
     <string name="emailValidation">emailValidation</string>

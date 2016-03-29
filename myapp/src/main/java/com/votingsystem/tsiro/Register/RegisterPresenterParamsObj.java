@@ -13,7 +13,7 @@ public class RegisterPresenterParamsObj {
 
     private int connectionStatus;
     private boolean isAdded;
-    private EditText inputEditText;
+    private EditText[] formEdts;
     private String action, retrofitAction, tag;
     private ProgressView inputFieldProgressView;
     private RelativeLayout validInputRlt;
@@ -21,19 +21,37 @@ public class RegisterPresenterParamsObj {
 
     public RegisterPresenterParamsObj(){}
 
-    public int getConnectionStatus() {
-        return connectionStatus;
-    }
+    public int getConnectionStatus() { return connectionStatus; }
 
     public void setConnectionStatus(int connectionStatus) { this.connectionStatus = connectionStatus; }
 
-    public boolean isAdded() {
-        return isAdded;
-    }
+    public boolean isAdded() { return isAdded; }
 
-    public void setIsAdded(boolean isAdded) {
-        this.isAdded = isAdded;
-    }
+    public void setIsAdded(boolean isAdded) { this.isAdded = isAdded; }
+
+    public void setFormEdts(EditText[] formEdts) { this.formEdts = formEdts; }
+
+    public EditText[] getFormEdts() { return formEdts; }
+
+    /*public EditText getUsernameEdt() { return usernameEdt; }
+
+    public void setUsernameEdt(EditText usernameEdt) { this.usernameEdt = usernameEdt; }
+
+    public EditText getPasswordEdt() { return passwordEdt; }
+
+    public void setPasswordEdt(EditText passwordEdt) { this.passwordEdt = passwordEdt; }
+
+    public EditText getConfirmPasswordEdt() { return confirmPasswordEdt; }
+
+    public void setConfirmPasswordEdt(EditText confirmPasswordEdt) { this.confirmPasswordEdt = confirmPasswordEdt; }
+
+    public EditText getEmailEdt() { return emailEdt; }
+
+    public void setEmailEdt(EditText emailEdt) { this.emailEdt = emailEdt; }
+
+    public EditText getFirmCodeEdt() { return firmCodeEdt; }
+
+    public void setFirmCodeEdt(EditText firmCodeEdt) { this.firmCodeEdt = firmCodeEdt; }
 
     public EditText getInputEditText() { return inputEditText; }
 
@@ -41,17 +59,13 @@ public class RegisterPresenterParamsObj {
 
     public ProgressView getInputFieldProgressView() {
         return inputFieldProgressView;
-    }
+    }*/
 
     public void setInputFieldProgressView(ProgressView inputFieldProgressView) { this.inputFieldProgressView = inputFieldProgressView; }
 
-    public String getAction() {
-        return action;
-    }
+    public String getAction() { return action; }
 
-    public void setAction(String action) {
-        this.action = action;
-    }
+    public void setAction(String action) { this.action = action; }
 
     public String getRetrofitAction() { return retrofitAction; }
 
