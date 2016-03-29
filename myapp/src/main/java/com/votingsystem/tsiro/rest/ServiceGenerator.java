@@ -3,6 +3,7 @@ package com.votingsystem.tsiro.rest;
 import android.util.Log;
 
 import com.google.gson.Gson;
+
 import com.squareup.okhttp.OkHttpClient;
 import com.votingsystem.tsiro.app.AppConfig;
 import retrofit.GsonConverterFactory;

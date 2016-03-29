@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by user on 5/2/2016.
  */
-public interface RegisterInputFieldFinishedListener {
+public interface RegisterFormFinishedListener {
     public void displayFeedbackMsg(int code);
     public void startProgressLoader(ProgressView inputFieldProgressView);
     public void hideProgressLoader(ProgressView inputFieldProgressView);
@@ -17,4 +17,6 @@ public interface RegisterInputFieldFinishedListener {
     public void onSuccess(RelativeLayout validInputRlt, String tag);
     public void onSuccessfirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList);
     public void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList);
+    public void onFormValidationFailure(int code, String field, String hint);
+    public void onFormValidationSuccess();
 }

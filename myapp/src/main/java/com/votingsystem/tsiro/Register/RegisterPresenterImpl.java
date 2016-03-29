@@ -23,7 +23,7 @@ import java.util.Map;
 /**
  * Created by user on 5/2/2016.
  */
-public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFieldFinishedListener {
+public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFinishedListener {
 
     private static final String debugTag = RegisterPresenterImpl.class.getSimpleName();
     private RegisterView registerView;
@@ -128,7 +128,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
     }
 
     public void validateForm(RegisterFormBody registerFormBody, RegisterPresenterParamsObj registerPresenterParamsObj){
-        if (registerPresenterParamsObj.getConnectionStatus() != AppConfig.NO_CONNECTION) registerInteractorImpl.validateForm(registerFormBody, registerPresenterParamsObj);
+        if (registerPresenterParamsObj.getConnectionStatus() != AppConfig.NO_CONNECTION) registerInteractorImpl.validateForm(registerFormBody, registerPresenterParamsObj, this);
 
         //for (Map.Entry<String, Boolean> cursor : inputValidityMap.entrySet()) {
         //    Log.e(debugTag, "Key: "+cursor.getKey()+" Value: "+ cursor.getValue());
@@ -160,6 +160,18 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterInputFi
 
     @Override
     public void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) { if ( registerView != null ) registerView.onFailureFirmNamesSpnrLoad(firmNameWithIDArrayList, false); }
+
+
+    @Override
+    public void onFormValidationFailure(int code, String field, String hint) {
+        registerView.onFormValidationFailure(code, field, hint);
+    }
+
+    @Override
+    public void onFormValidationSuccess() {
+
+    }
+
 
     @Override
     public void onDestroy() {

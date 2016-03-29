@@ -13,8 +13,8 @@ import java.util.Map;
  * Created by user on 10/10/2015.
  */
 public class AppConfig {
-    //public static final String BASE_URL                         =   "http://christosioannidis.com/giannis/Ptixiaki/";
-    public static final String BASE_URL                         =   "http://192.168.100.192/Ptixiaki/";
+    public static final String BASE_URL                         =   "http://christosioannidis.com/giannis/Ptixiaki/";
+    //public static final String BASE_URL                         =   "http://192.168.100.192/Ptixiaki/";
     public static final String SESSION_PREFS                    =   "sessionPrefs";
     public static final String KEY_USER_LEARNED_PREFS           =   "user_learned_prefs";
 
@@ -22,14 +22,15 @@ public class AppConfig {
     public static final int NO_CONNECTION                       =   -1;
     public static final int WIFI_CONNECTION                     =   1;
     public static final int CECULAR_CONNECTION                  =   0;
-    public static final int REQUEST_OK                          =   200;
+    public static final int STATUS_OK                           =   200;
     public static final int UNAVAILABLE_SERVICE                 =   503;
     public static final int INPUT_OK                            =   10;
     public static final int INTERNAL_ERROR                      =   -8;
-    public static final int ERROR_EMPTY_INPUT                   =   -9;
-    public static final int ERROR_INVALID_INPUT                 =   -10;
-    public static final int ERROR_UNAVAILABLE_INPUT             =   -11;
-    public static final int ERROR_INVALID_PASSWORD_LENGTH       =   -12;
+    public static final int ERROR_EMPTY_REQUIRED_FIELD          =   -9;
+    public static final int ERROR_INVALID_FIELD                 =   -10;
+    public static final int ERROR_UNAVAILABLE_FIELD             =   -11;
+    public static final int ERROR_NO_FIRM_PICKED                =   -12;
+    //public static final int ERROR_INVALID_PASSWORD_LENGTH       =   -12;
     public static final int ERROR_PASSWORD_MISMATCH             =   -13;
     public static final int ERROR_INVALID_EMAIL_ADDRESS         =   -14;
 
@@ -48,11 +49,11 @@ public class AppConfig {
         inputValidationCodes.put(NO_CONNECTION, R.string.no_connection);
         inputValidationCodes.put(UNAVAILABLE_SERVICE, R.string.unavailable_service);
         inputValidationCodes.put(INTERNAL_ERROR, R.string.error_occured);
-        inputValidationCodes.put(ERROR_EMPTY_INPUT, R.string.empty_requried_field);
+        inputValidationCodes.put(ERROR_EMPTY_REQUIRED_FIELD, R.string.empty_requried_field);
         inputValidationCodes.put(INPUT_OK, R.string.input_ok);
-        inputValidationCodes.put(ERROR_INVALID_INPUT, R.string.invalid_usernamepassword);
-        inputValidationCodes.put(ERROR_UNAVAILABLE_INPUT, R.string.input_exists);
-        inputValidationCodes.put(ERROR_INVALID_PASSWORD_LENGTH, R.string.invalid_password_length);
+        inputValidationCodes.put(ERROR_INVALID_FIELD, R.string.invalid_usernamepassword);
+        inputValidationCodes.put(ERROR_UNAVAILABLE_FIELD, R.string.input_exists);
+        //inputValidationCodes.put(ERROR_INVALID_PASSWORD_LENGTH, R.string.invalid_password_length);
         inputValidationCodes.put(ERROR_PASSWORD_MISMATCH, R.string.passwords_mismatch);
         inputValidationCodes.put(ERROR_INVALID_EMAIL_ADDRESS, R.string.invalid_email);
         return inputValidationCodes;

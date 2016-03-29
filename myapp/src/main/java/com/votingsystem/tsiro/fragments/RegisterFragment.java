@@ -83,6 +83,8 @@ public class RegisterFragment extends Fragment implements RegisterView{
     private TSnackbar errorContainerSnackbar;
     private DismissErrorContainerSnackBar dismissErrorContainerSnackBar;
     private EditText[] formEdts;
+    private List<RegisterFormField> fields;
+    private RegisterFormBody registerFormBody;
 
     @Override
     public void onAttach(Context context) {
@@ -278,14 +280,13 @@ public class RegisterFragment extends Fragment implements RegisterView{
             submitBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (errorContainerSnackbar != null && errorContainerSnackbar.isShown())
-                        errorContainerSnackbar.dismiss();
                     if (connectionStatus == AppConfig.NO_CONNECTION) {
                         showSnackBar(AppConfig.NO_CONNECTION);
                     } else {
                         formSubmitted = true;
                         registerUserProgressView.start();
-                        registerPresenterImpl.emptyFieldsValidation(baseLlt);
+                        registerPresenterImpl.validateForm(fillRegisterFormFields(), setPresenterObjParams(connectionStatus, isAdded(), formEdts, emailProgressView, getResources().getString(R.string.register_user), acceptEmailRlt, getResources().getString(R.string.email_tag), emailEdt));
+                        //registerPresenterImpl.emptyFieldsValidation(baseLlt);
                     }
                 }
             });
@@ -420,10 +421,10 @@ public class RegisterFragment extends Fragment implements RegisterView{
         if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
         if (registerUserProgressView != null && registerUserProgressView.isShown()) registerUserProgressView.stop();
         List<RegisterFormField> fields = new ArrayList<>();
-        fields.add(new RegisterFormField("username", usernameEdt.getText().toString()));
-        fields.add(new RegisterFormField("password", passwordEdt.getText().toString()));
-        fields.add(new RegisterFormField("confirm_password", confirmPasswordEdt.getText().toString()));
-        RegisterFormBody registerFormBody = new RegisterFormBody(getResources().getString(R.string.register_user), fields, null);
+        //fields.add(new RegisterFormField("username", usernameEdt.getText().toString()));
+        //fields.add(new RegisterFormField("password", passwordEdt.getText().toString()));
+        //fields.add(new RegisterFormField("confirm_password", confirmPasswordEdt.getText().toString()));
+        //RegisterFormBody registerFormBody = new RegisterFormBody(getResources().getString(R.string.register_user), fields, null);
         registerPresenterImpl.validateForm(registerFormBody, setPresenterObjParams(connectionStatus, isAdded(), formEdts, emailProgressView, getResources().getString(R.string.register_user), acceptEmailRlt, getResources().getString(R.string.email_tag), emailEdt));
         /*View current = getActivity().getCurrentFocus();
         if (current != null) {
@@ -437,7 +438,12 @@ public class RegisterFragment extends Fragment implements RegisterView{
     }
 
     @Override
-    public void onFormValidationFailure() {
+    public void onFormValidationFailure(int code, String field, String hint) {
+        if (code == AppConfig.ERROR_EMPTY_REQUIRED_FIELD) {
+            showErrorContainerSnackbar(hint);
+        } else if (code == AppConfig.ERROR_NO_FIRM_PICKED) {
+            showErrorContainerSnackbar(getResources().getString(R.string.pickFirm));
+        }
 
     }
 
@@ -457,6 +463,36 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 registerPresenterImpl.firmNamesSpnrActions(connectionStatus);
             }
         };
+    }
+
+    private void showErrorContainerSnackbar(String hint) {
+        errorContainerSnackbar = TSnackbar.make(((LoginActivity) getActivity()).getErrorContainerRlt(), getResources().getString(R.string.empty_fields, hint), TSnackbar.LENGTH_INDEFINITE);
+        View snackBarView = errorContainerSnackbar.getView();
+        snackBarView.setBackgroundColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_background_color)));
+        android.widget.TextView snackBarTtv = (android.widget.TextView) snackBarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
+        snackBarTtv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        snackBarTtv.setTextColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_Ttv_color)));
+        errorContainerSnackbar.show();
+        if (registerUserProgressView != null && registerUserProgressView.isShown()) registerUserProgressView.stop();
+        dismissErrorContainerSnackBar.dismissErrorContainerSnackBar(errorContainerSnackbar);
+    }
+
+    private RegisterFormBody fillRegisterFormFields() {
+        int firm_id;
+        fields = new ArrayList<>();
+        fields.add(new RegisterFormField(getResources().getString(R.string.username_tag), usernameEdt.getText().toString(), usernameEdt.getHint().toString()));
+        fields.add(new RegisterFormField(getResources().getString(R.string.password_tag), passwordEdt.getText().toString(), passwordEdt.getHint().toString()));
+        fields.add(new RegisterFormField(getResources().getString(R.string.confirm_password_tag), confirmPasswordEdt.getText().toString(), confirmPasswordEdt.getHint().toString()));
+        fields.add(new RegisterFormField(getResources().getString(R.string.email_tag), emailEdt.getText().toString(), emailEdt.getHint().toString()));
+        fields.add(new RegisterFormField(getResources().getString(R.string.firm_code_tag), firmCodeEdt.getText().toString(), firmCodeEdt.getHint().toString()));
+        if (pickFirmSpnr.getSelectedItemPosition() != 0) {
+            FirmNameWithID obj  =   (FirmNameWithID) pickFirmSpnr.getAdapter().getItem(pickFirmSpnr.getSelectedItemPosition() - 1);
+            firm_id             =   obj.getId();
+        } else {
+            firm_id             =   0;
+        }
+        registerFormBody = new RegisterFormBody(getResources().getString(R.string.register_user), fields, firm_id);
+        return registerFormBody;
     }
 
     private RegisterPresenterParamsObj setPresenterObjParams(int connectionStatus, boolean isAdded, EditText[] formEdts, ProgressView inputFieldProgressView, String retrofitAction, RelativeLayout validInputRlt, String tag, View errorView) {

@@ -7,12 +7,13 @@ import java.util.List;
  */
 public class RegisterFormBody {
 
-    private String action, firm_name;
+    private String action;
+    private int firm_id;
     private List<RegisterFormField> fields;
 
-    public RegisterFormBody(String action, List<RegisterFormField> fields, String firm_name) {
+    public RegisterFormBody(String action, List<RegisterFormField> fields, int firm_id) {
         this.action     =   action;
         this.fields     =   fields;
-        this.firm_name  =   firm_name;
+        this.firm_id    =   firm_id;
     }
 }

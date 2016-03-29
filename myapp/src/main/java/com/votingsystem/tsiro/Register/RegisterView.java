@@ -26,5 +26,5 @@ public interface RegisterView {
     public void onEmptyFieldsValidationSuccess();
     public void onEmptyFieldsValidationFailure(String field, String errorType);
     public void onFormValidationSuccess();
-    public void onFormValidationFailure();
+    public void onFormValidationFailure(int code, String field, String hint);
 }

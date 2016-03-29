@@ -5,10 +5,6 @@ import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.POJO.Survey;
 import com.votingsystem.tsiro.POJO.User;
 import com.votingsystem.tsiro.POJO.UserConnectionStaff;
-
-import java.util.List;
-import java.util.Observable;
-
 import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.Field;

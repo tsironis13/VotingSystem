@@ -60,6 +60,7 @@
     <string name="password_tag">password</string>
     <string name="confirm_password_tag">confirm_password</string>
     <string name="email_tag">email</string>
+    <string name="firm_code_tag">firm_code</string>
     <string-array name="input_fields_array">
         <item>username</item>
         <item>password</item>

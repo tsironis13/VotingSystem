@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class UserConnectionStaff {
 
-    private String inputField, username, password, confirm_password, email, firm_name, firm_code, ka;
+    private String field, hint, username, password, confirm_password, email, firm_name, firm_code, ka;
     private int code;
     private List<Data> data;
 
@@ -16,6 +16,14 @@ public class UserConnectionStaff {
     public void setCode(int code) { this.code = code; }
 
     public int getCode() { return code; }
+
+    public void setField(String field) { this.field = field; }
+
+    public String getField() { return field; }
+
+    public void setHint(String hint) { this.hint = hint; }
+
+    public String getHint() { return hint; }
 
     public void setData(List<Data> data) { this.data = data; }
 

@@ -40,12 +40,15 @@ public class RegisterInteractorImpl implements RegisterInteractor {
     }
 
     @Override
-    public void validateForm(RegisterFormBody registerFormFieldsBody, final RegisterPresenterParamsObj registerPresenterParamsObj) {
+    public void validateForm(RegisterFormBody registerFormFieldsBody, final RegisterPresenterParamsObj registerPresenterParamsObj, final RegisterFormFinishedListener registerFormFinishedListener) {
         call = apiService.registerUser(registerFormFieldsBody);
         call.enqueue(new Callback<UserConnectionStaff>() {
             @Override
             public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
                 if (registerPresenterParamsObj.isAdded()) {
+                    if (response.body().getCode() != AppConfig.STATUS_OK) {
+                        registerFormFinishedListener.onFormValidationFailure(response.body().getCode(), response.body().getField(), response.body().getHint());
+                    }
                     Log.e(debugTag, "Code: "+response.body().getCode());
                     //Log.e(debugTag, "Data: "+response.body().getData());
                     //Log.e(debugTag, "Error code: "+response.body().getError_code());
@@ -65,7 +68,7 @@ public class RegisterInteractorImpl implements RegisterInteractor {
     }
 
     @Override
-    public void validateInputField(final RegisterPresenterParamsObj registerPresenterParamsObj, final RegisterInputFieldFinishedListener registerInputFieldFinishedListener) {
+    public void validateInputField(final RegisterPresenterParamsObj registerPresenterParamsObj, final RegisterFormFinishedListener registerFormFinishedListener) {
             /*if ( registerPresenterParamsObj.getTag().equals("password") && registerPresenterParamsObj.getInputEditText() != null && registerPresenterParamsObj.getInputEditText().getText().length() != 8 ) {
                 registerInputFieldFinishedListener.onInputFieldError(AppConfig.ERROR_INVALID_PASSWORD_LENGTH, registerPresenterParamsObj.getErrorView());
             } else {
@@ -100,7 +103,7 @@ public class RegisterInteractorImpl implements RegisterInteractor {
         }
 
     @Override
-    public void populateFirmNamesSpnr(final ArrayList<FirmNameWithID> firmNameWithIDArrayList, final RegisterInputFieldFinishedListener registerInputFieldFinishedListener) {
+    public void populateFirmNamesSpnr(final ArrayList<FirmNameWithID> firmNameWithIDArrayList, final RegisterFormFinishedListener registerFormFinishedListener) {
         Call<Firm> call = apiService.getFirmNames("getFirmNames");
         call.enqueue(new Callback<Firm>() {
             @Override
@@ -111,11 +114,11 @@ public class RegisterInteractorImpl implements RegisterInteractor {
                     Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());
                     firmNameWithIDArrayList.add(new FirmNameWithID(firmElementList.get(i).getFirm_name(), firmElementList.get(i).getFirm_id()));
                 }
-                registerInputFieldFinishedListener.onSuccessfirmNamesSpnrLoad(firmNameWithIDArrayList);
+                registerFormFinishedListener.onSuccessfirmNamesSpnrLoad(firmNameWithIDArrayList);
             }
             @Override
             public void onFailure(Throwable t) {
-                registerInputFieldFinishedListener.onFailurefirmNamesSpnrLoad(firmNameWithIDArrayList);
+                registerFormFinishedListener.onFailurefirmNamesSpnrLoad(firmNameWithIDArrayList);
             }
         });
     }
