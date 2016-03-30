@@ -6,8 +6,8 @@ import java.util.List;
  * Created by user on 12/11/2015.
  */
 public class Firm {
-    private String description, action;
-    private boolean error;
+    private String action;
+    private int error;
     private List<FirmElement> firm_element;
 
     public Firm() {}
@@ -16,13 +16,9 @@ public class Firm {
 
     public void setAction(String action) { this.action = action; }
 
-    public String getDescription() { return description; }
+    public int getError() { return error; }
 
-    public void setDescription(String description) { this.description = description; }
-
-    public Boolean getError() { return error; }
-
-    public void setError(Boolean error) { this.error = error; }
+    public void setError(int error) { this.error = error; }
 
     public void setFirm_element() { this.firm_element = firm_element; }
 

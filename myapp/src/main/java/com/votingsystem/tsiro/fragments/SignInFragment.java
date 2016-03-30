@@ -109,7 +109,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                 //Log.e(debugTag, "CONNECTION: " + LoginActivity.connectionStatusUpdated);
                 //Log.d(debugTag, "CONNECTIVITY STATUS: " + connectivityObserver.getConnectivityStatus(getActivity()));
                 if (signInUsernameEdt.getText().toString().isEmpty() || signInPasswordEdt.getText().toString().isEmpty()) {
-                    empty_fields = commonElements.encodeUtf8(getResources().getString(R.string.empty_fields));
+                    empty_fields = commonElements.encodeUtf8(getResources().getString(R.string.empty_field));
                     errorresponseTtv.setText(commonElements.decodeUtf8(empty_fields));
                 } else {
                     try {

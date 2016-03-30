@@ -47,6 +47,7 @@ public class RegisterInteractorImpl implements RegisterInteractor {
             public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
                 if (registerPresenterParamsObj.isAdded()) {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
+                        Log.e(debugTag, response.body().getHint());
                         registerFormFinishedListener.onFormValidationFailure(response.body().getCode(), response.body().getField(), response.body().getHint());
                     }
                     Log.e(debugTag, "Code: "+response.body().getCode());
@@ -108,13 +109,15 @@ public class RegisterInteractorImpl implements RegisterInteractor {
         call.enqueue(new Callback<Firm>() {
             @Override
             public void onResponse(Response<Firm> response, Retrofit retrofit) {
-                List<Firm.FirmElement> firmElementList = response.body().getFirm_element();
-                Log.e(debugTag, "Firms list: "+firmElementList);
-                for (int i = 0; i < firmElementList.size(); i++) {
-                    Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());
-                    firmNameWithIDArrayList.add(new FirmNameWithID(firmElementList.get(i).getFirm_name(), firmElementList.get(i).getFirm_id()));
+                if (response.body().getError() == AppConfig.STATUS_OK) {
+                    List<Firm.FirmElement> firmElementList = response.body().getFirm_element();
+                    Log.e(debugTag, "Firms list: "+firmElementList);
+                    for (int i = 0; i < firmElementList.size(); i++) {
+                        Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());
+                        firmNameWithIDArrayList.add(new FirmNameWithID(firmElementList.get(i).getFirm_name(), firmElementList.get(i).getFirm_id()));
+                    }
+                    registerFormFinishedListener.onSuccessfirmNamesSpnrLoad(firmNameWithIDArrayList);
                 }
-                registerFormFinishedListener.onSuccessfirmNamesSpnrLoad(firmNameWithIDArrayList);
             }
             @Override
             public void onFailure(Throwable t) {

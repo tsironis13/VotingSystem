@@ -16,17 +16,8 @@ import retrofit.http.POST;
  */
 public interface ApiService {
 
-    @POST("requests/registration/registration-requests.php")
+    @POST("requests/registration/register-user.php")
     Call<UserConnectionStaff> registerUser(@Body RegisterFormBody registerFormBody);
-    //Call<UserConnectionStaff> registerUser(@Field("action") String action, @Field("username") String username, @Field("password") String password, @Field("confirm_password") String confirm_password, @Field("email") String email, @Field("firm_code") String firm_code, @Field("firm_name") String firm_name);
-
-    @FormUrlEncoded
-    @POST("requests/registration/registration-requests.php")
-    Call<UserConnectionStaff> isInputFieldValid(@Field("action") String action, @Field("inputField") String inputField);
-
-    //@FormUrlEncoded
-    //@POST("registration/register-user.php")
-    //Call<UserConnectionStaff> registerUser(@Field("username") String username, @Field("password") String password, @Field("confirm-password") String confirm_password, @Field("email") String email, @Field("firm-name") String firm_name, @Field("firm-code") String firm_code);
 
     @FormUrlEncoded
     @POST("login/login.php")

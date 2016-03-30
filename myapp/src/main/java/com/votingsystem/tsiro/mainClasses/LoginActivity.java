@@ -194,7 +194,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     public boolean validateEditText(EditText[] fields) {
         for (EditText field : fields) {
-            if (field.getText().toString().isEmpty() && field.getTag().equals(getResources().getString(R.string.required))) return false;
+            if (field.getText().toString().isEmpty()) return false;
         }
         return true;
     }

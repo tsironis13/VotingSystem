@@ -6,7 +6,6 @@
     <string name="registerFgmt">registerFgmt</string>
     <string name="editext">editext</string>
     <string name="spinner">spinner</string>
-    <string name="required">required</string>
     <!-- ACTIONS -->
     <string name="register_user">register_user</string>
     <string name="usernameValidation">usernameValidation</string>
@@ -42,19 +41,18 @@
     <string name="visible">visible</string>
     <string name="gone">gone</string>
     <!-- ERRORS -->
-    <string name="empty_fields">Παρακαλώ συμπλήρωσε τα παρακάτω πεδία: %1$s.</string>
+    <string name="empty_field">Παρακαλώ συμπλήρωσε τo παρακάτω πεδίo: %1$s.</string>
+    <string name="correct_field">Παρακαλώ διόρθωσε το παρακάτω πεδίο: %1$s.</string>
     <string name="no_connection">Αδυναμία σύνδεσης στο δίκτυο.</string>
     <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Ξαναπροσπάθησε σύντομα.</string>
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>
-    <string name="empty_requried_field">Το πεδίο είναι υποχρεωτικό</string>
-    <!-- PASSWORD HANGLING -->
-    <string name="invalid_password_length">Αποδεκτό μέγεθος κωδικού, 8 χαρακτήρες</string>
-    <string name="passwords_mismatch">Ασυμφωνία κωδικών</string>
-    <!-- INPUT STAFF HANDLING -->
-    <string name="input_ok">Διαθέσιμο</string>
-    <string name="invalid_usernamepassword">Αποδεκτοί λατινικοί χαρακτήρες, νούμερα</string>
-    <string name="invalid_email">Μη έγκυρη διεύθυνση</string>
-    <string name="input_exists">Μη διαθέσιμο</string>
+    <string name="error_empty_requried_field">Το πεδίο είναι υποχρεωτικό</string>
+    <string name="error_invalid_password_length">Αποδεκτό μέγεθος κωδικού, 8 χαρακτήρες</string>
+    <string name="error_passwords_mismatch">Ασυμφωνία κωδικών πρόσβασης.</string>
+    <string name="error_invalid_input">Αποδεκτοί λατινικοί χαρακτήρες, νούμερα</string>
+    <string name="error_invalid_email">Μη έγκυρη διεύθυνση</string>
+    <string name="error_input_exists">Μη διαθέσιμο</string>
+    <string name="error_firm_code_mismatch">Ο κωδικός δεν αντιστοιχεί στη συγκεκριμένη εταιρεία.</string>
     <!-- INPUT FIELDS -->
     <string name="username_tag">username</string>
     <string name="password_tag">password</string>
