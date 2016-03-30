@@ -36,12 +36,8 @@
     <dimen name="register_input_container_height">50dp</dimen>
     <dimen name="input_field_Rlt_width">252dp</dimen>
     <dimen name="input_field_Rlt_paddingRight">5dp</dimen>
-    <dimen name="input_field_Edt_width">222dp</dimen>
-    <dimen name="progress_view_width">28dp</dimen>
-    <dimen name="progress_view_height">24dp</dimen>
-    <dimen name="accept_field_Rlt_width">28dp</dimen>
-    <dimen name="accept_field_Rlt_height">24dp</dimen>
-    <dimen name="accept_field_Imv_dimens">20dp</dimen>
+    <dimen name="input_field_Edt_width">252dp</dimen>
+    <dimen name="input_field_Edt_paddingRight">9dp</dimen>
     <dimen name="password_Edt_width">186dp</dimen>
     <dimen name="password_Edt_paddingRight">5dp</dimen>
     <dimen name="password_error_Ttv_width">222dp</dimen>
@@ -56,7 +52,7 @@
     <dimen name="firmname_Imv_marginRight">0dp</dimen>
     <dimen name="pickFirm_Spnr_maxHeight">100dp</dimen>
     <dimen name="pickFirm_Spnr_marginBottom">8dp</dimen>
-    <dimen name="registerUser_progressView_dimens">24dp</dimen>
+    <dimen name="progressView_dimens">24dp</dimen>
     <dimen name="submit_btn_marginBottom">10dp</dimen>
     <dimen name="submit_btn_marginTop">8dp</dimen>
     <dimen name="signInHere_Ttv_paddingBottom">15dp</dimen>

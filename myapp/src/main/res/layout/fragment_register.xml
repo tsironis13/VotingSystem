@@ -35,54 +35,20 @@
                 android:background="@drawable/username_icon"
                 android:contentDescription="@string/input_logo" />
 
-            <com.rey.material.widget.RelativeLayout
-                android:layout_width="@dimen/input_field_Rlt_width"
+            <com.rey.material.widget.EditText
+                android:id="@+id/usernameEdt"
+                android:layout_width="@dimen/input_field_Edt_width"
                 android:layout_height="match_parent"
-                android:paddingRight="@dimen/input_field_Rlt_paddingRight" >
-
-                <com.rey.material.widget.EditText
-                    android:id="@+id/usernameEdt"
-                    android:layout_width="@dimen/input_field_Edt_width"
-                    android:layout_height="match_parent"
-                    android:textSize="@dimen/input_edt_textSize"
-                    android:textColor="@android:color/white"
-                    android:textColorHint="@color/input_hintColor"
-                    android:background="@android:color/transparent"
-                    android:tag="@string/username_tag"
-                    android:inputType="textPersonName"
-                    android:hint="@string/username"
-                    style="@style/EditextUsername"
-                    app:et_inputId="@+id/usernameEdt" />
-
-                <com.rey.material.widget.ProgressView
-                    android:id="@+id/usernameProgressView"
-                    android:layout_width="@dimen/progress_view_width"
-                    android:layout_height="@dimen/progress_view_height"
-                    android:layout_toRightOf="@+id/usernameEdt"
-                    android:layout_centerVertical="true" />
-
-                <com.rey.material.widget.RelativeLayout
-                    android:id="@+id/acceptUsernameRlt"
-                    android:layout_width="@dimen/accept_field_Rlt_width"
-                    android:layout_height="@dimen/accept_field_Rlt_height"
-                    android:layout_toRightOf="@+id/usernameEdt"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/accept_drawable"
-                    android:visibility="gone"
-                    android:shadowColor="@color/accept_field_shadowColor"
-                    android:shadowDx="-13"
-                    android:shadowDy="4"
-                    android:shadowRadius="11" >
-
-                    <ImageView
-                        android:layout_width="@dimen/accept_field_Imv_dimens"
-                        android:layout_height="@dimen/accept_field_Imv_dimens"
-                        android:background="@drawable/ic_action_accept"
-                        android:layout_centerInParent="true" />
-
-                </com.rey.material.widget.RelativeLayout>
-
-            </com.rey.material.widget.RelativeLayout>
+                android:paddingRight="@dimen/input_field_Edt_paddingRight"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/input_hintColor"
+                android:background="@android:color/transparent"
+                android:tag="@string/username_tag"
+                android:inputType="textPersonName"
+                android:hint="@string/username"
+                style="@style/EditextUsername"
+                app:et_inputId="@+id/usernameEdt" />
 
         </com.rey.material.widget.LinearLayout>
 
@@ -140,28 +106,6 @@
                     android:textSize="@dimen/showHide_password_Ttv_TextSize"
                     android:textColor="@android:color/white" />
 
-                <com.rey.material.widget.RelativeLayout
-                    android:id="@+id/acceptPasswordRlt"
-                    android:layout_width="@dimen/accept_password_Rlt_width"
-                    android:layout_height="@dimen/accept_field_Rlt_height"
-                    android:layout_toRightOf="@+id/passwordEdt"
-                    android:layout_marginLeft="@dimen/accept_password_Rlt_marginLeft"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/accept_drawable"
-                    android:visibility="gone"
-                    android:shadowColor="@color/accept_field_shadowColor"
-                    android:shadowDx="-13"
-                    android:shadowDy="-4"
-                    android:shadowRadius="11" >
-
-                    <ImageView
-                        android:layout_width="@dimen/accept_field_Imv_dimens"
-                        android:layout_height="@dimen/accept_field_Imv_dimens"
-                        android:background="@drawable/ic_action_accept"
-                        android:layout_centerInParent="true" />
-
-                </com.rey.material.widget.RelativeLayout>
-
             </com.rey.material.widget.RelativeLayout>
 
         </com.rey.material.widget.LinearLayout>
@@ -184,8 +128,9 @@
 
             <com.rey.material.widget.EditText
                 android:id="@+id/confirmPasswordEdt"
-                android:layout_width="@dimen/common_width"
+                android:layout_width="@dimen/input_field_Edt_width"
                 android:layout_height="match_parent"
+                android:paddingRight="@dimen/input_field_Edt_paddingRight"
                 android:textSize="@dimen/input_edt_textSize"
                 android:textColor="@android:color/white"
                 android:textColorHint="@color/input_hintColor"
@@ -215,56 +160,21 @@
                 android:background="@drawable/email_icon"
                 android:contentDescription="@string/input_logo"/>
 
-            <com.rey.material.widget.RelativeLayout
-                android:layout_width="@dimen/input_field_Rlt_width"
+            <com.rey.material.widget.EditText
+                android:id="@+id/emailEdt"
+                android:layout_width="@dimen/input_field_Edt_width"
                 android:layout_height="match_parent"
-                android:paddingRight="@dimen/input_field_Rlt_paddingRight" >
-
-                <com.rey.material.widget.EditText
-                    android:id="@+id/emailEdt"
-                    android:layout_width="@dimen/input_field_Edt_width"
-                    android:layout_height="match_parent"
-                    android:paddingRight="@dimen/password_Edt_paddingRight"
-                    android:textSize="@dimen/input_edt_textSize"
-                    android:textColor="@android:color/white"
-                    android:textColorHint="@color/input_hintColor"
-                    android:layout_gravity="center_vertical"
-                    android:background="@android:color/transparent"
-                    android:tag="@string/email_tag"
-                    android:inputType="textEmailAddress"
-                    android:hint="@string/email"
-                    style="@style/EditextEmail"
-                    app:et_inputId="@+id/mailEdt" />
-
-                <com.rey.material.widget.ProgressView
-                    android:id="@+id/emailProgressView"
-                    android:layout_width="@dimen/progress_view_width"
-                    android:layout_height="@dimen/progress_view_height"
-                    android:layout_toRightOf="@+id/emailEdt"
-                    android:layout_centerVertical="true" />
-
-                <com.rey.material.widget.RelativeLayout
-                    android:id="@+id/acceptEmailRlt"
-                    android:layout_width="@dimen/accept_field_Rlt_width"
-                    android:layout_height="@dimen/accept_field_Rlt_height"
-                    android:layout_toRightOf="@+id/emailEdt"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/accept_drawable"
-                    android:visibility="gone"
-                    android:shadowColor="@color/accept_field_shadowColor"
-                    android:shadowDx="-13"
-                    android:shadowDy="-4"
-                    android:shadowRadius="11" >
-
-                    <ImageView
-                        android:layout_width="@dimen/accept_field_Imv_dimens"
-                        android:layout_height="@dimen/accept_field_Imv_dimens"
-                        android:background="@drawable/ic_action_accept"
-                        android:layout_centerInParent="true" />
-
-                </com.rey.material.widget.RelativeLayout>
-
-            </com.rey.material.widget.RelativeLayout>
+                android:paddingRight="@dimen/input_field_Edt_paddingRight"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/input_hintColor"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:tag="@string/email_tag"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email"
+                style="@style/EditextEmail"
+                app:et_inputId="@+id/mailEdt" />
 
         </com.rey.material.widget.LinearLayout>
 
@@ -284,54 +194,20 @@
                 android:background="@drawable/firmcode_icon"
                 android:contentDescription="@string/input_logo" />
 
-            <com.rey.material.widget.RelativeLayout
-                android:layout_width="@dimen/input_field_Rlt_width"
+            <com.rey.material.widget.EditText
+                android:id="@+id/firmCodeEdt"
+                android:layout_width="@dimen/input_field_Edt_width"
                 android:layout_height="match_parent"
-                android:paddingRight="@dimen/input_field_Rlt_paddingRight" >
-
-                <com.rey.material.widget.EditText
-                    android:id="@+id/firmCodeEdt"
-                    android:layout_width="@dimen/input_field_Edt_width"
-                    android:layout_height="match_parent"
-                    android:textSize="@dimen/input_edt_textSize"
-                    android:textColor="@android:color/white"
-                    android:textColorHint="@color/input_hintColor"
-                    android:background="@android:color/transparent"
-                    android:tag="@string/firm_code_tag"
-                    android:inputType="textPassword"
-                    android:hint="@string/firmcode"
-                    style="@style/EditextFirmCode"
-                    app:et_inputId="@+id/fircodeEdt" />
-
-                <com.rey.material.widget.ProgressView
-                    android:id="@+id/firmCodeProgressView"
-                    android:layout_width="@dimen/progress_view_width"
-                    android:layout_height="@dimen/progress_view_height"
-                    android:layout_toRightOf="@+id/firmCodeEdt"
-                    android:layout_centerVertical="true" />
-
-                <RelativeLayout
-                    android:id="@+id/acceptFirmCodeRlt"
-                    android:layout_width="@dimen/accept_field_Rlt_width"
-                    android:layout_height="@dimen/accept_field_Rlt_height"
-                    android:layout_toRightOf="@+id/firmCodeEdt"
-                    android:layout_centerVertical="true"
-                    android:background="@drawable/accept_drawable"
-                    android:visibility="gone"
-                    android:shadowColor="@color/accept_field_shadowColor"
-                    android:shadowDx="-13"
-                    android:shadowDy="-4"
-                    android:shadowRadius="11" >
-
-                    <ImageView
-                        android:layout_width="@dimen/accept_field_Imv_dimens"
-                        android:layout_height="@dimen/accept_field_Imv_dimens"
-                        android:background="@drawable/ic_action_accept"
-                        android:layout_centerInParent="true" />
-
-                </RelativeLayout>
-
-            </com.rey.material.widget.RelativeLayout>
+                android:paddingRight="@dimen/input_field_Edt_paddingRight"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/input_hintColor"
+                android:background="@android:color/transparent"
+                android:tag="@string/firm_code_tag"
+                android:inputType="textPassword"
+                android:hint="@string/firmcode"
+                style="@style/EditextFirmCode"
+                app:et_inputId="@+id/fircodeEdt" />
 
         </com.rey.material.widget.LinearLayout>
 
@@ -362,9 +238,9 @@
         </com.rey.material.widget.LinearLayout>
 
         <com.rey.material.widget.ProgressView
-            android:id="@+id/registerUserProgressView"
-            android:layout_width="@dimen/registerUser_progressView_dimens"
-            android:layout_height="@dimen/registerUser_progressView_dimens"
+            android:id="@+id/progressView"
+            android:layout_width="@dimen/progressView_dimens"
+            android:layout_height="@dimen/progressView_dimens"
             style="@style/InCircularProgressView" />
 
         <Button

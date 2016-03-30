@@ -38,17 +38,6 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFin
 
     public void handleInputFieldTextChanges(int start, int before, EditText inputEdt, RelativeLayout acceptRlt, EditText auxEdt, String tag) {
         if ( registerView != null ) {
-            if (tag.equals("username") || tag.equals("email")) {
-                if (acceptRlt.getVisibility() == View.VISIBLE)
-                    registerView.clearEditextHelpersAndSuccessIcon("clearSuccessIcon", acceptRlt, null);
-            } /*else if (tag.equals("confirmpassword")) {
-                if (start >= 2 && !inputEdt.getText().toString().equals(auxEdt.getText().toString())) {
-                    registerView.onFailure(AppConfig.ERROR_PASSWORD_MISMATCH, inputEdt);
-                    return;
-                } else if (start >= 2 && inputEdt.getText().toString().equals(auxEdt.getText().toString()) && inputEdt.getHelper() != null) {
-                    registerView.clearEditextHelpersAndSuccessIcon("clearHelper", null, inputEdt);
-                }
-            }*/
             if ((before == 1 || before == 0) && inputEdt.getHelper() != null)
                 registerView.clearEditextHelpersAndSuccessIcon("clearHelper", null, inputEdt);
         }
@@ -71,8 +60,8 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFin
 
     public void handleRegisterPasswordEdtTextChanges(int start, int before, EditText registerPasswordEdt, RelativeLayout acceptPasswordRlt, TextView showHidePasswordTtv) {
         if ( registerView != null ) {
-            if (acceptPasswordRlt.getVisibility() == View.VISIBLE)
-                registerView.clearEditextHelpersAndSuccessIcon("clearSuccessIcon", acceptPasswordRlt, null);
+            //if (acceptPasswordRlt.getVisibility() == View.VISIBLE)
+            //    registerView.clearEditextHelpersAndSuccessIcon("clearSuccessIcon", acceptPasswordRlt, null);
             if (start >= 0 && registerPasswordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod) {
                 registerView.handlePasswordTextChanges("ΑΠΟΚΡΥΨΗ", showHidePasswordTtv);
             } else if (start >= 0 && registerPasswordEdt.getTransformationMethod() instanceof PasswordTransformationMethod) {
@@ -169,7 +158,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFin
 
     @Override
     public void onFormValidationSuccess() {
-
+        registerView.onFormValidationSuccess();
     }
 
 

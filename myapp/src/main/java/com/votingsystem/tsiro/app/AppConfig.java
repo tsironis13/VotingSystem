@@ -13,8 +13,8 @@ import java.util.Map;
  * Created by user on 10/10/2015.
  */
 public class AppConfig {
-    //public static final String BASE_URL                         =   "http://christosioannidis.com/giannis/Ptixiaki/";
-    public static final String BASE_URL                         =   "http://192.168.100.192/Ptixiaki/";
+    public static final String BASE_URL                         =   "http://christosioannidis.com/giannis/Ptixiaki/";
+    //public static final String BASE_URL                         =   "http://192.168.100.192/Ptixiaki/";
     public static final String SESSION_PREFS                    =   "sessionPrefs";
     public static final String KEY_USER_LEARNED_PREFS           =   "user_learned_prefs";
 
@@ -55,6 +55,7 @@ public class AppConfig {
         inputValidationCodes.put(ERROR_FIRM_CODE_MISMATCH, R.string.error_firm_code_mismatch);
         inputValidationCodes.put(ERROR_INVALID_PASSWORD_LENGTH, R.string.error_invalid_password_length);
         inputValidationCodes.put(ERROR_PASSWORD_MISMATCH, R.string.error_passwords_mismatch);
+        inputValidationCodes.put(ERROR_INVALID_EMAIL, R.string.error_invalid_email);
         return inputValidationCodes;
     }
 }

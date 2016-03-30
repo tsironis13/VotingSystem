@@ -59,13 +59,11 @@ import java.util.List;
  */
 public class RegisterFragment extends Fragment implements RegisterView{
     private static final String debugTag = RegisterFragment.class.getSimpleName();
-    private static String error_no_connection, empty_fields;
     private LinearLayout baseLlt;
-    private RelativeLayout acceptUsernameRlt, acceptPasswordRlt, acceptEmailRlt;
     private TextView signInHereTtv, showHidePasswordTtv, passwordErrorTtv;
     private EditText usernameEdt, passwordEdt, confirmPasswordEdt, emailEdt, firmCodeEdt;
     private Button submitBtn;
-    private ProgressView usernameProgressView, emailProgressView, registerUserProgressView;
+    private ProgressView progressView;
     private Spinner pickFirmSpnr;
     private View view;
     private LoginActivityCommonElementsAndMuchMore commonElements;
@@ -99,9 +97,6 @@ public class RegisterFragment extends Fragment implements RegisterView{
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if ( view == null ) view = inflater.inflate(R.layout.fragment_register, container, false);
         baseLlt                     =   (LinearLayout) view.findViewById(R.id.baseLlt);
-        acceptUsernameRlt           =   (RelativeLayout) view.findViewById(R.id.acceptUsernameRlt);
-        acceptPasswordRlt           =   (RelativeLayout) view.findViewById(R.id.acceptPasswordRlt);
-        acceptEmailRlt              =   (RelativeLayout) view.findViewById(R.id.acceptEmailRlt);
         usernameEdt                 =   (EditText) view.findViewById(R.id.usernameEdt);
         passwordEdt                 =   (EditText) view.findViewById(R.id.passwordEdt);
         confirmPasswordEdt          =   (EditText) view.findViewById(R.id.confirmPasswordEdt);
@@ -111,9 +106,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
         showHidePasswordTtv         =   (TextView) view.findViewById(R.id.showHidePasswordTtv);
         passwordErrorTtv            =   (TextView) view.findViewById(R.id.passwordErrorTtv);
         submitBtn                   =   (Button) view.findViewById(R.id.submitBtn);
-        usernameProgressView        =   (ProgressView) view.findViewById(R.id.usernameProgressView);
-        emailProgressView           =   (ProgressView) view.findViewById(R.id.emailProgressView);
-        registerUserProgressView    =   (ProgressView) view.findViewById(R.id.registerUserProgressView);
+        progressView                =   (ProgressView) view.findViewById(R.id.progressView);
         pickFirmSpnr                =   (Spinner) view.findViewById(R.id.pickFirmSpnr);
         snackBar                    =   ((LoginActivity) getActivity()).getSnackBar();
         initialConnectionStatus     =   getArguments().getInt(getResources().getString(R.string.connectivity_status));
@@ -147,7 +140,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     if (formSubmitted) validationMapChanged = true;
                     inputValidityMap.put(getResources().getString(R.string.username_tag), false);
-                    registerPresenterImpl.handleInputFieldTextChanges(start, before, usernameEdt, acceptUsernameRlt, null, "username");
+                    registerPresenterImpl.handleInputFieldTextChanges(start, before, usernameEdt, null, null, "username");
                 }
 
                 @Override
@@ -225,7 +218,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 public void onTextChanged(CharSequence s, int start, int before, int count) {
                     if (formSubmitted) validationMapChanged = false;
                     inputValidityMap.put(getResources().getString(R.string.email_tag), false);
-                    registerPresenterImpl.handleInputFieldTextChanges(start, before, emailEdt, acceptEmailRlt, null, "email");
+                    registerPresenterImpl.handleInputFieldTextChanges(start, before, emailEdt, null, null, "email");
                 }
 
                 @Override
@@ -283,11 +276,9 @@ public class RegisterFragment extends Fragment implements RegisterView{
                     if (connectionStatus == AppConfig.NO_CONNECTION) {
                         showSnackBar(AppConfig.NO_CONNECTION);
                     } else {
-                        EditText editText = (EditText) baseLlt.findViewWithTag(getResources().getString(R.string.username_tag));
-                        Log.e(debugTag, editText+"");
                         formSubmitted = true;
-                        registerUserProgressView.start();
-                        registerPresenterImpl.validateForm(fillRegisterFormFields(), setPresenterObjParams(connectionStatus, isAdded(), formEdts, emailProgressView, getResources().getString(R.string.register_user), acceptEmailRlt, getResources().getString(R.string.email_tag), emailEdt));
+                        progressView.start();
+                        registerPresenterImpl.validateForm(fillRegisterFormFields(), setPresenterObjParams(connectionStatus, isAdded(), formEdts, progressView, getResources().getString(R.string.register_user), null, getResources().getString(R.string.email_tag), emailEdt));
                         //registerPresenterImpl.emptyFieldsValidation(baseLlt);
                     }
                 }
@@ -359,6 +350,8 @@ public class RegisterFragment extends Fragment implements RegisterView{
 
     @Override
     public void displayFeedbackMsg(int code) {
+        if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
+        if (progressView != null && progressView.isShown()) progressView.stop();
         showSnackBar(code);
     }
 
@@ -391,7 +384,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 public void run() {
                     if (isAdded()) {
                         animationStaff(showHidePasswordTtv, 0.0f, 1.0f, getResources().getString(R.string.visible));
-                        animationStaff(acceptPasswordRlt, 1.0f, 0.0f, getResources().getString(R.string.gone));
+                        animationStaff(null, 1.0f, 0.0f, getResources().getString(R.string.gone));
                     }
                 }
             };
@@ -414,20 +407,20 @@ public class RegisterFragment extends Fragment implements RegisterView{
         snackBarTtv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         snackBarTtv.setTextColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_Ttv_color)));
         errorContainerSnackbar.show();
-        if (registerUserProgressView != null && registerUserProgressView.isShown()) registerUserProgressView.stop();
+        //if (registerUserProgressView != null && registerUserProgressView.isShown()) registerUserProgressView.stop();
         dismissErrorContainerSnackBar.dismissErrorContainerSnackBar(errorContainerSnackbar);
     }
 
     @Override
     public void onEmptyFieldsValidationSuccess() {
         if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
-        if (registerUserProgressView != null && registerUserProgressView.isShown()) registerUserProgressView.stop();
+        //if (registerUserProgressView != null && registerUserProgressView.isShown()) registerUserProgressView.stop();
         List<RegisterFormField> fields = new ArrayList<>();
         //fields.add(new RegisterFormField("username", usernameEdt.getText().toString()));
         //fields.add(new RegisterFormField("password", passwordEdt.getText().toString()));
         //fields.add(new RegisterFormField("confirm_password", confirmPasswordEdt.getText().toString()));
         //RegisterFormBody registerFormBody = new RegisterFormBody(getResources().getString(R.string.register_user), fields, null);
-        registerPresenterImpl.validateForm(registerFormBody, setPresenterObjParams(connectionStatus, isAdded(), formEdts, emailProgressView, getResources().getString(R.string.register_user), acceptEmailRlt, getResources().getString(R.string.email_tag), emailEdt));
+        //registerPresenterImpl.validateForm(registerFormBody, setPresenterObjParams(connectionStatus, isAdded(), formEdts, emailProgressView, getResources().getString(R.string.register_user), acceptEmailRlt, getResources().getString(R.string.email_tag), emailEdt));
         /*View current = getActivity().getCurrentFocus();
         if (current != null) {
             Log.e(debugTag, "current focus: "+current);
@@ -440,23 +433,43 @@ public class RegisterFragment extends Fragment implements RegisterView{
     }
 
     @Override
-    public void onFormValidationFailure(int code, String field_tag, String hint) {
-
+    public void onFormValidationFailure(int code, String tag, String hint) {
+        EditText errorView = (EditText) baseLlt.findViewWithTag(tag);
         if (code == AppConfig.ERROR_EMPTY_REQUIRED_FIELD) {
-            showErrorContainerSnackbar(getResources().getString(R.string.empty_field, hint));
+            showErrorContainerSnackbar(getResources().getString(R.string.empty_field, hint), null, code);
         } else if (code == AppConfig.ERROR_NO_FIRM_PICKED) {
-            showErrorContainerSnackbar(getResources().getString(R.string.empty_field, getResources().getString(R.string.pickFirm)));
+            showErrorContainerSnackbar(getResources().getString(R.string.empty_field, getResources().getString(R.string.pickFirm)), null, code);
         } else if (code == AppConfig.ERROR_INPUT_EXISTS) {
-            showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint));
+            if (tag.equals(getResources().getString(R.string.password_tag))) {
+                passwordEdt.getChildAt(1).setVisibility(View.GONE);
+                showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), passwordErrorTtv, code);
+            } else {
+                showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), errorView, code);
+            }
         } else if (code == AppConfig.ERROR_INVALID_INPUT) {
-            showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint));
+            if (tag.equals(getResources().getString(R.string.password_tag))) {
+                passwordEdt.getChildAt(1).setVisibility(View.GONE);
+                showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), passwordErrorTtv, code);
+            } else {
+                showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), errorView, code);
+            }
+        } else if (code == AppConfig.ERROR_INVALID_PASSWORD_LENGTH) {
+            passwordEdt.getChildAt(1).setVisibility(View.GONE);
+            showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), passwordErrorTtv, code);
+        } else if (code == AppConfig.ERROR_PASSWORD_MISMATCH) {
+            showErrorContainerSnackbar(getResources().getString(R.string.correct_error, getResources().getString(R.string.error_passwords_mismatch)), null, code);
+        } else if (code == AppConfig.ERROR_INVALID_EMAIL) {
+            showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), errorView, code);
+        } else if (code == AppConfig.ERROR_FIRM_CODE_MISMATCH) {
+            showErrorContainerSnackbar(getResources().getString(R.string.correct_error, getResources().getString(R.string.error_firm_code_mismatch)), null, code);
         }
 
     }
 
     @Override
     public void onFormValidationSuccess() {
-
+        if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
+        if (progressView != null && progressView.isShown()) progressView.stop();
     }
 
     private void initializeBroadcastReceivers() {
@@ -472,7 +485,8 @@ public class RegisterFragment extends Fragment implements RegisterView{
         };
     }
 
-    private void showErrorContainerSnackbar(String error_type) {
+    private void showErrorContainerSnackbar(String error_type, View errorView, int code) {
+        if (errorView != null) setText(getResources().getString(R.string.error), errorView, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(inputValidationCodes.get(code)))), "#DD2C00");
         errorContainerSnackbar = TSnackbar.make(((LoginActivity) getActivity()).getErrorContainerRlt(), error_type, TSnackbar.LENGTH_INDEFINITE);
         View snackBarView = errorContainerSnackbar.getView();
         snackBarView.setBackgroundColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_background_color)));
@@ -480,7 +494,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
         snackBarTtv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
         snackBarTtv.setTextColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_Ttv_color)));
         errorContainerSnackbar.show();
-        if (registerUserProgressView != null && registerUserProgressView.isShown()) registerUserProgressView.stop();
+        if (progressView != null && progressView.isShown()) progressView.stop();
         dismissErrorContainerSnackBar.dismissErrorContainerSnackBar(errorContainerSnackbar);
     }
 
@@ -547,7 +561,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                 if (formSubmitted) validationMapChanged = true;
                 inputValidityMap.put(getResources().getString(R.string.password_tag), false);
                 if (System.currentTimeMillis() < showhideAcceptPasswordAnimationTargetTimeinMillis) handlerStaff().removeCallbacks(showhideAcceptPasswordAnimationRunnable);
-                registerPresenterImpl.handleRegisterPasswordEdtTextChanges(start, before, passwordEdt, acceptPasswordRlt, showHidePasswordTtv);
+                registerPresenterImpl.handleRegisterPasswordEdtTextChanges(start, before, passwordEdt, null, showHidePasswordTtv);
                 if (!TextUtils.isEmpty(passwordErrorTtv.getText().toString())) {
                     passwordErrorTtv.setText(null);
                     passwordEdt.getChildAt(1).setVisibility(View.VISIBLE);

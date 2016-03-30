@@ -43,16 +43,17 @@
     <!-- ERRORS -->
     <string name="empty_field">Παρακαλώ συμπλήρωσε τo παρακάτω πεδίo: %1$s.</string>
     <string name="correct_field">Παρακαλώ διόρθωσε το παρακάτω πεδίο: %1$s.</string>
+    <string name="correct_error">Παρακαλώ διόρθωσε το παρακάτω λάθος: %1$s.</string>
     <string name="no_connection">Αδυναμία σύνδεσης στο δίκτυο.</string>
     <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Ξαναπροσπάθησε σύντομα.</string>
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>
     <string name="error_empty_requried_field">Το πεδίο είναι υποχρεωτικό</string>
     <string name="error_invalid_password_length">Αποδεκτό μέγεθος κωδικού, 8 χαρακτήρες</string>
-    <string name="error_passwords_mismatch">Ασυμφωνία κωδικών πρόσβασης.</string>
+    <string name="error_passwords_mismatch">Ασυμφωνία κωδικών πρόσβασης</string>
     <string name="error_invalid_input">Αποδεκτοί λατινικοί χαρακτήρες, νούμερα</string>
     <string name="error_invalid_email">Μη έγκυρη διεύθυνση</string>
     <string name="error_input_exists">Μη διαθέσιμο</string>
-    <string name="error_firm_code_mismatch">Ο κωδικός δεν αντιστοιχεί στη συγκεκριμένη εταιρεία.</string>
+    <string name="error_firm_code_mismatch">Ο κωδικός δεν αντιστοιχεί στη συγκεκριμένη εταιρεία</string>
     <!-- INPUT FIELDS -->
     <string name="username_tag">username</string>
     <string name="password_tag">password</string>

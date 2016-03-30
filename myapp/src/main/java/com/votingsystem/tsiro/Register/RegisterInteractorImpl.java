@@ -47,8 +47,9 @@ public class RegisterInteractorImpl implements RegisterInteractor {
             public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
                 if (registerPresenterParamsObj.isAdded()) {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
-                        Log.e(debugTag, response.body().getHint());
-                        registerFormFinishedListener.onFormValidationFailure(response.body().getCode(), response.body().getField(), response.body().getHint());
+                        registerFormFinishedListener.onFormValidationFailure(response.body().getCode(), response.body().getTag(), response.body().getHint());
+                    } else {
+                        registerFormFinishedListener.onFormValidationSuccess();
                     }
                     Log.e(debugTag, "Code: "+response.body().getCode());
                     //Log.e(debugTag, "Data: "+response.body().getData());
@@ -63,6 +64,13 @@ public class RegisterInteractorImpl implements RegisterInteractor {
 
             @Override
             public void onFailure(Throwable t) {
+                if (registerPresenterParamsObj.isAdded()) {
+                    if (t instanceof IOException) {
+                        registerFormFinishedListener.displayFeedbackMsg(AppConfig.UNAVAILABLE_SERVICE);
+                    } else {
+                        registerFormFinishedListener.displayFeedbackMsg(AppConfig.INTERNAL_ERROR);
+                    }
+                }
                 Log.e(debugTag, t.toString());
             }
         });
@@ -111,7 +119,6 @@ public class RegisterInteractorImpl implements RegisterInteractor {
             public void onResponse(Response<Firm> response, Retrofit retrofit) {
                 if (response.body().getError() == AppConfig.STATUS_OK) {
                     List<Firm.FirmElement> firmElementList = response.body().getFirm_element();
-                    Log.e(debugTag, "Firms list: "+firmElementList);
                     for (int i = 0; i < firmElementList.size(); i++) {
                         Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());
                         firmNameWithIDArrayList.add(new FirmNameWithID(firmElementList.get(i).getFirm_name(), firmElementList.get(i).getFirm_id()));

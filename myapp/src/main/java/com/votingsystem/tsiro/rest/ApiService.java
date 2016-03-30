@@ -20,10 +20,6 @@ public interface ApiService {
     Call<UserConnectionStaff> registerUser(@Body RegisterFormBody registerFormBody);
 
     @FormUrlEncoded
-    @POST("login/login.php")
-    Call<User> validateUser(@Field("username") String username, @Field("password") String password);
-
-    @FormUrlEncoded
     @POST("requests/firms/firmRequests.php")
     Call<Firm> getFirmNames(@Field("action") String action);
 

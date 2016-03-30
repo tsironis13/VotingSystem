@@ -197,7 +197,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
 
         ApiService apiService = RetrofitSingleton.getInstance().getApiService();
         Log.d(debugTag, "ApiService Singleton: " + apiService.toString());
-        Call<User> call = apiService.validateUser(username, password);
+        /*Call<User> call = apiService.validateUser(username, password);
         call.enqueue(new Callback<User>() {
             @Override
             public void onResponse(retrofit.Response<User> response, Retrofit retrofit) {
@@ -219,7 +219,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
             @Override
             public void onFailure(Throwable t) {
             }
-        });
+        });*/
     }
 
     @Override
