@@ -15,6 +15,9 @@
     <string name="more">Περισσοτερα</string>
     <string name="check_connection">Έλεγξε τη σύνδεση σου</string>
     <string name="error">error</string>
+    <string name="show">ΕΜΦΑΝΙΣΗ</string>
+    <string name="hide">ΑΠΟΚΡΥΨΗ</string>
+    <string name="empty_string">""</string>
     <!-- LOGIN -->
     <string name="app_logo">app_logo</string>
     <string name="input_logo">input_logo</string>
@@ -60,11 +63,6 @@
     <string name="confirm_password_tag">confirm_password</string>
     <string name="email_tag">email</string>
     <string name="firm_code_tag">firm_code</string>
-    <string-array name="input_fields_array">
-        <item>username</item>
-        <item>password</item>
-        <item>email</item>
-    </string-array>
     <!-- INTENT FILTERS STAFF -->
     <string name="connectivity_change">android.net.conn.CONNECTIVITY_CHANGE</string>
     <string name="network_state_update">networkStateUpdated</string>

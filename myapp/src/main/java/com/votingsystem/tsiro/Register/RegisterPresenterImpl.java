@@ -15,6 +15,8 @@ import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
+import com.votingsystem.tsiro.votingsystem.R;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -36,39 +38,38 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFin
         this.registerInteractorImpl = new RegisterInteractorImpl();
     }
 
-    public void handleInputFieldTextChanges(int start, int before, EditText inputEdt, RelativeLayout acceptRlt, EditText auxEdt, String tag) {
+    public void handleInputFieldTextChanges(int before, EditText inputEdt, View errorView) {
         if ( registerView != null ) {
-            if ((before == 1 || before == 0) && inputEdt.getHelper() != null)
-                registerView.clearEditextHelpersAndSuccessIcon("clearHelper", null, inputEdt);
+            if (before == 1 || before == 0) {
+                if (errorView != null && errorView instanceof TextView && !TextUtils.isEmpty(((TextView) errorView).getText().toString())) {
+                    ((TextView) errorView).setText(null);
+                } else if (errorView == null && inputEdt.getHelper() != null && !TextUtils.isEmpty(inputEdt.getHelper().toString())) {
+                    inputEdt.setHelper(null);
+                }
+            }
         }
-    }
-
-    public void validateInputFieldOnFocusChange(RegisterPresenterParamsObj registerPresenterParamsObj){
-        if (registerPresenterParamsObj.getConnectionStatus() != AppConfig.NO_CONNECTION) registerInteractorImpl.validateInputField(registerPresenterParamsObj, this);
     }
 
     public void handleShowHidePasswordTtv(EditText registerPasswordEdt) {
         if ( !registerPasswordEdt.getText().toString().isEmpty() && registerView != null ) {
             if (registerPasswordEdt.getTransformationMethod() instanceof PasswordTransformationMethod) {
                 //use HideReturnsTransformationMethod to make password visible
-                registerView.changeTransformationMethod(HideReturnsTransformationMethod.getInstance(),"ΑΠΟΚΡΥΨΗ");
+                registerView.changeTransformationMethod(HideReturnsTransformationMethod.getInstance(), R.string.hide);
             } else if (registerPasswordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod) {
-                registerView.changeTransformationMethod(PasswordTransformationMethod.getInstance(), "ΕΜΦΑΝΙΣΗ");
+                registerView.changeTransformationMethod(PasswordTransformationMethod.getInstance(), R.string.show);
             }
         }
     }
 
-    public void handleRegisterPasswordEdtTextChanges(int start, int before, EditText registerPasswordEdt, RelativeLayout acceptPasswordRlt, TextView showHidePasswordTtv) {
-        if ( registerView != null ) {
-            //if (acceptPasswordRlt.getVisibility() == View.VISIBLE)
-            //    registerView.clearEditextHelpersAndSuccessIcon("clearSuccessIcon", acceptPasswordRlt, null);
-            if (start >= 0 && registerPasswordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod) {
-                registerView.handlePasswordTextChanges("ΑΠΟΚΡΥΨΗ", showHidePasswordTtv);
-            } else if (start >= 0 && registerPasswordEdt.getTransformationMethod() instanceof PasswordTransformationMethod) {
-                registerView.handlePasswordTextChanges("ΕΜΦΑΝΙΣΗ", showHidePasswordTtv);
+    public void handleRegisterPasswordEdtTextChanges(int start, int before, EditText passwordEdt, TextView showHidePasswordTtv) {
+        if (registerView != null) {
+            if (start >= 0 && passwordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod) {
+                registerView.handlePasswordTextChanges(showHidePasswordTtv, R.string.hide);
+            } else if (start >= 0 && passwordEdt.getTransformationMethod() instanceof PasswordTransformationMethod) {
+                registerView.handlePasswordTextChanges(showHidePasswordTtv, R.string.show);
             }
-            if (start == 0 && before == 1)
-                registerView.handlePasswordTextChanges(null, showHidePasswordTtv);
+            if (passwordEdt.getChildAt(1).getVisibility() == View.GONE)  passwordEdt.getChildAt(1).setVisibility(View.VISIBLE);
+            if (start == 0 && before == 1) registerView.handlePasswordTextChanges(showHidePasswordTtv, R.string.empty_string);
         }
     }
 
@@ -80,64 +81,12 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFin
         }
     }
 
-    public void emptyFieldsValidation(LinearLayout baseLlt) {
-        boolean empty_field = false;
-        for (int i = 0; i < baseLlt.getChildCount(); i++) {
-            View formChild = baseLlt.getChildAt(i);
-            if (formChild instanceof LinearLayout) {
-                for (int j = 0; j < ((LinearLayout) formChild).getChildCount(); j++) {
-                    View containerChild = ((LinearLayout) formChild).getChildAt(j);
-                    if (containerChild instanceof RelativeLayout) {
-                        for (int k = 0; k < ((RelativeLayout) containerChild).getChildCount(); k++) {
-                            View innerContainerChild = ((RelativeLayout) containerChild).getChildAt(k);
-                            if (innerContainerChild instanceof EditText && innerContainerChild.getTag().equals("required")) {
-                                if (TextUtils.isEmpty(((EditText) innerContainerChild).getText())) {
-                                    registerView.onEmptyFieldsValidationFailure(((EditText) innerContainerChild).getHint().toString(), "empty_fields");
-                                    empty_field = true;
-                                    return;
-                                }
-                            }
-                        }
-                    } else if (containerChild instanceof EditText) {
-                        if (TextUtils.isEmpty(((EditText) containerChild).getText())) {
-                            registerView.onEmptyFieldsValidationFailure(((EditText) containerChild).getHint().toString(), "empty_fields");
-                            empty_field = true;
-                            return;
-                        }
-                    } else if (containerChild instanceof Spinner) {
-                        if (((Spinner) containerChild).getSelectedItemPosition() == 0) {
-                            empty_field = true;
-                            registerView.onEmptyFieldsValidationFailure("Επιλογή Εταιρείας", "empty_fields");
-                        }
-                    }
-                }
-            }
-        }
-        if (!empty_field) registerView.onEmptyFieldsValidationSuccess();
+    public void validateForm(int connectionStatus, boolean isAdded, RegisterFormBody registerFormBody){
+        if (connectionStatus != AppConfig.NO_CONNECTION) registerInteractorImpl.validateForm(registerFormBody, isAdded, this);
     }
-
-    public void validateForm(RegisterFormBody registerFormBody, RegisterPresenterParamsObj registerPresenterParamsObj){
-        if (registerPresenterParamsObj.getConnectionStatus() != AppConfig.NO_CONNECTION) registerInteractorImpl.validateForm(registerFormBody, registerPresenterParamsObj, this);
-
-        //for (Map.Entry<String, Boolean> cursor : inputValidityMap.entrySet()) {
-        //    Log.e(debugTag, "Key: "+cursor.getKey()+" Value: "+ cursor.getValue());
-        //}
-    }
-
-    @Override
-    public void startProgressLoader(ProgressView inputFieldPrgv) { if ( registerView != null ) registerView.showFieldValidationProgress(inputFieldPrgv); }
-
-    @Override
-    public void hideProgressLoader(ProgressView inputFieldPrgv) { if ( registerView != null ) registerView.hideFieldValidationProgress(inputFieldPrgv); }
 
     @Override
     public void displayFeedbackMsg(int code) { if ( registerView != null ) registerView.displayFeedbackMsg(code); }
-
-    @Override
-    public void onInputFieldError(int code, View view) { if ( registerView != null ) registerView.onFailure(code, view); }
-
-    @Override
-    public void onSuccess(RelativeLayout validInputRlt, String tag) { if ( registerView != null ) registerView.onSuccess(validInputRlt, tag); }
 
     @Override
     public void onSuccessfirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) {
@@ -150,7 +99,6 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFin
     @Override
     public void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) { if ( registerView != null ) registerView.onFailureFirmNamesSpnrLoad(firmNameWithIDArrayList, false); }
 
-
     @Override
     public void onFormValidationFailure(int code, String field, String hint) {
         registerView.onFormValidationFailure(code, field, hint);
@@ -160,7 +108,6 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFin
     public void onFormValidationSuccess() {
         registerView.onFormValidationSuccess();
     }
-
 
     @Override
     public void onDestroy() {

@@ -40,31 +40,23 @@ public class RegisterInteractorImpl implements RegisterInteractor {
     }
 
     @Override
-    public void validateForm(RegisterFormBody registerFormFieldsBody, final RegisterPresenterParamsObj registerPresenterParamsObj, final RegisterFormFinishedListener registerFormFinishedListener) {
+    public void validateForm(RegisterFormBody registerFormFieldsBody, final boolean isAdded, final RegisterFormFinishedListener registerFormFinishedListener) {
         call = apiService.registerUser(registerFormFieldsBody);
         call.enqueue(new Callback<UserConnectionStaff>() {
             @Override
             public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
-                if (registerPresenterParamsObj.isAdded()) {
+                if (isAdded) {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
                         registerFormFinishedListener.onFormValidationFailure(response.body().getCode(), response.body().getTag(), response.body().getHint());
                     } else {
                         registerFormFinishedListener.onFormValidationSuccess();
                     }
                     Log.e(debugTag, "Code: "+response.body().getCode());
-                    //Log.e(debugTag, "Data: "+response.body().getData());
-                    //Log.e(debugTag, "Error code: "+response.body().getError_code());
-                    //Log.e(debugTag, response.body().getData().size()+"");
-                    //Log.e(debugTag, response.body().getKa());
-                    //for (int i = 0; i < response.body().getData().size(); i++) {
-                    //    Log.e(debugTag, "Tag: "+response.body().getData().get(i).getTag()+" Code: "+response.body().getData().get(i).getCode());
-                    //}
                 }
             }
-
             @Override
             public void onFailure(Throwable t) {
-                if (registerPresenterParamsObj.isAdded()) {
+                if (isAdded) {
                     if (t instanceof IOException) {
                         registerFormFinishedListener.displayFeedbackMsg(AppConfig.UNAVAILABLE_SERVICE);
                     } else {
@@ -75,41 +67,6 @@ public class RegisterInteractorImpl implements RegisterInteractor {
             }
         });
     }
-
-    @Override
-    public void validateInputField(final RegisterPresenterParamsObj registerPresenterParamsObj, final RegisterFormFinishedListener registerFormFinishedListener) {
-            /*if ( registerPresenterParamsObj.getTag().equals("password") && registerPresenterParamsObj.getInputEditText() != null && registerPresenterParamsObj.getInputEditText().getText().length() != 8 ) {
-                registerInputFieldFinishedListener.onInputFieldError(AppConfig.ERROR_INVALID_PASSWORD_LENGTH, registerPresenterParamsObj.getErrorView());
-            } else {
-                if (!registerPresenterParamsObj.getTag().equals("password")) registerInputFieldFinishedListener.startProgressLoader(registerPresenterParamsObj.getInputFieldProgressView());
-                if (registerPresenterParamsObj.getInputEditText() != null) call = apiService.isInputFieldValid(registerPresenterParamsObj.getRetrofitAction(), registerPresenterParamsObj.getInputEditText().getText().toString());
-                call.enqueue(new Callback<UserConnectionStaff>() {
-                    @Override
-                    public void onResponse(Response<UserConnectionStaff> response, Retrofit retrofit) {
-                        if ( registerPresenterParamsObj.isAdded() ) {
-                            if (response.body().getError_code() != AppConfig.INPUT_OK) {
-                                Log.e(debugTag, response.body().getError_code()+"");
-                                registerInputFieldFinishedListener.onInputFieldError(response.body().getError_code(), registerPresenterParamsObj.getErrorView());
-                            } else {
-                                registerInputFieldFinishedListener.onSuccess(registerPresenterParamsObj.getValidInputRlt(), registerPresenterParamsObj.getTag());
-                            }
-                            if (!registerPresenterParamsObj.getTag().equals("password")) registerInputFieldFinishedListener.hideProgressLoader(registerPresenterParamsObj.getInputFieldProgressView());
-                        }
-                    }
-                    @Override
-                    public void onFailure(Throwable t) {
-                        if (registerPresenterParamsObj.isAdded()) {
-                            if (t instanceof IOException) {
-                                registerInputFieldFinishedListener.displayFeedbackMsg(AppConfig.UNAVAILABLE_SERVICE);
-                            } else {
-                                registerInputFieldFinishedListener.displayFeedbackMsg(AppConfig.INTERNAL_ERROR);
-                            }
-                        }
-                        if (!registerPresenterParamsObj.getTag().equals("password")) registerInputFieldFinishedListener.hideProgressLoader(registerPresenterParamsObj.getInputFieldProgressView());
-                    }
-                });
-            }*/
-        }
 
     @Override
     public void populateFirmNamesSpnr(final ArrayList<FirmNameWithID> firmNameWithIDArrayList, final RegisterFormFinishedListener registerFormFinishedListener) {
