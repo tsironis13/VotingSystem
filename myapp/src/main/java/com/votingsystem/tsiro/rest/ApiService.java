@@ -20,15 +20,11 @@ public interface ApiService {
     Call<UserConnectionStaff> registerUser(@Body RegisterFormBody registerFormBody);
 
     @FormUrlEncoded
-    @POST("requests/firms/firmRequests.php")
+    @POST("requests/firms/firm-requests.php")
     Call<Firm> getFirmNames(@Field("action") String action);
 
     @FormUrlEncoded
     @POST("functions/firmRequests.php")
     Call<Firm> getFirmByNameAndCode(@Field("action") String action, @Field("firm-name") String firmName, @Field("firm-code") String firmCode);
 
-
-
-    @POST("functions/populateDataModel.php")
-    Call<Survey> addSurvey(@Body Survey survey);
 }

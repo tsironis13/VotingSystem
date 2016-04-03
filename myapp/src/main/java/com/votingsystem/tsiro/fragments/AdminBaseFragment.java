@@ -95,7 +95,7 @@ public class AdminBaseFragment extends Fragment{
                 Survey survey = new Survey(surveyTitle, surveyDesc);
 
                 ApiService apiService = RetrofitSingleton.getInstance().getApiService();
-                Call<Survey> call = apiService.addSurvey(survey);
+                /*Call<Survey> call = apiService.addSurvey(survey);
                 call.enqueue(new Callback<Survey>() {
                     @Override
                     public void onResponse(Response<Survey> response, Retrofit retrofit) {
@@ -106,7 +106,7 @@ public class AdminBaseFragment extends Fragment{
                     public void onFailure(Throwable t) {
 
                     }
-                });
+                });*/
             }
         });
 
