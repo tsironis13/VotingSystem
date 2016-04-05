@@ -5,6 +5,7 @@ import android.app.NotificationManager;
 import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
 import android.util.Log;
@@ -25,21 +26,22 @@ public class MyGcmListenerService extends GcmListenerService {
 
     @Override
     public void onMessageReceived(String from, Bundle data) {
-        Log.e(debugTag, data+"");
-
-
-
         generateNotification(data);
+
     }
 
     private void generateNotification(Bundle data) {
         Bundle t = data.getBundle("notification");
 
+        Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"));
+        PendingIntent resultPendingIntent = PendingIntent.getActivity(this, 0, Intent.createChooser(intent, "Open with"), PendingIntent.FLAG_UPDATE_CURRENT);
+
         NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(this)
                                                     .setSmallIcon(R.drawable.app_logo)
                                                     .setContentTitle(t.getString("title"))
                                                     .setContentText(t.getString("body"))
-                                                    .setDefaults(Notification.DEFAULT_VIBRATE);
+                                                    .setDefaults(Notification.DEFAULT_VIBRATE)
+                                                    .setContentIntent(resultPendingIntent);
 
         int mNotificationId = 001;
         NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
