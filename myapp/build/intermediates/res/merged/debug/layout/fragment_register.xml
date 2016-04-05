@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.rey.material.widget.LinearLayout
+        android:id="@+id/baseLlt"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center" >
+
+        <ImageView
+            android:layout_width="@dimen/register_logo_dimens"
+            android:layout_height="@dimen/register_logo_dimens"
+            android:layout_marginBottom="@dimen/in_common_2"
+            android:background="@drawable/app_logo"
+            android:contentDescription="@string/app_logo"/>
+
+        <com.rey.material.widget.LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/input_field_logo_dimens"
+                android:layout_height="@dimen/input_field_logo_dimens"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/username_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/usernameEdt"
+                android:layout_width="@dimen/input_field_Edt_width"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/input_field_Edt_paddingRight"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/input_hintColor"
+                android:background="@android:color/transparent"
+                android:tag="@string/username_tag"
+                android:inputType="textPersonName"
+                android:hint="@string/username"
+                style="@style/EditextUsername"
+                app:et_inputId="@+id/usernameEdt" />
+
+        </com.rey.material.widget.LinearLayout>
+
+        <com.rey.material.widget.LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/input_field_logo_dimens"
+                android:layout_height="@dimen/input_field_logo_dimens"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/password_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <com.rey.material.widget.RelativeLayout
+                android:layout_width="@dimen/input_field_Rlt_width"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/input_field_Rlt_paddingRight" >
+
+                <com.rey.material.widget.EditText
+                    android:id="@+id/passwordEdt"
+                    android:layout_width="@dimen/password_Edt_width"
+                    android:layout_height="match_parent"
+                    android:paddingRight="@dimen/password_Edt_paddingRight"
+                    android:textSize="@dimen/input_edt_textSize"
+                    android:textColor="@android:color/white"
+                    android:textColorHint="@color/input_hintColor"
+                    android:layout_gravity="center_vertical"
+                    android:background="@android:color/transparent"
+                    android:tag="@string/password_tag"
+                    android:inputType="textPassword"
+                    android:hint="@string/password"
+                    style="@style/EditextPassword"
+                    app:et_inputId="@+id/passwordEdt" />
+
+                <com.rey.material.widget.TextView
+                    android:id="@+id/passwordErrorTtv"
+                    android:layout_width="@dimen/password_error_Ttv_width"
+                    android:layout_height="@dimen/password_error_Ttv_height"
+                    android:layout_alignParentBottom="true"
+                    android:textSize="@dimen/password_error_Ttv_textSize"
+                    android:textColor="@color/password_error_Ttv_textColor" />
+
+                <com.rey.material.widget.TextView
+                    android:id="@+id/showHidePasswordTtv"
+                    android:layout_width="@dimen/showHide_password_Ttv_width"
+                    android:layout_height="match_parent"
+                    android:layout_toRightOf="@+id/passwordEdt"
+                    android:gravity="center"
+                    android:textSize="@dimen/showHide_password_Ttv_TextSize"
+                    android:textColor="@android:color/white" />
+
+            </com.rey.material.widget.RelativeLayout>
+
+        </com.rey.material.widget.LinearLayout>
+
+        <com.rey.material.widget.LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/input_field_logo_dimens"
+                android:layout_height="@dimen/input_field_logo_dimens"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/password_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/confirmPasswordEdt"
+                android:layout_width="@dimen/input_field_Edt_width"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/input_field_Edt_paddingRight"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/input_hintColor"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:tag="@string/confirm_password_tag"
+                android:inputType="textPassword"
+                android:hint="@string/confirmpassword"
+                style="@style/EditextConfirmPassword"
+                app:et_inputId="@+id/confPasswordEdt" />
+
+        </com.rey.material.widget.LinearLayout>
+
+        <com.rey.material.widget.LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/input_field_logo_dimens"
+                android:layout_height="@dimen/input_field_logo_dimens"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/email_icon"
+                android:contentDescription="@string/input_logo"/>
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/emailEdt"
+                android:layout_width="@dimen/input_field_Edt_width"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/input_field_Edt_paddingRight"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/input_hintColor"
+                android:layout_gravity="center_vertical"
+                android:background="@android:color/transparent"
+                android:tag="@string/email_tag"
+                android:inputType="textEmailAddress"
+                android:hint="@string/email"
+                style="@style/EditextEmail"
+                app:et_inputId="@+id/mailEdt" />
+
+        </com.rey.material.widget.LinearLayout>
+
+        <com.rey.material.widget.LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/marginBottom"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/input_field_logo_dimens"
+                android:layout_height="@dimen/input_field_logo_dimens"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
+                android:layout_marginRight="@dimen/input_logo_marginLeftRight"
+                android:background="@drawable/firmcode_icon"
+                android:contentDescription="@string/input_logo" />
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/firmCodeEdt"
+                android:layout_width="@dimen/input_field_Edt_width"
+                android:layout_height="match_parent"
+                android:paddingRight="@dimen/input_field_Edt_paddingRight"
+                android:textSize="@dimen/input_edt_textSize"
+                android:textColor="@android:color/white"
+                android:textColorHint="@color/input_hintColor"
+                android:background="@android:color/transparent"
+                android:tag="@string/firm_code_tag"
+                android:inputType="textPassword"
+                android:hint="@string/firmcode"
+                style="@style/EditextFirmCode"
+                app:et_inputId="@+id/fircodeEdt" />
+
+        </com.rey.material.widget.LinearLayout>
+
+        <com.rey.material.widget.LinearLayout
+            android:layout_width="@dimen/container_width"
+            android:layout_height="@dimen/register_input_container_height"
+            android:background="@drawable/login_fields_container"
+            android:layout_marginBottom="@dimen/pickFirm_Spnr_marginBottom"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="@dimen/input_field_logo_dimens"
+                android:layout_height="@dimen/input_field_logo_dimens"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="@dimen/firmname_Imv_marginLeft"
+                android:layout_marginRight="@dimen/firmname_Imv_marginRight"
+                android:background="@drawable/firm_icon"
+                android:contentDescription="@string/input_logo"/>
+
+            <com.rey.material.widget.Spinner
+                android:id="@+id/pickFirmSpnr"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:maxHeight="@dimen/pickFirm_Spnr_maxHeight"
+                android:dropDownWidth="wrap_content"
+                style="@style/Spinner" />
+
+        </com.rey.material.widget.LinearLayout>
+
+        <com.rey.material.widget.ProgressView
+            android:id="@+id/progressView"
+            android:layout_width="@dimen/progressView_dimens"
+            android:layout_height="@dimen/progressView_dimens"
+            style="@style/InCircularProgressView" />
+
+        <Button
+            android:id="@+id/submitBtn"
+            android:layout_width="@dimen/action_btn_width"
+            android:layout_height="@dimen/action_btn_height"
+            android:layout_marginTop="@dimen/submit_btn_marginTop"
+            android:layout_marginBottom="@dimen/submit_btn_marginBottom"
+            android:textColor="@android:color/white"
+            android:text="@string/submit"
+            android:background="@drawable/ripple_drawable" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/signInHereTtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/signInHere_Ttv_paddingBottom"
+            android:gravity="center"
+            android:lineSpacingMultiplier="1"
+            android:textColor="@android:color/white" />
+
+    </com.rey.material.widget.LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,66 @@
+[
+    {
+        "outputFile": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/values-v19/values-v19.xml",
+        "map": [
+            {
+                "to": {
+                    "startLine": 2,
+                    "startColumn": 4,
+                    "startOffset": 55,
+                    "endColumn": 52,
+                    "endOffset": 103
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-v19/dimens.xml",
+                    "position": {
+                        "startLine": 3,
+                        "startColumn": 4,
+                        "startOffset": 106,
+                        "endColumn": 52,
+                        "endOffset": 154
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 108,
+                    "endColumn": 50,
+                    "endOffset": 154
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-v19/dimens.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endColumn": 50,
+                        "endOffset": 101
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 159,
+                    "endLine": 6,
+                    "endColumn": 12,
+                    "endOffset": 283
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-v19/styles.xml",
+                    "position": {
+                        "startLine": 2,
+                        "startColumn": 4,
+                        "startOffset": 55,
+                        "endLine": 4,
+                        "endColumn": 12,
+                        "endOffset": 179
+                    }
+                }
+            }
+        ]
+    }
+]
