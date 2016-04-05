@@ -4,7 +4,6 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.util.Log;
 
 import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
@@ -16,22 +15,19 @@ import java.util.List;
 /**
  * Created by user on 19/12/2015.
  */
-public class NetworkState extends BroadcastReceiver {
+public class NetworkStateReceiver extends BroadcastReceiver {
 
-    private static final String debugTag = NetworkState.class.getName();
-    private ConnectivityManager connectivityManager;
+    private static final String debugTag = NetworkStateReceiver.class.getName();
     private List<NetworkStateListeners> networkStateListenerList;
-    private int status;
 
-    public NetworkState() {
+    public NetworkStateReceiver() {
         networkStateListenerList = new ArrayList<>();
     }
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.e(debugTag, "onReceive");
-        connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-        status = (connectivityManager.getActiveNetworkInfo() != null) ? connectivityManager.getActiveNetworkInfo().getType() : AppConfig.NO_CONNECTION;
+        ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
+        int status = (connectivityManager.getActiveNetworkInfo() != null) ? connectivityManager.getActiveNetworkInfo().getType() : AppConfig.NO_CONNECTION;
         notifyStateToAll(status);
     }
 
@@ -41,7 +37,7 @@ public class NetworkState extends BroadcastReceiver {
         }
     }
 
-    public void notifyState(NetworkStateListeners networkStateListeners, int status) {
+    private static void notifyState(NetworkStateListeners networkStateListeners, int status) {
         Log.e(debugTag, "notifyState Called");
         networkStateListeners.networkStatus(status);
     }

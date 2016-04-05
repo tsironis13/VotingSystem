@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">VotingSystem</string>
+    <!-- GCM CREDENTIALS -->
+    <string name="gcm_senderId">747222558005</string>
     <!-- TAG -->
     <string name="signInFgmt">signInFgmt</string>
     <string name="forgotPasswordFgmt">forgotPasswordFgmt</string>
@@ -68,6 +70,7 @@
     <string name="network_state_update">networkStateUpdated</string>
     <string name="connectivity_status">connectivityStatus</string>
     <string name="back_pressed">backpressed</string>
+    <string name="registration_token">registrationToken</string>
     <!-- NAVIGATION DRAWER ITEMS -->
     <string name="firm">Η Εταιρεία</string>
     <string name="mysurveys">Οι Έρευνες μου</string>

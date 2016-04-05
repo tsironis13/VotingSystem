@@ -5,6 +5,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -15,6 +17,7 @@ import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.TransformationMethod;
+import android.util.Log;
 import android.util.SparseIntArray;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
@@ -70,6 +73,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
     private DismissErrorContainerSnackBar dismissErrorContainerSnackBar;
     private List<RegisterFormField> fields;
     private RegisterFormBody registerFormBody;
+    private String registrationToken;
 
     @Override
     public void onAttach(Context context) {
@@ -97,6 +101,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
         pickFirmSpnr                =   (Spinner) view.findViewById(R.id.pickFirmSpnr);
         snackBar                    =   ((LoginActivity) getActivity()).getSnackBar();
         initialConnectionStatus     =   getArguments().getInt(getResources().getString(R.string.connectivity_status));
+        registrationToken           =   getArguments().getString(getResources().getString(R.string.registration_token));
         return view;
     }
 
@@ -106,8 +111,8 @@ public class RegisterFragment extends Fragment implements RegisterView{
         if ( savedInstanceState == null ) {
             firmsLoaded = false;
             if (snackBar.isShown()) snackBar.dismiss();
-            registerPresenterImpl = new RegisterPresenterImpl(this);
-            inputValidationCodes = AppConfig.getCodes();
+            registerPresenterImpl   =   new RegisterPresenterImpl(this);
+            inputValidationCodes    =   AppConfig.getCodes();
 
             registerPresenterImpl.firmNamesSpnrActions(initialConnectionStatus);
             connectionStatus = initialConnectionStatus;
@@ -229,7 +234,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
                         showSnackBar(AppConfig.NO_CONNECTION);
                     } else {
                         progressView.start();
-                        registerPresenterImpl.validateForm(connectionStatus, isAdded(), fillRegisterFormFields());
+                        registerPresenterImpl.validateForm(connectionStatus, isAdded(), fillRegisterFormFields(), registrationToken);
                     }
                 }
             });
@@ -376,7 +381,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
         } else {
             firm_id             =   0;
         }
-        registerFormBody = new RegisterFormBody(getResources().getString(R.string.register_user), fields, firm_id);
+        registerFormBody = new RegisterFormBody(getResources().getString(R.string.register_user), fields, firm_id, registrationToken);
         return registerFormBody;
     }
 

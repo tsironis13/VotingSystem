@@ -81,8 +81,8 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFin
         }
     }
 
-    public void validateForm(int connectionStatus, boolean isAdded, RegisterFormBody registerFormBody){
-        if (connectionStatus != AppConfig.NO_CONNECTION) registerInteractorImpl.validateForm(registerFormBody, isAdded, this);
+    public void validateForm(int connectionStatus, boolean isAdded, RegisterFormBody registerFormBody, String token){
+        if (connectionStatus != AppConfig.NO_CONNECTION) registerInteractorImpl.validateForm(registerFormBody, isAdded, this, token);
     }
 
     @Override
@@ -90,7 +90,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFin
 
     @Override
     public void onSuccessfirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) {
-        if ( registerView != null ) {
+        if (registerView != null) {
             registerView.onSuccessfulFirmNamesSpnrLoad(firmNameWithIDArrayList, true);
             firmsLoaded = true;
         }
@@ -101,12 +101,12 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFin
 
     @Override
     public void onFormValidationFailure(int code, String field, String hint) {
-        registerView.onFormValidationFailure(code, field, hint);
+        if (registerView != null) registerView.onFormValidationFailure(code, field, hint);
     }
 
     @Override
     public void onFormValidationSuccess() {
-        registerView.onFormValidationSuccess();
+        if (registerView != null) registerView.onFormValidationSuccess();
     }
 
     @Override

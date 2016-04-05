@@ -8,6 +8,6 @@ import java.util.ArrayList;
  * Created by user on 5/2/2016.
  */
 public interface RegisterInteractor {
-    public void validateForm(RegisterFormBody registerFormBody, boolean isAdded, RegisterFormFinishedListener registerFormFinishedListener);
+    public void validateForm(RegisterFormBody registerFormBody, boolean isAdded, RegisterFormFinishedListener registerFormFinishedListener, String token);
     public void populateFirmNamesSpnr(ArrayList<FirmNameWithID> firmNameWithIDArrayList,  RegisterFormFinishedListener registerFormFinishedListener);
 }

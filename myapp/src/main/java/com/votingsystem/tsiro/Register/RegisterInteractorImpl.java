@@ -40,7 +40,7 @@ public class RegisterInteractorImpl implements RegisterInteractor {
     }
 
     @Override
-    public void validateForm(RegisterFormBody registerFormFieldsBody, final boolean isAdded, final RegisterFormFinishedListener registerFormFinishedListener) {
+    public void validateForm(RegisterFormBody registerFormFieldsBody, final boolean isAdded, final RegisterFormFinishedListener registerFormFinishedListener, String token) {
         call = apiService.registerUser(registerFormFieldsBody);
         call.enqueue(new Callback<UserConnectionStaff>() {
             @Override

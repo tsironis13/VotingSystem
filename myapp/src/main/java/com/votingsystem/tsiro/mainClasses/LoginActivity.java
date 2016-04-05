@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
-import android.provider.Settings;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
@@ -20,51 +19,42 @@ import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
-
 import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.app.BottomSheetDialog;
 import com.rey.material.widget.EditText;
-
-import android.widget.FrameLayout;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-
 import com.rey.material.widget.SnackBar;
 import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
+import com.votingsystem.tsiro.ObserverPattern.RegistrationTokenListeners;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
-import com.votingsystem.tsiro.broadcastReceivers.NetworkState;
+import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
+import com.votingsystem.tsiro.broadcastReceivers.RegistrationTokenReceiver;
 import com.votingsystem.tsiro.fragments.ForgotPasswordFragment;
 import com.votingsystem.tsiro.fragments.RegisterFragment;
 import com.votingsystem.tsiro.fragments.SignInFragment;
 import com.votingsystem.tsiro.interfaces.DismissErrorContainerSnackBar;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
+import com.votingsystem.tsiro.services.gcm.RegistrationIntentService;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.io.UnsupportedEncodingException;
-import java.util.Observable;
-import java.util.Observer;
 
-public class LoginActivity extends AppCompatActivity implements NetworkStateListeners, LoginActivityCommonElementsAndMuchMore, DismissErrorContainerSnackBar {
+public class LoginActivity extends AppCompatActivity implements NetworkStateListeners, LoginActivityCommonElementsAndMuchMore, DismissErrorContainerSnackBar, RegistrationTokenListeners {
 
     private static final String debugTag = LoginActivity.class.getSimpleName();
-    private SpannableStringBuilder spannableStringBuilder;
-    private StyleSpan styleSpan;
-    private SignInFragment signInFragment;
-    private RegisterFragment registerFragment;
-    private ForgotPasswordFragment forgotPasswordFgmt;
-    private ClickableSpan clickableSpan;
     private Bundle loginActivityBundle;
     private int connectionStatus;
-    private NetworkState networkState;
+    private NetworkStateReceiver networkStateReceiver;
     private RelativeLayout errorContainerRlt;
     private SnackBar loginActivitySnkBar;
     private BottomSheetDialog connectionSettingsDialog;
     private View connectionSettingsDialogView;
     private TSnackbar errorContainerSnackbar;
+    private RegistrationTokenReceiver registrationTokenReceiver;
+    private String registrationToken;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,13 +62,16 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         setContentView(R.layout.login_activity);
 
         if ( savedInstanceState == null ) {
-            networkState        = new NetworkState();
-            loginActivityBundle = new Bundle();
+            Intent intent = new Intent(this, RegistrationIntentService.class);
+            startService(intent);
+            networkStateReceiver        =   new NetworkStateReceiver();
+            registrationTokenReceiver   =   new RegistrationTokenReceiver();
+            loginActivityBundle         =   new Bundle();
 
-            errorContainerRlt       =   (RelativeLayout) findViewById(R.id.errorContainerRlt);
-            loginActivitySnkBar     =   (SnackBar) findViewById(R.id.loginActivitySnkBar);
+            errorContainerRlt           =   (RelativeLayout) findViewById(R.id.errorContainerRlt);
+            loginActivitySnkBar         =   (SnackBar) findViewById(R.id.loginActivitySnkBar);
 
-            signInFragment = new SignInFragment();
+            SignInFragment signInFragment = new SignInFragment();
             signInFragment.setArguments(loginActivityBundle);
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.loginActivityFgmtContainer, signInFragment, getResources().getString(R.string.signInFgmt))
@@ -103,8 +96,10 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
                     connectionSettingsDialog.show();
                 }
             });
-            networkState.addListener(this);
-            this.registerReceiver(networkState, new IntentFilter(getResources().getString(R.string.connectivity_change)));
+            networkStateReceiver.addListener(this);
+            registrationTokenReceiver.addListener(this);
+            this.registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
+            LocalBroadcastManager.getInstance(this).registerReceiver(registrationTokenReceiver, new IntentFilter(getResources().getString(R.string.registration_token)));
         }
     }
 
@@ -116,8 +111,10 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        networkState.removeListener(this);
-        this.unregisterReceiver(networkState);
+        networkStateReceiver.removeListener(this);
+        registrationTokenReceiver.removeListener(this);
+        this.unregisterReceiver(networkStateReceiver);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(registrationTokenReceiver);
         RefWatcher refWatcher = MyApplication.getRefWatcher(this);
         refWatcher.watch(this);
     }
@@ -130,10 +127,16 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     }
 
     @Override
+    public void getRegistrationToken(String token) {
+        Log.e(debugTag, token);
+        if (token !=null) registrationToken = token;
+    }
+
+    @Override
     public void setLoginActivitySpan(TextView textView, String stringResource, int start, int end, final int code) {
-        spannableStringBuilder = new SpannableStringBuilder(stringResource);
-        styleSpan = new StyleSpan(Typeface.BOLD);
-        clickableSpan = new ClickableSpan() {
+        SpannableStringBuilder spannableStringBuilder = new SpannableStringBuilder(stringResource);
+        StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
+        ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
             public void onClick(View widget) {
 
@@ -147,7 +150,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
     @Override
     public void forgotPasswordOnClick() {
-        forgotPasswordFgmt = new ForgotPasswordFragment();
+        ForgotPasswordFragment forgotPasswordFgmt = new ForgotPasswordFragment();
         forgotPasswordFgmt.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.loginActivityFgmtContainer, forgotPasswordFgmt, getResources().getString(R.string.forgotPasswordFgmt))
@@ -157,9 +160,10 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
     @Override
     public void registerOnClick() {
-        registerFragment = new RegisterFragment();
+        RegisterFragment registerFragment = new RegisterFragment();
         if ( getSupportFragmentManager().getBackStackEntryCount() > 0 ) getSupportFragmentManager().popBackStack();
         loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
+        loginActivityBundle.putString(getResources().getString(R.string.registration_token), registrationToken);
         registerFragment.setArguments(loginActivityBundle);
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.loginActivityFgmtContainer, registerFragment, getResources().getString(R.string.registerFgmt))
@@ -235,4 +239,5 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     public void dismissErrorContainerSnackBar(TSnackbar errorContainerSnackbar) {
         if (errorContainerSnackbar != null) this.errorContainerSnackbar = errorContainerSnackbar;
     }
+
 }
