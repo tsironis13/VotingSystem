@@ -1,7 +1,14 @@
 <resources>
     <string name="app_name">VotingSystem</string>
-    <!-- GCM CREDENTIALS -->
+    <!-- GCM-->
     <string name="gcm_senderId">747222558005</string>
+    <string name="data">data</string>
+    <string name="mailto">mailto</string>
+    <string name="open_with">Άνοιγμα με</string>
+    <string name="notification_title">title</string>
+    <string name="notification_body">body</string>
+    <string name="action">action</string>
+    <string name="email_notification">email_notification</string>
     <!-- TAG -->
     <string name="signInFgmt">signInFgmt</string>
     <string name="forgotPasswordFgmt">forgotPasswordFgmt</string>

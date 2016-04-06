@@ -84,7 +84,7 @@ public class RegisterPresenterImpl implements RegisterPresenter, RegisterFormFin
     public void validateForm(int connectionStatus, boolean isAdded, RegisterFormBody registerFormBody, String token){
         if (connectionStatus != AppConfig.NO_CONNECTION) registerInteractorImpl.validateForm(registerFormBody, isAdded, this, token);
     }
-
+    
     @Override
     public void displayFeedbackMsg(int code) { if ( registerView != null ) registerView.displayFeedbackMsg(code); }
 
