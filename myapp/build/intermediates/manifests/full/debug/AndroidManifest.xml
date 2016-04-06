@@ -10,6 +10,7 @@
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <permission
         android:name="com.votingsystem.tsiro.votingsystem.permission.C2D_MESSAGE"
@@ -18,8 +19,7 @@
     <uses-permission android:name="com.votingsystem.tsiro.votingsystem.permission.C2D_MESSAGE" />
 
     <!-- Permissions required for GCM -->
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> <!-- Optional permission for App measurement to run. -->
-    <uses-permission android:name="android.permission.WAKE_LOCK" /> <!-- To store the heap dumps and leak analysis results. -->
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> <!-- To store the heap dumps and leak analysis results. -->
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />

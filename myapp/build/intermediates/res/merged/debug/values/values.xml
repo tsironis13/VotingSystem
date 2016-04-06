@@ -567,7 +567,7 @@
     <string name="hidePassword">ΑΠΟΚΡΥΨΗ</string>
     <string name="input_logo">input_logo</string>
     <string name="logout">Αποσυνδεση</string>
-    <string name="mailto">mailto</string>
+    <string name="mailto">mailto:</string>
     <string name="more">Περισσοτερα</string>
     <string name="mysurveys">Οι Έρευνες μου</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>

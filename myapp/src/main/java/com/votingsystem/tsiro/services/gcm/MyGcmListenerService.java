@@ -26,23 +26,23 @@ public class MyGcmListenerService extends GcmListenerService {
     }
 
     private void generateNotification(Bundle data) {
-        Bundle dataBundle = data.getBundle(getResources().getString(R.string.data));
-        Log.e(debugTag, dataBundle+"");
-        //if (dataBundle != null && dataBundle.getString(getResources().getString(R.string.action)).equals(getResources().getString(R.string.email_notification))) {
-            Intent intent       = new Intent(Intent.ACTION_SENDTO, Uri.parse(getResources().getString(R.string.mailto)));
-            resultPendingIntent = PendingIntent.getActivity(this, 0, Intent.createChooser(intent, getResources().getString(R.string.open_with)), PendingIntent.FLAG_UPDATE_CURRENT);
-        //}
+        if (data != null) {
+            if (data.getString(getResources().getString(R.string.action)).equals(getResources().getString(R.string.email_notification))) {
+                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(getResources().getString(R.string.mailto)));
+                resultPendingIntent = PendingIntent.getActivity(this, 0, Intent.createChooser(intent, getResources().getString(R.string.open_with)), PendingIntent.FLAG_UPDATE_CURRENT);
+            }
 
-        assert dataBundle != null;
-        NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(this)
-                                                        .setSmallIcon(R.drawable.app_logo)
-                                                        .setContentTitle(dataBundle.getString(getResources().getString(R.string.notification_title)))
-                                                        .setContentText(dataBundle.getString(getResources().getString(R.string.notification_body)))
-                                                        .setDefaults(Notification.DEFAULT_VIBRATE)
-                                                        .setContentIntent(resultPendingIntent);
+            NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(this)
+                    .setSmallIcon(R.drawable.app_logo)
+                    .setContentTitle(data.getString(getResources().getString(R.string.notification_title)))
+                    .setContentText(data.getString(getResources().getString(R.string.notification_body)))
+                    .setDefaults(Notification.DEFAULT_VIBRATE)
+                    .setContentIntent(resultPendingIntent);
 
-        int mNotificationId = 001;
-        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-        mNotifyMgr.notify(mNotificationId, nBuilder.build());
+            int mNotificationId = 001;
+            NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+            mNotifyMgr.notify(mNotificationId, nBuilder.build());
+
+        }
     }
 }

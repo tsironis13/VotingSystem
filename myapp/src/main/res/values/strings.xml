@@ -3,7 +3,7 @@
     <!-- GCM-->
     <string name="gcm_senderId">747222558005</string>
     <string name="data">data</string>
-    <string name="mailto">mailto</string>
+    <string name="mailto">mailto:</string>
     <string name="open_with">Άνοιγμα με</string>
     <string name="notification_title">title</string>
     <string name="notification_body">body</string>
