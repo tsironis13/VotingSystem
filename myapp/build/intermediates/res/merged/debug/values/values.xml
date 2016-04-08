@@ -545,6 +545,7 @@
     <string name="error">error</string>
     <string name="errorContainer_Snackbar_Ttv_color">#DD2C00</string>
     <string name="errorContainer_Snackbar_background_color">#BF263238</string>
+    <string name="error_color_string">#DD2C00</string>
     <string name="error_empty_requried_field">Το πεδίο είναι υποχρεωτικό</string>
     <string name="error_firm_code_mismatch">Ο κωδικός δεν αντιστοιχεί στη συγκεκριμένη εταιρεία</string>
     <string name="error_input_exists">Μη διαθέσιμο</string>

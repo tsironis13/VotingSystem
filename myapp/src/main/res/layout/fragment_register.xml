@@ -48,7 +48,7 @@
                 android:inputType="textPersonName"
                 android:hint="@string/username"
                 style="@style/EditextUsername"
-                app:et_inputId="@+id/usernameEdt" />
+                app:et_inputId="@+id/wrapped_usernameEdt" />
 
         </com.rey.material.widget.LinearLayout>
 
@@ -87,7 +87,7 @@
                     android:inputType="textPassword"
                     android:hint="@string/password"
                     style="@style/EditextPassword"
-                    app:et_inputId="@+id/passwordEdt" />
+                    app:et_inputId="@+id/wrapped_passwordEdt" />
 
                 <com.rey.material.widget.TextView
                     android:id="@+id/passwordErrorTtv"
@@ -140,7 +140,7 @@
                 android:inputType="textPassword"
                 android:hint="@string/confirmpassword"
                 style="@style/EditextConfirmPassword"
-                app:et_inputId="@+id/confPasswordEdt" />
+                app:et_inputId="@+id/wrapped_confirmPasswordEdt" />
 
         </com.rey.material.widget.LinearLayout>
 
@@ -174,7 +174,7 @@
                 android:inputType="textEmailAddress"
                 android:hint="@string/email"
                 style="@style/EditextEmail"
-                app:et_inputId="@+id/mailEdt" />
+                app:et_inputId="@+id/wrapped_emailEdt" />
 
         </com.rey.material.widget.LinearLayout>
 
@@ -207,7 +207,7 @@
                 android:inputType="textPassword"
                 android:hint="@string/firmcode"
                 style="@style/EditextFirmCode"
-                app:et_inputId="@+id/fircodeEdt" />
+                app:et_inputId="@+id/wrapped_firCodeEdt" />
 
         </com.rey.material.widget.LinearLayout>
 

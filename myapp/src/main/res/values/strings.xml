@@ -86,6 +86,8 @@
     <string name="viewresults">Προβολή Αποτελεσμάτων</string>
     <string name="settings">Ρύθμισεις</string>
     <string name="logout">Αποσυνδεση</string>
+    <!-- STRING COLORS-->
+    <string name="error_color_string">#DD2C00</string>
     <!-- Nav Drawer List Item Icons -->
     <!-- Keep them in order as the titles are in -->
     <array name="nav_drawer_icons">

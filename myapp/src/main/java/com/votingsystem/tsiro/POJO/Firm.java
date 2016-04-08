@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Firm {
     private String action;
-    private int error;
+    private int status;
     private List<FirmElement> firm_element;
 
     public Firm() {}
@@ -16,9 +16,9 @@ public class Firm {
 
     public void setAction(String action) { this.action = action; }
 
-    public int getError() { return error; }
+    public int getStatus() { return status; }
 
-    public void setError(int error) { this.error = error; }
+    public void setStatus(int status) { this.status = status; }
 
     public void setFirm_element() { this.firm_element = firm_element; }
 
@@ -36,14 +36,6 @@ public class Firm {
         public String getFirm_name() { return firm_name; }
 
         public void setFirm_name(String firm_name) { this.firm_name = firm_name; }
-
-        public String getCity() { return city; }
-
-        public void setCity(String city) { this.city = city; }
-
-        public String getAddress() { return address; }
-
-        public void setAddress(String address) { this.address = address; }
 
         @Override
         public String toString() {

@@ -74,7 +74,7 @@ public class RegisterInteractorImpl implements RegisterInteractor {
         call.enqueue(new Callback<Firm>() {
             @Override
             public void onResponse(Response<Firm> response, Retrofit retrofit) {
-                if (response.body().getError() == AppConfig.STATUS_OK) {
+                if (response.body().getStatus() == AppConfig.STATUS_OK) {
                     List<Firm.FirmElement> firmElementList = response.body().getFirm_element();
                     for (int i = 0; i < firmElementList.size(); i++) {
                         Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());

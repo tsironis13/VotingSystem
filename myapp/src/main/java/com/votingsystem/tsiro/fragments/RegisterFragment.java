@@ -51,11 +51,11 @@ import java.util.List;
 /**
  * Created by user on 11/12/2015.
  */
-public class RegisterFragment extends Fragment implements RegisterView{
+public class RegisterFragment extends Fragment implements RegisterView, View.OnFocusChangeListener, TextWatcher{
     private static final String debugTag = RegisterFragment.class.getSimpleName();
     private LinearLayout baseLlt;
     private TextView signInHereTtv, showHidePasswordTtv, passwordErrorTtv;
-    private EditText usernameEdt, passwordEdt, confirmPasswordEdt, emailEdt, firmCodeEdt;
+    private EditText usernameEdt, passwordEdt, confirmPasswordEdt, emailEdt, firmCodeEdt, onFocusChangeEditText, onTextWatcherEditText;
     private Button submitBtn;
     private ProgressView progressView;
     private Spinner pickFirmSpnr;
@@ -69,8 +69,6 @@ public class RegisterFragment extends Fragment implements RegisterView{
     private boolean firmsLoaded;
     private TSnackbar errorContainerSnackbar;
     private DismissErrorContainerSnackBar dismissErrorContainerSnackBar;
-    private List<RegisterFormField> fields;
-    private RegisterFormBody registerFormBody;
     private String registrationToken;
 
     @Override
@@ -118,98 +116,24 @@ public class RegisterFragment extends Fragment implements RegisterView{
 
             submitBtn.setTransformationMethod(null);
             setSignInHereSpan();
-            usernameEdt.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
 
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    registerPresenterImpl.handleInputFieldTextChanges(before, usernameEdt, null);
-                }
-                @Override
-                public void afterTextChanged(Editable s) {}
-            });
-            usernameEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) if (TextUtils.isEmpty(usernameEdt.getText().toString()))
-                        setText(getResources().getString(R.string.error), usernameEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.error_empty_requried_field))), "#DD2C00");
-                }
-            });
-            passwordEdt.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+            usernameEdt.setOnFocusChangeListener(this);
+            passwordEdt.setOnFocusChangeListener(this);
+            confirmPasswordEdt.setOnFocusChangeListener(this);
+            emailEdt.setOnFocusChangeListener(this);
+            firmCodeEdt.setOnFocusChangeListener(this);
 
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    registerPresenterImpl.handleInputFieldTextChanges(before, passwordEdt, passwordErrorTtv);
-                    registerPresenterImpl.handleRegisterPasswordEdtTextChanges(start, before, passwordEdt, showHidePasswordTtv);
-                }
-                @Override
-                public void afterTextChanged(Editable s) {}
-            });
-            passwordEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) if (TextUtils.isEmpty(passwordEdt.getText().toString())) setText(getResources().getString(R.string.error), passwordErrorTtv, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.error_empty_requried_field))), "#DD2C00");
-                }
-            });
+            usernameEdt.addTextChangedListener(this);
+            passwordEdt.addTextChangedListener(this);
+            confirmPasswordEdt.addTextChangedListener(this);
+            emailEdt.addTextChangedListener(this);
+            firmCodeEdt.addTextChangedListener(this);
+
             showHidePasswordTtv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     registerPresenterImpl.handleShowHidePasswordTtv(passwordEdt);
                     if (passwordErrorTtv !=null && !TextUtils.isEmpty(passwordErrorTtv.getText().toString())) passwordErrorTtv.setText(null);
-                }
-            });
-            confirmPasswordEdt.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    registerPresenterImpl.handleInputFieldTextChanges(before, confirmPasswordEdt, null);
-                }
-                @Override
-                public void afterTextChanged(Editable s) {}
-            });
-            confirmPasswordEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) if (TextUtils.isEmpty(confirmPasswordEdt.getText().toString())) setText(getResources().getString(R.string.error), confirmPasswordEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.error_empty_requried_field))), "#DD2C00");
-                }
-            });
-            emailEdt.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    registerPresenterImpl.handleInputFieldTextChanges(before, emailEdt, null);
-                }
-                @Override
-                public void afterTextChanged(Editable s) {}
-            });
-            emailEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) if (TextUtils.isEmpty(emailEdt.getText().toString())) setText(getResources().getString(R.string.error), emailEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.error_empty_requried_field))), "#DD2C00");
-                }
-            });
-            firmCodeEdt.addTextChangedListener(new TextWatcher() {
-                @Override
-                public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
-
-                @Override
-                public void onTextChanged(CharSequence s, int start, int before, int count) {
-                    registerPresenterImpl.handleInputFieldTextChanges(before, firmCodeEdt, null);
-                }
-                @Override
-                public void afterTextChanged(Editable s) {}
-            });
-            firmCodeEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
-                @Override
-                public void onFocusChange(View v, boolean hasFocus) {
-                    if (!hasFocus) if (TextUtils.isEmpty(firmCodeEdt.getText().toString())) setText(getResources().getString(R.string.error), firmCodeEdt, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.error_empty_requried_field))), "#DD2C00");
                 }
             });
             pickFirmSpnr.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
@@ -256,6 +180,60 @@ public class RegisterFragment extends Fragment implements RegisterView{
         RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
         refWatcher.watch(this);
     }
+
+    @Override
+    public void onFocusChange(View view, boolean hasFocus) {
+        View error_view_holder;
+        if (!hasFocus) {
+            switch (view.getId()) {
+                case R.id.wrapped_usernameEdt           :   onFocusChangeEditText   =   usernameEdt;
+                                                            break;
+                case R.id.wrapped_passwordEdt           :   onFocusChangeEditText   =   passwordEdt;
+                                                            break;
+                case R.id.wrapped_confirmPasswordEdt    :   onFocusChangeEditText   =   confirmPasswordEdt;
+                                                            break;
+                case R.id.wrapped_emailEdt              :   onFocusChangeEditText   =   emailEdt;
+                                                            break;
+                case R.id.wrapped_firCodeEdt            :   onFocusChangeEditText   =   firmCodeEdt;
+                                                            break;
+            }
+            if (TextUtils.isEmpty(onFocusChangeEditText.getText().toString())) {
+                error_view_holder =  onFocusChangeEditText.equals(passwordEdt) ? passwordErrorTtv : onFocusChangeEditText;
+                setText(getResources().getString(R.string.error), error_view_holder, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.error_empty_requried_field))), getResources().getString(R.string.error_color_string));
+            }
+        }
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {}
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        View current_focus = getActivity().getWindow().getCurrentFocus();
+        if (current_focus != null) {
+            switch (current_focus.getId()) {
+                case R.id.wrapped_usernameEdt           :   onTextWatcherEditText   =   usernameEdt;
+                                                            break;
+                case R.id.wrapped_passwordEdt           :   onTextWatcherEditText   =   passwordEdt;
+                                                            break;
+                case R.id.wrapped_confirmPasswordEdt    :   onTextWatcherEditText   =   confirmPasswordEdt;
+                                                            break;
+                case R.id.wrapped_emailEdt              :   onTextWatcherEditText   =   emailEdt;
+                                                            break;
+                case R.id.wrapped_firCodeEdt            :   onTextWatcherEditText   =   firmCodeEdt;
+                                                            break;
+            }
+        }
+        if (onTextWatcherEditText.equals(passwordEdt)) {
+            registerPresenterImpl.handleInputFieldTextChanges(before, onTextWatcherEditText, passwordErrorTtv);
+            registerPresenterImpl.handleRegisterPasswordEdtTextChanges(start, before, onTextWatcherEditText, showHidePasswordTtv);
+        } else {
+            registerPresenterImpl.handleInputFieldTextChanges(before, onTextWatcherEditText, null);
+        }
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {}
     /*
      *  REGISTER VIEW CALLBACKS
      *
@@ -367,7 +345,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
 
     private RegisterFormBody fillRegisterFormFields() {
         int firm_id;
-        fields = new ArrayList<>();
+        List<RegisterFormField> fields = new ArrayList<>();
         fields.add(new RegisterFormField(getResources().getString(R.string.username_tag), usernameEdt.getText().toString(), usernameEdt.getHint().toString()));
         fields.add(new RegisterFormField(getResources().getString(R.string.password_tag), passwordEdt.getText().toString(), passwordEdt.getHint().toString()));
         fields.add(new RegisterFormField(getResources().getString(R.string.confirm_password_tag), confirmPasswordEdt.getText().toString(), confirmPasswordEdt.getHint().toString()));
@@ -379,8 +357,7 @@ public class RegisterFragment extends Fragment implements RegisterView{
         } else {
             firm_id             =   0;
         }
-        registerFormBody = new RegisterFormBody(getResources().getString(R.string.register_user), fields, firm_id, registrationToken);
-        return registerFormBody;
+        return new RegisterFormBody(getResources().getString(R.string.register_user), fields, firm_id, registrationToken);
     }
 
     private void setText(String action, View view, String decodedMessage, String color) {

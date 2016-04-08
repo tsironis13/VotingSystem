@@ -42,7 +42,6 @@ public class MyGcmListenerService extends GcmListenerService {
             int mNotificationId = 001;
             NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
             mNotifyMgr.notify(mNotificationId, nBuilder.build());
-
         }
     }
 }
