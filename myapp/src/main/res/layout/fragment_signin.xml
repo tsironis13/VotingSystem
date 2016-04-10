@@ -82,7 +82,7 @@
                 android:hint="@string/password"
                 app:et_inputId="@+id/passwordEdt" />
 
-            <TextView
+            <com.rey.material.widget.TextView
                 android:id="@+id/showHidePasswordTtv"
                 android:layout_width="77dp"
                 android:layout_height="match_parent"
@@ -93,7 +93,7 @@
 
         </LinearLayout>
 
-        <TextView
+        <com.rey.material.widget.TextView
             android:id="@+id/errorresponseTtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -116,7 +116,7 @@
             app:rd_rippleColor="#d9ef6c00"
             app:rd_rippleType="wave" />
 
-        <TextView
+        <com.rey.material.widget.TextView
             android:id="@+id/registerTtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -130,7 +130,7 @@
         android:layout_marginBottom="@dimen/marginBottom"
         android:background="@color/viewBackgroundColor" />
 
-    <TextView
+    <com.rey.material.widget.TextView
         android:id="@+id/forgotPasswordTtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -2,9 +2,10 @@ package com.votingsystem.tsiro.rest;
 
 import com.votingsystem.tsiro.POJO.Firm;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
-import com.votingsystem.tsiro.POJO.Survey;
-import com.votingsystem.tsiro.POJO.User;
-import com.votingsystem.tsiro.POJO.UserConnectionStaff;
+import com.votingsystem.tsiro.POJO.RegisterUserStuff;
+import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
+import com.votingsystem.tsiro.POJO.ResetUserPasswordStuff;
+
 import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.Field;
@@ -16,8 +17,11 @@ import retrofit.http.POST;
  */
 public interface ApiService {
 
-    @POST("requests/registration/register-user.php")
-    Call<UserConnectionStaff> registerUser(@Body RegisterFormBody registerFormBody);
+    @POST("requests/user/register-user.php")
+    Call<RegisterUserStuff> registerUser(@Body RegisterFormBody registerFormBody);
+
+    @POST("requests/user/reset-password.php")
+    Call<ResetUserPasswordStuff> resetUserPassword(@Body ResetPassowrdBody resetPassowrdBody);
 
     @FormUrlEncoded
     @POST("requests/firms/firm-requests.php")

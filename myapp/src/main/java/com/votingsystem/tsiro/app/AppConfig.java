@@ -13,8 +13,8 @@ import java.util.Map;
  * Created by user on 10/10/2015.
  */
 public class AppConfig {
-    //public static final String BASE_URL                         =   "http://christosioannidis.com/giannis/Ptixiaki/";
-    public static final String BASE_URL                         =   "http://192.168.100.192/Ptixiaki/";
+    public static final String BASE_URL                         =   "http://christosioannidis.com/giannis/Ptixiaki/";
+    //public static final String BASE_URL                         =   "http://192.168.100.192/Ptixiaki/";
     public static final String SESSION_PREFS                    =   "sessionPrefs";
     public static final String KEY_USER_LEARNED_PREFS           =   "user_learned_prefs";
     //CODES
@@ -22,6 +22,7 @@ public class AppConfig {
     public static final int WIFI_CONNECTION                     =   1;
     public static final int CECULAR_CONNECTION                  =   0;
     public static final int STATUS_OK                           =   200;
+    public static final int STATUS_ERROR                        =   -200;
     public static final int UNAVAILABLE_SERVICE                 =   503;
     public static final int INPUT_OK                            =   10;
     public static final int INTERNAL_ERROR                      =   -8;
@@ -33,6 +34,8 @@ public class AppConfig {
     public static final int ERROR_FIRM_CODE_MISMATCH            =   -14;
     public static final int ERROR_INVALID_PASSWORD_LENGTH       =   -15;
     public static final int ERROR_INVALID_EMAIL                 =   -16;
+    public static final int ERROR_NOT_VERIFIED_YET              =   -17;
+    public static final int ERROR_EMAIL_DOESNT_EXIST            =   -18;
     //LOGIN ACTIVITY
     public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
     public static final int PASSWORD_INPUT_TYPE                 =   129;
@@ -55,6 +58,8 @@ public class AppConfig {
         inputValidationCodes.put(ERROR_INVALID_PASSWORD_LENGTH, R.string.error_invalid_password_length);
         inputValidationCodes.put(ERROR_PASSWORD_MISMATCH, R.string.error_passwords_mismatch);
         inputValidationCodes.put(ERROR_INVALID_EMAIL, R.string.error_invalid_email);
+        inputValidationCodes.put(ERROR_NOT_VERIFIED_YET, R.string.error_not_verified_yet);
+        inputValidationCodes.put(ERROR_EMAIL_DOESNT_EXIST, R.string.error_email_doesnt_exist);
         return inputValidationCodes;
     }
 }

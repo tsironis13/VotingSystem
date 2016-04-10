@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.graphics.drawable.ShapeDrawable;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -15,27 +14,23 @@ import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
 import android.util.Log;
-import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
+
+import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.widget.EditText;
-import android.widget.PopupWindow;
-import android.widget.Spinner;
-import android.widget.TextView;
-import android.widget.Toast;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.rey.material.widget.SnackBar;
+import com.rey.material.widget.TextView;
 import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.deserializer.FirmsDeserializer;
 import com.votingsystem.tsiro.POJO.Firm;
-import com.votingsystem.tsiro.POJO.User;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.mainClasses.AdminBaseActivity;
@@ -43,10 +38,6 @@ import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.rest.ApiService;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.util.List;
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 /**
  * Created by user on 10/10/2015.
@@ -64,6 +55,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     private View view;
     private LoginActivityCommonElementsAndMuchMore commonElements;
     private BroadcastReceiver broadcastReceiver;
+    TSnackbar tSnackbar;
 
     @Override
     public void onAttach(Context context) {
@@ -88,6 +80,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+
         broadcastReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
@@ -99,7 +92,7 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         sessionPrefs = LoginActivity.getSessionPrefs(getActivity());
         boolean key = sessionPrefs.contains("17");
         int value = sessionPrefs.getInt("17", 0);
-        Toast.makeText(getContext(), "key, value" + key + " " + value, Toast.LENGTH_SHORT).show();
+        //Toast.makeText(getContext(), "key, value" + key + " " + value, Toast.LENGTH_SHORT).show();
         if ( sessionPrefs.contains("user_id") ) startBaseActivity();
         signInBtn.setTransformationMethod(null);
         setRegisterSpan();
@@ -253,6 +246,8 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public void onResume() {
         super.onResume();
+        //TSnackbar tSnackbar = ((LoginActivity) getActivity()).getKalase();
+        //if (tSnackbar != null && tSnackbar.isShown()) tSnackbar.dismiss();
         getActivity().registerReceiver(broadcastReceiver, new IntentFilter("networkStateUpdated"));
     }
 

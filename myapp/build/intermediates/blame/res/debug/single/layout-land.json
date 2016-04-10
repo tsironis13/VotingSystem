@@ -1,13 +1,5 @@
 [
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout-land/fragment_forgotpassword.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout-land/fragment_forgotpassword.xml"
-    },
-    {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout-land/fragment_signin.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout-land/fragment_signin.xml"
-    },
-    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout-land/fragment_navigation_drawer.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout-land/fragment_navigation_drawer.xml"
     }

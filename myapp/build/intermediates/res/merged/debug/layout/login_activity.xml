@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background_theme"
-    tools:context=".MainActivity">
+    tools:context="com.votingsystem.tsiro.mainClasses.LoginActivity">
 
     <!-- Framelayout to display Fragments -->
     <FrameLayout
@@ -22,8 +22,7 @@
         <RelativeLayout
             android:id="@+id/errorContainerRlt"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/errorContainer_Rlt_height"
-            android:layout_gravity="top" />
+            android:layout_height="@dimen/errorContainer_Rlt_height" />
 
         <com.rey.material.widget.SnackBar
             android:id="@+id/loginActivitySnkBar"

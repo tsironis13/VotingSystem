@@ -5,19 +5,14 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.Editable;
-import android.text.Html;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.TransformationMethod;
-import android.util.Log;
-import android.util.SparseIntArray;
-import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
@@ -25,6 +20,7 @@ import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.Button;
+
 import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.LinearLayout;
@@ -35,13 +31,12 @@ import com.rey.material.widget.TextView;
 import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.POJO.RegisterFormField;
-import com.votingsystem.tsiro.Register.RegisterPresenterImpl;
-import com.votingsystem.tsiro.Register.RegisterView;
+import com.votingsystem.tsiro.LoginActivityMVC.LAMVCPresenterImpl;
+import com.votingsystem.tsiro.LoginActivityMVC.LAMVCView;
 import com.votingsystem.tsiro.adapters.FirmNamesSpnrNothingSelectedAdapter;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
-import com.votingsystem.tsiro.interfaces.DismissErrorContainerSnackBar;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.votingsystem.R;
@@ -51,7 +46,7 @@ import java.util.List;
 /**
  * Created by user on 11/12/2015.
  */
-public class RegisterFragment extends Fragment implements RegisterView, View.OnFocusChangeListener, TextWatcher{
+public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocusChangeListener, TextWatcher{
     private static final String debugTag = RegisterFragment.class.getSimpleName();
     private LinearLayout baseLlt;
     private TextView signInHereTtv, showHidePasswordTtv, passwordErrorTtv;
@@ -61,23 +56,17 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
     private Spinner pickFirmSpnr;
     private View view;
     private LoginActivityCommonElementsAndMuchMore commonElements;
-    private SparseIntArray inputValidationCodes;
     private BroadcastReceiver connectionStatusReceiver;
     private int connectionStatus, initialConnectionStatus;
-    private RegisterPresenterImpl registerPresenterImpl;
+    private LAMVCPresenterImpl LAMVCpresenterImpl;
     private SnackBar snackBar;
     private boolean firmsLoaded;
-    private TSnackbar errorContainerSnackbar;
-    private DismissErrorContainerSnackBar dismissErrorContainerSnackBar;
     private String registrationToken;
 
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if ( context instanceof Activity ) {
-            this.commonElements                 =   (LoginActivityCommonElementsAndMuchMore) context;
-            this.dismissErrorContainerSnackBar  =   (DismissErrorContainerSnackBar) context;
-        }
+        if (context instanceof Activity) this.commonElements    =   (LoginActivityCommonElementsAndMuchMore) context;
     }
 
     @Override
@@ -107,10 +96,9 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
         if ( savedInstanceState == null ) {
             firmsLoaded = false;
             if (snackBar.isShown()) snackBar.dismiss();
-            registerPresenterImpl   =   new RegisterPresenterImpl(this);
-            inputValidationCodes    =   AppConfig.getCodes();
+            LAMVCpresenterImpl      =   new LAMVCPresenterImpl(this);
 
-            registerPresenterImpl.firmNamesSpnrActions(initialConnectionStatus);
+            LAMVCpresenterImpl.firmNamesSpnrActions(initialConnectionStatus);
             connectionStatus = initialConnectionStatus;
             initializeBroadcastReceivers();
 
@@ -132,7 +120,7 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
             showHidePasswordTtv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    registerPresenterImpl.handleShowHidePasswordTtv(passwordEdt);
+                    LAMVCpresenterImpl.handleShowHidePasswordTtv(passwordEdt);
                     if (passwordErrorTtv !=null && !TextUtils.isEmpty(passwordErrorTtv.getText().toString())) passwordErrorTtv.setText(null);
                 }
             });
@@ -156,14 +144,16 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
                         showSnackBar(AppConfig.NO_CONNECTION);
                     } else {
                         progressView.start();
-                        registerPresenterImpl.validateForm(connectionStatus, isAdded(), fillRegisterFormFields(), registrationToken);
+                        LAMVCpresenterImpl.validateForm(isAdded(), fillRegisterFormFields());
                     }
                 }
             });
             signInHereTtv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (errorContainerSnackbar != null) errorContainerSnackbar.dismiss();
+                    //TSnackbar tSnackbar = ((LoginActivity) getActivity()).getKalase();
+                    //if (tSnackbar != null && tSnackbar.isShown()) tSnackbar.dismiss();
+
                     if (v instanceof TextView) commonElements.signInHereOnClick();
                 }
             });
@@ -175,7 +165,7 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
     public void onDestroy() {
         super.onDestroy();
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
-        registerPresenterImpl.onDestroy();
+        LAMVCpresenterImpl.onDestroy();
         this.commonElements = null;
         RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
         refWatcher.watch(this);
@@ -199,7 +189,7 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
             }
             if (TextUtils.isEmpty(onFocusChangeEditText.getText().toString())) {
                 error_view_holder =  onFocusChangeEditText.equals(passwordEdt) ? passwordErrorTtv : onFocusChangeEditText;
-                setText(getResources().getString(R.string.error), error_view_holder, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.error_empty_requried_field))), getResources().getString(R.string.error_color_string));
+                commonElements.setText(getResources().getString(R.string.error), error_view_holder, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.error_empty_requried_field))), getResources().getString(R.string.error_color_string));
             }
         }
     }
@@ -224,18 +214,18 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
                                                             break;
             }
         }
-        if (onTextWatcherEditText.equals(passwordEdt)) {
-            registerPresenterImpl.handleInputFieldTextChanges(before, onTextWatcherEditText, passwordErrorTtv);
-            registerPresenterImpl.handleRegisterPasswordEdtTextChanges(start, before, onTextWatcherEditText, showHidePasswordTtv);
+        if (onTextWatcherEditText != null && onTextWatcherEditText.equals(passwordEdt)) {
+            LAMVCpresenterImpl.handleInputFieldTextChanges(before, onTextWatcherEditText, passwordErrorTtv);
+            LAMVCpresenterImpl.handleRegisterPasswordEdtTextChanges(start, before, onTextWatcherEditText, showHidePasswordTtv);
         } else {
-            registerPresenterImpl.handleInputFieldTextChanges(before, onTextWatcherEditText, null);
+            LAMVCpresenterImpl.handleInputFieldTextChanges(before, onTextWatcherEditText, null);
         }
     }
 
     @Override
     public void afterTextChanged(Editable s) {}
     /*
-     *  REGISTER VIEW CALLBACKS
+     *  LAMVCVIEW CALLBACKS
      *
      */
     @Override
@@ -272,49 +262,57 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
 
     @Override
     public void displayFeedbackMsg(int code) {
-        if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
+        commonElements.dismissErrorContainerSnackBar();
         if (progressView != null && progressView.isShown()) progressView.stop();
         showSnackBar(code);
     }
 
     @Override
-    public void onFormValidationFailure(int code, String tag, String hint) {
+    public void onFailure(int code, String tag, String hint) {
         EditText errorView = (EditText) baseLlt.findViewWithTag(tag);
         if (code == AppConfig.ERROR_EMPTY_REQUIRED_FIELD) {
-            showErrorContainerSnackbar(getResources().getString(R.string.empty_field, hint), null, code);
+            commonElements.showErrorContainerSnackbar(getResources().getString(R.string.empty_field, hint), null, code);
         } else if (code == AppConfig.ERROR_NO_FIRM_PICKED) {
-            showErrorContainerSnackbar(getResources().getString(R.string.empty_field, getResources().getString(R.string.pickFirm)), null, code);
+            commonElements.showErrorContainerSnackbar(getResources().getString(R.string.empty_field, getResources().getString(R.string.pickFirm)), null, code);
         } else if (code == AppConfig.ERROR_INPUT_EXISTS) {
             if (tag.equals(getResources().getString(R.string.password_tag))) {
                 passwordEdt.getChildAt(1).setVisibility(View.GONE);
-                showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), passwordErrorTtv, code);
+                commonElements.showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), passwordErrorTtv, code);
             } else {
-                showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), errorView, code);
+                commonElements.showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), errorView, code);
             }
         } else if (code == AppConfig.ERROR_INVALID_INPUT) {
             if (tag.equals(getResources().getString(R.string.password_tag))) {
                 passwordEdt.getChildAt(1).setVisibility(View.GONE);
-                showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), passwordErrorTtv, code);
+                commonElements.showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), passwordErrorTtv, code);
             } else {
-                showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), errorView, code);
+                commonElements.showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), errorView, code);
             }
         } else if (code == AppConfig.ERROR_INVALID_PASSWORD_LENGTH) {
             passwordEdt.getChildAt(1).setVisibility(View.GONE);
-            showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), passwordErrorTtv, code);
+            commonElements.showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), passwordErrorTtv, code);
         } else if (code == AppConfig.ERROR_PASSWORD_MISMATCH) {
-            showErrorContainerSnackbar(getResources().getString(R.string.correct_error, getResources().getString(R.string.error_passwords_mismatch)), null, code);
+            commonElements.showErrorContainerSnackbar(getResources().getString(R.string.correct_error, getResources().getString(R.string.error_passwords_mismatch)), null, code);
         } else if (code == AppConfig.ERROR_INVALID_EMAIL) {
-            showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), errorView, code);
+            commonElements.showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), errorView, code);
         } else if (code == AppConfig.ERROR_FIRM_CODE_MISMATCH) {
-            showErrorContainerSnackbar(getResources().getString(R.string.correct_error, getResources().getString(R.string.error_firm_code_mismatch)), null, code);
+            commonElements.showErrorContainerSnackbar(getResources().getString(R.string.correct_error, getResources().getString(R.string.error_firm_code_mismatch)), null, code);
+        } else if (code == AppConfig.STATUS_ERROR) {
+            showSnackBar(AppConfig.STATUS_ERROR);
         }
-
+        if (progressView != null && progressView.isShown()) progressView.stop();
     }
 
     @Override
-    public void onFormValidationSuccess() {
-        if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
+    public void onSuccess() {
+        commonElements.dismissErrorContainerSnackBar();
         if (progressView != null && progressView.isShown()) progressView.stop();
+        if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) getActivity().getSupportFragmentManager().popBackStack();
+        SignInFragment signInFragment = new SignInFragment();
+        getActivity().getSupportFragmentManager()
+                                                .beginTransaction()
+                                                .replace(R.id.loginActivityFgmtContainer, signInFragment, getResources().getString(R.string.signInFgmt))
+                                                .commit();
     }
 
     private void initializeBroadcastReceivers() {
@@ -325,22 +323,9 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
                 if (connectionStatus != AppConfig.NO_CONNECTION) {
                     if (snackBar.isShown()) snackBar.dismiss();
                 }
-                registerPresenterImpl.firmNamesSpnrActions(connectionStatus);
+                LAMVCpresenterImpl.firmNamesSpnrActions(connectionStatus);
             }
         };
-    }
-
-    private void showErrorContainerSnackbar(String error_type, View errorView, int code) {
-        if (errorView != null) setText(getResources().getString(R.string.error), errorView, commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(inputValidationCodes.get(code)))), "#DD2C00");
-        errorContainerSnackbar = TSnackbar.make(((LoginActivity) getActivity()).getErrorContainerRlt(), error_type, TSnackbar.LENGTH_INDEFINITE);
-        View snackBarView = errorContainerSnackbar.getView();
-        snackBarView.setBackgroundColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_background_color)));
-        android.widget.TextView snackBarTtv = (android.widget.TextView) snackBarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
-        snackBarTtv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-        snackBarTtv.setTextColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_Ttv_color)));
-        errorContainerSnackbar.show();
-        if (progressView != null && progressView.isShown()) progressView.stop();
-        dismissErrorContainerSnackBar.dismissErrorContainerSnackBar(errorContainerSnackbar);
     }
 
     private RegisterFormBody fillRegisterFormFields() {
@@ -351,7 +336,7 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
         fields.add(new RegisterFormField(getResources().getString(R.string.confirm_password_tag), confirmPasswordEdt.getText().toString(), confirmPasswordEdt.getHint().toString()));
         fields.add(new RegisterFormField(getResources().getString(R.string.email_tag), emailEdt.getText().toString(), emailEdt.getHint().toString()));
         fields.add(new RegisterFormField(getResources().getString(R.string.firm_code_tag), firmCodeEdt.getText().toString(), firmCodeEdt.getHint().toString()));
-        if (pickFirmSpnr.getSelectedItemPosition() != 0) {
+        if (pickFirmSpnr.getSelectedItemPosition() != 0 && pickFirmSpnr != null) {
             FirmNameWithID obj  =   (FirmNameWithID) pickFirmSpnr.getAdapter().getItem(pickFirmSpnr.getSelectedItemPosition() - 1);
             firm_id             =   obj.getId();
         } else {
@@ -360,13 +345,7 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
         return new RegisterFormBody(getResources().getString(R.string.register_user), fields, firm_id, registrationToken);
     }
 
-    private void setText(String action, View view, String decodedMessage, String color) {
-        if ( view instanceof EditText ) {
-            if (action.equals(getResources().getString(R.string.error))) ((EditText) view).setHelper(Html.fromHtml("<font color=" + color + ">" + decodedMessage + "</font>"));
-        } else if ( view instanceof TextView ) {
-            ((TextView) view).setText(decodedMessage);
-        }
-    }
+
 
     private void setSignInHereSpan(){ commonElements.setLoginActivitySpan(signInHereTtv, getResources().getString(R.string.signInHere), 22, 34, 1); }
 
@@ -387,20 +366,8 @@ public class RegisterFragment extends Fragment implements RegisterView, View.OnF
     }
 
     private void showSnackBar(int code) {
-        snackBar.actionText("");
-        if (code == AppConfig.NO_CONNECTION) {
-            snackBar
-                    .text(getResources().getString(R.string.no_connection))
-                    .applyStyle(R.style.SnackBarNoConnection);
-        } else if (code == AppConfig.UNAVAILABLE_SERVICE) {
-            snackBar
-                    .text(getResources().getString(R.string.unavailable_service))
-                    .applyStyle(R.style.SnackBarUnavailableService);
-        } else if (code == AppConfig.INTERNAL_ERROR) {
-            snackBar
-                    .text(getResources().getString(R.string.error_occured))
-                    .applyStyle(R.style.SnackBarInternalError);
-        }
-        snackBar.show();
+        if (progressView != null && progressView.isShown()) progressView.stop();
+        commonElements.dismissErrorContainerSnackBar();
+        commonElements.showSnackBar(code);
     }
 }

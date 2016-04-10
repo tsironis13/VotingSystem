@@ -4,12 +4,14 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.text.Html;
 import android.text.Spannable;
 import android.text.SpannableStringBuilder;
 import android.text.style.ClickableSpan;
@@ -17,6 +19,8 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.util.Base64;
 import android.util.Log;
+import android.util.SparseIntArray;
+import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -24,7 +28,7 @@ import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.app.BottomSheetDialog;
 import com.rey.material.widget.EditText;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
+import com.rey.material.widget.TextView;
 import com.rey.material.widget.SnackBar;
 import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
@@ -36,13 +40,12 @@ import com.votingsystem.tsiro.broadcastReceivers.RegistrationTokenReceiver;
 import com.votingsystem.tsiro.fragments.ForgotPasswordFragment;
 import com.votingsystem.tsiro.fragments.RegisterFragment;
 import com.votingsystem.tsiro.fragments.SignInFragment;
-import com.votingsystem.tsiro.interfaces.DismissErrorContainerSnackBar;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.services.gcm.RegistrationIntentService;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.io.UnsupportedEncodingException;
 
-public class LoginActivity extends AppCompatActivity implements NetworkStateListeners, LoginActivityCommonElementsAndMuchMore, DismissErrorContainerSnackBar, RegistrationTokenListeners {
+public class LoginActivity extends AppCompatActivity implements NetworkStateListeners, LoginActivityCommonElementsAndMuchMore, RegistrationTokenListeners {
 
     private static final String debugTag = LoginActivity.class.getSimpleName();
     private Bundle loginActivityBundle;
@@ -55,6 +58,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     private TSnackbar errorContainerSnackbar;
     private RegistrationTokenReceiver registrationTokenReceiver;
     private String registrationToken;
+    private SparseIntArray inputValidationCodes;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +68,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         if ( savedInstanceState == null ) {
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
+            inputValidationCodes        =   AppConfig.getCodes();
             networkStateReceiver        =   new NetworkStateReceiver();
             registrationTokenReceiver   =   new RegistrationTokenReceiver();
             loginActivityBundle         =   new Bundle();
@@ -73,9 +78,11 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
             SignInFragment signInFragment = new SignInFragment();
             signInFragment.setArguments(loginActivityBundle);
-            getSupportFragmentManager().beginTransaction()
-                    .replace(R.id.loginActivityFgmtContainer, signInFragment, getResources().getString(R.string.signInFgmt))
-                    .commit();
+            getSupportFragmentManager()
+                                    .beginTransaction()
+                                    .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
+                                    .replace(R.id.loginActivityFgmtContainer, signInFragment, getResources().getString(R.string.signInFgmt))
+                                    .commit();
 
             getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
                 @Override
@@ -123,7 +130,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     public void onBackPressed() {
         super.onBackPressed();
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) getSupportFragmentManager().popBackStack(0, 0);
-        if (errorContainerSnackbar != null) errorContainerSnackbar.dismiss();
+        baseDismissErrorContainerSnackBar();
     }
 
     @Override
@@ -150,29 +157,57 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
     @Override
     public void forgotPasswordOnClick() {
+        baseDismissErrorContainerSnackBar();
         ForgotPasswordFragment forgotPasswordFgmt = new ForgotPasswordFragment();
+        loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
+        loginActivityBundle.putString(getResources().getString(R.string.registration_token), registrationToken);
         forgotPasswordFgmt.setArguments(loginActivityBundle);
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.loginActivityFgmtContainer, forgotPasswordFgmt, getResources().getString(R.string.forgotPasswordFgmt))
-                .addToBackStack(getResources().getString(R.string.forgotPasswordFgmt))
-                .commit();
+        getSupportFragmentManager()
+                                .beginTransaction()
+                                .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
+                                .replace(R.id.loginActivityFgmtContainer, forgotPasswordFgmt, getResources().getString(R.string.forgotPasswordFgmt))
+                                .addToBackStack(getResources().getString(R.string.forgotPasswordFgmt))
+                                .commit();
     }
 
     @Override
     public void registerOnClick() {
+        baseDismissErrorContainerSnackBar();
         RegisterFragment registerFragment = new RegisterFragment();
-        if ( getSupportFragmentManager().getBackStackEntryCount() > 0 ) getSupportFragmentManager().popBackStack();
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) getSupportFragmentManager().popBackStack();
         loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
         loginActivityBundle.putString(getResources().getString(R.string.registration_token), registrationToken);
         registerFragment.setArguments(loginActivityBundle);
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.loginActivityFgmtContainer, registerFragment, getResources().getString(R.string.registerFgmt))
-                .addToBackStack(getResources().getString(R.string.registerFgmt))
-                .commit();
+        getSupportFragmentManager()
+                                .beginTransaction()
+                                .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
+                                .replace(R.id.loginActivityFgmtContainer, registerFragment, getResources().getString(R.string.registerFgmt))
+                                .addToBackStack(getResources().getString(R.string.registerFgmt))
+                                .commit();
+    }
+
+    @Override
+    public void showSnackBar(int code) {
+        loginActivitySnkBar.actionText("");
+        if (code == AppConfig.NO_CONNECTION) {
+            loginActivitySnkBar
+                            .text(getResources().getString(R.string.no_connection))
+                            .applyStyle(R.style.SnackBarNoConnection);
+        } else if (code == AppConfig.UNAVAILABLE_SERVICE) {
+            loginActivitySnkBar
+                            .text(getResources().getString(R.string.unavailable_service))
+                            .applyStyle(R.style.SnackBarUnavailableService);
+        } else if (code == AppConfig.INTERNAL_ERROR || code == AppConfig.STATUS_ERROR) {
+            loginActivitySnkBar
+                            .text(getResources().getString(R.string.error_occured))
+                            .applyStyle(R.style.SnackBarInternalError);
+        }
+        loginActivitySnkBar.show();
     }
 
     @Override
     public void signInHereOnClick() {
+        baseDismissErrorContainerSnackBar();
         if (getSupportFragmentManager().getBackStackEntryCount() > 0) getSupportFragmentManager().popBackStack();
     }
 
@@ -180,12 +215,9 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         return loginActivitySnkBar;
     }
 
-    public RelativeLayout getErrorContainerRlt() { return errorContainerRlt; }
-
     public static SharedPreferences getSessionPrefs(Context context) {
         //Mode private so only this app can modify this SharedPreferences file
-        SharedPreferences sessionPrefs = context.getSharedPreferences(AppConfig.SESSION_PREFS, Context.MODE_PRIVATE);
-        return sessionPrefs;
+        return context.getSharedPreferences(AppConfig.SESSION_PREFS, Context.MODE_PRIVATE);
     }
 
     public void hideSoftKeyboard() {
@@ -196,15 +228,16 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     }
 
     @Override
-    public boolean validateEditText(EditText[] fields) {
-        for (EditText field : fields) {
-            if (field.getText().toString().isEmpty()) return false;
-        }
-        return true;
+    public String encodeUtf8(String text) {
+        return baseEncodeUtf8(text);
     }
 
     @Override
-    public String encodeUtf8(String text) {
+    public String decodeUtf8(String text) {
+       return baseDecodeUtf8(text);
+    }
+
+    private String baseEncodeUtf8(String text) {
         try {
             byte[] data = text.getBytes("UTF-8");
             return Base64.encodeToString(data, Base64.DEFAULT);
@@ -214,8 +247,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         }
     }
 
-    @Override
-    public String decodeUtf8(String text) {
+    private String baseDecodeUtf8(String text) {
         try {
             byte[] data = Base64.decode(text, Base64.DEFAULT);
             return new String(data, "UTF-8");
@@ -236,8 +268,39 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     }
 
     @Override
-    public void dismissErrorContainerSnackBar(TSnackbar errorContainerSnackbar) {
-        if (errorContainerSnackbar != null) this.errorContainerSnackbar = errorContainerSnackbar;
+    public void showErrorContainerSnackbar(String error_type, View errorView, int code) {
+        if (errorView != null) setText(getResources().getString(R.string.error), errorView, baseDecodeUtf8(baseEncodeUtf8(getResources().getString(inputValidationCodes.get(code)))), "#DD2C00");
+        errorContainerSnackbar = TSnackbar.make(errorContainerRlt, error_type, TSnackbar.LENGTH_INDEFINITE);
+        //errorContainerSnackbar.setDuration(3);
+        View snackBarView = errorContainerSnackbar.getView();
+        snackBarView.setBackgroundColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_background_color)));
+        android.widget.TextView snackBarTtv = (android.widget.TextView) snackBarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
+        snackBarTtv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
+        snackBarTtv.setTextColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_Ttv_color)));
+        errorContainerSnackbar.show();
+    }
+
+    @Override
+    public void dismissErrorContainerSnackBar() {
+        baseDismissErrorContainerSnackBar();
+    }
+
+    private void baseDismissErrorContainerSnackBar() {
+        Log.e(debugTag, errorContainerSnackbar+"");
+        if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
+    }
+
+    @Override
+    public void setText(String action, View view, String decodedMessage, String color) {
+        baseSetText(action, view, decodedMessage, color);
+    }
+
+    private void baseSetText(String action, View view, String decodedMessage, String color) {
+        if (view instanceof EditText) {
+            if (action.equals(getResources().getString(R.string.error))) ((EditText) view).setHelper(Html.fromHtml("<font color=" + color + ">" + decodedMessage + "</font>"));
+        } else if ( view instanceof TextView) {
+            ((com.rey.material.widget.TextView) view).setText(decodedMessage);
+        }
     }
 
 }

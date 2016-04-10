@@ -38,7 +38,7 @@
     <color name="gradient_centerColor">#388E3C</color>
     <color name="gradient_endColor">#1B5E20</color>
     <color name="gradient_strokeColor">#4f4CAF50</color>
-    <!-- PROGRESS VIEWA -->
+    <!-- PROGRESS VIEW -->
     <array name="in_circular_progress_colors">
         <item>#EF6C00</item>
         <item>#FF9800</item>
