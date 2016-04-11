@@ -11,14 +11,7 @@
                     "endOffset": 112
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 229,
-                        "endColumn": 61,
-                        "endOffset": 286
-                    }
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml"
                 }
             },
             {
@@ -30,14 +23,7 @@
                     "endOffset": 184
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 466,
-                        "endColumn": 71,
-                        "endOffset": 533
-                    }
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml"
                 }
             },
             {
@@ -49,14 +35,7 @@
                     "endOffset": 254
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 4,
-                        "startOffset": 722,
-                        "endColumn": 69,
-                        "endOffset": 787
-                    }
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml"
                 }
             },
             {
@@ -68,14 +47,7 @@
                     "endOffset": 318
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 967,
-                        "endColumn": 63,
-                        "endOffset": 1026
-                    }
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml"
                 }
             },
             {
@@ -87,14 +59,7 @@
                     "endOffset": 389
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml",
-                    "position": {
-                        "startLine": 16,
-                        "startColumn": 4,
-                        "startOffset": 1215,
-                        "endColumn": 70,
-                        "endOffset": 1281
-                    }
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml"
                 }
             },
             {
@@ -106,14 +71,7 @@
                     "endOffset": 457
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 4,
-                        "startOffset": 1286,
-                        "endColumn": 67,
-                        "endOffset": 1349
-                    }
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.1/res/values-land/values-land.xml"
                 }
             },
             {
@@ -121,248 +79,36 @@
                     "startLine": 8,
                     "startColumn": 4,
                     "startOffset": 462,
-                    "endColumn": 44,
-                    "endOffset": 502
+                    "endColumn": 53,
+                    "endOffset": 511
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 125,
-                        "endColumn": 44,
-                        "endOffset": 165
-                    }
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 9,
                     "startColumn": 4,
-                    "startOffset": 507,
-                    "endColumn": 47,
-                    "endOffset": 550
+                    "startOffset": 516,
+                    "endColumn": 62,
+                    "endOffset": 574
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 77,
-                        "endColumn": 47,
-                        "endOffset": 120
-                    }
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 555,
-                    "endColumn": 62,
-                    "endOffset": 613
-                },
-                "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 341,
-                        "endColumn": 62,
-                        "endOffset": 399
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 11,
-                    "startColumn": 4,
-                    "startOffset": 618,
-                    "endColumn": 60,
-                    "endOffset": 674
-                },
-                "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 11,
-                        "startColumn": 4,
-                        "startOffset": 433,
-                        "endColumn": 60,
-                        "endOffset": 489
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 12,
-                    "startColumn": 4,
-                    "startOffset": 679,
-                    "endColumn": 53,
-                    "endOffset": 728
-                },
-                "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 234,
-                        "endColumn": 53,
-                        "endOffset": 283
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 13,
-                    "startColumn": 4,
-                    "startOffset": 733,
-                    "endColumn": 42,
-                    "endOffset": 771
-                },
-                "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 191,
-                        "endColumn": 42,
-                        "endOffset": 229
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 14,
-                    "startColumn": 4,
-                    "startOffset": 776,
-                    "endColumn": 52,
-                    "endOffset": 824
-                },
-                "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 288,
-                        "endColumn": 52,
-                        "endOffset": 336
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 15,
-                    "startColumn": 4,
-                    "startOffset": 829,
-                    "endColumn": 53,
-                    "endOffset": 878
-                },
-                "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 18,
-                        "startColumn": 4,
-                        "startOffset": 780,
-                        "endColumn": 53,
-                        "endOffset": 829
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 16,
-                    "startColumn": 4,
-                    "startOffset": 883,
-                    "endColumn": 62,
-                    "endOffset": 941
-                },
-                "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 17,
-                        "startColumn": 4,
-                        "startOffset": 717,
-                        "endColumn": 62,
-                        "endOffset": 775
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 17,
-                    "startColumn": 4,
-                    "startOffset": 946,
-                    "endColumn": 56,
-                    "endOffset": 998
-                },
-                "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 15,
-                        "startColumn": 4,
-                        "startOffset": 629,
-                        "endColumn": 56,
-                        "endOffset": 681
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 18,
-                    "startColumn": 4,
-                    "startOffset": 1003,
-                    "endColumn": 57,
-                    "endOffset": 1056
-                },
-                "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 4,
-                        "startOffset": 571,
-                        "endColumn": 57,
-                        "endOffset": 624
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 19,
-                    "startColumn": 4,
-                    "startOffset": 1061,
-                    "endColumn": 54,
-                    "endOffset": 1111
-                },
-                "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-land/dimens.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 516,
-                        "endColumn": 54,
-                        "endOffset": 566
-                    }
-                }
-            },
-            {
-                "to": {
-                    "startLine": 20,
-                    "startColumn": 4,
-                    "startOffset": 1116,
-                    "endLine": 23,
+                    "startOffset": 579,
+                    "endLine": 13,
                     "endColumn": 12,
-                    "endOffset": 1293
+                    "endOffset": 756
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/values-land/values-land.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 282,
-                        "endLine": 7,
-                        "endColumn": 12,
-                        "endOffset": 459
-                    }
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/23.1.0/res/values-land/values-land.xml"
                 }
             }
         ]

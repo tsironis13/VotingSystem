@@ -110,13 +110,13 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
         signInHereTtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (v instanceof TextView) commonElements.signInHereOnClick();
+                if (v instanceof TextView && commonElements != null) commonElements.signInHereOnClick();
             }
         });
         registerTtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( v instanceof TextView ) commonElements.registerOnClick();
+                if ( v instanceof TextView && commonElements != null) commonElements.registerOnClick();
             }
         });
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(connectionStatusReceiver, new IntentFilter(getResources().getString(R.string.network_state_update)));

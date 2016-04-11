@@ -145,9 +145,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         StyleSpan styleSpan = new StyleSpan(Typeface.BOLD);
         ClickableSpan clickableSpan = new ClickableSpan() {
             @Override
-            public void onClick(View widget) {
-
-            }
+            public void onClick(View widget) {}
         };
         spannableStringBuilder.setSpan(clickableSpan, start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.setSpan(styleSpan, start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);

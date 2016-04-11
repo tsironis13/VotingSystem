@@ -37,7 +37,7 @@ public class LAMVCPresenterImpl implements LAMVCPresenter, LAMVCFinishedListener
             if (before == 1 || before == 0) {
                 if (errorView != null && errorView instanceof TextView && !TextUtils.isEmpty(((TextView) errorView).getText().toString())) {
                     ((TextView) errorView).setText(null);
-                } else if (errorView == null && inputEdt.getHelper() != null && !TextUtils.isEmpty(inputEdt.getHelper().toString())) {
+                } else if (errorView == null && inputEdt != null && inputEdt.getHelper() != null && !TextUtils.isEmpty(inputEdt.getHelper().toString())) {
                     inputEdt.setHelper(null);
                 }
             }

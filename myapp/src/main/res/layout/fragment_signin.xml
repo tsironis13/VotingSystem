@@ -30,8 +30,8 @@
             android:orientation="horizontal">
 
             <ImageView
-                android:layout_width="@dimen/logo_dimens_andBottom"
-                android:layout_height="@dimen/logo_dimens_andBottom"
+                android:layout_width="@dimen/input_field_logo_dimens"
+                android:layout_height="@dimen/input_field_logo_dimens"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
                 android:layout_marginRight="@dimen/input_logo_marginLeftRight"
@@ -39,18 +39,18 @@
                 android:contentDescription="@string/input_logo" />
 
             <com.rey.material.widget.EditText
-                android:id="@+id/signInUsernameEdt"
-                android:layout_width="wrap_content"
+                android:id="@+id/usernameEdt"
+                android:layout_width="@dimen/input_field_Edt_width"
                 android:layout_height="match_parent"
-                android:minWidth="@dimen/common_width"
-                android:inputType="textPersonName"
+                android:paddingRight="@dimen/input_field_Edt_paddingRight"
                 android:textSize="@dimen/input_edt_textSize"
                 android:textColor="@android:color/white"
                 android:textColorHint="@color/input_hintColor"
-                android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
+                android:inputType="textPersonName"
                 android:hint="@string/username"
-                app:et_inputId="@+id/usernameEdt" />
+                style="@style/EditextUsername"
+                app:et_inputId="@+id/wrapped_usernameEdt" />
 
         </LinearLayout>
 
@@ -58,11 +58,12 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/input_container_height"
             android:background="@drawable/login_fields_container"
-            android:orientation="horizontal">
+            android:layout_marginBottom="@dimen/forgotpassword_email_container_marginBottom"
+            android:orientation="horizontal" >
 
             <ImageView
-                android:layout_width="@dimen/logo_dimens_andBottom"
-                android:layout_height="@dimen/logo_dimens_andBottom"
+                android:layout_width="@dimen/input_field_logo_dimens"
+                android:layout_height="@dimen/input_field_logo_dimens"
                 android:layout_gravity="center_vertical"
                 android:layout_marginLeft="@dimen/input_logo_marginLeftRight"
                 android:layout_marginRight="@dimen/input_logo_marginLeftRight"
@@ -70,64 +71,55 @@
                 android:contentDescription="@string/input_logo" />
 
             <com.rey.material.widget.EditText
-                android:id="@+id/signInPasswordEdt"
-                android:layout_width="163dp"
+                android:id="@+id/passwordEdt"
+                android:layout_width="@dimen/input_field_Edt_width"
                 android:layout_height="match_parent"
-                android:inputType="textPassword"
+                android:paddingRight="@dimen/input_field_Edt_paddingRight"
                 android:textSize="@dimen/input_edt_textSize"
                 android:textColor="@android:color/white"
                 android:textColorHint="@color/input_hintColor"
-                android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
+                android:inputType="textPassword"
                 android:hint="@string/password"
-                app:et_inputId="@+id/passwordEdt" />
-
-            <com.rey.material.widget.TextView
-                android:id="@+id/showHidePasswordTtv"
-                android:layout_width="77dp"
-                android:layout_height="match_parent"
-                android:padding="8dp"
-                android:gravity="center"
-                android:textSize="10sp"
-                android:textColor="@android:color/white" />
+                style="@style/EditextSignInPassword"
+                app:et_inputId="@+id/wrapped_passwordEdt" />
 
         </LinearLayout>
 
-        <com.rey.material.widget.TextView
-            android:id="@+id/errorresponseTtv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:paddingTop="4dp"
-            android:layout_marginBottom="25dp"
-            android:textSize="@dimen/txVerror_textSize"
-            android:textStyle="bold"
-            android:textColor="@color/txVerrorColor"/>
+        <com.rey.material.widget.ProgressView
+            android:id="@+id/progressView"
+            android:layout_width="@dimen/progressView_dimens"
+            android:layout_height="@dimen/progressView_dimens"
+            style="@style/InCircularProgressView" />
 
-        <com.rey.material.widget.Button
+        <Button
             android:id="@+id/signInBtn"
             android:layout_width="@dimen/action_btn_width"
             android:layout_height="@dimen/action_btn_height"
-            android:layout_marginBottom="@dimen/marginBottom"
+            android:layout_marginTop="@dimen/loginActivity_Btn_marginTop"
+            android:layout_marginBottom="3dp"
             android:textColor="@android:color/white"
-            android:background="@color/actionBtnColor"
             android:text="@string/signin"
-            app:rd_enable="true"
-            app:rd_maxRippleRadius="match_view"
-            app:rd_rippleColor="#d9ef6c00"
-            app:rd_rippleType="wave" />
+            android:background="@drawable/ripple_drawable" />
 
         <com.rey.material.widget.TextView
             android:id="@+id/registerTtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:paddingTop="@dimen/register_Ttv_paddingTopBottom"
+            android:paddingLeft="@dimen/register_Ttv_paddingLeftRight"
+            android:paddingRight="@dimen/register_Ttv_paddingLeftRight"
+            android:paddingBottom="@dimen/register_Ttv_paddingTopBottom"
+            style="@style/SignInHere_Register_ForgotPassword_Ttv" />
 
     </LinearLayout>
 
     <View
         android:layout_width="@dimen/common_width"
         android:layout_height="@dimen/view_height"
-        android:layout_marginBottom="@dimen/marginBottom"
+        android:layout_marginTop="@dimen/view_marginTop"
+        android:layout_marginBottom="@dimen/view_marginBottom"
         android:background="@color/viewBackgroundColor" />
 
     <com.rey.material.widget.TextView
@@ -135,6 +127,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@android:color/white"
-        android:text="@string/forgotpassword" />
+        android:paddingTop="@dimen/forgotpassword_Ttv_paddingTopBottom"
+        android:paddingLeft="@dimen/forgotpassword_Ttv_paddingLeftRight"
+        android:paddingRight="@dimen/forgotpassword_Ttv_paddingLeftRight"
+        android:paddingBottom="@dimen/forgotpassword_Ttv_paddingTopBottom"
+        android:text="@string/forgotpassword"
+        style="@style/SignInHere_Register_ForgotPassword_Ttv" />
 
 </LinearLayout>

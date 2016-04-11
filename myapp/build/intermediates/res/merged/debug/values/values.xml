@@ -369,15 +369,20 @@
     <dimen name="et_supportTextSize">10sp</dimen>
     <dimen name="firmname_Imv_marginLeft">11dp</dimen>
     <dimen name="firmname_Imv_marginRight">0dp</dimen>
-    <dimen name="forgot_pass_logo_marginBottom">80dp</dimen>
+    <dimen name="forgot_pass_logo_marginBottom">70dp</dimen>
     <dimen name="forgot_pass_logo_marginTop">-90dp</dimen>
+    <dimen name="forgotpassword_Ttv_paddingLeftRight">3dp</dimen>
+    <dimen name="forgotpassword_Ttv_paddingTopBottom">12dp</dimen>
+    <dimen name="forgotpassword_email_container_marginBottom">8dp</dimen>
+    <dimen name="forgotpassword_register_Ttv_paddingLeftRight">3dp</dimen>
+    <dimen name="forgotpassword_register_Ttv_paddingTopBottom">12dp</dimen>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
     <dimen name="in_common_1">16dp</dimen>
     <dimen name="in_common_2">20dp</dimen>
     <dimen name="in_common_3">36dp</dimen>
-    <dimen name="input_container_height">53dp</dimen>
+    <dimen name="input_container_height">50dp</dimen>
     <dimen name="input_edt_textSize">13sp</dimen>
     <dimen name="input_field_Edt_paddingRight">9dp</dimen>
     <dimen name="input_field_Edt_width">252dp</dimen>
@@ -387,10 +392,11 @@
     <dimen name="input_logo_marginLeftRight">8dp</dimen>
     <dimen name="internal_error_sb_textSize">2sp</dimen>
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
+    <dimen name="loginActivity_Btn_marginBottom">9dp</dimen>
+    <dimen name="loginActivity_Btn_marginTop">8dp</dimen>
     <dimen name="loginActivity_SnkBar_height">48dp</dimen>
     <dimen name="logo_dimens">90dp</dimen>
-    <dimen name="logo_dimens_andBottom">40dp</dimen>
-    <dimen name="logo_marginBottom">52dp</dimen>
+    <dimen name="logo_marginBottom">65dp</dimen>
     <dimen name="logo_marginTop">-85dp</dimen>
     <dimen name="marginBottom">15dp</dimen>
     <dimen name="nav_drawer_logo_height">120dp</dimen>
@@ -413,7 +419,8 @@
     <dimen name="pickFirm_Spnr_maxHeight">100dp</dimen>
     <dimen name="progressView_dimens">24dp</dimen>
     <dimen name="rd_cornerRadius">0dp</dimen>
-    <dimen name="register_input_container_height">50dp</dimen>
+    <dimen name="register_Ttv_paddingLeftRight">15dp</dimen>
+    <dimen name="register_Ttv_paddingTopBottom">12dp</dimen>
     <dimen name="register_logo_dimens">75dp</dimen>
     <dimen name="register_logo_marginTop">-15dp</dimen>
     <dimen name="sb_horizontalPadding">15dp</dimen>
@@ -421,17 +428,18 @@
     <dimen name="setting_Imv_marginLeftRight">15dp</dimen>
     <dimen name="showHide_password_Ttv_TextSize">10sp</dimen>
     <dimen name="showHide_password_Ttv_width">77dp</dimen>
-    <dimen name="signInHere_Ttv_paddingBottom">15dp</dimen>
+    <dimen name="signInHere_Ttv_paddingLeftRight">15dp</dimen>
+    <dimen name="signInHere_Ttv_paddingTopBottom">6dp</dimen>
     <dimen name="spn_arrowPadding">14dp</dimen>
     <dimen name="spn_arrowSize">4dp</dimen>
     <dimen name="stroke_width">1dp</dimen>
-    <dimen name="submit_btn_marginBottom">10dp</dimen>
-    <dimen name="submit_btn_marginTop">8dp</dimen>
     <dimen name="toolbar_padding_top">0dp</dimen>
     <dimen name="txVerror_textSize">12sp</dimen>
     <dimen name="unavailable_service_internal_error_sb_horizontalPadding">30dp</dimen>
     <dimen name="unavailable_service_sb_textSize">2sp</dimen>
     <dimen name="view_height">1dp</dimen>
+    <dimen name="view_marginBottom">3dp</dimen>
+    <dimen name="view_marginTop">12dp</dimen>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
@@ -1634,6 +1642,9 @@
         <item name="et_supportMaxChars">8</item>
         <item name="et_supportTextColor">@color/accentColor</item>
     </style>
+    <style name="EditextSignInPassword" parent="Editext">
+        <item name="et_supportMode">helper</item>
+    </style>
     <style name="EditextUsername" parent="Editext">
         <item name="et_supportMode">helper</item>
     </style>
@@ -2298,6 +2309,10 @@
     <style name="RtlUnderlay.Widget.AppCompat.ActionButton.Overflow" parent="Base.Widget.AppCompat.ActionButton">
         <item name="android:paddingLeft">@dimen/abc_action_bar_overflow_padding_start_material</item>
         <item name="android:paddingRight">@dimen/abc_action_bar_overflow_padding_end_material</item>
+    </style>
+    <style name="SignInHere_Register_ForgotPassword_Ttv" parent="Material.Drawable.Ripple">
+        <item name="rd_rippleColor">@color/primaryColor</item>
+        <item name="rd_rippleAnimDuration">200</item>
     </style>
     <style name="SnackBarInternalError" parent="Material.Widget.SnackBar.Mobile">
         <item name="sb_horizontalPadding">@dimen/unavailable_service_internal_error_sb_horizontalPadding</item>

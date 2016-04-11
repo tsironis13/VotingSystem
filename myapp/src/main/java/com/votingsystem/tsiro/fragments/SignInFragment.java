@@ -1,11 +1,13 @@
 package com.votingsystem.tsiro.fragments;
 
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
@@ -17,6 +19,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.Button;
@@ -45,8 +50,8 @@ import java.util.List;
 public class SignInFragment extends Fragment implements AdapterView.OnItemSelectedListener {
 
     private static final String debugTag = SignInFragment.class.getSimpleName();
-    private static String error_no_connection, empty_fields;
-    private TextView forgotPasswordTtV, registerTtv, errorresponseTtv, showHidePasswordTtv;
+    private static String error_no_connection;
+    private TextView forgotPasswordTtV, registerTtv;
     private EditText signInUsernameEdt, signInPasswordEdt;
     private Button signInBtn;
     private SnackBar snackBar;
@@ -55,7 +60,6 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     private View view;
     private LoginActivityCommonElementsAndMuchMore commonElements;
     private BroadcastReceiver broadcastReceiver;
-    TSnackbar tSnackbar;
 
     @Override
     public void onAttach(Context context) {
@@ -66,14 +70,11 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if ( view == null ) view = inflater.inflate(R.layout.fragment_signin, container, false);
-        signInUsernameEdt       =   (EditText) view.findViewById(R.id. signInUsernameEdt);
-        signInPasswordEdt       =   (EditText) view.findViewById(R.id.signInPasswordEdt);
+        signInUsernameEdt       =   (EditText) view.findViewById(R.id.usernameEdt);
+        signInPasswordEdt       =   (EditText) view.findViewById(R.id.passwordEdt);
         signInBtn               =   (Button) view.findViewById(R.id.signInBtn);
         forgotPasswordTtV       =   (TextView) view.findViewById(R.id.forgotPasswordTtv);
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
-        errorresponseTtv        =   (TextView) view.findViewById(R.id.errorresponseTtv);
-        showHidePasswordTtv     =   (TextView) view.findViewById(R.id.showHidePasswordTtv);
-        snackBar                =   ((LoginActivity) getActivity()).getSnackBar();
         return view;
     }
 
@@ -87,7 +88,6 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                 //Log.d(debugTag, "here");
             }
         };
-        if (snackBar.isShown()) snackBar.dismiss();
 
         sessionPrefs = LoginActivity.getSessionPrefs(getActivity());
         boolean key = sessionPrefs.contains("17");
@@ -102,8 +102,6 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                 //Log.e(debugTag, "CONNECTION: " + LoginActivity.connectionStatusUpdated);
                 //Log.d(debugTag, "CONNECTIVITY STATUS: " + connectivityObserver.getConnectivityStatus(getActivity()));
                 if (signInUsernameEdt.getText().toString().isEmpty() || signInPasswordEdt.getText().toString().isEmpty()) {
-                    empty_fields = commonElements.encodeUtf8(getResources().getString(R.string.empty_field));
-                    errorresponseTtv.setText(commonElements.decodeUtf8(empty_fields));
                 } else {
                     try {
                         InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -115,69 +113,16 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                 }
             }
         });
-
-        signInUsernameEdt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                errorresponseTtv.setText("");
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-            }
-        });
-
-        signInPasswordEdt.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                if (!TextUtils.isEmpty(errorresponseTtv.getText())) errorresponseTtv.setText("");
-                if (start >= 0) {
-                    if (signInPasswordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod) {
-                        showHidePasswordTtv.setText(getResources().getString(R.string.hidePassword));
-                    } else if (signInPasswordEdt.getTransformationMethod() instanceof PasswordTransformationMethod) {
-                        showHidePasswordTtv.setText(getResources().getString(R.string.showPassword));
-                    }
-                }
-                if (start == 0 && before == 1) showHidePasswordTtv.setText(null);
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-
-            }
-        });
-        showHidePasswordTtv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if ( signInPasswordEdt.getTransformationMethod() instanceof PasswordTransformationMethod ) {
-                    //use HideReturnsTransformationMethod to make password visible
-                    signInPasswordEdt.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    showHidePasswordTtv.setText(getResources().getString(R.string.hidePassword));
-                } else if ( signInPasswordEdt.getTransformationMethod() instanceof HideReturnsTransformationMethod ){
-                    signInPasswordEdt.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    showHidePasswordTtv.setText(getResources().getString(R.string.showPassword));
-                }
-                signInPasswordEdt.setSelection(signInPasswordEdt.getText().length());
-            }
-        });
         forgotPasswordTtV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( v instanceof TextView ) commonElements.forgotPasswordOnClick();
+                if ( v instanceof TextView && commonElements != null) commonElements.forgotPasswordOnClick();
             }
         });
         registerTtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( v instanceof TextView ) commonElements.registerOnClick();
+                if ( v instanceof TextView && commonElements != null) commonElements.registerOnClick();
             }
         });
     }

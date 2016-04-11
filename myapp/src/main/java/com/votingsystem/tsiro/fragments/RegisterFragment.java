@@ -1,10 +1,15 @@
 package com.votingsystem.tsiro.fragments;
 
+import android.animation.Animator;
+import android.animation.AnimatorInflater;
+import android.animation.AnimatorListenerAdapter;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -13,12 +18,15 @@ import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
 import android.text.method.TransformationMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 
 import com.androidadvance.topsnackbar.TSnackbar;
@@ -151,10 +159,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
             signInHereTtv.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //TSnackbar tSnackbar = ((LoginActivity) getActivity()).getKalase();
-                    //if (tSnackbar != null && tSnackbar.isShown()) tSnackbar.dismiss();
-
-                    if (v instanceof TextView) commonElements.signInHereOnClick();
+                    if (v instanceof TextView && commonElements != null) commonElements.signInHereOnClick();
                 }
             });
             LocalBroadcastManager.getInstance(getActivity()).registerReceiver(connectionStatusReceiver, new IntentFilter(getResources().getString(R.string.network_state_update)));
@@ -344,8 +349,6 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         }
         return new RegisterFormBody(getResources().getString(R.string.register_user), fields, firm_id, registrationToken);
     }
-
-
 
     private void setSignInHereSpan(){ commonElements.setLoginActivitySpan(signInHereTtv, getResources().getString(R.string.signInHere), 22, 34, 1); }
 

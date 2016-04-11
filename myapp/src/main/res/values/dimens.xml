@@ -9,31 +9,38 @@
     <!-- LOGIN -->
     <dimen name="errorContainer_Rlt_height">86dp</dimen>
     <dimen name="loginActivity_SnkBar_height">48dp</dimen>
+    <dimen name="input_container_height">50dp</dimen>
 
     <dimen name="container_width">293dp</dimen>
     <dimen name="container_height">500dp</dimen>
     <dimen name="marginBottom">15dp</dimen>
-    <dimen name="logo_dimens_andBottom">40dp</dimen>
     <dimen name="input_logo_marginLeftRight">8dp</dimen>
-    <dimen name="input_container_height">53dp</dimen>
     <dimen name="common_width">265dp</dimen>
     <dimen name="input_edt_textSize">13sp</dimen>
     <dimen name="txVerror_textSize">12sp</dimen>
     <dimen name="action_btn_width">150dp</dimen>
     <dimen name="action_btn_height">35dp</dimen>
     <dimen name="view_height">1dp</dimen>
+    <dimen name="view_marginTop">12dp</dimen>
+    <dimen name="view_marginBottom">3dp</dimen>
     <!-- SIGN IN -->
     <dimen name="logo_dimens">90dp</dimen>
     <dimen name="logo_marginTop">-85dp</dimen>
-    <dimen name="logo_marginBottom">52dp</dimen>
+    <dimen name="logo_marginBottom">65dp</dimen>
+    <dimen name="forgotpassword_Ttv_paddingTopBottom">12dp</dimen>
+    <dimen name="forgotpassword_Ttv_paddingLeftRight">3dp</dimen>
+    <dimen name="register_Ttv_paddingTopBottom">12dp</dimen>
+    <dimen name="register_Ttv_paddingLeftRight">15dp</dimen>
     <!-- FORGOT PASSWORD -->
     <dimen name="forgot_pass_logo_marginTop">-90dp</dimen>
-    <dimen name="forgot_pass_logo_marginBottom">80dp</dimen>
+    <dimen name="forgot_pass_logo_marginBottom">70dp</dimen>
+    <dimen name="forgotpassword_email_container_marginBottom">8dp</dimen>
+    <dimen name="forgotpassword_register_Ttv_paddingTopBottom">12dp</dimen>
+    <dimen name="forgotpassword_register_Ttv_paddingLeftRight">3dp</dimen>
     <!-- REGISTER -->
     <dimen name="input_field_logo_dimens">25dp</dimen>
     <dimen name="register_logo_dimens">75dp</dimen>
     <dimen name="register_logo_marginTop">-15dp</dimen>
-    <dimen name="register_input_container_height">50dp</dimen>
     <dimen name="input_field_Rlt_width">252dp</dimen>
     <dimen name="input_field_Rlt_paddingRight">5dp</dimen>
     <dimen name="input_field_Edt_width">252dp</dimen>
@@ -53,10 +60,10 @@
     <dimen name="pickFirm_Spnr_maxHeight">100dp</dimen>
     <dimen name="pickFirm_Spnr_marginBottom">8dp</dimen>
     <dimen name="progressView_dimens">24dp</dimen>
-    <dimen name="submit_btn_marginBottom">10dp</dimen>
-    <dimen name="submit_btn_marginTop">8dp</dimen>
-    <dimen name="signInHere_Ttv_paddingBottom">15dp</dimen>
-
+    <dimen name="loginActivity_Btn_marginBottom">9dp</dimen>
+    <dimen name="loginActivity_Btn_marginTop">8dp</dimen>
+    <dimen name="signInHere_Ttv_paddingTopBottom">6dp</dimen>
+    <dimen name="signInHere_Ttv_paddingLeftRight">15dp</dimen>
 
     <dimen name="spn_arrowPadding">14dp</dimen>
     <dimen name="spn_arrowSize">4dp</dimen>

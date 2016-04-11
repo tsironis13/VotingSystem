@@ -21,7 +21,7 @@
 
         <com.rey.material.widget.LinearLayout
             android:layout_width="@dimen/container_width"
-            android:layout_height="@dimen/register_input_container_height"
+            android:layout_height="@dimen/input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
             android:orientation="horizontal" >
@@ -54,7 +54,7 @@
 
         <com.rey.material.widget.LinearLayout
             android:layout_width="@dimen/container_width"
-            android:layout_height="@dimen/register_input_container_height"
+            android:layout_height="@dimen/input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
             android:orientation="horizontal" >
@@ -112,7 +112,7 @@
 
         <com.rey.material.widget.LinearLayout
             android:layout_width="@dimen/container_width"
-            android:layout_height="@dimen/register_input_container_height"
+            android:layout_height="@dimen/input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
             android:orientation="horizontal" >
@@ -146,7 +146,7 @@
 
         <com.rey.material.widget.LinearLayout
             android:layout_width="@dimen/container_width"
-            android:layout_height="@dimen/register_input_container_height"
+            android:layout_height="@dimen/input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
             android:orientation="horizontal" >
@@ -180,7 +180,7 @@
 
         <com.rey.material.widget.LinearLayout
             android:layout_width="@dimen/container_width"
-            android:layout_height="@dimen/register_input_container_height"
+            android:layout_height="@dimen/input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/marginBottom"
             android:orientation="horizontal" >
@@ -213,7 +213,7 @@
 
         <com.rey.material.widget.LinearLayout
             android:layout_width="@dimen/container_width"
-            android:layout_height="@dimen/register_input_container_height"
+            android:layout_height="@dimen/input_container_height"
             android:background="@drawable/login_fields_container"
             android:layout_marginBottom="@dimen/pickFirm_Spnr_marginBottom"
             android:orientation="horizontal" >
@@ -247,8 +247,8 @@
             android:id="@+id/submitBtn"
             android:layout_width="@dimen/action_btn_width"
             android:layout_height="@dimen/action_btn_height"
-            android:layout_marginTop="@dimen/submit_btn_marginTop"
-            android:layout_marginBottom="@dimen/submit_btn_marginBottom"
+            android:layout_marginTop="@dimen/loginActivity_Btn_marginTop"
+            android:layout_marginBottom="@dimen/loginActivity_Btn_marginBottom"
             android:textColor="@android:color/white"
             android:text="@string/submit"
             android:background="@drawable/ripple_drawable" />
@@ -257,10 +257,14 @@
             android:id="@+id/signInHereTtv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:paddingBottom="@dimen/signInHere_Ttv_paddingBottom"
+            android:paddingTop="@dimen/signInHere_Ttv_paddingTopBottom"
+            android:paddingBottom="@dimen/signInHere_Ttv_paddingTopBottom"
+            android:paddingLeft="@dimen/signInHere_Ttv_paddingLeftRight"
+            android:paddingRight="@dimen/signInHere_Ttv_paddingLeftRight"
             android:gravity="center"
             android:lineSpacingMultiplier="1"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            style="@style/SignInHere_Register_ForgotPassword_Ttv" />
 
     </com.rey.material.widget.LinearLayout>
 
