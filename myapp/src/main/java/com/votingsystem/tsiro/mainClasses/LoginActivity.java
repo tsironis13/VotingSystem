@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
@@ -21,6 +22,7 @@ import android.util.Base64;
 import android.util.Log;
 import android.util.SparseIntArray;
 import android.util.TypedValue;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -59,13 +61,15 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     private RegistrationTokenReceiver registrationTokenReceiver;
     private String registrationToken;
     private SparseIntArray inputValidationCodes;
+    private FragmentManager fragmentManager;
+    private FragmentTransaction fragmentTransaction;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login_activity);
 
-        if ( savedInstanceState == null ) {
+        if (savedInstanceState == null) {
             Intent intent = new Intent(this, RegistrationIntentService.class);
             startService(intent);
             inputValidationCodes        =   AppConfig.getCodes();
@@ -78,16 +82,25 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
             SignInFragment signInFragment = new SignInFragment();
             signInFragment.setArguments(loginActivityBundle);
-            getSupportFragmentManager()
-                                    .beginTransaction()
-                                    .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
-                                    .replace(R.id.loginActivityFgmtContainer, signInFragment, getResources().getString(R.string.signInFgmt))
-                                    .commit();
+
+            fragmentManager     =   getSupportFragmentManager();
+            fragmentTransaction =   fragmentManager.beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
+
+            if (fragmentManager.getBackStackEntryCount() == 0) {
+                Log.e(debugTag, "Back stack entry count is null");
+                fragmentTransaction.addToBackStack(getResources().getString(R.string.signInFgmt));
+            }
+
+            fragmentTransaction.replace(R.id.loginActivityFgmtContainer, signInFragment, getResources().getString(R.string.signInFgmt));
+            fragmentTransaction.commit();
+
+
 
             getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
                 @Override
                 public void onBackStackChanged() {
-                    Log.d(debugTag, "BACK STACK CHANGED!");
+                    //Log.d(debugTag, "BACK STACK CHANGED!");
                     Log.d(debugTag, "BACK STACK COUNT: " + getSupportFragmentManager().getBackStackEntryCount());
                     for (int i = 0; i < getSupportFragmentManager().getBackStackEntryCount(); i++) {
                         Log.d(debugTag, "BACK STACK ENTRIES: " + getSupportFragmentManager().getBackStackEntryAt(i).getName());
@@ -129,7 +142,8 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) getSupportFragmentManager().popBackStack(0, 0);
+
+        //if (fragmentManager.getBackStackEntryCount() > 0 && fragmentManager.getBackStackEntryAt(0).getName().equals(getResources().getString(R.string.signInFgmt))) this.finish();
         baseDismissErrorContainerSnackBar();
     }
 
@@ -172,7 +186,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     public void registerOnClick() {
         baseDismissErrorContainerSnackBar();
         RegisterFragment registerFragment = new RegisterFragment();
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) getSupportFragmentManager().popBackStack();
+
         loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
         loginActivityBundle.putString(getResources().getString(R.string.registration_token), registrationToken);
         registerFragment.setArguments(loginActivityBundle);
@@ -182,6 +196,12 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
                                 .replace(R.id.loginActivityFgmtContainer, registerFragment, getResources().getString(R.string.registerFgmt))
                                 .addToBackStack(getResources().getString(R.string.registerFgmt))
                                 .commit();
+    }
+
+    @Override
+    public void signInHereOnClick() {
+        baseDismissErrorContainerSnackBar();
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) getSupportFragmentManager().popBackStack(getResources().getString(R.string.signInFgmt), 0);
     }
 
     @Override
@@ -201,12 +221,6 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
                             .applyStyle(R.style.SnackBarInternalError);
         }
         loginActivitySnkBar.show();
-    }
-
-    @Override
-    public void signInHereOnClick() {
-        baseDismissErrorContainerSnackBar();
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) getSupportFragmentManager().popBackStack();
     }
 
     public SnackBar getSnackBar() {
@@ -257,7 +271,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
     @Override
     public void networkStatus(int connectionType) {
-        Log.e(debugTag, "listeners: "+connectionType);
+        //Log.e(debugTag, "listeners: "+connectionType);
         if (connectionType != AppConfig.NO_CONNECTION) if (connectionSettingsDialog != null && connectionSettingsDialog.isShowing()) connectionSettingsDialog.dismiss();
         connectionStatus = connectionType;
         Intent intent = new Intent(getResources().getString(R.string.network_state_update));
