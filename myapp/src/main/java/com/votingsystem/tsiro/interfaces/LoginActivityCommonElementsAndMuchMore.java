@@ -17,6 +17,7 @@ public interface LoginActivityCommonElementsAndMuchMore {
     void showErrorContainerSnackbar(String error_type, View errorView, int code);
     void dismissErrorContainerSnackBar();
     void setText(String action, View view, String decodedMessage, String color);
+    void animationOccured(boolean ishappening);
     String encodeUtf8(String text);
     String decodeUtf8(String text);
 }

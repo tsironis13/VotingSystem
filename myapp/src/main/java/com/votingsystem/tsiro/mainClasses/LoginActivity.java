@@ -61,8 +61,8 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     private RegistrationTokenReceiver registrationTokenReceiver;
     private String registrationToken;
     private SparseIntArray inputValidationCodes;
-    private FragmentManager fragmentManager;
-    private FragmentTransaction fragmentTransaction;
+    private SignInFragment signInFgmt;
+    private boolean animationIsHappening;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,22 +80,19 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
             errorContainerRlt           =   (RelativeLayout) findViewById(R.id.errorContainerRlt);
             loginActivitySnkBar         =   (SnackBar) findViewById(R.id.loginActivitySnkBar);
 
-            SignInFragment signInFragment = new SignInFragment();
-            signInFragment.setArguments(loginActivityBundle);
+            signInFgmt = new SignInFragment();
+            signInFgmt.setArguments(loginActivityBundle);
 
-            fragmentManager     =   getSupportFragmentManager();
-            fragmentTransaction =   fragmentManager.beginTransaction();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
             fragmentTransaction.setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit);
 
             if (fragmentManager.getBackStackEntryCount() == 0) {
                 Log.e(debugTag, "Back stack entry count is null");
                 fragmentTransaction.addToBackStack(getResources().getString(R.string.signInFgmt));
             }
-
-            fragmentTransaction.replace(R.id.loginActivityFgmtContainer, signInFragment, getResources().getString(R.string.signInFgmt));
+            fragmentTransaction.replace(R.id.loginActivityFgmtContainer, signInFgmt, getResources().getString(R.string.signInFgmt));
             fragmentTransaction.commit();
-
-
 
             getSupportFragmentManager().addOnBackStackChangedListener(new FragmentManager.OnBackStackChangedListener() {
                 @Override
@@ -131,6 +128,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        Log.e(debugTag, "activity destroyed");
         networkStateReceiver.removeListener(this);
         registrationTokenReceiver.removeListener(this);
         this.unregisterReceiver(networkStateReceiver);
@@ -140,16 +138,21 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-        //if (fragmentManager.getBackStackEntryCount() > 0 && fragmentManager.getBackStackEntryAt(0).getName().equals(getResources().getString(R.string.signInFgmt))) this.finish();
-        baseDismissErrorContainerSnackBar();
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK && signInFgmt != null && signInFgmt.isAdded() && signInFgmt.isVisible()) {
+            this.finish();
+        } else {
+            if (!animationIsHappening) {
+                baseDismissErrorContainerSnackBar();
+                getSupportFragmentManager().popBackStack();
+            }
+        }
+        return true;
     }
 
     @Override
     public void getRegistrationToken(String token) {
-        Log.e(debugTag, token);
+        //Log.e(debugTag, token);
         if (token !=null) registrationToken = token;
     }
 
@@ -185,15 +188,15 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     public void registerOnClick() {
         baseDismissErrorContainerSnackBar();
-        RegisterFragment registerFragment = new RegisterFragment();
+        RegisterFragment registerFgmt = new RegisterFragment();
 
         loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
         loginActivityBundle.putString(getResources().getString(R.string.registration_token), registrationToken);
-        registerFragment.setArguments(loginActivityBundle);
+        registerFgmt.setArguments(loginActivityBundle);
         getSupportFragmentManager()
                                 .beginTransaction()
                                 .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
-                                .replace(R.id.loginActivityFgmtContainer, registerFragment, getResources().getString(R.string.registerFgmt))
+                                .replace(R.id.loginActivityFgmtContainer, registerFgmt, getResources().getString(R.string.registerFgmt))
                                 .addToBackStack(getResources().getString(R.string.registerFgmt))
                                 .commit();
     }
@@ -305,6 +308,11 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     public void setText(String action, View view, String decodedMessage, String color) {
         baseSetText(action, view, decodedMessage, color);
+    }
+
+    @Override
+    public void animationOccured(boolean ishappening) {
+        this.animationIsHappening = ishappening;
     }
 
     private void baseSetText(String action, View view, String decodedMessage, String color) {

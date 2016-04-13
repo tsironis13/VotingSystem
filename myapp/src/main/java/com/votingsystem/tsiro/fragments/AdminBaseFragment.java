@@ -93,20 +93,6 @@ public class AdminBaseFragment extends Fragment{
                 String surveyTitle = surveyTitleEdt.getText().toString();
                 String surveyDesc  = surveyDescEdt.getText().toString();
                 Survey survey = new Survey(surveyTitle, surveyDesc);
-
-                ApiService apiService = RetrofitSingleton.getInstance().getApiService();
-                /*Call<Survey> call = apiService.addSurvey(survey);
-                call.enqueue(new Callback<Survey>() {
-                    @Override
-                    public void onResponse(Response<Survey> response, Retrofit retrofit) {
-                        Log.d(debugTag, response.body().getError());
-                    }
-
-                    @Override
-                    public void onFailure(Throwable t) {
-
-                    }
-                });*/
             }
         });
 
@@ -118,6 +104,7 @@ public class AdminBaseFragment extends Fragment{
                 Intent intent = new Intent(getActivity(), LoginActivity.class);
                 startActivity(intent);
                 getActivity().finish();
+                getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
             }
         });
     }

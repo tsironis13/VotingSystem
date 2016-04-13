@@ -10,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.Editable;
 import android.text.TextUtils;
 import android.text.TextWatcher;
@@ -33,6 +34,7 @@ import com.google.gson.GsonBuilder;
 import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.TextView;
 import com.squareup.leakcanary.RefWatcher;
+import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.deserializer.FirmsDeserializer;
 import com.votingsystem.tsiro.POJO.Firm;
@@ -47,7 +49,7 @@ import java.util.List;
 /**
  * Created by user on 10/10/2015.
  */
-public class SignInFragment extends Fragment implements AdapterView.OnItemSelectedListener {
+public class SignInFragment extends Fragment {
 
     private static final String debugTag = SignInFragment.class.getSimpleName();
     private static String error_no_connection;
@@ -58,8 +60,11 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     private LayoutInflater inflater;
     private SharedPreferences sessionPrefs;
     private View view;
+    private int connectionStatus, initialConnectionStatus;
     private LoginActivityCommonElementsAndMuchMore commonElements;
     private BroadcastReceiver broadcastReceiver;
+    private BroadcastReceiver connectionStatusReceiver;
+    private String registrationToken;
 
     @Override
     public void onAttach(Context context) {
@@ -75,6 +80,10 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         signInBtn               =   (Button) view.findViewById(R.id.signInBtn);
         forgotPasswordTtV       =   (TextView) view.findViewById(R.id.forgotPasswordTtv);
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
+        snackBar                =   ((LoginActivity)getActivity()).getSnackBar();
+        initialConnectionStatus =   getArguments().getInt(getResources().getString(R.string.connectivity_status));
+        registrationToken       =   getArguments().getString(getResources().getString(R.string.registration_token));
+
         return view;
     }
 
@@ -82,12 +91,8 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        broadcastReceiver = new BroadcastReceiver() {
-            @Override
-            public void onReceive(Context context, Intent intent) {
-                //Log.d(debugTag, "here");
-            }
-        };
+        connectionStatus = initialConnectionStatus;
+        initializeBroadcastReceivers();
 
         sessionPrefs = LoginActivity.getSessionPrefs(getActivity());
         boolean key = sessionPrefs.contains("17");
@@ -102,6 +107,10 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                 //Log.e(debugTag, "CONNECTION: " + LoginActivity.connectionStatusUpdated);
                 //Log.d(debugTag, "CONNECTIVITY STATUS: " + connectivityObserver.getConnectivityStatus(getActivity()));
                 if (signInUsernameEdt.getText().toString().isEmpty() || signInPasswordEdt.getText().toString().isEmpty()) {
+                    getActivity().finish();
+                    Intent intent = new Intent(getActivity(), AdminBaseActivity.class);
+                    startActivity(intent);
+                    getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
                 } else {
                     try {
                         InputMethodManager inputMethodManager = (InputMethodManager) getActivity().getSystemService(Context.INPUT_METHOD_SERVICE);
@@ -109,22 +118,22 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-                    checkLogin(signInUsernameEdt.getText().toString(), signInPasswordEdt.getText().toString());
                 }
             }
         });
         forgotPasswordTtV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( v instanceof TextView && commonElements != null) commonElements.forgotPasswordOnClick();
+                if (v instanceof TextView && commonElements != null) commonElements.forgotPasswordOnClick();
             }
         });
         registerTtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if ( v instanceof TextView && commonElements != null) commonElements.registerOnClick();
+                if (v instanceof TextView && commonElements != null) commonElements.registerOnClick();
             }
         });
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(connectionStatusReceiver, new IntentFilter(getResources().getString(R.string.network_state_update)));
     }
 
     private void setRegisterSpan() {
@@ -160,19 +169,6 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         });*/
     }
 
-    @Override
-    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {}
-
-    @Override
-    public void onNothingSelected(AdapterView<?> parent) {}
-
-    private static Gson getGsonBuilder(){
-        Gson gson = new GsonBuilder()
-                        .registerTypeAdapter(Firm.class, new FirmsDeserializer())
-                        .create();
-        return gson;
-    }
-
     private void startBaseActivity() {
         Intent intent = new Intent(getActivity(), AdminBaseActivity.class);
         String user_id, user_email, username;
@@ -184,22 +180,11 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         }
     }
 
-    private interface FirmNamesRequestCallback{
-        void getFirmNames(List<Firm.FirmElement> firmNames);
-    }
-
     @Override
-    public void onResume() {
-        super.onResume();
-        //TSnackbar tSnackbar = ((LoginActivity) getActivity()).getKalase();
-        //if (tSnackbar != null && tSnackbar.isShown()) tSnackbar.dismiss();
-        getActivity().registerReceiver(broadcastReceiver, new IntentFilter("networkStateUpdated"));
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        getActivity().unregisterReceiver(broadcastReceiver);
+    public void onDestroyView() {
+        super.onDestroyView();
+        Log.e(debugTag, "view destroyed");
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
     }
 
     @Override
@@ -208,5 +193,41 @@ public class SignInFragment extends Fragment implements AdapterView.OnItemSelect
         this.commonElements = null;
         RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
         refWatcher.watch(this);
+    }
+
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
+        if (enter) return super.onCreateAnimation(transit, enter, nextAnim);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                commonElements.animationOccured(true);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                commonElements.animationOccured(false);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+        AnimationSet animationSet = new AnimationSet(true);
+        animationSet.addAnimation(animation);
+
+        return animationSet;
+    }
+
+    private void initializeBroadcastReceivers() {
+        connectionStatusReceiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                if (isAdded()) {
+                    connectionStatus = intent.getExtras().getInt(getResources().getString(R.string.connectivity_status));
+                    if (connectionStatus != AppConfig.NO_CONNECTION) if (snackBar.isShown()) snackBar.dismiss();
+                }
+            }
+        };
     }
 }

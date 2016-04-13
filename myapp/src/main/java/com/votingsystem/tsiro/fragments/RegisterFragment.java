@@ -167,13 +167,42 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
-        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
         LAMVCpresenterImpl.onDestroy();
         this.commonElements = null;
         RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
         refWatcher.watch(this);
+    }
+
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
+        if (enter) return super.onCreateAnimation(transit, enter, nextAnim);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                commonElements.animationOccured(true);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                commonElements.animationOccured(false);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+        AnimationSet animationSet = new AnimationSet(true);
+        animationSet.addAnimation(animation);
+
+        return animationSet;
     }
 
     @Override
@@ -324,11 +353,12 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         connectionStatusReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                connectionStatus = intent.getExtras().getInt(getResources().getString(R.string.connectivity_status));
-                if (connectionStatus != AppConfig.NO_CONNECTION) {
-                    if (snackBar.isShown()) snackBar.dismiss();
+                Log.e(debugTag, "Is Added: "+isAdded());
+                if (isAdded()) {
+                    connectionStatus = intent.getExtras().getInt(getResources().getString(R.string.connectivity_status));
+                    if (connectionStatus != AppConfig.NO_CONNECTION) if (snackBar.isShown()) snackBar.dismiss();
+                    LAMVCpresenterImpl.firmNamesSpnrActions(connectionStatus);
                 }
-                LAMVCpresenterImpl.firmNamesSpnrActions(connectionStatus);
             }
         };
     }

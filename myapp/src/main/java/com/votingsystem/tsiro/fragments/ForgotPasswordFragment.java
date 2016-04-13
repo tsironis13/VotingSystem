@@ -12,9 +12,13 @@ import android.text.Editable;
 import android.text.Html;
 import android.text.TextWatcher;
 import android.text.method.TransformationMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;
@@ -123,18 +127,47 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     }
 
     @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
+    }
+
+    @Override
     public void onDestroy() {
         super.onDestroy();
-        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
         LAMVCpresenterImpl.onDestroy();
         this.commonElements = null;
         RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
         refWatcher.watch(this);
     }
+
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
+        if (enter) return super.onCreateAnimation(transit, enter, nextAnim);
+        animation.setAnimationListener(new Animation.AnimationListener() {
+            @Override
+            public void onAnimationStart(Animation animation) {
+                commonElements.animationOccured(true);
+            }
+
+            @Override
+            public void onAnimationEnd(Animation animation) {
+                commonElements.animationOccured(false);
+            }
+
+            @Override
+            public void onAnimationRepeat(Animation animation) {}
+        });
+        AnimationSet animationSet = new AnimationSet(true);
+        animationSet.addAnimation(animation);
+
+        return animationSet;
+    }
     /*
-     *  LAMVCVIEW CALLBACKS
-     *
-     */
+         *  LAMVCVIEW CALLBACKS
+         *
+         */
     @Override
     public void handlePasswordTextChanges(com.rey.material.widget.TextView showHidePasswordTtv, int action) {}
 
@@ -179,6 +212,8 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     }
 
     private void showSnackBar(int code) {
+        if (progressView != null && progressView.isShown()) progressView.stop();
+        commonElements.dismissErrorContainerSnackBar();
         commonElements.showSnackBar(code);
     }
 
@@ -186,9 +221,9 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
         connectionStatusReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                connectionStatus = intent.getExtras().getInt(getResources().getString(R.string.connectivity_status));
-                if (connectionStatus != AppConfig.NO_CONNECTION) {
-                    if (snackBar.isShown()) snackBar.dismiss();
+                if (isAdded()) {
+                    connectionStatus = intent.getExtras().getInt(getResources().getString(R.string.connectivity_status));
+                    if (connectionStatus != AppConfig.NO_CONNECTION) if (snackBar.isShown()) snackBar.dismiss();
                 }
             }
         };
