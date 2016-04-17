@@ -36,6 +36,9 @@ public class AppConfig {
     public static final int ERROR_INVALID_EMAIL                 =   -16;
     public static final int ERROR_NOT_VERIFIED_YET              =   -17;
     public static final int ERROR_EMAIL_DOESNT_EXIST            =   -18;
+    public static final int ERROR_RESET_PASWD_ALREADY_REQUESTED =   -19;
+    public static final int ERROR_INVALID_USERNAME_PASSWORD     =   -20;
+    public static final int ERROR_ACCOUNT_NOT_VERIFIED_YET      =   -21;
     //LOGIN ACTIVITY
     public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
     public static final int PASSWORD_INPUT_TYPE                 =   129;
@@ -60,6 +63,9 @@ public class AppConfig {
         inputValidationCodes.put(ERROR_INVALID_EMAIL, R.string.error_invalid_email);
         inputValidationCodes.put(ERROR_NOT_VERIFIED_YET, R.string.error_not_verified_yet);
         inputValidationCodes.put(ERROR_EMAIL_DOESNT_EXIST, R.string.error_email_doesnt_exist);
+        inputValidationCodes.put(ERROR_RESET_PASWD_ALREADY_REQUESTED, R.string.error_reset_password_already_requested);
+        inputValidationCodes.put(ERROR_INVALID_USERNAME_PASSWORD, R.string.error_invalid_username_password);
+        inputValidationCodes.put(ERROR_ACCOUNT_NOT_VERIFIED_YET, R.string.error_account_not_verified_yet);
         return inputValidationCodes;
     }
 }

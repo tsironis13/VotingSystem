@@ -302,7 +302,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
     }
 
     @Override
-    public void onFailure(int code, String tag, String hint) {
+    public void onFailure(int code, String tag, String hint, String retry_in) {
         EditText errorView = (EditText) baseLlt.findViewWithTag(tag);
         if (code == AppConfig.ERROR_EMPTY_REQUIRED_FIELD) {
             commonElements.showErrorContainerSnackbar(getResources().getString(R.string.empty_field, hint), null, code);
@@ -341,19 +341,13 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
     public void onSuccess() {
         commonElements.dismissErrorContainerSnackBar();
         if (progressView != null && progressView.isShown()) progressView.stop();
-        if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) getActivity().getSupportFragmentManager().popBackStack();
-        SignInFragment signInFragment = new SignInFragment();
-        getActivity().getSupportFragmentManager()
-                                                .beginTransaction()
-                                                .replace(R.id.loginActivityFgmtContainer, signInFragment, getResources().getString(R.string.signInFgmt))
-                                                .commit();
+        if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) getActivity().getSupportFragmentManager().popBackStack(getResources().getString(R.string.signInFgmt), 0);
     }
 
     private void initializeBroadcastReceivers() {
         connectionStatusReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                Log.e(debugTag, "Is Added: "+isAdded());
                 if (isAdded()) {
                     connectionStatus = intent.getExtras().getInt(getResources().getString(R.string.connectivity_status));
                     if (connectionStatus != AppConfig.NO_CONNECTION) if (snackBar.isShown()) snackBar.dismiss();
@@ -371,7 +365,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         fields.add(new RegisterFormField(getResources().getString(R.string.confirm_password_tag), confirmPasswordEdt.getText().toString(), confirmPasswordEdt.getHint().toString()));
         fields.add(new RegisterFormField(getResources().getString(R.string.email_tag), emailEdt.getText().toString(), emailEdt.getHint().toString()));
         fields.add(new RegisterFormField(getResources().getString(R.string.firm_code_tag), firmCodeEdt.getText().toString(), firmCodeEdt.getHint().toString()));
-        if (pickFirmSpnr.getSelectedItemPosition() != 0 && pickFirmSpnr != null) {
+        if (pickFirmSpnr.getSelectedItemPosition() != 0 && pickFirmSpnr != null && pickFirmSpnr.getAdapter() != null) {
             FirmNameWithID obj  =   (FirmNameWithID) pickFirmSpnr.getAdapter().getItem(pickFirmSpnr.getSelectedItemPosition() - 1);
             firm_id             =   obj.getId();
         } else {

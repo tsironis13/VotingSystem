@@ -141,7 +141,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK && signInFgmt != null && signInFgmt.isAdded() && signInFgmt.isVisible()) {
             this.finish();
-        } else {
+        } else if (keyCode == KeyEvent.KEYCODE_BACK && signInFgmt != null && !signInFgmt.isAdded() && !signInFgmt.isVisible()){
             if (!animationIsHappening) {
                 baseDismissErrorContainerSnackBar();
                 getSupportFragmentManager().popBackStack();

@@ -13,12 +13,14 @@ import android.text.Html;
 import android.text.TextWatcher;
 import android.text.method.TransformationMethod;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;
@@ -100,15 +102,17 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
             @Override
             public void afterTextChanged(Editable s) {}
         });
+        emailEdt.setOnEditorActionListener(new android.widget.TextView.OnEditorActionListener() {
+            @Override
+            public boolean onEditorAction(android.widget.TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_DONE) submitForm();
+                return false;
+            }
+        });
         sendEmailBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (connectionStatus == AppConfig.NO_CONNECTION) {
-                    showSnackBar(AppConfig.NO_CONNECTION);
-                } else {
-                    progressView.start();
-                    LAMVCpresenterImpl.resetPassword(isAdded(), fillResetPasswordFields());
-                }
+                submitForm();
             }
         });
         signInHereTtv.setOnClickListener(new View.OnClickListener() {
@@ -184,17 +188,11 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     public void onSuccess() {
         commonElements.dismissErrorContainerSnackBar();
         if (progressView != null && progressView.isShown()) progressView.stop();
-        if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) getActivity().getSupportFragmentManager().popBackStack();
-        SignInFragment signInFragment = new SignInFragment();
-        getActivity().getSupportFragmentManager()
-                                        .beginTransaction()
-                                        .setCustomAnimations(R.anim.enter, R.anim.exit, R.anim.pop_enter, R.anim.pop_exit)
-                                        .replace(R.id.loginActivityFgmtContainer, signInFragment, getResources().getString(R.string.signInFgmt))
-                                        .commit();
+        if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) getActivity().getSupportFragmentManager().popBackStack(getResources().getString(R.string.signInFgmt), 0);
     }
 
     @Override
-    public void onFailure(int code, String field, String hint) {
+    public void onFailure(int code, String field, String hint, String retry_in) {
         if (code == AppConfig.ERROR_EMPTY_REQUIRED_FIELD) {
             commonElements.showErrorContainerSnackbar(getResources().getString(R.string.empty_field, hint), null, code);
         } else if (code == AppConfig.ERROR_INVALID_EMAIL) {
@@ -203,12 +201,25 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
             commonElements.showErrorContainerSnackbar(getResources().getString(R.string.error_not_verified_yet), null, code);
         } else if (code == AppConfig.ERROR_EMAIL_DOESNT_EXIST) {
             commonElements.showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), emailEdt, code);
+        } else if (code == AppConfig.ERROR_RESET_PASWD_ALREADY_REQUESTED) {
+            commonElements.showErrorContainerSnackbar(getResources().getString(R.string.error_reset_password_already_requested, retry_in), null, code);
         }
         if (progressView != null && progressView.isShown()) progressView.stop();
     }
     @Override
     public void displayFeedbackMsg(int code) {
+        commonElements.dismissErrorContainerSnackBar();
+        if (progressView != null && progressView.isShown()) progressView.stop();
+        showSnackBar(code);
+    }
 
+    private void submitForm() {
+        if (connectionStatus == AppConfig.NO_CONNECTION) {
+            showSnackBar(AppConfig.NO_CONNECTION);
+        } else {
+            progressView.start();
+            LAMVCpresenterImpl.resetPassword(isAdded(), fillResetPasswordFields());
+        }
     }
 
     private void showSnackBar(int code) {

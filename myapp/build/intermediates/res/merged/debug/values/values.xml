@@ -327,7 +327,7 @@
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
     <dimen name="common_width">265dp</dimen>
-    <dimen name="container_height">500dp</dimen>
+    <dimen name="container_height">520dp</dimen>
     <dimen name="container_paddingTopBottom">20dp</dimen>
     <dimen name="container_width">293dp</dimen>
     <dimen name="corner_radious">1dp</dimen>
@@ -553,6 +553,7 @@
     <string name="error">error</string>
     <string name="errorContainer_Snackbar_Ttv_color">#DD2C00</string>
     <string name="errorContainer_Snackbar_background_color">#BF263238</string>
+    <string name="error_account_not_verified_yet">Παρακαλώ ενεργοποίησε το λογαριασμό σου για να εισέλθεις στην εφαρμογή.</string>
     <string name="error_color_string">#DD2C00</string>
     <string name="error_email_doesnt_exist">Το συγκεκριμένο email δεν υπάρχει.</string>
     <string name="error_empty_requried_field">Το πεδίο είναι υποχρεωτικό</string>
@@ -561,9 +562,11 @@
     <string name="error_invalid_email">Μη έγκυρη διεύθυνση</string>
     <string name="error_invalid_input">Αποδεκτοί λατινικοί χαρακτήρες, νούμερα</string>
     <string name="error_invalid_password_length">Αποδεκτό μέγεθος κωδικού, 8 χαρακτήρες</string>
+    <string name="error_invalid_username_password">Μη έγκυρο όνομα χρήστη ή κωδικός πρόσβασης.</string>
     <string name="error_not_verified_yet">Παρακαλώ ενεργοποίησε το λογαριασμό σου για να αλλάξεις τον κωδικό σου.</string>
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>
     <string name="error_passwords_mismatch">Ασυμφωνία κωδικών πρόσβασης</string>
+    <string name="error_reset_password_already_requested">Το αίτημα αλλαγής κωδικού έχει ήδη σταλεί. Παρακαλώ ξαναπροσπάθησε σε %1$s.</string>
     <string name="firm">Η Εταιρεία</string>
     <string name="firm_code_tag">firm_code</string>
     <string name="firmcode">Κωδικός Εταιρείας</string>
@@ -577,6 +580,7 @@
     <string name="hide">ΑΠΟΚΡΥΨΗ</string>
     <string name="hidePassword">ΑΠΟΚΡΥΨΗ</string>
     <string name="input_logo">input_logo</string>
+    <string name="login_user">login_user</string>
     <string name="logout">Αποσυνδεση</string>
     <string name="mailto">mailto:</string>
     <string name="more">Περισσοτερα</string>

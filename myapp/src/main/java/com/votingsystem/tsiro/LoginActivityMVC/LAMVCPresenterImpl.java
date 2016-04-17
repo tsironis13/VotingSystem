@@ -7,6 +7,7 @@ import android.view.View;
 
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.TextView;
+import com.votingsystem.tsiro.POJO.LoginFormBody;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
 import com.votingsystem.tsiro.app.AppConfig;
@@ -83,6 +84,10 @@ public class LAMVCPresenterImpl implements LAMVCPresenter, LAMVCFinishedListener
         LAMVCinteractorImpl.resetPassword(resetPassowrdBody, isAdded, this);
     }
 
+    public void loginUser(boolean isAdded, LoginFormBody loginFormBody) {
+        LAMVCinteractorImpl.loginUser(loginFormBody, isAdded, this);
+    }
+
     @Override
     public void displayFeedbackMsg(int code) { if ( LAMVCview != null ) LAMVCview.displayFeedbackMsg(code); }
 
@@ -98,8 +103,8 @@ public class LAMVCPresenterImpl implements LAMVCPresenter, LAMVCFinishedListener
     public void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) { if ( LAMVCview != null ) LAMVCview.onFailureFirmNamesSpnrLoad(firmNameWithIDArrayList, false); }
 
     @Override
-    public void onFailure(int code, String field, String hint) {
-        if (LAMVCview != null) LAMVCview.onFailure(code, field, hint);
+    public void onFailure(int code, String field, String hint, String retry_in) {
+        if (LAMVCview != null) LAMVCview.onFailure(code, field, hint, retry_in);
     }
 
     @Override

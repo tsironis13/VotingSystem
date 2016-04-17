@@ -3,19 +3,18 @@ package com.votingsystem.tsiro.LoginActivityMVC;
 import android.util.Log;
 
 import com.votingsystem.tsiro.POJO.Firm;
+import com.votingsystem.tsiro.POJO.LoginAndResetUserPasswordStuff;
+import com.votingsystem.tsiro.POJO.LoginFormBody;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.POJO.RegisterUserStuff;
 import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
-import com.votingsystem.tsiro.POJO.ResetUserPasswordStuff;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
 import com.votingsystem.tsiro.rest.ApiService;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
@@ -41,7 +40,7 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
             public void onResponse(Response<RegisterUserStuff> response, Retrofit retrofit) {
                 if (isAdded) {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
-                        LAMVCfinishedListener.onFailure(response.body().getCode(), response.body().getTag(), response.body().getHint());
+                        LAMVCfinishedListener.onFailure(response.body().getCode(), response.body().getTag(), response.body().getHint(), null);
                     } else {
                         LAMVCfinishedListener.onSuccess();
                     }
@@ -64,14 +63,41 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
 
     @Override
     public void resetPassword(ResetPassowrdBody resetPassowrdBody, final boolean isAdded, final LAMVCFinishedListener LAMVCfinishedListener) {
-        Call<ResetUserPasswordStuff> resetUserPasswordStuffCall = apiService.resetUserPassword(resetPassowrdBody);
-        resetUserPasswordStuffCall.enqueue(new Callback<ResetUserPasswordStuff>() {
+        Call<LoginAndResetUserPasswordStuff> resetUserPasswordStuffCall = apiService.resetUserPassword(resetPassowrdBody);
+        resetUserPasswordStuffCall.enqueue(new Callback<LoginAndResetUserPasswordStuff>() {
             @Override
-            public void onResponse(Response<ResetUserPasswordStuff> response, Retrofit retrofit) {
+            public void onResponse(Response<LoginAndResetUserPasswordStuff> response, Retrofit retrofit) {
                 if (isAdded) {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
-                        Log.e(debugTag, response.body().getCode()+"");
-                        LAMVCfinishedListener.onFailure(response.body().getCode(), "", response.body().getHint());
+                        String retry_in = (response.body().getRetry_in() != null) ? response.body().getRetry_in() : null;
+                        LAMVCfinishedListener.onFailure(response.body().getCode(), "", response.body().getHint(), retry_in);
+                    } else {
+                        LAMVCfinishedListener.onSuccess();
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+                if (isAdded) {
+                    if (t instanceof IOException) {
+                        LAMVCfinishedListener.displayFeedbackMsg(AppConfig.UNAVAILABLE_SERVICE);
+                    } else {
+                        LAMVCfinishedListener.displayFeedbackMsg(AppConfig.INTERNAL_ERROR);
+                    }
+                }
+            }
+        });
+    }
+
+    public void loginUser(LoginFormBody loginFormBody, final boolean isAdded, final LAMVCFinishedListener LAMVCfinishedListener) {
+        Call<LoginAndResetUserPasswordStuff> loginUserPasswordStuffCall = apiService.loginUser(loginFormBody);
+        loginUserPasswordStuffCall.enqueue(new Callback<LoginAndResetUserPasswordStuff>() {
+            @Override
+            public void onResponse(Response<LoginAndResetUserPasswordStuff> response, Retrofit retrofit) {
+                if (isAdded) {
+                    if (response.body().getCode() != AppConfig.STATUS_OK) {
+                        LAMVCfinishedListener.onFailure(response.body().getCode(), "", "", null);
                     } else {
                         LAMVCfinishedListener.onSuccess();
                     }

@@ -21,6 +21,7 @@
     <string name="passwordValidation">passwordValidation</string>
     <string name="emailValidation">emailValidation</string>
     <string name="reset_password">reset_password</string>
+    <string name="login_user">login_user</string>
     <string name="get_firm_names">getFirmNames</string>
     <string name="more">Περισσοτερα</string>
     <string name="check_connection">Έλεγξε τη σύνδεση σου</string>
@@ -69,6 +70,9 @@
     <string name="error_firm_code_mismatch">Ο κωδικός δεν αντιστοιχεί στη συγκεκριμένη εταιρεία</string>
     <string name="error_not_verified_yet">Παρακαλώ ενεργοποίησε το λογαριασμό σου για να αλλάξεις τον κωδικό σου.</string>
     <string name="error_email_doesnt_exist">Το συγκεκριμένο email δεν υπάρχει.</string>
+    <string name="error_reset_password_already_requested">Το αίτημα αλλαγής κωδικού έχει ήδη σταλεί. Παρακαλώ ξαναπροσπάθησε σε %1$s.</string>
+    <string name="error_invalid_username_password">Μη έγκυρο όνομα χρήστη ή κωδικός πρόσβασης.</string>
+    <string name="error_account_not_verified_yet">Παρακαλώ ενεργοποίησε το λογαριασμό σου για να εισέλθεις στην εφαρμογή.</string>
     <!-- INPUT FIELDS -->
     <string name="username_tag">username</string>
     <string name="password_tag">password</string>
