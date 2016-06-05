@@ -1,6 +1,5 @@
 package com.votingsystem.tsiro.fragments;
 
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -11,11 +10,6 @@ import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
-import android.text.Editable;
-import android.text.TextUtils;
-import android.text.TextWatcher;
-import android.text.method.HideReturnsTransformationMethod;
-import android.text.method.PasswordTransformationMethod;
 import android.text.method.TransformationMethod;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -27,14 +21,10 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.AdapterView;
 import android.widget.Button;
+import android.widget.ImageView;
 
-import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.widget.EditText;
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.TextView;
@@ -42,17 +32,13 @@ import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCPresenterImpl;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCView;
 import com.votingsystem.tsiro.POJO.LoginFormBody;
-import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
+import com.votingsystem.tsiro.animation.AnimationListener;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
-import com.votingsystem.tsiro.deserializer.FirmsDeserializer;
-import com.votingsystem.tsiro.POJO.Firm;
-import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.mainClasses.AdminBaseActivity;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
-import com.votingsystem.tsiro.rest.ApiService;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.util.List;
 
@@ -62,7 +48,8 @@ import java.util.List;
 public class SignInFragment extends Fragment implements LAMVCView{
 
     private static final String debugTag = SignInFragment.class.getSimpleName();
-    private TextView forgotPasswordTtV, registerTtv;
+    private ImageView toSharedLogo;
+    private TextView forgotPasswordTtv, registerTtv;
     private EditText usernameEdt, passwordEdt;
     private Button signInBtn;
     private SnackBar snackBar;
@@ -84,11 +71,12 @@ public class SignInFragment extends Fragment implements LAMVCView{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if ( view == null ) view = inflater.inflate(R.layout.fragment_signin, container, false);
+        toSharedLogo            =   (ImageView) view.findViewById(R.id.tosharedlogo);
         usernameEdt             =   (EditText) view.findViewById(R.id.usernameEdt);
         passwordEdt             =   (EditText) view.findViewById(R.id.passwordEdt);
         progressView            =   (ProgressView) view.findViewById(R.id.progressView);
         signInBtn               =   (Button) view.findViewById(R.id.signInBtn);
-        forgotPasswordTtV       =   (TextView) view.findViewById(R.id.forgotPasswordTtv);
+        forgotPasswordTtv       =   (TextView) view.findViewById(R.id.forgotPasswordTtv);
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
         snackBar                =   ((LoginActivity)getActivity()).getSnackBar();
         initialConnectionStatus =   getArguments().getInt(getResources().getString(R.string.connectivity_status));
@@ -100,8 +88,10 @@ public class SignInFragment extends Fragment implements LAMVCView{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (snackBar.isShown()) snackBar.dismiss();
-        LAMVCpresenterImpl      =   new LAMVCPresenterImpl(this);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) toSharedLogo.setTransitionName(getResources().getString(R.string.tosharedlogoTrns));
+
+        if (snackBar != null && snackBar.isShown()) snackBar.dismiss();
+        LAMVCpresenterImpl  =   new LAMVCPresenterImpl(this);
 
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
@@ -128,7 +118,7 @@ public class SignInFragment extends Fragment implements LAMVCView{
                 submitForm();
             }
         });
-        forgotPasswordTtV.setOnClickListener(new View.OnClickListener() {
+        forgotPasswordTtv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if (v instanceof TextView && commonElements != null) commonElements.forgotPasswordOnClick();
@@ -141,6 +131,43 @@ public class SignInFragment extends Fragment implements LAMVCView{
             }
         });
         LocalBroadcastManager.getInstance(getActivity()).registerReceiver(connectionStatusReceiver, new IntentFilter(getResources().getString(R.string.network_state_update)));
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        usernameEdt.setText("");
+        passwordEdt.setText("");
+    }
+
+    @Override
+    public void onDestroyView() {
+        super.onDestroyView();
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.commonElements = null;
+        //RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
+        //refWatcher.watch(this);
+    }
+
+    @Override
+    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
+        if (nextAnim != 0) {
+            Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
+            if (enter) return super.onCreateAnimation(transit, true, nextAnim);
+            if (commonElements != null) animation.setAnimationListener(new AnimationListener(commonElements, this, getResources().getString(R.string.signInFgmt), ""));
+
+            AnimationSet animationSet = new AnimationSet(true);
+            animationSet.addAnimation(animation);
+
+            return animationSet;
+        } else {
+            return null;
+        }
     }
 
     private void setRegisterSpan() {
@@ -156,45 +183,6 @@ public class SignInFragment extends Fragment implements LAMVCView{
             intent.putExtras(sessionBundle);
             startActivity(intent);
         }
-    }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        Log.e(debugTag, "view destroyed");
-        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
-    }
-
-    @Override
-    public void onDestroy() {
-        super.onDestroy();
-        this.commonElements = null;
-        RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
-    }
-
-    @Override
-    public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
-        if (enter) return super.onCreateAnimation(transit, enter, nextAnim);
-        animation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                commonElements.animationOccured(true);
-            }
-
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                commonElements.animationOccured(false);
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation animation) {}
-        });
-        AnimationSet animationSet = new AnimationSet(true);
-        animationSet.addAnimation(animation);
-
-        return animationSet;
     }
 
     private void initializeBroadcastReceivers() {
@@ -242,11 +230,14 @@ public class SignInFragment extends Fragment implements LAMVCView{
             commonElements.showErrorContainerSnackbar(getResources().getString(R.string.error_invalid_username_password), null, code);
         } else if (code == AppConfig.ERROR_ACCOUNT_NOT_VERIFIED_YET) {
             commonElements.showErrorContainerSnackbar(getResources().getString(R.string.error_account_not_verified_yet), null, code);
+        } else {
+            commonElements.showErrorContainerSnackbar(getResources().getString(R.string.error_occured), null, code);
         }
         if (progressView != null && progressView.isShown()) progressView.stop();
     }
 
     private void submitForm() {
+        Log.e(debugTag, connectionStatus+"");
         if (connectionStatus == AppConfig.NO_CONNECTION) {
             showSnackBar(AppConfig.NO_CONNECTION);
         } else {

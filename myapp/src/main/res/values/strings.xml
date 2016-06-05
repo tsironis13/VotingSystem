@@ -1,5 +1,12 @@
 <resources>
+    <!-- MANIFEST -->
     <string name="app_name">VotingSystem</string>
+    <string name="adminBaseActivity">AdminBaseActivity</string>
+    <!-- GENERAL -->
+    <string name="welcome_text">Καλωσήρθατε!</string>
+    <string name="yes">yes</string>
+    <!-- SESSION PREFS -->
+    <string name="splash_loaded">splash_loaded</string>
     <!-- GCM-->
     <string name="gcm_senderId">747222558005</string>
     <string name="data">data</string>
@@ -10,6 +17,7 @@
     <string name="action">action</string>
     <string name="email_notification">email_notification</string>
     <!-- TAG -->
+    <string name="splashScreenFgmt">splashScreenFgmt</string>
     <string name="signInFgmt">signInFgmt</string>
     <string name="forgotPasswordFgmt">forgotPasswordFgmt</string>
     <string name="registerFgmt">registerFgmt</string>
@@ -29,8 +37,13 @@
     <string name="show">ΕΜΦΑΝΙΣΗ</string>
     <string name="hide">ΑΠΟΚΡΥΨΗ</string>
     <string name="empty_string">""</string>
+    <string name="middle_animation">middle</string>
+    <string name="final_animation">final</string>>
     <!-- LOGIN -->
+    <string name="theme">theme</string>
     <string name="app_logo">app_logo</string>
+    <string name="fromsharedlogoTrns">fromsharedlogoTrns</string>
+    <string name="tosharedlogoTrns">tosharedlogoTrns</string>
     <string name="input_logo">input_logo</string>
     <string name="username">Όνομα χρήστη</string>
     <string name="password">Κωδικός πρόσβασης</string>
@@ -100,25 +113,6 @@
     <array name="nav_drawer_icons">
         <item>@drawable/ic_home</item>
     </array>
-
-    /*
-     * activity manifest labels
-     *
-     */
-
-
-
-
-
-
-
-
-
-
-
-
-    <string name="adminBaseActivity">AdminBaseActivity</string>
-
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>

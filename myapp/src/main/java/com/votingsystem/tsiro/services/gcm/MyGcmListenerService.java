@@ -27,7 +27,7 @@ public class MyGcmListenerService extends GcmListenerService {
 
     private void generateNotification(Bundle data) {
         if (data != null) {
-            if (data.getString(getResources().getString(R.string.action)).equals(getResources().getString(R.string.email_notification))) {
+            if (getResources().getString(R.string.email_notification).equals(data.getString(getResources().getString(R.string.action)))) {
                 Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(getResources().getString(R.string.mailto)));
                 resultPendingIntent = PendingIntent.getActivity(this, 0, Intent.createChooser(intent, getResources().getString(R.string.open_with)), PendingIntent.FLAG_UPDATE_CURRENT);
             }

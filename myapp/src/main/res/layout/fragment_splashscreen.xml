@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center">
+
+    <ImageView
+        android:id="@+id/fromSharedLogo"
+        android:layout_width="@dimen/splash_logo_dimens"
+        android:layout_height="@dimen/splash_logo_dimens"
+        android:layout_marginTop="@dimen/splash_logo_marginTop"
+        android:layout_marginBottom="@dimen/splash_logo_marginBottom"
+        android:background="@drawable/app_logo"
+        android:contentDescription="@string/app_logo" />
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/welcome_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="@dimen/welcome_textSize" />
+
+</LinearLayout>

@@ -44,7 +44,7 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
                     } else {
                         LAMVCfinishedListener.onSuccess();
                     }
-                    Log.e(debugTag, "Code: "+response.body().getCode());
+                    Log.e(debugTag, "Code: "+response.body().getCode()+ " TAG: "+response.body().getTag()+" Hint: "+response.body().getHint());
                 }
             }
             @Override

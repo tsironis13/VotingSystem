@@ -42,7 +42,7 @@ public class AdminBaseActivity extends AppCompatActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        RefWatcher refWatcher = MyApplication.getRefWatcher(this);
-        refWatcher.watch(this);
+        //RefWatcher refWatcher = MyApplication.getRefWatcher(this);
+        //refWatcher.watch(this);
     }
 }

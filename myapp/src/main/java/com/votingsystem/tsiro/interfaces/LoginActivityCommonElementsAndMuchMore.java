@@ -18,6 +18,7 @@ public interface LoginActivityCommonElementsAndMuchMore {
     void dismissErrorContainerSnackBar();
     void setText(String action, View view, String decodedMessage, String color);
     void animationOccured(boolean ishappening);
+    void onSplashScreenAnimationFinish();
     String encodeUtf8(String text);
     String decodeUtf8(String text);
 }

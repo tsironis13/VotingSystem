@@ -17,17 +17,17 @@ import retrofit.http.POST;
  */
 public interface ApiService {
 
-    @POST("requests/user/register-user.php")
+    @POST("requests/users.php")
     Call<RegisterUserStuff> registerUser(@Body RegisterFormBody registerFormBody);
 
-    @POST("requests/user/reset-user-password.php")
+    @POST("requests/users.php")
     Call<LoginAndResetUserPasswordStuff> resetUserPassword(@Body ResetPassowrdBody resetPassowrdBody);
 
-    @POST("requests/user/login-user.php")
+    @POST("requests/users.php")
     Call<LoginAndResetUserPasswordStuff> loginUser(@Body LoginFormBody loginFormBody);
 
     @FormUrlEncoded
-    @POST("requests/firms/firm-requests.php")
+    @POST("requests/firms.php")
     Call<Firm> getFirmNames(@Field("action") String action);
 
     @FormUrlEncoded

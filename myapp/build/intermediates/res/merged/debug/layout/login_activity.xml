@@ -3,17 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/background_theme"
     tools:context="com.votingsystem.tsiro.mainClasses.LoginActivity">
 
     <!-- Framelayout to display Fragments -->
-    <FrameLayout
-        android:id="@+id/frame_container"
+    <com.rey.material.widget.FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:fitsSystemWindows="true" >
+        android:layout_height="match_parent">
 
-        <FrameLayout
+        <io.codetail.widget.RevealFrameLayout
+            android:id="@+id/revealContainer"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/themeImgv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:background="@drawable/background_theme"
+                android:contentDescription="@string/theme" />
+
+        </io.codetail.widget.RevealFrameLayout>
+
+        <RelativeLayout
             android:id="@+id/loginActivityFgmtContainer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -31,6 +42,6 @@
             android:visibility="invisible"
             android:layout_gravity="bottom" />
 
-    </FrameLayout>
+    </com.rey.material.widget.FrameLayout>
 
 </RelativeLayout>

@@ -363,17 +363,18 @@
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
     <dimen name="email_Edt_paddingRight">5dp</dimen>
-    <dimen name="errorContainer_Rlt_height">86dp</dimen>
+    <dimen name="errorContainer_Rlt_height">110dp</dimen>
     <dimen name="et_dividerHeight">1dp</dimen>
     <dimen name="et_labelTextSize">10sp</dimen>
     <dimen name="et_supportTextSize">10sp</dimen>
     <dimen name="firmname_Imv_marginLeft">11dp</dimen>
     <dimen name="firmname_Imv_marginRight">0dp</dimen>
-    <dimen name="forgot_pass_logo_marginBottom">70dp</dimen>
-    <dimen name="forgot_pass_logo_marginTop">-90dp</dimen>
+    <dimen name="forgot_pass_container_marginBottom">56dp</dimen>
+    <dimen name="forgot_pass_container_marginTop">-27dp</dimen>
     <dimen name="forgotpassword_Ttv_paddingLeftRight">3dp</dimen>
     <dimen name="forgotpassword_Ttv_paddingTopBottom">12dp</dimen>
-    <dimen name="forgotpassword_email_container_marginBottom">8dp</dimen>
+    <dimen name="forgotpassword_inputfields_container_marginBottom">8dp</dimen>
+    <dimen name="forgotpassword_inputfields_container_marginTop">100dp</dimen>
     <dimen name="forgotpassword_register_Ttv_paddingLeftRight">3dp</dimen>
     <dimen name="forgotpassword_register_Ttv_paddingTopBottom">12dp</dimen>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
@@ -395,9 +396,8 @@
     <dimen name="loginActivity_Btn_marginBottom">9dp</dimen>
     <dimen name="loginActivity_Btn_marginTop">8dp</dimen>
     <dimen name="loginActivity_SnkBar_height">48dp</dimen>
-    <dimen name="logo_dimens">90dp</dimen>
-    <dimen name="logo_marginBottom">65dp</dimen>
-    <dimen name="logo_marginTop">-85dp</dimen>
+    <dimen name="logo_dimens">60dp</dimen>
+    <dimen name="logo_marginBottom">100dp</dimen>
     <dimen name="marginBottom">15dp</dimen>
     <dimen name="nav_drawer_logo_height">120dp</dimen>
     <dimen name="nav_drawer_marginTop">5dp</dimen>
@@ -421,8 +421,8 @@
     <dimen name="rd_cornerRadius">0dp</dimen>
     <dimen name="register_Ttv_paddingLeftRight">15dp</dimen>
     <dimen name="register_Ttv_paddingTopBottom">12dp</dimen>
-    <dimen name="register_logo_dimens">75dp</dimen>
-    <dimen name="register_logo_marginTop">-15dp</dimen>
+    <dimen name="register_container_marginTop">30dp</dimen>
+    <dimen name="register_logo_dimens">60dp</dimen>
     <dimen name="sb_horizontalPadding">15dp</dimen>
     <dimen name="setting_Imv_dimens">23dp</dimen>
     <dimen name="setting_Imv_marginLeftRight">15dp</dimen>
@@ -430,6 +430,10 @@
     <dimen name="showHide_password_Ttv_width">77dp</dimen>
     <dimen name="signInHere_Ttv_paddingLeftRight">15dp</dimen>
     <dimen name="signInHere_Ttv_paddingTopBottom">6dp</dimen>
+    <dimen name="signin_inputfields_container_marginBottom">30dp</dimen>
+    <dimen name="splash_logo_dimens">53dp</dimen>
+    <dimen name="splash_logo_marginBottom">25dp</dimen>
+    <dimen name="splash_logo_marginTop">5dp</dimen>
     <dimen name="spn_arrowPadding">14dp</dimen>
     <dimen name="spn_arrowSize">4dp</dimen>
     <dimen name="stroke_width">1dp</dimen>
@@ -440,6 +444,7 @@
     <dimen name="view_height">1dp</dimen>
     <dimen name="view_marginBottom">3dp</dimen>
     <dimen name="view_marginTop">12dp</dimen>
+    <dimen name="welcome_textSize">15sp</dimen>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
@@ -567,11 +572,13 @@
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>
     <string name="error_passwords_mismatch">Ασυμφωνία κωδικών πρόσβασης</string>
     <string name="error_reset_password_already_requested">Το αίτημα αλλαγής κωδικού έχει ήδη σταλεί. Παρακαλώ ξαναπροσπάθησε σε %1$s.</string>
+    <string name="final_animation">final</string>
     <string name="firm">Η Εταιρεία</string>
     <string name="firm_code_tag">firm_code</string>
     <string name="firmcode">Κωδικός Εταιρείας</string>
     <string name="forgotPasswordFgmt">forgotPasswordFgmt</string>
     <string name="forgotpassword">Ξέχασες τον κωδικό σου?</string>
+    <string name="fromsharedlogoTrns">fromsharedlogoTrns</string>
     <string name="gcm_defaultSenderId" translatable="false">747222558005</string>
     <string name="gcm_senderId">747222558005</string>
     <string name="get_firm_names">getFirmNames</string>
@@ -583,6 +590,7 @@
     <string name="login_user">login_user</string>
     <string name="logout">Αποσυνδεση</string>
     <string name="mailto">mailto:</string>
+    <string name="middle_animation">middle</string>
     <string name="more">Περισσοτερα</string>
     <string name="mysurveys">Οι Έρευνες μου</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -610,17 +618,23 @@
     <string name="signInHere">Διαθέτεις λογαριασμό?\nΣυνδέσου εδώ</string>
     <string name="signin">Είσοδος</string>
     <string name="spinner">spinner</string>
+    <string name="splashScreenFgmt">splashScreenFgmt</string>
+    <string name="splash_loaded">splash_loaded</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="submit">Εγγραφή</string>
+    <string name="theme">theme</string>
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
+    <string name="tosharedlogoTrns">tosharedlogoTrns</string>
     <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Ξαναπροσπάθησε σύντομα.</string>
     <string name="username">Όνομα χρήστη</string>
     <string name="usernameValidation">usernameValidation</string>
     <string name="username_tag">username</string>
     <string name="viewresults">Προβολή Αποτελεσμάτων</string>
     <string name="visible">visible</string>
+    <string name="welcome_text">Καλωσήρθατε!</string>
+    <string name="yes">yes</string>
     <style name="AlertDialog.AppCompat" parent="Base.AlertDialog.AppCompat"/>
     <style name="AlertDialog.AppCompat.Light" parent="Base.AlertDialog.AppCompat.Light"/>
     <style name="Animation.AppCompat.Dialog" parent="Base.Animation.AppCompat.Dialog"/>

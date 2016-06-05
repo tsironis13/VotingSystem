@@ -30,6 +30,7 @@ import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCPresenterImpl;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCView;
 import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
+import com.votingsystem.tsiro.animation.AnimationListener;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
@@ -80,7 +81,7 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (snackBar.isShown()) snackBar.dismiss();
+        if (snackBar != null && snackBar.isShown()) snackBar.dismiss();
         LAMVCpresenterImpl      =   new LAMVCPresenterImpl(this);
 
         connectionStatus = initialConnectionStatus;
@@ -131,6 +132,12 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        emailEdt.setText("");
+    }
+
+    @Override
     public void onDestroyView() {
         super.onDestroyView();
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
@@ -141,37 +148,29 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
         super.onDestroy();
         LAMVCpresenterImpl.onDestroy();
         this.commonElements = null;
-        RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
+        //RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
+        //refWatcher.watch(this);
     }
 
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
-        if (enter) return super.onCreateAnimation(transit, enter, nextAnim);
-        animation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                commonElements.animationOccured(true);
-            }
+        if (nextAnim != 0) {
+            Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
+            if (enter) return super.onCreateAnimation(transit, true, nextAnim);
+            if (commonElements != null) animation.setAnimationListener(new AnimationListener(commonElements, null, getResources().getString(R.string.forgotPasswordFgmt), ""));
 
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                commonElements.animationOccured(false);
-            }
+            AnimationSet animationSet = new AnimationSet(true);
+            animationSet.addAnimation(animation);
 
-            @Override
-            public void onAnimationRepeat(Animation animation) {}
-        });
-        AnimationSet animationSet = new AnimationSet(true);
-        animationSet.addAnimation(animation);
-
-        return animationSet;
+            return animationSet;
+        } else {
+            return null;
+        }
     }
     /*
-         *  LAMVCVIEW CALLBACKS
-         *
-         */
+     *  LAMVCVIEW CALLBACKS
+     *
+     */
     @Override
     public void handlePasswordTextChanges(com.rey.material.widget.TextView showHidePasswordTtv, int action) {}
 
@@ -203,6 +202,8 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
             commonElements.showErrorContainerSnackbar(getResources().getString(R.string.correct_field, hint), emailEdt, code);
         } else if (code == AppConfig.ERROR_RESET_PASWD_ALREADY_REQUESTED) {
             commonElements.showErrorContainerSnackbar(getResources().getString(R.string.error_reset_password_already_requested, retry_in), null, code);
+        } else {
+            commonElements.showErrorContainerSnackbar(getResources().getString(R.string.error_occured), null, code);
         }
         if (progressView != null && progressView.isShown()) progressView.stop();
     }

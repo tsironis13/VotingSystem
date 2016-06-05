@@ -42,6 +42,7 @@ import com.votingsystem.tsiro.POJO.RegisterFormField;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCPresenterImpl;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCView;
 import com.votingsystem.tsiro.adapters.FirmNamesSpnrNothingSelectedAdapter;
+import com.votingsystem.tsiro.animation.AnimationListener;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
@@ -103,7 +104,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         super.onActivityCreated(savedInstanceState);
         if ( savedInstanceState == null ) {
             firmsLoaded = false;
-            if (snackBar.isShown()) snackBar.dismiss();
+            if (snackBar != null && snackBar.isShown()) snackBar.dismiss();
             LAMVCpresenterImpl      =   new LAMVCPresenterImpl(this);
 
             LAMVCpresenterImpl.firmNamesSpnrActions(initialConnectionStatus);
@@ -177,32 +178,24 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         super.onDestroy();
         LAMVCpresenterImpl.onDestroy();
         this.commonElements = null;
-        RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
-        refWatcher.watch(this);
+        //RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
+        //refWatcher.watch(this);
     }
 
     @Override
     public Animation onCreateAnimation(int transit, boolean enter, int nextAnim) {
-        Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
-        if (enter) return super.onCreateAnimation(transit, enter, nextAnim);
-        animation.setAnimationListener(new Animation.AnimationListener() {
-            @Override
-            public void onAnimationStart(Animation animation) {
-                commonElements.animationOccured(true);
-            }
+        if (nextAnim != 0) {
+            Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
+            if (enter) return super.onCreateAnimation(transit, true, nextAnim);
+            if (commonElements != null) animation.setAnimationListener(new AnimationListener(commonElements, null, getResources().getString(R.string.registerFgmt), ""));
 
-            @Override
-            public void onAnimationEnd(Animation animation) {
-                commonElements.animationOccured(false);
-            }
+            AnimationSet animationSet = new AnimationSet(true);
+            animationSet.addAnimation(animation);
 
-            @Override
-            public void onAnimationRepeat(Animation animation) {}
-        });
-        AnimationSet animationSet = new AnimationSet(true);
-        animationSet.addAnimation(animation);
-
-        return animationSet;
+            return animationSet;
+        } else {
+            return null;
+        }
     }
 
     @Override

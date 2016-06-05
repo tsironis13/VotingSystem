@@ -1,10 +1,10 @@
 [
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/menu/global.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/menu/global.xml"
-    },
-    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/menu/main.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/menu/main.xml"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/menu/global.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/menu/global.xml"
     }
 ]

@@ -26,6 +26,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
+        Log.e(debugTag, "onReceive called");
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         int status = (connectivityManager.getActiveNetworkInfo() != null) ? connectivityManager.getActiveNetworkInfo().getType() : AppConfig.NO_CONNECTION;
         notifyStateToAll(status);

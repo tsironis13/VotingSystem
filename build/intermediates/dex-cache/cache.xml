@@ -1,2 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<items version="2" />
+<items version="2" >
+
+    <item
+        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        revision="21.1.2"
+        sha1="e5f5ff6f61aa88b6a6ee178279d19de207f43c50">
+        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_314fd57510f9e45d9239d9f7eca09cd051b69528/classes.dex" />
+    </item>
+
+</items>
