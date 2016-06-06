@@ -73,8 +73,12 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
         registerTtv                 =   (TextView) view.findViewById(R.id.registerTtv);
         progressView                =   (ProgressView) view.findViewById(R.id.progressView);
         snackBar                    =   ((LoginActivity)getActivity()).getSnackBar();
-        initialConnectionStatus     =   getArguments().getInt(getResources().getString(R.string.connectivity_status));
-        registrationToken           =   getArguments().getString(getResources().getString(R.string.registration_token));
+
+        if (getArguments() != null) {
+            initialConnectionStatus     =   getArguments().getInt(getResources().getString(R.string.connectivity_status));
+            Log.e(debugTag, "initialConnectionStatus: "+initialConnectionStatus);
+            registrationToken           =   getArguments().getString(getResources().getString(R.string.registration_token));
+        }
         return view;
     }
 
@@ -85,7 +89,7 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
         LAMVCpresenterImpl      =   new LAMVCPresenterImpl(this);
 
         connectionStatus = initialConnectionStatus;
-        initializeBroadcastReceivers();
+        if (isAdded() && isVisible()) initializeBroadcastReceivers();
 
         sendEmailBtn.setTransformationMethod(null);
         setSignInHereSpan();
@@ -134,7 +138,7 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     @Override
     public void onResume() {
         super.onResume();
-        emailEdt.setText("");
+        if (!LoginActivity.settingsDialogWasOpened) emailEdt.setText("");
     }
 
     @Override
@@ -187,7 +191,7 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     public void onSuccess() {
         commonElements.dismissErrorContainerSnackBar();
         if (progressView != null && progressView.isShown()) progressView.stop();
-        if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) getActivity().getSupportFragmentManager().popBackStack(getResources().getString(R.string.signInFgmt), 0);
+        if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) commonElements.signInHereOnClick();
     }
 
     @Override

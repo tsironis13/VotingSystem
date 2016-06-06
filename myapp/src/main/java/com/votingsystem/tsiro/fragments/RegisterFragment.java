@@ -94,8 +94,12 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         progressView                =   (ProgressView) view.findViewById(R.id.progressView);
         pickFirmSpnr                =   (Spinner) view.findViewById(R.id.pickFirmSpnr);
         snackBar                    =   ((LoginActivity) getActivity()).getSnackBar();
-        initialConnectionStatus     =   getArguments().getInt(getResources().getString(R.string.connectivity_status));
-        registrationToken           =   getArguments().getString(getResources().getString(R.string.registration_token));
+
+        if (getArguments() != null) {
+            initialConnectionStatus     =   getArguments().getInt(getResources().getString(R.string.connectivity_status));
+            Log.e(debugTag, "initialConnectionStatus: "+initialConnectionStatus);
+            registrationToken           =   getArguments().getString(getResources().getString(R.string.registration_token));
+        }
         return view;
     }
 
@@ -109,7 +113,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
 
             LAMVCpresenterImpl.firmNamesSpnrActions(initialConnectionStatus);
             connectionStatus = initialConnectionStatus;
-            initializeBroadcastReceivers();
+            if (isAdded() && isVisible()) initializeBroadcastReceivers();
 
             submitBtn.setTransformationMethod(null);
             setSignInHereSpan();
@@ -334,7 +338,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
     public void onSuccess() {
         commonElements.dismissErrorContainerSnackBar();
         if (progressView != null && progressView.isShown()) progressView.stop();
-        if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) getActivity().getSupportFragmentManager().popBackStack(getResources().getString(R.string.signInFgmt), 0);
+        if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) commonElements.signInHereOnClick();
     }
 
     private void initializeBroadcastReceivers() {

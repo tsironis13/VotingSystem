@@ -1,5 +1,6 @@
 package com.votingsystem.tsiro.mainClasses;
 
+import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -75,11 +76,14 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     private String registrationToken;
     private SparseIntArray inputValidationCodes;
     private SignInFragment signInFgmt;
+    private ForgotPasswordFragment forgotPasswordFgmt;
+    private RegisterFragment registerFgmt;
     private SplashScreenFragment splashScreenFgmt;
     private boolean animationIsHappening;
     private RevealFrameLayout revealContainer;
     private ImageView themeImgv;
     private SharedPreferences sp;
+    public static boolean settingsDialogWasOpened = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,8 +107,8 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
             splashScreenFgmt            =   new SplashScreenFragment();
             signInFgmt                  =   new SignInFragment();
-
             signInFgmt.setArguments(loginActivityBundle);
+
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP && !sp.getString(getResources().getString(R.string.splash_loaded), "").equals(getResources().getString(R.string.yes))) {
                 signInFgmt.setSharedElementEnterTransition(new TransitionSets());
                 signInFgmt.setEnterTransition(new Explode());
@@ -128,16 +132,6 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
                                     .addToBackStack(getResources().getString(R.string.signInFgmt))
                                     .commit();
             }
-
-            loginActivitySnkBar.actionClickListener(new SnackBar.OnActionClickListener() {
-                @Override
-                public void onActionClick(SnackBar sb, int actionId) {
-                    connectionSettingsDialog        = new BottomSheetDialog(LoginActivity.this, R.style.ConnectionSettingsBottomSheetDialog);
-                    connectionSettingsDialogView    = LayoutInflater.from(LoginActivity.this).inflate(R.layout.connection_settings_bottom_sheet_dialog, null);
-                    connectionSettingsDialog.setContentView(connectionSettingsDialogView);
-                    connectionSettingsDialog.show();
-                }
-            });
             networkStateReceiver.addListener(this);
             registrationTokenReceiver.addListener(this);
             this.registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
@@ -146,9 +140,18 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         }
     }
 
-    public void connectionSettingsLltOnClick(View view){
-        if (connectionSettingsDialog != null && connectionSettingsDialog.isShowing()) connectionSettingsDialog.dismiss();
-        startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
+    @Override
+    protected void onStart() {
+        super.onStart();
+        loginActivitySnkBar.actionClickListener(new SnackBar.OnActionClickListener() {
+            @Override
+            public void onActionClick(SnackBar sb, int actionId) {
+                connectionSettingsDialog        = new BottomSheetDialog(LoginActivity.this, R.style.ConnectionSettingsBottomSheetDialog);
+                connectionSettingsDialogView    = LayoutInflater.from(LoginActivity.this).inflate(R.layout.connection_settings_bottom_sheet_dialog, null);
+                connectionSettingsDialog.setContentView(connectionSettingsDialogView);
+                connectionSettingsDialog.show();
+            }
+        });
     }
 
     @Override
@@ -168,14 +171,37 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
             baseDismissErrorContainerSnackBar();
             String fragmentTag = getTopBackStackFragment();
             if (fragmentTag != null && (fragmentTag.equals(getResources().getString(R.string.splashScreenFgmt)) || fragmentTag.equals(getResources().getString(R.string.signInFgmt)))) {
+                Log.e(debugTag, "HERE");
                 this.finish();
             } else {
+                if (settingsDialogWasOpened) settingsDialogWasOpened = false;
                 if (!animationIsHappening) {
+                    assert fragmentTag != null;
+                    Fragment fragment = null;
+                    switch (fragmentTag) {
+                        case "signInFgmt"          :    fragment = signInFgmt;
+                                                        break;
+                        case "forgotPasswordFgmt"  :    fragment = forgotPasswordFgmt;
+                                                        break;
+                        case "registerFgmt"        :    fragment = registerFgmt;
+                                                        break;
+                    }
+                    assert fragment != null;
+                    if (fragment.getArguments() != null) {
+                        loginActivityBundle = fragment.getArguments();
+                        loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
+                    }
                     getSupportFragmentManager().popBackStack();
                 }
             }
         }
         return true;
+    }
+
+    public void connectionSettingsLltOnClick(View view){
+        settingsDialogWasOpened = true;
+        if (connectionSettingsDialog != null && connectionSettingsDialog.isShowing()) connectionSettingsDialog.dismiss();
+        startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
     }
 
     private void revealTheme() {
@@ -234,8 +260,9 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
     @Override
     public void forgotPasswordOnClick() {
+        if (settingsDialogWasOpened) settingsDialogWasOpened = false;
         baseDismissErrorContainerSnackBar();
-        ForgotPasswordFragment forgotPasswordFgmt = new ForgotPasswordFragment();
+        forgotPasswordFgmt = new ForgotPasswordFragment();
         loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
         loginActivityBundle.putString(getResources().getString(R.string.registration_token), registrationToken);
         forgotPasswordFgmt.setArguments(loginActivityBundle);
@@ -249,9 +276,9 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
     @Override
     public void registerOnClick() {
+        if (settingsDialogWasOpened) settingsDialogWasOpened = false;
         baseDismissErrorContainerSnackBar();
-        RegisterFragment registerFgmt = new RegisterFragment();
-
+        registerFgmt = new RegisterFragment();
         loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
         loginActivityBundle.putString(getResources().getString(R.string.registration_token), registrationToken);
         registerFgmt.setArguments(loginActivityBundle);
@@ -266,7 +293,12 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     public void signInHereOnClick() {
         baseDismissErrorContainerSnackBar();
-        if (getSupportFragmentManager().getBackStackEntryCount() > 0) getSupportFragmentManager().popBackStack(getResources().getString(R.string.signInFgmt), 0);
+        if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+            loginActivityBundle = signInFgmt.getArguments();
+            Log.e(debugTag, loginActivityBundle+"");
+            loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
+            getSupportFragmentManager().popBackStack(getResources().getString(R.string.signInFgmt), 0);
+        }
     }
 
     @Override

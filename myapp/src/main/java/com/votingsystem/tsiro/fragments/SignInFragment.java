@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.method.TransformationMethod;
@@ -79,9 +80,12 @@ public class SignInFragment extends Fragment implements LAMVCView{
         forgotPasswordTtv       =   (TextView) view.findViewById(R.id.forgotPasswordTtv);
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
         snackBar                =   ((LoginActivity)getActivity()).getSnackBar();
-        initialConnectionStatus =   getArguments().getInt(getResources().getString(R.string.connectivity_status));
-        registrationToken       =   getArguments().getString(getResources().getString(R.string.registration_token));
 
+        if (getArguments() != null) {
+            initialConnectionStatus = getArguments().getInt(getResources().getString(R.string.connectivity_status));
+            Log.e(debugTag, "initialConnectionStatus: "+initialConnectionStatus);
+            registrationToken       = getArguments().getString(getResources().getString(R.string.registration_token));
+        }
         return view;
     }
 
@@ -96,7 +100,7 @@ public class SignInFragment extends Fragment implements LAMVCView{
         getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         connectionStatus = initialConnectionStatus;
-        initializeBroadcastReceivers();
+        if (isAdded()) initializeBroadcastReceivers();
 
         sessionPrefs = LoginActivity.getSessionPrefs(getActivity());
         boolean key = sessionPrefs.contains("17");
@@ -136,8 +140,10 @@ public class SignInFragment extends Fragment implements LAMVCView{
     @Override
     public void onResume() {
         super.onResume();
-        usernameEdt.setText("");
-        passwordEdt.setText("");
+        if (!LoginActivity.settingsDialogWasOpened) {
+            usernameEdt.setText("");
+            passwordEdt.setText("");
+        }
     }
 
     @Override
