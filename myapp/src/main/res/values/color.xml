@@ -28,6 +28,9 @@
     <!-- DIALOGS -->
     <color name="connection_settings_textColor">#424242</color>
     <color name="connection_settings_rippleColor">#E0E0E0</color>
+    <!-- CROUTON -->
+    <color name="crouton_background_color">#BF263238</color>
+    <color name="crouton_Ttv_color">#DD2C00</color>
     <!-- NAV DRAWER -->
     <color name="navdrawerMainColor">#FB8C00</color>
     <color name="navdrawerRcVColor">#EEE</color>

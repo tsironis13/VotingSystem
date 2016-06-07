@@ -138,7 +138,10 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     @Override
     public void onResume() {
         super.onResume();
-        if (!LoginActivity.settingsDialogWasOpened) emailEdt.setText("");
+        if (!LoginActivity.settingsDialogWasOpened && emailEdt != null) {
+            emailEdt.setText("");
+            emailEdt.setHelper("");
+        }
     }
 
     @Override

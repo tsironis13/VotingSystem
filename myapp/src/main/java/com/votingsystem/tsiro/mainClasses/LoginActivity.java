@@ -5,7 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.graphics.Typeface;
 import android.os.Build;
 import android.support.v4.app.FragmentManager;
@@ -14,6 +13,10 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+
+import de.keyboardsurfer.android.widget.crouton.Configuration;
+import de.keyboardsurfer.android.widget.crouton.Crouton;
+import de.keyboardsurfer.android.widget.crouton.Style;
 import io.codetail.animation.ViewAnimationUtils;
 import android.text.Html;
 import android.text.Spannable;
@@ -22,32 +25,25 @@ import android.text.style.ClickableSpan;
 import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.transition.Explode;
-import android.transition.Fade;
 import android.util.Base64;
 import android.util.Log;
 import android.util.SparseIntArray;
-import android.util.TypedValue;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.inputmethod.InputMethodManager;
 import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.app.BottomSheetDialog;
 import com.rey.material.widget.EditText;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 
-import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.TextView;
 import com.rey.material.widget.SnackBar;
-import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.ObserverPattern.RegistrationTokenListeners;
 import com.votingsystem.tsiro.animation.TransitionSets;
 import com.votingsystem.tsiro.app.AppConfig;
-import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
 import com.votingsystem.tsiro.broadcastReceivers.RegistrationTokenReceiver;
 import com.votingsystem.tsiro.fragments.ForgotPasswordFragment;
@@ -67,11 +63,11 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     private Bundle loginActivityBundle;
     private int connectionStatus;
     private NetworkStateReceiver networkStateReceiver;
-    private RelativeLayout errorContainerRlt;
     private SnackBar loginActivitySnkBar;
     private BottomSheetDialog connectionSettingsDialog;
     private View connectionSettingsDialogView;
     private TSnackbar errorContainerSnackbar;
+    private Crouton crouton;
     private RegistrationTokenReceiver registrationTokenReceiver;
     private String registrationToken;
     private SparseIntArray inputValidationCodes;
@@ -88,6 +84,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.background_theme));
         setContentView(R.layout.login_activity);
 
         if (savedInstanceState == null) {
@@ -102,7 +99,6 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
             revealContainer             =   (RevealFrameLayout) findViewById(R.id.revealContainer);
             themeImgv                   =   (ImageView) findViewById(R.id.themeImgv);
-            errorContainerRlt           =   (RelativeLayout) findViewById(R.id.errorContainerRlt);
             loginActivitySnkBar         =   (SnackBar) findViewById(R.id.loginActivitySnkBar);
 
             splashScreenFgmt            =   new SplashScreenFragment();
@@ -115,6 +111,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
             }
 
             if (!sp.getString(getResources().getString(R.string.splash_loaded), "").equals(getResources().getString(R.string.yes))) {
+                themeImgv.setBackgroundResource(R.drawable.background_theme);
                 ViewTreeObserver viewTreeObserver = revealContainer.getViewTreeObserver();
                 if (viewTreeObserver.isAlive()) {
                     viewTreeObserver.addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener() {
@@ -136,22 +133,29 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
             registrationTokenReceiver.addListener(this);
             this.registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
             LocalBroadcastManager.getInstance(this).registerReceiver(registrationTokenReceiver, new IntentFilter(getResources().getString(R.string.registration_token)));
-            getStatusBarHeight();
         }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
-        loginActivitySnkBar.actionClickListener(new SnackBar.OnActionClickListener() {
-            @Override
-            public void onActionClick(SnackBar sb, int actionId) {
-                connectionSettingsDialog        = new BottomSheetDialog(LoginActivity.this, R.style.ConnectionSettingsBottomSheetDialog);
-                connectionSettingsDialogView    = LayoutInflater.from(LoginActivity.this).inflate(R.layout.connection_settings_bottom_sheet_dialog, null);
-                connectionSettingsDialog.setContentView(connectionSettingsDialogView);
-                connectionSettingsDialog.show();
-            }
-        });
+        if (loginActivitySnkBar != null) {
+            loginActivitySnkBar.actionClickListener(new SnackBar.OnActionClickListener() {
+                @Override
+                public void onActionClick(SnackBar sb, int actionId) {
+                    connectionSettingsDialog        = new BottomSheetDialog(LoginActivity.this, R.style.ConnectionSettingsBottomSheetDialog);
+                    connectionSettingsDialogView    = LayoutInflater.from(LoginActivity.this).inflate(R.layout.connection_settings_bottom_sheet_dialog, null);
+                    connectionSettingsDialog.setContentView(connectionSettingsDialogView);
+                    connectionSettingsDialog.show();
+                }
+            });
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        if (connectionSettingsDialog != null && connectionSettingsDialog.isShowing()) connectionSettingsDialog.dismiss();
     }
 
     @Override
@@ -171,27 +175,27 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
             baseDismissErrorContainerSnackBar();
             String fragmentTag = getTopBackStackFragment();
             if (fragmentTag != null && (fragmentTag.equals(getResources().getString(R.string.splashScreenFgmt)) || fragmentTag.equals(getResources().getString(R.string.signInFgmt)))) {
-                Log.e(debugTag, "HERE");
                 this.finish();
             } else {
                 if (settingsDialogWasOpened) settingsDialogWasOpened = false;
                 if (!animationIsHappening) {
-                    assert fragmentTag != null;
                     Fragment fragment = null;
-                    switch (fragmentTag) {
-                        case "signInFgmt"          :    fragment = signInFgmt;
-                                                        break;
-                        case "forgotPasswordFgmt"  :    fragment = forgotPasswordFgmt;
-                                                        break;
-                        case "registerFgmt"        :    fragment = registerFgmt;
-                                                        break;
+                    if (fragmentTag != null) {
+                        switch (fragmentTag) {
+                            case "signInFgmt"          :    fragment = signInFgmt;
+                                break;
+                            case "forgotPasswordFgmt"  :    fragment = forgotPasswordFgmt;
+                                break;
+                            case "registerFgmt"        :    fragment = registerFgmt;
+                                break;
+                        }
+                        assert fragment != null;
+                        if (fragment.getArguments() != null) {
+                            loginActivityBundle = fragment.getArguments();
+                            loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
+                        }
+                        getSupportFragmentManager().popBackStack();
                     }
-                    assert fragment != null;
-                    if (fragment.getArguments() != null) {
-                        loginActivityBundle = fragment.getArguments();
-                        loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
-                    }
-                    getSupportFragmentManager().popBackStack();
                 }
             }
         }
@@ -200,7 +204,6 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
     public void connectionSettingsLltOnClick(View view){
         settingsDialogWasOpened = true;
-        if (connectionSettingsDialog != null && connectionSettingsDialog.isShowing()) connectionSettingsDialog.dismiss();
         startActivity(new Intent(android.provider.Settings.ACTION_SETTINGS));
     }
 
@@ -220,6 +223,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
             @Override
             public void onAnimationEnd() {
+                themeImgv.setBackgroundResource(0);
                 getSupportFragmentManager()
                                     .beginTransaction()
                                     .replace(R.id.loginActivityFgmtContainer, splashScreenFgmt, getResources().getString(R.string.splashScreenFgmt))
@@ -234,7 +238,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
             public void onAnimationRepeat() {}
         });
         mAnimator.setInterpolator(new AccelerateDecelerateInterpolator());
-        mAnimator.setDuration(1000);
+        mAnimator.setDuration(1500);
         mAnimator.start();
     }
 
@@ -371,14 +375,18 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
     @Override
     public void showErrorContainerSnackbar(final String error_type, View errorView, int code) {
+        Crouton.cancelAllCroutons();
         if (errorView != null) setText(getResources().getString(R.string.error), errorView, baseDecodeUtf8(baseEncodeUtf8(getResources().getString(inputValidationCodes.get(code)))), "#DD2C00");
-        errorContainerSnackbar = TSnackbar.make(errorContainerRlt, error_type, TSnackbar.LENGTH_INDEFINITE);
-        View snackBarView = errorContainerSnackbar.getView();
-        snackBarView.setBackgroundColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_background_color)));
-        android.widget.TextView snackBarTtv = (android.widget.TextView) snackBarView.findViewById(com.androidadvance.topsnackbar.R.id.snackbar_text);
-        snackBarTtv.setTextSize(TypedValue.COMPLEX_UNIT_SP, 12);
-        snackBarTtv.setTextColor(Color.parseColor(getResources().getString(R.string.errorContainer_Snackbar_Ttv_color)));
-        errorContainerSnackbar.show();
+        Style croutonStyle = new Style.Builder()
+                                            .setPaddingInPixels(33)
+                                            .setHeight(210)
+                                            .setBackgroundColor(R.color.crouton_background_color)
+                                            .setTextSize(12)
+                                            .setTextColor(R.color.crouton_Ttv_color)
+                                            .build();
+        Crouton.makeText(this, error_type, croutonStyle)
+                                                .setConfiguration(new Configuration.Builder().setDuration(Configuration.DURATION_INFINITE).setOutAnimation(R.anim.crouton_out_animation).build())
+                                                .show();
     }
 
     @Override
@@ -387,7 +395,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     }
 
     private void baseDismissErrorContainerSnackBar() {
-        if (errorContainerSnackbar != null && errorContainerSnackbar.isShown()) errorContainerSnackbar.dismiss();
+        Crouton.clearCroutonsForActivity(this);
     }
 
     @Override
@@ -433,13 +441,5 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
     private String getTopBackStackFragment() {
         return getSupportFragmentManager().getBackStackEntryCount() > 0 ? getSupportFragmentManager().getBackStackEntryAt(getSupportFragmentManager().getBackStackEntryCount() - 1).getName() : null;
-    }
-
-    private void getStatusBarHeight() {
-        if (Build.VERSION.SDK_INT < Build.VERSION_CODES.M) {
-            errorContainerRlt.setPadding(0, Math.round(25 * getResources().getDisplayMetrics().density + 0.5f), 0 ,0);
-        } else {
-            errorContainerRlt.setPadding(0, Math.round(24 * getResources().getDisplayMetrics().density + 0.5f), 0 ,0);
-        }
     }
 }

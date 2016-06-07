@@ -19,7 +19,7 @@
                 android:id="@+id/themeImgv"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:background="@drawable/background_theme"
+                android:scaleType="fitEnd"
                 android:contentDescription="@string/theme" />
 
         </io.codetail.widget.RevealFrameLayout>
@@ -30,7 +30,7 @@
             android:layout_height="match_parent"
             android:orientation="vertical" />
 
-        <RelativeLayout
+        <com.rey.material.widget.FrameLayout
             android:id="@+id/errorContainerRlt"
             android:layout_width="match_parent"
             android:layout_height="@dimen/errorContainer_Rlt_height" />

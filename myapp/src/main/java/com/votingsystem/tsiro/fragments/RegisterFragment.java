@@ -28,6 +28,7 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
+import android.widget.ImageView;
 
 import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.widget.EditText;

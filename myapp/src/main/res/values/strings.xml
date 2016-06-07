@@ -62,8 +62,6 @@
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>
-    <string name="errorContainer_Snackbar_background_color">#BF263238</string>
-    <string name="errorContainer_Snackbar_Ttv_color">#DD2C00</string>
     <!-- VISIBILITY -->
     <string name="visible">visible</string>
     <string name="gone">gone</string>
