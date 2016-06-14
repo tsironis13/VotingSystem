@@ -1,7 +1,7 @@
 <resources>
     <!-- MANIFEST -->
     <string name="app_name">VotingSystem</string>
-    <string name="adminBaseActivity">AdminBaseActivity</string>
+    <string name="dashBoardActivity">DashboardActivity</string>
     <!-- GENERAL -->
     <string name="welcome_text">Καλωσήρθατε!</string>
     <string name="yes">yes</string>
@@ -21,6 +21,7 @@
     <string name="signInFgmt">signInFgmt</string>
     <string name="forgotPasswordFgmt">forgotPasswordFgmt</string>
     <string name="registerFgmt">registerFgmt</string>
+    <string name="dashboardFgmt">dashboardFgmt</string>
     <string name="editext">editext</string>
     <string name="spinner">spinner</string>
     <!-- ACTIONS -->
@@ -66,9 +67,9 @@
     <string name="visible">visible</string>
     <string name="gone">gone</string>
     <!-- ERRORS -->
-    <string name="empty_field">Παρακαλώ συμπλήρωσε τo παρακάτω πεδίo: %1$s.</string>
-    <string name="correct_field">Παρακαλώ διόρθωσε το παρακάτω πεδίο: %1$s.</string>
-    <string name="correct_error">Παρακαλώ διόρθωσε το παρακάτω λάθος: %1$s.</string>
+    <string name="empty_field">Παρακαλώ συμπλήρωσε τo παραπάνω πεδίo: %1$s.</string>
+    <string name="correct_field">Παρακαλώ διόρθωσε το παραπάνω πεδίο: %1$s.</string>
+    <string name="correct_error">Παρακαλώ διόρθωσε το παραπάνω λάθος: %1$s.</string>
     <string name="no_connection">Αδυναμία σύνδεσης στο δίκτυο.</string>
     <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Ξαναπροσπάθησε σύντομα.</string>
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>

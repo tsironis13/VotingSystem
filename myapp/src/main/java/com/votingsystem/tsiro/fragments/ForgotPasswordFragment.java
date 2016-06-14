@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.Editable;
@@ -26,7 +27,7 @@ import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.TextView;
-import com.squareup.leakcanary.RefWatcher;
+//import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCPresenterImpl;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCView;
 import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
@@ -49,7 +50,7 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     private Button sendEmailBtn;
     private TextView signInHereTtv, registerTtv;
     private EditText emailEdt;
-    private SnackBar snackBar;
+    private Snackbar snackBar;
     private ProgressView progressView;
     private View view;
     private int connectionStatus, initialConnectionStatus;
@@ -192,7 +193,6 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
 
     @Override
     public void onSuccess() {
-        commonElements.dismissErrorContainerSnackBar();
         if (progressView != null && progressView.isShown()) progressView.stop();
         if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) commonElements.signInHereOnClick();
     }
@@ -216,7 +216,6 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     }
     @Override
     public void displayFeedbackMsg(int code) {
-        commonElements.dismissErrorContainerSnackBar();
         if (progressView != null && progressView.isShown()) progressView.stop();
         showSnackBar(code);
     }
@@ -232,7 +231,6 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
 
     private void showSnackBar(int code) {
         if (progressView != null && progressView.isShown()) progressView.stop();
-        commonElements.dismissErrorContainerSnackBar();
         commonElements.showSnackBar(code);
     }
 
@@ -240,10 +238,7 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
         connectionStatusReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (isAdded()) {
-                    connectionStatus = intent.getExtras().getInt(getResources().getString(R.string.connectivity_status));
-                    if (connectionStatus != AppConfig.NO_CONNECTION) if (snackBar.isShown()) snackBar.dismiss();
-                }
+                if (isAdded()) connectionStatus = intent.getExtras().getInt(getResources().getString(R.string.connectivity_status));
             }
         };
     }

@@ -3,25 +3,26 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true">
 
     <RelativeLayout
         android:background="@color/navdrawerMainColor"
         android:layout_width="@dimen/nav_drawer_width"
-        android:layout_height="@dimen/nav_drawer_titleAndLogo_height">
+        android:layout_height="@dimen/nav_drawer_title_and_logo_height"
+        android:fitsSystemWindows="false">
 
         <ImageView
             android:id="@+id/navDrawerImv"
             android:layout_width="match_parent"
             android:layout_height="@dimen/nav_drawer_logo_height"
-            android:layout_marginTop="@dimen/in_common_3"
             android:background="@drawable/ic_abstract" />
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="@dimen/nav_drawer_subtitle_height"
             android:orientation="vertical"
-            android:layout_margin="@dimen/in_common_1"
+            android:layout_margin="@dimen/in_common1"
             android:layout_below="@+id/navDrawerImv">
 
             <TextView
@@ -47,6 +48,6 @@
         android:background="@color/navdrawerRcVColor"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="@dimen/in_common_1" />
+        android:padding="@dimen/in_common1" />
 
 </LinearLayout>

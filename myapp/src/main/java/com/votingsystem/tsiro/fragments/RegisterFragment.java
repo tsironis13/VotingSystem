@@ -9,8 +9,10 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.res.Configuration;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.content.LocalBroadcastManager;
@@ -23,6 +25,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
@@ -37,7 +40,7 @@ import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.Spinner;
 import com.rey.material.widget.TextView;
-import com.squareup.leakcanary.RefWatcher;
+//import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.POJO.RegisterFormField;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCPresenterImpl;
@@ -69,7 +72,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
     private BroadcastReceiver connectionStatusReceiver;
     private int connectionStatus, initialConnectionStatus;
     private LAMVCPresenterImpl LAMVCpresenterImpl;
-    private SnackBar snackBar;
+    private Snackbar snackBar;
     private boolean firmsLoaded;
     private String registrationToken;
 
@@ -294,7 +297,6 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
 
     @Override
     public void displayFeedbackMsg(int code) {
-        commonElements.dismissErrorContainerSnackBar();
         if (progressView != null && progressView.isShown()) progressView.stop();
         showSnackBar(code);
     }
@@ -337,7 +339,6 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
 
     @Override
     public void onSuccess() {
-        commonElements.dismissErrorContainerSnackBar();
         if (progressView != null && progressView.isShown()) progressView.stop();
         if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) commonElements.signInHereOnClick();
     }
@@ -348,7 +349,6 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
             public void onReceive(Context context, Intent intent) {
                 if (isAdded()) {
                     connectionStatus = intent.getExtras().getInt(getResources().getString(R.string.connectivity_status));
-                    if (connectionStatus != AppConfig.NO_CONNECTION) if (snackBar.isShown()) snackBar.dismiss();
                     LAMVCpresenterImpl.firmNamesSpnrActions(connectionStatus);
                 }
             }
@@ -392,7 +392,6 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
 
     private void showSnackBar(int code) {
         if (progressView != null && progressView.isShown()) progressView.stop();
-        commonElements.dismissErrorContainerSnackBar();
         commonElements.showSnackBar(code);
     }
 }

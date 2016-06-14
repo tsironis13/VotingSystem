@@ -5,16 +5,16 @@
     android:orientation="horizontal"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:paddingTop="@dimen/container_paddingTopBottom"
-    android:paddingBottom="@dimen/container_paddingTopBottom"
+    android:paddingTop="@dimen/container_padding_top_bottom"
+    android:paddingBottom="@dimen/container_padding_top_bottom"
     android:onClick="connectionSettingsLltOnClick"
     style="@style/ConnectionSettingsBottomSheetDialogLlt" >
 
     <ImageView
-        android:layout_width="@dimen/setting_Imv_dimens"
-        android:layout_height="@dimen/setting_Imv_dimens"
-        android:layout_marginLeft="@dimen/setting_Imv_marginLeftRight"
-        android:layout_marginRight="@dimen/setting_Imv_marginLeftRight"
+        android:layout_width="@dimen/setting_imv_dimens"
+        android:layout_height="@dimen/setting_imv_dimens"
+        android:layout_marginLeft="@dimen/setting_imv_margin_left_right"
+        android:layout_marginRight="@dimen/setting_imv_margin_left_right"
         android:background="@drawable/ic_settings_black" />
 
     <com.rey.material.widget.TextView

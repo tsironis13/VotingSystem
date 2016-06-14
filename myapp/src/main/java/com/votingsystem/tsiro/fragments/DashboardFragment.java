@@ -15,26 +15,18 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 import com.votingsystem.tsiro.POJO.Survey;
-import com.votingsystem.tsiro.app.AppConfig;
-import com.votingsystem.tsiro.app.RetrofitSingleton;
-import com.votingsystem.tsiro.mainClasses.AdminBaseActivity;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
-import com.votingsystem.tsiro.rest.ApiService;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
 
 /**
  * Created by user on 16/11/2015.
  */
-public class AdminBaseFragment extends Fragment{
+public class DashboardFragment extends Fragment{
 
-    private static final String debugTag = "AdminBaseFragment";
+    private static final String debugTag = "DashboardFragment";
     private Button addSurveyBtn, logoutBtn;
     private TextView userIdTtv;
     private EditText surveyTitleEdt, surveyDescEdt;
@@ -61,10 +53,11 @@ public class AdminBaseFragment extends Fragment{
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        toolbar = (Toolbar) getActivity().findViewById(R.id.app_bar);
+        toolbar = (Toolbar) getActivity().findViewById(R.id.appBar);
+
         navigationDrawerFragment = (NavigationDrawerFragment) getActivity().getSupportFragmentManager().findFragmentById(R.id.navigationDrawerFgmt);
-        navigationDrawerFragment.setUp(R.id.navigationDrawerFgmt, (DrawerLayout) getActivity().findViewById(R.id.adminBaseDrlt), toolbar);
-        Log.d(debugTag, "AdminBaseFragment onActivityCreated");
+        navigationDrawerFragment.setUp(R.id.navigationDrawerFgmt, (DrawerLayout) getActivity().findViewById(R.id.dashboardDrlt), toolbar);
+        Log.d(debugTag, "DashboardFragment onActivityCreated");
 
         String[] array = getActivity().getResources().getStringArray(R.array.agree_array);
         ArrayList<String> arrayList = new ArrayList<String>();

@@ -6,20 +6,27 @@
     android:layout_height="match_parent"
     android:gravity="center">
 
-    <ImageView
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:id="@+id/fromSharedLogo"
-        android:layout_width="@dimen/splash_logo_dimens"
-        android:layout_height="@dimen/splash_logo_dimens"
-        android:layout_marginTop="@dimen/splash_logo_marginTop"
-        android:layout_marginBottom="@dimen/splash_logo_marginBottom"
-        android:background="@drawable/app_logo"
-        android:contentDescription="@string/app_logo" />
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_gravity="center"
+            android:layout_width="@dimen/logo_dimens"
+            android:layout_height="@dimen/logo_dimens"
+            android:background="@drawable/app_logo"
+            android:contentDescription="@string/app_logo" />
+    </LinearLayout>
+
 
     <com.rey.material.widget.TextView
-        android:id="@+id/welcome_text"
+        android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:textColor="@color/white"
-        android:textSize="@dimen/welcome_textSize" />
+        android:layout_marginTop="@dimen/welcome_text_margin_top"
+        android:textSize="@dimen/welcome_text_size" />
 
 </LinearLayout>

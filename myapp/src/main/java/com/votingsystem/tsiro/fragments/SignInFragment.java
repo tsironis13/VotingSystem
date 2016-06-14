@@ -8,7 +8,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.method.TransformationMethod;
@@ -17,28 +17,25 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
-import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;
-import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.TextView;
-import com.squareup.leakcanary.RefWatcher;
+//import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCPresenterImpl;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCView;
 import com.votingsystem.tsiro.POJO.LoginFormBody;
 import com.votingsystem.tsiro.animation.AnimationListener;
 import com.votingsystem.tsiro.app.AppConfig;
-import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
-import com.votingsystem.tsiro.mainClasses.AdminBaseActivity;
+import com.votingsystem.tsiro.mainClasses.DashboardActivity;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.util.List;
@@ -49,14 +46,14 @@ import java.util.List;
 public class SignInFragment extends Fragment implements LAMVCView{
 
     private static final String debugTag = SignInFragment.class.getSimpleName();
-    private ImageView toSharedLogo;
+    private LinearLayout toSharedLogo, bottomView, middleView;
     private TextView forgotPasswordTtv, registerTtv;
     private EditText usernameEdt, passwordEdt;
     private Button signInBtn;
-    private SnackBar snackBar;
+    private Snackbar snackBar;
     private ProgressView progressView;
     private SharedPreferences sessionPrefs;
-    private View view;
+    private View view, divider;
     private int connectionStatus, initialConnectionStatus;
     private LoginActivityCommonElementsAndMuchMore commonElements;
     private BroadcastReceiver connectionStatusReceiver;
@@ -72,7 +69,9 @@ public class SignInFragment extends Fragment implements LAMVCView{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if ( view == null ) view = inflater.inflate(R.layout.fragment_signin, container, false);
-        toSharedLogo            =   (ImageView) view.findViewById(R.id.tosharedlogo);
+        toSharedLogo            =   (LinearLayout) view.findViewById(R.id.toSharedLogo);
+        bottomView              =   (LinearLayout) view.findViewById(R.id.bottomView);
+        middleView              =   (LinearLayout) view.findViewById(R.id.middleView);
         usernameEdt             =   (EditText) view.findViewById(R.id.usernameEdt);
         passwordEdt             =   (EditText) view.findViewById(R.id.passwordEdt);
         progressView            =   (ProgressView) view.findViewById(R.id.progressView);
@@ -81,6 +80,13 @@ public class SignInFragment extends Fragment implements LAMVCView{
         registerTtv             =   (TextView) view.findViewById(R.id.registerTtv);
         snackBar                =   ((LoginActivity)getActivity()).getSnackBar();
 
+        if (toSharedLogo.getVisibility() == View.GONE || bottomView.getVisibility() == View.GONE) {
+            toSharedLogo.setVisibility(View.VISIBLE);
+            bottomView.setVisibility(View.VISIBLE);
+            LinearLayout.LayoutParams lParams = (LinearLayout.LayoutParams) middleView.getLayoutParams();
+            lParams.weight = 62f;
+            middleView.setLayoutParams(lParams);
+        }
         if (getArguments() != null) {
             initialConnectionStatus = getArguments().getInt(getResources().getString(R.string.connectivity_status));
             Log.e(debugTag, "initialConnectionStatus: "+initialConnectionStatus);
@@ -97,7 +103,7 @@ public class SignInFragment extends Fragment implements LAMVCView{
         if (snackBar != null && snackBar.isShown()) snackBar.dismiss();
         LAMVCpresenterImpl  =   new LAMVCPresenterImpl(this);
 
-        getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+        //getActivity().getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
 
         connectionStatus = initialConnectionStatus;
         if (isAdded()) initializeBroadcastReceivers();
@@ -181,7 +187,7 @@ public class SignInFragment extends Fragment implements LAMVCView{
     }
 
     private void startBaseActivity() {
-        Intent intent = new Intent(getActivity(), AdminBaseActivity.class);
+        Intent intent = new Intent(getActivity(), DashboardActivity.class);
         String user_id, user_email, username;
         if ( sessionPrefs.getInt("user_id", -1) != -1 ) {
             Bundle sessionBundle = new Bundle();
@@ -195,10 +201,7 @@ public class SignInFragment extends Fragment implements LAMVCView{
         connectionStatusReceiver = new BroadcastReceiver() {
             @Override
             public void onReceive(Context context, Intent intent) {
-                if (isAdded()) {
-                    connectionStatus = intent.getExtras().getInt(getResources().getString(R.string.connectivity_status));
-                    if (connectionStatus != AppConfig.NO_CONNECTION) if (snackBar.isShown()) snackBar.dismiss();
-                }
+                if (isAdded()) connectionStatus = intent.getExtras().getInt(getResources().getString(R.string.connectivity_status));
             }
         };
     }
@@ -211,7 +214,6 @@ public class SignInFragment extends Fragment implements LAMVCView{
 
     @Override
     public void displayFeedbackMsg(int code) {
-        commonElements.dismissErrorContainerSnackBar();
         if (progressView != null && progressView.isShown()) progressView.stop();
         showSnackBar(code);
     }
@@ -225,7 +227,7 @@ public class SignInFragment extends Fragment implements LAMVCView{
     @Override
     public void onSuccess() {
         getActivity().finish();
-        Intent intent = new Intent(getActivity(), AdminBaseActivity.class);
+        Intent intent = new Intent(getActivity(), DashboardActivity.class);
         startActivity(intent);
         getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
@@ -254,7 +256,6 @@ public class SignInFragment extends Fragment implements LAMVCView{
 
     private void showSnackBar(int code) {
         if (progressView != null && progressView.isShown()) progressView.stop();
-        commonElements.dismissErrorContainerSnackBar();
         commonElements.showSnackBar(code);
     }
 

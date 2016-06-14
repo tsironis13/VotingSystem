@@ -3,6 +3,7 @@ package com.votingsystem.tsiro.animation;
 import android.annotation.TargetApi;
 import android.os.Build;
 import android.transition.ChangeBounds;
+import android.transition.ChangeClipBounds;
 import android.transition.ChangeImageTransform;
 import android.transition.ChangeTransform;
 import android.transition.TransitionSet;

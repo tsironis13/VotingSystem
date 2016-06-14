@@ -1,9 +1,5 @@
 [
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/crouton_out_animation.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/anim/crouton_out_animation.xml"
-    },
-    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/top_in.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.androidadvance/topsnackbar/0.0.9/res/anim/top_in.xml"
     },

@@ -1,6 +1,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/loginActivityContainer"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="com.votingsystem.tsiro.mainClasses.LoginActivity">
@@ -24,23 +25,15 @@
 
         </io.codetail.widget.RevealFrameLayout>
 
-        <RelativeLayout
+        <FrameLayout
             android:id="@+id/loginActivityFgmtContainer"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical" />
+            android:layout_height="match_parent" />
 
         <com.rey.material.widget.FrameLayout
             android:id="@+id/errorContainerRlt"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/errorContainer_Rlt_height" />
-
-        <com.rey.material.widget.SnackBar
-            android:id="@+id/loginActivitySnkBar"
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/loginActivity_SnkBar_height"
-            android:visibility="invisible"
-            android:layout_gravity="bottom" />
+            android:layout_height="@dimen/errorcontainer_rlt_height" />
 
     </com.rey.material.widget.FrameLayout>
 

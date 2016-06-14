@@ -3,8 +3,8 @@ package com.votingsystem.tsiro.app;
 import android.app.Application;
 import android.content.Context;
 
-import com.squareup.leakcanary.LeakCanary;
-import com.squareup.leakcanary.RefWatcher;
+//import com.squareup.leakcanary.LeakCanary;
+//import com.squareup.leakcanary.RefWatcher;
 
 /**
  * Created by user on 10/10/2015.
@@ -12,7 +12,7 @@ import com.squareup.leakcanary.RefWatcher;
 public class MyApplication extends Application {
 
     private static MyApplication sInstance;
-    private RefWatcher refWatcher;
+    //private RefWatcher refWatcher;
 
     //public static RefWatcher getRefWatcher(Context context) {
         //MyApplication application = (MyApplication) context.getApplicationContext();

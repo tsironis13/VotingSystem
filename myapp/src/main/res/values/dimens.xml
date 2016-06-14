@@ -3,100 +3,96 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <!-- COMMON -->
-    <dimen name="in_common_1">16dp</dimen>
-    <dimen name="in_common_2">20dp</dimen>
-    <dimen name="in_common_3">36dp</dimen>
+    <dimen name="no_size">0dp</dimen>
+    <dimen name="in_common1">16dp</dimen>
+    <dimen name="in_common2">20dp</dimen>
+    <dimen name="in_common3">36dp</dimen>
     <!-- LOGIN -->
-    <dimen name="errorContainer_Rlt_height">110dp</dimen>
-    <dimen name="loginActivity_SnkBar_height">48dp</dimen>
+    <dimen name="errorcontainer_rlt_height">110dp</dimen>
+    <dimen name="loginactivity_snkbar_height">30dp</dimen>
     <dimen name="input_container_height">50dp</dimen>
 
     <dimen name="container_width">293dp</dimen>
     <dimen name="container_height">520dp</dimen>
-    <dimen name="marginBottom">15dp</dimen>
-    <dimen name="input_logo_marginLeftRight">8dp</dimen>
+    <dimen name="margin_bottom">15dp</dimen>
+    <dimen name="input_logo_margin_left_right">8dp</dimen>
     <dimen name="common_width">265dp</dimen>
-    <dimen name="input_edt_textSize">13sp</dimen>
-    <dimen name="txVerror_textSize">12sp</dimen>
+    <dimen name="input_edt_text_size">13sp</dimen>
+    <dimen name="txv_error_text_size">12sp</dimen>
     <dimen name="action_btn_width">150dp</dimen>
     <dimen name="action_btn_height">35dp</dimen>
     <dimen name="view_height">1dp</dimen>
-    <dimen name="view_marginTop">12dp</dimen>
-    <dimen name="view_marginBottom">3dp</dimen>
+    <dimen name="view_margin_top">100dp</dimen>
+    <dimen name="view_margin_bottom">3dp</dimen>
     <!-- SPLASH SCREEN -->
     <dimen name="splash_logo_dimens">53dp</dimen>
-    <dimen name="splash_logo_marginTop">5dp</dimen>
-    <dimen name="splash_logo_marginBottom">25dp</dimen>
-    <dimen name="welcome_textSize">15sp</dimen>
+    <dimen name="welcome_text_margin_top">17dp</dimen>
+    <dimen name="welcome_text_size">15sp</dimen>
     <!-- SIGN IN -->
     <dimen name="logo_dimens">60dp</dimen>
-    <dimen name="logo_marginBottom">100dp</dimen>
-    <dimen name="signin_inputfields_container_marginBottom">10dp</dimen>
-    <dimen name="forgotpassword_Ttv_paddingTopBottom">12dp</dimen>
-    <dimen name="forgotpassword_Ttv_paddingLeftRight">3dp</dimen>
-    <dimen name="register_Ttv_paddingTopBottom">12dp</dimen>
-    <dimen name="register_Ttv_paddingLeftRight">15dp</dimen>
+    <dimen name="middle_view_padding_top">15dp</dimen>
+    <dimen name="forgotpassword_txv_padding_top_bottom">12dp</dimen>
+    <dimen name="forgotpassword_txv_padding_left_right">3dp</dimen>
+    <dimen name="register_txv_padding_top_bottom">12dp</dimen>
+    <dimen name="register_txv_padding_left_right">15dp</dimen>
     <!-- FORGOT PASSWORD -->
-    <dimen name="forgot_pass_container_marginTop">-27dp</dimen>
-    <dimen name="forgot_pass_container_marginBottom">37dp</dimen>
-    <dimen name="forgotpassword_inputfields_container_marginTop">100dp</dimen>
-    <dimen name="forgotpassword_inputfields_container_marginBottom">8dp</dimen>
-    <dimen name="forgotpassword_register_Ttv_paddingTopBottom">12dp</dimen>
-    <dimen name="forgotpassword_register_Ttv_paddingLeftRight">3dp</dimen>
+    <dimen name="forgotpassword_inputfields_container_margin_bottom">8dp</dimen>
+    <dimen name="forgotpassword_register_txv_padding_top_bottom">12dp</dimen>
+    <dimen name="forgotpassword_register_txv_padding_left_right">3dp</dimen>
     <!-- REGISTER -->
-    <dimen name="register_container_marginTop">10dp</dimen>
+    <dimen name="register_container_margin_top">10dp</dimen>
     <dimen name="input_field_logo_dimens">25dp</dimen>
     <dimen name="register_logo_dimens">60dp</dimen>
-    <dimen name="input_field_Rlt_width">252dp</dimen>
-    <dimen name="input_field_Rlt_paddingRight">5dp</dimen>
-    <dimen name="input_field_Edt_width">252dp</dimen>
-    <dimen name="input_field_Edt_paddingRight">9dp</dimen>
-    <dimen name="password_Edt_width">186dp</dimen>
-    <dimen name="password_Edt_paddingRight">5dp</dimen>
-    <dimen name="password_error_Ttv_width">222dp</dimen>
-    <dimen name="password_error_Ttv_height">15dp</dimen>
-    <dimen name="password_error_Ttv_textSize">10sp</dimen>
-    <dimen name="showHide_password_Ttv_width">77dp</dimen>
-    <dimen name="showHide_password_Ttv_TextSize">10sp</dimen>
-    <dimen name="accept_password_Rlt_width">26dp</dimen>
-    <dimen name="accept_password_Rlt_marginLeft">36dp</dimen>
-    <dimen name="email_Edt_paddingRight">5dp</dimen>
-    <dimen name="firmname_Imv_marginLeft">11dp</dimen>
-    <dimen name="firmname_Imv_marginRight">0dp</dimen>
-    <dimen name="pickFirm_Spnr_maxHeight">100dp</dimen>
-    <dimen name="pickFirm_Spnr_marginBottom">8dp</dimen>
-    <dimen name="progressView_dimens">24dp</dimen>
-    <dimen name="loginActivity_Btn_marginBottom">9dp</dimen>
-    <dimen name="loginActivity_Btn_marginTop">8dp</dimen>
-    <dimen name="signInHere_Ttv_paddingTopBottom">6dp</dimen>
-    <dimen name="signInHere_Ttv_paddingLeftRight">15dp</dimen>
+    <dimen name="input_field_rlt_width">252dp</dimen>
+    <dimen name="input_field_rlt_padding_right">5dp</dimen>
+    <dimen name="input_field_edt_width">252dp</dimen>
+    <dimen name="input_field_edt_padding_right">9dp</dimen>
+    <dimen name="password_edt_width">186dp</dimen>
+    <dimen name="password_edt_padding_right">5dp</dimen>
+    <dimen name="password_error_txv_width">222dp</dimen>
+    <dimen name="password_error_txv_height">15dp</dimen>
+    <dimen name="password_error_txv_text_size">10sp</dimen>
+    <dimen name="showhide_password_txv_width">77dp</dimen>
+    <dimen name="showhide_password_txv_text_size">10sp</dimen>
+    <dimen name="accept_password_rlt_width">26dp</dimen>
+    <dimen name="accept_password_rlt_margin_left">36dp</dimen>
+    <dimen name="email_edt_padding_right">5dp</dimen>
+    <dimen name="firmname_imv_margin_left">11dp</dimen>
+    <dimen name="pickfirm_spnr_max_height">100dp</dimen>
+    <dimen name="pickfirm_spnr_margin_bottom">8dp</dimen>
+    <dimen name="progressview_dimens">24dp</dimen>
+    <dimen name="loginactivity_btn_margin_bottom">9dp</dimen>
+    <dimen name="loginactivity_btn_margin_top">8dp</dimen>
+    <dimen name="signinhere_txv_margin_bottom">11dp</dimen>
+    <dimen name="signinhere_txv_padding_top_bottom">6dp</dimen>
+    <dimen name="signinhere_txv_padding_left_right">15dp</dimen>
 
-    <dimen name="spn_arrowPadding">14dp</dimen>
-    <dimen name="spn_arrowSize">4dp</dimen>
-    <dimen name="rd_cornerRadius">0dp</dimen>
-    <dimen name="et_supportTextSize">10sp</dimen>
-    <dimen name="et_labelTextSize">10sp</dimen>
-    <dimen name="et_dividerHeight">1dp</dimen>
+    <dimen name="spn_arrow_padding">14dp</dimen>
+    <dimen name="spn_arrow_size">4dp</dimen>
+    <dimen name="rd_corner_radius">0dp</dimen>
+    <dimen name="et_support_text_size">10sp</dimen>
+    <dimen name="et_label_text_size">10sp</dimen>
+    <dimen name="et_divider_height">1dp</dimen>
     <!-- SNACKBARS -->
-    <dimen name="sb_horizontalPadding">15dp</dimen>
-    <dimen name="no_connection_sb_textSize">3sp</dimen>
-    <dimen name="unavailable_service_sb_textSize">2sp</dimen>
-    <dimen name="internal_error_sb_textSize">2sp</dimen>
-    <dimen name="unavailable_service_internal_error_sb_horizontalPadding">30dp</dimen>
+    <dimen name="sb_horizontal_padding">15dp</dimen>
+    <dimen name="no_connection_sb_text_size">14sp</dimen>
+    <dimen name="unavailable_service_sb_text_size">2sp</dimen>
+    <dimen name="internal_error_sb_text_size">2sp</dimen>
+    <dimen name="unavailable_service_internal_error_sb_horizontal_padding">30dp</dimen>
     <!-- DIALOGS -->
     <!-- Connection Settings Dialog -->
-    <dimen name="container_paddingTopBottom">20dp</dimen>
-    <dimen name="setting_Imv_dimens">23dp</dimen>
-    <dimen name="setting_Imv_marginLeftRight">15dp</dimen>
+    <dimen name="container_padding_top_bottom">20dp</dimen>
+    <dimen name="setting_imv_dimens">23dp</dimen>
+    <dimen name="setting_imv_margin_left_right">15dp</dimen>
     <!-- TOOLBAR -->
     <dimen name="toolbar_padding_top">0dp</dimen>
     <!-- NAVIGATION DRAWER -->
     <dimen name="nav_drawer_width">280dp</dimen>
-    <dimen name="nav_drawer_titleAndLogo_height">226dp</dimen>
+    <dimen name="nav_drawer_title_and_logo_height">226dp</dimen>
     <dimen name="nav_drawer_logo_height">120dp</dimen>
     <dimen name="nav_drawer_subtitle_height">56dp</dimen>
     <dimen name="nav_drawer_subtitle_textsize">14sp</dimen>
-    <dimen name="nav_drawer_marginTop">5dp</dimen>
+    <dimen name="nav_drawer_margin_top">5dp</dimen>
     <dimen name="nav_drawer_row_height">48dp</dimen>
     <!-- DRAWABLES -->
     <!-- Accept Drawable -->

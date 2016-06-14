@@ -1,38 +1,34 @@
 package com.votingsystem.tsiro.mainClasses;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
-
-import com.squareup.leakcanary.RefWatcher;
-import com.votingsystem.tsiro.app.MyApplication;
+//import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.fragments.*;
 import com.votingsystem.tsiro.votingsystem.R;
 
 /**
  * Created by user on 16/11/2015.
  */
-public class AdminBaseActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity {
 
-    private static final String debugTag = "AdminBaseActivity";
+    private static final String debugTag = "DashboardActivity";
     private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.admin_base_activity);
+        setContentView(R.layout.dashboard_activity);
 
-        toolbar = (Toolbar) findViewById(R.id.app_bar);
+        toolbar = (Toolbar) findViewById(R.id.appBar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         if (savedInstanceState == null) {
-            AdminBaseFragment adminBaseFragment = new AdminBaseFragment();
-            getSupportFragmentManager().beginTransaction().replace(R.id.baseFrlt, adminBaseFragment, "adminBaseFgmt").commit();
+            DashboardFragment dashboardFragmentFragment = new DashboardFragment();
+            getSupportFragmentManager().beginTransaction().replace(R.id.baseFrlt, dashboardFragmentFragment, getResources().getString(R.string.dashboardFgmt)).commit();
             Log.d(debugTag, "created for the first time");
         } else {
             Log.d(debugTag, "was not created due to orientation change");

@@ -19,10 +19,7 @@
     <uses-permission android:name="com.votingsystem.tsiro.votingsystem.permission.C2D_MESSAGE" />
 
     <!-- Permissions required for GCM -->
-    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" /> <!-- To store the heap dumps and leak analysis results. -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-    <android:uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 
     <application
         android:name="com.votingsystem.tsiro.app.MyApplication"
@@ -42,8 +39,9 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.votingsystem.tsiro.mainClasses.AdminBaseActivity"
-            android:label="@string/adminBaseActivity" >
+            android:name="com.votingsystem.tsiro.mainClasses.DashboardActivity"
+            android:label="@string/dashBoardActivity"
+            android:screenOrientation="portrait" >
         </activity>
 
         <!--
@@ -100,27 +98,6 @@
             android:name="com.google.android.gms.measurement.AppMeasurementService"
             android:enabled="true"
             android:exported="false" />
-        <service
-            android:name="com.squareup.leakcanary.internal.HeapAnalyzerService"
-            android:enabled="false"
-            android:process=":leakcanary" />
-        <service
-            android:name="com.squareup.leakcanary.DisplayLeakService"
-            android:enabled="false" />
-
-        <activity
-            android:name="com.squareup.leakcanary.internal.DisplayLeakActivity"
-            android:enabled="false"
-            android:icon="@drawable/__leak_canary_icon"
-            android:label="@string/__leak_canary_display_activity_label"
-            android:taskAffinity="com.squareup.leakcanary"
-            android:theme="@style/__LeakCanary.Base" >
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
     </application>
 
 </manifest>

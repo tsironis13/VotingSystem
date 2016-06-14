@@ -26,6 +26,4 @@
     </style>
     <style name="TextAppearance.StatusBar.EventContent.Time"/>
     <style name="TextAppearance.StatusBar.EventContent.Title" parent="@android:style/TextAppearance.StatusBar.EventContent.Title"/>
-    <style name="__LeakCanary.Base" parent="android:Theme.Holo">
-  </style>
 </resources>

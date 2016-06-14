@@ -9,15 +9,15 @@
 
     <ImageView
         android:id="@+id/navDrawerImv"
-        android:layout_width="@dimen/in_common_3"
-        android:layout_height="@dimen/in_common_3"
+        android:layout_width="@dimen/in_common3"
+        android:layout_height="@dimen/in_common3"
         android:layout_gravity="center_vertical" />
 
     <TextView
         android:id="@+id/navDrawerTtv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/in_common_2"
+        android:layout_marginLeft="@dimen/in_common2"
         android:textSize="@dimen/nav_drawer_subtitle_textsize"
         android:textColor="@drawable/navdrawer_textview_state"
         android:layout_gravity="center_vertical" />

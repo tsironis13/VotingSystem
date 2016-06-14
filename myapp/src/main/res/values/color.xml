@@ -10,6 +10,7 @@
     <color name="viewBackgroundColor">#CCFFFFFF</color>
     <color name="txVerrorColor">#DD2C00</color>
     <color name="input_hintColor">#80FFFFFF</color>
+    <color name="snack_bar_error_text">#C62828</color>
     <!-- REGISTER -->
     <color name="et_supportTextErrorColor">#DD2C00</color>
     <color name="password_error_Ttv_textColor">#DD2C00</color>
@@ -28,9 +29,6 @@
     <!-- DIALOGS -->
     <color name="connection_settings_textColor">#424242</color>
     <color name="connection_settings_rippleColor">#E0E0E0</color>
-    <!-- CROUTON -->
-    <color name="crouton_background_color">#BF263238</color>
-    <color name="crouton_Ttv_color">#DD2C00</color>
     <!-- NAV DRAWER -->
     <color name="navdrawerMainColor">#FB8C00</color>
     <color name="navdrawerRcVColor">#EEE</color>

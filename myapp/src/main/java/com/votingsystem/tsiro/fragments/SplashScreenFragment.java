@@ -15,7 +15,8 @@ import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
-import android.widget.ImageView;;import com.rey.material.widget.TextView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;;import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.animation.AnimationListener;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.interfaces.SplashScreenAnimationCallback;
@@ -28,7 +29,7 @@ public class SplashScreenFragment extends Fragment implements SplashScreenAnimat
 
     private static final String debugTag = SignInFragment.class.getSimpleName();
     private View view;
-    private ImageView fromSharedLogo;
+    private LinearLayout fromSharedLogo;
     private TextView welcomeTtV;
     private LoginActivityCommonElementsAndMuchMore commonElements;
 
@@ -41,8 +42,8 @@ public class SplashScreenFragment extends Fragment implements SplashScreenAnimat
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if ( view == null ) view = inflater.inflate(R.layout.fragment_splashscreen, container, false);
-        fromSharedLogo  =   (ImageView) view.findViewById(R.id.fromSharedLogo);
-        welcomeTtV      =   (TextView) view.findViewById(R.id.welcome_text);
+        fromSharedLogo  =   (LinearLayout) view.findViewById(R.id.fromSharedLogo);
+        welcomeTtV      =   (TextView) view.findViewById(R.id.welcomeText);
         return view;
     }
 

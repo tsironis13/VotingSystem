@@ -15,7 +15,6 @@ public interface LoginActivityCommonElementsAndMuchMore {
     void registerOnClick();
     void showSnackBar(int code);
     void showErrorContainerSnackbar(String error_type, View errorView, int code);
-    void dismissErrorContainerSnackBar();
     void setText(String action, View view, String decodedMessage, String color);
     void animationOccured(boolean ishappening);
     void onSplashScreenAnimationFinish();

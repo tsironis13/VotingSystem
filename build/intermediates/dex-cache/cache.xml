@@ -82,22 +82,8 @@
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="21.1.2"
-        sha1="37db3686cdd855f702f462794b006ab6ff622c94">
+        sha1="53081403a3cc638897897234013b1f56335d7331">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_314fd57510f9e45d9239d9f7eca09cd051b69528/classes.dex" />
-    </item>
-    <item
-        jar="/home/giannis/.gradle/caches/modules-2/files-2.1/com.squareup.leakcanary/leakcanary-watcher/1.3.1/6904771474c058abfc5912c13d12b02754712165/leakcanary-watcher-1.3.1.jar"
-        jumboMode="true"
-        revision="21.1.2"
-        sha1="6904771474c058abfc5912c13d12b02754712165">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/leakcanary-watcher-1.3.1_d3e40089ed75690a23242583e89c2c9346a9d2c3/classes.dex" />
-    </item>
-    <item
-        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/de.keyboardsurfer.android.widget/crouton/1.8.5/jars/classes.jar"
-        jumboMode="true"
-        revision="21.1.2"
-        sha1="b81c788c5f175f94ddaac2f65e5d1726371e0963">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/de.keyboardsurfer.android.widget-crouton-1.8.5_5bf769d6c92d45ee0e1d06a561fb2311b9c76eb2/classes.dex" />
     </item>
     <item
         jar="/home/giannis/.gradle/caches/modules-2/files-2.1/com.google.code.gson/gson/2.3.1/ecb6e1f8e4b0e84c4b886c2f14a1500caf309757/gson-2.3.1.jar"
@@ -121,13 +107,6 @@
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/okio-1.6.0_8e437cc9b802a46c61491d33634c43d905a0a30d/classes.dex" />
     </item>
     <item
-        jar="/home/giannis/.gradle/caches/modules-2/files-2.1/com.squareup.leakcanary/leakcanary-analyzer/1.3.1/325e7401a7ea16918eb39ba8baad8fd5561a55d3/leakcanary-analyzer-1.3.1.jar"
-        jumboMode="true"
-        revision="21.1.2"
-        sha1="325e7401a7ea16918eb39ba8baad8fd5561a55d3">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/leakcanary-analyzer-1.3.1_201d1cf6683c8f88e2a8573658e2fb6310ad0b13/classes.dex" />
-    </item>
-    <item
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.github.rey5137/material/1.2.2/jars/classes.jar"
         jumboMode="true"
         revision="21.1.2"
@@ -149,13 +128,6 @@
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-8.4.0_bfb64bc95535add2f0dac70285d93b45e825d5b8/classes.dex" />
     </item>
     <item
-        jar="/home/giannis/.gradle/caches/modules-2/files-2.1/com.squareup.haha/haha/1.3/d2c832f9d14a11c79f58a7ee2e10526a12152c72/haha-1.3.jar"
-        jumboMode="true"
-        revision="21.1.2"
-        sha1="d2c832f9d14a11c79f58a7ee2e10526a12152c72">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/haha-1.3_3a836affaeab448e40e127aa7d8592d9c54643d1/classes.dex" />
-    </item>
-    <item
         jar="/home/giannis/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/converter-gson/2.0.0-beta2/392c3d09e0f5e7087544093cc0cb23bb9c7af5fa/converter-gson-2.0.0-beta2.jar"
         jumboMode="true"
         revision="21.1.2"
@@ -173,7 +145,7 @@
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="21.1.2"
-        sha1="9797d554f81562ed5c4b0e1117aa1d0e46b90e9f">
+        sha1="cd8498ce6186847f4b64c23cad405da53622e608">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_55fd48879fde64a1c8fcf3a3b2ac778641306fbb/classes.dex" />
     </item>
     <item
@@ -196,13 +168,6 @@
         revision="21.1.2"
         sha1="c2c594cace5d83a3227b2b6e658ecbfd586d3ed9">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-23.4.0_ad34f80b30970c7fd3dacae3eca21cc99f42d5fe/classes.dex" />
-    </item>
-    <item
-        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.3.1/jars/classes.jar"
-        jumboMode="true"
-        revision="21.1.2"
-        sha1="9066b6d4e2536b49e3b58aa301fd925247032df0">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.squareup.leakcanary-leakcanary-android-1.3.1_92ffa6c5913cbd8a6c172981b36c4efb040fda5a/classes.dex" />
     </item>
     <item
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/8.4.0/jars/classes.jar"

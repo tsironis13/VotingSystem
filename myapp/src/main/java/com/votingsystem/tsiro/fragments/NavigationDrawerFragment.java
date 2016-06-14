@@ -60,7 +60,7 @@ public class NavigationDrawerFragment extends Fragment {
         super.onCreate(savedInstanceState);
         userId = getUserId(getActivity());
         mUserLearnedDrawer = readFromPreferences(getActivity(), userId, 0);
-        Log.d(debugTag, "mUserLearnedDrawer " + mUserLearnedDrawer);
+        //Log.d(debugTag, "mUserLearnedDrawer " + mUserLearnedDrawer);
         setRetainInstance(true);
     }
 
@@ -68,9 +68,9 @@ public class NavigationDrawerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if ( view == null ) {
             view = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-            Log.d(debugTag, "view is null "+view.toString());
+           // Log.d(debugTag, "view is null "+view.toString());
         } else {
-            Log.d(debugTag, "view is not null");
+            //Log.d(debugTag, "view is not null");
                     ((ViewGroup) view.getParent()).removeView(view);
         }
         navigationDrawerRcV = (RecyclerView) view.findViewById(R.id.navigationDrawerRcV);
@@ -121,7 +121,7 @@ public class NavigationDrawerFragment extends Fragment {
     }
 
     private HashMap<String, Integer> getNavDrawersMetricsInPx() {
-        int vertical_spacing = (int) getResources().getDimension(R.dimen.in_common_1);
+        int vertical_spacing = (int) getResources().getDimension(R.dimen.in_common1);
         int row_height = (int) getResources().getDimension(R.dimen.nav_drawer_row_height);
         navDrawerMetricsHash = new HashMap<>();
         navDrawerMetricsHash.put("vertical spacing", vertical_spacing);
@@ -191,7 +191,7 @@ public class NavigationDrawerFragment extends Fragment {
 
     private static void saveToPreferences(Context context, int preferenceName, int preferenceValue) {
         sessionPrefs = LoginActivity.getSessionPrefs(context);
-        Log.d(debugTag, "pref name, value"+ preferenceName + preferenceValue);
+        //Log.d(debugTag, "pref name, value"+ preferenceName + preferenceValue);
         Toast.makeText(context, ""+preferenceName+" "+preferenceValue, Toast.LENGTH_SHORT).show();
         SharedPreferences.Editor editor = sessionPrefs.edit();
         editor.putInt(""+preferenceName, preferenceValue);

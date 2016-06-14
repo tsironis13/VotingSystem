@@ -27,8 +27,9 @@
         </activity>
 
         <activity
-            android:name="com.votingsystem.tsiro.mainClasses.AdminBaseActivity"
-            android:label="@string/adminBaseActivity">
+            android:name="com.votingsystem.tsiro.mainClasses.DashboardActivity"
+            android:screenOrientation="portrait"
+            android:label="@string/dashBoardActivity">
         </activity>
 
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for

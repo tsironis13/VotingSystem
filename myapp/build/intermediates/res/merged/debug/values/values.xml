@@ -105,8 +105,6 @@
     <color name="connection_settings_textColor">#424242</color>
     <color name="counter_textColor">#c5c4c4</color>
     <color name="counter_text_bg">#626262</color>
-    <color name="crouton_Ttv_color">#DD2C00</color>
-    <color name="crouton_background_color">#BF263238</color>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
     <color name="design_fab_shadow_mid_color">#14000000</color>
     <color name="design_fab_shadow_start_color">#44000000</color>
@@ -172,6 +170,7 @@
     <color name="secondary_text_default_material_light">#8a000000</color>
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
+    <color name="snack_bar_error_text">#C62828</color>
     <color name="submitBtnRippleColor">#FB8C00</color>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
     <color name="switch_thumb_disabled_material_light">#ffbdbdbd</color>
@@ -320,8 +319,8 @@
     <dimen name="abc_text_size_subtitle_material_toolbar">16dp</dimen>
     <dimen name="abc_text_size_title_material">20sp</dimen>
     <dimen name="abc_text_size_title_material_toolbar">20dp</dimen>
-    <dimen name="accept_password_Rlt_marginLeft">36dp</dimen>
-    <dimen name="accept_password_Rlt_width">26dp</dimen>
+    <dimen name="accept_password_rlt_margin_left">36dp</dimen>
+    <dimen name="accept_password_rlt_width">26dp</dimen>
     <dimen name="action_btn_height">35dp</dimen>
     <dimen name="action_btn_width">150dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
@@ -331,7 +330,7 @@
     <dimen name="cardview_default_radius">2dp</dimen>
     <dimen name="common_width">265dp</dimen>
     <dimen name="container_height">520dp</dimen>
-    <dimen name="container_paddingTopBottom">20dp</dimen>
+    <dimen name="container_padding_top_bottom">20dp</dimen>
     <dimen name="container_width">293dp</dimen>
     <dimen name="corner_radious">1dp</dimen>
     <dimen name="corners_radious">100dp</dimen>
@@ -365,91 +364,87 @@
     <dimen name="design_tab_text_size_2line">12sp</dimen>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
-    <dimen name="email_Edt_paddingRight">5dp</dimen>
-    <dimen name="errorContainer_Rlt_height">110dp</dimen>
-    <dimen name="et_dividerHeight">1dp</dimen>
-    <dimen name="et_labelTextSize">10sp</dimen>
-    <dimen name="et_supportTextSize">10sp</dimen>
-    <dimen name="firmname_Imv_marginLeft">11dp</dimen>
-    <dimen name="firmname_Imv_marginRight">0dp</dimen>
-    <dimen name="forgot_pass_container_marginBottom">37dp</dimen>
-    <dimen name="forgot_pass_container_marginTop">-27dp</dimen>
-    <dimen name="forgotpassword_Ttv_paddingLeftRight">3dp</dimen>
-    <dimen name="forgotpassword_Ttv_paddingTopBottom">12dp</dimen>
-    <dimen name="forgotpassword_inputfields_container_marginBottom">8dp</dimen>
-    <dimen name="forgotpassword_inputfields_container_marginTop">100dp</dimen>
-    <dimen name="forgotpassword_register_Ttv_paddingLeftRight">3dp</dimen>
-    <dimen name="forgotpassword_register_Ttv_paddingTopBottom">12dp</dimen>
+    <dimen name="email_edt_padding_right">5dp</dimen>
+    <dimen name="errorcontainer_rlt_height">110dp</dimen>
+    <dimen name="et_divider_height">1dp</dimen>
+    <dimen name="et_label_text_size">10sp</dimen>
+    <dimen name="et_support_text_size">10sp</dimen>
+    <dimen name="firmname_imv_margin_left">11dp</dimen>
+    <dimen name="forgotpassword_inputfields_container_margin_bottom">8dp</dimen>
+    <dimen name="forgotpassword_register_txv_padding_left_right">3dp</dimen>
+    <dimen name="forgotpassword_register_txv_padding_top_bottom">12dp</dimen>
+    <dimen name="forgotpassword_txv_padding_left_right">3dp</dimen>
+    <dimen name="forgotpassword_txv_padding_top_bottom">12dp</dimen>
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
-    <dimen name="in_common_1">16dp</dimen>
-    <dimen name="in_common_2">20dp</dimen>
-    <dimen name="in_common_3">36dp</dimen>
+    <dimen name="in_common1">16dp</dimen>
+    <dimen name="in_common2">20dp</dimen>
+    <dimen name="in_common3">36dp</dimen>
     <dimen name="input_container_height">50dp</dimen>
-    <dimen name="input_edt_textSize">13sp</dimen>
-    <dimen name="input_field_Edt_paddingRight">9dp</dimen>
-    <dimen name="input_field_Edt_width">252dp</dimen>
-    <dimen name="input_field_Rlt_paddingRight">5dp</dimen>
-    <dimen name="input_field_Rlt_width">252dp</dimen>
+    <dimen name="input_edt_text_size">13sp</dimen>
+    <dimen name="input_field_edt_padding_right">9dp</dimen>
+    <dimen name="input_field_edt_width">252dp</dimen>
     <dimen name="input_field_logo_dimens">25dp</dimen>
-    <dimen name="input_logo_marginLeftRight">8dp</dimen>
-    <dimen name="internal_error_sb_textSize">2sp</dimen>
+    <dimen name="input_field_rlt_padding_right">5dp</dimen>
+    <dimen name="input_field_rlt_width">252dp</dimen>
+    <dimen name="input_logo_margin_left_right">8dp</dimen>
+    <dimen name="internal_error_sb_text_size">2sp</dimen>
     <dimen name="item_touch_helper_max_drag_scroll_per_frame">20dp</dimen>
     <dimen name="item_touch_helper_swipe_escape_max_velocity">800dp</dimen>
     <dimen name="item_touch_helper_swipe_escape_velocity">120dp</dimen>
-    <dimen name="loginActivity_Btn_marginBottom">9dp</dimen>
-    <dimen name="loginActivity_Btn_marginTop">8dp</dimen>
-    <dimen name="loginActivity_SnkBar_height">48dp</dimen>
+    <dimen name="loginactivity_btn_margin_bottom">9dp</dimen>
+    <dimen name="loginactivity_btn_margin_top">8dp</dimen>
+    <dimen name="loginactivity_snkbar_height">30dp</dimen>
     <dimen name="logo_dimens">60dp</dimen>
-    <dimen name="logo_marginBottom">100dp</dimen>
-    <dimen name="marginBottom">15dp</dimen>
+    <dimen name="margin_bottom">15dp</dimen>
+    <dimen name="middle_view_padding_top">15dp</dimen>
     <dimen name="nav_drawer_logo_height">120dp</dimen>
-    <dimen name="nav_drawer_marginTop">5dp</dimen>
+    <dimen name="nav_drawer_margin_top">5dp</dimen>
     <dimen name="nav_drawer_row_height">48dp</dimen>
     <dimen name="nav_drawer_subtitle_height">56dp</dimen>
     <dimen name="nav_drawer_subtitle_textsize">14sp</dimen>
-    <dimen name="nav_drawer_titleAndLogo_height">226dp</dimen>
+    <dimen name="nav_drawer_title_and_logo_height">226dp</dimen>
     <dimen name="nav_drawer_width">280dp</dimen>
-    <dimen name="no_connection_sb_textSize">3sp</dimen>
+    <dimen name="no_connection_sb_text_size">14sp</dimen>
+    <dimen name="no_size">0dp</dimen>
     <dimen name="notification_large_icon_height">64dp</dimen>
     <dimen name="notification_large_icon_width">64dp</dimen>
     <dimen name="notification_subtext_size">12dp</dimen>
-    <dimen name="password_Edt_paddingRight">5dp</dimen>
-    <dimen name="password_Edt_width">186dp</dimen>
-    <dimen name="password_error_Ttv_height">15dp</dimen>
-    <dimen name="password_error_Ttv_textSize">10sp</dimen>
-    <dimen name="password_error_Ttv_width">222dp</dimen>
-    <dimen name="pickFirm_Spnr_marginBottom">8dp</dimen>
-    <dimen name="pickFirm_Spnr_maxHeight">100dp</dimen>
-    <dimen name="progressView_dimens">24dp</dimen>
-    <dimen name="rd_cornerRadius">0dp</dimen>
-    <dimen name="register_Ttv_paddingLeftRight">15dp</dimen>
-    <dimen name="register_Ttv_paddingTopBottom">12dp</dimen>
-    <dimen name="register_container_marginTop">10dp</dimen>
+    <dimen name="password_edt_padding_right">5dp</dimen>
+    <dimen name="password_edt_width">186dp</dimen>
+    <dimen name="password_error_txv_height">15dp</dimen>
+    <dimen name="password_error_txv_text_size">10sp</dimen>
+    <dimen name="password_error_txv_width">222dp</dimen>
+    <dimen name="pickfirm_spnr_margin_bottom">8dp</dimen>
+    <dimen name="pickfirm_spnr_max_height">100dp</dimen>
+    <dimen name="progressview_dimens">24dp</dimen>
+    <dimen name="rd_corner_radius">0dp</dimen>
+    <dimen name="register_container_margin_top">10dp</dimen>
     <dimen name="register_logo_dimens">60dp</dimen>
-    <dimen name="sb_horizontalPadding">15dp</dimen>
-    <dimen name="setting_Imv_dimens">23dp</dimen>
-    <dimen name="setting_Imv_marginLeftRight">15dp</dimen>
-    <dimen name="showHide_password_Ttv_TextSize">10sp</dimen>
-    <dimen name="showHide_password_Ttv_width">77dp</dimen>
-    <dimen name="signInHere_Ttv_paddingLeftRight">15dp</dimen>
-    <dimen name="signInHere_Ttv_paddingTopBottom">6dp</dimen>
-    <dimen name="signin_inputfields_container_marginBottom">10dp</dimen>
+    <dimen name="register_txv_padding_left_right">15dp</dimen>
+    <dimen name="register_txv_padding_top_bottom">12dp</dimen>
+    <dimen name="sb_horizontal_padding">15dp</dimen>
+    <dimen name="setting_imv_dimens">23dp</dimen>
+    <dimen name="setting_imv_margin_left_right">15dp</dimen>
+    <dimen name="showhide_password_txv_text_size">10sp</dimen>
+    <dimen name="showhide_password_txv_width">77dp</dimen>
+    <dimen name="signinhere_txv_margin_bottom">11dp</dimen>
+    <dimen name="signinhere_txv_padding_left_right">15dp</dimen>
+    <dimen name="signinhere_txv_padding_top_bottom">6dp</dimen>
     <dimen name="splash_logo_dimens">53dp</dimen>
-    <dimen name="splash_logo_marginBottom">25dp</dimen>
-    <dimen name="splash_logo_marginTop">5dp</dimen>
-    <dimen name="spn_arrowPadding">14dp</dimen>
-    <dimen name="spn_arrowSize">4dp</dimen>
+    <dimen name="spn_arrow_padding">14dp</dimen>
+    <dimen name="spn_arrow_size">4dp</dimen>
     <dimen name="stroke_width">1dp</dimen>
     <dimen name="toolbar_padding_top">0dp</dimen>
-    <dimen name="txVerror_textSize">12sp</dimen>
-    <dimen name="unavailable_service_internal_error_sb_horizontalPadding">30dp</dimen>
-    <dimen name="unavailable_service_sb_textSize">2sp</dimen>
+    <dimen name="txv_error_text_size">12sp</dimen>
+    <dimen name="unavailable_service_internal_error_sb_horizontal_padding">30dp</dimen>
+    <dimen name="unavailable_service_sb_text_size">2sp</dimen>
     <dimen name="view_height">1dp</dimen>
-    <dimen name="view_marginBottom">3dp</dimen>
-    <dimen name="view_marginTop">12dp</dimen>
-    <dimen name="welcome_textSize">15sp</dimen>
+    <dimen name="view_margin_bottom">3dp</dimen>
+    <dimen name="view_margin_top">100dp</dimen>
+    <dimen name="welcome_text_margin_top">17dp</dimen>
+    <dimen name="welcome_text_size">15sp</dimen>
     <drawable name="notification_template_icon_bg">#3333B5E5</drawable>
     <item name="action_bar_activity_content" type="id"/>
     <item name="action_bar_spinner" type="id"/>
@@ -462,7 +457,6 @@
     <item name="split_action_bar" type="id"/>
     <item name="up" type="id"/>
     <item name="view_offset_helper" type="id"/>
-    <integer name="__leak_canary_max_stored_leaks">7</integer>
     <integer name="abc_config_activityDefaultDur">220</integer>
     <integer name="abc_config_activityShortDur">150</integer>
     <integer name="abc_max_action_buttons">2</integer>
@@ -470,18 +464,6 @@
     <integer name="design_snackbar_text_max_lines">2</integer>
     <integer name="google_play_services_version">8487000</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
-    <string name="__leak_canary_analysis_failed">Leak analysis failed</string>
-    <string name="__leak_canary_class_has_leaked">%s has leaked</string>
-    <string name="__leak_canary_delete">Delete</string>
-    <string name="__leak_canary_delete_all">Delete all</string>
-    <string name="__leak_canary_display_activity_label">Leaks</string>
-    <string name="__leak_canary_failure_report">"Please report this failure to http://github.com/square/leakcanary\n"</string>
-    <string name="__leak_canary_leak_list_title">Leaks in %s</string>
-    <string name="__leak_canary_notification_message">Click for more details</string>
-    <string name="__leak_canary_share_heap_dump">Share heap dump</string>
-    <string name="__leak_canary_share_leak">Share info</string>
-    <string name="__leak_canary_share_with">Share with…</string>
-    <string name="__leak_canary_toast_heap_dump">Dumping memory, app will freeze. Brrrr.</string>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
     <string name="abc_action_bar_home_subtitle_description_format">%1$s, %2$s, %3$s</string>
@@ -504,7 +486,6 @@
     <string name="action">action</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
-    <string name="adminBaseActivity">AdminBaseActivity</string>
     <string name="app_logo">app_logo</string>
     <string name="app_name">VotingSystem</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
@@ -548,8 +529,10 @@
     <string name="confirmpassword">Επιβεβαίωση κωδικού</string>
     <string name="connectivity_change">android.net.conn.CONNECTIVITY_CHANGE</string>
     <string name="connectivity_status">connectivityStatus</string>
-    <string name="correct_error">Παρακαλώ διόρθωσε το παρακάτω λάθος: %1$s.</string>
-    <string name="correct_field">Παρακαλώ διόρθωσε το παρακάτω πεδίο: %1$s.</string>
+    <string name="correct_error">Παρακαλώ διόρθωσε το παραπάνω λάθος: %1$s.</string>
+    <string name="correct_field">Παρακαλώ διόρθωσε το παραπάνω πεδίο: %1$s.</string>
+    <string name="dashBoardActivity">DashboardActivity</string>
+    <string name="dashboardFgmt">dashboardFgmt</string>
     <string name="data">data</string>
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="editext">editext</string>
@@ -558,7 +541,7 @@
     <string name="emailValidation">emailValidation</string>
     <string name="email_notification">email_notification</string>
     <string name="email_tag">email</string>
-    <string name="empty_field">Παρακαλώ συμπλήρωσε τo παρακάτω πεδίo: %1$s.</string>
+    <string name="empty_field">Παρακαλώ συμπλήρωσε τo παραπάνω πεδίo: %1$s.</string>
     <string name="empty_string">""</string>
     <string name="error">error</string>
     <string name="error_account_not_verified_yet">Παρακαλώ ενεργοποίησε το λογαριασμό σου για να εισέλθεις στην εφαρμογή.</string>
@@ -1661,10 +1644,10 @@
     </style>
     <style name="Editext" parent="Material.Widget.EditText.Light">
         <item name="et_supportTextErrorColor">@color/et_supportTextErrorColor</item>
-        <item name="et_supportTextSize">@dimen/et_supportTextSize</item>
+        <item name="et_supportTextSize">@dimen/et_support_text_size</item>
         <item name="et_labelEnable">true</item>
         <item name="et_labelTextColor">@color/accentColor</item>
-        <item name="et_labelTextSize">@dimen/et_labelTextSize</item>
+        <item name="et_labelTextSize">@dimen/et_label_text_size</item>
         <item name="et_supportSingleLine">true</item>
         <item name="et_dividerColor">@android:color/transparent</item>
     </style>
@@ -1678,7 +1661,7 @@
         <item name="et_supportMode">helper</item>
     </style>
     <style name="EditextPassword" parent="Editext">
-        <item name="et_dividerHeight">@dimen/et_dividerHeight</item>
+        <item name="et_dividerHeight">@dimen/et_divider_height</item>
         <item name="et_dividerErrorColor">@color/divider_errorColor</item>
         <item name="et_supportMode">charCounter</item>
         <item name="et_supportMaxChars">8</item>
@@ -2352,32 +2335,15 @@
         <item name="android:paddingLeft">@dimen/abc_action_bar_overflow_padding_start_material</item>
         <item name="android:paddingRight">@dimen/abc_action_bar_overflow_padding_end_material</item>
     </style>
-    <style name="SignInHere_Register_ForgotPassword_Ttv" parent="Material.Drawable.Ripple">
+    <style name="SignInHereRegisterForgotPasswordTtv" parent="Material.Drawable.Ripple">
         <item name="rd_rippleColor">@color/primaryColor</item>
         <item name="rd_rippleAnimDuration">200</item>
     </style>
-    <style name="SnackBarInternalError" parent="Material.Widget.SnackBar.Mobile">
-        <item name="sb_horizontalPadding">@dimen/unavailable_service_internal_error_sb_horizontalPadding</item>
-        <item name="sb_textSize">@dimen/internal_error_sb_textSize</item>
-        <item name="sb_duration">2000</item>
-    </style>
-    <style name="SnackBarNoConnection" parent="Material.Widget.SnackBar.Mobile">
-        <item name="android:layout_gravity">top</item>
-        <item name="sb_horizontalPadding">@dimen/sb_horizontalPadding</item>
-        <item name="sb_actionText">@string/more</item>
-        <item name="sb_textSize">@dimen/no_connection_sb_textSize</item>
-        <item name="sb_duration">5000</item>
-    </style>
-    <style name="SnackBarUnavailableService" parent="Material.Widget.SnackBar.Mobile">
-        <item name="sb_horizontalPadding">@dimen/unavailable_service_internal_error_sb_horizontalPadding</item>
-        <item name="sb_textSize">@dimen/unavailable_service_sb_textSize</item>
-        <item name="sb_duration">2000</item>
-    </style>
     <style name="Spinner" parent="Material.Drawable.Ripple">
         <item name="spn_dividerColor">@android:color/transparent</item>
-        <item name="spn_arrowPadding">@dimen/spn_arrowPadding</item>
+        <item name="spn_arrowPadding">@dimen/spn_arrow_padding</item>
         <item name="spn_arrowColor">@color/accentColor</item>
-        <item name="spn_arrowSize">@dimen/spn_arrowSize</item>
+        <item name="spn_arrowSize">@dimen/spn_arrow_size</item>
         <item name="spn_arrowSwitchMode">true</item>
         <item name="spn_arrowAnimDuration">@android:integer/config_shortAnimTime</item>
         <item name="spn_arrowInterpolator">@android:anim/decelerate_interpolator</item>
@@ -2389,7 +2355,7 @@
         <item name="rd_rippleColor">@color/primaryColor</item>
         <item name="rd_rippleAnimDuration">380</item>
         <item name="rd_maskType">rectangle</item>
-        <item name="rd_cornerRadius">@dimen/rd_cornerRadius</item>
+        <item name="rd_cornerRadius">@dimen/rd_corner_radius</item>
         <item name="rd_delayClick">afterRelease</item>
         <item name="android:textColor">@color/abc_primary_text_material_light</item>
     </style>
@@ -2662,6 +2628,4 @@
         <item name="counterTextAppearance">@style/TextAppearance.Design.Counter</item>
         <item name="counterOverflowTextAppearance">@style/TextAppearance.Design.Counter.Overflow</item>
     </style>
-    <style name="__LeakCanary.Base" parent="android:Theme">
-  </style>
 </resources>
