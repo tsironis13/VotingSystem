@@ -1,44 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- GLOBAL -->
-    <color name="white">#FFF</color>
-
-    <!-- LOGIN IN -->
-    <color name="loginFieldsContainerColor">#8001579B</color>
-    <color name="loginSpanColor">#EF6C00</color>
-    <color name="actionBtnColor">#CCEF6C00</color>
-    <color name="viewBackgroundColor">#CCFFFFFF</color>
-    <color name="txVerrorColor">#DD2C00</color>
-    <color name="input_hintColor">#80FFFFFF</color>
-    <color name="snack_bar_error_text">#C62828</color>
-    <!-- REGISTER -->
-    <color name="et_supportTextErrorColor">#DD2C00</color>
-    <color name="password_error_Ttv_textColor">#DD2C00</color>
-    <color name="divider_errorColor">#DD2C00</color>
-    <color name="submitBtnRippleColor">#FB8C00</color>
-
-    <color name="list_item_title">#fff</color>
-    <color name="list_background">#303030</color>
-    <color name="list_background_pressed">#992416</color>
-    <color name="list_divider">#272727</color>
-    <color name="counter_text_bg">#626262</color>
-    <color name="counter_textColor">#c5c4c4</color>
     <color name="primaryColor">#2196F3</color>
     <color name="primaryColorDark">#1976D2</color>
     <color name="accentColor">#FF5722</color>
+    <color name="colorControlHightlight">#8001579B</color>
+    <!-- LOGIN IN -->
+    <color name="login_fields_container_color">#8001579B</color>
+    <color name="login_span_color">#EF6C00</color>
+    <color name="action_btn_color">#CCEF6C00</color>
+    <color name="view_background_color">#CCFFFFFF</color>
+    <color name="txv_error_color">#DD2C00</color>
+    <color name="input_hint_color">#80FFFFFF</color>
+    <color name="sb_error_text">#C62828</color>
+    <!-- REGISTER -->
+    <color name="et_support_text_error_color">#DD2C00</color>
+    <color name="password_error_txv_text_color">#DD2C00</color>
+    <color name="divider_error_color">#DD2C00</color>
+    <color name="submit_btn_ripple_color">#FB8C00</color>
+    <!-- DASHBOARD -->
+    <color name="total_responsed_surveys_desc_text_color">#9E9E9E</color>
+    <color name="last_created_date_text_color">#424242</color>
+    <color name="view_color">#E0E0E0</color>
+    <color name="have_survey_desc_txv_text_color">#424242</color>
+    <color name="note_text_color">#E53935</color>
     <!-- DIALOGS -->
-    <color name="connection_settings_textColor">#424242</color>
-    <color name="connection_settings_rippleColor">#E0E0E0</color>
+    <color name="connection_settings_text_color">#424242</color>
+    <color name="connection_settings_ripple_color">#E0E0E0</color>
     <!-- NAV DRAWER -->
-    <color name="navdrawerMainColor">#FB8C00</color>
-    <color name="navdrawerRcVColor">#EEE</color>
-    <color name="navdrawerRcVTtvColor">#424242</color>
-    <color name="navdrawerRcVTtvSelectedColor">#3949AB</color>
-    <!-- ACCEPT DRAWABLE -->
-    <color name="gradient_startColor">#4CAF50</color>
-    <color name="gradient_centerColor">#388E3C</color>
-    <color name="gradient_endColor">#1B5E20</color>
-    <color name="gradient_strokeColor">#4f4CAF50</color>
+
     <!-- PROGRESS VIEW -->
     <array name="in_circular_progress_colors">
         <item>#EF6C00</item>

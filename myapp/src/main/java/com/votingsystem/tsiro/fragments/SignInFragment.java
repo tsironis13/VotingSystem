@@ -8,6 +8,7 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
@@ -98,7 +99,7 @@ public class SignInFragment extends Fragment implements LAMVCView{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) toSharedLogo.setTransitionName(getResources().getString(R.string.tosharedlogoTrns));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) toSharedLogo.setTransitionName(getResources().getString(R.string.toshared_logo_trns));
 
         if (snackBar != null && snackBar.isShown()) snackBar.dismiss();
         LAMVCpresenterImpl  =   new LAMVCPresenterImpl(this);
@@ -108,11 +109,6 @@ public class SignInFragment extends Fragment implements LAMVCView{
         connectionStatus = initialConnectionStatus;
         if (isAdded()) initializeBroadcastReceivers();
 
-        sessionPrefs = LoginActivity.getSessionPrefs(getActivity());
-        boolean key = sessionPrefs.contains("17");
-        int value = sessionPrefs.getInt("17", 0);
-        //Toast.makeText(getContext(), "key, value" + key + " " + value, Toast.LENGTH_SHORT).show();
-        if ( sessionPrefs.contains("user_id") ) startBaseActivity();
         signInBtn.setTransformationMethod(null);
         setRegisterSpan();
         passwordEdt.setOnEditorActionListener(new android.widget.TextView.OnEditorActionListener() {
@@ -171,7 +167,7 @@ public class SignInFragment extends Fragment implements LAMVCView{
         if (nextAnim != 0) {
             Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
             if (enter) return super.onCreateAnimation(transit, true, nextAnim);
-            if (commonElements != null) animation.setAnimationListener(new AnimationListener(commonElements, this, getResources().getString(R.string.signInFgmt), ""));
+            if (commonElements != null) animation.setAnimationListener(new AnimationListener(commonElements, this, getResources().getString(R.string.signin_fgmt), ""));
 
             AnimationSet animationSet = new AnimationSet(true);
             animationSet.addAnimation(animation);
@@ -225,9 +221,17 @@ public class SignInFragment extends Fragment implements LAMVCView{
     public void onFailureFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded) {}
 
     @Override
-    public void onSuccess() {
+    public void onSuccess() {}
+
+    @Override
+    public void onSuccessUserSignIn(int user_id, String username, String email, int firm_id) {
         getActivity().finish();
+        initializeSessionId(user_id, username, email, firm_id);
         Intent intent = new Intent(getActivity(), DashboardActivity.class);
+        intent.putExtra(getResources().getString(R.string.user_id), user_id);
+        intent.putExtra(getResources().getString(R.string.username_tag), username);
+        intent.putExtra(getResources().getString(R.string.email_tag), email);
+        intent.putExtra(getResources().getString(R.string.firm_id), firm_id);
         startActivity(intent);
         getActivity().overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
     }
@@ -261,5 +265,18 @@ public class SignInFragment extends Fragment implements LAMVCView{
 
     private LoginFormBody fillLoginUserFields() {
         return new LoginFormBody(getResources().getString(R.string.login_user), usernameEdt.getText().toString(), passwordEdt.getText().toString());
+    }
+
+    private void initializeSessionId(int user_id, String username, String email, int firm_id) {
+        SharedPreferences.Editor editor = LoginActivity.getSessionPrefs(getActivity()).edit();
+        int id = LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0);
+        Log.e(debugTag, id+"");
+        if (id == 0) {
+            editor.putInt(getResources().getString(R.string.user_id), user_id);
+            editor.putString(getResources().getString(R.string.username_tag), username);
+            editor.putString(getResources().getString(R.string.email_tag), email);
+            editor.putInt(getResources().getString(R.string.firm_id), firm_id);
+            editor.apply();
+        }
     }
 }

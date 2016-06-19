@@ -2,6 +2,7 @@
     <!-- MANIFEST -->
     <string name="app_name">VotingSystem</string>
     <string name="dashBoardActivity">DashboardActivity</string>
+    <string name="surveysActivity">SurveysActivity</string>
     <!-- GENERAL -->
     <string name="welcome_text">Καλωσήρθατε!</string>
     <string name="yes">yes</string>
@@ -17,18 +18,17 @@
     <string name="action">action</string>
     <string name="email_notification">email_notification</string>
     <!-- TAG -->
-    <string name="splashScreenFgmt">splashScreenFgmt</string>
-    <string name="signInFgmt">signInFgmt</string>
-    <string name="forgotPasswordFgmt">forgotPasswordFgmt</string>
-    <string name="registerFgmt">registerFgmt</string>
-    <string name="dashboardFgmt">dashboardFgmt</string>
+    <string name="splashscreen_fgmt">splashScreenFgmt</string>
+    <string name="signin_fgmt">signInFgmt</string>
+    <string name="forgotpassword_fgmt">forgotPasswordFgmt</string>
+    <string name="register_fgmt">registerFgmt</string>
+    <string name="dashboard_fgmt">dashboardFgmt</string>
     <string name="editext">editext</string>
     <string name="spinner">spinner</string>
+    <string name="user_id">user_id</string>
+    <string name="firm_id">firm_id</string>
     <!-- ACTIONS -->
     <string name="register_user">register_user</string>
-    <string name="usernameValidation">usernameValidation</string>
-    <string name="passwordValidation">passwordValidation</string>
-    <string name="emailValidation">emailValidation</string>
     <string name="reset_password">reset_password</string>
     <string name="login_user">login_user</string>
     <string name="get_firm_names">getFirmNames</string>
@@ -43,8 +43,8 @@
     <!-- LOGIN -->
     <string name="theme">theme</string>
     <string name="app_logo">app_logo</string>
-    <string name="fromsharedlogoTrns">fromsharedlogoTrns</string>
-    <string name="tosharedlogoTrns">tosharedlogoTrns</string>
+    <string name="fromshared_logo_trns">fromsharedlogoTrns</string>
+    <string name="toshared_logo_trns">tosharedlogoTrns</string>
     <string name="input_logo">input_logo</string>
     <string name="username">Όνομα χρήστη</string>
     <string name="password">Κωδικός πρόσβασης</string>
@@ -60,6 +60,19 @@
     <string name="showPassword">ΕΜΦΑΝΙΣΗ</string>
     <string name="hidePassword">ΑΠΟΚΡΥΨΗ</string>
     <string name="pickFirm">Επιλογή Εταιρείας</string>
+    <!-- DASHBOARD -->
+    <string name="home">Αρχική</string>
+    <string name="your_firm">Η εταιρεία σου</string>
+    <string name="total_surveys">Σύνολο \nΕρευνών</string>
+    <string name="responsed_surveys">Απαντημένες \nΈρευνες</string>
+    <string name="last_created_date">Ημ. δημιουργίας \nτελευταίας έρευνας</string>
+    <string name="view_surveys">Δες ολες τις ερευνες</string>
+    <string name="have_survey">Έχεις έτοιμη έρευνα?</string>
+    <string name="have_survey_desc">Πρότεινε τη δική σου έρευνα σχετικά με το περιβάλλον εργασίας μιας επιχείρησης.</string>
+    <string name="add_new">Δημιουργια νεας</string>
+    <string name="note">Σημείωση: η έρευνα θα είναι διαθέσιμη προς ψήφιση αφού εγκριθεί από το διαχειριστή μέσα σε διάστημα 24 ωρών.</string>
+    <!-- SURVEYS -->
+
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>
@@ -97,33 +110,21 @@
     <string name="connectivity_status">connectivityStatus</string>
     <string name="back_pressed">backpressed</string>
     <string name="registration_token">registrationToken</string>
-    <!-- NAVIGATION DRAWER ITEMS -->
+    <!-- NAVIGATION DRAWER -->
     <string name="firm">Η Εταιρεία</string>
-    <string name="mysurveys">Οι Έρευνες μου</string>
-    <string name="newsurvey">Νέα Έρευνα</string>
-    <string name="editsurvey">Επεξεργασία Έρευνας</string>
-    <string name="viewresults">Προβολή Αποτελεσμάτων</string>
+    <string name="surveys">Έρευνες</string>
+    <string name="results">Αποτελέσματα</string>
+    <string name="notifications">Ειδοποιήσεις</string>
     <string name="settings">Ρύθμισεις</string>
     <string name="logout">Αποσυνδεση</string>
-    <!-- STRING COLORS-->
-    <string name="error_color_string">#DD2C00</string>
-    <!-- Nav Drawer List Item Icons -->
-    <!-- Keep them in order as the titles are in -->
-    <array name="nav_drawer_icons">
-        <item>@drawable/ic_home</item>
-    </array>
-    <string name="title_section1">Section 1</string>
-    <string name="title_section2">Section 2</string>
-    <string name="title_section3">Section 3</string>
-
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- STRING COLORS-->
+    <string name="error_color_string">#DD2C00</string>
 
     <string name="action_example">Example action</string>
-
     <string name="action_settings">Settings</string>
-
-    <!-- Scale points array -->
+    <!-- SCALE POINTS ARRAY -->
     <string-array name="agree_array">
         <item>Strongly disagree</item>
         <item>Disagree</item>
@@ -131,10 +132,12 @@
         <item>Agree</item>
         <item>Strongly Agree</item>
     </string-array>
-
-
-
+    <!-- SURVEYS TABS -->
+    <string-array name="surveys_tabs">
+        <item>ΟΛΟΚΛΗΡΩΜΕΝΕΣ</item>
+        <item>ΣΕ ΕΞΕΛΙΞΗ</item>
+        <item>ΕΚΚΡΕΜΟΥΝ</item>
+    </string-array>
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
-
 </resources>

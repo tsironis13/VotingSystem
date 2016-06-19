@@ -1,6 +1,7 @@
 package com.votingsystem.tsiro.rest;
 
 import com.votingsystem.tsiro.POJO.Firm;
+import com.votingsystem.tsiro.POJO.FirmSurveyDetails;
 import com.votingsystem.tsiro.POJO.LoginAndResetUserPasswordStuff;
 import com.votingsystem.tsiro.POJO.LoginFormBody;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
@@ -31,7 +32,11 @@ public interface ApiService {
     Call<Firm> getFirmNames(@Field("action") String action);
 
     @FormUrlEncoded
-    @POST("functions/firmRequests.php")
-    Call<Firm> getFirmByNameAndCode(@Field("action") String action, @Field("firm-name") String firmName, @Field("firm-code") String firmCode);
+    @POST("requests/firms.php")
+    Call<FirmSurveyDetails> getFirmSurveyDetails(@Field("action") String action, @Field("user_id") int user_id, @Field("firm_id") int firm_id);
+
+//    @FormUrlEncoded
+//    @POST("functions/firmRequests.php")
+//    Call<Firm> getFirmByNameAndCode(@Field("action") String action, @Field("firm-name") String firmName, @Field("firm-code") String firmCode);
 
 }

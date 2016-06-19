@@ -4,10 +4,15 @@
         <!-- Customize your theme here. -->
     </style>
     <style name="AppTheme.Base" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/white</item>
+        <item name="android:windowBackground">@android:color/white</item>
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryColorDark</item>
         <item name="colorAccent">@color/accentColor</item>
+    </style>
+    <!-- TOOLBAR -->
+    <style name="ToolbarCustomTheme" parent="AppTheme">
+        <item name="android:textColorSecondary">@android:color/white</item>
+        <item name="android:textSize">15sp</item>
     </style>
     <!-- LOGIN -->
     <style name="SignInHereRegisterForgotPasswordTtv" parent="Material.Drawable.Ripple">
@@ -20,7 +25,7 @@
     </style>
     <!-- REGISTER -->
     <style name="Editext" parent="Material.Widget.EditText.Light">
-        <item name="et_supportTextErrorColor">@color/et_supportTextErrorColor</item>
+        <item name="et_supportTextErrorColor">@color/et_support_text_error_color</item>
         <item name="et_supportTextSize">@dimen/et_support_text_size</item>
         <item name="et_labelEnable">true</item>
         <item name="et_labelTextColor">@color/accentColor</item>
@@ -33,7 +38,7 @@
     </style>
     <style name="EditextPassword" parent="Editext">
         <item name="et_dividerHeight">@dimen/et_divider_height</item>
-        <item name="et_dividerErrorColor">@color/divider_errorColor</item>
+        <item name="et_dividerErrorColor">@color/divider_error_color</item>
         <item name="et_supportMode">charCounter</item>
         <item name="et_supportMaxChars">8</item>
         <item name="et_supportTextColor">@color/accentColor</item>
@@ -46,6 +51,12 @@
     </style>
     <style name="EditextFirmCode" parent="Editext">
         <item name="et_supportMode">helper</item>
+    </style>
+    <!-- DASHBOARD -->
+    <style name="viewAll" parent="Material.Drawable.Ripple.Wave">
+        <item name="rd_rippleColor">@color/accentColor</item>
+        <item name="rd_rippleAnimDuration">280</item>
+        <item name="rd_delayClick">afterRelease</item>
     </style>
     <!-- SPINNER -->
     <style name="Spinner" parent="Material.Drawable.Ripple">
@@ -68,6 +79,11 @@
         <item name="rd_delayClick">afterRelease</item>
         <item name="android:textColor">@color/abc_primary_text_material_light</item>
     </style>
+    <!-- NAVIGATION DRAWER -->
+    <style name="NavItem" parent="Material.Drawable.Ripple.Wave">
+        <item name="rd_rippleColor">@color/connection_settings_ripple_color</item>
+        <item name="rd_rippleAnimDuration">400</item>
+    </style>
     <!-- PROGRESS VIEWS -->
     <style name="CircularProgressDrawable" parent="Material.Drawable.CircularProgress">
         <item name="cpd_strokeColor">@color/accentColor</item>
@@ -81,7 +97,7 @@
     </style>
 
     <style name="InCircularProgressDrawable" parent="Material.Drawable.CircularProgress">
-        <item name="cpd_strokeColor">@color/actionBtnColor</item>
+        <item name="cpd_strokeColor">@color/action_btn_color</item>
         <item name="cpd_inAnimDuration">600</item>
         <item name="cpd_inStepPercent">0.4</item>
         <item name="cpd_inStepColors">@array/in_circular_progress_colors</item>
@@ -105,7 +121,11 @@
     </style>
     <style name="ConnectionSettingsBottomSheetDialogLlt" parent="Material.Drawable.Ripple.Wave">
         <item name="android:background">@android:color/white</item>
-        <item name="rd_rippleColor">@color/connection_settings_rippleColor</item>
+        <item name="rd_rippleColor">@color/connection_settings_ripple_color</item>
         <item name="rd_rippleAnimDuration">400</item>
+    </style>
+    <style name="test">
+        <item name="android:state_pressed">@android:color/white</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 </resources>

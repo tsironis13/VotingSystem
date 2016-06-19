@@ -50,14 +50,14 @@ public class SplashScreenFragment extends Fragment implements SplashScreenAnimat
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) fromSharedLogo.setTransitionName(getResources().getString(R.string.fromsharedlogoTrns));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) fromSharedLogo.setTransitionName(getResources().getString(R.string.fromshared_logo_trns));
         initializeSplashscreenAnimations();
     }
 
     private void initializeSplashscreenAnimations() {
         Animation mLoadAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.slide_in);
         mLoadAnimation.setDuration(1300);
-        mLoadAnimation.setAnimationListener(new AnimationListener(null, this, getResources().getString(R.string.splashScreenFgmt), getResources().getString(R.string.middle_animation)));
+        mLoadAnimation.setAnimationListener(new AnimationListener(null, this, getResources().getString(R.string.splashscreen_fgmt), getResources().getString(R.string.middle_animation)));
         fromSharedLogo.startAnimation(mLoadAnimation);
     }
 
@@ -67,7 +67,7 @@ public class SplashScreenFragment extends Fragment implements SplashScreenAnimat
             welcomeTtV.setText(commonElements.decodeUtf8(commonElements.encodeUtf8(getResources().getString(R.string.welcome_text))));
             Animation slideAnimation = AnimationUtils.loadAnimation(getActivity(), R.anim.fade_in);
             slideAnimation.setDuration(1000);
-            slideAnimation.setAnimationListener(new AnimationListener(null, this, getResources().getString(R.string.splashScreenFgmt), getResources().getString(R.string.final_animation)));
+            slideAnimation.setAnimationListener(new AnimationListener(null, this, getResources().getString(R.string.splashscreen_fgmt), getResources().getString(R.string.final_animation)));
             welcomeTtV.startAnimation(slideAnimation);
         } else {
             this.commonElements.onSplashScreenAnimationFinish();

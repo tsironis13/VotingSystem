@@ -113,6 +113,11 @@ public class LAMVCPresenterImpl implements LAMVCPresenter, LAMVCFinishedListener
     }
 
     @Override
+    public void onSuccessUserSignIn(int user_id, String username, String email, int firm_id) {
+        if (LAMVCview != null) LAMVCview.onSuccessUserSignIn(user_id, username, email, firm_id);
+    }
+
+    @Override
     public void onDestroy() {
         LAMVCview = null;
     }

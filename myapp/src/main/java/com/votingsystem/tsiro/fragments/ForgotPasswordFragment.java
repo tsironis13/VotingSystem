@@ -165,7 +165,7 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
         if (nextAnim != 0) {
             Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
             if (enter) return super.onCreateAnimation(transit, true, nextAnim);
-            if (commonElements != null) animation.setAnimationListener(new AnimationListener(commonElements, null, getResources().getString(R.string.forgotPasswordFgmt), ""));
+            if (commonElements != null) animation.setAnimationListener(new AnimationListener(commonElements, null, getResources().getString(R.string.forgotpassword_fgmt), ""));
 
             AnimationSet animationSet = new AnimationSet(true);
             animationSet.addAnimation(animation);
@@ -196,6 +196,9 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
         if (progressView != null && progressView.isShown()) progressView.stop();
         if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) commonElements.signInHereOnClick();
     }
+
+    @Override
+    public void onSuccessUserSignIn(int user_id, String username, String email, int firm_id) {}
 
     @Override
     public void onFailure(int code, String field, String hint, String retry_in) {

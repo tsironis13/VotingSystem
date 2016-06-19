@@ -1,6 +1,5 @@
 package com.votingsystem.tsiro.interfaces;
 
-import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.widget.TextView;
 import android.view.View;
 

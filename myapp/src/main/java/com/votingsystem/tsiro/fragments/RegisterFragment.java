@@ -32,8 +32,6 @@ import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.ImageView;
-
-import com.androidadvance.topsnackbar.TSnackbar;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.LinearLayout;
 import com.rey.material.widget.ProgressView;
@@ -144,7 +142,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
             pickFirmSpnr.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
                 @Override
                 public void onItemSelected(Spinner parent, View view, int position, long id) {
-                    if (view instanceof TextView) ((TextView) view).setTextColor(ContextCompat.getColor(getActivity(), R.color.white));
+                    if (view instanceof TextView) ((TextView) view).setTextColor(ContextCompat.getColor(getActivity(), android.R.color.white));
                 }
             });
             pickFirmSpnr.setOnTouchListener(new View.OnTouchListener() {
@@ -195,7 +193,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         if (nextAnim != 0) {
             Animation animation = AnimationUtils.loadAnimation(getActivity(), nextAnim);
             if (enter) return super.onCreateAnimation(transit, true, nextAnim);
-            if (commonElements != null) animation.setAnimationListener(new AnimationListener(commonElements, null, getResources().getString(R.string.registerFgmt), ""));
+            if (commonElements != null) animation.setAnimationListener(new AnimationListener(commonElements, null, getResources().getString(R.string.register_fgmt), ""));
 
             AnimationSet animationSet = new AnimationSet(true);
             animationSet.addAnimation(animation);
@@ -342,6 +340,9 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         if (progressView != null && progressView.isShown()) progressView.stop();
         if (getActivity().getSupportFragmentManager().getBackStackEntryCount() > 0) commonElements.signInHereOnClick();
     }
+
+    @Override
+    public void onSuccessUserSignIn(int user_id, String username, String email, int firm_id) {}
 
     private void initializeBroadcastReceivers() {
         connectionStatusReceiver = new BroadcastReceiver() {

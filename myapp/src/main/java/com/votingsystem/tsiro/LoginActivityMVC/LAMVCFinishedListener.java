@@ -12,4 +12,5 @@ public interface LAMVCFinishedListener {
     void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList);
     void onFailure(int code, String field, String hint, String retry_in);
     void onSuccess();
+    void onSuccessUserSignIn(int user_id, String username, String email, int firm_id);
 }

@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/container_padding">
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <com.rey.material.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/your_firm_txv_padding_top"
+                    android:paddingLeft="@dimen/common_padding"
+                    android:paddingRight="@dimen/common_padding"
+                    android:textSize="@dimen/title_text_size"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:text="@string/your_firm" />
+
+                <com.rey.material.widget.TextView
+                    android:id="@+id/firmTtv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingLeft="@dimen/common_padding"
+                    android:paddingRight="@dimen/common_padding"
+                    android:paddingBottom="@dimen/common_padding"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/accentColor" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:baselineAligned="true"
+                    android:paddingBottom="@dimen/common_padding"
+                    android:weightSum="100">
+
+                    <LinearLayout
+                        android:layout_width="@dimen/no_size"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <com.rey.material.widget.TextView
+                            android:id="@+id/totalSurveysTtv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/total_responsed_surveys_text_size"
+                            android:textColor="@android:color/black" />
+
+                        <com.rey.material.widget.TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/total_surveys"
+                            android:textColor="@color/total_responsed_surveys_desc_text_color"
+                            android:textSize="@dimen/total_responsed_surveys_desc_text_size"
+                            android:gravity="center"/>
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="@dimen/no_size"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <com.rey.material.widget.TextView
+                            android:id="@+id/responsedSurveysTtv"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textSize="@dimen/total_responsed_surveys_text_size"
+                            android:textColor="@android:color/black" />
+
+                        <com.rey.material.widget.TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/responsed_surveys"
+                            android:textColor="@color/total_responsed_surveys_desc_text_color"
+                            android:textSize="@dimen/total_responsed_surveys_desc_text_size"
+                            android:gravity="center"/>
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/common_padding"
+                    android:textSize="@dimen/text_size"
+                    android:weightSum="100">
+
+                    <com.rey.material.widget.TextView
+                        android:layout_width="@dimen/no_size"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:textColor="@color/last_created_date_text_color"
+                        android:text="@string/last_created_date" />
+
+                    <com.rey.material.widget.TextView
+                        android:id="@+id/lastCreatedDateTtv"
+                        android:layout_width="@dimen/no_size"
+                        android:layout_height="match_parent"
+                        android:layout_weight="50"
+                        android:textStyle="bold"
+                        android:textColor="@android:color/black"
+                        android:gravity="end" />
+
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/view_height"
+                    android:background="@color/view_color"/>
+
+                <com.rey.material.widget.Button
+                    android:id="@+id/viewAll"
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/view_all_height"
+                    android:paddingTop="@dimen/view_all_padding_top_bottom"
+                    android:paddingRight="@dimen/common_padding"
+                    android:paddingLeft="@dimen/common_padding"
+                    android:paddingBottom="@dimen/view_all_padding_top_bottom"
+                    android:background="@android:color/transparent"
+                    android:textColor="@color/primaryColor"
+                    android:text="@string/view_surveys"
+                    style="@style/viewAll"/>
+                <!--<com.rey.material.widget.TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:padding="8dp"
+                    android:text="Des oles tis ereunes" />-->
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+        <android.support.v7.widget.CardView
+            xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/have_survey_crdv_margin_top"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="@dimen/common_padding"
+                android:paddingRight="@dimen/common_padding"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/have_survey_txv_padding_top"
+                    android:paddingBottom="@dimen/have_survey_txv_padding_bottom"
+                    android:textSize="@dimen/title_text_size"
+                    android:textColor="@android:color/black"
+                    android:textStyle="bold"
+                    android:text="@string/have_survey" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:paddingBottom="@dimen/have_survey_desc_txv_padding_bottom"
+                    android:textSize="@dimen/text_size"
+                    android:textColor="@color/have_survey_desc_txv_text_color"
+                    android:text="@string/have_survey_desc" />
+
+                <com.rey.material.widget.Button
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:background="@color/accentColor"
+                    android:textColor="@android:color/white"
+                    android:text="@string/add_new" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingTop="@dimen/note_padding_top"
+                    android:paddingBottom="@dimen/common_padding"
+                    android:textColor="@color/note_text_color"
+                    android:textSize="@dimen/note_text_size"
+                    android:text="@string/note" />
+
+            </LinearLayout>
+
+        </android.support.v7.widget.CardView>
+
+    </LinearLayout>
+
+</ScrollView>

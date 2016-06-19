@@ -16,5 +16,6 @@ public interface LAMVCView {
     void onSuccessfulFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded);
     void onFailureFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded);
     void onSuccess();
+    void onSuccessUserSignIn(int user_id, String username, String email, int firm_id);
     void onFailure(int code, String field, String hint, String retry_in);
 }

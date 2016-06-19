@@ -44,13 +44,6 @@
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/retrofit-2.0.0_233fbbff8fa75c0123fcaaa50f780710d28c8953/classes.dex" />
     </item>
     <item
-        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/23.1.0/jars/classes.jar"
-        jumboMode="true"
-        revision="21.1.2"
-        sha1="19026d31f5d3ae868db81319671a642be5fbba08">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.1.0_7a39d93f3d80ab2f9e7372f0c1bf4ea193faf28a/classes.dex" />
-    </item>
-    <item
         jar="/home/giannis/.gradle/caches/modules-2/files-2.1/com.squareup.okhttp3/okhttp/3.2.0/f7873a2ebde246a45c2a8d6f3247108b4c88a879/okhttp-3.2.0.jar"
         jumboMode="true"
         revision="21.1.2"
@@ -72,17 +65,10 @@
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-recyclerview-v7-23.4.0_bacf81c7399c94c10e1676a4ad07cb53d79df6f3/classes.dex" />
     </item>
     <item
-        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.androidadvance/topsnackbar/0.0.9/jars/classes.jar"
-        jumboMode="true"
-        revision="21.1.2"
-        sha1="a640598f50ac0c75ca523109b59dd730fea79a36">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.androidadvance-topsnackbar-0.0.9_4dc4cce69bf4c12f939e93c55f66d0838198b400/classes.dex" />
-    </item>
-    <item
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
         jumboMode="true"
         revision="21.1.2"
-        sha1="53081403a3cc638897897234013b1f56335d7331">
+        sha1="fef47c5223962a6d052117d2e9007ebda1fec747">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_314fd57510f9e45d9239d9f7eca09cd051b69528/classes.dex" />
     </item>
     <item
@@ -128,6 +114,13 @@
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-basement-8.4.0_bfb64bc95535add2f0dac70285d93b45e825d5b8/classes.dex" />
     </item>
     <item
+        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/23.4.0/jars/classes.jar"
+        jumboMode="true"
+        revision="21.1.2"
+        sha1="5326d9a850d491714fef8cbfaa9ea3416f0bf0d2">
+        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-design-23.4.0_bef29444376deffe4bfb84e8ef1065c2987bee95/classes.dex" />
+    </item>
+    <item
         jar="/home/giannis/.gradle/caches/modules-2/files-2.1/com.squareup.retrofit/converter-gson/2.0.0-beta2/392c3d09e0f5e7087544093cc0cb23bb9c7af5fa/converter-gson-2.0.0-beta2.jar"
         jumboMode="true"
         revision="21.1.2"
@@ -145,7 +138,7 @@
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
         jumboMode="true"
         revision="21.1.2"
-        sha1="cd8498ce6186847f4b64c23cad405da53622e608">
+        sha1="fe18d71980985a2bb564becfc05fecc3e2f3c821">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_55fd48879fde64a1c8fcf3a3b2ac778641306fbb/classes.dex" />
     </item>
     <item

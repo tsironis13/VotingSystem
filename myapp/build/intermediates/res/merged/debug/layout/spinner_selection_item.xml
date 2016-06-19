@@ -7,6 +7,6 @@
     android:layout_width="match_parent"
     android:singleLine="true"
     android:textSize="13sp"
-    android:textColor="@color/input_hintColor"
+    android:textColor="@color/input_hint_color"
     android:ellipsize="marquee"
     android:text="@string/pickFirm" />

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/nav_drawer_header_height"
+    android:paddingRight="@dimen/nav_drawer_header_padding_left_right"
+    android:paddingLeft="@dimen/nav_drawer_header_padding_left_right"
+    android:background="@drawable/header_background">
+    
+    <ImageView
+        android:id="@+id/profileIcon"
+        android:layout_width="@dimen/profile_icon_dimens"
+        android:layout_height="@dimen/profile_icon_dimens"
+        android:layout_above="@+id/userDetailsContainer"
+        android:layout_marginBottom="@dimen/profile_icon_margin_bottom"
+        android:background="@drawable/user_icon" />
+
+    <RelativeLayout
+        android:id="@+id/userDetailsContainer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/user_details_container_height"
+        android:layout_alignParentBottom="true">
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/username"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/white" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/email"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_below="@+id/username"
+            android:text="username@email.com"
+            android:textColor="@android:color/white" />
+
+    </RelativeLayout>
+
+</RelativeLayout>

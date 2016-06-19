@@ -69,7 +69,7 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
             public void onResponse(Response<LoginAndResetUserPasswordStuff> response, Retrofit retrofit) {
                 if (isAdded) {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
-                        String retry_in = (response.body().getRetry_in() != null) ? response.body().getRetry_in() : null;
+                        String retry_in = (response.body().getRetryIn() != null) ? response.body().getRetryIn() : null;
                         LAMVCfinishedListener.onFailure(response.body().getCode(), "", response.body().getHint(), retry_in);
                     } else {
                         LAMVCfinishedListener.onSuccess();
@@ -90,6 +90,7 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
         });
     }
 
+    @Override
     public void loginUser(LoginFormBody loginFormBody, final boolean isAdded, final LAMVCFinishedListener LAMVCfinishedListener) {
         Call<LoginAndResetUserPasswordStuff> loginUserPasswordStuffCall = apiService.loginUser(loginFormBody);
         loginUserPasswordStuffCall.enqueue(new Callback<LoginAndResetUserPasswordStuff>() {
@@ -99,7 +100,7 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
                         LAMVCfinishedListener.onFailure(response.body().getCode(), "", "", null);
                     } else {
-                        LAMVCfinishedListener.onSuccess();
+                        LAMVCfinishedListener.onSuccessUserSignIn(response.body().getUserId(), response.body().getUsername(), response.body().getEmail(), response.body().getFirmId());
                     }
                 }
             }
@@ -123,7 +124,7 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
         call.enqueue(new Callback<Firm>() {
             @Override
             public void onResponse(Response<Firm> response, Retrofit retrofit) {
-                if (response.body().getStatus() == AppConfig.STATUS_OK) {
+                if (response.body().getCode() == AppConfig.STATUS_OK) {
                     List<Firm.FirmElement> firmElementList = response.body().getFirm_element();
                     for (int i = 0; i < firmElementList.size(); i++) {
                         Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());

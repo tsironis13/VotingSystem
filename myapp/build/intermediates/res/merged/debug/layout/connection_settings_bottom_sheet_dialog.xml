@@ -21,6 +21,6 @@
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="@string/check_connection"
-        android:textColor="@color/connection_settings_textColor" />
+        android:textColor="@color/connection_settings_text_color" />
 
 </com.rey.material.widget.LinearLayout>

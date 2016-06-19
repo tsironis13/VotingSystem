@@ -43,7 +43,7 @@
                 android:paddingRight="@dimen/input_field_edt_padding_right"
                 android:textSize="@dimen/input_edt_text_size"
                 android:textColor="@android:color/white"
-                android:textColorHint="@color/input_hintColor"
+                android:textColorHint="@color/input_hint_color"
                 android:background="@android:color/transparent"
                 android:tag="@string/username_tag"
                 android:inputType="textPersonName"
@@ -81,7 +81,7 @@
                     android:paddingRight="@dimen/password_edt_padding_right"
                     android:textSize="@dimen/input_edt_text_size"
                     android:textColor="@android:color/white"
-                    android:textColorHint="@color/input_hintColor"
+                    android:textColorHint="@color/input_hint_color"
                     android:layout_gravity="center_vertical"
                     android:background="@android:color/transparent"
                     android:tag="@string/password_tag"
@@ -96,7 +96,7 @@
                     android:layout_height="@dimen/password_error_txv_height"
                     android:layout_alignParentBottom="true"
                     android:textSize="@dimen/password_error_txv_text_size"
-                    android:textColor="@color/password_error_Ttv_textColor" />
+                    android:textColor="@color/password_error_txv_text_color" />
 
                 <com.rey.material.widget.TextView
                     android:id="@+id/showHidePasswordTtv"
@@ -134,7 +134,7 @@
                 android:paddingRight="@dimen/input_field_edt_padding_right"
                 android:textSize="@dimen/input_edt_text_size"
                 android:textColor="@android:color/white"
-                android:textColorHint="@color/input_hintColor"
+                android:textColorHint="@color/input_hint_color"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
                 android:tag="@string/confirm_password_tag"
@@ -168,7 +168,7 @@
                 android:paddingRight="@dimen/input_field_edt_padding_right"
                 android:textSize="@dimen/input_edt_text_size"
                 android:textColor="@android:color/white"
-                android:textColorHint="@color/input_hintColor"
+                android:textColorHint="@color/input_hint_color"
                 android:layout_gravity="center_vertical"
                 android:background="@android:color/transparent"
                 android:tag="@string/email_tag"
@@ -202,7 +202,7 @@
                 android:paddingRight="@dimen/input_field_edt_padding_right"
                 android:textSize="@dimen/input_edt_text_size"
                 android:textColor="@android:color/white"
-                android:textColorHint="@color/input_hintColor"
+                android:textColorHint="@color/input_hint_color"
                 android:background="@android:color/transparent"
                 android:tag="@string/firm_code_tag"
                 android:inputType="textPassword"

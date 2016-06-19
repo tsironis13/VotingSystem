@@ -29,6 +29,12 @@
         <activity
             android:name="com.votingsystem.tsiro.mainClasses.DashboardActivity"
             android:screenOrientation="portrait"
+            android:label="@string/surveysActivity">
+        </activity>
+
+        <activity
+            android:name="com.votingsystem.tsiro.mainClasses.SurveysActivity"
+            android:screenOrientation="portrait"
             android:label="@string/dashBoardActivity">
         </activity>
 

@@ -25,7 +25,7 @@
         android:id="@+id/welcomeText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
+        android:textColor="@android:color/white"
         android:layout_marginTop="@dimen/welcome_text_margin_top"
         android:textSize="@dimen/welcome_text_size" />
 

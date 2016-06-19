@@ -7,7 +7,7 @@ import java.util.List;
  */
 public class Firm {
     private String action;
-    private int status;
+    private int code;
     private List<FirmElement> firm_element;
 
     public Firm() {}
@@ -16,9 +16,9 @@ public class Firm {
 
     public void setAction(String action) { this.action = action; }
 
-    public int getStatus() { return status; }
+    public int getCode() { return code; }
 
-    public void setStatus(int status) { this.status = status; }
+    public void setStatus(int status) { this.code = status; }
 
     public void setFirm_element() { this.firm_element = firm_element; }
 

@@ -40,6 +40,11 @@
         </activity>
         <activity
             android:name="com.votingsystem.tsiro.mainClasses.DashboardActivity"
+            android:label="@string/surveysActivity"
+            android:screenOrientation="portrait" >
+        </activity>
+        <activity
+            android:name="com.votingsystem.tsiro.mainClasses.SurveysActivity"
             android:label="@string/dashBoardActivity"
             android:screenOrientation="portrait" >
         </activity>

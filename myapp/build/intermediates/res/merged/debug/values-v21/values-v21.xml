@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="design_navigation_padding_top_default">24dp</dimen>
     <dimen name="nav_drawer_margin_top">36dp</dimen>
     <dimen name="toolbar_padding_top">24dp</dimen>
     <style name="AppTheme" parent="AppTheme.Base">
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryColorDark</item>
         <item name="colorAccent">@color/accentColor</item>
-        <item name="android:windowTranslucentStatus">true</item>
         <item name="android:colorControlHighlight">@color/accentColor</item>
     </style>
     <style name="Base.TextAppearance.AppCompat" parent="android:TextAppearance.Material"/>
