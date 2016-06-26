@@ -8,9 +8,16 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import com.votingsystem.tsiro.POJO.AllSurveys;
+import com.votingsystem.tsiro.POJO.AllSurveysBody;
+import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCPresenterImpl;
+import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCView;
 import com.votingsystem.tsiro.adapters.SurveysPagerAdapter;
 import com.votingsystem.tsiro.app.MyApplication;
+import com.votingsystem.tsiro.parcel.SurveyData;
 import com.votingsystem.tsiro.votingsystem.R;
+
+import java.util.List;
 
 /**
  * Created by giannis on 19/6/2016.
@@ -41,6 +48,7 @@ public class SurveysActivity extends AppCompatActivity {
                 }
             });
         }
+        //SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), 2));
         initializeTabsViewPager();
     }
 

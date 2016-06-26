@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/surveyItemContainerRlt"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/surveys_item_container_height"
+    android:clickable="true"
+    android:background="@drawable/survey_item_background">
+    
+    <ImageView
+        android:id="@+id/surveyThumb"
+        android:layout_width="@dimen/survey_item_thumb_dimens"
+        android:layout_height="@dimen/survey_item_thumb_dimens"
+        android:layout_marginLeft="@dimen/survey_item_thumb_margin_left"
+        android:layout_marginTop="@dimen/survey_item_thumb_margin_top"
+        android:src="@drawable/no_surveys"
+        android:contentDescription="@string/item_thumb" />
+    
+    <com.rey.material.widget.TextView
+        android:id="@+id/titleTtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/surveyThumb"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:layout_marginTop="@dimen/survey_item_title_margin_top"
+        android:layout_marginRight="@dimen/survey_item_title_margin_right"
+        android:layout_toLeftOf="@+id/responsesTtv"
+        android:layout_marginLeft="@dimen/survey_item_title_margin_left"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/survey_item_title_text_size"
+        android:textStyle="bold" />
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/detailsTtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/surveyThumb"
+        android:layout_below="@+id/titleTtv"
+        android:layout_marginTop="@dimen/survey_item_details_answered_margin_top"
+        android:layout_marginLeft="@dimen/survey_item_details_margin_left"
+        android:textSize="@dimen/survey_item_details_text_size"
+        android:textColor="@color/survey_item_details_text_color" />
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/responsesTtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/survey_item_responses_margin_top_right"
+        android:layout_marginRight="@dimen/survey_item_responses_margin_top_right"
+        android:textSize="@dimen/survey_item_responses_text_size"
+        android:textStyle="bold"
+        android:textColor="@android:color/black" />
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/answeredTtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/responsesTtv"
+        android:layout_alignBaseline="@+id/detailsTtv"
+        android:layout_alignParentRight="true"
+        android:layout_marginTop="@dimen/survey_item_details_answered_margin_top"
+        android:layout_marginRight="@dimen/survey_item_answered_margin_right"
+        android:text="@string/vote"
+        android:textSize="@dimen/survey_item_answered_text_size"
+        android:textColor="@color/accentColor"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</RelativeLayout>

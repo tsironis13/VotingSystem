@@ -1,12 +1,17 @@
 package com.votingsystem.tsiro.rest;
 
+import com.votingsystem.tsiro.POJO.AllSurveys;
 import com.votingsystem.tsiro.POJO.Firm;
 import com.votingsystem.tsiro.POJO.FirmSurveyDetails;
+import com.votingsystem.tsiro.POJO.AllSurveysBody;
 import com.votingsystem.tsiro.POJO.LoginAndResetUserPasswordStuff;
 import com.votingsystem.tsiro.POJO.LoginFormBody;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.POJO.RegisterUserStuff;
 import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
+import com.votingsystem.tsiro.POJO.SurveyQuestionBody;
+import com.votingsystem.tsiro.POJO.SurveyQuestions;
+
 import retrofit.Call;
 import retrofit.http.Body;
 import retrofit.http.Field;
@@ -34,6 +39,12 @@ public interface ApiService {
     @FormUrlEncoded
     @POST("requests/firms.php")
     Call<FirmSurveyDetails> getFirmSurveyDetails(@Field("action") String action, @Field("user_id") int user_id, @Field("firm_id") int firm_id);
+
+    @POST("requests/surveys.php")
+    Call<AllSurveys> getAllSurveys(@Body AllSurveysBody getAllSurveysBody);
+
+    @POST("requests/surveys.php")
+    Call<SurveyQuestions> getSurveyQuestions(@Body SurveyQuestionBody surveyQuestionBody);
 
 //    @FormUrlEncoded
 //    @POST("functions/firmRequests.php")

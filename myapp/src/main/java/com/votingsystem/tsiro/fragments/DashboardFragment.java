@@ -29,6 +29,7 @@ public class DashboardFragment extends Fragment implements DAMVCView{
     private View view;
     private TextView firmTtv, totalSurveysTtv, responsedSurveysTtv, lastCreatedDateTtv;
     private Button viewAllBtn;
+    private DAMVCPresenterImpl DAMVCpresenterImpl;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -46,7 +47,7 @@ public class DashboardFragment extends Fragment implements DAMVCView{
         super.onActivityCreated(savedInstanceState);
 
         if (((AppCompatActivity)getActivity()).getSupportActionBar() != null) ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.home));
-        DAMVCPresenterImpl DAMVCpresenterImpl = new DAMVCPresenterImpl(this);
+        DAMVCpresenterImpl = new DAMVCPresenterImpl(this);
         DAMVCpresenterImpl.initializeDashboardDetails(isAdded(), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0));
         viewAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,6 +61,12 @@ public class DashboardFragment extends Fragment implements DAMVCView{
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        this.DAMVCpresenterImpl.onDestroy();
     }
 
     @Override

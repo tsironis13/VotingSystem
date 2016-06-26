@@ -17,8 +17,6 @@ public class RegisterUserStuff {
 
     public int getCode() { return code; }
 
-    public void setTag(String tag) { this.tag = tag; }
-
     public String getTag() { return tag; }
 
     public void setHint(String hint) { this.hint = hint; }
@@ -35,16 +33,8 @@ public class RegisterUserStuff {
 
         public Data() {}
 
-        public String getTag() { return tag; }
-
-        public void setTag(String tag) { this.tag = tag; }
-
         public int getCode() { return code; }
 
         public void setCode(int code) { this.code = code; }
-
-        public int getError_code() { return error_code; }
-
-        public void setError_code(int error_code) { this.error_code = error_code; }
     }
 }

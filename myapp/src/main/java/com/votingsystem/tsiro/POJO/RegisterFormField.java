@@ -13,8 +13,6 @@ public class RegisterFormField {
         this.hint   =   hint;
     }
 
-    public String getTag() { return tag; }
-
     public String getText() { return text; }
 
     public String getHint() { return hint; }

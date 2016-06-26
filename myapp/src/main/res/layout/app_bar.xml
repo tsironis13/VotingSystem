@@ -8,4 +8,5 @@
     app:theme="@style/ToolbarCustomTheme"
     app:popupTheme="@style/AppTheme.Base"
     app:titleTextColor="@android:color/white"
-    app:titleTextAppearance="@style/ToolbarCustomTheme" />
+    app:titleTextAppearance="@style/ToolbarCustomTheme"
+    app:layout_scrollFlags="scroll|enterAlways" />

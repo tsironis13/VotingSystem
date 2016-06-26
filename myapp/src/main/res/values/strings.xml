@@ -1,8 +1,9 @@
 <resources>
     <!-- MANIFEST -->
     <string name="app_name">VotingSystem</string>
-    <string name="dashBoardActivity">DashboardActivity</string>
-    <string name="surveysActivity">SurveysActivity</string>
+    <string name="dashboard_activity">DashboardActivity</string>
+    <string name="surveys_activity">SurveysActivity</string>
+    <string name="survey_questions_activity">SurveyQuestionsActivity</string>
     <!-- GENERAL -->
     <string name="welcome_text">Καλωσήρθατε!</string>
     <string name="yes">yes</string>
@@ -23,10 +24,12 @@
     <string name="forgotpassword_fgmt">forgotPasswordFgmt</string>
     <string name="register_fgmt">registerFgmt</string>
     <string name="dashboard_fgmt">dashboardFgmt</string>
+    <string name="survey_questions_fgmt">surveyQuestionsFgmt</string>
     <string name="editext">editext</string>
     <string name="spinner">spinner</string>
     <string name="user_id">user_id</string>
     <string name="firm_id">firm_id</string>
+    <string name="survey_id">survey_id</string>
     <!-- ACTIONS -->
     <string name="register_user">register_user</string>
     <string name="reset_password">reset_password</string>
@@ -39,7 +42,9 @@
     <string name="hide">ΑΠΟΚΡΥΨΗ</string>
     <string name="empty_string">""</string>
     <string name="middle_animation">middle</string>
-    <string name="final_animation">final</string>>
+    <string name="final_animation">final</string>
+    <string name="list_surveys">list_surveys</string>
+    <string name="get_survey_questions">survey_questions</string>
     <!-- LOGIN -->
     <string name="theme">theme</string>
     <string name="app_logo">app_logo</string>
@@ -52,14 +57,14 @@
     <string name="forgotpassword">Ξέχασες τον κωδικό σου?</string>
     <string name="register">Πρώτη φορά εδώ? Εγγραφή</string>
     <string name="email">E-mail</string>
-    <string name="sendEmail">Αποστολή</string>
-    <string name="signInHere">Διαθέτεις λογαριασμό?\nΣυνδέσου εδώ</string>
+    <string name="send_email">Αποστολή</string>
+    <string name="signin_here">Διαθέτεις λογαριασμό?\nΣυνδέσου εδώ</string>
     <string name="submit">Εγγραφή</string>
     <string name="firmcode">Κωδικός Εταιρείας</string>
     <string name="confirmpassword">Επιβεβαίωση κωδικού</string>
-    <string name="showPassword">ΕΜΦΑΝΙΣΗ</string>
-    <string name="hidePassword">ΑΠΟΚΡΥΨΗ</string>
-    <string name="pickFirm">Επιλογή Εταιρείας</string>
+    <string name="show_password">ΕΜΦΑΝΙΣΗ</string>
+    <string name="hide_password">ΑΠΟΚΡΥΨΗ</string>
+    <string name="pick_firm">Επιλογή Εταιρείας</string>
     <!-- DASHBOARD -->
     <string name="home">Αρχική</string>
     <string name="your_firm">Η εταιρεία σου</string>
@@ -72,7 +77,23 @@
     <string name="add_new">Δημιουργια νεας</string>
     <string name="note">Σημείωση: η έρευνα θα είναι διαθέσιμη προς ψήφιση αφού εγκριθεί από το διαχειριστή μέσα σε διάστημα 24 ωρών.</string>
     <!-- SURVEYS -->
-
+    <string name="completed">completed</string>
+    <string name="ongoing">ongoing</string>
+    <string name="pending">pending</string>
+    <string name="no_completed">Δεν υπάρχουν ολοκληρωμένες έρευνες.</string>
+    <string name="no_ongoing">Δεν υπάρχουν έρευνες σε εξέλιξη.</string>
+    <string name="no_pending">Δεν υπάρχουν έρευνες που εκκρεμούν.</string>
+    <string name="active_since">Ημ. Έναρξης</string>
+    <string name="valid_until">Ημ. Λήξης</string>
+    <string name="item_thumb">thumb</string>
+    <string name="vote">Ψήφισε!</string>
+    <!-- SURVEY QUESTIONS -->
+    <string name="survey">Έρευνα</string>
+    <string name="survey_title">survey_title</string>
+    <string name="question">question</string>
+    <string name="position">position</string>
+    <string name="question_title">%1$s. %2$s</string>
+    <string name="radio_button_label">\u0020\u0020%1$s</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>

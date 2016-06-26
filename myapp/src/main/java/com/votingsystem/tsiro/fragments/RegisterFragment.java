@@ -182,7 +182,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LAMVCpresenterImpl.onDestroy();
+        if (this.LAMVCpresenterImpl != null) LAMVCpresenterImpl.onDestroy();
         this.commonElements = null;
         //RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
         //refWatcher.watch(this);
@@ -305,7 +305,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         if (code == AppConfig.ERROR_EMPTY_REQUIRED_FIELD) {
             commonElements.showErrorContainerSnackbar(getResources().getString(R.string.empty_field, hint), null, code);
         } else if (code == AppConfig.ERROR_NO_FIRM_PICKED) {
-            commonElements.showErrorContainerSnackbar(getResources().getString(R.string.empty_field, getResources().getString(R.string.pickFirm)), null, code);
+            commonElements.showErrorContainerSnackbar(getResources().getString(R.string.empty_field, getResources().getString(R.string.pick_firm)), null, code);
         } else if (code == AppConfig.ERROR_INPUT_EXISTS) {
             if (tag.equals(getResources().getString(R.string.password_tag))) {
                 passwordEdt.getChildAt(1).setVisibility(View.GONE);
@@ -373,7 +373,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         return new RegisterFormBody(getResources().getString(R.string.register_user), fields, firm_id, registrationToken);
     }
 
-    private void setSignInHereSpan(){ commonElements.setLoginActivitySpan(signInHereTtv, getResources().getString(R.string.signInHere), 22, 34, 1); }
+    private void setSignInHereSpan(){ commonElements.setLoginActivitySpan(signInHereTtv, getResources().getString(R.string.signin_here), 22, 34, 1); }
 
     private static void animationStaff(View view, float fromAlpha, float toAlpha, String visibility) {
         if (visibility.equals("visible")) {

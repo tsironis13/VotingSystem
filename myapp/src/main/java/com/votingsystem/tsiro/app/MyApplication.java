@@ -37,7 +37,7 @@ public class MyApplication extends Application {
     //}
 
     public static double convertPixelToDpAndViceVersa(Context context, double pixels, double dps) {
-        double value    = 0;
+        double value;
         int density     = 0;
         switch (context.getResources().getDisplayMetrics().densityDpi) {
             case DisplayMetrics.DENSITY_LOW:
@@ -64,7 +64,6 @@ public class MyApplication extends Application {
         } else {
             value = dps * ( density / 160 );
         }
-        Log.e("sadds", value+"");
         return value;
     }
 }

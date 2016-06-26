@@ -23,6 +23,10 @@
     <color name="view_color">#E0E0E0</color>
     <color name="have_survey_desc_txv_text_color">#424242</color>
     <color name="note_text_color">#E53935</color>
+    <!-- SURVEYS -->
+    <color name="no_surveys_txv_color">#424242</color>
+    <color name="survey_item_details_text_color">#424242</color>
+    <color name="survey_item_divider_color">#EEE</color>
     <!-- DIALOGS -->
     <color name="connection_settings_text_color">#424242</color>
     <color name="connection_settings_ripple_color">#E0E0E0</color>

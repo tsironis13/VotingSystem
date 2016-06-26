@@ -1,29 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <include
-        android:id="@+id/appBar"
-        layout="@layout/app_bar" />
-
-    <android.support.design.widget.TabLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/tabs"
+    
+    <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="@color/primaryColor"
-        app:tabMode="scrollable"
-        app:tabTextColor="#b3ffffff"
-        app:tabSelectedTextColor="@android:color/white"
-        app:tabMinWidth="154dp"/>
+        android:layout_height="wrap_content">
+
+        <include
+            android:id="@+id/appBar"
+            layout="@layout/app_bar" />
+
+        <android.support.design.widget.TabLayout
+            xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/tabs"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/primaryColor"
+            app:tabMode="scrollable"
+            app:tabTextColor="#b3ffffff"
+            app:tabSelectedTextColor="@android:color/white"
+            app:tabMinWidth="154dp"/>
+
+    </android.support.design.widget.AppBarLayout>
 
     <android.support.v4.view.ViewPager
         android:id="@+id/surveysPager"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior" />
     
-</LinearLayout>
+</android.support.design.widget.CoordinatorLayout>

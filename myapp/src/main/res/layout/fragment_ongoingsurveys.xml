@@ -1,14 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/ongoingSurveysRcV"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/surveys_rcv_margin_top" />
+
+    <ImageView
+        android:id="@+id/noSurveysImv"
+        android:layout_width="@dimen/no_surveys_imv_width"
+        android:layout_height="@dimen/no_surveys_imv_height"
+        android:src="@drawable/no_surveys"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/no_surveys_imv_margin_top"
+        android:visibility="invisible"
+        android:contentDescription="@string/ongoing" />
 
     <com.rey.material.widget.TextView
-        android:id="@+id/test"
+        android:id="@+id/noSurveysTxv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="ongoing surveys" />
+        android:layout_below="@+id/noSurveysImv"
+        android:text="@string/no_ongoing"
+        android:textSize="@dimen/no_surveys_txv_text_size"
+        android:textColor="@color/no_surveys_txv_color"
+        android:visibility="invisible"
+        android:layout_centerHorizontal="true" />
 
-</LinearLayout>
+</RelativeLayout>

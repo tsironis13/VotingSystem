@@ -157,6 +157,7 @@ public class SignInFragment extends Fragment implements LAMVCView{
     @Override
     public void onDestroy() {
         super.onDestroy();
+        if (this.LAMVCpresenterImpl !=null) LAMVCpresenterImpl.onDestroy();
         this.commonElements = null;
         //RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
         //refWatcher.watch(this);

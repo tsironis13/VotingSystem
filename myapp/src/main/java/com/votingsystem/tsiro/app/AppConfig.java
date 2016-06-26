@@ -39,6 +39,7 @@ public class AppConfig {
     public static final int ERROR_RESET_PASWD_ALREADY_REQUESTED =   -19;
     public static final int ERROR_INVALID_USERNAME_PASSWORD     =   -20;
     public static final int ERROR_ACCOUNT_NOT_VERIFIED_YET      =   -21;
+    public static final int ERROR_EMPTY_LIST                    =   -205;
     //LOGIN ACTIVITY
     public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
     public static final int PASSWORD_INPUT_TYPE                 =   129;

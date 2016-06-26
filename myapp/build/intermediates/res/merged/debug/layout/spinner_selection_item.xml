@@ -9,4 +9,4 @@
     android:textSize="13sp"
     android:textColor="@color/input_hint_color"
     android:ellipsize="marquee"
-    android:text="@string/pickFirm" />
+    android:text="@string/pick_firm" />

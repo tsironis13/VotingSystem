@@ -1,7 +1,6 @@
 package com.votingsystem.tsiro.DashboardActivityMVC;
 
 import android.util.Log;
-
 import com.votingsystem.tsiro.POJO.FirmSurveyDetails;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
@@ -31,7 +30,9 @@ public class DAMVCInteractorImpl implements DAMVCInteractor {
                 if (isAdded) {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
                         DAMVCfinishedListener.onFailure();
+                        Log.e(debugTag, "FAILURE");
                     } else {
+                        Log.e(debugTag, "SUCCESS");
                         DAMVCfinishedListener.onSuccessDashboardDetails(response.body().getFirmName(), response.body().getTotalSurveys(), response.body().getResponses(), response.body().getLastCreatedDate());
                     }
                 }

@@ -16,6 +16,4 @@ public class LoginFormBody {
     public String getAction() { return action; }
 
     public String getUsername() { return username; }
-
-    public String getPassword() { return password; }
 }

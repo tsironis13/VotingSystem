@@ -154,7 +154,7 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     @Override
     public void onDestroy() {
         super.onDestroy();
-        LAMVCpresenterImpl.onDestroy();
+        if (this.LAMVCpresenterImpl != null) LAMVCpresenterImpl.onDestroy();
         this.commonElements = null;
         //RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
         //refWatcher.watch(this);
@@ -246,7 +246,7 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
         };
     }
 
-    private void setSignInHereSpan(){ commonElements.setLoginActivitySpan(signInHereTtv, getResources().getString(R.string.signInHere), 22, 34, 1); }
+    private void setSignInHereSpan(){ commonElements.setLoginActivitySpan(signInHereTtv, getResources().getString(R.string.signin_here), 22, 34, 1); }
 
     private void setRegisterSpan() { commonElements.setLoginActivitySpan(registerTtv, getResources().getString(R.string.register), 16, 23, 0); }
 

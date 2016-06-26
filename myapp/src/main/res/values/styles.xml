@@ -55,8 +55,8 @@
     <!-- DASHBOARD -->
     <style name="viewAll" parent="Material.Drawable.Ripple.Wave">
         <item name="rd_rippleColor">@color/accentColor</item>
-        <item name="rd_rippleAnimDuration">280</item>
-        <item name="rd_delayClick">afterRelease</item>
+        <item name="rd_rippleAnimDuration">200</item>
+        <item name="rd_delayClick">untilRelease</item>
     </style>
     <!-- SPINNER -->
     <style name="Spinner" parent="Material.Drawable.Ripple">
