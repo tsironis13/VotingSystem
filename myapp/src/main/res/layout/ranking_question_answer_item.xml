@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rankingQuestionItemLlt"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/ranking_question_item_llt_height"
+    android:background="@color/ranking_question_item_llt_background"
+    android:layout_marginBottom="@dimen/ranking_question_item_llt_margin_bottom"
+    android:padding="@dimen/ranking_question_item_llt_padding"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:scrollbars="vertical">
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/answerTtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/question_item_text_size"
+        android:textColor="@color/question_item_text_color" />
+
+</LinearLayout>

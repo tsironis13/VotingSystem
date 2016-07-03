@@ -112,6 +112,36 @@
     <dimen name="survey_item_answered_margin_right">16dp</dimen>
     <dimen name="survey_item_answered_text_size">12sp</dimen>
     <dimen name="survey_item_divider_height">1dp</dimen>
+    <!-- SURVEY QUESTIONS -->
+    <dimen name="view_pager_container_margin_top">48dp</dimen>
+    <dimen name="save_question_fab_margin_bottom">21dp</dimen>
+    <dimen name="save_question_fab_margin_right">8dp</dimen>
+    <dimen name="horizontal_scroll_view_height">100dp</dimen>
+    <dimen name="horizontal_scroll_view_margin_bottom">-100dp</dimen>
+    <dimen name="horizontal_scroll_view_padding_left">15dp</dimen>
+    <dimen name="horizontal_scroll_view_padding_right">5dp</dimen>
+    <dimen name="horizontal_scroll_view_scrollbar_size">5dp</dimen>
+    <dimen name="question_container_margin_padding_bottom">12dp</dimen>
+    <dimen name="question_container_padding_bottom">12dp</dimen>
+    <dimen name="survey_title_txv_margin_top">8dp</dimen>
+    <dimen name="survey_title_txv_text_size">20sp</dimen>
+    <dimen name="question_title_margin_top_bottom">15dp</dimen>
+    <dimen name="question_title_text_size">17sp</dimen>
+    <dimen name="page_index_llt_height">57dp</dimen>
+    <dimen name="arrow_imv_dimens">25dp</dimen>
+    <dimen name="arrow_imv_margin_left">8dp</dimen>
+    <dimen name="arrow_imv_margin_right">4dp</dimen>
+    <dimen name="bottom_sheet_divider_height">1dp</dimen>
+    <dimen name="bottom_sheet_divider_margin_top">-1dp</dimen>
+    <dimen name="ranking_question_note_margin_bottom">15dp</dimen>
+    <dimen name="ranking_question_item_llt_height">70dp</dimen>
+    <dimen name="ranking_question_item_llt_margin_bottom">8dp</dimen>
+    <dimen name="ranking_question_item_llt_padding">10dp</dimen>
+    <dimen name="question_item_text_size">13sp</dimen>
+    <dimen name="question_slider_padding_left_right">4dp</dimen>
+    <dimen name="question_slider_txv_margin_top">40dp</dimen>
+    <dimen name="free_answer_edt_padding">12dp</dimen>
+    <dimen name="satisfaction_imv_height">62dp</dimen>
     <!-- SNACKBARS -->
     <dimen name="sb_horizontal_padding">15dp</dimen>
     <dimen name="no_connection_sb_text_size">14sp</dimen>

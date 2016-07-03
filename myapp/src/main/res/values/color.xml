@@ -27,6 +27,18 @@
     <color name="no_surveys_txv_color">#424242</color>
     <color name="survey_item_details_text_color">#424242</color>
     <color name="survey_item_divider_color">#EEE</color>
+    <!-- SURVEY QUESTIONS -->
+    <color name="angry_fill_color">#DD2C00</color>
+    <color name="sad_fill_color">#FF6D00</color>
+    <color name="neutral_fill_color">#FFD600</color>
+    <color name="happy_fill_color">#64DD17</color>
+    <color name="vhappy_fill_color">#1B5E20</color>
+    <color name="bottom_sheet_color">#EEE</color>
+    <color name="bottom_sheet_view_color">#BDBDBD</color>
+    <color name="fab_ripple_color">#331976D2</color>
+    <color name="ranking_question_item_llt_background">#FAFAFA</color>
+    <color name="question_item_text_color">#424242</color>
+    <color name="free_answer_edt_hint_color">#9E9E9E</color>
     <!-- DIALOGS -->
     <color name="connection_settings_text_color">#424242</color>
     <color name="connection_settings_ripple_color">#E0E0E0</color>

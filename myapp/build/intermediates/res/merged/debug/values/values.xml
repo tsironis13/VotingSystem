@@ -67,10 +67,13 @@
     <color name="accent_material_dark">@color/material_deep_teal_200</color>
     <color name="accent_material_light">@color/material_deep_teal_500</color>
     <color name="action_btn_color">#CCEF6C00</color>
+    <color name="angry_fill_color">#DD2C00</color>
     <color name="background_floating_material_dark">@color/material_grey_800</color>
     <color name="background_floating_material_light">@android:color/white</color>
     <color name="background_material_dark">@color/material_grey_850</color>
     <color name="background_material_light">@color/material_grey_50</color>
+    <color name="bottom_sheet_color">#EEE</color>
+    <color name="bottom_sheet_view_color">#BDBDBD</color>
     <color name="bright_foreground_disabled_material_dark">#80ffffff</color>
     <color name="bright_foreground_disabled_material_light">#80000000</color>
     <color name="bright_foreground_inverse_material_dark">@color/bright_foreground_material_light</color>
@@ -119,8 +122,11 @@
     <color name="dim_foreground_material_light">#ff323232</color>
     <color name="divider_error_color">#DD2C00</color>
     <color name="et_support_text_error_color">#DD2C00</color>
+    <color name="fab_ripple_color">#331976D2</color>
     <color name="foreground_material_dark">@android:color/white</color>
     <color name="foreground_material_light">@android:color/black</color>
+    <color name="free_answer_edt_hint_color">#9E9E9E</color>
+    <color name="happy_fill_color">#64DD17</color>
     <color name="have_survey_desc_txv_text_color">#424242</color>
     <color name="highlighted_text_material_dark">#6680cbc4</color>
     <color name="highlighted_text_material_light">#66009688</color>
@@ -142,6 +148,7 @@
     <color name="material_grey_800">#ff424242</color>
     <color name="material_grey_850">#ff303030</color>
     <color name="material_grey_900">#ff212121</color>
+    <color name="neutral_fill_color">#FFD600</color>
     <color name="no_surveys_txv_color">#424242</color>
     <color name="note_text_color">#E53935</color>
     <color name="password_error_txv_text_color">#DD2C00</color>
@@ -155,8 +162,11 @@
     <color name="primary_text_default_material_light">#de000000</color>
     <color name="primary_text_disabled_material_dark">#4Dffffff</color>
     <color name="primary_text_disabled_material_light">#39000000</color>
+    <color name="question_item_text_color">#424242</color>
+    <color name="ranking_question_item_llt_background">#FAFAFA</color>
     <color name="ripple_material_dark">#33ffffff</color>
     <color name="ripple_material_light">#1f000000</color>
+    <color name="sad_fill_color">#FF6D00</color>
     <color name="sb_error_text">#C62828</color>
     <color name="secondary_text_default_material_dark">#b3ffffff</color>
     <color name="secondary_text_default_material_light">#8a000000</color>
@@ -171,6 +181,7 @@
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
     <color name="total_responsed_surveys_desc_text_color">#9E9E9E</color>
     <color name="txv_error_color">#DD2C00</color>
+    <color name="vhappy_fill_color">#1B5E20</color>
     <color name="view_background_color">#CCFFFFFF</color>
     <color name="view_color">#E0E0E0</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="contentInsetStartWithNavigation"/><attr format="dimension" name="contentInsetEndWithActions"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
@@ -329,6 +340,11 @@
     <dimen name="action_btn_width">150dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="arrow_imv_dimens">25dp</dimen>
+    <dimen name="arrow_imv_margin_left">8dp</dimen>
+    <dimen name="arrow_imv_margin_right">4dp</dimen>
+    <dimen name="bottom_sheet_divider_height">1dp</dimen>
+    <dimen name="bottom_sheet_divider_margin_top">-1dp</dimen>
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
@@ -382,6 +398,7 @@
     <dimen name="forgotpassword_register_txv_padding_top_bottom">12dp</dimen>
     <dimen name="forgotpassword_txv_padding_left_right">3dp</dimen>
     <dimen name="forgotpassword_txv_padding_top_bottom">12dp</dimen>
+    <dimen name="free_answer_edt_padding">12dp</dimen>
     <dimen name="have_survey_crdv_margin_top">8dp</dimen>
     <dimen name="have_survey_desc_txv_padding_bottom">32dp</dimen>
     <dimen name="have_survey_txv_padding_bottom">14dp</dimen>
@@ -389,6 +406,11 @@
     <item format="float" name="highlight_alpha_material_colored" type="dimen">0.26</item>
     <item format="float" name="highlight_alpha_material_dark" type="dimen">0.20</item>
     <item format="float" name="highlight_alpha_material_light" type="dimen">0.12</item>
+    <dimen name="horizontal_scroll_view_height">100dp</dimen>
+    <dimen name="horizontal_scroll_view_margin_bottom">-100dp</dimen>
+    <dimen name="horizontal_scroll_view_padding_left">15dp</dimen>
+    <dimen name="horizontal_scroll_view_padding_right">5dp</dimen>
+    <dimen name="horizontal_scroll_view_scrollbar_size">5dp</dimen>
     <dimen name="in_common1">16dp</dimen>
     <dimen name="in_common2">20dp</dimen>
     <dimen name="in_common3">36dp</dimen>
@@ -424,6 +446,7 @@
     <dimen name="notification_large_icon_height">64dp</dimen>
     <dimen name="notification_large_icon_width">64dp</dimen>
     <dimen name="notification_subtext_size">12dp</dimen>
+    <dimen name="page_index_llt_height">57dp</dimen>
     <dimen name="password_edt_padding_right">5dp</dimen>
     <dimen name="password_edt_width">186dp</dimen>
     <dimen name="password_error_txv_height">15dp</dimen>
@@ -434,11 +457,25 @@
     <dimen name="profile_icon_dimens">72dp</dimen>
     <dimen name="profile_icon_margin_bottom">10dp</dimen>
     <dimen name="progressview_dimens">24dp</dimen>
+    <dimen name="question_container_margin_padding_bottom">12dp</dimen>
+    <dimen name="question_container_padding_bottom">12dp</dimen>
+    <dimen name="question_item_text_size">13sp</dimen>
+    <dimen name="question_slider_padding_left_right">4dp</dimen>
+    <dimen name="question_slider_txv_margin_top">40dp</dimen>
+    <dimen name="question_title_margin_top_bottom">15dp</dimen>
+    <dimen name="question_title_text_size">17sp</dimen>
+    <dimen name="ranking_question_item_llt_height">70dp</dimen>
+    <dimen name="ranking_question_item_llt_margin_bottom">8dp</dimen>
+    <dimen name="ranking_question_item_llt_padding">10dp</dimen>
+    <dimen name="ranking_question_note_margin_bottom">15dp</dimen>
     <dimen name="rd_corner_radius">0dp</dimen>
     <dimen name="register_container_margin_top">10dp</dimen>
     <dimen name="register_logo_dimens">60dp</dimen>
     <dimen name="register_txv_padding_left_right">15dp</dimen>
     <dimen name="register_txv_padding_top_bottom">12dp</dimen>
+    <dimen name="satisfaction_imv_height">62dp</dimen>
+    <dimen name="save_question_fab_margin_bottom">21dp</dimen>
+    <dimen name="save_question_fab_margin_right">8dp</dimen>
     <dimen name="sb_horizontal_padding">15dp</dimen>
     <dimen name="setting_imv_dimens">23dp</dimen>
     <dimen name="setting_imv_margin_left_right">15dp</dimen>
@@ -467,6 +504,8 @@
     <dimen name="survey_item_title_margin_right">16dp</dimen>
     <dimen name="survey_item_title_margin_top">15dp</dimen>
     <dimen name="survey_item_title_text_size">16sp</dimen>
+    <dimen name="survey_title_txv_margin_top">8dp</dimen>
+    <dimen name="survey_title_txv_text_size">20sp</dimen>
     <dimen name="surveys_item_container_height">100dp</dimen>
     <dimen name="surveys_rcv_margin_top">8dp</dimen>
     <dimen name="text_size">14sp</dimen>
@@ -483,6 +522,7 @@
     <dimen name="view_height">1dp</dimen>
     <dimen name="view_margin_bottom">3dp</dimen>
     <dimen name="view_margin_top">100dp</dimen>
+    <dimen name="view_pager_container_margin_top">48dp</dimen>
     <dimen name="welcome_text_margin_top">17dp</dimen>
     <dimen name="welcome_text_size">15sp</dimen>
     <dimen name="your_firm_txv_padding_top">24dp</dimen>
@@ -542,14 +582,17 @@
     <string name="action_settings">Settings</string>
     <string name="active_since">Ημ. Έναρξης</string>
     <string name="add_new">Δημιουργια νεας</string>
+    <string name="angry">angry</string>
     <string name="app_logo">app_logo</string>
     <string name="app_name">VotingSystem</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="arrow">arrow</string>
     <string name="back_pressed">backpressed</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="check_connection">Έλεγξε τη σύνδεση σου</string>
     <string name="clear_success_icon">clearSuccessIcon</string>
+    <string name="collapsed">collapsed</string>
     <string name="common_google_play_services_api_unavailable_text"><ns1:g id="app_name">%1$s</ns1:g> requires one or more Google Play services that are not currently available. Please contact the developer for assistance.</string>
     <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Enable Google Play services</string>
     <string msgid="227660514972886228" name="common_google_play_services_enable_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t work unless you enable Google Play services.</string>
@@ -593,6 +636,7 @@
     <string name="dashboard_fgmt">dashboardFgmt</string>
     <string name="data">data</string>
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="done">done</string>
     <string name="editext">editext</string>
     <string name="email">E-mail</string>
     <string name="email_notification">email_notification</string>
@@ -614,13 +658,17 @@
     <string name="error_occured">Ένα σφάλμα έχει προκύψει. Παρακαλώ ξαναπροσπάθησε.</string>
     <string name="error_passwords_mismatch">Ασυμφωνία κωδικών πρόσβασης</string>
     <string name="error_reset_password_already_requested">Το αίτημα αλλαγής κωδικού έχει ήδη σταλεί. Παρακαλώ ξαναπροσπάθησε σε %1$s.</string>
+    <string name="expanded">expanded</string>
     <string name="final_animation">final</string>
     <string name="firm">Η Εταιρεία</string>
     <string name="firm_code_tag">firm_code</string>
     <string name="firm_id">firm_id</string>
     <string name="firmcode">Κωδικός Εταιρείας</string>
+    <string name="float_type">float</string>
     <string name="forgotpassword">Ξέχασες τον κωδικό σου?</string>
     <string name="forgotpassword_fgmt">forgotPasswordFgmt</string>
+    <string name="forward">forward</string>
+    <string name="free_answer_hint">Γράψε την απάντηση σου εδώ.</string>
     <string name="fromshared_logo_trns">fromsharedlogoTrns</string>
     <string name="gcm_defaultSenderId" translatable="false">747222558005</string>
     <string name="gcm_senderId">747222558005</string>
@@ -630,6 +678,7 @@
     <string name="google_api_key" translatable="false">AIzaSyDuQx36qc3KzlcVCWbVtuPyrbyYZJlQfI8</string>
     <string name="google_app_id" translatable="false">1:747222558005:android:7a68c1ec1157526e</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDuQx36qc3KzlcVCWbVtuPyrbyYZJlQfI8</string>
+    <string name="happy">happy</string>
     <string name="have_survey">Έχεις έτοιμη έρευνα?</string>
     <string name="have_survey_desc">Πρότεινε τη δική σου έρευνα σχετικά με το περιβάλλον εργασίας μιας επιχείρησης.</string>
     <string name="hide">ΑΠΟΚΡΥΨΗ</string>
@@ -647,6 +696,7 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="network_state_update">networkStateUpdated</string>
+    <string name="neutral">neutral</string>
     <string name="no_completed">Δεν υπάρχουν ολοκληρωμένες έρευνες.</string>
     <string name="no_connection">Αδυναμία σύνδεσης στο δίκτυο.</string>
     <string name="no_ongoing">Δεν υπάρχουν έρευνες σε εξέλιξη.</string>
@@ -655,16 +705,21 @@
     <string name="notification_body">body</string>
     <string name="notification_title">title</string>
     <string name="notifications">Ειδοποιήσεις</string>
+    <string name="on_fab_clicked">on_fab_clicked</string>
+    <string name="on_question_btn_clicked">on_question_btn_clicked</string>
     <string name="ongoing">ongoing</string>
     <string name="open_with">Άνοιγμα με</string>
+    <string name="page_index_text">ΕΡΩΤΗΣΗ %1$s ΑΠΟ %2$s</string>
     <string name="password">Κωδικός πρόσβασης</string>
     <string name="password_tag">password</string>
     <string name="pending">pending</string>
     <string name="pick_firm">Επιλογή Εταιρείας</string>
     <string name="position">position</string>
     <string name="question">question</string>
+    <string name="question_btn_id">questionBtn</string>
     <string name="question_title">%1$s. %2$s</string>
     <string name="radio_button_label">\u0020\u0020%1$s</string>
+    <string name="ranking_question_note">Σημείωση: σύρε τις μπάρες με τις απαντήσεις τοποθετώντας τες με τη σειρά προτίμησης σου.</string>
     <string name="register">Πρώτη φορά εδώ? Εγγραφή</string>
     <string name="register_fgmt">registerFgmt</string>
     <string name="register_user">register_user</string>
@@ -672,6 +727,8 @@
     <string name="reset_password">reset_password</string>
     <string name="responsed_surveys">Απαντημένες \nΈρευνες</string>
     <string name="results">Αποτελέσματα</string>
+    <string name="sad">sad</string>
+    <string name="satsf_icon_selected">selected</string>
     <string name="send_email">Αποστολή</string>
     <string name="settings">Ρύθμισεις</string>
     <string name="show">ΕΜΦΑΝΙΣΗ</string>
@@ -679,6 +736,7 @@
     <string name="signin">Είσοδος</string>
     <string name="signin_fgmt">signInFgmt</string>
     <string name="signin_here">Διαθέτεις λογαριασμό?\nΣυνδέσου εδώ</string>
+    <string name="slider_question_note">Σημείωση: σύρε την ένδειξη στην μπάρα για να διαλέξεις την απάντηση σου.</string>
     <string name="spinner">spinner</string>
     <string name="splash_loaded">splash_loaded</string>
     <string name="splashscreen_fgmt">splashScreenFgmt</string>
@@ -694,11 +752,13 @@
     <string name="theme">theme</string>
     <string name="toshared_logo_trns">tosharedlogoTrns</string>
     <string name="total_surveys">Σύνολο \nΕρευνών</string>
+    <string name="translation_y">translationY</string>
     <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Ξαναπροσπάθησε σύντομα.</string>
     <string name="user_id">user_id</string>
     <string name="username">Όνομα χρήστη</string>
     <string name="username_tag">username</string>
     <string name="valid_until">Ημ. Λήξης</string>
+    <string name="vhappy">vhappy</string>
     <string name="view_surveys">Δες ολες τις ερευνες</string>
     <string name="visible">visible</string>
     <string name="vote">Ψήφισε!</string>
@@ -1805,6 +1865,10 @@
     </style>
     <style name="EditextUsername" parent="Editext">
         <item name="et_supportMode">helper</item>
+    </style>
+    <style name="Fab" parent="Material.Drawable.Ripple.Touch.Light">
+        <item name="rd_rippleColor">@color/fab_ripple_color</item>
+        <item name="rd_delayClick">untilRelease</item>
     </style>
     <style name="InCircularProgressDrawable" parent="Material.Drawable.CircularProgress">
         <item name="cpd_strokeColor">@color/action_btn_color</item>

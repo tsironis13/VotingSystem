@@ -58,6 +58,11 @@
         <item name="rd_rippleAnimDuration">200</item>
         <item name="rd_delayClick">untilRelease</item>
     </style>
+    <!-- SURVEY QUESTIONS -->
+    <style name="Fab" parent="Material.Drawable.Ripple.Touch.Light">
+        <item name="rd_rippleColor">@color/fab_ripple_color</item>
+        <item name="rd_delayClick">untilRelease</item>
+    </style>
     <!-- SPINNER -->
     <style name="Spinner" parent="Material.Drawable.Ripple">
         <item name="spn_dividerColor">@android:color/transparent</item>

@@ -3,55 +3,82 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:weightSum="100">
+    android:orientation="vertical">
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/no_size"
-        android:layout_weight="92">
+        android:layout_height="0dp"
+        android:layout_weight="1">
 
         <LinearLayout
             android:id="@+id/questionContainer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="@dimen/question_container_margin_padding_bottom"
+            android:paddingBottom="@dimen/question_container_margin_padding_bottom"
             android:orientation="vertical">
 
             <com.rey.material.widget.TextView
                 android:id="@+id/surveyTitleTtv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_margin="12dp"
-                android:textSize="20sp"
+                android:layout_marginTop="@dimen/survey_title_txv_margin_top"
+                android:textSize="@dimen/survey_title_txv_text_size"
                 android:textStyle="bold"
                 android:textColor="@android:color/black" />
 
             <com.rey.material.widget.TextView
-                android:id="@+id/test"
+                android:id="@+id/questionTitleTtv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="12dp"
-                android:layout_marginLeft="12dp"
-                android:layout_marginBottom="12dp"
+                android:layout_marginTop="@dimen/question_title_margin_top_bottom"
+                android:layout_marginBottom="@dimen/question_title_margin_top_bottom"
                 android:textColor="@color/accentColor"
-                android:textSize="17dp"
+                android:textSize="@dimen/question_title_text_size"
                 android:textStyle="bold" />
-
         </LinearLayout>
 
     </ScrollView>
 
     <LinearLayout
+        android:id="@+id/pageIndexLlt"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/no_size"
-        android:layout_weight="8"
-        android:gravity="right|bottom">
+        android:layout_height="@dimen/page_index_llt_height"
+        android:orientation="vertical"
+        android:clickable="true">
 
-        <com.rey.material.widget.Button
-            android:id="@+id/saveQuestionBtn"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="ADD" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/bottom_sheet_color"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/arrowImv"
+                android:layout_width="@dimen/arrow_imv_dimens"
+                android:layout_height="@dimen/arrow_imv_dimens"
+                android:layout_gravity="center"
+                android:layout_marginLeft="@dimen/arrow_imv_margin_left"
+                android:layout_marginRight="@dimen/arrow_imv_margin_right"
+                android:src="@drawable/arrow_up"
+                android:contentDescription="@string/arrow" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/pageIndexTtv"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="center"
+                android:layout_gravity="bottom" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/bottom_sheet_divider_height"
+            android:background="@color/bottom_sheet_view_color"
+            android:layout_marginTop="@dimen/bottom_sheet_divider_margin_top" />
 
     </LinearLayout>
 

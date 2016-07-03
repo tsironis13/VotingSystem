@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/satisfactionLlt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:weightSum="100">
+
+    <ImageView
+        android:id="@+id/angryImv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/satisfaction_imv_height"
+        android:layout_weight="20"
+        android:tag="@string/empty_string"
+        android:src="@drawable/angry"
+        android:contentDescription="@string/angry" />
+
+    <ImageView
+        android:id="@+id/sadImv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/satisfaction_imv_height"
+        android:layout_weight="20"
+        android:tag="@string/empty_string"
+        android:src="@drawable/sad"
+        android:contentDescription="@string/sad" />
+
+    <ImageView
+        android:id="@+id/neutralImv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/satisfaction_imv_height"
+        android:layout_weight="20"
+        android:tag="@string/empty_string"
+        android:src="@drawable/neutral"
+        android:contentDescription="@string/neutral" />
+
+    <ImageView
+        android:id="@+id/happyImv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/satisfaction_imv_height"
+        android:layout_weight="20"
+        android:tag="@string/empty_string"
+        android:src="@drawable/happy"
+        android:contentDescription="@string/happy" />
+
+    <ImageView
+        android:id="@+id/vhappyImv"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/satisfaction_imv_height"
+        android:layout_weight="20"
+        android:tag="@string/empty_string"
+        android:src="@drawable/vhappy"
+        android:contentDescription="@string/vhappy" />
+
+</LinearLayout>

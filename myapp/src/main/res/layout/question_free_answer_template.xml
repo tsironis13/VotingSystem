@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.rey.material.widget.EditText xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/freeAnswerEdt"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/ranking_question_item_llt_background"
+    android:lines="8"
+    android:padding="@dimen/free_answer_edt_padding"
+    android:textColorHint="@color/free_answer_edt_hint_color"
+    android:hint="@string/free_answer_hint"
+    app:et_inputId="@+id/wrapped_freeAnswerEdt" />

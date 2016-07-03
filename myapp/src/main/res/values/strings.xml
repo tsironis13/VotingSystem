@@ -30,6 +30,11 @@
     <string name="user_id">user_id</string>
     <string name="firm_id">firm_id</string>
     <string name="survey_id">survey_id</string>
+    <string name="satsf_icon_selected">selected</string>
+    <string name="collapsed">collapsed</string>
+    <string name="expanded">expanded</string>
+    <string name="done">done</string>
+    <string name="forward">forward</string>
     <!-- ACTIONS -->
     <string name="register_user">register_user</string>
     <string name="reset_password">reset_password</string>
@@ -45,6 +50,8 @@
     <string name="final_animation">final</string>
     <string name="list_surveys">list_surveys</string>
     <string name="get_survey_questions">survey_questions</string>
+    <string name="on_fab_clicked">on_fab_clicked</string>
+    <string name="on_question_btn_clicked">on_question_btn_clicked</string>
     <!-- LOGIN -->
     <string name="theme">theme</string>
     <string name="app_logo">app_logo</string>
@@ -94,6 +101,17 @@
     <string name="position">position</string>
     <string name="question_title">%1$s. %2$s</string>
     <string name="radio_button_label">\u0020\u0020%1$s</string>
+    <string name="question_btn_id">questionBtn</string>
+    <string name="arrow">arrow</string>
+    <string name="page_index_text">ΕΡΩΤΗΣΗ %1$s ΑΠΟ %2$s</string>
+    <string name="ranking_question_note">Σημείωση: σύρε τις μπάρες με τις απαντήσεις τοποθετώντας τες με τη σειρά προτίμησης σου.</string>
+    <string name="slider_question_note">Σημείωση: σύρε την ένδειξη στην μπάρα για να διαλέξεις την απάντηση σου.</string>
+    <string name="free_answer_hint">Γράψε την απάντηση σου εδώ.</string>
+    <string name="angry">angry</string>
+    <string name="sad">sad</string>
+    <string name="neutral">neutral</string>
+    <string name="happy">happy</string>
+    <string name="vhappy">vhappy</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>
@@ -140,6 +158,9 @@
     <string name="logout">Αποσυνδεση</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <!-- OBJECT ANIMATOR -->
+    <string name="float_type">float</string>
+    <string name="translation_y">translationY</string>
     <!-- STRING COLORS-->
     <string name="error_color_string">#DD2C00</string>
 

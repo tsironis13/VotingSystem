@@ -19,6 +19,7 @@ public class SurveyQuestionsPagerAdapter extends ArrayFragmentStatePagerAdapter<
     private static final String debugTag = SurveyQuestionsPagerAdapter.class.getSimpleName();
     private Fragment[] pages;
     private String surveyTitle;
+    private int position;
 
     public SurveyQuestionsPagerAdapter(FragmentManager fm, String surveyTitle, QuestionData question, int size) {
         super(fm, question);
@@ -28,7 +29,12 @@ public class SurveyQuestionsPagerAdapter extends ArrayFragmentStatePagerAdapter<
 
     @Override
     public Fragment getFragment(QuestionData question, int position) {
+        this.position = position;
         if (pages[position] == null) pages[position] = SurveyQuestionsFragment.newInstance(this.surveyTitle, question, position+1);
         return pages[position];
+    }
+
+    public Fragment getCurrentFragment() {
+        return this.pages[position];
     }
 }

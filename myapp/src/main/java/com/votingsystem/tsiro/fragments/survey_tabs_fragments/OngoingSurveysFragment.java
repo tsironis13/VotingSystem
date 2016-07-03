@@ -83,7 +83,7 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState == null) {
             SAMVCpresenterImpl = new SAMVCPresenterImpl(this);
-            SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.ongoing), 10, 0));
+            SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.ongoing), AppConfig.FETCHED_SURVEYS_LIMIT, 0));
 
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
             ongoingSurveysRcV.setLayoutManager(linearLayoutManager);
@@ -112,7 +112,7 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView {
                     if (data != null && data.size() % 10 == 0) {
                         data.add(null);
                         surveysRcvAdapter.notifyItemChanged(data.size() - 1);
-                        SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.ongoing ), 10, offset));
+                        SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.ongoing ), AppConfig.FETCHED_SURVEYS_LIMIT, offset));
                     }
                 }
             });

@@ -26,7 +26,7 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
     private static final String debugTag = SurveysRcvAdapter.class.getSimpleName();
     private List<SurveyData> data;
     private final int VIEW_ITEM = 1;
-    private int visibleThreshold = 10;
+    private int visibleThreshold = 8;
     private int pages = 1;
     private int lastVisibleItem, totalItemCount, VIEW_PROG;
     private boolean isLoading;
@@ -49,7 +49,7 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
                     //Log.e(debugTag, "Is Loading: "+isLoading+" Total items: "+totalItemCount+" Last visible item: "+lastVisibleItem+" Visible Threshold: "+visibleThreshold);
                     if (!isLoading && totalItemCount <= lastVisibleItem + visibleThreshold) {
                         if (onLoadMoreListener != null) {
-                            onLoadMoreListener.onLoadMore(pages * 10);
+                            onLoadMoreListener.onLoadMore(pages * 20);
                             pages++;
                         }
                         isLoading = true;

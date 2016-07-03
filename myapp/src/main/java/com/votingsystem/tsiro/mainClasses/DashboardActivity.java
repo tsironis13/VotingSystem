@@ -113,7 +113,7 @@ public class DashboardActivity extends AppCompatActivity {
             emailTxt.setText(email);
         }
         //navigationView.setItemTextAppearance(R.style.test);
-        //navigationView.setItemTextColor(getResources().getColorStateList(R.color.t));
+        //navigationView.setItemTextColor(getResources().getColorStateList(R.color.custom_radio_button));
         //navigationView.setItemBackgroundResource(R.drawable.test);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
 
