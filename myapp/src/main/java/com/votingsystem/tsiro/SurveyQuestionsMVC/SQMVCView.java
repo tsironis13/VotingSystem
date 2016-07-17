@@ -1,6 +1,6 @@
 package com.votingsystem.tsiro.SurveyQuestionsMVC;
 
-import com.votingsystem.tsiro.POJO.SurveyQuestions;
+import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.parcel.QuestionData;
 
 import java.util.List;
@@ -10,6 +10,7 @@ import java.util.List;
  */
 public interface SQMVCView {
     void onSuccessSurveyQuestionsFetched(String surveyTitle, List<QuestionData> data);
+    void onSuccessSurveyDetailsFetched(SurveyDetailsData surveyDetailsData);
     void onFailure(int code);
 }
 

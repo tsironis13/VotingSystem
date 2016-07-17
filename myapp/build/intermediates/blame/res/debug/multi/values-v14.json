@@ -7,9 +7,66 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
-                    "endLine": 6,
+                    "endColumn": 69,
+                    "endOffset": 120
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/res/values-v14/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 200,
+                        "endColumn": 69,
+                        "endOffset": 265
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 125,
+                    "endColumn": 70,
+                    "endOffset": 191
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/res/values-v14/values.xml",
+                    "position": {
+                        "startLine": 5,
+                        "startColumn": 4,
+                        "startOffset": 270,
+                        "endColumn": 70,
+                        "endOffset": 336
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 4,
+                    "startColumn": 4,
+                    "startOffset": 196,
+                    "endColumn": 72,
+                    "endOffset": 264
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/res/values-v14/values.xml",
+                    "position": {
+                        "startLine": 6,
+                        "startColumn": 4,
+                        "startOffset": 341,
+                        "endColumn": 72,
+                        "endOffset": 409
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 5,
+                    "startColumn": 4,
+                    "startOffset": 269,
+                    "endLine": 9,
                     "endColumn": 12,
-                    "endOffset": 326
+                    "endOffset": 540
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/values-v14/values-v14.xml",
@@ -25,11 +82,11 @@
             },
             {
                 "to": {
-                    "startLine": 7,
+                    "startLine": 10,
                     "startColumn": 4,
-                    "startOffset": 331,
+                    "startOffset": 545,
                     "endColumn": 70,
-                    "endOffset": 397
+                    "endOffset": 611
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/values-v14/values-v14.xml",
@@ -44,11 +101,11 @@
             },
             {
                 "to": {
-                    "startLine": 8,
+                    "startLine": 11,
                     "startColumn": 4,
-                    "startOffset": 402,
+                    "startOffset": 616,
                     "endColumn": 82,
-                    "endOffset": 480
+                    "endOffset": 694
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/values-v14/values-v14.xml",
@@ -63,12 +120,12 @@
             },
             {
                 "to": {
-                    "startLine": 9,
+                    "startLine": 12,
                     "startColumn": 4,
-                    "startOffset": 485,
-                    "endLine": 14,
+                    "startOffset": 699,
+                    "endLine": 17,
                     "endColumn": 12,
-                    "endOffset": 890
+                    "endOffset": 1104
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/values-v14/values-v14.xml",
@@ -84,12 +141,12 @@
             },
             {
                 "to": {
-                    "startLine": 15,
+                    "startLine": 18,
                     "startColumn": 4,
-                    "startOffset": 895,
-                    "endLine": 20,
+                    "startOffset": 1109,
+                    "endLine": 23,
                     "endColumn": 12,
-                    "endOffset": 1312
+                    "endOffset": 1526
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/values-v14/values-v14.xml",
@@ -105,11 +162,11 @@
             },
             {
                 "to": {
-                    "startLine": 21,
+                    "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 1317,
+                    "startOffset": 1531,
                     "endColumn": 119,
-                    "endOffset": 1432
+                    "endOffset": 1646
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/values-v14/values-v14.xml",
@@ -124,11 +181,11 @@
             },
             {
                 "to": {
-                    "startLine": 22,
+                    "startLine": 25,
                     "startColumn": 4,
-                    "startOffset": 1437,
+                    "startOffset": 1651,
                     "endColumn": 62,
-                    "endOffset": 1495
+                    "endOffset": 1709
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/values-v14/values-v14.xml",
@@ -143,12 +200,12 @@
             },
             {
                 "to": {
-                    "startLine": 23,
+                    "startLine": 26,
                     "startColumn": 4,
-                    "startOffset": 1500,
-                    "endLine": 25,
+                    "startOffset": 1714,
+                    "endLine": 28,
                     "endColumn": 12,
-                    "endOffset": 1649
+                    "endOffset": 1863
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/values-v14/values-v14.xml",
@@ -164,11 +221,11 @@
             },
             {
                 "to": {
-                    "startLine": 26,
+                    "startLine": 29,
                     "startColumn": 4,
-                    "startOffset": 1654,
+                    "startOffset": 1868,
                     "endColumn": 62,
-                    "endOffset": 1712
+                    "endOffset": 1926
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/values-v14/values-v14.xml",
@@ -183,11 +240,11 @@
             },
             {
                 "to": {
-                    "startLine": 27,
+                    "startLine": 30,
                     "startColumn": 4,
-                    "startOffset": 1717,
+                    "startOffset": 1931,
                     "endColumn": 131,
-                    "endOffset": 1844
+                    "endOffset": 2058
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/values-v14/values-v14.xml",

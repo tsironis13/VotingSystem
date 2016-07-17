@@ -8,5 +8,6 @@
     android:lines="8"
     android:padding="@dimen/free_answer_edt_padding"
     android:textColorHint="@color/free_answer_edt_hint_color"
+    android:text=""
     android:hint="@string/free_answer_hint"
     app:et_inputId="@+id/wrapped_freeAnswerEdt" />

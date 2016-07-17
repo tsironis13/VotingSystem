@@ -1,5 +1,9 @@
 [
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/fab_bg_mini.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/res/drawable-xxxhdpi-v4/fab_bg_mini.png"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/home.png",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-xxxhdpi/home.png"
     },
@@ -108,6 +112,10 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-xxxhdpi/happy.png"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/hole_pie_chart.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-xxxhdpi/hole_pie_chart.png"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/drawable-xxxhdpi-v4/abc_btn_radio_to_on_mtrl_015.png"
     },
@@ -168,8 +176,16 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/fab_bg_normal.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/res/drawable-xxxhdpi-v4/fab_bg_normal.png"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/drawable-xxxhdpi-v4/abc_btn_switch_to_on_mtrl_00012.9.png"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/hor_bar_chart.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-xxxhdpi/hor_bar_chart.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png",
@@ -180,8 +196,16 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-xxxhdpi/angry.png"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/pie_chart.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-xxxhdpi/pie_chart.png"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/abc_ic_star_half_black_36dp.png",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/drawable-xxxhdpi-v4/abc_ic_star_half_black_36dp.png"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/bar_chart.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-xxxhdpi/bar_chart.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/arrow_down.png",

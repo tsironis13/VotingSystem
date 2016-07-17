@@ -1,7 +1,8 @@
 package com.votingsystem.tsiro.SurveyQuestionsMVC;
 
+import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
+import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.POJO.SurveyQuestionBody;
-import com.votingsystem.tsiro.POJO.SurveyQuestions;
 import com.votingsystem.tsiro.parcel.QuestionData;
 
 import java.util.List;
@@ -23,9 +24,18 @@ public class SQMVCPresenterImpl implements SQMVCPresenter, SQMVCFinishedListener
         SQMVCinteractorImpl.getSurveyQuestions(surveyQuestionBody, this);
     }
 
+    public void uploadSurveyAnswers(SurveyAnswersBody surveyAnswersBody) {
+        SQMVCinteractorImpl.uploadSurveyAnswers(surveyAnswersBody, this);
+    }
+
     @Override
     public void onSuccessSurveyQuestionsFetched(String surveyTitle, List<QuestionData> data) {
         SQMVCview.onSuccessSurveyQuestionsFetched(surveyTitle, data);
+    }
+
+    @Override
+    public void onSuccessSurveyDetailsFetched(SurveyDetailsData surveyDetailsData) {
+        SQMVCview.onSuccessSurveyDetailsFetched(surveyDetailsData);
     }
 
     @Override

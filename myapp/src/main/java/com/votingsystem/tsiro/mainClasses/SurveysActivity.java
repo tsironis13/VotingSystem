@@ -24,7 +24,6 @@ import java.util.List;
  */
 public class SurveysActivity extends AppCompatActivity {
 
-    private Toolbar toolbar;
     private TabLayout mTabs;
     private ViewPager mPager;
 
@@ -33,7 +32,7 @@ public class SurveysActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.surveys_activity);
 
-        toolbar     =   (Toolbar) findViewById(R.id.appBar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.appBar);
         mTabs       =   (TabLayout) findViewById(R.id.tabs);
         mPager      =   (ViewPager) findViewById(R.id.surveysPager);
 

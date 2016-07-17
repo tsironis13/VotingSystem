@@ -37,4 +37,8 @@ public class SurveyQuestionsPagerAdapter extends ArrayFragmentStatePagerAdapter<
     public Fragment getCurrentFragment() {
         return this.pages[position];
     }
+
+    public Fragment getFragmentAtPosition(int position) {
+        return this.pages[position];
+    }
 }

@@ -24,6 +24,10 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/question_slider_template.xml"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/mandatory_dialog.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/mandatory_dialog.xml"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/24.0.0/res/layout/design_navigation_menu.xml"
     },
@@ -40,12 +44,20 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/survey_item.xml"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_survey_stats.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/fragment_survey_stats.xml"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_completedsurveys.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/fragment_completedsurveys.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/layout/abc_alert_dialog_material.xml"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/dialog_grid.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/dialog_grid.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_forgotpassword.xml",
@@ -56,12 +68,24 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/layout/abc_list_menu_item_layout.xml"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/dialog_list.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/dialog_list.xml"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_survey_stats_template.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/fragment_survey_stats_template.xml"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/ranking_question_answer_item.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/ranking_question_answer_item.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/layout/abc_popup_menu_header_item_layout.xml"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/view.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/view.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/question_free_answer_template.xml",
@@ -88,6 +112,10 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/layout/abc_screen_content_include.xml"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/base_container.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/base_container.xml"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_pendingsurveys.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/fragment_pendingsurveys.xml"
     },
@@ -98,6 +126,10 @@
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/question_satisfaction_rating_template.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/question_satisfaction_rating_template.xml"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/stats_details_container.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/stats_details_container.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/notification_template_big_media.xml",
@@ -114,6 +146,10 @@
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/surveys_activity.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/surveys_activity.xml"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/dialog_view.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/layout/dialog_view.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
@@ -278,6 +314,10 @@
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/layout/abc_dialog_title_material.xml"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/survey_details_activity.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/survey_details_activity.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/app_bar.xml",

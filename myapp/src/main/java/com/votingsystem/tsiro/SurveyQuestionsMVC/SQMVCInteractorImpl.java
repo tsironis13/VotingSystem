@@ -2,12 +2,15 @@ package com.votingsystem.tsiro.SurveyQuestionsMVC;
 
 import android.util.Log;
 
+import com.votingsystem.tsiro.parcel.QuestionStatsDetails;
+import com.votingsystem.tsiro.parcel.Stats;
+import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
+import com.votingsystem.tsiro.POJO.SurveyDetails;
 import com.votingsystem.tsiro.POJO.SurveyQuestionBody;
 import com.votingsystem.tsiro.POJO.SurveyQuestions;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.parcel.QuestionData;
-import com.votingsystem.tsiro.parcel.SurveyData;
 import com.votingsystem.tsiro.rest.ApiService;
 
 import java.util.List;
@@ -31,7 +34,6 @@ public class SQMVCInteractorImpl implements SQMVCInteractor {
         call.enqueue(new Callback<SurveyQuestions>() {
             @Override
             public void onResponse(Response<SurveyQuestions> response, Retrofit retrofit) {
-                Log.e(debugTag, response.body().getCode()+"");
                 List<QuestionData> firmElementList = response.body().getData();
                 if (response.body().getCode() != AppConfig.STATUS_OK) {
                     SQMVCfinishedListener.onFailure(response.body().getCode());
@@ -53,6 +55,32 @@ public class SQMVCInteractorImpl implements SQMVCInteractor {
             @Override
             public void onFailure(Throwable t) {
                 Log.e(debugTag, t.toString());
+            }
+        });
+    }
+
+    @Override
+    public void uploadSurveyAnswers(SurveyAnswersBody surveyAnswersBody, final SQMVCFinishedListener SQMVCfinishedListener) {
+        Call<SurveyDetails> call = apiService.uploadSurveyAnswers(surveyAnswersBody);
+        call.enqueue(new Callback<SurveyDetails>() {
+            @Override
+            public void onResponse(Response<SurveyDetails> response, Retrofit retrofit) {
+                if (response.body().getCode() != AppConfig.STATUS_OK) {
+                    SQMVCfinishedListener.onFailure(response.body().getCode());
+                } else {
+                    SQMVCfinishedListener.onSuccessSurveyDetailsFetched(response.body().getData());
+                }
+                Log.e(debugTag, response.body().getData().getQuestion().size()+"");
+                for (QuestionStatsDetails details : response.body().getData().getQuestion()) {
+                    for (Stats stats: details.getStats()) {
+//                        Log.e(debugTag, "Answer title: "+stats.getTitle()+" Answer pers: "+stats.getPercentage()+"Count: "+stats.getCount());
+                    }
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) {
+
             }
         });
     }

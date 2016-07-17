@@ -91,7 +91,8 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
                     ((SurveysItemViewHolder) holder).answered.setVisibility(View.VISIBLE);
                     ((SurveysItemViewHolder) holder).surveyItemContainerRlt.setTag(0);
                 } else {
-                    ((SurveysItemViewHolder) holder).surveyItemContainerRlt.setTag(1);
+                    ((SurveysItemViewHolder) holder).surveyItemContainerRlt.setTag(0);
+//                    ((SurveysItemViewHolder) holder).surveyItemContainerRlt.setTag(1);
                 }
                 if (data.get(position).getIsAnswered() && ((SurveysItemViewHolder) holder).answered.getVisibility() == View.VISIBLE) ((SurveysItemViewHolder) holder).answered.setVisibility(View.INVISIBLE);
             }

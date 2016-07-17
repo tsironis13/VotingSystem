@@ -3,7 +3,4 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/questionListPickerRcv"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:paddingTop="12dp"
-    android:paddingLeft="3dp"
-    android:paddingRight="3dp" />
+    android:layout_height="match_parent" />

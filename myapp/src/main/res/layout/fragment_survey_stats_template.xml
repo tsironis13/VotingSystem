@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/templateLlt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/questionTitleTtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/question_title_margin_top_bottom"
+        android:textColor="@color/accentColor"
+        android:textSize="@dimen/question_title_text_size"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/chartsContainerLlt"
+        android:layout_width="match_parent"
+        android:layout_height="190dp"
+        android:orientation="vertical" />
+
+    <net.i2p.android.ext.floatingactionbutton.FloatingActionsMenu
+        android:id="@+id/FAmenu"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="right"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="10dp"
+        fab:fab_expandDirection="left"
+        fab:fab_addButtonColorNormal="@color/accentColor">
+
+        <net.i2p.android.ext.floatingactionbutton.FloatingActionButton
+            android:id="@+id/holePieChartFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag=""
+            fab:fab_size="mini"
+            fab:fab_icon="@drawable/hole_pie_chart"
+            fab:fab_colorNormal="@color/primaryColor" />
+
+        <net.i2p.android.ext.floatingactionbutton.FloatingActionButton
+            android:id="@+id/barChartFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag=""
+            fab:fab_size="mini"
+            fab:fab_icon="@drawable/bar_chart"
+            fab:fab_colorNormal="@color/primaryColor" />
+
+        <net.i2p.android.ext.floatingactionbutton.FloatingActionButton
+            android:id="@+id/horBarChartFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag=""
+            fab:fab_size="mini"
+            fab:fab_icon="@drawable/hor_bar_chart"
+            fab:fab_colorNormal="@color/primaryColor" />
+
+        <net.i2p.android.ext.floatingactionbutton.FloatingActionButton
+            android:id="@+id/pieChartFAB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:tag="@string/selected"
+            fab:fab_size="mini"
+            fab:fab_icon="@drawable/pie_chart"
+            fab:fab_colorNormal="@color/primaryColor" />
+
+    </net.i2p.android.ext.floatingactionbutton.FloatingActionsMenu>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_height"
+        android:background="@color/view_color" />
+
+</LinearLayout>
+

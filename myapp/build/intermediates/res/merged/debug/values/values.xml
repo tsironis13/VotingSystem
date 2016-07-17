@@ -87,7 +87,6 @@
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="colorControlHightlight">#8001579B</color>
-    <color name="common_action_bar_splitter">#d2d2d2</color>
     <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
     <color name="common_google_signin_btn_text_dark_disabled">#1F000000</color>
     <color name="common_google_signin_btn_text_dark_focused">@android:color/black</color>
@@ -106,6 +105,9 @@
     <color name="common_plus_signin_btn_text_light_pressed">#DE000000</color>
     <color name="connection_settings_ripple_color">#E0E0E0</color>
     <color name="connection_settings_text_color">#424242</color>
+    <color name="default_disabled">#aaa</color>
+    <color name="default_normal">#ff0099cc</color>
+    <color name="default_pressed">#ff33b5e5</color>
     <color name="design_fab_shadow_end_color">@android:color/transparent</color>
     <color name="design_fab_shadow_mid_color">#14000000</color>
     <color name="design_fab_shadow_start_color">#44000000</color>
@@ -116,6 +118,8 @@
     <color name="design_snackbar_background_color">#323232</color>
     <color name="design_textinput_error_color_dark">#FFFF6E6E</color>
     <color name="design_textinput_error_color_light">#FFD50000</color>
+    <color name="dialogplus_black_overlay">#60000000</color>
+    <color name="dialogplus_card_shadow">#D4D4D4</color>
     <color name="dim_foreground_disabled_material_dark">#80bebebe</color>
     <color name="dim_foreground_disabled_material_light">#80323232</color>
     <color name="dim_foreground_material_dark">#ffbebebe</color>
@@ -190,6 +194,7 @@
     <declare-styleable name="ActionMenuView"/>
     <declare-styleable name="ActionMode"><attr name="titleTextStyle"/><attr name="subtitleTextStyle"/><attr name="background"/><attr name="backgroundSplit"/><attr name="height"/><attr format="reference" name="closeItemLayout"/></declare-styleable>
     <declare-styleable name="ActivityChooserView"><attr format="string" name="initialActivityCount"/><attr format="reference" name="expandActivityOverflowButtonDrawable"/></declare-styleable>
+    <declare-styleable name="AddFloatingActionButton"><attr format="color" name="fab_plusIconColor"/></declare-styleable>
     <declare-styleable name="AlertDialog"><attr name="android:layout"/><attr format="reference" name="buttonPanelSideLayout"/><attr format="reference" name="listLayout"/><attr format="reference" name="multiChoiceItemLayout"/><attr format="reference" name="singleChoiceItemLayout"/><attr format="reference" name="listItemLayout"/></declare-styleable>
     <declare-styleable name="AppBarLayout"><attr name="elevation"/><attr name="android:background"/><attr format="boolean" name="expanded"/></declare-styleable>
     <declare-styleable name="AppBarLayoutStates"><attr format="boolean" name="state_collapsed"/><attr format="boolean" name="state_collapsible"/></declare-styleable>
@@ -217,7 +222,8 @@
     <declare-styleable name="Dialog"><attr name="android:layout_width"/><attr name="android:layout_height"/><attr format="float" name="di_dimAmount"/><attr format="color|reference" name="di_backgroundColor"/><attr format="dimension|reference" name="di_elevation"/><attr format="dimension|reference" name="di_maxElevation"/><attr format="dimension|reference" name="di_cornerRadius"/><attr format="integer" name="di_layoutDirection"><enum name="ltr" value="0"/><enum name="rtl" value="1"/><enum name="locale" value="3"/></attr><attr format="dimension|reference" name="di_maxWidth"/><attr format="dimension|reference" name="di_maxHeight"/><attr format="reference" name="di_titleTextAppearance"/><attr format="color|reference" name="di_titleTextColor"/><attr format="reference" name="di_actionBackground"/><attr format="reference" name="di_actionRipple"/><attr format="reference" name="di_actionTextAppearance"/><attr format="color|reference" name="di_actionTextColor"/><attr format="reference" name="di_positiveActionBackground"/><attr format="reference" name="di_positiveActionRipple"/><attr format="reference" name="di_positiveActionTextAppearance"/><attr format="color|reference" name="di_positiveActionTextColor"/><attr format="reference" name="di_negativeActionBackground"/><attr format="reference" name="di_negativeActionRipple"/><attr format="reference" name="di_negativeActionTextAppearance"/><attr format="color|reference" name="di_negativeActionTextColor"/><attr format="reference" name="di_neutralActionBackground"/><attr format="reference" name="di_neutralActionRipple"/><attr format="reference" name="di_neutralActionTextAppearance"/><attr format="color|reference" name="di_neutralActionTextColor"/><attr format="color|reference" name="di_dividerColor"/><attr format="dimension|reference" name="di_dividerHeight"/><attr format="reference" name="di_inAnimation"/><attr format="reference" name="di_outAnimation"/><attr format="boolean" name="di_cancelable"/><attr format="boolean" name="di_canceledOnTouchOutside"/></declare-styleable>
     <declare-styleable name="DrawerArrowToggle"><attr format="color" name="color"/><attr format="boolean" name="spinBars"/><attr format="dimension" name="drawableSize"/><attr format="dimension" name="gapBetweenBars"/><attr format="dimension" name="arrowHeadLength"/><attr format="dimension" name="arrowShaftLength"/><attr format="dimension" name="barLength"/><attr format="dimension" name="thickness"/></declare-styleable>
     <declare-styleable name="EditText"><attr format="reference" name="et_inputId"/><attr format="boolean" name="et_labelEnable"/><attr format="reference|dimension" name="et_labelPadding"/><attr format="reference|dimension" name="et_labelTextSize"/><attr format="reference|color" name="et_labelTextColor"/><attr format="reference" name="et_labelTextAppearance"/><attr format="integer" name="et_labelEllipsize"><enum name="start" value="0x00000001"/><enum name="middle" value="0x00000002"/><enum name="end" value="0x00000003"/><enum name="marquee" value="0x00000004"/></attr><attr format="reference" name="et_labelInAnim"/><attr format="reference" name="et_labelOutAnim"/><attr format="integer" name="et_supportMode"><enum name="none" value="0x00000000"/><enum name="helper" value="0x00000001"/><enum name="helperWithError" value="0x00000002"/><enum name="charCounter" value="0x00000003"/></attr><attr format="reference|integer" name="et_supportMaxChars"/><attr format="reference|string" name="et_helper"/><attr format="reference|string" name="et_error"/><attr format="reference|dimension" name="et_supportPadding"/><attr format="reference|dimension" name="et_supportTextSize"/><attr format="reference|color" name="et_supportTextColor"/><attr format="reference|color" name="et_supportTextErrorColor"/><attr format="reference" name="et_supportTextAppearance"/><attr format="boolean" name="et_supportSingleLine"/><attr format="reference|integer" name="et_supportMaxLines"/><attr format="reference|integer" name="et_supportLines"/><attr format="integer" name="et_supportEllipsize"><enum name="start" value="0x00000001"/><enum name="middle" value="0x00000002"/><enum name="end" value="0x00000003"/><enum name="marquee" value="0x00000004"/></attr><attr format="reference|color" name="et_dividerColor"/><attr format="reference|color" name="et_dividerErrorColor"/><attr format="reference|dimension" name="et_dividerHeight"/><attr format="reference|dimension" name="et_dividerPadding"/><attr format="reference|integer" name="et_dividerAnimDuration"/><attr format="boolean" name="et_dividerCompoundPadding"/><attr format="integer" name="et_autoCompleteMode"><enum name="none" value="0"/><enum name="single" value="1"/><enum name="multi" value="2"/></attr></declare-styleable>
-    <declare-styleable name="FloatingActionButton"><attr format="reference|color" name="fab_backgroundColor"/><attr format="reference|integer" name="fab_backgroundAnimDuration"/><attr format="reference|dimension" name="fab_radius"/><attr format="reference|dimension" name="fab_elevation"/><attr format="reference" name="fab_iconSrc"/><attr format="reference" name="fab_iconLineMorphing"/><attr format="reference|dimension" name="fab_iconSize"/><attr format="reference" name="fab_interpolator"/><attr format="reference|integer" name="fab_animDuration"/><attr name="backgroundTint"/><attr name="backgroundTintMode"/><attr format="color" name="rippleColor"/><attr name="fabSize"><enum name="auto" value="-1"/><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr name="elevation"/><attr format="dimension" name="pressedTranslationZ"/><attr format="dimension" name="borderWidth"/><attr format="boolean" name="useCompatPadding"/></declare-styleable>
+    <declare-styleable name="FloatingActionButton"><attr format="color" name="fab_colorPressed"/><attr format="color" name="fab_colorDisabled"/><attr format="color" name="fab_colorNormal"/><attr format="reference" name="fab_icon"/><attr format="enum" name="fab_size"><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr format="string" name="fab_title"/><attr format="boolean" name="fab_stroke_visible"/><attr format="reference|color" name="fab_backgroundColor"/><attr format="reference|integer" name="fab_backgroundAnimDuration"/><attr format="reference|dimension" name="fab_radius"/><attr format="reference|dimension" name="fab_elevation"/><attr format="reference" name="fab_iconSrc"/><attr format="reference" name="fab_iconLineMorphing"/><attr format="reference|dimension" name="fab_iconSize"/><attr format="reference" name="fab_interpolator"/><attr format="reference|integer" name="fab_animDuration"/><attr name="backgroundTint"/><attr name="backgroundTintMode"/><attr format="color" name="rippleColor"/><attr name="fabSize"><enum name="auto" value="-1"/><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr name="elevation"/><attr format="dimension" name="pressedTranslationZ"/><attr format="dimension" name="borderWidth"/><attr format="boolean" name="useCompatPadding"/></declare-styleable>
+    <declare-styleable name="FloatingActionsMenu"><attr format="color" name="fab_addButtonColorPressed"/><attr format="color" name="fab_addButtonColorNormal"/><attr format="enum" name="fab_addButtonSize"><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr format="color" name="fab_addButtonPlusIconColor"/><attr format="boolean" name="fab_addButtonStrokeVisible"/><attr format="reference" name="fab_labelStyle"/><attr format="enum" name="fab_labelsPosition"><enum name="left" value="0"/><enum name="right" value="1"/></attr><attr format="enum" name="fab_expandDirection"><enum name="up" value="0"/><enum name="down" value="1"/><enum name="left" value="2"/><enum name="right" value="3"/></attr></declare-styleable>
     <declare-styleable name="ForegroundLinearLayout"><attr name="android:foreground"/><attr name="android:foregroundGravity"/><attr format="boolean" name="foregroundInsidePadding"/></declare-styleable>
     <declare-styleable name="LineMorphingDrawable"><attr format="reference" name="lmd_state"/><attr format="integer" name="lmd_curState"/><attr format="reference|dimension" name="lmd_padding"/><attr format="reference|dimension" name="lmd_paddingLeft"/><attr format="reference|dimension" name="lmd_paddingTop"/><attr format="reference|dimension" name="lmd_paddingRight"/><attr format="reference|dimension" name="lmd_paddingBottom"/><attr format="reference|integer" name="lmd_animDuration"/><attr format="reference" name="lmd_interpolator"/><attr format="reference|dimension" name="lmd_strokeSize"/><attr format="reference|color" name="lmd_strokeColor"/><attr format="integer" name="lmd_strokeCap"><enum name="butt" value="0x00000000"/><enum name="round" value="0x00000001"/><enum name="square" value="0x00000002"/></attr><attr format="integer" name="lmd_strokeJoin"><enum name="miter" value="0x00000000"/><enum name="round" value="0x00000001"/><enum name="bevel" value="0x00000002"/></attr><attr format="boolean" name="lmd_clockwise"/><attr format="integer" name="lmd_layoutDirection"><enum name="ltr" value="0x00000000"/><enum name="rtl" value="0x00000001"/><enum name="locale" value="0x00000003"/></attr></declare-styleable>
     <declare-styleable name="LinearLayoutCompat"><attr name="android:orientation"/><attr name="android:gravity"/><attr name="android:baselineAligned"/><attr name="android:baselineAlignedChildIndex"/><attr name="android:weightSum"/><attr format="boolean" name="measureWithLargestChild"/><attr name="divider"/><attr name="showDividers"><flag name="none" value="0"/><flag name="beginning" value="1"/><flag name="middle" value="2"/><flag name="end" value="4"/></attr><attr format="dimension" name="dividerPadding"/></declare-styleable>
@@ -385,6 +391,7 @@
     <dimen name="design_tab_scrollable_min_width">72dp</dimen>
     <dimen name="design_tab_text_size">14sp</dimen>
     <dimen name="design_tab_text_size_2line">12sp</dimen>
+    <dimen name="dialogplus_default_center_margin">16dp</dimen>
     <item format="float" name="disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="disabled_alpha_material_light" type="dimen">0.26</item>
     <dimen name="email_edt_padding_right">5dp</dimen>
@@ -392,6 +399,16 @@
     <dimen name="et_divider_height">1dp</dimen>
     <dimen name="et_label_text_size">10sp</dimen>
     <dimen name="et_support_text_size">10sp</dimen>
+    <dimen name="fab_actions_spacing">16dp</dimen>
+    <dimen name="fab_icon_size">24dp</dimen>
+    <dimen name="fab_labels_margin">8dp</dimen>
+    <dimen name="fab_plus_icon_size">14dp</dimen>
+    <dimen name="fab_plus_icon_stroke">2dp</dimen>
+    <dimen name="fab_shadow_offset">3dp</dimen>
+    <dimen name="fab_shadow_radius">9dp</dimen>
+    <dimen name="fab_size_mini">40dp</dimen>
+    <dimen name="fab_size_normal">56dp</dimen>
+    <dimen name="fab_stroke_width">1dp</dimen>
     <dimen name="firmname_imv_margin_left">11dp</dimen>
     <dimen name="forgotpassword_inputfields_container_margin_bottom">8dp</dimen>
     <dimen name="forgotpassword_register_txv_padding_left_right">3dp</dimen>
@@ -430,6 +447,12 @@
     <dimen name="loginactivity_btn_margin_top">8dp</dimen>
     <dimen name="loginactivity_snkbar_height">30dp</dimen>
     <dimen name="logo_dimens">60dp</dimen>
+    <dimen name="mand_dialog_btn_height">37dp</dimen>
+    <dimen name="mand_dialog_btn_width">110dp</dimen>
+    <dimen name="mand_dialog_container_height">90dp</dimen>
+    <dimen name="mand_dialog_container_margin">20dp</dimen>
+    <dimen name="mand_dialog_title_margin_bottom">18dp</dimen>
+    <dimen name="mand_dialog_title_text_size">13sp</dimen>
     <dimen name="margin_bottom">15dp</dimen>
     <dimen name="middle_view_padding_top">15dp</dimen>
     <dimen name="nav_drawer_header_height">190dp</dimen>
@@ -460,6 +483,8 @@
     <dimen name="question_container_margin_padding_bottom">12dp</dimen>
     <dimen name="question_container_padding_bottom">12dp</dimen>
     <dimen name="question_item_text_size">13sp</dimen>
+    <dimen name="question_matrix_scale_radio_button_height">25dp</dimen>
+    <dimen name="question_matrix_scale_txv_height">12sp</dimen>
     <dimen name="question_slider_padding_left_right">4dp</dimen>
     <dimen name="question_slider_txv_margin_top">40dp</dimen>
     <dimen name="question_title_margin_top_bottom">15dp</dimen>
@@ -532,6 +557,8 @@
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
     <item name="avpa_view_tag_key" type="id"/>
+    <item name="fab_expand_menu_button" type="id"/>
+    <item name="fab_label" type="id"/>
     <item name="home" type="id"/>
     <item name="item_touch_helper_previous_elevation" type="id"/>
     <item name="progress_circular" type="id"/>
@@ -544,7 +571,8 @@
     <integer name="bottom_sheet_slide_duration">150</integer>
     <integer name="cancel_button_image_alpha">127</integer>
     <integer name="design_snackbar_text_max_lines">2</integer>
-    <integer name="google_play_services_version">9080000</integer>
+    <integer name="dialogplus_animation_default_duration">300</integer>
+    <integer name="google_play_services_version">9256000</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
@@ -582,6 +610,7 @@
     <string name="action_settings">Settings</string>
     <string name="active_since">Ημ. Έναρξης</string>
     <string name="add_new">Δημιουργια νεας</string>
+    <string name="agree">Συμφωνώ</string>
     <string name="angry">angry</string>
     <string name="app_logo">app_logo</string>
     <string name="app_name">VotingSystem</string>
@@ -624,7 +653,9 @@
     <string name="common_open_on_phone">Open on phone</string>
     <string name="common_signin_button_text">Sign in</string>
     <string name="common_signin_button_text_long">Sign in with Google</string>
+    <string name="complete_all_mandatory_questions">Παρακαλώ συμπλήρωσε όλες τις υποχρεωτικές ερωτήσεις.</string>
     <string name="completed">completed</string>
+    <string name="confirm_btn_text">OK</string>
     <string name="confirm_password">confirmpassword</string>
     <string name="confirm_password_tag">confirm_password</string>
     <string name="confirmpassword">Επιβεβαίωση κωδικού</string>
@@ -635,7 +666,11 @@
     <string name="dashboard_activity">DashboardActivity</string>
     <string name="dashboard_fgmt">dashboardFgmt</string>
     <string name="data">data</string>
+    <string name="data_parcelable_key">data</string>
     <string name="desc_list_item_icon">Item Icon</string>
+    <string name="details_activ_action">show_stats</string>
+    <string name="details_activ_action_key">details_activ_action_key</string>
+    <string name="disagree">Διαφωνώ</string>
     <string name="done">done</string>
     <string name="editext">editext</string>
     <string name="email">E-mail</string>
@@ -674,6 +709,7 @@
     <string name="gcm_senderId">747222558005</string>
     <string name="get_firm_names">getFirmNames</string>
     <string name="get_survey_questions">survey_questions</string>
+    <string name="get_survey_stats">survey_stats</string>
     <string name="gone">gone</string>
     <string name="google_api_key" translatable="false">AIzaSyDuQx36qc3KzlcVCWbVtuPyrbyYZJlQfI8</string>
     <string name="google_app_id" translatable="false">1:747222558005:android:7a68c1ec1157526e</string>
@@ -691,12 +727,16 @@
     <string name="login_user">login_user</string>
     <string name="logout">Αποσυνδεση</string>
     <string name="mailto">mailto:</string>
+    <string name="mandatory_dialog_title">Η ερώτηση είναι υποχρεωτική.\nΠαρακαλώ συμπλήρωσε την για να συνεχίσεις.</string>
+    <string name="mandatory_note">* Η ερώτηση είναι υποχρεωτική.</string>
+    <string name="message">Παρακαλώ περιμένετε...</string>
     <string name="middle_animation">middle</string>
     <string name="more">Περισσοτερα</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="network_state_update">networkStateUpdated</string>
     <string name="neutral">neutral</string>
+    <string name="neutraly">Ουδέτερα</string>
     <string name="no_completed">Δεν υπάρχουν ολοκληρωμένες έρευνες.</string>
     <string name="no_connection">Αδυναμία σύνδεσης στο δίκτυο.</string>
     <string name="no_ongoing">Δεν υπάρχουν έρευνες σε εξέλιξη.</string>
@@ -715,11 +755,12 @@
     <string name="pending">pending</string>
     <string name="pick_firm">Επιλογή Εταιρείας</string>
     <string name="position">position</string>
+    <string name="post">ΟΛΟΚΛΗΡΩΣΗ</string>
     <string name="question">question</string>
     <string name="question_btn_id">questionBtn</string>
     <string name="question_title">%1$s. %2$s</string>
     <string name="radio_button_label">\u0020\u0020%1$s</string>
-    <string name="ranking_question_note">Σημείωση: σύρε τις μπάρες με τις απαντήσεις τοποθετώντας τες με τη σειρά προτίμησης σου.</string>
+    <string name="ranking_question_note">Σημείωση: σύρε τις μπάρες με τις απαντήσεις για να τις τοποθετήσεις με τη σειρά προτίμησης σου.</string>
     <string name="register">Πρώτη φορά εδώ? Εγγραφή</string>
     <string name="register_fgmt">registerFgmt</string>
     <string name="register_user">register_user</string>
@@ -728,7 +769,9 @@
     <string name="responsed_surveys">Απαντημένες \nΈρευνες</string>
     <string name="results">Αποτελέσματα</string>
     <string name="sad">sad</string>
-    <string name="satsf_icon_selected">selected</string>
+    <string name="sagree">Συμφωνώ Απολύτως</string>
+    <string name="sdisagree">Διαφωνώ Έντονα</string>
+    <string name="selected">selected</string>
     <string name="send_email">Αποστολή</string>
     <string name="settings">Ρύθμισεις</string>
     <string name="show">ΕΜΦΑΝΙΣΗ</string>
@@ -740,12 +783,14 @@
     <string name="spinner">spinner</string>
     <string name="splash_loaded">splash_loaded</string>
     <string name="splashscreen_fgmt">splashScreenFgmt</string>
+    <string name="stats_title">Αποτελέσματα</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="submit">Εγγραφή</string>
     <string name="survey">Έρευνα</string>
     <string name="survey_id">survey_id</string>
     <string name="survey_questions_activity">SurveyQuestionsActivity</string>
     <string name="survey_questions_fgmt">surveyQuestionsFgmt</string>
+    <string name="survey_stats_fgmt">surveyStatsFgmt</string>
     <string name="survey_title">survey_title</string>
     <string name="surveys">Έρευνες</string>
     <string name="surveys_activity">SurveysActivity</string>
@@ -781,6 +826,7 @@
         <item name="colorPrimary">@color/primaryColor</item>
         <item name="colorPrimaryDark">@color/primaryColorDark</item>
         <item name="colorAccent">@color/accentColor</item>
+        <item name="actionMenuTextColor">@android:color/white</item>
     </style>
     <style name="Base.AlertDialog.AppCompat" parent="android:Widget">
         <item name="android:layout">@layout/abc_alert_dialog_material</item>

@@ -1,6 +1,7 @@
 package com.votingsystem.tsiro.app;
 
 import android.app.Application;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.DisplayMetrics;
 import android.util.Log;

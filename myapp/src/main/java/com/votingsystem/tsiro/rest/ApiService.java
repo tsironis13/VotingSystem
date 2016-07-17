@@ -9,6 +9,8 @@ import com.votingsystem.tsiro.POJO.LoginFormBody;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.POJO.RegisterUserStuff;
 import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
+import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
+import com.votingsystem.tsiro.POJO.SurveyDetails;
 import com.votingsystem.tsiro.POJO.SurveyQuestionBody;
 import com.votingsystem.tsiro.POJO.SurveyQuestions;
 
@@ -46,6 +48,8 @@ public interface ApiService {
     @POST("requests/surveys.php")
     Call<SurveyQuestions> getSurveyQuestions(@Body SurveyQuestionBody surveyQuestionBody);
 
+    @POST("requests/surveys.php")
+    Call<SurveyDetails> uploadSurveyAnswers(@Body SurveyAnswersBody surveyAnswersBody);
 //    @FormUrlEncoded
 //    @POST("functions/firmRequests.php")
 //    Call<Firm> getFirmByNameAndCode(@Field("action") String action, @Field("firm-name") String firmName, @Field("firm-code") String firmCode);

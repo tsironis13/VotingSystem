@@ -142,6 +142,8 @@
     <dimen name="question_slider_txv_margin_top">40dp</dimen>
     <dimen name="free_answer_edt_padding">12dp</dimen>
     <dimen name="satisfaction_imv_height">62dp</dimen>
+    <dimen name="question_matrix_scale_radio_button_height">25dp</dimen>
+    <dimen name="question_matrix_scale_txv_height">12sp</dimen>
     <!-- SNACKBARS -->
     <dimen name="sb_horizontal_padding">15dp</dimen>
     <dimen name="no_connection_sb_text_size">14sp</dimen>
@@ -153,6 +155,13 @@
     <dimen name="container_padding_top_bottom">20dp</dimen>
     <dimen name="setting_imv_dimens">23dp</dimen>
     <dimen name="setting_imv_margin_left_right">15dp</dimen>
+    <!-- MANDATORY DIALOG -->
+    <dimen name="mand_dialog_container_height">90dp</dimen>
+    <dimen name="mand_dialog_container_margin">20dp</dimen>
+    <dimen name="mand_dialog_title_margin_bottom">18dp</dimen>
+    <dimen name="mand_dialog_title_text_size">13sp</dimen>
+    <dimen name="mand_dialog_btn_width">110dp</dimen>
+    <dimen name="mand_dialog_btn_height">37dp</dimen>
     <!-- TOOLBAR -->
     <dimen name="toolbar_padding_top">0dp</dimen>
     <!-- NAVIGATION DRAWER -->

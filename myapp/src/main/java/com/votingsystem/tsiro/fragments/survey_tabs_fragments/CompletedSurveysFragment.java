@@ -1,5 +1,6 @@
 package com.votingsystem.tsiro.fragments.survey_tabs_fragments;
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -39,6 +40,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView {
     private TextView noSurveysTxv;
     private SurveysRcvAdapter surveysRcvAdapter;
     private List<SurveyData> data;
+    private ProgressDialog progressDialog;
 
     public CompletedSurveysFragment() {}
 
@@ -67,6 +69,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView {
 
         if (savedInstanceState == null) {
             final SAMVCPresenterImpl SAMVCpresenterImpl = new SAMVCPresenterImpl(this);
+            initializeProgressDialog();
             SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.completed), AppConfig.FETCHED_SURVEYS_LIMIT, 0));
 
             surveysRcvAdapter = new SurveysRcvAdapter(null, completedSurveysRcV, getResources().getString(R.string.completed));
@@ -94,22 +97,25 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView {
 
     @Override
     public void onSuccessSurveysFetched(List<SurveyData> newData, int offset) {
-        if (offset == 0) {
-            this.data = newData;
-            surveysRcvAdapter.refreshData(newData);
-            surveysRcvAdapter.notifyDataSetChanged();
-        } else {
-            this.data.remove(data.size() - 1);
-            surveysRcvAdapter.notifyItemRemoved(data.size());
-            int y       =   0;
-            int start   =   data.size();
-            int end     =   start + newData.size();
-            for (int i = start + 1; i <= end; i++) {
-                data.add(newData.get(y));
-                surveysRcvAdapter.notifyItemInserted(this.data.size());
-                y++;
+        if (progressDialog.isShowing()) {
+            progressDialog.dismiss();
+            if (offset == 0) {
+                this.data = newData;
+                surveysRcvAdapter.refreshData(newData);
+                surveysRcvAdapter.notifyDataSetChanged();
+            } else {
+                this.data.remove(data.size() - 1);
+                surveysRcvAdapter.notifyItemRemoved(data.size());
+                int y       =   0;
+                int start   =   data.size();
+                int end     =   start + newData.size();
+                for (int i = start + 1; i <= end; i++) {
+                    data.add(newData.get(y));
+                    surveysRcvAdapter.notifyItemInserted(this.data.size());
+                    y++;
+                }
+                surveysRcvAdapter.setLoaded();
             }
-            surveysRcvAdapter.setLoaded();
         }
     }
 
@@ -124,5 +130,13 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView {
                 noSurveysTxv.setVisibility(View.VISIBLE);
             }
         }
+    }
+
+    private void initializeProgressDialog() {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage(getActivity().getResources().getString(R.string.message));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
     }
 }

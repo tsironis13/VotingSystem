@@ -39,7 +39,13 @@
         <activity
             android:name="com.votingsystem.tsiro.mainClasses.SurveyQuestionsActivity"
             android:screenOrientation="portrait"
-            android:label="@string/survey_questions_activity" />
+            android:windowSoftInputMode="adjustResize|stateAlwaysHidden"
+            android:label="@string/survey" />
+
+        <activity
+            android:name="com.votingsystem.tsiro.mainClasses.SurveyDetailsActivity"
+            android:screenOrientation="portrait"
+            android:label="" />
 
         <!-- ATTENTION: This was auto-generated to add Google Play services to your project for
              App Indexing.  See https://g.co/AppIndexing/AndroidStudio for more information. -->

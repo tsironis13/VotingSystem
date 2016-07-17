@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/statsDetailsLlt"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="1">
+
+        <View
+            android:id="@+id/colorView"
+            android:layout_width="@dimen/no_size"
+            android:layout_height="match_parent"
+            android:layout_weight="0.03" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/answerTtv"
+            android:layout_width="@dimen/no_size"
+            android:layout_height="match_parent"
+            android:padding="15dp"
+            android:layout_weight="0.57" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/percentageTtv"
+            android:layout_width="@dimen/no_size"
+            android:layout_height="match_parent"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:gravity="center"
+            android:layout_weight="0.2" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/countTtv"
+            android:layout_width="@dimen/no_size"
+            android:layout_height="match_parent"
+            android:paddingTop="15dp"
+            android:paddingBottom="15dp"
+            android:gravity="center"
+            android:layout_weight="0.2" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/view_height"
+        android:background="@color/view_color" />
+
+</LinearLayout>

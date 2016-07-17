@@ -39,6 +39,7 @@ public class SurveyRankingQuestionRcvAdapter extends RecyclerView.Adapter implem
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) ((AnswerItemViewHolder)holder).rankingQuestionItemLlt.setElevation((float) MyApplication.convertPixelToDpAndViceVersa(this.context, 0, 2));
+        ((AnswerItemViewHolder)holder).rankingQuestionItemLlt.setTag(position);
         ((AnswerItemViewHolder)holder).answerTtv.setText(answers.get(position));
     }
 

@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:2:1-78:12
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:2:1-84:12
 	package
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:3:5-50
 		INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml
@@ -15,41 +15,41 @@ ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/Andro
 		INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml
 uses-permission#android.permission.INTERNET
 ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:5:5-67
-MERGED from [com.google.android.gms:play-services-gcm:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.0.2/AndroidManifest.xml:22:5-67
-MERGED from [com.google.android.gms:play-services-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/9.0.2/AndroidManifest.xml:22:5-67
-MERGED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:21:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.0.2/AndroidManifest.xml:21:5-67
-MERGED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:21:5-67
+MERGED from [com.google.android.gms:play-services-gcm:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.2.1/AndroidManifest.xml:22:5-67
+MERGED from [com.google.android.gms:play-services-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/9.2.1/AndroidManifest.xml:22:5-67
+MERGED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:21:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.2.1/AndroidManifest.xml:21:5-67
+MERGED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:21:5-67
 	android:name
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:5:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:6:5-79
-MERGED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-analytics-impl:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.0.2/AndroidManifest.xml:22:5-79
-MERGED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:20:5-79
+MERGED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-analytics-impl:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.2.1/AndroidManifest.xml:22:5-79
+MERGED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:20:5-79
 	android:name
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:6:22-76
 uses-permission#android.permission.WAKE_LOCK
 ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:7:5-68
-MERGED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:24:5-67
-MERGED from [com.google.firebase:firebase-analytics-impl:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.0.2/AndroidManifest.xml:24:5-67
-MERGED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:22:5-68
+MERGED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-analytics-impl:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.2.1/AndroidManifest.xml:24:5-67
+MERGED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:22:5-68
 	android:name
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:7:22-65
 permission#com.votingsystem.tsiro.votingsystem.permission.C2D_MESSAGE
 ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:8:5-129
-MERGED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:25:5-26:47
+MERGED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:25:5-26:47
 	android:protectionLevel
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:8:91-126
 	android:name
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:8:17-90
 uses-permission#com.votingsystem.tsiro.votingsystem.permission.C2D_MESSAGE
 ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:9:5-98
-MERGED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:28:5-79
+MERGED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:28:5-79
 	android:name
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:9:22-95
 application
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:11:5-76:19
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:11:5-82:19
 MERGED from [com.github.ozodrukh:CircularReveal:1.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.github.ozodrukh/CircularReveal/1.1.1/AndroidManifest.xml:10:5-20
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:appcompat-v7:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/AndroidManifest.xml:25:5-20
@@ -79,35 +79,23 @@ MERGED from [com.android.support:animated-vector-drawable:24.0.0] /home/giannis/
 MERGED from [com.android.support:support-vector-drawable:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/AndroidManifest.xml:23:5-20
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:cardview-v7:23.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/AndroidManifest.xml:22:5-20
-MERGED from [com.google.android.gms:play-services-gcm:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.0.2/AndroidManifest.xml:24:5-20
-MERGED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-gcm:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.2.1/AndroidManifest.xml:24:5-20
+MERGED from [com.google.android.gms:play-services-base:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:5:5-12:19
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-tasks:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/9.2.1/AndroidManifest.xml:24:5-20
+MERGED from [com.google.android.gms:play-services-base:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/AndroidManifest.xml:19:5-23:19
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-tasks:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/9.0.2/AndroidManifest.xml:24:5-20
-MERGED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:5:5-12:19
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.nakama.arraypageradapter:arraypageradapter:0.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.nakama.arraypageradapter/arraypageradapter/0.1.1/AndroidManifest.xml:11:5-15:19
 MERGED from [com.android.support:appcompat-v7:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/AndroidManifest.xml:25:5-20
@@ -117,45 +105,35 @@ MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioP
 MERGED from [com.android.support:animated-vector-drawable:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/AndroidManifest.xml:22:5-20
 MERGED from [com.android.support:support-vector-drawable:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/AndroidManifest.xml:23:5-20
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.firebase:firebase-core:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-core/9.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:26:5-41:19
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [net.i2p.android.ext:floatingactionbutton:1.10.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/AndroidManifest.xml:12:5-20
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:5:5-12:19
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.firebase:firebase-core:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-core/9.2.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:26:5-41:19
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:5:5-12:19
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.firebase:firebase-analytics-impl:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.0.2/AndroidManifest.xml:26:5-41:19
-MERGED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:19:5-23:19
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-tasks:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:5:5-12:19
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.firebase:firebase-analytics-impl:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.2.1/AndroidManifest.xml:26:5-41:19
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:30:5-59:19
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:5:5-12:19
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-tasks:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:30:5-59:19
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:5:5-12:19
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:5:5-12:19
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:5:5-12:19
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:5:5-20
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:20:5-24:19
+MERGED from [com.google.android.gms:play-services-tasks:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/AndroidManifest.xml:5:5-20
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:20:5-24:19
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:25:5-20
 	android:label
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:15:9-41
@@ -206,57 +184,67 @@ ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/Andro
 	android:name
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:35:13-78
 activity#com.votingsystem.tsiro.mainClasses.SurveyQuestionsActivity
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:39:9-42:65
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:39:9-43:46
 	android:screenOrientation
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:41:13-49
 	android:label
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:42:13-62
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:43:13-43
+	android:windowSoftInputMode
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:42:13-73
 	android:name
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:40:13-86
+activity#com.votingsystem.tsiro.mainClasses.SurveyDetailsActivity
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:45:9-48:32
+	android:screenOrientation
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:47:13-49
+	android:label
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:48:13-29
+	android:name
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:46:13-84
 receiver#com.google.android.gms.gcm.GcmReceiver
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:46:9-54:20
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:52:9-60:20
 	android:exported
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:48:13-36
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:54:13-36
 	android:permission
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:49:13-73
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:55:13-73
 	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:47:13-66
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:53:13-66
 intent-filter#com.example.gcm+com.google.android.c2dm.intent.RECEIVE
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:50:13-53:29
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:56:13-59:29
 action#com.google.android.c2dm.intent.RECEIVE
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:51:17-81
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:57:17-81
 	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:51:25-78
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:57:25-78
 category#com.example.gcm
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:52:17-60
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:58:17-60
 	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:52:27-57
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:58:27-57
 service#com.votingsystem.tsiro.services.gcm.MyGcmListenerService
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:56:9-62:19
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:62:9-68:19
 	android:exported
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:58:13-37
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:64:13-37
 	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:57:13-84
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:63:13-84
 intent-filter#com.google.android.c2dm.intent.RECEIVE
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:59:13-61:29
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:65:13-67:29
 service#com.votingsystem.tsiro.services.gcm.MyInstanceIDListenerService
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:64:9-70:19
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:70:9-76:19
 	android:exported
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:66:13-37
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:72:13-37
 	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:65:13-91
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:71:13-91
 intent-filter#com.google.android.gms.iid.InstanceID
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:67:13-69:29
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:73:13-75:29
 action#com.google.android.gms.iid.InstanceID
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:68:17-80
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:74:17-80
 	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:68:25-77
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:74:25-77
 service#com.votingsystem.tsiro.services.gcm.RegistrationIntentService
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:72:9-74:40
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:78:9-80:40
 	android:exported
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:74:13-37
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:80:13-37
 	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:73:13-89
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:79:13-89
 uses-sdk
 INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.github.ozodrukh:CircularReveal:1.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.github.ozodrukh/CircularReveal/1.1.1/AndroidManifest.xml:6:5-8:41
@@ -292,35 +280,23 @@ MERGED from [com.android.support:animated-vector-drawable:24.0.0] /home/giannis/
 MERGED from [com.android.support:support-vector-drawable:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/AndroidManifest.xml:21:5-43
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
 MERGED from [com.android.support:cardview-v7:23.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.1.1/AndroidManifest.xml:20:5-43
-MERGED from [com.google.android.gms:play-services-gcm:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-gcm:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.2.1/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-base:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-tasks:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/9.2.1/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-base:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-tasks:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
 MERGED from [com.nakama.arraypageradapter:arraypageradapter:0.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.nakama.arraypageradapter/arraypageradapter/0.1.1/AndroidManifest.xml:7:5-9:41
 MERGED from [com.android.support:appcompat-v7:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/AndroidManifest.xml:21:5-23:78
@@ -330,45 +306,36 @@ MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioP
 MERGED from [com.android.support:animated-vector-drawable:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/AndroidManifest.xml:20:5-44
 MERGED from [com.android.support:support-vector-drawable:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/AndroidManifest.xml:21:5-43
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.firebase:firebase-core:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-core/9.0.2/AndroidManifest.xml:4:5-42
-MERGED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.orhanobut:dialogplus:1.11] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/AndroidManifest.xml:6:5-8:41
+MERGED from [net.i2p.android.ext:floatingactionbutton:1.10.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/AndroidManifest.xml:8:5-10:41
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.firebase:firebase-core:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-core/9.2.1/AndroidManifest.xml:4:5-42
+MERGED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.firebase:firebase-analytics-impl:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-tasks:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.firebase:firebase-analytics-impl:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.2.1/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-tasks:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
-MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
-MERGED from [com.google.android.gms:play-services-tasks:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.0.2/AndroidManifest.xml:4:5-43
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-tasks:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tasks/9.2.1/AndroidManifest.xml:4:5-43
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:18:5-42
 MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:21:5-23:54
 	tools:overrideLibrary
 		ADDED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/AndroidManifest.xml:23:9-51
@@ -379,121 +346,109 @@ MERGED from [com.android.support:support-v4:24.0.0] /home/giannis/AndroidStudioP
 		INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml
 		INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml
 uses-permission#com.google.android.c2dm.permission.RECEIVE
-ADDED from [com.google.android.gms:play-services-gcm:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.0.2/AndroidManifest.xml:21:5-82
-MERGED from [com.google.android.gms:play-services-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/9.0.2/AndroidManifest.xml:21:5-82
-MERGED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:23:5-82
+ADDED from [com.google.android.gms:play-services-gcm:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.2.1/AndroidManifest.xml:21:5-82
+MERGED from [com.google.android.gms:play-services-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-iid/9.2.1/AndroidManifest.xml:21:5-82
+MERGED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:23:5-82
 	android:name
-		ADDED from [com.google.android.gms:play-services-gcm:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.0.2/AndroidManifest.xml:21:22-79
+		ADDED from [com.google.android.gms:play-services-gcm:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-gcm/9.2.1/AndroidManifest.xml:21:22-79
 activity#com.google.android.gms.common.api.GoogleApiActivity
-ADDED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:20:9-22:45
-MERGED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:20:9-22:45
-MERGED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:20:9-22:45
+ADDED from [com.google.android.gms:play-services-base:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/AndroidManifest.xml:20:9-22:45
+MERGED from [com.google.android.gms:play-services-base:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/AndroidManifest.xml:20:9-22:45
 	android:exported
-		ADDED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:22:19-43
+		ADDED from [com.google.android.gms:play-services-base:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/AndroidManifest.xml:22:19-43
 	android:theme
-		ADDED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:21:19-78
+		ADDED from [com.google.android.gms:play-services-base:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/AndroidManifest.xml:21:19-78
 	android:name
-		ADDED from [com.google.android.gms:play-services-base:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/AndroidManifest.xml:20:19-85
+		ADDED from [com.google.android.gms:play-services-base:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/AndroidManifest.xml:20:19-85
 meta-data#com.google.android.gms.version
-ADDED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
-MERGED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:21:9-23:69
+ADDED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:21:9-23:69
 	android:value
-		ADDED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:23:13-66
+		ADDED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:23:13-66
 	android:name
-		ADDED from [com.google.android.gms:play-services-basement:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.0.2/AndroidManifest.xml:22:13-58
-provider#com.google.firebase.provider.FirebaseInitProvider
-ADDED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:7:9-11:39
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:7:9-11:39
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:7:9-11:39
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:7:9-11:39
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:7:9-11:39
-MERGED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:7:9-11:39
-	android:authorities
-		ADDED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:8:13-72
-	android:exported
-		ADDED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:10:13-37
-	android:initOrder
-		ADDED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:11:13-36
-	android:name
-		ADDED from [com.google.firebase:firebase-common:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.0.2/AndroidManifest.xml:9:13-58
+		ADDED from [com.google.android.gms:play-services-basement:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/9.2.1/AndroidManifest.xml:22:13-58
 receiver#com.google.android.gms.measurement.AppMeasurementReceiver
-ADDED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:28:7-34:18
-MERGED from [com.google.firebase:firebase-analytics-impl:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.0.2/AndroidManifest.xml:28:7-34:18
+ADDED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:28:7-34:18
+MERGED from [com.google.firebase:firebase-analytics-impl:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.2.1/AndroidManifest.xml:28:7-34:18
 	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:30:11-33
+		ADDED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:30:11-33
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:29:11-83
+		ADDED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:29:11-83
 intent-filter#com.google.android.gms.measurement.UPLOAD
-ADDED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:31:9-33:25
+ADDED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:31:9-33:25
 action#com.google.android.gms.measurement.UPLOAD
-ADDED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:32:11-77
+ADDED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:32:11-77
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:32:19-75
+		ADDED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:32:19-75
 service#com.google.android.gms.measurement.AppMeasurementService
-ADDED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:36:7-39:37
-MERGED from [com.google.firebase:firebase-analytics-impl:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.0.2/AndroidManifest.xml:36:7-39:37
+ADDED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:36:7-39:37
+MERGED from [com.google.firebase:firebase-analytics-impl:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics-impl/9.2.1/AndroidManifest.xml:36:7-39:37
 	android:enabled
-		ADDED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:38:11-33
+		ADDED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:38:11-33
 	android:exported
-		ADDED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:39:11-35
+		ADDED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:39:11-35
 	android:name
-		ADDED from [com.google.firebase:firebase-analytics:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.0.2/AndroidManifest.xml:37:11-82
+		ADDED from [com.google.firebase:firebase-analytics:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-analytics/9.2.1/AndroidManifest.xml:37:11-82
+provider#com.google.firebase.provider.FirebaseInitProvider
+ADDED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:7:9-11:39
+MERGED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:7:9-11:39
+MERGED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:7:9-11:39
+	android:authorities
+		ADDED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:8:13-72
+	android:exported
+		ADDED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:10:13-37
+	android:initOrder
+		ADDED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:11:13-36
+	android:name
+		ADDED from [com.google.firebase:firebase-common:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-common/9.2.1/AndroidManifest.xml:9:13-58
 receiver#com.google.firebase.iid.FirebaseInstanceIdReceiver
-ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:32:9-41:20
+ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:32:9-41:20
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:34:13-36
+		ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:34:13-36
 	android:permission
-		ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:35:13-73
+		ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:35:13-73
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:33:13-78
+		ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:33:13-78
 intent-filter#${applicationId}+com.google.android.c2dm.intent.RECEIVE+com.google.android.c2dm.intent.REGISTRATION
-ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:36:13-40:29
+ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:36:13-40:29
 action#com.google.android.c2dm.intent.REGISTRATION
-ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:38:17-86
+ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:38:17-86
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:38:25-83
+		ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:38:25-83
 category#${applicationId}
-ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:39:17-61
+ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:39:17-61
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:39:27-58
+		ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:39:27-58
 receiver#com.google.firebase.iid.FirebaseInstanceIdInternalReceiver
-ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:45:9-47:40
+ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:45:9-47:40
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:47:13-37
+		ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:47:13-37
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:46:13-86
+		ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:46:13-86
 service#com.google.firebase.iid.FirebaseInstanceIdService
-ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:51:9-57:19
+ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:51:9-57:19
 	android:exported
-		ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:53:13-36
+		ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:53:13-36
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:52:13-77
+		ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:52:13-77
 intent-filter#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:54:13-56:29
+ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:54:13-56:29
 	android:priority
-		ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:54:28-51
+		ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:54:28-51
 action#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:55:17-80
+ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:55:17-80
 	android:name
-		ADDED from [com.google.firebase:firebase-iid:9.0.2] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.0.2/AndroidManifest.xml:55:25-77
+		ADDED from [com.google.firebase:firebase-iid:9.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-iid/9.2.1/AndroidManifest.xml:55:25-77

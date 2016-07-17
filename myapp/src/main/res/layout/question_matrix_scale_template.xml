@@ -13,7 +13,7 @@
 
         <RadioButton
             android:id="@+id/sDisagreeRbt"
-            android:layout_height="25dp"
+            android:layout_height="@dimen/question_matrix_scale_radio_button_height"
             android:layout_width="wrap_content"
             android:saveEnabled="false"
             android:drawableTop="@drawable/custom_radio_button"
@@ -23,7 +23,7 @@
 
         <RadioButton
             android:id="@+id/disagreeRbt"
-            android:layout_height="25dp"
+            android:layout_height="@dimen/question_matrix_scale_radio_button_height"
             android:layout_width="wrap_content"
             android:saveEnabled="false"
             android:drawableTop="@drawable/custom_radio_button"
@@ -33,7 +33,7 @@
 
         <RadioButton
             android:id="@+id/neutralRbt"
-            android:layout_height="25dp"
+            android:layout_height="@dimen/question_matrix_scale_radio_button_height"
             android:layout_width="wrap_content"
             android:saveEnabled="false"
             android:drawableTop="@drawable/custom_radio_button"
@@ -43,7 +43,7 @@
 
         <RadioButton
             android:id="@+id/agreeRbt"
-            android:layout_height="25dp"
+            android:layout_height="@dimen/question_matrix_scale_radio_button_height"
             android:layout_width="wrap_content"
             android:saveEnabled="false"
             android:drawableTop="@drawable/custom_radio_button"
@@ -53,7 +53,7 @@
 
         <RadioButton
             android:id="@+id/sAgreeRbt"
-            android:layout_height="25dp"
+            android:layout_height="@dimen/question_matrix_scale_radio_button_height"
             android:layout_width="wrap_content"
             android:saveEnabled="false"
             android:drawableTop="@drawable/custom_radio_button"
@@ -62,6 +62,59 @@
             android:layout_weight="1" />
 
     </RadioGroup>
+
+    <!--<RadioGroup-->
+        <!--android:id="@+id/rGroup"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<com.rey.material.widget.RadioButton-->
+            <!--android:id="@+id/sDisagreeRbt"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:saveEnabled="false"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_weight="1" />-->
+
+        <!--<com.rey.material.widget.RadioButton-->
+            <!--android:id="@+id/disagreeRbt"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:saveEnabled="false"-->
+            <!--android:layout_weight="1"-->
+            <!--android:gravity="center"-->
+            <!--android:button="@null" />-->
+
+        <!--<com.rey.material.widget.RadioButton-->
+            <!--android:id="@+id/neutralRbt"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:saveEnabled="false"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_weight="1" />-->
+
+        <!--<com.rey.material.widget.RadioButton-->
+            <!--android:id="@+id/agreeRbt"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:saveEnabled="false"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_weight="1" />-->
+
+        <!--<com.rey.material.widget.RadioButton-->
+            <!--android:id="@+id/sAgreeRbt"-->
+            <!--android:layout_height="25dp"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:saveEnabled="false"-->
+            <!--android:button="@null"-->
+            <!--android:gravity="center"-->
+            <!--android:layout_weight="1" />-->
+
+    <!--</RadioGroup>-->
 
     <LinearLayout
         android:id="@+id/matrixScalesLlt"
@@ -72,43 +125,43 @@
         android:visibility="gone">
 
         <com.rey.material.widget.TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/no_size"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Διαφωνώ Έντονα"
-            android:textSize="12sp"
+            android:text="@string/sdisagree"
+            android:textSize="@dimen/question_matrix_scale_txv_height"
             android:gravity="center" />
 
         <com.rey.material.widget.TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/no_size"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Διαφωνώ"
-            android:textSize="12sp"
+            android:text="@string/disagree"
+            android:textSize="@dimen/question_matrix_scale_txv_height"
             android:gravity="center" />
 
         <com.rey.material.widget.TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/no_size"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Ουδέτερα"
-            android:textSize="12sp"
+            android:text="@string/neutraly"
+            android:textSize="@dimen/question_matrix_scale_txv_height"
             android:gravity="center" />
 
         <com.rey.material.widget.TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/no_size"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Συμφωνώ"
-            android:textSize="12sp"
+            android:text="@string/agree"
+            android:textSize="@dimen/question_matrix_scale_txv_height"
             android:gravity="center" />
 
         <com.rey.material.widget.TextView
-            android:layout_width="0dp"
+            android:layout_width="@dimen/no_size"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Συμφωνώ Απολύτως"
-            android:textSize="12sp"
+            android:text="@string/sagree"
+            android:textSize="@dimen/question_matrix_scale_txv_height"
             android:gravity="center" />
 
     </LinearLayout>

@@ -1,11 +1,11 @@
 [
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_light_focused.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_text_light_focused.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_light_focused.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_dark_disabled.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_disabled.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_disabled.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/arrow_up.png",
@@ -13,7 +13,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_light_pressed.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_pressed.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_pressed.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_copy_mtrl_am_alpha.png",
@@ -25,15 +25,19 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_light_normal.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_normal.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_normal.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/firmcode_icon.png",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-hdpi/firmcode_icon.png"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/bar_chart.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-hdpi/bar_chart.png"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_light_disabled.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_disabled.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_disabled.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_star_black_16dp.png",
@@ -41,11 +45,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_dark_pressed.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_pressed.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_pressed.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_dark_focused.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_focused.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_focused.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/header_background.png",
@@ -61,7 +65,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_focused.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_focused.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_focused.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_tab_indicator_mtrl_alpha.9.png",
@@ -69,7 +73,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_pressed.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_pressed.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_pressed.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_textfield_activated_mtrl_alpha.9.png",
@@ -85,15 +89,15 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_light_focused.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_focused.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_focused.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_normal.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_normal.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_normal.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_dark_disabled.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_disabled.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_disabled.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/email_icon.png",
@@ -109,11 +113,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_light_pressed.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_text_light_pressed.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_light_pressed.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_light_disabled.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_text_light_disabled.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_light_disabled.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_textfield_search_default_mtrl_alpha.9.png",
@@ -121,7 +125,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_light_normal.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_normal.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_normal.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_commit_search_api_mtrl_alpha.png",
@@ -132,8 +136,12 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-hdpi/password_icon.png"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/pie_chart.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-hdpi/pie_chart.png"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_dark_pressed.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_pressed.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_pressed.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_btn_switch_to_on_mtrl_00001.9.png",
@@ -141,7 +149,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_light_pressed.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_pressed.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_pressed.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_scrubber_control_to_pressed_mtrl_000.png",
@@ -197,7 +205,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_ic_googleplayservices.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_ic_googleplayservices.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_ic_googleplayservices.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/home.png",
@@ -205,11 +213,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_dark_focused.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_focused.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_focused.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_full_open_on_phone.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_full_open_on_phone.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_full_open_on_phone.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/forward.png",
@@ -233,11 +241,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_light_disabled.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_disabled.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_disabled.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_dark_focused.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_focused.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_focused.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/app_logo.png",
@@ -249,7 +257,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_dark_disabled.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_disabled.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_disabled.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_star_black_36dp.png",
@@ -261,7 +269,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_light_normal.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_text_light_normal.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_light_normal.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_cab_background_top_mtrl_alpha.9.png",
@@ -273,7 +281,15 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_light_focused.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_focused.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_focused.9.png"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/fab_bg_mini.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/res/drawable-hdpi-v4/fab_bg_mini.png"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/fab_bg_normal.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/res/drawable-hdpi-v4/fab_bg_normal.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_longpressed_holo.9.png",
@@ -281,7 +297,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_dark_normal.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_normal.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_dark_normal.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_selectall_mtrl_alpha.png",
@@ -293,7 +309,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_disabled.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_disabled.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_dark_disabled.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/ic_settings_black.png",
@@ -301,7 +317,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_dark_pressed.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_pressed.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_pressed.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/vhappy.png",
@@ -333,7 +349,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_text_light_disabled.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_disabled.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_text_light_disabled.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_divider_mtrl_alpha.9.png",
@@ -349,11 +365,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_plus_signin_btn_icon_light_focused.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_focused.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_plus_signin_btn_icon_light_focused.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_text_dark_normal.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/arrow_down.png",
@@ -384,16 +400,16 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-hdpi/newsurvey.png"
     },
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal.9.png"
-    },
-    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_star_half_black_48dp.png",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/drawable-hdpi-v4/abc_ic_star_half_black_48dp.png"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal.9.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_normal.9.png"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_dark_normal.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/sad.png",
@@ -409,14 +425,22 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/common_google_signin_btn_icon_light_pressed.9.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.0.2/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_pressed.9.png"
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-base/9.2.1/res/drawable-hdpi-v4/common_google_signin_btn_icon_light_pressed.9.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_list_selector_disabled_holo_dark.9.png",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/drawable-hdpi-v4/abc_list_selector_disabled_holo_dark.9.png"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/hole_pie_chart.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-hdpi/hole_pie_chart.png"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/abc_ic_menu_share_mtrl_alpha.png",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/drawable-hdpi-v4/abc_ic_menu_share_mtrl_alpha.png"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-hdpi-v4/hor_bar_chart.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-hdpi/hor_bar_chart.png"
     }
 ]

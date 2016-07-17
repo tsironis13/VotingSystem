@@ -96,6 +96,7 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView {
                 public void onClick(View view, int position) {
                     Bundle bundle = new Bundle();
                     if (view != null && view instanceof RelativeLayout && (Integer) view.getTag() == 0) {
+                        getActivity().finish();
                         Intent intent = new Intent(getActivity(), SurveyQuestionsActivity.class);
                         bundle.putInt(getResources().getString(R.string.survey_id), data.get(position).getSurveyId());
                         intent.putExtras(bundle);

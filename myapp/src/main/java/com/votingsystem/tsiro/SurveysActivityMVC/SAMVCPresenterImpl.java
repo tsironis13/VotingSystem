@@ -23,6 +23,8 @@ public class SAMVCPresenterImpl implements SAMVCPresenter, SAMVCFinishedListener
         this.SAMVCinteractorImpl.getAllSurveys(allSurveysBody, this);
     }
 
+
+
     @Override
     public void onSuccessSurveysFetched(List<SurveyData> data, int offset) {
         SAMVCview.onSuccessSurveysFetched(data, offset);
