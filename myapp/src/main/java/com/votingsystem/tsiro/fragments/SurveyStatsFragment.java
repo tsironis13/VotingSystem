@@ -156,6 +156,7 @@ public class SurveyStatsFragment extends Fragment implements View.OnClickListene
         pieDataSet.setSliceSpace(2);
         pieDataSet.setDrawValues(false);
         pieDataSet.setColors(colorsList);
+        int i=0;
 
         PieData data = new PieData(pieDataSet);
         pieChart.setData(data);
