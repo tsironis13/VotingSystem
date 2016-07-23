@@ -16,21 +16,23 @@
             android:id="@+id/colorView"
             android:layout_width="@dimen/no_size"
             android:layout_height="match_parent"
-            android:layout_weight="0.03" />
+            android:layout_weight="0.025" />
 
         <com.rey.material.widget.TextView
             android:id="@+id/answerTtv"
             android:layout_width="@dimen/no_size"
             android:layout_height="match_parent"
-            android:padding="15dp"
+            android:padding="@dimen/stats_details_container_elements_padding"
+            android:textColor="@color/no_value_color"
             android:layout_weight="0.57" />
 
         <com.rey.material.widget.TextView
             android:id="@+id/percentageTtv"
             android:layout_width="@dimen/no_size"
             android:layout_height="match_parent"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:textColor="@color/no_value_color"
+            android:paddingTop="@dimen/stats_details_container_elements_padding"
+            android:paddingBottom="@dimen/stats_details_container_elements_padding"
             android:gravity="center"
             android:layout_weight="0.2" />
 
@@ -38,8 +40,9 @@
             android:id="@+id/countTtv"
             android:layout_width="@dimen/no_size"
             android:layout_height="match_parent"
-            android:paddingTop="15dp"
-            android:paddingBottom="15dp"
+            android:textColor="@color/no_value_color"
+            android:paddingTop="@dimen/stats_details_container_elements_padding"
+            android:paddingBottom="@dimen/stats_details_container_elements_padding"
             android:gravity="center"
             android:layout_weight="0.2" />
 

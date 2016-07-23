@@ -125,6 +125,17 @@
     <!-- SURVEY DETAILS -->
     <string name="data_parcelable_key">data</string>
     <string name="stats_title">Αποτελέσματα</string>
+    <string name="answered_by">Απάντησαν: %1$s</string>
+    <string name="skipped">Παρέλειψαν: %1$s</string>
+    <string name="persentage_text">%1$s%%</string>
+    <string name="just_text">%1$s</string>
+    <string name="count_per_row">Σύνολο \nανά γραμμή</string>
+    <string name="sdisagree_br">Διαφωνώ \nΈντονα</string>
+    <string name="sagree_br">Συμφωνώ \nΑπολύτως</string>
+    <string name="no_answers">Δεν υπάρχουν απαντήσεις στην συγκεκριμένη ερώτηση.</string>
+    <string name="responses_text">Αποκρίσεις: %1$s</string>
+    <string name="no_answers_img">noanswersimg</string>
+    <string name="chevron_right">chevron_right</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>

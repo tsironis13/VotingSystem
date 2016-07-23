@@ -80,7 +80,7 @@ public class SQMVCInteractorImpl implements SQMVCInteractor {
 
             @Override
             public void onFailure(Throwable t) {
-
+                Log.e(debugTag, t.toString());
             }
         });
     }

@@ -39,6 +39,9 @@
     <color name="ranking_question_item_llt_background">#FAFAFA</color>
     <color name="question_item_text_color">#424242</color>
     <color name="free_answer_edt_hint_color">#9E9E9E</color>
+    <!-- SURVEY DETAILS -->
+    <color name="no_value_color">#26000000</color>
+    <color name="matrix_table_txv_label_background_color">#F5F5F5</color>
     <!-- DIALOGS -->
     <color name="connection_settings_text_color">#424242</color>
     <color name="connection_settings_ripple_color">#E0E0E0</color>

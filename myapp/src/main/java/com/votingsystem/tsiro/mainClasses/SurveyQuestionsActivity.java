@@ -14,6 +14,7 @@ import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -286,14 +287,23 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
     }
 
     @Override
-    public void onSuccessSurveyDetailsFetched(SurveyDetailsData surveyDetailsData) {
-        this.finish();
-        Bundle bundle = new Bundle();
-        bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.details_activ_action));
-        bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
-        Intent intent = new Intent(this, SurveyDetailsActivity.class);
-        intent.putExtras(bundle);
-        startActivity(intent);
+    public void onSuccessSurveyDetailsFetched(final SurveyDetailsData surveyDetailsData) {
+        if (progressDialog.isShowing()) {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.dismiss();
+                    finish();
+                    Bundle bundle = new Bundle();
+                    bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.details_activ_action));
+                    bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
+                    Intent intent = new Intent(SurveyQuestionsActivity.this, SurveyDetailsActivity.class);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            }, 1500);
+        }
     }
 
     @Override
@@ -470,6 +480,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
         }
         SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), LoginActivity.getSessionPrefs(getApplicationContext()).getInt(getResources().getString(R.string.user_id), 0), surveyId, surveyAnswersList);
         SQMVCpresenterImpl.uploadSurveyAnswers(surveyAnswersBody);
+        initializeProgressDialog();
     }
 
     private boolean checkMandatoryQuestionNotFilledOut(int index, int questionId) {

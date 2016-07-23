@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<HorizontalScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/matrixTableContainer"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbarSize="@dimen/horizontal_scroll_view_scrollbar_size">
+
+    <LinearLayout
+        android:id="@+id/matrixTableLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_height="@dimen/matrix_table_labels_container_height"
+            android:layout_width="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="@dimen/matrix_table_cell_width"
+                android:layout_height="match_parent" />
+
+            <View
+                android:layout_width="@dimen/view_height"
+                android:layout_height="match_parent"
+                android:background="@color/view_color" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/countPerRowLabelTtv"
+                android:layout_height="match_parent"
+                android:layout_width="@dimen/matrix_table_cell_width"
+                android:text="@string/count_per_row"
+                android:textSize="@dimen/matrix_table_label_txv_text_size"
+                android:textColor="@color/accentColor"
+                android:background="@color/matrix_table_txv_label_background_color"
+                android:clickable="true"
+                android:gravity="center" />
+
+            <View
+                android:layout_width="@dimen/view_height"
+                android:layout_height="match_parent"
+                android:background="@color/view_color" />
+
+            <LinearLayout
+                android:id="@+id/sdisagreeLabelLlt"
+                android:layout_width="@dimen/matrix_table_cell_width"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/sdisagreeLabelView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/matrix_table_view_label_height" />
+
+                <com.rey.material.widget.TextView
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="@string/sdisagree_br"
+                    android:textColor="@color/accentColor"
+                    android:textSize="@dimen/matrix_table_label_txv_text_size"
+                    android:background="@color/matrix_table_txv_label_background_color"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/view_height"
+                android:layout_height="match_parent"
+                android:background="@color/view_color" />
+
+            <LinearLayout
+                android:id="@+id/disagreeLabelLlt"
+                android:layout_width="@dimen/matrix_table_cell_width"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/disagreeLabelView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/matrix_table_view_label_height" />
+
+                <com.rey.material.widget.TextView
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="@string/disagree"
+                    android:textColor="@color/accentColor"
+                    android:textSize="@dimen/matrix_table_label_txv_text_size"
+                    android:background="@color/matrix_table_txv_label_background_color"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/view_height"
+                android:layout_height="match_parent"
+                android:background="@color/view_color" />
+
+            <LinearLayout
+                android:id="@+id/neutralLabelLlt"
+                android:layout_width="@dimen/matrix_table_cell_width"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/neutralLabelView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/matrix_table_view_label_height" />
+
+                <com.rey.material.widget.TextView
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="@string/neutral"
+                    android:textSize="@dimen/matrix_table_label_txv_text_size"
+                    android:textColor="@color/accentColor"
+                    android:background="@color/matrix_table_txv_label_background_color"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/view_height"
+                android:layout_height="match_parent"
+                android:background="@color/view_color" />
+
+            <LinearLayout
+                android:id="@+id/agreeLabelLlt"
+                android:layout_width="@dimen/matrix_table_cell_width"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/agreeLabelView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/matrix_table_view_label_height" />
+
+                <com.rey.material.widget.TextView
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="@string/agree"
+                    android:textSize="@dimen/matrix_table_label_txv_text_size"
+                    android:textColor="@color/accentColor"
+                    android:background="@color/matrix_table_txv_label_background_color"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+            <View
+                android:layout_width="@dimen/view_height"
+                android:layout_height="match_parent"
+                android:background="@color/view_color" />
+
+            <LinearLayout
+                android:id="@+id/sagreeLabelLlt"
+                android:layout_width="@dimen/matrix_table_cell_width"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <View
+                    android:id="@+id/sagreeLabelView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/matrix_table_view_label_height" />
+
+                <com.rey.material.widget.TextView
+                    android:layout_height="match_parent"
+                    android:layout_width="match_parent"
+                    android:text="@string/sagree_br"
+                    android:textSize="@dimen/matrix_table_label_txv_text_size"
+                    android:textColor="@color/accentColor"
+                    android:background="@color/matrix_table_txv_label_background_color"
+                    android:gravity="center" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</HorizontalScrollView>

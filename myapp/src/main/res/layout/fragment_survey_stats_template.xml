@@ -17,9 +17,92 @@
         android:textStyle="bold" />
 
     <LinearLayout
+        android:id="@+id/noAnswersLlt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/noAnswersImv"
+            android:layout_width="@dimen/no_answers_imv_width"
+            android:layout_height="@dimen/no_answers_imv_height"
+            android:layout_gravity="center"
+            android:src="@drawable/no_surveys"
+            android:contentDescription="@string/no_answers_img" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/noAnswersTxv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="@dimen/no_answers_txv_margin_top"
+            android:text="@string/no_answers"
+            android:textSize="@dimen/no_answers_txv_text_size"
+            android:textColor="@color/note_text_color" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/answeredSkippedLlt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/question_title_margin_top_bottom"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/answeredByTtv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/no_surveys_txv_color"
+            android:textSize="@dimen/answeredbyskipped_txv_text_size"
+            android:layout_weight="50" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/skippedTtv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textColor="@color/no_surveys_txv_color"
+            android:textSize="@dimen/answeredbyskipped_txv_text_size"
+            android:layout_weight="50" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/freeAnswerLlt"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/freeanswer_llt_height"
+        android:visibility="gone"
+        android:orientation="horizontal"
+        android:clickable="true"
+        android:weightSum="100">
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/freeAnswersResponsesTtv"
+            android:layout_width="0dp"
+            android:paddingLeft="@dimen/freeanswers_responses_txv_padding_left"
+            android:textColor="@color/no_surveys_txv_color"
+            android:layout_height="wrap_content"
+            android:layout_weight="95"/>
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/chevron_right"
+            android:contentDescription="@string/chevron_right" />
+
+    </LinearLayout>
+
+    <LinearLayout
         android:id="@+id/chartsContainerLlt"
         android:layout_width="match_parent"
-        android:layout_height="190dp"
+        android:layout_height="@dimen/charts_container_llt_height"
+        android:paddingLeft="@dimen/charts_container_padding_left_right"
+        android:paddingRight="@dimen/charts_container_padding_left_right"
         android:orientation="vertical" />
 
     <net.i2p.android.ext.floatingactionbutton.FloatingActionsMenu
@@ -27,8 +110,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_gravity="right"
-        android:layout_marginRight="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginRight="@dimen/fa_menu_margin_right_bottom"
+        android:layout_marginBottom="@dimen/fa_menu_margin_right_bottom"
         fab:fab_expandDirection="left"
         fab:fab_addButtonColorNormal="@color/accentColor">
 

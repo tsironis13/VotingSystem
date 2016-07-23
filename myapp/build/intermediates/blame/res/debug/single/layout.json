@@ -36,6 +36,10 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/spinner_dropdown_item.xml"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/free_answers_dialog.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/free_answers_dialog.xml"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/layout/abc_screen_simple.xml"
     },
@@ -144,6 +148,10 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/res/layout/abc_search_dropdown_item_icons_2line.xml"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/table_row_template.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/table_row_template.xml"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/surveys_activity.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/surveys_activity.xml"
     },
@@ -226,6 +234,10 @@
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/question_list_picker_template.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/question_list_picker_template.xml"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/matrix_table.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/matrix_table.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",

@@ -152,8 +152,10 @@
     <color name="material_grey_800">#ff424242</color>
     <color name="material_grey_850">#ff303030</color>
     <color name="material_grey_900">#ff212121</color>
+    <color name="matrix_table_txv_label_background_color">#F5F5F5</color>
     <color name="neutral_fill_color">#FFD600</color>
     <color name="no_surveys_txv_color">#424242</color>
+    <color name="no_value_color">#26000000</color>
     <color name="note_text_color">#E53935</color>
     <color name="password_error_txv_text_color">#DD2C00</color>
     <color name="primaryColor">#2196F3</color>
@@ -346,6 +348,8 @@
     <dimen name="action_btn_width">150dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="answer_txv_text_size">13sp</dimen>
+    <dimen name="answeredbyskipped_txv_text_size">13sp</dimen>
     <dimen name="arrow_imv_dimens">25dp</dimen>
     <dimen name="arrow_imv_margin_left">8dp</dimen>
     <dimen name="arrow_imv_margin_right">4dp</dimen>
@@ -354,6 +358,8 @@
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
+    <dimen name="charts_container_llt_height">195dp</dimen>
+    <dimen name="charts_container_padding_left_right">3dp</dimen>
     <dimen name="common_padding">16dp</dimen>
     <dimen name="common_width">265dp</dimen>
     <dimen name="container_height">520dp</dimen>
@@ -399,6 +405,7 @@
     <dimen name="et_divider_height">1dp</dimen>
     <dimen name="et_label_text_size">10sp</dimen>
     <dimen name="et_support_text_size">10sp</dimen>
+    <dimen name="fa_menu_margin_right_bottom">10dp</dimen>
     <dimen name="fab_actions_spacing">16dp</dimen>
     <dimen name="fab_icon_size">24dp</dimen>
     <dimen name="fab_labels_margin">8dp</dimen>
@@ -415,7 +422,10 @@
     <dimen name="forgotpassword_register_txv_padding_top_bottom">12dp</dimen>
     <dimen name="forgotpassword_txv_padding_left_right">3dp</dimen>
     <dimen name="forgotpassword_txv_padding_top_bottom">12dp</dimen>
+    <dimen name="fragment_survey_stats_scrollview_margin_bottom">10dp</dimen>
     <dimen name="free_answer_edt_padding">12dp</dimen>
+    <dimen name="freeanswer_llt_height">40dp</dimen>
+    <dimen name="freeanswers_responses_txv_padding_left">15dp</dimen>
     <dimen name="have_survey_crdv_margin_top">8dp</dimen>
     <dimen name="have_survey_desc_txv_padding_bottom">32dp</dimen>
     <dimen name="have_survey_txv_padding_bottom">14dp</dimen>
@@ -454,10 +464,18 @@
     <dimen name="mand_dialog_title_margin_bottom">18dp</dimen>
     <dimen name="mand_dialog_title_text_size">13sp</dimen>
     <dimen name="margin_bottom">15dp</dimen>
+    <dimen name="matrix_table_cell_width">110dp</dimen>
+    <dimen name="matrix_table_label_txv_text_size">12sp</dimen>
+    <dimen name="matrix_table_labels_container_height">60dp</dimen>
+    <dimen name="matrix_table_view_label_height">8dp</dimen>
     <dimen name="middle_view_padding_top">15dp</dimen>
     <dimen name="nav_drawer_header_height">190dp</dimen>
     <dimen name="nav_drawer_header_padding_left_right">16dp</dimen>
     <dimen name="nav_drawer_width">280dp</dimen>
+    <dimen name="no_answers_imv_height">100dp</dimen>
+    <dimen name="no_answers_imv_width">80dp</dimen>
+    <dimen name="no_answers_txv_margin_top">15dp</dimen>
+    <dimen name="no_answers_txv_text_size">12sp</dimen>
     <dimen name="no_connection_sb_text_size">14sp</dimen>
     <dimen name="no_size">0dp</dimen>
     <dimen name="no_surveys_imv_height">140dp</dimen>
@@ -512,6 +530,7 @@
     <dimen name="splash_logo_dimens">53dp</dimen>
     <dimen name="spn_arrow_padding">14dp</dimen>
     <dimen name="spn_arrow_size">4dp</dimen>
+    <dimen name="stats_details_container_elements_padding">15dp</dimen>
     <dimen name="stroke_width">1dp</dimen>
     <dimen name="survey_item_answered_margin_right">16dp</dimen>
     <dimen name="survey_item_answered_margin_top">8dp</dimen>
@@ -533,6 +552,7 @@
     <dimen name="survey_title_txv_text_size">20sp</dimen>
     <dimen name="surveys_item_container_height">100dp</dimen>
     <dimen name="surveys_rcv_margin_top">8dp</dimen>
+    <dimen name="table_row_cell_padding">15dp</dimen>
     <dimen name="text_size">14sp</dimen>
     <dimen name="title_text_size">24sp</dimen>
     <dimen name="toolbar_padding_top">0dp</dimen>
@@ -612,6 +632,7 @@
     <string name="add_new">Δημιουργια νεας</string>
     <string name="agree">Συμφωνώ</string>
     <string name="angry">angry</string>
+    <string name="answered_by">Απάντησαν: %1$s</string>
     <string name="app_logo">app_logo</string>
     <string name="app_name">VotingSystem</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
@@ -620,6 +641,7 @@
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="check_connection">Έλεγξε τη σύνδεση σου</string>
+    <string name="chevron_right">chevron_right</string>
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="collapsed">collapsed</string>
     <string name="common_google_play_services_api_unavailable_text"><ns1:g id="app_name">%1$s</ns1:g> requires one or more Google Play services that are not currently available. Please contact the developer for assistance.</string>
@@ -663,6 +685,7 @@
     <string name="connectivity_status">connectivityStatus</string>
     <string name="correct_error">Παρακαλώ διόρθωσε το παραπάνω λάθος: %1$s.</string>
     <string name="correct_field">Παρακαλώ διόρθωσε το παραπάνω πεδίο: %1$s.</string>
+    <string name="count_per_row">Σύνολο \nανά γραμμή</string>
     <string name="dashboard_activity">DashboardActivity</string>
     <string name="dashboard_fgmt">dashboardFgmt</string>
     <string name="data">data</string>
@@ -722,6 +745,7 @@
     <string name="home">Αρχική</string>
     <string name="input_logo">input_logo</string>
     <string name="item_thumb">thumb</string>
+    <string name="just_text">%1$s</string>
     <string name="last_created_date">Ημ. δημιουργίας \nτελευταίας έρευνας</string>
     <string name="list_surveys">list_surveys</string>
     <string name="login_user">login_user</string>
@@ -737,6 +761,8 @@
     <string name="network_state_update">networkStateUpdated</string>
     <string name="neutral">neutral</string>
     <string name="neutraly">Ουδέτερα</string>
+    <string name="no_answers">Δεν υπάρχουν απαντήσεις στην συγκεκριμένη ερώτηση.</string>
+    <string name="no_answers_img">noanswersimg</string>
     <string name="no_completed">Δεν υπάρχουν ολοκληρωμένες έρευνες.</string>
     <string name="no_connection">Αδυναμία σύνδεσης στο δίκτυο.</string>
     <string name="no_ongoing">Δεν υπάρχουν έρευνες σε εξέλιξη.</string>
@@ -753,6 +779,7 @@
     <string name="password">Κωδικός πρόσβασης</string>
     <string name="password_tag">password</string>
     <string name="pending">pending</string>
+    <string name="persentage_text">%1$s%%</string>
     <string name="pick_firm">Επιλογή Εταιρείας</string>
     <string name="position">position</string>
     <string name="post">ΟΛΟΚΛΗΡΩΣΗ</string>
@@ -767,10 +794,13 @@
     <string name="registration_token">registrationToken</string>
     <string name="reset_password">reset_password</string>
     <string name="responsed_surveys">Απαντημένες \nΈρευνες</string>
+    <string name="responses_text">Αποκρίσεις: %1$s</string>
     <string name="results">Αποτελέσματα</string>
     <string name="sad">sad</string>
     <string name="sagree">Συμφωνώ Απολύτως</string>
+    <string name="sagree_br">Συμφωνώ \nΑπολύτως</string>
     <string name="sdisagree">Διαφωνώ Έντονα</string>
+    <string name="sdisagree_br">Διαφωνώ \nΈντονα</string>
     <string name="selected">selected</string>
     <string name="send_email">Αποστολή</string>
     <string name="settings">Ρύθμισεις</string>
@@ -779,6 +809,7 @@
     <string name="signin">Είσοδος</string>
     <string name="signin_fgmt">signInFgmt</string>
     <string name="signin_here">Διαθέτεις λογαριασμό?\nΣυνδέσου εδώ</string>
+    <string name="skipped">Παρέλειψαν: %1$s</string>
     <string name="slider_question_note">Σημείωση: σύρε την ένδειξη στην μπάρα για να διαλέξεις την απάντηση σου.</string>
     <string name="spinner">spinner</string>
     <string name="splash_loaded">splash_loaded</string>

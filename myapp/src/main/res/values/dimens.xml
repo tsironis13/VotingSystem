@@ -144,6 +144,25 @@
     <dimen name="satisfaction_imv_height">62dp</dimen>
     <dimen name="question_matrix_scale_radio_button_height">25dp</dimen>
     <dimen name="question_matrix_scale_txv_height">12sp</dimen>
+    <!-- SURVEY DETAILS -->
+    <dimen name="fragment_survey_stats_scrollview_margin_bottom">10dp</dimen>
+    <dimen name="stats_details_container_elements_padding">15dp</dimen>
+    <dimen name="no_answers_imv_width">80dp</dimen>
+    <dimen name="no_answers_imv_height">100dp</dimen>
+    <dimen name="no_answers_txv_margin_top">15dp</dimen>
+    <dimen name="no_answers_txv_text_size">12sp</dimen>
+    <dimen name="answeredbyskipped_txv_text_size">13sp</dimen>
+    <dimen name="freeanswer_llt_height">40dp</dimen>
+    <dimen name="freeanswers_responses_txv_padding_left">15dp</dimen>
+    <dimen name="charts_container_llt_height">195dp</dimen>
+    <dimen name="charts_container_padding_left_right">3dp</dimen>
+    <dimen name="fa_menu_margin_right_bottom">10dp</dimen>
+    <dimen name="matrix_table_labels_container_height">60dp</dimen>
+    <dimen name="matrix_table_view_label_height">8dp</dimen>
+    <dimen name="matrix_table_cell_width">110dp</dimen>
+    <dimen name="matrix_table_label_txv_text_size">12sp</dimen>
+    <dimen name="table_row_cell_padding">15dp</dimen>
+    <dimen name="answer_txv_text_size">13sp</dimen>
     <!-- SNACKBARS -->
     <dimen name="sb_horizontal_padding">15dp</dimen>
     <dimen name="no_connection_sb_text_size">14sp</dimen>
