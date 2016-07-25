@@ -296,7 +296,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
                     progressDialog.dismiss();
                     finish();
                     Bundle bundle = new Bundle();
-                    bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.details_activ_action));
+                    bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_stats));
                     bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
                     Intent intent = new Intent(SurveyQuestionsActivity.this, SurveyDetailsActivity.class);
                     intent.putExtras(bundle);
@@ -478,7 +478,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
             }
             surveyAnswersList.add(new SurveyAnswersList(i, answer, data.get(i).getTypeId(), textAnswer, answersList, integerHashMap));
         }
-        SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), LoginActivity.getSessionPrefs(getApplicationContext()).getInt(getResources().getString(R.string.user_id), 0), surveyId, surveyAnswersList);
+        SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(getApplicationContext()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getApplicationContext()).getInt(getResources().getString(R.string.user_id), 0), surveyId, surveyAnswersList);
         SQMVCpresenterImpl.uploadSurveyAnswers(surveyAnswersBody);
         initializeProgressDialog();
     }

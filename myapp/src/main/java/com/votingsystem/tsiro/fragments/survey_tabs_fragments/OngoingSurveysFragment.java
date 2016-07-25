@@ -1,7 +1,9 @@
 package com.votingsystem.tsiro.fragments.survey_tabs_fragments;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -20,6 +22,7 @@ import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.ObserverPattern.RecyclerViewTouchListener;
 import com.votingsystem.tsiro.POJO.AllSurveys;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
+import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
 import com.votingsystem.tsiro.RecyclerViewStuff.DividerItemDecoration;
 import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCPresenterImpl;
 import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCView;
@@ -28,9 +31,11 @@ import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
 import com.votingsystem.tsiro.interfaces.RecyclerViewClickListener;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
+import com.votingsystem.tsiro.mainClasses.SurveyDetailsActivity;
 import com.votingsystem.tsiro.mainClasses.SurveyQuestionsActivity;
 import com.votingsystem.tsiro.mainClasses.SurveysActivity;
 import com.votingsystem.tsiro.parcel.SurveyData;
+import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.votingsystem.R;
 
 import org.w3c.dom.Text;
@@ -53,6 +58,7 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView {
     private SAMVCPresenterImpl SAMVCpresenterImpl;
     private SurveysRcvAdapter surveysRcvAdapter;
     private List<SurveyData> data;
+    private ProgressDialog progressDialog;
 
     public OngoingSurveysFragment() {}
 
@@ -95,15 +101,17 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView {
                 @Override
                 public void onClick(View view, int position) {
                     Bundle bundle = new Bundle();
-                    if (view != null && view instanceof RelativeLayout && (Integer) view.getTag() == 0) {
-                        getActivity().finish();
-                        Intent intent = new Intent(getActivity(), SurveyQuestionsActivity.class);
-                        bundle.putInt(getResources().getString(R.string.survey_id), data.get(position).getSurveyId());
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                    } else {
-                        Log.e(debugTag, "VOTED");
-                    }
+                    if (view != null && view instanceof RelativeLayout)
+                        if ((Integer) view.getTag() == 0) {
+                            getActivity().finish();
+                            Intent intent = new Intent(getActivity(), SurveyQuestionsActivity.class);
+                            bundle.putInt(getResources().getString(R.string.survey_id), data.get(position).getSurveyId());
+                            intent.putExtras(bundle);
+                            startActivity(intent);
+                        } else {
+                            Log.e(debugTag, "VOTED");
+                            getSurveyDetails(data.get(position).getSurveyId());
+                        }
                 }
             }));
 
@@ -153,6 +161,27 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView {
     }
 
     @Override
+    public void onSuccessSurveyDetailsFetched(final SurveyDetailsData surveyDetailsData) {
+        if (progressDialog.isShowing()) {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.dismiss();
+                    getActivity().finish();
+                    Bundle bundle = new Bundle();
+                    Intent intent = new Intent(getActivity(), SurveyDetailsActivity.class);
+                    bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_details));
+                    bundle.putString(getResources().getString(R.string.type), getResources().getString(R.string.ongoing));
+                    bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            }, 1500);
+        }
+    }
+
+    @Override
     public void onFailure(int code) {
         if (code == AppConfig.ERROR_EMPTY_LIST) {
             if (ongoingSurveysRcV.getLayoutManager().getItemCount() != 0) {
@@ -163,5 +192,19 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView {
                 noSurveysTxv.setVisibility(View.VISIBLE);
             }
         }
+    }
+
+    private void initializeProgressDialog() {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage(getActivity().getResources().getString(R.string.message));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private void getSurveyDetails(int surveyId) {
+        initializeProgressDialog();
+        SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
+        SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
     }
 }

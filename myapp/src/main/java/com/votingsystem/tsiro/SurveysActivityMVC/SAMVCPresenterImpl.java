@@ -2,7 +2,9 @@ package com.votingsystem.tsiro.SurveysActivityMVC;
 
 import com.votingsystem.tsiro.POJO.AllSurveys;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
+import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
 import com.votingsystem.tsiro.parcel.SurveyData;
+import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 
 import java.util.List;
 
@@ -23,11 +25,18 @@ public class SAMVCPresenterImpl implements SAMVCPresenter, SAMVCFinishedListener
         this.SAMVCinteractorImpl.getAllSurveys(allSurveysBody, this);
     }
 
-
+    public void getSurveyDetails(SurveyAnswersBody surveyAnswersBody) {
+        this.SAMVCinteractorImpl.getSurveyStats(surveyAnswersBody, this);
+    }
 
     @Override
     public void onSuccessSurveysFetched(List<SurveyData> data, int offset) {
         SAMVCview.onSuccessSurveysFetched(data, offset);
+    }
+
+    @Override
+    public void onSuccessSurveyDetailsFetched(SurveyDetailsData surveyDetailsData) {
+        SAMVCview.onSuccessSurveyDetailsFetched(surveyDetailsData);
     }
 
     @Override

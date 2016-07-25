@@ -1,7 +1,9 @@
 package com.votingsystem.tsiro.fragments.survey_tabs_fragments;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.widget.LinearLayoutManager;
@@ -11,10 +13,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.RelativeLayout;
 
 import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.ObserverPattern.RecyclerViewTouchListener;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
+import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
 import com.votingsystem.tsiro.RecyclerViewStuff.DividerItemDecoration;
 import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCPresenterImpl;
 import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCView;
@@ -23,7 +27,10 @@ import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
 import com.votingsystem.tsiro.interfaces.RecyclerViewClickListener;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
+import com.votingsystem.tsiro.mainClasses.SurveyDetailsActivity;
+import com.votingsystem.tsiro.mainClasses.SurveyQuestionsActivity;
 import com.votingsystem.tsiro.parcel.SurveyData;
+import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.votingsystem.R;
 
 import java.util.List;
@@ -41,6 +48,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView {
     private SurveysRcvAdapter surveysRcvAdapter;
     private List<SurveyData> data;
     private ProgressDialog progressDialog;
+    private SAMVCPresenterImpl SAMVCpresenterImpl;
 
     public CompletedSurveysFragment() {}
 
@@ -50,7 +58,6 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        Log.e(debugTag, "onCreateView");
         if ( view == null ) view = inflater.inflate(R.layout.fragment_completedsurveys, container, false);
         completedSurveysRcV = (RecyclerView) view.findViewById(R.id.completedSurveysRcV);
         noSurveysImv        =   (ImageView) view.findViewById(R.id.noSurveysImv);
@@ -62,13 +69,12 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.e(debugTag, "onActivityCreated " + savedInstanceState);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
         completedSurveysRcV.setHasFixedSize(true);
         completedSurveysRcV.setLayoutManager(linearLayoutManager);
 
         if (savedInstanceState == null) {
-            final SAMVCPresenterImpl SAMVCpresenterImpl = new SAMVCPresenterImpl(this);
+            SAMVCpresenterImpl = new SAMVCPresenterImpl(this);
             initializeProgressDialog();
             SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.completed), AppConfig.FETCHED_SURVEYS_LIMIT, 0));
 
@@ -78,7 +84,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView {
             completedSurveysRcV.addOnItemTouchListener(new RecyclerViewTouchListener(getActivity(), completedSurveysRcV, new RecyclerViewClickListener() {
                 @Override
                 public void onClick(View view, int position) {
-                    Log.e(debugTag, "POSITION CLICKED: "+position);
+                    if (view != null && view instanceof RelativeLayout) getSurveyDetails(data.get(position).getSurveyId());
                 }
             }));
 
@@ -120,6 +126,27 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView {
     }
 
     @Override
+    public void onSuccessSurveyDetailsFetched(final SurveyDetailsData surveyDetailsData) {
+        if (progressDialog.isShowing()) {
+            Handler handler = new Handler();
+            handler.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    progressDialog.dismiss();
+                    getActivity().finish();
+                    Bundle bundle = new Bundle();
+                    Intent intent = new Intent(getActivity(), SurveyDetailsActivity.class);
+                    bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_details));
+                    bundle.putString(getResources().getString(R.string.type), getResources().getString(R.string.completed));
+                    bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
+                    intent.putExtras(bundle);
+                    startActivity(intent);
+                }
+            }, 1500);
+        }
+    }
+
+    @Override
     public void onFailure(int code) {
         if (code == AppConfig.ERROR_EMPTY_LIST) {
             if (completedSurveysRcV.getLayoutManager().getItemCount() != 0) {
@@ -138,5 +165,11 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView {
         progressDialog.setMessage(getActivity().getResources().getString(R.string.message));
         progressDialog.setCancelable(false);
         progressDialog.show();
+    }
+
+    private void getSurveyDetails(int surveyId) {
+        initializeProgressDialog();
+        SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
+        SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
     }
 }

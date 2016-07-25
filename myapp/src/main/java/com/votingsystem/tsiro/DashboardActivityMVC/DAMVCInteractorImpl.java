@@ -23,7 +23,7 @@ public class DAMVCInteractorImpl implements DAMVCInteractor {
     @Override
     public void getDashboardFirmDetails(final boolean isAdded, int user_id, int firm_id, final DAMVCFinishedListener DAMVCfinishedListener) {
         Log.e(debugTag, user_id+"  "+firm_id);
-        Call<FirmSurveyDetails> call = apiService.getFirmSurveyDetails("getFirmSurveyDetails", user_id, firm_id);
+        Call<FirmSurveyDetails> call = apiService.getFirmSurveyDetails("firm_survey_details", user_id, firm_id);
         call.enqueue(new Callback<FirmSurveyDetails>() {
             @Override
             public void onResponse(Response<FirmSurveyDetails> response, Retrofit retrofit) {

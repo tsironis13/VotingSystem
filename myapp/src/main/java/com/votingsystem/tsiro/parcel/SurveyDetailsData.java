@@ -13,15 +13,17 @@ public class SurveyDetailsData implements Parcelable{
 
     private int responses, total_questions;
     private String title, created_date, modified_date, category;
+    private float completion_rate;
     private List<QuestionStatsDetails> question;
 
-    public SurveyDetailsData(int responses, int total_questions, String title, String created_date, String modified_date, String category, List<QuestionStatsDetails> question) {
+    public SurveyDetailsData(int responses, int total_questions, String title, String created_date, String modified_date, String category, float completion_rate, List<QuestionStatsDetails> question) {
         this.responses          =   responses;
         this.total_questions    =   total_questions;
         this.title              =   title;
         this.created_date       =   created_date;
         this.modified_date      =   modified_date;
         this.category           =   category;
+        this.completion_rate    =   completion_rate;
         this.question           =   question;
     }
 
@@ -32,6 +34,7 @@ public class SurveyDetailsData implements Parcelable{
         created_date    = in.readString();
         modified_date   = in.readString();
         category        = in.readString();
+        completion_rate = in.readFloat();
         question        = new ArrayList<>();
         in.readTypedList(question, QuestionStatsDetails.CREATOR);
     }
@@ -72,6 +75,10 @@ public class SurveyDetailsData implements Parcelable{
 
     public void setModifiedDate(String modified_date) { this.modified_date = modified_date; }
 
+    public float getCompletionRate() { return completion_rate; }
+
+    public void setCompletionRate(float completion_rate) { this.completion_rate = completion_rate; }
+
     public List<QuestionStatsDetails> getQuestion() { return question; }
 
     public void setQuestion(List<QuestionStatsDetails> question) { this.question = question; }
@@ -89,6 +96,7 @@ public class SurveyDetailsData implements Parcelable{
         parcel.writeString(created_date);
         parcel.writeString(modified_date);
         parcel.writeString(category);
+        parcel.writeFloat(completion_rate);
         parcel.writeTypedList(question);
     }
 }

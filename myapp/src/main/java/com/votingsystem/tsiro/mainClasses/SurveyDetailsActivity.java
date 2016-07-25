@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.KeyEvent;
 import android.view.View;
 
+import com.votingsystem.tsiro.fragments.SurveyDetailsFragment;
 import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.fragments.SurveyStatsFragment;
@@ -43,11 +44,14 @@ public class SurveyDetailsActivity extends AppCompatActivity {
 
         if (savedInstanceState == null) {
             if (getIntent().getExtras() != null) {
-                String action = getIntent().getExtras().getString(getResources().getString(R.string.details_activ_action_key));
-                if (action != null && action.equals(getResources().getString(R.string.details_activ_action))) {
-                    getSupportFragmentManager().beginTransaction().replace(R.id.surveyDetailsFgmtContainer, SurveyStatsFragment.newInstance((SurveyDetailsData) getIntent().getExtras().getParcelable(getResources().getString(R.string.data_parcelable_key))), getResources().getString(R.string.survey_stats_fgmt)).commit();
-                } else {
-                }
+                String action   = getIntent().getExtras().getString(getResources().getString(R.string.details_activ_action_key));
+                if (action != null)
+                    if (action.equals(getResources().getString(R.string.show_stats))) {
+                        getSupportFragmentManager().beginTransaction().replace(R.id.surveyDetailsFgmtContainer, SurveyStatsFragment.newInstance((SurveyDetailsData) getIntent().getExtras().getParcelable(getResources().getString(R.string.data_parcelable_key))), getResources().getString(R.string.survey_stats_fgmt)).commit();
+                    } else if (action.equals(getResources().getString(R.string.show_details))) {
+                        String type = getIntent().getExtras().getString(getResources().getString(R.string.type));
+                        getSupportFragmentManager().beginTransaction().replace(R.id.surveyDetailsFgmtContainer, SurveyDetailsFragment.newInstance((SurveyDetailsData) getIntent().getExtras().getParcelable(getResources().getString(R.string.data_parcelable_key)), type), getResources().getString(R.string.survey_details_fgmt)).commit();
+                    }
             }
 //            Log.e(debugTag, ""+getIntent().getExtras().getParcelable(getResources().getString(R.string.data_parcelable_key)));
         }

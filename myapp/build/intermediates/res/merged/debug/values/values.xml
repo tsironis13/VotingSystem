@@ -632,13 +632,16 @@
     <string name="add_new">Δημιουργια νεας</string>
     <string name="agree">Συμφωνώ</string>
     <string name="angry">angry</string>
+    <string name="answered">%1$s</string>
     <string name="answered_by">Απάντησαν: %1$s</string>
+    <string name="answered_label">Απάντησαν</string>
     <string name="app_logo">app_logo</string>
     <string name="app_name">VotingSystem</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
     <string name="arrow">arrow</string>
     <string name="back_pressed">backpressed</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
+    <string name="category_label">Κατηγορία</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="check_connection">Έλεγξε τη σύνδεση σου</string>
     <string name="chevron_right">chevron_right</string>
@@ -677,6 +680,7 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="complete_all_mandatory_questions">Παρακαλώ συμπλήρωσε όλες τις υποχρεωτικές ερωτήσεις.</string>
     <string name="completed">completed</string>
+    <string name="completion_rate_label">Ποσοστό \nσυμπλήρωσης</string>
     <string name="confirm_btn_text">OK</string>
     <string name="confirm_password">confirmpassword</string>
     <string name="confirm_password_tag">confirm_password</string>
@@ -686,13 +690,14 @@
     <string name="correct_error">Παρακαλώ διόρθωσε το παραπάνω λάθος: %1$s.</string>
     <string name="correct_field">Παρακαλώ διόρθωσε το παραπάνω πεδίο: %1$s.</string>
     <string name="count_per_row">Σύνολο \nανά γραμμή</string>
+    <string name="created_date_label">Ημ. δημιουργίας</string>
     <string name="dashboard_activity">DashboardActivity</string>
     <string name="dashboard_fgmt">dashboardFgmt</string>
     <string name="data">data</string>
     <string name="data_parcelable_key">data</string>
     <string name="desc_list_item_icon">Item Icon</string>
-    <string name="details_activ_action">show_stats</string>
     <string name="details_activ_action_key">details_activ_action_key</string>
+    <string name="details_title">Πληροφορίες</string>
     <string name="disagree">Διαφωνώ</string>
     <string name="done">done</string>
     <string name="editext">editext</string>
@@ -730,7 +735,8 @@
     <string name="fromshared_logo_trns">fromsharedlogoTrns</string>
     <string name="gcm_defaultSenderId" translatable="false">747222558005</string>
     <string name="gcm_senderId">747222558005</string>
-    <string name="get_firm_names">getFirmNames</string>
+    <string name="get_firm_names">firm_names</string>
+    <string name="get_firm_survey_details">firm_survey_details</string>
     <string name="get_survey_questions">survey_questions</string>
     <string name="get_survey_stats">survey_stats</string>
     <string name="gone">gone</string>
@@ -747,6 +753,7 @@
     <string name="item_thumb">thumb</string>
     <string name="just_text">%1$s</string>
     <string name="last_created_date">Ημ. δημιουργίας \nτελευταίας έρευνας</string>
+    <string name="last_modified_date_label">Ημ.τελευταίας \nτροποποίησης</string>
     <string name="list_surveys">list_surveys</string>
     <string name="login_user">login_user</string>
     <string name="logout">Αποσυνδεση</string>
@@ -786,6 +793,8 @@
     <string name="question">question</string>
     <string name="question_btn_id">questionBtn</string>
     <string name="question_title">%1$s. %2$s</string>
+    <string name="questions">%1$s</string>
+    <string name="questions_label">Ερωτήσεις</string>
     <string name="radio_button_label">\u0020\u0020%1$s</string>
     <string name="ranking_question_note">Σημείωση: σύρε τις μπάρες με τις απαντήσεις για να τις τοποθετήσεις με τη σειρά προτίμησης σου.</string>
     <string name="register">Πρώτη φορά εδώ? Εγγραφή</string>
@@ -805,7 +814,9 @@
     <string name="send_email">Αποστολή</string>
     <string name="settings">Ρύθμισεις</string>
     <string name="show">ΕΜΦΑΝΙΣΗ</string>
+    <string name="show_details">show_details</string>
     <string name="show_password">ΕΜΦΑΝΙΣΗ</string>
+    <string name="show_stats">show_stats</string>
     <string name="signin">Είσοδος</string>
     <string name="signin_fgmt">signInFgmt</string>
     <string name="signin_here">Διαθέτεις λογαριασμό?\nΣυνδέσου εδώ</string>
@@ -814,10 +825,12 @@
     <string name="spinner">spinner</string>
     <string name="splash_loaded">splash_loaded</string>
     <string name="splashscreen_fgmt">splashScreenFgmt</string>
+    <string name="stats">Στατιστικά</string>
     <string name="stats_title">Αποτελέσματα</string>
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="submit">Εγγραφή</string>
     <string name="survey">Έρευνα</string>
+    <string name="survey_details_fgmt">surveyDetailsFgmt</string>
     <string name="survey_id">survey_id</string>
     <string name="survey_questions_activity">SurveyQuestionsActivity</string>
     <string name="survey_questions_fgmt">surveyQuestionsFgmt</string>
@@ -827,8 +840,11 @@
     <string name="surveys_activity">SurveysActivity</string>
     <string name="theme">theme</string>
     <string name="toshared_logo_trns">tosharedlogoTrns</string>
+    <string name="total_responses">%1$s</string>
+    <string name="total_responses_label">Σύνολο \nΑποκρίσεων</string>
     <string name="total_surveys">Σύνολο \nΕρευνών</string>
     <string name="translation_y">translationY</string>
+    <string name="type">type</string>
     <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Ξαναπροσπάθησε σύντομα.</string>
     <string name="user_id">user_id</string>
     <string name="username">Όνομα χρήστη</string>

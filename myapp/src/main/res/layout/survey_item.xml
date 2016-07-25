@@ -23,6 +23,7 @@
         android:layout_toRightOf="@+id/surveyThumb"
         android:ellipsize="end"
         android:maxLines="2"
+
         android:layout_marginTop="@dimen/survey_item_title_margin_top"
         android:layout_marginRight="@dimen/survey_item_title_margin_right"
         android:layout_toLeftOf="@+id/responsesTtv"

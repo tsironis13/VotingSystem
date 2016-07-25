@@ -61,7 +61,7 @@ public class SQMVCInteractorImpl implements SQMVCInteractor {
 
     @Override
     public void uploadSurveyAnswers(SurveyAnswersBody surveyAnswersBody, final SQMVCFinishedListener SQMVCfinishedListener) {
-        Call<SurveyDetails> call = apiService.uploadSurveyAnswers(surveyAnswersBody);
+        Call<SurveyDetails> call = apiService.uploadSurveyAnswersOrGetSurveyStats(surveyAnswersBody);
         call.enqueue(new Callback<SurveyDetails>() {
             @Override
             public void onResponse(Response<SurveyDetails> response, Retrofit retrofit) {

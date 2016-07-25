@@ -49,7 +49,7 @@ public interface ApiService {
     Call<SurveyQuestions> getSurveyQuestions(@Body SurveyQuestionBody surveyQuestionBody);
 
     @POST("requests/surveys.php")
-    Call<SurveyDetails> uploadSurveyAnswers(@Body SurveyAnswersBody surveyAnswersBody);
+    Call<SurveyDetails> uploadSurveyAnswersOrGetSurveyStats(@Body SurveyAnswersBody surveyAnswersBody);
 //    @FormUrlEncoded
 //    @POST("functions/firmRequests.php")
 //    Call<Firm> getFirmByNameAndCode(@Field("action") String action, @Field("firm-name") String firmName, @Field("firm-code") String firmCode);

@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.votingsystem.tsiro.POJO.AllSurveys;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
+import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
+import com.votingsystem.tsiro.POJO.SurveyDetails;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.rest.ApiService;
@@ -45,4 +47,24 @@ public class SAMVCInteractorImpl implements SAMVCInteractor {
             }
         });
     }
+
+    @Override
+    public void getSurveyStats(SurveyAnswersBody surveyAnswersBody, final SAMVCFinishedListener SAMVCfinishedListener) {
+        Call<SurveyDetails> surveyDetails = apiService.uploadSurveyAnswersOrGetSurveyStats(surveyAnswersBody);
+        surveyDetails.enqueue(new Callback<SurveyDetails>() {
+            @Override
+            public void onResponse(Response<SurveyDetails> response, Retrofit retrofit) {
+                if (response.body().getCode() != AppConfig.STATUS_OK) {
+                    SAMVCfinishedListener.onFailure(response.body().getCode());
+                } else {
+                    SAMVCfinishedListener.onSuccessSurveyDetailsFetched(response.body().getData());
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable t) { Log.e(debugTag, t.toString()); }
+        });
+    }
+
+
 }

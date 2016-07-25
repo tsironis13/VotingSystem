@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/question_container_margin_padding_bottom"
+        android:paddingBottom="20dp"
+        android:orientation="vertical">
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/surveyTitleTtv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/survey_title_txv_text_size"
+            android:textStyle="bold"
+            android:textColor="@android:color/black"
+            android:gravity="center" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/totalResponsesTtv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:textSize="@dimen/total_responsed_surveys_text_size"
+            android:textColor="@android:color/black" />
+
+        <com.rey.material.widget.TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/total_responses_label"
+            android:textColor="@color/total_responsed_surveys_desc_text_color"
+            android:textSize="@dimen/total_responsed_surveys_desc_text_size"
+            android:gravity="center" />
+
+        <LinearLayout
+            android:id="@+id/showStatsLlt"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <ImageView
+                android:layout_width="0dp"
+                android:layout_height="45dp"
+                android:layout_weight="10"
+                android:src="@drawable/stats_icon" />
+
+            <com.rey.material.widget.TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="85"
+                android:paddingLeft="15dp"
+                android:textSize="15sp"
+                android:textColor="@android:color/black"
+                android:gravity="center_vertical"
+                android:text="@string/stats" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height"
+            android:background="@color/view_color" />
+
+        <com.rey.material.widget.TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/accentColor"
+            android:textSize="@dimen/question_title_text_size"
+            android:textStyle="bold"
+            android:text="@string/details_title" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <com.rey.material.widget.TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/answered_label"
+                android:textColor="@color/last_created_date_text_color"
+                android:layout_weight="70" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/answeredTtv"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:layout_weight="30" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height"
+            android:background="@color/view_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <com.rey.material.widget.TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/completion_rate_label"
+                android:textColor="@color/last_created_date_text_color"
+                android:layout_weight="70" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/completionRateTtv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:layout_weight="30" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height"
+            android:background="@color/view_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <com.rey.material.widget.TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/created_date_label"
+                android:textColor="@color/last_created_date_text_color"
+                android:layout_weight="70" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/createdDateTtv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:layout_weight="30" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height"
+            android:background="@color/view_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <com.rey.material.widget.TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/last_modified_date_label"
+                android:textColor="@color/last_created_date_text_color"
+                android:layout_weight="70" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/lastModifiedDateTtv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:layout_weight="30" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height"
+            android:background="@color/view_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <com.rey.material.widget.TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/category_label"
+                android:textColor="@color/last_created_date_text_color"
+                android:layout_weight="70" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/categoryTtv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:layout_weight="30" />
+
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/view_height"
+            android:background="@color/view_color" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <com.rey.material.widget.TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/questions_label"
+                android:textColor="@color/last_created_date_text_color"
+                android:layout_weight="70" />
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/questionsTtv"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textColor="@android:color/black"
+                android:textStyle="bold"
+                android:gravity="end"
+                android:layout_weight="30" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

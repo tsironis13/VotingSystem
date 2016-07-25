@@ -12,6 +12,8 @@ import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
 import com.votingsystem.tsiro.rest.ApiService;
+import com.votingsystem.tsiro.votingsystem.R;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -120,7 +122,7 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
 
     @Override
     public void populateFirmNamesSpnr(final ArrayList<FirmNameWithID> firmNameWithIDArrayList, final LAMVCFinishedListener LAMVCFinishedListener) {
-        Call<Firm> call = apiService.getFirmNames("getFirmNames");
+        Call<Firm> call = apiService.getFirmNames("firm_names");
         call.enqueue(new Callback<Firm>() {
             @Override
             public void onResponse(Response<Firm> response, Retrofit retrofit) {
