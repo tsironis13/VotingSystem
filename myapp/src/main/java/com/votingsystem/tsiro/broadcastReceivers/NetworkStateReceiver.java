@@ -26,7 +26,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
 
     @Override
     public void onReceive(Context context, Intent intent) {
-        Log.e(debugTag, "onReceive called");
+//        Log.e(debugTag, "onReceive called");
         ConnectivityManager connectivityManager = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
         int status = (connectivityManager.getActiveNetworkInfo() != null) ? connectivityManager.getActiveNetworkInfo().getType() : AppConfig.NO_CONNECTION;
         notifyStateToAll(status);
@@ -39,7 +39,7 @@ public class NetworkStateReceiver extends BroadcastReceiver {
     }
 
     private static void notifyState(NetworkStateListeners networkStateListeners, int status) {
-        Log.e(debugTag, "notifyState Called");
+//        Log.e(debugTag, "notifyState Called");
         networkStateListeners.networkStatus(status);
     }
 

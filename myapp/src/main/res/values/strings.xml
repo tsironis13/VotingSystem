@@ -19,6 +19,7 @@
     <string name="action">action</string>
     <string name="email_notification">email_notification</string>
     <!-- TAG -->
+    <string name="tag">tag</string>
     <string name="splashscreen_fgmt">splashScreenFgmt</string>
     <string name="signin_fgmt">signInFgmt</string>
     <string name="forgotpassword_fgmt">forgotPasswordFgmt</string>
@@ -27,6 +28,7 @@
     <string name="survey_questions_fgmt">surveyQuestionsFgmt</string>
     <string name="survey_stats_fgmt">surveyStatsFgmt</string>
     <string name="survey_details_fgmt">surveyDetailsFgmt</string>
+    <string name="error_fgmt">errorFgmt</string>
     <string name="editext">editext</string>
     <string name="spinner">spinner</string>
     <string name="user_id">user_id</string>
@@ -152,6 +154,7 @@
     <string name="questions_label">Ερωτήσεις</string>
     <string name="answered">%1$s</string>
     <string name="questions">%1$s</string>
+    <string name="stats_icon">stats_icon</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>

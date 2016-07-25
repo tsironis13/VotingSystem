@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.POJO.SurveyDetails;
@@ -20,9 +21,9 @@ public class SurveyDetailsFragment extends Fragment {
 
     private static final String debugTag = SurveyDetailsFragment.class.getSimpleName();
     private SurveyDetailsData surveyDetailsData;
-    private String type;
-    private View view;
+    private View view, tView;
     private TextView surveyTitleTtv, totalResponsesTtv, answeredTtv, completionRateTtv, createdDateTtv, lastModifiedDateTtv, categoryTtv, questionsTtv;
+    private LinearLayout showStatsLlt;
 
     public static SurveyDetailsFragment newInstance(SurveyDetailsData surveyDetailsData, String type) {
         Bundle bundle = new Bundle();
@@ -36,6 +37,8 @@ public class SurveyDetailsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if (view == null) view = inflater.inflate(R.layout.fragment_survey_details, container, false);
+        showStatsLlt        = (LinearLayout) view.findViewById(R.id.showStatsLlt);
+        tView               = view.findViewById(R.id.tView);
         surveyTitleTtv      = (TextView) view.findViewById(R.id.surveyTitleTtv);
         totalResponsesTtv   = (TextView) view.findViewById(R.id.totalResponsesTtv);
         answeredTtv         = (TextView) view.findViewById(R.id.answeredTtv);
@@ -55,8 +58,12 @@ public class SurveyDetailsFragment extends Fragment {
 
             if (getArguments() != null) {
                 surveyDetailsData   = getArguments().getParcelable(getActivity().getResources().getString(R.string.data_parcelable_key));
-                type                = getArguments().getString(getResources().getString(R.string.type));
-                if (surveyDetailsData != null) {
+                String type = getArguments().getString(getResources().getString(R.string.type));
+                if (surveyDetailsData != null && type != null) {
+                    if (type.equals(getResources().getString(R.string.pending)) || surveyDetailsData.getResponses() == 0) {
+                        showStatsLlt.setVisibility(View.GONE);
+                        tView.setVisibility(View.GONE);
+                    }
                     surveyTitleTtv.setText(surveyDetailsData.getTitle());
                     totalResponsesTtv.setText(getResources().getString(R.string.total_responses, surveyDetailsData.getResponses()));
                     answeredTtv.setText(getResources().getString(R.string.answered, surveyDetailsData.getResponses()));
@@ -66,6 +73,13 @@ public class SurveyDetailsFragment extends Fragment {
                     categoryTtv.setText(surveyDetailsData.getCategory());
                     questionsTtv.setText(getResources().getString(R.string.questions, surveyDetailsData.getQuestion().size()));
                 }
+                showStatsLlt.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.surveyDetailsFgmtContainer, SurveyStatsFragment.newInstance(surveyDetailsData), getResources().getString(R.string.survey_stats_fgmt)).commit();
+                        Log.e(debugTag, "here");
+                    }
+                });
             }
         }
     }

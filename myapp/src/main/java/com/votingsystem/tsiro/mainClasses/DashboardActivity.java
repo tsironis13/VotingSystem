@@ -1,6 +1,7 @@
 package com.votingsystem.tsiro.mainClasses;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
@@ -18,7 +19,9 @@ import android.view.View;
 import android.view.WindowManager;
 //import com.squareup.leakcanary.RefWatcher;
 import com.rey.material.widget.TextView;
+import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.app.MyApplication;
+import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
 import com.votingsystem.tsiro.fragments.*;
 import com.votingsystem.tsiro.votingsystem.R;
 
@@ -27,7 +30,7 @@ import org.w3c.dom.Text;
 /**
  * Created by user on 16/11/2015.
  */
-public class DashboardActivity extends AppCompatActivity {
+public class DashboardActivity extends AppCompatActivity{
 
     private static final String debugTag = "DashboardActivity";
     private Toolbar toolbar;
@@ -43,9 +46,9 @@ public class DashboardActivity extends AppCompatActivity {
         userBundle = getIntent().getExtras();
         Log.e(debugTag, LoginActivity.getSessionPrefs(getApplicationContext()).getInt(getResources().getString(R.string.user_id), 0)+"");
         Log.e(debugTag, "USER BUNDLE: "+userBundle.getInt(getResources().getString(R.string.user_id)));
-        toolbar         =   (Toolbar) findViewById(R.id.appBar);
-        drawerLayout    =   (DrawerLayout) findViewById(R.id.dashboardDrlt);
-        navigationView  =   (NavigationView) findViewById(R.id.navigationView);
+        toolbar                 =   (Toolbar) findViewById(R.id.appBar);
+        drawerLayout            =   (DrawerLayout) findViewById(R.id.dashboardDrlt);
+        navigationView          =   (NavigationView) findViewById(R.id.navigationView);
 
         setSupportActionBar(toolbar);
 

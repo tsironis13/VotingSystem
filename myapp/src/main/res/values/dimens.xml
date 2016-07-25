@@ -163,6 +163,14 @@
     <dimen name="matrix_table_label_txv_text_size">12sp</dimen>
     <dimen name="table_row_cell_padding">15dp</dimen>
     <dimen name="answer_txv_text_size">13sp</dimen>
+    <dimen name="fragment_survey_details_llt_padding_bottom">20dp</dimen>
+    <dimen name="show_stats_llt_margin_top">20dp</dimen>
+    <dimen name="show_stats_llt_padding_bottom">10dp</dimen>
+    <dimen name="show_stats_imv_height">45dp</dimen>
+    <dimen name="show_stats_elements_padding_top">10dp</dimen>
+    <dimen name="show_stats_txv_padding_left">15dp</dimen>
+    <dimen name="show_stats_txv_text_size">15sp</dimen>
+    <dimen name="fragment_survey_details_items_container_margin_top_bottom">10dp</dimen>
     <!-- SNACKBARS -->
     <dimen name="sb_horizontal_padding">15dp</dimen>
     <dimen name="no_connection_sb_text_size">14sp</dimen>

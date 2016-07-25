@@ -3,6 +3,7 @@ package com.votingsystem.tsiro.fragments;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.Handler;
@@ -18,7 +19,10 @@ import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.DashboardActivityMVC.DAMVCPresenterImpl;
 import com.votingsystem.tsiro.DashboardActivityMVC.DAMVCView;
+import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
+import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
+import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.mainClasses.SurveysActivity;
 import com.votingsystem.tsiro.votingsystem.R;
@@ -26,7 +30,7 @@ import com.votingsystem.tsiro.votingsystem.R;
 /**
  * Created by user on 16/11/2015.
  */
-public class DashboardFragment extends Fragment implements DAMVCView{
+public class DashboardFragment extends Fragment implements DAMVCView, NetworkStateListeners {
 
     private static final String debugTag = DashboardFragment.class.getSimpleName();
     private View view;
@@ -34,6 +38,8 @@ public class DashboardFragment extends Fragment implements DAMVCView{
     private Button viewAllBtn;
     private DAMVCPresenterImpl DAMVCpresenterImpl;
     private ProgressDialog progressDialog;
+    private NetworkStateReceiver networkStateReceiver;
+    private boolean activityCreated;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -51,9 +57,13 @@ public class DashboardFragment extends Fragment implements DAMVCView{
         super.onActivityCreated(savedInstanceState);
 
         if (((AppCompatActivity)getActivity()).getSupportActionBar() != null) ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.home));
-        initializeProgressDialog();
-        DAMVCpresenterImpl = new DAMVCPresenterImpl(this);
-        DAMVCpresenterImpl.initializeDashboardDetails(isAdded(), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0));
+        DAMVCpresenterImpl      = new DAMVCPresenterImpl(this);
+        networkStateReceiver    = new NetworkStateReceiver();
+        networkStateReceiver.addListener(this);
+        getActivity().registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
+
+        activityCreated = true;
+
         viewAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,6 +76,8 @@ public class DashboardFragment extends Fragment implements DAMVCView{
     @Override
     public void onDestroy() {
         super.onDestroy();
+        networkStateReceiver.removeListener(this);
+        getActivity().unregisterReceiver(networkStateReceiver);
         this.DAMVCpresenterImpl.onDestroy();
     }
 
@@ -88,7 +100,9 @@ public class DashboardFragment extends Fragment implements DAMVCView{
 
     @Override
     public void onFailure() {
-
+        if (progressDialog.isShowing())
+            progressDialog.dismiss();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.baseFrlt, ErrorFragment.newInstance(getResources().getString(R.string.dashboard_fgmt)), getResources().getString(R.string.error_fgmt)).commit();
     }
 
     private void initializeProgressDialog() {
@@ -97,5 +111,18 @@ public class DashboardFragment extends Fragment implements DAMVCView{
         progressDialog.setMessage(getActivity().getResources().getString(R.string.message));
         progressDialog.setCancelable(false);
         progressDialog.show();
+    }
+
+    @Override
+    public void networkStatus(int connectionType) {
+        Log.e(debugTag, connectionType+"");
+        if (activityCreated)
+            if (connectionType != AppConfig.NO_CONNECTION) {
+                initializeProgressDialog();
+                DAMVCpresenterImpl.initializeDashboardDetails(isAdded(), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0));
+            } else {
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.baseFrlt, ErrorFragment.newInstance(getResources().getString(R.string.dashboard_fgmt)), getResources().getString(R.string.error_fgmt)).commit();
+            }
+        activityCreated = false;
     }
 }
