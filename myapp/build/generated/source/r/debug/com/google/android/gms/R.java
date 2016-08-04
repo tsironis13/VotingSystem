@@ -89,7 +89,7 @@ public final class R {
 		public static final int auto = 0x7f0e0046;
 		public static final int center = 0x7f0e002c;
 		public static final int dark = 0x7f0e005f;
-		public static final int email = 0x7f0e00f3;
+		public static final int email = 0x7f0e00f9;
 		public static final int icon_only = 0x7f0e005c;
 		public static final int light = 0x7f0e0060;
 		public static final int match_parent = 0x7f0e0061;
@@ -97,8 +97,8 @@ public final class R {
 		public static final int normal = 0x7f0e0011;
 		public static final int radio = 0x7f0e0080;
 		public static final int standard = 0x7f0e005d;
-		public static final int text = 0x7f0e0113;
-		public static final int text2 = 0x7f0e0111;
+		public static final int text = 0x7f0e011a;
+		public static final int text2 = 0x7f0e0118;
 		public static final int wide = 0x7f0e005e;
 		public static final int wrap_content = 0x7f0e002a;
 	}

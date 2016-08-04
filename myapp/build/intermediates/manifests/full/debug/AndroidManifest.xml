@@ -56,6 +56,10 @@
             android:name="com.votingsystem.tsiro.mainClasses.SurveyDetailsActivity"
             android:label=""
             android:screenOrientation="portrait" />
+        <activity
+            android:name="com.votingsystem.tsiro.mainClasses.CreateSurveyActivity"
+            android:label=""
+            android:screenOrientation="portrait" />
 
         <!--
              ATTENTION: This was auto-generated to add Google Play services to your project for

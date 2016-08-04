@@ -7,7 +7,7 @@ import java.util.List;
  * Created by giannis on 20/6/2016.
  */
 public class AllSurveys {
-    private int code;
+    private int code, total;
     private List<SurveyData> data;
 
     public AllSurveys() {}
@@ -15,6 +15,10 @@ public class AllSurveys {
     public int getCode() { return code; }
 
     public void setCode(int code) { this.code = code; }
+
+    public int getTotal() { return total; }
+
+    public void setTotal(int total) { this.total = total; }
 
     public List<SurveyData> getData() { return data; }
 

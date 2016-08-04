@@ -13,6 +13,7 @@ import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.parcel.QuestionData;
 import com.votingsystem.tsiro.rest.ApiService;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit.Call;
@@ -36,7 +37,7 @@ public class SQMVCInteractorImpl implements SQMVCInteractor {
             public void onResponse(Response<SurveyQuestions> response, Retrofit retrofit) {
                 List<QuestionData> firmElementList = response.body().getData();
                 if (response.body().getCode() != AppConfig.STATUS_OK) {
-                    SQMVCfinishedListener.onFailure(response.body().getCode());
+                    SQMVCfinishedListener.onFailure(response.body().getCode(), 1);
                 } else {
                     SQMVCfinishedListener.onSuccessSurveyQuestionsFetched(response.body().getTitle(), firmElementList);
                 }
@@ -55,6 +56,11 @@ public class SQMVCInteractorImpl implements SQMVCInteractor {
             @Override
             public void onFailure(Throwable t) {
                 Log.e(debugTag, t.toString());
+                if (t instanceof IOException) {
+                    SQMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE, 1);
+                } else {
+                    SQMVCfinishedListener.onFailure(AppConfig.INTERNAL_ERROR, 1);
+                }
             }
         });
     }
@@ -66,7 +72,7 @@ public class SQMVCInteractorImpl implements SQMVCInteractor {
             @Override
             public void onResponse(Response<SurveyDetails> response, Retrofit retrofit) {
                 if (response.body().getCode() != AppConfig.STATUS_OK) {
-                    SQMVCfinishedListener.onFailure(response.body().getCode());
+                    SQMVCfinishedListener.onFailure(response.body().getCode(), 2);
                 } else {
                     SQMVCfinishedListener.onSuccessSurveyDetailsFetched(response.body().getData());
                 }
@@ -81,6 +87,11 @@ public class SQMVCInteractorImpl implements SQMVCInteractor {
             @Override
             public void onFailure(Throwable t) {
                 Log.e(debugTag, t.toString());
+                if (t instanceof IOException) {
+                    SQMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE, 2);
+                } else {
+                    SQMVCfinishedListener.onFailure(AppConfig.INTERNAL_ERROR, 2);
+                }
             }
         });
     }

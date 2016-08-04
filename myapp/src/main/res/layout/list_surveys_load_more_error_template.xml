@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/list_surveys_load_more_error_llt_height"
+    android:orientation="horizontal"
+    android:gravity="center_vertical|right">
+
+    <com.rey.material.widget.TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/list_surveys_load_more_error_txv_text_size"
+        android:textStyle="bold"
+        android:text="@string/no_connection" />
+
+    <com.rey.material.widget.Button
+        android:id="@+id/lretryBtn"
+        android:layout_width="@dimen/list_surveys_load_more_error_btn_width"
+        android:layout_height="@dimen/list_surveys_load_more_error_btn_height"
+        android:layout_marginRight="@dimen/list_surveys_load_more_error_btn_margin_left_right"
+        android:layout_marginLeft="@dimen/list_surveys_load_more_error_btn_margin_left_right"
+        android:textSize="@dimen/list_surveys_load_more_error_btn_text_size"
+        android:textColor="@android:color/white"
+        android:background="@drawable/ripple_drawable"
+        android:text="@string/again" />
+
+</LinearLayout>

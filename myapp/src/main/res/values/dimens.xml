@@ -24,6 +24,15 @@
     <dimen name="view_height">1dp</dimen>
     <dimen name="view_margin_top">100dp</dimen>
     <dimen name="view_margin_bottom">3dp</dimen>
+    <!-- ERRORS RELATED -->
+    <dimen name="code_dest_txv_padding_bottom">17dp</dimen>
+    <dimen name="code_dest_txv_text_size">16sp</dimen>
+    <dimen name="list_surveys_load_more_error_llt_height">60dp</dimen>
+    <dimen name="list_surveys_load_more_error_txv_text_size">12sp</dimen>
+    <dimen name="list_surveys_load_more_error_btn_width">110dp</dimen>
+    <dimen name="list_surveys_load_more_error_btn_height">40dp</dimen>
+    <dimen name="list_surveys_load_more_error_btn_margin_left_right">8dp</dimen>
+    <dimen name="list_surveys_load_more_error_btn_text_size">13sp</dimen>
     <!-- SPLASH SCREEN -->
     <dimen name="splash_logo_dimens">53dp</dimen>
     <dimen name="welcome_text_margin_top">17dp</dimen>
@@ -126,7 +135,7 @@
     <dimen name="survey_title_txv_margin_top">8dp</dimen>
     <dimen name="survey_title_txv_text_size">20sp</dimen>
     <dimen name="question_title_margin_top_bottom">15dp</dimen>
-    <dimen name="question_title_text_size">17sp</dimen>
+    <dimen name="question_title_text_size">15sp</dimen>
     <dimen name="page_index_llt_height">57dp</dimen>
     <dimen name="arrow_imv_dimens">25dp</dimen>
     <dimen name="arrow_imv_margin_left">8dp</dimen>

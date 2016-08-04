@@ -153,6 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/have_survey_crdv_margin_top"
+            android:visibility="gone"
             card_view:cardUseCompatPadding="true">
 
             <LinearLayout
@@ -181,9 +182,10 @@
                     android:text="@string/have_survey_desc" />
 
                 <com.rey.material.widget.Button
+                    android:id="@+id/createSurveyBtn"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:background="@color/accentColor"
+                    android:background="@drawable/ripple_drawable"
                     android:textColor="@android:color/white"
                     android:text="@string/add_new" />
 

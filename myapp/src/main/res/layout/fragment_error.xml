@@ -7,10 +7,22 @@
     android:background="@color/view_color"
     android:orientation="vertical">
 
+    <com.rey.material.widget.TextView
+        android:id="@+id/codeDescTtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/code_dest_txv_padding_bottom"
+        android:textSize="@dimen/code_dest_txv_text_size"
+        android:textColor="@android:color/black"
+        android:gravity="center"
+        android:textStyle="bold" />
+
     <com.rey.material.widget.Button
         android:id="@+id/retryBtn"
-        android:layout_width="70dp"
-        android:layout_height="50dp"
-        android:text="Retry" />
+        android:layout_width="@dimen/action_btn_width"
+        android:layout_height="@dimen/action_btn_height"
+        android:text="@string/retry"
+        android:textColor="@android:color/white"
+        android:background="@drawable/ripple_drawable" />
 
 </LinearLayout>

@@ -217,7 +217,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         };
         spannableStringBuilder.setSpan(clickableSpan, start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         spannableStringBuilder.setSpan(styleSpan, start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
-        spannableStringBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(), R.color.login_span_color)), start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
+        spannableStringBuilder.setSpan(new ForegroundColorSpan(ContextCompat.getColor(getApplicationContext(), R.color.accentColor)), start, end, Spannable.SPAN_INCLUSIVE_EXCLUSIVE);
         textView.setText(spannableStringBuilder);
     }
 

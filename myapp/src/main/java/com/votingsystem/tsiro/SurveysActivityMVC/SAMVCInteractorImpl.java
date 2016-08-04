@@ -10,6 +10,7 @@ import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.rest.ApiService;
 
+import java.io.IOException;
 import java.util.List;
 
 import retrofit.Call;
@@ -34,16 +35,20 @@ public class SAMVCInteractorImpl implements SAMVCInteractor {
             @Override
             public void onResponse(Response<AllSurveys> response, Retrofit retrofit) {
                 if (response.body().getCode() != AppConfig.STATUS_OK) {
-                    SAMVCfinishedListener.onFailure(response.body().getCode());
+                    SAMVCfinishedListener.onFailure(response.body().getCode(), 1);
                 } else {
-                    SAMVCfinishedListener.onSuccessSurveysFetched(response.body().getData(), allSurveysBody.getOffset());
+                    SAMVCfinishedListener.onSuccessSurveysFetched(response.body().getData(), allSurveysBody.getOffset(), response.body().getTotal());
                 }
-                //Log.e(debugTag, response.body().getCode()+"");
             }
 
             @Override
             public void onFailure(Throwable t) {
                 Log.e(debugTag, t.toString());
+                if (t instanceof IOException) {
+                    SAMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE, 1);
+                } else {
+                    SAMVCfinishedListener.onFailure(AppConfig.INTERNAL_ERROR, 1);
+                }
             }
         });
     }
@@ -55,14 +60,21 @@ public class SAMVCInteractorImpl implements SAMVCInteractor {
             @Override
             public void onResponse(Response<SurveyDetails> response, Retrofit retrofit) {
                 if (response.body().getCode() != AppConfig.STATUS_OK) {
-                    SAMVCfinishedListener.onFailure(response.body().getCode());
+                    SAMVCfinishedListener.onFailure(response.body().getCode(), 2);
                 } else {
                     SAMVCfinishedListener.onSuccessSurveyDetailsFetched(response.body().getData());
                 }
             }
 
             @Override
-            public void onFailure(Throwable t) { Log.e(debugTag, t.toString()); }
+            public void onFailure(Throwable t) {
+                Log.e(debugTag, t.toString());
+                if (t instanceof IOException) {
+                    SAMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE, 2);
+                } else {
+                    SAMVCfinishedListener.onFailure(AppConfig.INTERNAL_ERROR, 2);
+                }
+            }
         });
     }
 

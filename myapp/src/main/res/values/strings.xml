@@ -20,6 +20,7 @@
     <string name="email_notification">email_notification</string>
     <!-- TAG -->
     <string name="tag">tag</string>
+    <string name="code">code</string>
     <string name="splashscreen_fgmt">splashScreenFgmt</string>
     <string name="signin_fgmt">signInFgmt</string>
     <string name="forgotpassword_fgmt">forgotPasswordFgmt</string>
@@ -28,6 +29,7 @@
     <string name="survey_questions_fgmt">surveyQuestionsFgmt</string>
     <string name="survey_stats_fgmt">surveyStatsFgmt</string>
     <string name="survey_details_fgmt">surveyDetailsFgmt</string>
+    <string name="new_survey_details_fgmt">newSurveyDetails</string>
     <string name="error_fgmt">errorFgmt</string>
     <string name="editext">editext</string>
     <string name="spinner">spinner</string>
@@ -39,6 +41,8 @@
     <string name="expanded">expanded</string>
     <string name="done">done</string>
     <string name="forward">forward</string>
+    <string name="connection_status">connection_status</string>
+    <string name="title">title</string>
     <!-- ACTIONS -->
     <string name="register_user">register_user</string>
     <string name="reset_password">reset_password</string>
@@ -155,6 +159,9 @@
     <string name="answered">%1$s</string>
     <string name="questions">%1$s</string>
     <string name="stats_icon">stats_icon</string>
+    <!-- NEW SURVEY -->
+    <string name="new_survey">Νέα Έρευνα</string>
+    <string name="new_survey_title">Τίτλος έρευνας</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>
@@ -180,6 +187,9 @@
     <string name="error_reset_password_already_requested">Το αίτημα αλλαγής κωδικού έχει ήδη σταλεί. Παρακαλώ ξαναπροσπάθησε σε %1$s.</string>
     <string name="error_invalid_username_password">Μη έγκυρο όνομα χρήστη ή κωδικός πρόσβασης.</string>
     <string name="error_account_not_verified_yet">Παρακαλώ ενεργοποίησε το λογαριασμό σου για να εισέλθεις στην εφαρμογή.</string>
+    <string name="error_invalid_id">Μη έγκυρο ID</string>
+    <string name="retry">Ξαναπροσπάθησε</string>
+    <string name="again">Προσπάθησε \nξανά</string>
     <!-- INPUT FIELDS -->
     <string name="username_tag">username</string>
     <string name="password_tag">password</string>

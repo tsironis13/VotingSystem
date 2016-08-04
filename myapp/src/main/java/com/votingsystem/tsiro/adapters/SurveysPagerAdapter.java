@@ -1,20 +1,16 @@
 package com.votingsystem.tsiro.adapters;
 
-import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 import android.util.Log;
-import android.view.ViewGroup;
+import android.view.View;
 
-import com.votingsystem.tsiro.POJO.AllSurveys;
+import com.votingsystem.tsiro.app.AppConfig;
+import com.votingsystem.tsiro.fragments.ErrorFragment;
 import com.votingsystem.tsiro.fragments.survey_tabs_fragments.CompletedSurveysFragment;
 import com.votingsystem.tsiro.fragments.survey_tabs_fragments.OngoingSurveysFragment;
 import com.votingsystem.tsiro.fragments.survey_tabs_fragments.PendingSurveysFragment;
-import com.votingsystem.tsiro.parcel.SurveyData;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by giannis on 19/6/2016.
@@ -23,12 +19,13 @@ public class SurveysPagerAdapter extends FragmentStatePagerAdapter {
 
     private static final String debugTag = SurveysPagerAdapter.class.getSimpleName();
     private Fragment[] pages = new Fragment[getCount()];
-    private List<SurveyData> data;
-    String[] tabText;
+    private String[] tabText;
+    private int connectionType;
 
-    public SurveysPagerAdapter(FragmentManager fragmentManager, String[] tabText) {
+    public SurveysPagerAdapter(FragmentManager fragmentManager, String[] tabText, int connectionType) {
         super(fragmentManager);
-        this.tabText = tabText;
+        this.tabText        = tabText;
+        this.connectionType = connectionType;
     }
 
     @Override
@@ -36,13 +33,13 @@ public class SurveysPagerAdapter extends FragmentStatePagerAdapter {
         Log.e("SurveysPagerAdapter", position+"");
         switch (position) {
             case 0:
-                if (pages[position] == null) pages[position] = CompletedSurveysFragment.newInstance();
+                if (pages[position] == null) pages[position] = CompletedSurveysFragment.newInstance(connectionType);
                 return pages[position];
             case 1:
-                if (pages[position] == null) pages[position] = OngoingSurveysFragment.newInstance();
+                if (pages[position] == null) pages[position] = OngoingSurveysFragment.newInstance(connectionType);
                 return pages[position];
             case 2:
-                if (pages[position] == null) pages[position] = PendingSurveysFragment.newInstance();
+                if (pages[position] == null) pages[position] = PendingSurveysFragment.newInstance(connectionType);
                 return pages[position];
             default:
                 return null;
@@ -58,6 +55,7 @@ public class SurveysPagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return 3;
     }
+
 
 //    private List<SurveyData> filterSurveyDataBasedOnType(List<SurveyData> data, String type) {
 //        List<SurveyData> filteredList = new ArrayList<SurveyData>();

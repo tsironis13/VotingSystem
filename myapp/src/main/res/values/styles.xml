@@ -103,7 +103,7 @@
     </style>
 
     <style name="InCircularProgressDrawable" parent="Material.Drawable.CircularProgress">
-        <item name="cpd_strokeColor">@color/action_btn_color</item>
+        <item name="cpd_strokeColor">@color/accentColor</item>
         <item name="cpd_inAnimDuration">600</item>
         <item name="cpd_inStepPercent">0.4</item>
         <item name="cpd_inStepColors">@array/in_circular_progress_colors</item>

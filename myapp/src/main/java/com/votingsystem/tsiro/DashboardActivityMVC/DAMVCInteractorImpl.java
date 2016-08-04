@@ -5,6 +5,9 @@ import com.votingsystem.tsiro.POJO.FirmSurveyDetails;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.rest.ApiService;
+
+import java.io.IOException;
+
 import retrofit.Call;
 import retrofit.Callback;
 import retrofit.Response;
@@ -29,8 +32,7 @@ public class DAMVCInteractorImpl implements DAMVCInteractor {
             public void onResponse(Response<FirmSurveyDetails> response, Retrofit retrofit) {
                 if (isAdded) {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
-                        DAMVCfinishedListener.onFailure();
-                        Log.e(debugTag, "FAILURE");
+                        DAMVCfinishedListener.onFailure(AppConfig.STATUS_ERROR);
                     } else {
                         Log.e(debugTag, "SUCCESS");
                         DAMVCfinishedListener.onSuccessDashboardDetails(response.body().getFirmName(), response.body().getTotalSurveys(), response.body().getResponses(), response.body().getLastCreatedDate());
@@ -40,7 +42,12 @@ public class DAMVCInteractorImpl implements DAMVCInteractor {
 
             @Override
             public void onFailure(Throwable t) {
-
+                Log.e(debugTag, t.toString());
+                if (t instanceof IOException) {
+                    DAMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE);
+                } else {
+                    DAMVCfinishedListener.onFailure(AppConfig.INTERNAL_ERROR);
+                }
             }
         });
     }

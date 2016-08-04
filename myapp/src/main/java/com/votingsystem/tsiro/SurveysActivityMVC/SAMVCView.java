@@ -10,7 +10,7 @@ import java.util.List;
  * Created by giannis on 20/6/2016.
  */
 public interface SAMVCView {
-    void onSuccessSurveysFetched(List<SurveyData> data, int offset);
+    void onSuccessSurveysFetched(List<SurveyData> data, int offset, int total);
     void onSuccessSurveyDetailsFetched(SurveyDetailsData surveyDetailsData);
-    void onFailure(int code);
+    void onFailure(int code, int request);
 }

@@ -23,6 +23,7 @@ import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
+import com.votingsystem.tsiro.mainClasses.CreateSurveyActivity;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.mainClasses.SurveysActivity;
 import com.votingsystem.tsiro.votingsystem.R;
@@ -35,7 +36,7 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
     private static final String debugTag = DashboardFragment.class.getSimpleName();
     private View view;
     private TextView firmTtv, totalSurveysTtv, responsedSurveysTtv, lastCreatedDateTtv;
-    private Button viewAllBtn;
+    private Button viewAllBtn, createSurveyBtn;
     private DAMVCPresenterImpl DAMVCpresenterImpl;
     private ProgressDialog progressDialog;
     private NetworkStateReceiver networkStateReceiver;
@@ -49,6 +50,7 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
         responsedSurveysTtv =   (TextView) view.findViewById(R.id.responsedSurveysTtv);
         lastCreatedDateTtv  =   (TextView) view.findViewById(R.id.lastCreatedDateTtv);
         viewAllBtn          =   (Button) view.findViewById(R.id.viewAll);
+        createSurveyBtn     =   (Button) view.findViewById(R.id.createSurveyBtn);
         return view;
     }
 
@@ -67,8 +69,13 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
         viewAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), SurveysActivity.class);
-                startActivity(intent);
+                startActivity(new Intent(getActivity(), SurveysActivity.class));
+            }
+        });
+        createSurveyBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getActivity(), CreateSurveyActivity.class));
             }
         });
     }
@@ -99,10 +106,11 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
     }
 
     @Override
-    public void onFailure() {
-        if (progressDialog.isShowing())
+    public void onFailure(int code) {
+        if (progressDialog.isShowing()) {
             progressDialog.dismiss();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.baseFrlt, ErrorFragment.newInstance(getResources().getString(R.string.dashboard_fgmt)), getResources().getString(R.string.error_fgmt)).commit();
+            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.baseFrlt, ErrorFragment.newInstance(getResources().getString(R.string.dashboard_fgmt), code), getResources().getString(R.string.error_fgmt)).commit();
+        }
     }
 
     private void initializeProgressDialog() {
@@ -115,14 +123,13 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
 
     @Override
     public void networkStatus(int connectionType) {
-        Log.e(debugTag, connectionType+"");
         if (activityCreated)
             if (connectionType != AppConfig.NO_CONNECTION) {
                 initializeProgressDialog();
                 DAMVCpresenterImpl.initializeDashboardDetails(isAdded(), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0));
             } else {
-                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.baseFrlt, ErrorFragment.newInstance(getResources().getString(R.string.dashboard_fgmt)), getResources().getString(R.string.error_fgmt)).commit();
+                getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.baseFrlt, ErrorFragment.newInstance(getResources().getString(R.string.dashboard_fgmt), AppConfig.NO_CONNECTION), getResources().getString(R.string.error_fgmt)).commit();
             }
-        activityCreated = false;
+            activityCreated = false;
     }
 }

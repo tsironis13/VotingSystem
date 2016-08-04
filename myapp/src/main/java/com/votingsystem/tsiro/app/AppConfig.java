@@ -39,6 +39,7 @@ public class AppConfig {
     public static final int ERROR_RESET_PASWD_ALREADY_REQUESTED =   -19;
     public static final int ERROR_INVALID_USERNAME_PASSWORD     =   -20;
     public static final int ERROR_ACCOUNT_NOT_VERIFIED_YET      =   -21;
+    public static final int ERROR_INVALID_ID                    =   -24;
     public static final int ERROR_EMPTY_LIST                    =   -205;
     //LOGIN ACTIVITY
     public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
@@ -54,6 +55,7 @@ public class AppConfig {
 
     public static SparseIntArray getCodes() {
         inputValidationCodes.put(NO_CONNECTION, R.string.no_connection);
+        inputValidationCodes.put(STATUS_ERROR, R.string.error_occured);
         inputValidationCodes.put(UNAVAILABLE_SERVICE, R.string.unavailable_service);
         inputValidationCodes.put(INTERNAL_ERROR, R.string.error_occured);
         inputValidationCodes.put(ERROR_EMPTY_REQUIRED_FIELD, R.string.error_empty_requried_field);
@@ -68,6 +70,7 @@ public class AppConfig {
         inputValidationCodes.put(ERROR_RESET_PASWD_ALREADY_REQUESTED, R.string.error_reset_password_already_requested);
         inputValidationCodes.put(ERROR_INVALID_USERNAME_PASSWORD, R.string.error_invalid_username_password);
         inputValidationCodes.put(ERROR_ACCOUNT_NOT_VERIFIED_YET, R.string.error_account_not_verified_yet);
+        inputValidationCodes.put(ERROR_INVALID_ID, R.string.error_invalid_id);
         return inputValidationCodes;
     }
 }

@@ -30,8 +30,8 @@ public class SAMVCPresenterImpl implements SAMVCPresenter, SAMVCFinishedListener
     }
 
     @Override
-    public void onSuccessSurveysFetched(List<SurveyData> data, int offset) {
-        SAMVCview.onSuccessSurveysFetched(data, offset);
+    public void onSuccessSurveysFetched(List<SurveyData> data, int offset, int total) {
+        SAMVCview.onSuccessSurveysFetched(data, offset, total);
     }
 
     @Override
@@ -40,8 +40,8 @@ public class SAMVCPresenterImpl implements SAMVCPresenter, SAMVCFinishedListener
     }
 
     @Override
-    public void onFailure(int code) {
-        SAMVCview.onFailure(code);
+    public void onFailure(int code, int request) {
+        SAMVCview.onFailure(code, request);
     }
 
     @Override

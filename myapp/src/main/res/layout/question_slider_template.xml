@@ -15,21 +15,21 @@
         android:textSize="@dimen/note_text_size"
         android:textStyle="bold" />
 
-    <com.rey.material.widget.Slider
-        android:id="@+id/questionSldr"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:paddingLeft="@dimen/question_slider_padding_left_right"
-        android:paddingRight="@dimen/question_slider_padding_left_right"
-        app:sl_discreteMode="true" />
+    <!--<com.rey.material.widget.Slider-->
+        <!--android:id="@+id/questionSldr"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:paddingLeft="@dimen/question_slider_padding_left_right"-->
+        <!--android:paddingRight="@dimen/question_slider_padding_left_right"-->
+        <!--app:sl_discreteMode="true" />-->
 
-    <com.rey.material.widget.TextView
-        android:id="@+id/questionSliderTtv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:paddingLeft="@dimen/question_slider_padding_left_right"
-        android:layout_marginTop="@dimen/question_slider_txv_margin_top"
-        android:textSize="@dimen/question_item_text_size"
-        android:textColor="@color/question_item_text_color" />
+    <!--<com.rey.material.widget.TextView-->
+        <!--android:id="@+id/questionSliderTtv"-->
+        <!--android:layout_width="wrap_content"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:paddingLeft="@dimen/question_slider_padding_left_right"-->
+        <!--android:layout_marginTop="@dimen/question_slider_txv_margin_top"-->
+        <!--android:textSize="@dimen/question_item_text_size"-->
+        <!--android:textColor="@color/question_item_text_color" />-->
 
 </LinearLayout>

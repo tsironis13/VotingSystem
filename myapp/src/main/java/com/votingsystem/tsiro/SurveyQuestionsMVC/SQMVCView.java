@@ -11,6 +11,6 @@ import java.util.List;
 public interface SQMVCView {
     void onSuccessSurveyQuestionsFetched(String surveyTitle, List<QuestionData> data);
     void onSuccessSurveyDetailsFetched(SurveyDetailsData surveyDetailsData);
-    void onFailure(int code);
+    void onFailure(int code, int request);
 }
 

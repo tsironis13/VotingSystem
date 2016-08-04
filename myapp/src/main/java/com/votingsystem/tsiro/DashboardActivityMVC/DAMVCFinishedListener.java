@@ -6,6 +6,6 @@ package com.votingsystem.tsiro.DashboardActivityMVC;
 public interface DAMVCFinishedListener {
 
     void onSuccessDashboardDetails(String firm_name, int total_surveys, int responses, String last_created_date);
-    void onFailure();
+    void onFailure(int code);
 
 }

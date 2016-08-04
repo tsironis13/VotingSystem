@@ -16,7 +16,7 @@
     <color name="et_support_text_error_color">#DD2C00</color>
     <color name="password_error_txv_text_color">#DD2C00</color>
     <color name="divider_error_color">#DD2C00</color>
-    <color name="submit_btn_ripple_color">#FB8C00</color>
+    <color name="submit_btn_ripple_color">#BF360C</color>
     <!-- DASHBOARD -->
     <color name="total_responsed_surveys_desc_text_color">#9E9E9E</color>
     <color name="last_created_date_text_color">#424242</color>
@@ -49,8 +49,8 @@
 
     <!-- PROGRESS VIEW -->
     <array name="in_circular_progress_colors">
-        <item>#EF6C00</item>
-        <item>#FF9800</item>
-        <item>#FFB74D</item>
+        <item>#F4511E</item>
+        <item>#FF5722</item>
+        <item>#FF8A65</item>
     </array>
 </resources>

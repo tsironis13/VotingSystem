@@ -23,8 +23,8 @@ public class DAMVCPresenterImpl implements DAMVCPresenter, DAMVCFinishedListener
     }
 
     @Override
-    public void onFailure() {
-
+    public void onFailure(int code) {
+        DAMVCview.onFailure(code);
     }
 
     @Override

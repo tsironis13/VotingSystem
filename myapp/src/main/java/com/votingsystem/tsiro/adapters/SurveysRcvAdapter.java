@@ -9,8 +9,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+
+import com.rey.material.widget.Button;
 import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.TextView;
+import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
 import com.votingsystem.tsiro.parcel.SurveyData;
@@ -28,7 +31,8 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
     private final int VIEW_ITEM = 1;
     private int visibleThreshold = 8;
     private int pages = 1;
-    private int lastVisibleItem, totalItemCount, VIEW_PROG;
+    private int lastVisibleItem, totalItemCount, VIEW_PROG, connectionStatus;
+    private int VIEW_ERROR = -1;
     private boolean isLoading;
     private OnLoadMoreListener onLoadMoreListener;
     private String type;
@@ -66,9 +70,12 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         if (viewType == VIEW_ITEM) {
             view    =   LayoutInflater.from(parent.getContext()).inflate(R.layout.survey_item, parent, false);
             vh      =   new SurveysItemViewHolder(view);
-        } else {
+        } else if (viewType == VIEW_PROG) {
             view    =   LayoutInflater.from(parent.getContext()).inflate(R.layout.surveys_recyclerview_loader, parent, false);
             vh      =   new ProgressViewHolder(view);
+        } else {
+            view    =   LayoutInflater.from(parent.getContext()).inflate(R.layout.list_surveys_load_more_error_template, parent, false);
+            vh      =   new ErrorViewHolder(view);
         }
         return vh;
     }
@@ -97,14 +104,24 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
                 if (data.get(position).getIsAnswered() && ((SurveysItemViewHolder) holder).answered.getVisibility() == View.VISIBLE) ((SurveysItemViewHolder) holder).answered.setVisibility(View.INVISIBLE);
             }
             ((SurveysItemViewHolder)holder).responses.setText(String.format(Locale.getDefault(), "%d", data.get(position).getResponses()));
-        } else {
+        } else if (holder instanceof ProgressViewHolder) {
             ((ProgressViewHolder)holder).progressView.start();
+        } else {
+            ((ErrorViewHolder)holder).retryBtn.setTransformationMethod(null);
         }
     }
 
     @Override
     public int getItemViewType(int position) {
-        return data.get(position) != null ? VIEW_ITEM : VIEW_PROG;
+        if (data.get(position) != null) {
+            return VIEW_ITEM;
+        } else {
+            if (connectionStatus != AppConfig.NO_CONNECTION) {
+                return VIEW_PROG;
+            } else {
+                return VIEW_ERROR;
+            }
+        }
     }
 
     @Override
@@ -122,6 +139,10 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
 
     public void setLoaded() {
         isLoading = false;
+    }
+
+    public void updateConnectionStatus(int connectionStatus) {
+        this.connectionStatus = connectionStatus;
     }
 
     static class SurveysItemViewHolder extends RecyclerView.ViewHolder {
@@ -144,6 +165,15 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         public ProgressViewHolder(View view) {
             super(view);
             progressView = (ProgressView) view.findViewById(R.id.loader);
+        }
+    }
+
+    static class ErrorViewHolder extends RecyclerView.ViewHolder {
+        private Button retryBtn;
+
+        public ErrorViewHolder(View view) {
+            super(view);
+            retryBtn = (Button) view.findViewById(R.id.lretryBtn);
         }
     }
 }

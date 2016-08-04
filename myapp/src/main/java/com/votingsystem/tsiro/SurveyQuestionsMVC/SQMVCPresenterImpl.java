@@ -39,8 +39,8 @@ public class SQMVCPresenterImpl implements SQMVCPresenter, SQMVCFinishedListener
     }
 
     @Override
-    public void onFailure(int code) {
-        SQMVCview.onFailure(code);
+    public void onFailure(int code, int request) {
+        SQMVCview.onFailure(code, request);
     }
 
     @Override

@@ -57,12 +57,12 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
     private QuestionData question;
     private SaveQuestionListener saveQuestionListener;
     private int selectedIndex = -1;
-    private ImageView angryImv, sadImv, neutralImv, happyImv, vhappyImv;
-    private ImageView[] icons;
+    private List<ImageView> icons;
     private LinearLayoutManager rankingViewLinearLayoutManager;
     private int count_matrix_indexs;
     private HashMap<Integer, Integer> matrix_selected_index;
     private CheckBox[] checkBox;
+    private int[] satisfactionImgsDrawables;
 
     @Override
     public void onAttach(Context context) {
@@ -108,6 +108,7 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
 
         if (savedInstanceState == null) {
             if (getArguments() != null) {
+                satisfactionImgsDrawables = new int[]{R.drawable.angry, R.drawable.sad, R.drawable.neutral, R.drawable.happy, R.drawable.vhappy};
                 question = getArguments().getParcelable(getResources().getString(R.string.question));
                 surveyTitleTtv.setText(getArguments().getString(getResources().getString(R.string.survey_title)));
 
@@ -199,7 +200,6 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
                 checkBox[i].setLayoutParams(lp);
             }
         }
-
     }
 
     public List<Integer> getMultipleChoiceSelectedIds() {
@@ -215,7 +215,7 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
             rankingViewLinearLayoutManager = new LinearLayoutManager(getActivity());
 
             RecyclerView rankingView;
-            LinearLayout rankingLlt = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.question_ranking_template, (ViewGroup) getActivity().findViewById(R.id.questionRankingLlt));
+            LinearLayout rankingLlt = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.question_ranking_template, (ViewGroup) getActivity().findViewById(R.id.questionRankingLlt), false);
             if (rankingLlt != null && rankingLlt.getChildAt(1) instanceof RecyclerView) {
                 questionContainer.addView(rankingLlt);
                 rankingView = (RecyclerView) rankingLlt.findViewById(R.id.questionRankingRcv);
@@ -245,42 +245,91 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
     }
 
     private void initializeSatisfactionRatingView() {
-        LinearLayout satisfRatingView = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.question_satisfaction_rating_template, (ViewGroup) getActivity().findViewById(R.id.satisfactionLlt));
-        questionContainer.addView(satisfRatingView);
-        if (satisfRatingView != null) {
-            angryImv      =   (ImageView) getActivity().findViewById(R.id.angryImv);
-            sadImv        =   (ImageView) getActivity().findViewById(R.id.sadImv);
-            neutralImv    =   (ImageView) getActivity().findViewById(R.id.neutralImv);
-            happyImv      =   (ImageView) getActivity().findViewById(R.id.happyImv);
-            vhappyImv     =   (ImageView) getActivity().findViewById(R.id.vhappyImv);
-            angryImv.setOnClickListener(this);
-            sadImv.setOnClickListener(this);
-            neutralImv.setOnClickListener(this);
-            happyImv.setOnClickListener(this);
-            vhappyImv.setOnClickListener(this);
-            icons = new ImageView[]{angryImv, sadImv, neutralImv, happyImv, vhappyImv};
+        icons = new ArrayList<>();
+
+        LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        LinearLayout linearLayout = new LinearLayout(getActivity());
+        linearLayout.setOrientation(LinearLayout.HORIZONTAL);
+        linearLayout.setWeightSum(100);
+        linearLayout.setLayoutParams(lp);
+
+        LinearLayout.LayoutParams imvLp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, (int)MyApplication.convertPixelToDpAndViceVersa(getActivity(), 0, 62), 20);
+
+        for (int i = 0; i < 5; i++) {
+            ImageView imageView = new ImageView(getActivity());
+            imageView.setId(i);
+            imageView.setTag(getResources().getString(R.string.empty_string));
+            imageView.setImageResource(satisfactionImgsDrawables[i]);
+            imageView.setLayoutParams(imvLp);
+            linearLayout.addView(imageView);
+            imageView.setOnClickListener(this);
+            icons.add(imageView);
         }
+        questionContainer.addView(linearLayout);
+//        LinearLayout satisfRatingView = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.question_satisfaction_rating_template, (ViewGroup) getActivity().findViewById(R.id.satisfactionLlt), false);
+//        Log.e(debugTag, satisfRatingView+"");
+//        questionContainer.addView(satisfRatingView);
+//        if (satisfRatingView != null) {
+//            angryImv      =   (ImageView) getActivity().findViewById(R.id.angryImv);
+//            sadImv        =   (ImageView) getActivity().findViewById(R.id.sadImv);
+//            neutralImv    =   (ImageView) getActivity().findViewById(R.id.neutralImv);
+//            happyImv      =   (ImageView) getActivity().findViewById(R.id.happyImv);
+//            vhappyImv     =   (ImageView) getActivity().findViewById(R.id.vhappyImv);
+//            angryImv.setOnClickListener(this);
+//            sadImv.setOnClickListener(this);
+//            neutralImv.setOnClickListener(this);
+//            happyImv.setOnClickListener(this);
+//            vhappyImv.setOnClickListener(this);
+//            icons = new ImageView[]{angryImv, sadImv, neutralImv, happyImv, vhappyImv};
+//        }
     }
 
     private void initializeSliderView(final QuestionData question) {
         if (question.getAnswers() != null && question.getAnswers().size() > 0) {
             selectedIndex = 0;
-            LinearLayout view   =   (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.question_slider_template, (ViewGroup) getActivity().findViewById(R.id.questionTemplateLlt));
-            questionContainer.addView(view);
-            if (view != null) {
-                Slider slider           =   (Slider) getActivity().findViewById(R.id.questionSldr);
-                final TextView textView =   (TextView) getActivity().findViewById(R.id.questionSliderTtv);
-                slider.setValueRange(1, question.getAnswers().size(), true);
+            LinearLayout view   =   (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.question_slider_template, (ViewGroup) getActivity().findViewById(R.id.questionTemplateLlt), false);
 
-                textView.setText(question.getAnswers().get(0));
-                slider.setOnPositionChangeListener(new Slider.OnPositionChangeListener() {
-                    @Override
-                    public void onPositionChanged(Slider view, boolean fromUser, float oldPos, float newPos, int oldValue, int newValue) {
-                        selectedIndex = newValue - 1;
-                        textView.setText(question.getAnswers().get(newValue-1));
-                    }
-                });
-            }
+            LinearLayout.LayoutParams slp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+            Slider slider = new Slider(getActivity());
+            slider.setLayoutParams(slp);
+            slider.applyStyle(R.style.Material_Widget_Slider_Discrete);
+            slider.setPadding((int)MyApplication.convertPixelToDpAndViceVersa(getActivity(), 0, 4), 0, (int)MyApplication.convertPixelToDpAndViceVersa(getActivity(), 0, 4), 0);
+            view.addView(slider);
+
+            LinearLayout.LayoutParams tlp = new LinearLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+            tlp.setMargins(0, (int)MyApplication.convertPixelToDpAndViceVersa(getActivity(), 0, 40), 0, 0);
+            final TextView textView = new TextView(getActivity());
+            textView.setLayoutParams(tlp);
+            textView.setPadding((int)MyApplication.convertPixelToDpAndViceVersa(getActivity(), 0, 4), 0, (int)MyApplication.convertPixelToDpAndViceVersa(getActivity(), 0, 4), 0);
+            textView.setTextSize(13);
+            textView.setTextColor(ContextCompat.getColor(getActivity(), R.color.question_item_text_color));
+            view.addView(textView);
+
+            questionContainer.addView(view);
+
+            slider.setValueRange(1, question.getAnswers().size(), true);
+            textView.setText(question.getAnswers().get(0));
+            slider.setOnPositionChangeListener(new Slider.OnPositionChangeListener() {
+                @Override
+                public void onPositionChanged(Slider view, boolean fromUser, float oldPos, float newPos, int oldValue, int newValue) {
+                    selectedIndex = newValue - 1;
+                    textView.setText(question.getAnswers().get(newValue-1));
+                }
+            });
+//            if (view != null) {
+//                Slider slider           =   (Slider) getActivity().findViewById(R.id.questionSldr);
+//                final TextView textView =   (TextView) getActivity().findViewById(R.id.questionSliderTtv);
+//                slider.setValueRange(1, question.getAnswers().size(), true);
+//
+//                textView.setText(question.getAnswers().get(0));
+//                slider.setOnPositionChangeListener(new Slider.OnPositionChangeListener() {
+//                    @Override
+//                    public void onPositionChanged(Slider view, boolean fromUser, float oldPos, float newPos, int oldValue, int newValue) {
+//                        selectedIndex = newValue - 1;
+//                        textView.setText(question.getAnswers().get(newValue-1));
+//                    }
+//                });
+//            }
         }
     }
 
@@ -379,7 +428,7 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
     }
 
     private void initializeFreeAnswerView() {
-        freeAnswerView = (EditText) LayoutInflater.from(getActivity()).inflate(R.layout.question_free_answer_template, (ViewGroup) getActivity().findViewById(R.id.freeAnswerEdt));
+        freeAnswerView = (EditText) LayoutInflater.from(getActivity()).inflate(R.layout.question_free_answer_template, (ViewGroup) getActivity().findViewById(R.id.freeAnswerEdt), false);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) freeAnswerView.setElevation((float) MyApplication.convertPixelToDpAndViceVersa(getActivity(), 0, 4));
         questionContainer.addView(freeAnswerView);
     }
@@ -390,41 +439,44 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
 
     @Override
     public void onClick(View view) {
-        if (view instanceof ImageView) {
+        ImageView imageView;
+        if (view != null && view instanceof ImageView) {
+            imageView = (ImageView) view;
             for (ImageView imv : icons) {
                 if (imv.getTag().equals(getResources().getString(R.string.selected))) {
                     imv.clearColorFilter();
                     imv.setTag("");
                 }
             }
+            switch (view.getId()) {
+                case 0:
+                    imageView.setColorFilter(ContextCompat.getColor(getActivity(),R.color.angry_fill_color));
+                    imageView.setTag(getResources().getString(R.string.selected));
+                    selectedIndex = 0;
+                    break;
+                case 1:
+                    imageView.setColorFilter(ContextCompat.getColor(getActivity(),R.color.sad_fill_color));
+                    imageView.setTag(getResources().getString(R.string.selected));
+                    selectedIndex = 1;
+                    break;
+                case 2:
+                    imageView.setColorFilter(ContextCompat.getColor(getActivity(),R.color.neutral_fill_color));
+                    imageView.setTag(getResources().getString(R.string.selected));
+                    selectedIndex = 2;
+                    break;
+                case 3:
+                    imageView.setColorFilter(ContextCompat.getColor(getActivity(),R.color.happy_fill_color));
+                    imageView.setTag(getResources().getString(R.string.selected));
+                    selectedIndex = 3;
+                    break;
+                case 4:
+                    imageView.setColorFilter(ContextCompat.getColor(getActivity(),R.color.vhappy_fill_color));
+                    imageView.setTag(getResources().getString(R.string.selected));
+                    selectedIndex = 4;
+                    break;
+            }
         }
-        switch (view.getId()) {
-            case R.id.angryImv:
-                angryImv.setColorFilter(ContextCompat.getColor(getActivity(),R.color.angry_fill_color));
-                angryImv.setTag(getResources().getString(R.string.selected));
-                selectedIndex = 0;
-                break;
-            case R.id.sadImv:
-                sadImv.setColorFilter(ContextCompat.getColor(getActivity(),R.color.sad_fill_color));
-                sadImv.setTag(getResources().getString(R.string.selected));
-                selectedIndex = 1;
-                break;
-            case R.id.neutralImv:
-                neutralImv.setColorFilter(ContextCompat.getColor(getActivity(),R.color.neutral_fill_color));
-                neutralImv.setTag(getResources().getString(R.string.selected));
-                selectedIndex = 2;
-                break;
-            case R.id.happyImv:
-                happyImv.setColorFilter(ContextCompat.getColor(getActivity(),R.color.happy_fill_color));
-                happyImv.setTag(getResources().getString(R.string.selected));
-                selectedIndex = 3;
-                break;
-            case R.id.vhappyImv:
-                vhappyImv.setColorFilter(ContextCompat.getColor(getActivity(),R.color.vhappy_fill_color));
-                vhappyImv.setTag(getResources().getString(R.string.selected));
-                selectedIndex = 4;
-                break;
-        }
+
     }
 
     public void setCurrentPageIndex(int index, int size) {
