@@ -4,12 +4,12 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/res/drawable-xxxhdpi-v4/fab_bg_mini.png"
     },
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/home.png",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-xxxhdpi/home.png"
-    },
-    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/neutral.png",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-xxxhdpi/neutral.png"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/home.png",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-xxxhdpi/home.png"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-xxxhdpi-v4/results.png",

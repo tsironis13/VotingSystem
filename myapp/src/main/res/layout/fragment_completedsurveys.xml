@@ -31,11 +31,18 @@
         android:layout_centerHorizontal="true"
         android:visibility="gone" />
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/completedSurveysRcV"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLlt"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/surveys_rcv_margin_top" />
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/completedSurveysRcV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/surveys_rcv_margin_top" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
 
     <ImageView
         android:id="@+id/noSurveysImv"

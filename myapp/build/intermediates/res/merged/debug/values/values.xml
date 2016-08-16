@@ -528,7 +528,8 @@
     <dimen name="register_txv_padding_left_right">15dp</dimen>
     <dimen name="register_txv_padding_top_bottom">12dp</dimen>
     <dimen name="satisfaction_imv_height">62dp</dimen>
-    <dimen name="save_question_fab_margin_bottom">21dp</dimen>
+    <dimen name="save_question_fab_dimens">55dp</dimen>
+    <dimen name="save_question_fab_margin_bottom">30dp</dimen>
     <dimen name="save_question_fab_margin_right">8dp</dimen>
     <dimen name="sb_horizontal_padding">15dp</dimen>
     <dimen name="setting_imv_dimens">23dp</dimen>

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -50,12 +51,13 @@ import java.util.List;
 /**
  * Created by giannis on 19/6/2016.
  */
-public class CompletedSurveysFragment extends Fragment implements SAMVCView, NetworkStateListeners {
+public class CompletedSurveysFragment extends Fragment implements SAMVCView, NetworkStateListeners, SwipeRefreshLayout.OnRefreshListener {
 
     private static final String debugTag = CompletedSurveysFragment.class.getSimpleName();
     private View view;
     private RelativeLayout listSurveysRlt;
     private Button retryBtn;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView completedSurveysRcV;
     private ImageView noSurveysImv;
     private TextView noSurveysTxv, codeDescTtv;
@@ -92,6 +94,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
         listSurveysRlt      =   (RelativeLayout) view.findViewById(R.id.listSurveysRlt);
         codeDescTtv         =   (TextView) view.findViewById(R.id.codeDescTtv);
         retryBtn            =   (Button) view.findViewById(R.id.retryBtn);
+        swipeRefreshLayout  =   (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLlt);
         completedSurveysRcV =   (RecyclerView) view.findViewById(R.id.completedSurveysRcV);
         noSurveysImv        =   (ImageView) view.findViewById(R.id.noSurveysImv);
         noSurveysTxv        =   (TextView) view.findViewById(R.id.noSurveysTxv);
@@ -102,6 +105,8 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(getActivity(), R.color.accentColor));
         inputValidationCodes = AppConfig.getCodes();
         retryBtn.setTransformationMethod(null);
         if (savedInstanceState == null) {
@@ -144,6 +149,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
 
     @Override
     public void onSuccessSurveysFetched(List<SurveyData> newData, int offset, int total) {
+        if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         if (total != 0) this.total = total;
         if (progressDialog.isShowing()) progressDialog.dismiss();
             if (offset == 0) {
@@ -190,6 +196,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
 
     @Override
     public void onFailure(int code, int request) {
+        if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         if (progressDialog.isShowing()) progressDialog.dismiss();
         if (request == 1) {
             if (code == AppConfig.ERROR_EMPTY_LIST) {
@@ -201,15 +208,42 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
                     noSurveysTxv.setVisibility(View.VISIBLE);
                 }
             } else {
-                listSurveysRlt.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.view_color));
-                completedSurveysRcV.setVisibility(View.GONE);
-                codeDescTtv.setVisibility(View.VISIBLE);
-                retryBtn.setVisibility(View.VISIBLE);
-                codeDescTtv.setText(getResources().getString(inputValidationCodes.get(code)));
+                onErrorBackgroundView(code);
             }
         } else {
             commonElements.showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(code)));
         }
+    }
+
+    @Override
+    public void networkStatus(int connectionType) {
+        connectionStatus = connectionType;
+        surveysRcvAdapter.updateConnectionStatus(connectionStatus);
+        if (savedInstanceState == null)
+            if (!surveysLoaded && connectionStatus != AppConfig.NO_CONNECTION) {
+                if (fragmentCreated) initializeSurveysList();
+            } else if (!surveysLoaded) {
+                onErrorBackgroundView(AppConfig.NO_CONNECTION);
+            }
+        fragmentCreated = false;
+    }
+
+    @Override
+    public void onRefresh() {
+        if (connectionStatus != AppConfig.NO_CONNECTION) {
+            initializeSurveysList();
+        } else {
+            onErrorBackgroundView(AppConfig.NO_CONNECTION);
+            if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
+        }
+    }
+
+    private void onErrorBackgroundView(int code) {
+        listSurveysRlt.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.view_color));
+        completedSurveysRcV.setVisibility(View.GONE);
+        codeDescTtv.setVisibility(View.VISIBLE);
+        retryBtn.setVisibility(View.VISIBLE);
+        codeDescTtv.setText(getResources().getString(inputValidationCodes.get(code)));
     }
 
     private void initializeSurveysList() {
@@ -274,20 +308,4 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
         SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
     }
 
-    @Override
-    public void networkStatus(int connectionType) {
-        connectionStatus = connectionType;
-        surveysRcvAdapter.updateConnectionStatus(connectionStatus);
-        if (savedInstanceState == null)
-            if (!surveysLoaded && connectionStatus != AppConfig.NO_CONNECTION) {
-                if (fragmentCreated) initializeSurveysList();
-            } else if (!surveysLoaded) {
-                listSurveysRlt.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.view_color));
-                completedSurveysRcV.setVisibility(View.GONE);
-                codeDescTtv.setVisibility(View.VISIBLE);
-                retryBtn.setVisibility(View.VISIBLE);
-                codeDescTtv.setText(getResources().getString(inputValidationCodes.get(AppConfig.NO_CONNECTION)));
-            }
-            fragmentCreated = false;
-    }
 }

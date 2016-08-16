@@ -65,7 +65,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
     private ViewPager mPager;
     private CoordinatorLayout coordinatorLayt;
     private SurveyQuestionsPagerAdapter surveyQuestionsPagerAdapter;
-    private FloatingActionButton floatingActionButton;
+    private android.support.design.widget.FloatingActionButton floatingActionButton;
     private HorizontalScrollView horizontalScrollView;
     private LinearLayout questionBtnLlt;
     private List<QuestionData> data;
@@ -93,7 +93,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
         coordinatorLayt         =   (CoordinatorLayout) findViewById(R.id.coordinatorLayt);
         Toolbar toolbar         =   (Toolbar) findViewById(R.id.appBar);
         mPager                  =   (ViewPager) findViewById(R.id.surveyQuestionsPager);
-        floatingActionButton    =   (FloatingActionButton) findViewById(R.id.saveQuestionFab);
+        floatingActionButton    =   (android.support.design.widget.FloatingActionButton) findViewById(R.id.saveQuestionFab);
         horizontalScrollView    =   (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
         questionBtnLlt          =   (LinearLayout) findViewById(R.id.questionBtnLlt);
 
@@ -142,10 +142,12 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
 
                 if (position + 1 == data.size()) menu.findItem(R.id.postSurveyAnswersItem).setVisible(true);
                 if (position + 1 < surveyQuestionsPagerAdapter.getCount()) {
-                    if (floatingActionButton.getTag().equals(getResources().getString(R.string.done))) floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.forward), true);
+//                    if (floatingActionButton.getTag().equals(getResources().getString(R.string.done))) floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.forward), true);
+                    if (floatingActionButton.getTag().equals(getResources().getString(R.string.done))) floatingActionButton.setImageResource(R.drawable.forward);
                     floatingActionButton.setTag(getResources().getString(R.string.forward));
                 } else {
-                    if (floatingActionButton.getTag().equals(getResources().getString(R.string.forward))) floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.done), true);
+//                    if (floatingActionButton.getTag().equals(getResources().getString(R.string.forward))) floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.done), true);
+                    if (floatingActionButton.getTag().equals(getResources().getString(R.string.forward))) floatingActionButton.setImageResource(R.drawable.done);
                     floatingActionButton.setTag(getResources().getString(R.string.done));
                 }
                 for (int i = 0; i < questionBtnLlt.getChildCount(); i++) {
@@ -220,7 +222,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
     @Override
     protected void onPause() {
         super.onPause();
-        if (data != null) if (mPager.getCurrentItem() + 1 == data.size())floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.done), true);
+//        if (data != null) if (mPager.getCurrentItem() + 1 == data.size())floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.done), true);
     }
 
     @Override
@@ -291,7 +293,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
             Intent intent = new Intent(SurveyQuestionsActivity.this, SurveysActivity.class);
             startActivity(intent);
         }
-        if (data != null) if (keyCode == KeyEvent.KEYCODE_BACK && mPager.getCurrentItem() + 1 != data.size()) floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.done), true);
+//        if (data != null) if (keyCode == KeyEvent.KEYCODE_BACK && mPager.getCurrentItem() + 1 != data.size()) floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.done), true);
         return super.onKeyDown(keyCode, event);
     }
 

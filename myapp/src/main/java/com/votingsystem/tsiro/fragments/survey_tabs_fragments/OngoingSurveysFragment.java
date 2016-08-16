@@ -11,6 +11,7 @@ import android.os.Parcelable;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.animation.LinearOutSlowInInterpolator;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -56,12 +57,13 @@ import java.util.List;
 /**
  * Created by giannis on 19/6/2016.
  */
-public class OngoingSurveysFragment extends Fragment implements SAMVCView, NetworkStateListeners {
+public class OngoingSurveysFragment extends Fragment implements SAMVCView, NetworkStateListeners, SwipeRefreshLayout.OnRefreshListener {
 
     private static final String debugTag = OngoingSurveysFragment.class.getSimpleName();
     private View view;
     private RelativeLayout listSurveysRlt;
     private Button retryBtn;
+    private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView ongoingSurveysRcV;
     private ImageView noSurveysImv;
     private TextView noSurveysTxv, codeDescTtv;
@@ -98,6 +100,7 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Netwo
         listSurveysRlt      =   (RelativeLayout) view.findViewById(R.id.listSurveysRlt);
         codeDescTtv         =   (TextView) view.findViewById(R.id.codeDescTtv);
         retryBtn            =   (Button) view.findViewById(R.id.retryBtn);
+        swipeRefreshLayout  =   (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLlt);
         ongoingSurveysRcV   =   (RecyclerView) view.findViewById(R.id.ongoingSurveysRcV);
         noSurveysImv        =   (ImageView) view.findViewById(R.id.noSurveysImv);
         noSurveysTxv        =   (TextView) view.findViewById(R.id.noSurveysTxv);
@@ -107,6 +110,8 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Netwo
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        swipeRefreshLayout.setOnRefreshListener(this);
+        swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(getActivity(), R.color.accentColor));
         inputValidationCodes = AppConfig.getCodes();
         retryBtn.setTransformationMethod(null);
         if (savedInstanceState == null) {
@@ -151,6 +156,7 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Netwo
 
     @Override
     public void onSuccessSurveysFetched(List<SurveyData> newData, int offset, int total) {
+        if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         if (total != 0) this.total = total;
         if (offset == 0) {
             this.data = newData;
@@ -195,6 +201,7 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Netwo
 
     @Override
     public void onFailure(int code, int request) {
+        if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         if (request == 1) {
             if (code == AppConfig.ERROR_EMPTY_LIST) {
                 if (ongoingSurveysRcV.getLayoutManager().getItemCount() != 0) {
@@ -205,16 +212,42 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Netwo
                     noSurveysTxv.setVisibility(View.VISIBLE);
                 }
             } else {
-                listSurveysRlt.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.view_color));
-                ongoingSurveysRcV.setVisibility(View.GONE);
-                codeDescTtv.setVisibility(View.VISIBLE);
-                retryBtn.setVisibility(View.VISIBLE);
-                codeDescTtv.setText(getResources().getString(inputValidationCodes.get(code)));
+                onErrorBackgroundView(code);
             }
         } else {
             commonElements.showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(code)));
         }
 
+    }
+
+    @Override
+    public void networkStatus(int connectionType) {
+        connectionStatus = connectionType;
+        if (savedInstanceState == null)
+            if (!surveysLoaded && connectionStatus != AppConfig.NO_CONNECTION) {
+                if (fragmentCreated) initializeSurveysList();
+            } else if (!surveysLoaded) {
+                onErrorBackgroundView(AppConfig.NO_CONNECTION);
+            }
+        fragmentCreated = false;
+    }
+
+    @Override
+    public void onRefresh() {
+        if (connectionStatus != AppConfig.NO_CONNECTION) {
+            initializeSurveysList();
+        } else {
+            onErrorBackgroundView(AppConfig.NO_CONNECTION);
+            if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
+        }
+    }
+
+    private void onErrorBackgroundView(int code) {
+        listSurveysRlt.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.view_color));
+        ongoingSurveysRcV.setVisibility(View.GONE);
+        codeDescTtv.setVisibility(View.VISIBLE);
+        retryBtn.setVisibility(View.VISIBLE);
+        codeDescTtv.setText(getResources().getString(inputValidationCodes.get(code)));
     }
 
     private void initializeSurveysList() {
@@ -289,19 +322,4 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Netwo
         SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
     }
 
-    @Override
-    public void networkStatus(int connectionType) {
-        connectionStatus = connectionType;
-        if (savedInstanceState == null)
-            if (!surveysLoaded && connectionStatus != AppConfig.NO_CONNECTION) {
-                if (fragmentCreated) initializeSurveysList();
-            } else if (!surveysLoaded) {
-                listSurveysRlt.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.view_color));
-                ongoingSurveysRcV.setVisibility(View.GONE);
-                codeDescTtv.setVisibility(View.VISIBLE);
-                retryBtn.setVisibility(View.VISIBLE);
-                codeDescTtv.setText(getResources().getString(inputValidationCodes.get(AppConfig.NO_CONNECTION)));
-            }
-            fragmentCreated = false;
-    }
 }

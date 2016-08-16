@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/coordinatorLayt"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -28,16 +27,16 @@
 
     </RelativeLayout>
 
-    <com.rey.material.widget.FloatingActionButton
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/saveQuestionFab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="@dimen/save_question_fab_dimens"
+        android:layout_height="@dimen/save_question_fab_dimens"
         android:layout_marginBottom="@dimen/save_question_fab_margin_bottom"
         android:layout_marginRight="@dimen/save_question_fab_margin_right"
         android:layout_gravity="bottom|end"
+        android:src="@drawable/done"
         android:tag="@string/done"
-        style="@style/Fab"
-        app:fab_iconSrc="@drawable/done" />
+        style="@style/Fab" />
 
     <HorizontalScrollView
         android:id="@+id/horizontalScrollView"

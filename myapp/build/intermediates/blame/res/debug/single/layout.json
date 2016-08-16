@@ -16,12 +16,12 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/question_slider_template.xml"
     },
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/24.1.1/res/layout/design_navigation_menu.xml"
-    },
-    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/mandatory_dialog.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/mandatory_dialog.xml"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/24.1.1/res/layout/design_navigation_menu.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/spinner_dropdown_item.xml",
