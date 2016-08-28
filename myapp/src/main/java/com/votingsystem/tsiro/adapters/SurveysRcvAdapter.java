@@ -33,7 +33,7 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
     private int pages = 1;
     private int lastVisibleItem, totalItemCount, VIEW_PROG, connectionStatus;
     private int VIEW_ERROR = -1;
-    private boolean isLoading;
+    private boolean isLoading, onSwipe;
     private OnLoadMoreListener onLoadMoreListener;
     private String type;
 
@@ -48,9 +48,13 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
                 @Override
                 public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
                     super.onScrolled(recyclerView, dx, dy);
+                    if (onSwipe) {
+                        pages = 1;
+                        isLoading = false;
+                    }
                     totalItemCount  =   linearLayoutManager.getItemCount();
                     lastVisibleItem =   linearLayoutManager.findLastVisibleItemPosition();
-                    //Log.e(debugTag, "Is Loading: "+isLoading+" Total items: "+totalItemCount+" Last visible item: "+lastVisibleItem+" Visible Threshold: "+visibleThreshold);
+//                    Log.e(debugTag, "Is Loading: "+isLoading+" Total items: "+totalItemCount+" Last visible item: "+lastVisibleItem+" Visible Threshold: "+visibleThreshold);
                     if (!isLoading && totalItemCount <= lastVisibleItem + visibleThreshold) {
                         if (onLoadMoreListener != null) {
                             onLoadMoreListener.onLoadMore(pages * 20);
@@ -58,6 +62,7 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
                         }
                         isLoading = true;
                     }
+                    onSwipe = false;
                 }
             });
         }
@@ -127,6 +132,10 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
     @Override
     public int getItemCount() {
         return data != null ? data.size() : 0;
+    }
+
+    public void onSwipeToRefresh() {
+        onSwipe = true;
     }
 
     public void refreshData(List<SurveyData> data) {

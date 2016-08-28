@@ -203,10 +203,15 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
     }
 
     public List<Integer> getMultipleChoiceSelectedIds() {
+        boolean isChecked = false;
         List<Integer> integerList = new ArrayList<>();
         for (int i = 0; i < checkBox.length; i++) {
-            if (checkBox[i].isChecked()) integerList.add(i);
+            if (checkBox[i].isChecked()) {
+                integerList.add(i);
+                isChecked = true;
+            }
         }
+        if (!isChecked) integerList.add(-1);
         return integerList;
     }
 

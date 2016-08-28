@@ -44,8 +44,8 @@ public class DashboardActivity extends AppCompatActivity{
         setContentView(R.layout.dashboard_activity);
 
         userBundle = getIntent().getExtras();
-        Log.e(debugTag, LoginActivity.getSessionPrefs(getApplicationContext()).getInt(getResources().getString(R.string.user_id), 0)+"");
-        Log.e(debugTag, "USER BUNDLE: "+userBundle.getInt(getResources().getString(R.string.user_id)));
+//        Log.e(debugTag, LoginActivity.getSessionPrefs(getApplicationContext()).getInt(getResources().getString(R.string.user_id), 0)+"");
+//        Log.e(debugTag, "USER BUNDLE: "+userBundle.getInt(getResources().getString(R.string.user_id)));
         toolbar                 =   (Toolbar) findViewById(R.id.appBar);
         drawerLayout            =   (DrawerLayout) findViewById(R.id.dashboardDrlt);
         navigationView          =   (NavigationView) findViewById(R.id.navigationView);
@@ -129,11 +129,14 @@ public class DashboardActivity extends AppCompatActivity{
                         break;
                     case R.id.settings:
                         break;
+                    case R.id.surveys:
+                        startActivity(new Intent(DashboardActivity.this, SurveysActivity.class));
+                        break;
                     case R.id.logout:
                         logUserOut(new String[] {getResources().getString(R.string.user_id), getResources().getString(R.string.username_tag), getResources().getString(R.string.email_tag), getResources().getString(R.string.firm_id)});
                         break;
                 }
-                //drawerLayout.closeDrawers();
+                drawerLayout.closeDrawers();
                 return true;
             }
         });

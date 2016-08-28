@@ -72,6 +72,7 @@ public class ErrorFragment extends Fragment implements NetworkStateListeners {
         getActivity().registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
         codeDescTtv.setText(getResources().getString(inputValidationCodes.get(code)));
         retryBtn.setTransformationMethod(null);
+        retryBtn.setClickable(true);
         retryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

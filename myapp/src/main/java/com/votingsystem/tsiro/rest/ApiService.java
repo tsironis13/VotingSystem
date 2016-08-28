@@ -4,6 +4,7 @@ import com.votingsystem.tsiro.POJO.AllSurveys;
 import com.votingsystem.tsiro.POJO.Firm;
 import com.votingsystem.tsiro.POJO.FirmSurveyDetails;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
+import com.votingsystem.tsiro.POJO.JnctFirmSurveys;
 import com.votingsystem.tsiro.POJO.LoginAndResetUserPasswordStuff;
 import com.votingsystem.tsiro.POJO.LoginFormBody;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
@@ -50,6 +51,10 @@ public interface ApiService {
 
     @POST("requests/surveys.php")
     Call<SurveyDetails> uploadSurveyAnswersOrGetSurveyStats(@Body SurveyAnswersBody surveyAnswersBody);
+
+    @FormUrlEncoded
+    @POST("requests/database-handling.php")
+    Call<JnctFirmSurveys> getJnctFSData(@Field("action") String action);
 //    @FormUrlEncoded
 //    @POST("functions/firmRequests.php")
 //    Call<Firm> getFirmByNameAndCode(@Field("action") String action, @Field("firm-name") String firmName, @Field("firm-code") String firmCode);

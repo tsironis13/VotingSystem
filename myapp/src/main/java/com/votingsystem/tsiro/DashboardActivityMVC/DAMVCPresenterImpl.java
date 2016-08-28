@@ -1,5 +1,10 @@
 package com.votingsystem.tsiro.DashboardActivityMVC;
 
+import com.votingsystem.tsiro.POJO.JnctFirmSurveysFields;
+import com.votingsystem.tsiro.POJO.SurveysFields;
+
+import java.util.List;
+
 /**
  * Created by giannis on 18/6/2016.
  */
@@ -20,6 +25,11 @@ public class DAMVCPresenterImpl implements DAMVCPresenter, DAMVCFinishedListener
     @Override
     public void onSuccessDashboardDetails(String firm_name, int total_surveys, int responses, String last_created_date) {
         DAMVCview.onSuccessDashboardDetails(firm_name, total_surveys, responses, last_created_date);
+    }
+
+    @Override
+    public void onSuccessFetchTableData(List<JnctFirmSurveysFields> jnctFirmSurveysFieldsList, List<SurveysFields> surveysFieldsList) {
+        DAMVCview.onSuccessFetchTableData(jnctFirmSurveysFieldsList, surveysFieldsList);
     }
 
     @Override

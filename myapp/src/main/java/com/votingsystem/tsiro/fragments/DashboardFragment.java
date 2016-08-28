@@ -20,6 +20,9 @@ import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.DashboardActivityMVC.DAMVCPresenterImpl;
 import com.votingsystem.tsiro.DashboardActivityMVC.DAMVCView;
 import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
+import com.votingsystem.tsiro.POJO.JnctFirmSurveysFields;
+import com.votingsystem.tsiro.POJO.SurveysFields;
+import com.votingsystem.tsiro.SQLite.MySQLiteHelper;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
@@ -27,6 +30,8 @@ import com.votingsystem.tsiro.mainClasses.CreateSurveyActivity;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.mainClasses.SurveysActivity;
 import com.votingsystem.tsiro.votingsystem.R;
+
+import java.util.List;
 
 /**
  * Created by user on 16/11/2015.
@@ -102,6 +107,23 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
                     lastCreatedDateTtv.setText(last_created_date);
                 }
             }, 1500);
+        }
+    }
+
+    @Override
+    public void onSuccessFetchTableData(List<JnctFirmSurveysFields> jnctFirmSurveysFieldsList, List<SurveysFields> surveysFieldsList) {
+        if (!MySQLiteHelper.getInstance(getActivity()).checkDatabase()) {
+            MySQLiteHelper.getInstance(getActivity()).createDatabase();
+            MySQLiteHelper.getInstance(getActivity()).openDatabase();
+            if (!MySQLiteHelper.getInstance(getActivity()).isDatabaseEmpty()) {
+                MySQLiteHelper.getInstance(getActivity()).insertToDatabase(getResources().getString(R.string.jnct_table), jnctFirmSurveysFieldsList, null);
+                MySQLiteHelper.getInstance(getActivity()).insertToDatabase(getResources().getString(R.string.surveys_table), surveysFieldsList, null);
+            }
+            MySQLiteHelper.getInstance(getActivity()).closeDB();
+        } else {
+            MySQLiteHelper.getInstance(getActivity()).openDatabase();
+            MySQLiteHelper.getInstance(getActivity()).isDatabaseEmpty();
+            MySQLiteHelper.getInstance(getActivity()).closeDB();
         }
     }
 

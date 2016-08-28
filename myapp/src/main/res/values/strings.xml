@@ -4,9 +4,15 @@
     <string name="dashboard_activity">DashboardActivity</string>
     <string name="surveys_activity">SurveysActivity</string>
     <string name="survey_questions_activity">SurveyQuestionsActivity</string>
+    <string name="search_results_activity">SearchResultsActivity</string>
     <!-- GENERAL -->
     <string name="welcome_text">Καλωσήρθατε!</string>
     <string name="yes">yes</string>
+    <!-- SQLITE DATABSE -->
+    <string name="database">SurveysDB</string>
+    <string name="surveys_table">Surveys</string>
+    <string name="jnct_table">Jnct_firm_surveys</string>
+    <string name="recent_sear_table">Recent_searches</string>
     <!-- SESSION PREFS -->
     <string name="splash_loaded">splash_loaded</string>
     <!-- GCM-->
@@ -43,6 +49,11 @@
     <string name="forward">forward</string>
     <string name="connection_status">connection_status</string>
     <string name="title">title</string>
+    <!-- SEARCH -->
+    <string name="search">search</string>
+    <string name="search_hint">Aναζήτηση Έρευνας</string>
+    <string name="arrow_back">arrow_back</string>
+    <string name="clear">clear</string>
     <!-- ACTIONS -->
     <string name="register_user">register_user</string>
     <string name="reset_password">reset_password</string>

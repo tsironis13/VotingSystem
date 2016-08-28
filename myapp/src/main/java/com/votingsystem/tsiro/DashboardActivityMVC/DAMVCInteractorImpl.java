@@ -2,6 +2,8 @@ package com.votingsystem.tsiro.DashboardActivityMVC;
 
 import android.util.Log;
 import com.votingsystem.tsiro.POJO.FirmSurveyDetails;
+import com.votingsystem.tsiro.POJO.JnctFirmSurveys;
+import com.votingsystem.tsiro.POJO.SurveysFields;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.rest.ApiService;
@@ -29,13 +31,35 @@ public class DAMVCInteractorImpl implements DAMVCInteractor {
         Call<FirmSurveyDetails> call = apiService.getFirmSurveyDetails("firm_survey_details", user_id, firm_id);
         call.enqueue(new Callback<FirmSurveyDetails>() {
             @Override
-            public void onResponse(Response<FirmSurveyDetails> response, Retrofit retrofit) {
+            public void onResponse(final Response<FirmSurveyDetails> response, Retrofit retrofit) {
                 if (isAdded) {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
                         DAMVCfinishedListener.onFailure(AppConfig.STATUS_ERROR);
                     } else {
-                        Log.e(debugTag, "SUCCESS");
-                        DAMVCfinishedListener.onSuccessDashboardDetails(response.body().getFirmName(), response.body().getTotalSurveys(), response.body().getResponses(), response.body().getLastCreatedDate());
+                        Call<JnctFirmSurveys> call = apiService.getJnctFSData("remote_data");
+                        call.enqueue(new Callback<JnctFirmSurveys>() {
+                            @Override
+                            public void onResponse(Response<JnctFirmSurveys> innerResponse, Retrofit retrofit) {
+                                if (innerResponse.body().getCode() != AppConfig.STATUS_OK) {
+                                    DAMVCfinishedListener.onFailure(AppConfig.STATUS_ERROR);
+                                } else {
+                                    for (SurveysFields surveysFields : innerResponse.body().getSurveysDataList()) {
+                                        Log.e(debugTag, surveysFields.getLastModified()+"");
+                                    }
+                                    DAMVCfinishedListener.onSuccessFetchTableData(innerResponse.body().getJnctFIrmSurveysFieldsList(), innerResponse.body().getSurveysDataList());
+                                    DAMVCfinishedListener.onSuccessDashboardDetails(response.body().getFirmName(), response.body().getTotalSurveys(), response.body().getResponses(), response.body().getLastCreatedDate());
+                                }
+                            }
+
+                            @Override
+                            public void onFailure(Throwable t) {
+                                if (t instanceof IOException) {
+                                    DAMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE);
+                                } else {
+                                    DAMVCfinishedListener.onFailure(AppConfig.INTERNAL_ERROR);
+                                }
+                            }
+                        });
                     }
                 }
             }

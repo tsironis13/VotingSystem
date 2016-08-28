@@ -17,6 +17,8 @@ public class AppConfig {
     //public static final String BASE_URL                         =   "http://192.168.100.192/Ptixiaki/";
     public static final String SESSION_PREFS                    =   "sessionPrefs";
     public static final String KEY_USER_LEARNED_PREFS           =   "user_learned_prefs";
+    //SQLITE DATABASE
+    public static final int VERSION                             =   1;
     //CODES
     public static final int NO_CONNECTION                       =   -1;
     public static final int WIFI_CONNECTION                     =   1;

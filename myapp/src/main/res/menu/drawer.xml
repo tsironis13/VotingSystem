@@ -9,6 +9,7 @@
             android:id="@+id/home"
             android:checked="true"
             android:icon="@drawable/home"
+            android:visible="false"
             android:title="@string/home" />
 
         <item
@@ -16,6 +17,7 @@
             android:checked="false"
             android:checkable="true"
             android:icon="@drawable/firm"
+            android:visible="false"
             android:title="@string/firm" />
 
         <item
@@ -28,12 +30,14 @@
             android:id="@+id/results"
             android:checked="false"
             android:icon="@drawable/results"
+            android:visible="false"
             android:title="@string/results" />
 
         <item
             android:id="@+id/notifications"
             android:checked="false"
             android:icon="@drawable/notifications"
+            android:visible="false"
             android:title="@string/notifications" />
 
     </group>
@@ -46,6 +50,7 @@
             android:id="@+id/settings"
             android:checked="false"
             android:icon="@drawable/settings"
+            android:visible="false"
             android:title="@string/settings" />
 
         <item

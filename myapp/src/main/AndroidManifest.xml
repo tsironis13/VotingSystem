@@ -34,7 +34,13 @@
         <activity
             android:name="com.votingsystem.tsiro.mainClasses.SurveysActivity"
             android:screenOrientation="portrait"
-            android:label="@string/surveys_activity" />
+            android:label="@string/surveys_activity">
+
+            <meta-data
+                android:name="android.app.searchable"
+                android:resource="@xml/searchable" />
+
+        </activity>
 
         <activity
             android:name="com.votingsystem.tsiro.mainClasses.SurveyQuestionsActivity"

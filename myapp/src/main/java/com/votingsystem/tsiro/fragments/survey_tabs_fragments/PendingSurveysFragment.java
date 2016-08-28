@@ -153,6 +153,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
 
     @Override
     public void onSuccessSurveysFetched(List<SurveyData> newData, int offset, int total) {
+        if (swipeRefreshLayout.getVisibility() == View.GONE) swipeRefreshLayout.setVisibility(View.VISIBLE);
         if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         if (total != 0) this.total = total;
         if (offset == 0) {
@@ -198,6 +199,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
 
     @Override
     public void onFailure(int code, int request) {
+        if (swipeRefreshLayout.getVisibility() == View.GONE) swipeRefreshLayout.setVisibility(View.VISIBLE);
         if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         if (request == 1) {
             if (code == AppConfig.ERROR_EMPTY_LIST) {
@@ -239,6 +241,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
     }
 
     private void onErrorBackgroundView(int code) {
+        swipeRefreshLayout.setVisibility(View.GONE);
         listSurveysRlt.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.view_color));
         pendingSurveysRcV.setVisibility(View.GONE);
         codeDescTtv.setVisibility(View.VISIBLE);
@@ -279,8 +282,14 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
                 if (connectionStatus != AppConfig.NO_CONNECTION) {
                     if (data != null) {
                         if (pendingSurveysRcV.getLayoutManager().getItemCount() < total) {
+                            Handler handler = new Handler();
                             data.add(null);
-                            surveysRcvAdapter.notifyItemChanged(data.size() - 1);
+                            handler.post(new Runnable() {
+                                @Override
+                                public void run() {
+                                    surveysRcvAdapter.notifyItemChanged(data.size() - 1);
+                                }
+                            });
                             SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.pending), AppConfig.FETCHED_SURVEYS_LIMIT, offset));
                         }
                     }
@@ -295,6 +304,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
     }
 
     private void initializeProgressDialog() {
+        if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
         progressDialog = new ProgressDialog(getActivity());
         progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
         progressDialog.setMessage(getActivity().getResources().getString(R.string.message));

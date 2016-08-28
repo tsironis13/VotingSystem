@@ -228,7 +228,7 @@ public class SurveyStatsFragment extends Fragment implements View.OnClickListene
                     HorizontalScrollView tableLayoutContainer   = (HorizontalScrollView) LayoutInflater.from(getActivity()).inflate(R.layout.matrix_table, (ViewGroup) getActivity().findViewById(R.id.matrixTableContainer), false);
                     LinearLayout tableLayout                    = (LinearLayout) tableLayoutContainer.findViewById(R.id.matrixTableLayout);
                     tableLayout.setTag(menu.getTag());
-                    TextView countPerRowLabelTtv                = (TextView) tableLayoutContainer.findViewById(R.id.countPerRowLabelTtv);
+//                    TextView countPerRowLabelTtv                = (TextView) tableLayoutContainer.findViewById(R.id.countPerRowLabelTtv);
                     View sdisagreeLabelView                     = tableLayoutContainer.findViewById(R.id.sdisagreeLabelView);
                     View disagreeLabelView                      = tableLayoutContainer.findViewById(R.id.disagreeLabelView);
                     View neutralLabelView                       = tableLayoutContainer.findViewById(R.id.neutralLabelView);
@@ -241,7 +241,8 @@ public class SurveyStatsFragment extends Fragment implements View.OnClickListene
                     sagreeLabelView.setBackgroundColor(ContextCompat.getColor(getActivity(), R.color.last_created_date_text_color));
 
                     HashMap<Integer, List<Integer>> tempHashData = new HashMap<>();
-                    int row_tag = 1000;
+                    int row_tag, first_row_index_to_show_data;
+                    row_tag = first_row_index_to_show_data = 1000;
                     for (int q = 0; q < stats.size(); q++) {
                         List<Integer> integerListRow    = new ArrayList<>();
                         int countPerRow = 0;
@@ -315,6 +316,8 @@ public class SurveyStatsFragment extends Fragment implements View.OnClickListene
                             }
                             setBoldTextColor(countPerRowTtv);
                             isSelected = true;
+                        } else {
+                            first_row_index_to_show_data = Integer.valueOf(100+String.valueOf(q+1));
                         }
                         countPerRowTtv.setText(getResources().getString(R.string.just_text, countPerRow));
                         tableLayout.addView(tableRow);
@@ -326,7 +329,9 @@ public class SurveyStatsFragment extends Fragment implements View.OnClickListene
 //                        }
 //                        Log.e(debugTag, "Key = " + entry.getKey() + ", Value = " + entry.getValue());
 //                    }
-                    if (stats.size() != 0) chartsLlt.addView(initializePieChart(null, false, false, 3, matrixHashData.get(menu.getTag()).get(1000)));
+//                    Log.e(debugTag,  matrixHashData.get(menu.getTag()).get(1001)+"");
+                    Log.e(debugTag, first_row_index_to_show_data+"");
+                    if (stats.size() != 0) chartsLlt.addView(initializePieChart(null, false, false, 3, matrixHashData.get(menu.getTag()).get(first_row_index_to_show_data)));
                     surveyStatsFgmtContainerLlt.addView(tableLayoutContainer);
 
                 }
