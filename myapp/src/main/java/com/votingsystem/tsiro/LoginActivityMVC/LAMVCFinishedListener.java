@@ -1,6 +1,7 @@
 package com.votingsystem.tsiro.LoginActivityMVC;
 
-import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
+import com.votingsystem.tsiro.helperClasses.CustomSpinnerItem;
+
 import java.util.List;
 
 /**
@@ -8,8 +9,8 @@ import java.util.List;
  */
 public interface LAMVCFinishedListener {
     void displayFeedbackMsg(int code);
-    void onSuccessfirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList);
-    void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList);
+    void onSuccessfirmNamesSpnrLoad(List<CustomSpinnerItem> firmNameWithIDArrayList);
+    void onFailurefirmNamesSpnrLoad(List<CustomSpinnerItem> firmNameWithIDArrayList);
     void onFailure(int code, String field, String hint, String retry_in);
     void onSuccess();
     void onSuccessUserSignIn(int user_id, String username, String email, int firm_id);

@@ -69,6 +69,14 @@
         <item name="rd_rippleAnimDuration">200</item>
         <item name="rd_delayClick">untilRelease</item>
     </style>
+    <!-- NEW SURVEY -->
+    <style name="newSurveyTitle" parent="Material.Widget.EditText.Light">
+        <item name="et_dividerColor">@drawable/divider_color</item>
+        <item name="et_labelTextColor">@color/accentColor</item>
+    </style>
+    <style name="pickDataEdt" parent="Material.Widget.EditText.Light">
+        <item name="android:color">@color/primaryColor</item>
+    </style>
     <!-- SURVEY QUESTIONS -->
     <style name="Fab" parent="Material.Drawable.Ripple.Touch.Light">
         <item name="rd_rippleColor">@color/fab_ripple_color</item>

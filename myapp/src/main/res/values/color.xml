@@ -23,6 +23,8 @@
     <color name="view_color">#E0E0E0</color>
     <color name="have_survey_desc_txv_text_color">#424242</color>
     <color name="note_text_color">#E53935</color>
+    <!-- NEW SURVEY -->
+    <color name="new_survey_hint_color">#60424242</color>
     <!-- SURVEYS -->
     <color name="no_surveys_txv_color">#424242</color>
     <color name="survey_item_details_text_color">#424242</color>

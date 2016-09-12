@@ -1,16 +1,10 @@
 package com.votingsystem.tsiro.fragments;
 
-import android.animation.Animator;
-import android.animation.AnimatorInflater;
-import android.animation.AnimatorListenerAdapter;
-import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
-import android.content.res.Configuration;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
@@ -25,17 +19,15 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.view.animation.AnimationSet;
 import android.view.animation.AnimationUtils;
 import android.widget.Button;
-import android.widget.ImageView;
+
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.LinearLayout;
 import com.rey.material.widget.ProgressView;
-import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.Spinner;
 import com.rey.material.widget.TextView;
 //import com.squareup.leakcanary.RefWatcher;
@@ -46,8 +38,7 @@ import com.votingsystem.tsiro.LoginActivityMVC.LAMVCView;
 import com.votingsystem.tsiro.adapters.FirmNamesSpnrNothingSelectedAdapter;
 import com.votingsystem.tsiro.animation.AnimationListener;
 import com.votingsystem.tsiro.app.AppConfig;
-import com.votingsystem.tsiro.app.MyApplication;
-import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
+import com.votingsystem.tsiro.helperClasses.CustomSpinnerItem;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.votingsystem.R;
@@ -114,6 +105,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
             LAMVCpresenterImpl      =   new LAMVCPresenterImpl(this);
 
             LAMVCpresenterImpl.firmNamesSpnrActions(initialConnectionStatus);
+
             connectionStatus = initialConnectionStatus;
             if (isAdded() && isVisible()) initializeBroadcastReceivers();
 
@@ -276,7 +268,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
     }
 
     @Override
-    public void onSuccessfulFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDList, boolean firmsLoaded) {
+    public void onSuccessfulFirmNamesSpnrLoad(List<CustomSpinnerItem> firmNameWithIDList, boolean firmsLoaded) {
         this.firmsLoaded = firmsLoaded;
         if (pickFirmSpnr.getAdapter() == null) {
             pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(getActivity(), R.layout.spinner_selection_item, firmNameWithIDList));
@@ -286,7 +278,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
     }
 
     @Override
-    public void onFailureFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDList, boolean firmsLoaded) {
+    public void onFailureFirmNamesSpnrLoad(List<CustomSpinnerItem> firmNameWithIDList, boolean firmsLoaded) {
         this.firmsLoaded = firmsLoaded;
         pickFirmSpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(getActivity(), R.layout.spinner_selection_item, firmNameWithIDList));
         setpickFirmSpnrDropDownViewRes(pickFirmSpnr);
@@ -365,7 +357,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         fields.add(new RegisterFormField(getResources().getString(R.string.email_tag), emailEdt.getText().toString(), emailEdt.getHint().toString()));
         fields.add(new RegisterFormField(getResources().getString(R.string.firm_code_tag), firmCodeEdt.getText().toString(), firmCodeEdt.getHint().toString()));
         if (pickFirmSpnr.getSelectedItemPosition() != 0 && pickFirmSpnr != null && pickFirmSpnr.getAdapter() != null) {
-            FirmNameWithID obj  =   (FirmNameWithID) pickFirmSpnr.getAdapter().getItem(pickFirmSpnr.getSelectedItemPosition() - 1);
+            CustomSpinnerItem obj  =   (CustomSpinnerItem) pickFirmSpnr.getAdapter().getItem(pickFirmSpnr.getSelectedItemPosition() - 1);
             firm_id             =   obj.getId();
         } else {
             firm_id             =   0;

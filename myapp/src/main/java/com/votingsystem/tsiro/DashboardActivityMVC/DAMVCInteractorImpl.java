@@ -43,9 +43,9 @@ public class DAMVCInteractorImpl implements DAMVCInteractor {
                                 if (innerResponse.body().getCode() != AppConfig.STATUS_OK) {
                                     DAMVCfinishedListener.onFailure(AppConfig.STATUS_ERROR);
                                 } else {
-                                    for (SurveysFields surveysFields : innerResponse.body().getSurveysDataList()) {
-                                        Log.e(debugTag, surveysFields.getLastModified()+"");
-                                    }
+//                                    for (SurveysFields surveysFields : innerResponse.body().getSurveysDataList()) {
+////                                        Log.e(debugTag, surveysFields.getLastModified()+"");
+//                                    }
                                     DAMVCfinishedListener.onSuccessFetchTableData(innerResponse.body().getJnctFIrmSurveysFieldsList(), innerResponse.body().getSurveysDataList());
                                     DAMVCfinishedListener.onSuccessDashboardDetails(response.body().getFirmName(), response.body().getTotalSurveys(), response.body().getResponses(), response.body().getLastCreatedDate());
                                 }

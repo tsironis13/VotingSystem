@@ -208,6 +208,7 @@ public class SurveyStatsFragment extends Fragment implements View.OnClickListene
                     responsesTtv.setText(getResources().getString(R.string.responses_text, freeAnswersList.size()));
                 }
             } else { //MATRIX
+                Log.e(debugTag, "MATRIX");
                 if (surveyDetailsData.getQuestion().get(i).getNoAnswers()) {
                     chartsLlt.setVisibility(View.GONE);
                     menu.setVisibility(View.GONE);
@@ -223,7 +224,7 @@ public class SurveyStatsFragment extends Fragment implements View.OnClickListene
                     columnMatrixViewColors.put(3, Color.argb(255, 198, 40, 40));
                     columnMatrixViewColors.put(4, Color.argb(255, 66, 66, 66));
 
-                    currentlyHASH.put((Integer) menu.getTag(), 1000);
+//                    currentlyHASH.put((Integer) menu.getTag(), 1000);
 
                     HorizontalScrollView tableLayoutContainer   = (HorizontalScrollView) LayoutInflater.from(getActivity()).inflate(R.layout.matrix_table, (ViewGroup) getActivity().findViewById(R.id.matrixTableContainer), false);
                     LinearLayout tableLayout                    = (LinearLayout) tableLayoutContainer.findViewById(R.id.matrixTableLayout);
@@ -331,6 +332,7 @@ public class SurveyStatsFragment extends Fragment implements View.OnClickListene
 //                    }
 //                    Log.e(debugTag,  matrixHashData.get(menu.getTag()).get(1001)+"");
                     Log.e(debugTag, first_row_index_to_show_data+"");
+                    currentlyHASH.put((Integer) menu.getTag(), first_row_index_to_show_data);
                     if (stats.size() != 0) chartsLlt.addView(initializePieChart(null, false, false, 3, matrixHashData.get(menu.getTag()).get(first_row_index_to_show_data)));
                     surveyStatsFgmtContainerLlt.addView(tableLayoutContainer);
 
@@ -528,13 +530,16 @@ public class SurveyStatsFragment extends Fragment implements View.OnClickListene
                     type = 1;
                 }
                 if (layoutC != null) layoutC.removeAllViews();
+
                 switch (view.getId()) {
                     case R.id.horBarChartFAB:
                         if (layoutC != null)
                             if (type != 3) {
                                 layoutC.addView(initializeHorBarChart(surveyDetailsData.getQuestion().get((Integer) menu.getTag()).getStats(), type, null));
                             } else {
-                                Log.e(debugTag, matrixHashData.get(menu.getTag()).get(1001)+"");
+                                Log.e(debugTag, "MENU TAG: "+menu.getTag()+" ");
+                                Log.e(debugTag, surveyDetailsData.getQuestion().get((Integer) menu.getTag()).getStats()+"");
+                                Log.e(debugTag, matrixHashData.get(menu.getTag()).get(currentlyHASH.get(menu.getTag()))+"");
                                 layoutC.addView(initializeHorBarChart(surveyDetailsData.getQuestion().get((Integer) menu.getTag()).getStats(), type, matrixHashData.get(menu.getTag()).get(currentlyHASH.get(menu.getTag()))));
                             }
                         break;

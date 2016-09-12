@@ -400,7 +400,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
             sbText    = getResources().getString(inputValidationCodes.get(code));
             hasAction = true;
         } else {
-            if (errorView != null) setText(getResources().getString(R.string.error), errorView, baseDecodeUtf8(baseEncodeUtf8(getResources().getString(inputValidationCodes.get(code)))), "#DD2C00");
+            if (errorView != null) setText(getResources().getString(R.string.error), errorView, baseDecodeUtf8(baseEncodeUtf8(getResources().getString(inputValidationCodes.get(code)))), "#FF5722");
             sbText   = error_type;
         }
         loginActivitySnkBar = Snackbar.make(loginActivityContainer, sbText, Snackbar.LENGTH_LONG);
@@ -420,7 +420,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         sbView.setPadding(24,24,24,24);
         android.widget.TextView textView = (android.widget.TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextSize(14);
-        if (!hasAction) textView.setTextColor(ContextCompat.getColor(this, R.color.sb_error_text));
+        if (!hasAction) textView.setTextColor(ContextCompat.getColor(this, R.color.accentColor));
         loginActivitySnkBar.show();
     }
 
@@ -455,7 +455,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
             @Override
             public void onAnimationEnd() {
-                themeImgv.setBackgroundResource(0);
+//                themeImgv.setBackgroundResource(0);
                 getSupportFragmentManager()
                         .beginTransaction()
                         .replace(R.id.loginActivityFgmtContainer, splashScreenFgmt, getResources().getString(R.string.splashscreen_fgmt))

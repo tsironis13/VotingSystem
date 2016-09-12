@@ -10,9 +10,8 @@ import com.votingsystem.tsiro.POJO.RegisterUserStuff;
 import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
-import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
+import com.votingsystem.tsiro.helperClasses.CustomSpinnerItem;
 import com.votingsystem.tsiro.rest.ApiService;
-import com.votingsystem.tsiro.votingsystem.R;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -41,6 +40,8 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
             @Override
             public void onResponse(Response<RegisterUserStuff> response, Retrofit retrofit) {
                 if (isAdded) {
+                    Log.e(debugTag, response+"");
+                    Log.e(debugTag, response.body()+"");
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
                         LAMVCfinishedListener.onFailure(response.body().getCode(), response.body().getTag(), response.body().getHint(), null);
                     } else {
@@ -121,7 +122,7 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
     }
 
     @Override
-    public void populateFirmNamesSpnr(final ArrayList<FirmNameWithID> firmNameWithIDArrayList, final LAMVCFinishedListener LAMVCFinishedListener) {
+    public void populateFirmNamesSpnr(final ArrayList<CustomSpinnerItem> firmNameWithIDArrayList, final LAMVCFinishedListener LAMVCFinishedListener) {
         Call<Firm> call = apiService.getFirmNames("firm_names");
         call.enqueue(new Callback<Firm>() {
             @Override
@@ -130,7 +131,7 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
                     List<Firm.FirmElement> firmElementList = response.body().getFirm_element();
                     for (int i = 0; i < firmElementList.size(); i++) {
                         Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());
-                        firmNameWithIDArrayList.add(new FirmNameWithID(firmElementList.get(i).getFirm_name(), firmElementList.get(i).getFirm_id()));
+                        firmNameWithIDArrayList.add(new CustomSpinnerItem(firmElementList.get(i).getFirm_name(), firmElementList.get(i).getFirm_id()));
                     }
                     LAMVCFinishedListener.onSuccessfirmNamesSpnrLoad(firmNameWithIDArrayList);
                 }

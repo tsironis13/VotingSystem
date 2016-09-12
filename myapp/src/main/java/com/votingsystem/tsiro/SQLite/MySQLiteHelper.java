@@ -152,7 +152,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         Cursor cursor = db.rawQuery("SELECT * FROM Surveys", null);
         int count = cursor.getCount();
         while (cursor.moveToNext()) {
-            Log.e(debugTag, cursor.getColumnName(1)+ ": "+cursor.getInt(1)+" "+ cursor.getColumnName(3)+": "+cursor.getInt(3));
+//            Log.e(debugTag, cursor.getColumnName(1)+ ": "+cursor.getInt(1)+" "+ cursor.getColumnName(3)+": "+cursor.getInt(3));
         }
         Log.e(debugTag, count+"");
         cursor.close();

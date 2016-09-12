@@ -153,7 +153,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/have_survey_crdv_margin_top"
-            android:visibility="gone"
+            android:visibility="visible"
             card_view:cardUseCompatPadding="true">
 
             <LinearLayout

@@ -49,6 +49,7 @@
     <string name="forward">forward</string>
     <string name="connection_status">connection_status</string>
     <string name="title">title</string>
+    <string name="data_picker">datapicker</string>
     <!-- SEARCH -->
     <string name="search">search</string>
     <string name="search_hint">Aναζήτηση Έρευνας</string>
@@ -173,6 +174,12 @@
     <!-- NEW SURVEY -->
     <string name="new_survey">Νέα Έρευνα</string>
     <string name="new_survey_title">Τίτλος έρευνας</string>
+    <string name="active_since_hint">Ενεργή από</string>
+    <string name="valid_until_hint">Ενεργή μέχρι</string>
+    <string name="pick">Επιλογη</string>
+    <string name="cancel">Ακυρωση</string>
+    <string name="pick_category">Επιλογή κατηγορίας</string>
+    <string name="mandatory_fields">* Υποχρεωτικά πεδία.</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>
@@ -240,6 +247,16 @@
 
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
+    <!-- SURVEY CATEGORIES-->
+    <string-array name="survey_categories">
+        <item>Ηγεσία</item>
+        <item>Ευελιξία</item>
+        <item>Πρωτοβουλία</item>
+        <item>Διαχείριση</item>
+        <item>Λήψη αποφάσεων</item>
+        <item>Επικοινωνία </item>
+        <item>Δέσμευση</item>
+    </string-array>
     <!-- SCALE POINTS ARRAY -->
     <string-array name="agree_array">
         <item>Strongly disagree</item>

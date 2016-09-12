@@ -10,7 +10,6 @@ import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.Editable;
-import android.text.Html;
 import android.text.TextWatcher;
 import android.text.method.TransformationMethod;
 import android.util.Log;
@@ -25,7 +24,6 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;
-import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.TextView;
 //import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCPresenterImpl;
@@ -33,8 +31,7 @@ import com.votingsystem.tsiro.LoginActivityMVC.LAMVCView;
 import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
 import com.votingsystem.tsiro.animation.AnimationListener;
 import com.votingsystem.tsiro.app.AppConfig;
-import com.votingsystem.tsiro.app.MyApplication;
-import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
+import com.votingsystem.tsiro.helperClasses.CustomSpinnerItem;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.votingsystem.R;
@@ -186,10 +183,10 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     public void changeTransformationMethod(TransformationMethod transformationMethod, int action) {}
 
     @Override
-    public void onSuccessfulFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded) {}
+    public void onSuccessfulFirmNamesSpnrLoad(List<CustomSpinnerItem> firmNameWithIDArrayList, boolean firmsLoaded) {}
 
     @Override
-    public void onFailureFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded) {}
+    public void onFailureFirmNamesSpnrLoad(List<CustomSpinnerItem> firmNameWithIDArrayList, boolean firmsLoaded) {}
 
     @Override
     public void onSuccess() {

@@ -8,7 +8,6 @@ import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
@@ -34,7 +33,7 @@ import com.votingsystem.tsiro.LoginActivityMVC.LAMVCView;
 import com.votingsystem.tsiro.POJO.LoginFormBody;
 import com.votingsystem.tsiro.animation.AnimationListener;
 import com.votingsystem.tsiro.app.AppConfig;
-import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
+import com.votingsystem.tsiro.helperClasses.CustomSpinnerItem;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.mainClasses.DashboardActivity;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
@@ -216,10 +215,10 @@ public class SignInFragment extends Fragment implements LAMVCView{
     }
 
     @Override
-    public void onSuccessfulFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded) {}
+    public void onSuccessfulFirmNamesSpnrLoad(List<CustomSpinnerItem> firmNameWithIDArrayList, boolean firmsLoaded) {}
 
     @Override
-    public void onFailureFirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList, boolean firmsLoaded) {}
+    public void onFailureFirmNamesSpnrLoad(List<CustomSpinnerItem> firmNameWithIDArrayList, boolean firmsLoaded) {}
 
     @Override
     public void onSuccess() {}

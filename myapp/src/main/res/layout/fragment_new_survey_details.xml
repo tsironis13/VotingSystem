@@ -4,18 +4,93 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:padding="12dp"
+    android:orientation="vertical"
+    android:descendantFocusability="beforeDescendants"
+    android:focusableInTouchMode="true">
+
+    <com.rey.material.widget.TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:paddingBottom="10dp"
+        android:text="@string/mandatory_fields"
+        android:textColor="@color/note_text_color"
+        android:textSize="@dimen/note_text_size"
+        android:textStyle="bold" />
 
     <com.rey.material.widget.EditText
         android:id="@+id/surveyTitleEdt"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:paddingBottom="20dp"
+        android:inputType="text"
+        android:textSize="13sp"
+        android:textColorHint="@color/new_survey_hint_color"
+        app:et_supportMode="none"
+        app:et_inputId="@+id/wrapped_usernameEdt"
+        style="@style/newSurveyTitle" />
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/hiddenActiveSinceLabelTtv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="@string/new_survey_title"
-        app:et_inputId="@+id/wrapped_usernameEdt" />
+        android:layout_marginBottom="-21dp"
+        android:text="@string/active_since_hint"
+        android:textColor="@color/accentColor"
+        android:textSize="12sp"
+        android:visibility="gone" />
 
-    <com.rey.material.widget.Button
-        android:id="@+id/date"
-        android:layout_width="50dp"
-        android:layout_height="50dp" />
+    <EditText
+        android:id="@+id/activeSinceEdt"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:hint="@string/active_since_hint"
+        android:textSize="13sp"
+        android:textColorHint="@color/new_survey_hint_color"
+        android:drawableRight="@drawable/arrow_down"
+        android:gravity="center_vertical"
+        android:cursorVisible="false"
+        android:windowSoftInputMode="stateHidden"
+        android:background="@drawable/custom_divider_color" />
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/hiddenValidUntilLabelTtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="-21dp"
+        android:text="@string/valid_until_hint"
+        android:textColor="@color/accentColor"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <EditText
+        android:id="@+id/validUntilEdt"
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:hint="@string/valid_until_hint"
+        android:textSize="13sp"
+        android:textColorHint="@color/new_survey_hint_color"
+        android:drawableRight="@drawable/arrow_down"
+        android:gravity="center_vertical"
+        android:cursorVisible="false"
+        android:background="@drawable/custom_divider_color" />
+
+    <com.rey.material.widget.Spinner
+        android:id="@+id/surveyCategorySpnr"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:layout_marginLeft="-7dp"
+        android:maxHeight="@dimen/pickfirm_spnr_max_height"
+        android:dropDownWidth="wrap_content"
+        android:gravity="center_vertical"
+        app:spn_dividerColor="@color/primaryColor"
+        app:spn_dividerHeight="2dp"
+        app:spn_arrowPadding="10dp"
+        style="@style/Spinner" />
 
 </LinearLayout>

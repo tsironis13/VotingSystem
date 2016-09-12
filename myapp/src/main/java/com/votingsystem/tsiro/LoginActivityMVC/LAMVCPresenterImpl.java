@@ -11,7 +11,7 @@ import com.votingsystem.tsiro.POJO.LoginFormBody;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
 import com.votingsystem.tsiro.app.AppConfig;
-import com.votingsystem.tsiro.helperClasses.FirmNameWithID;
+import com.votingsystem.tsiro.helperClasses.CustomSpinnerItem;
 import com.votingsystem.tsiro.votingsystem.R;
 
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ public class LAMVCPresenterImpl implements LAMVCPresenter, LAMVCFinishedListener
     private LAMVCView LAMVCview;
     private LAMVCInteractorImpl LAMVCinteractorImpl;
     private boolean firmsLoaded;
-    private ArrayList<FirmNameWithID> firmNameWithIDArrayList = new ArrayList<>();
+    private ArrayList<CustomSpinnerItem> firmNameWithIDArrayList = new ArrayList<>();
 
     public LAMVCPresenterImpl(LAMVCView LAMVCview) {
         this.LAMVCview              =   LAMVCview;
@@ -92,7 +92,7 @@ public class LAMVCPresenterImpl implements LAMVCPresenter, LAMVCFinishedListener
     public void displayFeedbackMsg(int code) { if ( LAMVCview != null ) LAMVCview.displayFeedbackMsg(code); }
 
     @Override
-    public void onSuccessfirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) {
+    public void onSuccessfirmNamesSpnrLoad(List<CustomSpinnerItem> firmNameWithIDArrayList) {
         if (LAMVCview != null) {
             LAMVCview.onSuccessfulFirmNamesSpnrLoad(firmNameWithIDArrayList, true);
             firmsLoaded = true;
@@ -100,7 +100,7 @@ public class LAMVCPresenterImpl implements LAMVCPresenter, LAMVCFinishedListener
     }
 
     @Override
-    public void onFailurefirmNamesSpnrLoad(List<FirmNameWithID> firmNameWithIDArrayList) { if ( LAMVCview != null ) LAMVCview.onFailureFirmNamesSpnrLoad(firmNameWithIDArrayList, false); }
+    public void onFailurefirmNamesSpnrLoad(List<CustomSpinnerItem> firmNameWithIDArrayList) { if ( LAMVCview != null ) LAMVCview.onFailureFirmNamesSpnrLoad(firmNameWithIDArrayList, false); }
 
     @Override
     public void onFailure(int code, String field, String hint, String retry_in) {

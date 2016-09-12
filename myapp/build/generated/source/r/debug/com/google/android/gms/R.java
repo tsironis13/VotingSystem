@@ -18,22 +18,22 @@ public final class R {
 		public static final int scopeUris = 0x7f0101db;
 	}
 	public static final class color {
-		public static final int common_google_signin_btn_text_dark = 0x7f0c0095;
+		public static final int common_google_signin_btn_text_dark = 0x7f0c0096;
 		public static final int common_google_signin_btn_text_dark_default = 0x7f0c001f;
 		public static final int common_google_signin_btn_text_dark_disabled = 0x7f0c0020;
 		public static final int common_google_signin_btn_text_dark_focused = 0x7f0c0021;
 		public static final int common_google_signin_btn_text_dark_pressed = 0x7f0c0022;
-		public static final int common_google_signin_btn_text_light = 0x7f0c0096;
+		public static final int common_google_signin_btn_text_light = 0x7f0c0097;
 		public static final int common_google_signin_btn_text_light_default = 0x7f0c0023;
 		public static final int common_google_signin_btn_text_light_disabled = 0x7f0c0024;
 		public static final int common_google_signin_btn_text_light_focused = 0x7f0c0025;
 		public static final int common_google_signin_btn_text_light_pressed = 0x7f0c0026;
-		public static final int common_plus_signin_btn_text_dark = 0x7f0c0097;
+		public static final int common_plus_signin_btn_text_dark = 0x7f0c0098;
 		public static final int common_plus_signin_btn_text_dark_default = 0x7f0c0027;
 		public static final int common_plus_signin_btn_text_dark_disabled = 0x7f0c0028;
 		public static final int common_plus_signin_btn_text_dark_focused = 0x7f0c0029;
 		public static final int common_plus_signin_btn_text_dark_pressed = 0x7f0c002a;
-		public static final int common_plus_signin_btn_text_light = 0x7f0c0098;
+		public static final int common_plus_signin_btn_text_light = 0x7f0c0099;
 		public static final int common_plus_signin_btn_text_light_default = 0x7f0c002b;
 		public static final int common_plus_signin_btn_text_light_disabled = 0x7f0c002c;
 		public static final int common_plus_signin_btn_text_light_focused = 0x7f0c002d;
@@ -91,7 +91,7 @@ public final class R {
 		public static final int auto = 0x7f0e002b;
 		public static final int center = 0x7f0e002d;
 		public static final int dark = 0x7f0e0060;
-		public static final int email = 0x7f0e00fd;
+		public static final int email = 0x7f0e0102;
 		public static final int icon_only = 0x7f0e005d;
 		public static final int light = 0x7f0e0061;
 		public static final int match_parent = 0x7f0e0062;
@@ -99,8 +99,8 @@ public final class R {
 		public static final int normal = 0x7f0e0011;
 		public static final int radio = 0x7f0e0081;
 		public static final int standard = 0x7f0e005e;
-		public static final int text = 0x7f0e011e;
-		public static final int text2 = 0x7f0e011c;
+		public static final int text = 0x7f0e0123;
+		public static final int text2 = 0x7f0e0121;
 		public static final int wide = 0x7f0e005f;
 		public static final int wrap_content = 0x7f0e002a;
 	}

@@ -32,7 +32,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-
 import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.ObserverPattern.RecyclerViewTouchListener;
 import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
@@ -44,6 +43,7 @@ import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCPresenterImpl;
 import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCView;
 import com.votingsystem.tsiro.adapters.SearchSurveysRcvAdapter;
 import com.votingsystem.tsiro.adapters.SurveysPagerAdapter;
+import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
 import com.votingsystem.tsiro.interfaces.RecyclerViewClickListener;
@@ -51,7 +51,6 @@ import com.votingsystem.tsiro.interfaces.SurveysActivityCommonElements;
 import com.votingsystem.tsiro.parcel.SurveyData;
 import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.votingsystem.R;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,6 +68,8 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
     private Dialog toolbarSearchDialog;
     private SAMVCPresenterImpl SAMVCpresenterImpl;
     private List<SurveysFields> matchesList;
+    private SparseIntArray inputValidationCodes;
+    private int connectionStatus;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -81,6 +82,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
         mPager                  =   (ViewPager) findViewById(R.id.surveysPager);
         networkStateReceiver    = new NetworkStateReceiver();
         networkStateReceiver.addListener(this);
+        inputValidationCodes = AppConfig.getCodes();
         this.registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
 
         activityCreated = true;
@@ -129,6 +131,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
 
     @Override
     public void networkStatus(int connectionType) {
+        connectionStatus = connectionType;
         if (activityCreated)
             mPager.setAdapter(new SurveysPagerAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.surveys_tabs), connectionType));
             mTabs.setupWithViewPager(mPager);
@@ -144,7 +147,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
         sbView.setPadding(24,24,24,24);
         android.widget.TextView textView = (android.widget.TextView) sbView.findViewById(android.support.design.R.id.snackbar_text);
         textView.setTextSize(14);
-        textView.setTextColor(ContextCompat.getColor(this, R.color.sb_error_text));
+        textView.setTextColor(ContextCompat.getColor(this, R.color.accentColor));
         snkBar.show();
     }
 
@@ -165,7 +168,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
 
     @Override
     public void onFailure(int code, int request) {
-
+        showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(code)));
     }
 
     private void loadToolBarSearchDialog() {
@@ -239,8 +242,11 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
             @Override
             public void onClick(View view, int position) {
                 Log.e(debugTag, matchesList.get(position).getSurveyId()+"");
-                SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(SurveysActivity.this).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(SurveysActivity.this).getInt(getResources().getString(R.string.user_id), 0), matchesList.get(position).getSurveyId(), null);
-                SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
+                if (connectionStatus != AppConfig.NO_CONNECTION) {
+                    showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(AppConfig.NO_CONNECTION)));
+                    SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(SurveysActivity.this).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(SurveysActivity.this).getInt(getResources().getString(R.string.user_id), 0), matchesList.get(position).getSurveyId(), null);
+                    SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
+                }
             }
         }) {
         });

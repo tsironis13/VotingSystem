@@ -184,14 +184,16 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
                 @Override
                 public void run() {
                     progressDialog.dismiss();
-                    getActivity().finish();
-                    Bundle bundle = new Bundle();
-                    Intent intent = new Intent(getActivity(), SurveyDetailsActivity.class);
-                    bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_details));
-                    bundle.putString(getResources().getString(R.string.type), getResources().getString(R.string.pending));
-                    bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
-                    intent.putExtras(bundle);
-                    startActivity(intent);
+                    if (getActivity() != null) {
+                        getActivity().finish();
+                        Bundle bundle = new Bundle();
+                        Intent intent = new Intent(getActivity(), SurveyDetailsActivity.class);
+                        bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_details));
+                        bundle.putString(getResources().getString(R.string.type), getResources().getString(R.string.pending));
+                        bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
+                        intent.putExtras(bundle);
+                        startActivity(intent);
+                    }
                 }
             }, 1500);
         }
@@ -214,7 +216,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
                 onErrorBackgroundView(code);
             }
         } else {
-            commonElements.showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(code)));
+            if (isAdded()) commonElements.showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(code)));
         }
     }
 
