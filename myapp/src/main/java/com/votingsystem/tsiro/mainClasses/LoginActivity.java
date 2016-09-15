@@ -2,7 +2,6 @@ package com.votingsystem.tsiro.mainClasses;
 
 import android.app.Activity;
 import android.preference.PreferenceManager;
-import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.content.Context;
@@ -26,7 +25,6 @@ import android.text.style.ForegroundColorSpan;
 import android.text.style.StyleSpan;
 import android.transition.Explode;
 import android.util.Base64;
-import android.util.DisplayMetrics;
 import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.KeyEvent;
@@ -56,7 +54,7 @@ import com.votingsystem.tsiro.fragments.SignInFragment;
 import com.votingsystem.tsiro.fragments.SplashScreenFragment;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.interfaces.SoftKeyboardStateListener;
-import com.votingsystem.tsiro.services.gcm.RegistrationIntentService;
+import com.votingsystem.tsiro.services.fcm.RegistrationIntentService;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.io.UnsupportedEncodingException;
 import io.codetail.animation.SupportAnimator;
@@ -147,6 +145,10 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
                 LocalBroadcastManager.getInstance(this).registerReceiver(registrationTokenReceiver, new IntentFilter(getResources().getString(R.string.registration_token)));
             }
         }
+    }
+
+    public static void kalase(String token) {
+        Log.e(debugTag, token);
     }
 
     @Override

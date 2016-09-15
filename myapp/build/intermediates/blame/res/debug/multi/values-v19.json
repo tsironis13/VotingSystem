@@ -7,8 +7,27 @@
                     "startLine": 2,
                     "startColumn": 4,
                     "startOffset": 55,
+                    "endColumn": 76,
+                    "endOffset": 127
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-cast-framework/9.4.0/res/values-v19/values.xml",
+                    "position": {
+                        "startLine": 4,
+                        "startColumn": 4,
+                        "startOffset": 230,
+                        "endColumn": 76,
+                        "endOffset": 302
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 3,
+                    "startColumn": 4,
+                    "startOffset": 132,
                     "endColumn": 52,
-                    "endOffset": 103
+                    "endOffset": 180
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-v19/dimens.xml",
@@ -23,11 +42,11 @@
             },
             {
                 "to": {
-                    "startLine": 3,
+                    "startLine": 4,
                     "startColumn": 4,
-                    "startOffset": 108,
+                    "startOffset": 185,
                     "endColumn": 50,
-                    "endOffset": 154
+                    "endOffset": 231
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-v19/dimens.xml",
@@ -42,12 +61,12 @@
             },
             {
                 "to": {
-                    "startLine": 4,
+                    "startLine": 5,
                     "startColumn": 4,
-                    "startOffset": 159,
-                    "endLine": 6,
+                    "startOffset": 236,
+                    "endLine": 7,
                     "endColumn": 12,
-                    "endOffset": 290
+                    "endOffset": 367
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/values-v19/styles.xml",

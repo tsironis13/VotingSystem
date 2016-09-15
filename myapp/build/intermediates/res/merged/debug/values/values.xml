@@ -7,6 +7,17 @@
         <item>Agree</item>
         <item>Strongly Agree</item>
     </string-array>
+    <array name="cast_expanded_controller_default_control_buttons">
+        <item>@id/cast_button_type_closed_caption</item>
+        <item>@id/cast_button_type_skip_previous</item>
+        <item>@id/cast_button_type_skip_next</item>
+        <item>@id/cast_button_type_mute_toggle</item>
+    </array>
+    <array name="cast_mini_controller_default_control_buttons">
+        <item>@id/cast_button_type_empty</item>
+        <item>@id/cast_button_type_empty</item>
+        <item>@id/cast_button_type_play_pause_toggle</item>
+    </array>
     <array name="in_circular_progress_colors">
         <item>#F4511E</item>
         <item>#FF5722</item>
@@ -26,6 +37,7 @@
         <item>ΣΕ ΕΞΕΛΙΞΗ</item>
         <item>ΕΚΚΡΕΜΟΥΝ</item>
     </string-array>
+    <attr format="reference" name="castExpandedControllerToolbarStyle"/>
     <attr format="integer|reference" name="dp_animDuration"/>
     <attr format="integer" name="dp_day"/>
     <attr format="integer" name="dp_dayMax"/>
@@ -51,6 +63,14 @@
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
+    <attr format="reference" name="mediaRouteButtonStyle"/>
+    <attr format="reference" name="mediaRouteCastDrawable"/>
+    <attr format="reference" name="mediaRouteConnectingDrawable"/>
+    <attr format="reference" name="mediaRouteOffDrawable"/>
+    <attr format="reference" name="mediaRouteOnDrawable"/>
+    <attr format="reference" name="mediaRoutePauseDrawable"/>
+    <attr format="reference" name="mediaRoutePlayDrawable"/>
+    <attr format="reference" name="mediaRouteSettingsDrawable"/>
     <attr format="float" name="pv_progress"/>
     <attr format="integer" name="pv_progressMode">
         <enum name="determinate" value="0x00000000"/>
@@ -95,6 +115,14 @@
     <color name="cardview_light_background">#FFFAFAFA</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
+    <color name="cast_expanded_controller_background_color">#000000</color>
+    <color name="cast_expanded_controller_progress_text_color">#E5FFFFFF</color>
+    <color name="cast_expanded_controller_text_color">#FFFFFF</color>
+    <color name="cast_intro_overlay_background_color">#CC000000</color>
+    <color name="cast_intro_overlay_button_background_color">#BB33B5E5</color>
+    <color name="cast_libraries_material_featurehighlight_outer_highlight_default_color">#2196F3</color>
+    <color name="cast_libraries_material_featurehighlight_text_body_color">#FFFFFFFF</color>
+    <color name="cast_libraries_material_featurehighlight_text_header_color">#FFFFFFFF</color>
     <color name="colorControlHightlight">#8001579B</color>
     <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
     <color name="common_google_signin_btn_text_dark_disabled">#1F000000</color>
@@ -168,6 +196,12 @@
     <color name="no_value_color">#26000000</color>
     <color name="note_text_color">#E53935</color>
     <color name="password_error_txv_text_color">#DD2C00</color>
+    <color name="place_autocomplete_prediction_primary_text">#212121</color>
+    <color name="place_autocomplete_prediction_primary_text_highlight">#757575</color>
+    <color name="place_autocomplete_prediction_secondary_text">#757575</color>
+    <color name="place_autocomplete_search_hint">#BDBDBD</color>
+    <color name="place_autocomplete_search_text">#212121</color>
+    <color name="place_autocomplete_separator">#1F000000</color>
     <color name="primaryColor">#2196F3</color>
     <color name="primaryColorDark">#1976D2</color>
     <color name="primary_dark_material_dark">@android:color/black</color>
@@ -200,6 +234,19 @@
     <color name="vhappy_fill_color">#1B5E20</color>
     <color name="view_background_color">#CCFFFFFF</color>
     <color name="view_color">#E0E0E0</color>
+    <color name="wallet_bright_foreground_disabled_holo_light">#ffb2b2b2</color>
+    <color name="wallet_bright_foreground_holo_dark">#fff3f3f3</color>
+    <color name="wallet_bright_foreground_holo_light">#ff000000</color>
+    <color name="wallet_dim_foreground_disabled_holo_dark">#80bebebe</color>
+    <color name="wallet_dim_foreground_holo_dark">#bebebe</color>
+    <color name="wallet_dim_foreground_inverse_disabled_holo_dark">#80323232</color>
+    <color name="wallet_dim_foreground_inverse_holo_dark">#323232</color>
+    <color name="wallet_highlighted_text_holo_dark">#6633b5e5</color>
+    <color name="wallet_highlighted_text_holo_light">#6633b5e5</color>
+    <color name="wallet_hint_foreground_holo_dark">#808080</color>
+    <color name="wallet_hint_foreground_holo_light">#808080</color>
+    <color name="wallet_holo_blue_light">#ff33b5e5</color>
+    <color name="wallet_link_text_light">#0000ee</color>
     <declare-styleable name="ActionBar"><attr name="navigationMode"><enum name="normal" value="0"/><enum name="listMode" value="1"/><enum name="tabMode" value="2"/></attr><attr name="displayOptions"><flag name="none" value="0"/><flag name="useLogo" value="0x1"/><flag name="showHome" value="0x2"/><flag name="homeAsUp" value="0x4"/><flag name="showTitle" value="0x8"/><flag name="showCustom" value="0x10"/><flag name="disableHome" value="0x20"/></attr><attr name="title"/><attr format="string" name="subtitle"/><attr format="reference" name="titleTextStyle"/><attr format="reference" name="subtitleTextStyle"/><attr format="reference" name="icon"/><attr format="reference" name="logo"/><attr format="reference" name="divider"/><attr format="reference" name="background"/><attr format="reference|color" name="backgroundStacked"/><attr format="reference|color" name="backgroundSplit"/><attr format="reference" name="customNavigationLayout"/><attr name="height"/><attr format="reference" name="homeLayout"/><attr format="reference" name="progressBarStyle"/><attr format="reference" name="indeterminateProgressStyle"/><attr format="dimension" name="progressBarPadding"/><attr name="homeAsUpIndicator"/><attr format="dimension" name="itemPadding"/><attr format="boolean" name="hideOnContentScroll"/><attr format="dimension" name="contentInsetStart"/><attr format="dimension" name="contentInsetEnd"/><attr format="dimension" name="contentInsetLeft"/><attr format="dimension" name="contentInsetRight"/><attr format="dimension" name="contentInsetStartWithNavigation"/><attr format="dimension" name="contentInsetEndWithActions"/><attr format="dimension" name="elevation"/><attr format="reference" name="popupTheme"/></declare-styleable>
     <declare-styleable name="ActionBarLayout"><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="ActionMenuItemView"><attr name="android:minWidth"/></declare-styleable>
@@ -207,6 +254,7 @@
     <declare-styleable name="ActionMode"><attr name="titleTextStyle"/><attr name="subtitleTextStyle"/><attr name="background"/><attr name="backgroundSplit"/><attr name="height"/><attr format="reference" name="closeItemLayout"/></declare-styleable>
     <declare-styleable name="ActivityChooserView"><attr format="string" name="initialActivityCount"/><attr format="reference" name="expandActivityOverflowButtonDrawable"/></declare-styleable>
     <declare-styleable name="AddFloatingActionButton"><attr format="color" name="fab_plusIconColor"/></declare-styleable>
+    <declare-styleable name="AdsAttrs"><attr format="string" name="adSize"/><attr format="string" name="adSizes"/><attr format="string" name="adUnitId"/></declare-styleable>
     <declare-styleable name="AlertDialog"><attr name="android:layout"/><attr format="reference" name="buttonPanelSideLayout"/><attr format="reference" name="listLayout"/><attr format="reference" name="multiChoiceItemLayout"/><attr format="reference" name="singleChoiceItemLayout"/><attr format="reference" name="listItemLayout"/></declare-styleable>
     <declare-styleable name="AppBarLayout"><attr name="elevation"/><attr name="android:background"/><attr format="boolean" name="expanded"/></declare-styleable>
     <declare-styleable name="AppBarLayoutStates"><attr format="boolean" name="state_collapsed"/><attr format="boolean" name="state_collapsible"/></declare-styleable>
@@ -216,11 +264,15 @@
     <declare-styleable name="AppCompatTextHelper"><attr name="android:drawableLeft"/><attr name="android:drawableTop"/><attr name="android:drawableRight"/><attr name="android:drawableBottom"/><attr name="android:drawableStart"/><attr name="android:drawableEnd"/><attr name="android:textAppearance"/></declare-styleable>
     <declare-styleable name="AppCompatTextView"><attr format="reference|boolean" name="textAllCaps"/><attr name="android:textAppearance"/></declare-styleable>
     <declare-styleable name="AppCompatTheme"><attr format="boolean" name="windowActionBar"/><attr format="boolean" name="windowNoTitle"/><attr format="boolean" name="windowActionBarOverlay"/><attr format="boolean" name="windowActionModeOverlay"/><attr format="dimension|fraction" name="windowFixedWidthMajor"/><attr format="dimension|fraction" name="windowFixedHeightMinor"/><attr format="dimension|fraction" name="windowFixedWidthMinor"/><attr format="dimension|fraction" name="windowFixedHeightMajor"/><attr format="dimension|fraction" name="windowMinWidthMajor"/><attr format="dimension|fraction" name="windowMinWidthMinor"/><attr name="android:windowIsFloating"/><attr name="android:windowAnimationStyle"/><attr format="reference" name="actionBarTabStyle"/><attr format="reference" name="actionBarTabBarStyle"/><attr format="reference" name="actionBarTabTextStyle"/><attr format="reference" name="actionOverflowButtonStyle"/><attr format="reference" name="actionOverflowMenuStyle"/><attr format="reference" name="actionBarPopupTheme"/><attr format="reference" name="actionBarStyle"/><attr format="reference" name="actionBarSplitStyle"/><attr format="reference" name="actionBarTheme"/><attr format="reference" name="actionBarWidgetTheme"/><attr format="dimension" name="actionBarSize"><enum name="wrap_content" value="0"/></attr><attr format="reference" name="actionBarDivider"/><attr format="reference" name="actionBarItemBackground"/><attr format="reference" name="actionMenuTextAppearance"/><attr format="color|reference" name="actionMenuTextColor"/><attr format="reference" name="actionModeStyle"/><attr format="reference" name="actionModeCloseButtonStyle"/><attr format="reference" name="actionModeBackground"/><attr format="reference" name="actionModeSplitBackground"/><attr format="reference" name="actionModeCloseDrawable"/><attr format="reference" name="actionModeCutDrawable"/><attr format="reference" name="actionModeCopyDrawable"/><attr format="reference" name="actionModePasteDrawable"/><attr format="reference" name="actionModeSelectAllDrawable"/><attr format="reference" name="actionModeShareDrawable"/><attr format="reference" name="actionModeFindDrawable"/><attr format="reference" name="actionModeWebSearchDrawable"/><attr format="reference" name="actionModePopupWindowStyle"/><attr format="reference" name="textAppearanceLargePopupMenu"/><attr format="reference" name="textAppearanceSmallPopupMenu"/><attr format="reference" name="textAppearancePopupMenuHeader"/><attr format="reference" name="dialogTheme"/><attr format="dimension" name="dialogPreferredPadding"/><attr format="reference" name="listDividerAlertDialog"/><attr format="reference" name="actionDropDownStyle"/><attr format="dimension" name="dropdownListPreferredItemHeight"/><attr format="reference" name="spinnerDropDownItemStyle"/><attr format="reference" name="homeAsUpIndicator"/><attr format="reference" name="actionButtonStyle"/><attr format="reference" name="buttonBarStyle"/><attr format="reference" name="buttonBarButtonStyle"/><attr format="reference" name="selectableItemBackground"/><attr format="reference" name="selectableItemBackgroundBorderless"/><attr format="reference" name="borderlessButtonStyle"/><attr format="reference" name="dividerVertical"/><attr format="reference" name="dividerHorizontal"/><attr format="reference" name="activityChooserViewStyle"/><attr format="reference" name="toolbarStyle"/><attr format="reference" name="toolbarNavigationButtonStyle"/><attr format="reference" name="popupMenuStyle"/><attr format="reference" name="popupWindowStyle"/><attr format="reference|color" name="editTextColor"/><attr format="reference" name="editTextBackground"/><attr format="reference" name="imageButtonStyle"/><attr format="reference" name="textAppearanceSearchResultTitle"/><attr format="reference" name="textAppearanceSearchResultSubtitle"/><attr format="reference|color" name="textColorSearchUrl"/><attr format="reference" name="searchViewStyle"/><attr format="dimension" name="listPreferredItemHeight"/><attr format="dimension" name="listPreferredItemHeightSmall"/><attr format="dimension" name="listPreferredItemHeightLarge"/><attr format="dimension" name="listPreferredItemPaddingLeft"/><attr format="dimension" name="listPreferredItemPaddingRight"/><attr format="reference" name="dropDownListViewStyle"/><attr format="reference" name="listPopupWindowStyle"/><attr format="reference" name="textAppearanceListItem"/><attr format="reference" name="textAppearanceListItemSmall"/><attr format="reference" name="panelBackground"/><attr format="dimension" name="panelMenuListWidth"/><attr format="reference" name="panelMenuListTheme"/><attr format="reference" name="listChoiceBackgroundIndicator"/><attr format="color" name="colorPrimary"/><attr format="color" name="colorPrimaryDark"/><attr format="color" name="colorAccent"/><attr format="color" name="colorControlNormal"/><attr format="color" name="colorControlActivated"/><attr format="color" name="colorControlHighlight"/><attr format="color" name="colorButtonNormal"/><attr format="color" name="colorSwitchThumbNormal"/><attr format="reference" name="controlBackground"/><attr format="color" name="colorBackgroundFloating"/><attr format="reference" name="alertDialogStyle"/><attr format="reference" name="alertDialogButtonGroupStyle"/><attr format="boolean" name="alertDialogCenterButtons"/><attr format="reference" name="alertDialogTheme"/><attr format="reference|color" name="textColorAlertDialogListItem"/><attr format="reference" name="buttonBarPositiveButtonStyle"/><attr format="reference" name="buttonBarNegativeButtonStyle"/><attr format="reference" name="buttonBarNeutralButtonStyle"/><attr format="reference" name="autoCompleteTextViewStyle"/><attr format="reference" name="buttonStyle"/><attr format="reference" name="buttonStyleSmall"/><attr format="reference" name="checkboxStyle"/><attr format="reference" name="checkedTextViewStyle"/><attr format="reference" name="editTextStyle"/><attr format="reference" name="radioButtonStyle"/><attr format="reference" name="ratingBarStyle"/><attr format="reference" name="ratingBarStyleIndicator"/><attr format="reference" name="ratingBarStyleSmall"/><attr format="reference" name="seekBarStyle"/><attr format="reference" name="spinnerStyle"/><attr format="reference" name="switchStyle"/><attr format="reference" name="listMenuViewStyle"/></declare-styleable>
+    <declare-styleable name="AppDataSearch"/>
     <declare-styleable name="AutoCompleteTextView"><attr name="android:completionHint"/><attr name="android:completionThreshold"/><attr name="android:dropDownAnchor"/><attr name="android:dropDownHeight"/><attr name="android:dropDownHorizontalOffset"/><attr name="android:dropDownVerticalOffset"/><attr name="android:dropDownWidth"/><attr name="android:popupBackground"/></declare-styleable>
     <declare-styleable name="BottomSheetBehavior_Layout"><attr format="dimension" name="behavior_peekHeight"><enum name="auto" value="-1"/></attr><attr format="boolean" name="behavior_hideable"/><attr format="boolean" name="behavior_skipCollapsed"/></declare-styleable>
     <declare-styleable name="BottomSheetDialog"><attr format="reference|integer" name="bsd_inDuration"/><attr format="reference" name="bsd_inInterpolator"/><attr format="reference|integer" name="bsd_outDuration"/><attr format="reference" name="bsd_outInterpolator"/><attr format="reference|boolean" name="bsd_cancelable"/><attr format="reference|boolean" name="bsd_canceledOnTouchOutside"/><attr format="reference|float" name="bsd_dimAmount"/><attr name="android:layout_height"/></declare-styleable>
     <declare-styleable name="ButtonBarLayout"><attr format="boolean" name="allowStacking"/></declare-styleable>
     <declare-styleable name="CardView"><attr format="color" name="cardBackgroundColor"/><attr format="dimension" name="cardCornerRadius"/><attr format="dimension" name="cardElevation"/><attr format="dimension" name="cardMaxElevation"/><attr format="boolean" name="cardUseCompatPadding"/><attr format="boolean" name="cardPreventCornerOverlap"/><attr format="dimension" name="contentPadding"/><attr format="dimension" name="contentPaddingLeft"/><attr format="dimension" name="contentPaddingRight"/><attr format="dimension" name="contentPaddingTop"/><attr format="dimension" name="contentPaddingBottom"/></declare-styleable>
+    <declare-styleable name="CastExpandedController"><attr name="castControlButtons"/></declare-styleable>
+    <declare-styleable name="CastIntroOverlay"><attr format="color|reference" name="castBackgroundColor"/><attr format="color|reference" name="castButtonBackgroundColor"/><attr format="reference" name="castButtonTextAppearance"/><attr format="string|reference" name="castButtonText"/><attr format="reference" name="castTitleTextAppearance"/><attr format="dimension|reference" name="castFocusRadius"/></declare-styleable>
+    <declare-styleable name="CastMiniController"><attr format="boolean" name="castShowImageThumbnail"/><attr name="castTitleTextAppearance"/><attr format="reference" name="castSubtitleTextAppearance"/><attr format="reference" name="castControlButtons"/></declare-styleable>
     <declare-styleable name="CheckBoxDrawable"><attr format="reference|dimension" name="cbd_width"/><attr format="reference|dimension" name="cbd_height"/><attr format="reference|dimension" name="cbd_boxSize"/><attr format="reference|dimension" name="cbd_cornerRadius"/><attr format="reference|dimension" name="cbd_strokeSize"/><attr format="reference|color" name="cbd_strokeColor"/><attr format="reference|color" name="cbd_tickColor"/><attr format="reference|integer" name="cbd_animDuration"/></declare-styleable>
     <declare-styleable name="CircularProgressDrawable"><attr format="reference|dimension" name="cpd_padding"/><attr format="reference|integer" name="cpd_initialAngle"/><attr format="reference|integer" name="cpd_maxSweepAngle"/><attr format="reference|integer" name="cpd_minSweepAngle"/><attr format="reference|dimension" name="cpd_strokeSize"/><attr format="reference|color" name="cpd_strokeColor"/><attr format="reference|color" name="cpd_strokeSecondaryColor"/><attr format="reference" name="cpd_strokeColors"/><attr format="boolean" name="cpd_reverse"/><attr format="reference|integer" name="cpd_rotateDuration"/><attr format="reference|integer" name="cpd_transformDuration"/><attr format="reference|integer" name="cpd_keepDuration"/><attr format="reference" name="cpd_transformInterpolator"/><attr format="reference|integer" name="cpd_inAnimDuration"/><attr format="reference|integer" name="cpd_outAnimDuration"/><attr format="reference" name="cpd_inStepColors"/><attr format="float" name="cpd_inStepPercent"/><attr name="pv_progressMode"/><attr name="pv_progress"/><attr name="pv_secondaryProgress"/></declare-styleable>
     <declare-styleable name="CollapsingToolbarLayout"><attr format="dimension" name="expandedTitleMargin"/><attr format="dimension" name="expandedTitleMarginStart"/><attr format="dimension" name="expandedTitleMarginTop"/><attr format="dimension" name="expandedTitleMarginEnd"/><attr format="dimension" name="expandedTitleMarginBottom"/><attr format="reference" name="expandedTitleTextAppearance"/><attr format="reference" name="collapsedTitleTextAppearance"/><attr format="color" name="contentScrim"/><attr format="color" name="statusBarScrim"/><attr format="reference" name="toolbarId"/><attr format="dimension" name="scrimVisibleHeightTrigger"/><attr format="integer" name="scrimAnimationDuration"/><attr name="collapsedTitleGravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/><flag name="left" value="0x03"/><flag name="right" value="0x05"/><flag name="center_vertical" value="0x10"/><flag name="fill_vertical" value="0x70"/><flag name="center_horizontal" value="0x01"/><flag name="center" value="0x11"/><flag name="start" value="0x00800003"/><flag name="end" value="0x00800005"/></attr><attr name="expandedTitleGravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/><flag name="left" value="0x03"/><flag name="right" value="0x05"/><flag name="center_vertical" value="0x10"/><flag name="fill_vertical" value="0x70"/><flag name="center_horizontal" value="0x01"/><flag name="center" value="0x11"/><flag name="start" value="0x00800003"/><flag name="end" value="0x00800005"/></attr><attr format="boolean" name="titleEnabled"/><attr name="title"/></declare-styleable>
@@ -229,22 +281,32 @@
     <declare-styleable name="CompoundButton"><attr name="android:button"/><attr format="color" name="buttonTint"/><attr name="buttonTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
     <declare-styleable name="CoordinatorLayout"><attr format="reference" name="keylines"/><attr format="reference" name="statusBarBackground"/></declare-styleable>
     <declare-styleable name="CoordinatorLayout_Layout"><attr name="android:layout_gravity"/><attr format="string" name="layout_behavior"/><attr format="reference" name="layout_anchor"/><attr format="integer" name="layout_keyline"/><attr name="layout_anchorGravity"><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/><flag name="left" value="0x03"/><flag name="right" value="0x05"/><flag name="center_vertical" value="0x10"/><flag name="fill_vertical" value="0x70"/><flag name="center_horizontal" value="0x01"/><flag name="fill_horizontal" value="0x07"/><flag name="center" value="0x11"/><flag name="fill" value="0x77"/><flag name="clip_vertical" value="0x80"/><flag name="clip_horizontal" value="0x08"/><flag name="start" value="0x00800003"/><flag name="end" value="0x00800005"/></attr><attr format="enum" name="layout_insetEdge"><enum name="none" value="0x0"/><enum name="top" value="0x30"/><enum name="bottom" value="0x50"/><enum name="left" value="0x03"/><enum name="right" value="0x03"/><enum name="start" value="0x00800003"/><enum name="end" value="0x00800005"/></attr><attr name="layout_dodgeInsetEdges"><flag name="none" value="0x0"/><flag name="top" value="0x30"/><flag name="bottom" value="0x50"/><flag name="left" value="0x03"/><flag name="right" value="0x03"/><flag name="start" value="0x00800003"/><flag name="end" value="0x00800005"/><flag name="all" value="0x77"/></attr></declare-styleable>
+    <declare-styleable name="Corpus"><attr format="string" name="corpusId"/><attr format="string" name="corpusVersion"/><attr format="string" name="contentProviderUri"/><attr format="boolean" name="trimmable"/><attr format="string" name="schemaOrgType"/><attr format="boolean" name="semanticallySearchable"/><attr format="integer" name="documentMaxAgeSecs"/><attr format="boolean" name="perAccountTemplate"/></declare-styleable>
+    <declare-styleable name="CustomCastTheme"><attr format="reference" name="castIntroOverlayStyle"/><attr format="reference" name="castMiniControllerStyle"/><attr format="reference" name="castExpandedControllerStyle"/></declare-styleable>
+    <declare-styleable name="CustomWalletTheme"><attr format="enum" name="windowTransitionStyle"><enum name="slide" value="1"/><enum name="none" value="2"/></attr><attr format="enum" name="toolbarTextColorStyle"><enum name="light" value="1"/><enum name="dark" value="2"/></attr></declare-styleable>
     <declare-styleable name="DatePicker"><attr name="dp_yearMin"/><attr name="dp_monthMin"/><attr name="dp_dayMin"/><attr name="dp_yearMax"/><attr name="dp_monthMax"/><attr name="dp_dayMax"/><attr name="dp_year"/><attr name="dp_month"/><attr name="dp_day"/><attr format="dimension|reference" name="dp_dayTextSize"/><attr format="color|reference" name="dp_textLabelColor"/><attr format="color|reference" name="dp_textDisableColor"/><attr name="dp_textHighlightColor"/><attr name="dp_textColor"/><attr name="dp_selectionColor"/><attr name="dp_animDuration"/><attr name="dp_inInterpolator"/><attr name="dp_outInterpolator"/><attr name="dp_fontFamily"/><attr name="dp_textStyle"/><attr name="android:padding"/><attr name="android:paddingLeft"/><attr name="android:paddingTop"/><attr name="android:paddingRight"/><attr name="android:paddingBottom"/></declare-styleable>
     <declare-styleable name="DatePickerDialog"><attr format="dimension|reference" name="dp_headerPrimaryHeight"/><attr format="color|reference" name="dp_headerPrimaryColor"/><attr format="dimension|reference" name="dp_headerSecondaryHeight"/><attr format="color|reference" name="dp_headerSecondaryColor"/><attr format="dimension|reference" name="dp_headerPrimaryTextSize"/><attr format="dimension|reference" name="dp_headerSecondaryTextSize"/><attr format="color|reference" name="dp_textHeaderColor"/></declare-styleable>
     <declare-styleable name="DesignTheme"><attr format="reference" name="bottomSheetDialogTheme"/><attr format="reference" name="bottomSheetStyle"/><attr format="color" name="textColorError"/></declare-styleable>
     <declare-styleable name="Dialog"><attr name="android:layout_width"/><attr name="android:layout_height"/><attr format="float" name="di_dimAmount"/><attr format="color|reference" name="di_backgroundColor"/><attr format="dimension|reference" name="di_elevation"/><attr format="dimension|reference" name="di_maxElevation"/><attr format="dimension|reference" name="di_cornerRadius"/><attr format="integer" name="di_layoutDirection"><enum name="ltr" value="0"/><enum name="rtl" value="1"/><enum name="locale" value="3"/></attr><attr format="dimension|reference" name="di_maxWidth"/><attr format="dimension|reference" name="di_maxHeight"/><attr format="reference" name="di_titleTextAppearance"/><attr format="color|reference" name="di_titleTextColor"/><attr format="reference" name="di_actionBackground"/><attr format="reference" name="di_actionRipple"/><attr format="reference" name="di_actionTextAppearance"/><attr format="color|reference" name="di_actionTextColor"/><attr format="reference" name="di_positiveActionBackground"/><attr format="reference" name="di_positiveActionRipple"/><attr format="reference" name="di_positiveActionTextAppearance"/><attr format="color|reference" name="di_positiveActionTextColor"/><attr format="reference" name="di_negativeActionBackground"/><attr format="reference" name="di_negativeActionRipple"/><attr format="reference" name="di_negativeActionTextAppearance"/><attr format="color|reference" name="di_negativeActionTextColor"/><attr format="reference" name="di_neutralActionBackground"/><attr format="reference" name="di_neutralActionRipple"/><attr format="reference" name="di_neutralActionTextAppearance"/><attr format="color|reference" name="di_neutralActionTextColor"/><attr format="color|reference" name="di_dividerColor"/><attr format="dimension|reference" name="di_dividerHeight"/><attr format="reference" name="di_inAnimation"/><attr format="reference" name="di_outAnimation"/><attr format="boolean" name="di_cancelable"/><attr format="boolean" name="di_canceledOnTouchOutside"/></declare-styleable>
     <declare-styleable name="DrawerArrowToggle"><attr format="color" name="color"/><attr format="boolean" name="spinBars"/><attr format="dimension" name="drawableSize"/><attr format="dimension" name="gapBetweenBars"/><attr format="dimension" name="arrowHeadLength"/><attr format="dimension" name="arrowShaftLength"/><attr format="dimension" name="barLength"/><attr format="dimension" name="thickness"/></declare-styleable>
     <declare-styleable name="EditText"><attr format="reference" name="et_inputId"/><attr format="boolean" name="et_labelEnable"/><attr format="reference|dimension" name="et_labelPadding"/><attr format="reference|dimension" name="et_labelTextSize"/><attr format="reference|color" name="et_labelTextColor"/><attr format="reference" name="et_labelTextAppearance"/><attr format="integer" name="et_labelEllipsize"><enum name="start" value="0x00000001"/><enum name="middle" value="0x00000002"/><enum name="end" value="0x00000003"/><enum name="marquee" value="0x00000004"/></attr><attr format="reference" name="et_labelInAnim"/><attr format="reference" name="et_labelOutAnim"/><attr format="integer" name="et_supportMode"><enum name="none" value="0x00000000"/><enum name="helper" value="0x00000001"/><enum name="helperWithError" value="0x00000002"/><enum name="charCounter" value="0x00000003"/></attr><attr format="reference|integer" name="et_supportMaxChars"/><attr format="reference|string" name="et_helper"/><attr format="reference|string" name="et_error"/><attr format="reference|dimension" name="et_supportPadding"/><attr format="reference|dimension" name="et_supportTextSize"/><attr format="reference|color" name="et_supportTextColor"/><attr format="reference|color" name="et_supportTextErrorColor"/><attr format="reference" name="et_supportTextAppearance"/><attr format="boolean" name="et_supportSingleLine"/><attr format="reference|integer" name="et_supportMaxLines"/><attr format="reference|integer" name="et_supportLines"/><attr format="integer" name="et_supportEllipsize"><enum name="start" value="0x00000001"/><enum name="middle" value="0x00000002"/><enum name="end" value="0x00000003"/><enum name="marquee" value="0x00000004"/></attr><attr format="reference|color" name="et_dividerColor"/><attr format="reference|color" name="et_dividerErrorColor"/><attr format="reference|dimension" name="et_dividerHeight"/><attr format="reference|dimension" name="et_dividerPadding"/><attr format="reference|integer" name="et_dividerAnimDuration"/><attr format="boolean" name="et_dividerCompoundPadding"/><attr format="integer" name="et_autoCompleteMode"><enum name="none" value="0"/><enum name="single" value="1"/><enum name="multi" value="2"/></attr></declare-styleable>
+    <declare-styleable name="FeatureParam"><attr format="string" name="paramName"/><attr format="string" name="paramValue"/></declare-styleable>
     <declare-styleable name="FloatingActionButton"><attr format="color" name="fab_colorPressed"/><attr format="color" name="fab_colorDisabled"/><attr format="color" name="fab_colorNormal"/><attr format="reference" name="fab_icon"/><attr format="enum" name="fab_size"><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr format="string" name="fab_title"/><attr format="boolean" name="fab_stroke_visible"/><attr format="reference|color" name="fab_backgroundColor"/><attr format="reference|integer" name="fab_backgroundAnimDuration"/><attr format="reference|dimension" name="fab_radius"/><attr format="reference|dimension" name="fab_elevation"/><attr format="reference" name="fab_iconSrc"/><attr format="reference" name="fab_iconLineMorphing"/><attr format="reference|dimension" name="fab_iconSize"/><attr format="reference" name="fab_interpolator"/><attr format="reference|integer" name="fab_animDuration"/><attr name="backgroundTint"/><attr name="backgroundTintMode"/><attr format="color" name="rippleColor"/><attr name="fabSize"><enum name="auto" value="-1"/><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr name="elevation"/><attr format="dimension" name="pressedTranslationZ"/><attr format="dimension" name="borderWidth"/><attr format="boolean" name="useCompatPadding"/></declare-styleable>
     <declare-styleable name="FloatingActionButton_Behavior_Layout"><attr format="boolean" name="behavior_autoHide"/></declare-styleable>
     <declare-styleable name="FloatingActionsMenu"><attr format="color" name="fab_addButtonColorPressed"/><attr format="color" name="fab_addButtonColorNormal"/><attr format="enum" name="fab_addButtonSize"><enum name="normal" value="0"/><enum name="mini" value="1"/></attr><attr format="color" name="fab_addButtonPlusIconColor"/><attr format="boolean" name="fab_addButtonStrokeVisible"/><attr format="reference" name="fab_labelStyle"/><attr format="enum" name="fab_labelsPosition"><enum name="left" value="0"/><enum name="right" value="1"/></attr><attr format="enum" name="fab_expandDirection"><enum name="up" value="0"/><enum name="down" value="1"/><enum name="left" value="2"/><enum name="right" value="3"/></attr></declare-styleable>
     <declare-styleable name="ForegroundLinearLayout"><attr name="android:foreground"/><attr name="android:foregroundGravity"/><attr format="boolean" name="foregroundInsidePadding"/></declare-styleable>
+    <declare-styleable name="GlobalSearch"><attr format="boolean" name="searchEnabled"/><attr format="string" localization="suggested" name="searchLabel"/><attr format="string" localization="suggested" name="settingsDescription"/><attr format="string" name="defaultIntentAction"/><attr format="string" name="defaultIntentData"/><attr format="string" name="defaultIntentActivity"/></declare-styleable>
+    <declare-styleable name="GlobalSearchCorpus"><attr format="boolean" name="allowShortcuts"/></declare-styleable>
+    <declare-styleable name="GlobalSearchSection"><attr format="enum" name="sectionType"><enum name="text1" value="0"/><enum name="text2" value="1"/><enum name="icon_uri" value="2"/><enum name="intent_action" value="3"/><enum name="intent_data" value="4"/><enum name="intent_data_id" value="5"/><enum name="intent_extra_data" value="6"/><enum name="large_icon_uri" value="7"/><enum name="intent_activity" value="8"/><enum name="thing_proto" value="9"/></attr><attr format="string" localization="suggested" name="sectionContent"/></declare-styleable>
+    <declare-styleable name="IMECorpus"><attr format="boolean" name="inputEnabled"/><attr format="enum" name="sourceClass"><enum name="email" value="0"/><enum name="contact" value="1"/><enum name="instant_message" value="2"/></attr><attr format="string" name="userInputTag"/><attr format="string" name="userInputSection"/><attr format="string" name="userInputValue"/><attr format="string" name="toAddressesSection"/></declare-styleable>
     <declare-styleable name="LineMorphingDrawable"><attr format="reference" name="lmd_state"/><attr format="integer" name="lmd_curState"/><attr format="reference|dimension" name="lmd_padding"/><attr format="reference|dimension" name="lmd_paddingLeft"/><attr format="reference|dimension" name="lmd_paddingTop"/><attr format="reference|dimension" name="lmd_paddingRight"/><attr format="reference|dimension" name="lmd_paddingBottom"/><attr format="reference|integer" name="lmd_animDuration"/><attr format="reference" name="lmd_interpolator"/><attr format="reference|dimension" name="lmd_strokeSize"/><attr format="reference|color" name="lmd_strokeColor"/><attr format="integer" name="lmd_strokeCap"><enum name="butt" value="0x00000000"/><enum name="round" value="0x00000001"/><enum name="square" value="0x00000002"/></attr><attr format="integer" name="lmd_strokeJoin"><enum name="miter" value="0x00000000"/><enum name="round" value="0x00000001"/><enum name="bevel" value="0x00000002"/></attr><attr format="boolean" name="lmd_clockwise"/><attr format="integer" name="lmd_layoutDirection"><enum name="ltr" value="0x00000000"/><enum name="rtl" value="0x00000001"/><enum name="locale" value="0x00000003"/></attr></declare-styleable>
     <declare-styleable name="LinearLayoutCompat"><attr name="android:orientation"/><attr name="android:gravity"/><attr name="android:baselineAligned"/><attr name="android:baselineAlignedChildIndex"/><attr name="android:weightSum"/><attr format="boolean" name="measureWithLargestChild"/><attr name="divider"/><attr name="showDividers"><flag name="none" value="0"/><flag name="beginning" value="1"/><flag name="middle" value="2"/><flag name="end" value="4"/></attr><attr format="dimension" name="dividerPadding"/></declare-styleable>
     <declare-styleable name="LinearLayoutCompat_Layout"><attr name="android:layout_width"/><attr name="android:layout_height"/><attr name="android:layout_weight"/><attr name="android:layout_gravity"/></declare-styleable>
     <declare-styleable name="LinearProgressDrawable"><attr format="reference|dimension|fraction" name="lpd_maxLineWidth"/><attr format="reference|dimension|fraction" name="lpd_minLineWidth"/><attr format="reference|dimension" name="lpd_strokeSize"/><attr format="reference|color" name="lpd_strokeColor"/><attr format="reference|color" name="lpd_strokeSecondaryColor"/><attr format="reference" name="lpd_strokeColors"/><attr format="boolean" name="lpd_reverse"/><attr format="reference|integer" name="lpd_travelDuration"/><attr format="reference|integer" name="lpd_transformDuration"/><attr format="reference|integer" name="lpd_keepDuration"/><attr format="reference" name="lpd_transformInterpolator"/><attr format="reference|integer" name="lpd_inAnimDuration"/><attr format="reference|integer" name="lpd_outAnimDuration"/><attr format="integer" name="lpd_verticalAlign"><enum name="top" value="0x00000000"/><enum name="center" value="0x00000001"/><enum name="bottom" value="0x00000002"/></attr><attr name="pv_progressMode"/><attr name="pv_progress"/><attr name="pv_secondaryProgress"/></declare-styleable>
     <declare-styleable name="ListPopupWindow"><attr name="android:dropDownVerticalOffset"/><attr name="android:dropDownHorizontalOffset"/></declare-styleable>
     <declare-styleable name="LoadingImageView"><attr format="enum" name="imageAspectRatioAdjust"><enum name="none" value="0"/><enum name="adjust_width" value="1"/><enum name="adjust_height" value="2"/></attr><attr format="float" name="imageAspectRatio"/><attr format="boolean" name="circleCrop"/></declare-styleable>
+    <declare-styleable name="MapAttrs"><attr format="enum" name="mapType"><enum name="none" value="0"/><enum name="normal" value="1"/><enum name="satellite" value="2"/><enum name="terrain" value="3"/><enum name="hybrid" value="4"/></attr><attr format="float" name="cameraBearing"/><attr format="float" name="cameraTargetLat"/><attr format="float" name="cameraTargetLng"/><attr format="float" name="cameraTilt"/><attr format="float" name="cameraZoom"/><attr format="boolean" name="liteMode"/><attr format="boolean" name="uiCompass"/><attr format="boolean" name="uiRotateGestures"/><attr format="boolean" name="uiScrollGestures"/><attr format="boolean" name="uiTiltGestures"/><attr format="boolean" name="uiZoomControls"/><attr format="boolean" name="uiZoomGestures"/><attr format="boolean" name="useViewLifecycle"/><attr format="boolean" name="zOrderOnTop"/><attr format="boolean" name="uiMapToolbar"/><attr format="boolean" name="ambientEnabled"/><attr format="float" name="cameraMinZoomPreference"/><attr format="float" name="cameraMaxZoomPreference"/><attr format="float" name="latLngBoundsSouthWestLatitude"/><attr format="float" name="latLngBoundsSouthWestLongitude"/><attr format="float" name="latLngBoundsNorthEastLatitude"/><attr format="float" name="latLngBoundsNorthEastLongitude"/></declare-styleable>
+    <declare-styleable name="MediaRouteButton"><attr format="reference" name="externalRouteEnabledDrawable"/><attr name="android:minWidth"/><attr name="android:minHeight"/></declare-styleable>
     <declare-styleable name="MenuGroup"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:checkableBehavior"/><attr name="android:visible"/><attr name="android:enabled"/></declare-styleable>
     <declare-styleable name="MenuItem"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:title"/><attr name="android:titleCondensed"/><attr name="android:icon"/><attr name="android:alphabeticShortcut"/><attr name="android:numericShortcut"/><attr name="android:checkable"/><attr name="android:checked"/><attr name="android:visible"/><attr name="android:enabled"/><attr name="android:onClick"/><attr name="showAsAction"><flag name="never" value="0"/><flag name="ifRoom" value="1"/><flag name="always" value="2"/><flag name="withText" value="4"/><flag name="collapseActionView" value="8"/></attr><attr format="reference" name="actionLayout"/><attr format="string" name="actionViewClass"/><attr format="string" name="actionProviderClass"/></declare-styleable>
     <declare-styleable name="MenuView"><attr name="android:itemTextAppearance"/><attr name="android:horizontalDivider"/><attr name="android:verticalDivider"/><attr name="android:headerBackground"/><attr name="android:itemBackground"/><attr name="android:windowAnimationStyle"/><attr name="android:itemIconDisabledAlpha"/><attr format="boolean" name="preserveIconSpacing"/><attr format="reference" name="subMenuArrow"/></declare-styleable>
@@ -260,6 +322,8 @@
     <declare-styleable name="ScrimInsetsFrameLayout"><attr format="color|reference" name="insetForeground"/></declare-styleable>
     <declare-styleable name="ScrollingViewBehavior_Layout"><attr format="dimension" name="behavior_overlapTop"/></declare-styleable>
     <declare-styleable name="SearchView"><attr format="reference" name="layout"/><attr format="boolean" name="iconifiedByDefault"/><attr name="android:maxWidth"/><attr format="string" name="queryHint"/><attr format="string" name="defaultQueryHint"/><attr name="android:imeOptions"/><attr name="android:inputType"/><attr format="reference" name="closeIcon"/><attr format="reference" name="goIcon"/><attr format="reference" name="searchIcon"/><attr format="reference" name="searchHintIcon"/><attr format="reference" name="voiceIcon"/><attr format="reference" name="commitIcon"/><attr format="reference" name="suggestionRowLayout"/><attr format="reference" name="queryBackground"/><attr format="reference" name="submitBackground"/><attr name="android:focusable"/></declare-styleable>
+    <declare-styleable name="Section"><attr format="string" name="sectionId"/><attr format="enum" name="sectionFormat"><enum name="plain" value="0"/><enum name="html" value="1"/><enum name="rfc822" value="2"/><enum name="url" value="3"/></attr><attr format="boolean" name="noIndex"/><attr format="integer" name="sectionWeight"/><attr format="boolean" name="indexPrefixes"/><attr format="string" name="subsectionSeparator"/><attr format="string" name="schemaOrgProperty"/></declare-styleable>
+    <declare-styleable name="SectionFeature"><attr format="enum" name="featureType"><enum name="match_global_nicknames" value="1"/><enum name="demote_common_words" value="2"/><enum name="demote_rfc822_hostnames" value="3"/><enum name="omnibox_url_section" value="4"/><enum name="omnibox_title_section" value="5"/><enum name="index_entity_types" value="6"/></attr></declare-styleable>
     <declare-styleable name="SignInButton"><attr format="reference|enum" name="buttonSize"><enum name="standard" value="0"/><enum name="wide" value="1"/><enum name="icon_only" value="2"/></attr><attr format="reference|enum" name="colorScheme"><enum name="dark" value="0"/><enum name="light" value="1"/><enum name="auto" value="2"/></attr><attr format="reference|string" name="scopeUris"/></declare-styleable>
     <declare-styleable name="SimpleDialog"><attr format="reference" name="di_messageTextAppearance"/><attr format="color|reference" name="di_messageTextColor"/><attr format="reference" name="di_radioButtonStyle"/><attr format="reference" name="di_checkBoxStyle"/><attr format="dimension|reference" name="di_itemHeight"/><attr format="reference" name="di_itemTextAppearance"/></declare-styleable>
     <declare-styleable name="Slider"><attr format="reference|dimension" name="sl_trackSize"/><attr format="reference|color" name="sl_primaryColor"/><attr format="reference|color" name="sl_secondaryColor"/><attr format="integer" name="sl_trackCap"><enum name="butt" value="0x00000000"/><enum name="round" value="0x00000001"/><enum name="square" value="0x00000002"/></attr><attr format="reference|dimension" name="sl_thumbBorderSize"/><attr format="reference|dimension" name="sl_thumbRadius"/><attr format="reference|dimension" name="sl_thumbFocusRadius"/><attr format="reference|integer" name="sl_travelAnimDuration"/><attr format="reference|integer" name="sl_transformAnimDuration"/><attr format="reference" name="sl_interpolator"/><attr format="reference|integer" name="sl_minValue"/><attr format="reference|integer" name="sl_maxValue"/><attr format="reference|integer" name="sl_stepValue"/><attr format="reference|integer" name="sl_value"/><attr format="reference|boolean" name="sl_discreteMode"/><attr format="string|reference" name="sl_fontFamily"/><attr format="integer" name="sl_textStyle"><enum name="normal" value="0"/><enum name="bold" value="1"/><enum name="italic" value="2"/><enum name="bold_italic" value="3"/></attr><attr format="reference|dimension" name="sl_textSize"/><attr format="reference|color" name="sl_textColor"/><attr format="reference|boolean" name="sl_alwaysFillThumb"/><attr format="reference|dimension" name="sl_baselineOffset"/><attr name="android:gravity"/><attr name="android:enabled"/></declare-styleable>
@@ -282,6 +346,8 @@
     <declare-styleable name="View"><attr format="dimension" name="paddingStart"/><attr format="dimension" name="paddingEnd"/><attr name="android:focusable"/><attr format="reference" name="theme"/><attr name="android:theme"/><attr name="android:background"/><attr name="android:backgroundTint"/><attr name="android:backgroundTintMode"/><attr name="android:elevation"/><attr name="android:fadeScrollbars"/><attr name="android:fadingEdgeLength"/><attr name="android:minHeight"/><attr name="android:minWidth"/><attr name="android:padding"/><attr name="android:paddingBottom"/><attr name="android:paddingEnd"/><attr name="android:paddingLeft"/><attr name="android:paddingRight"/><attr name="android:paddingStart"/><attr name="android:paddingTop"/><attr name="android:requiresFadingEdge"/><attr name="android:scrollbarDefaultDelayBeforeFade"/><attr name="android:scrollbarFadeDuration"/><attr name="android:scrollbarSize"/><attr name="android:scrollbarStyle"/><attr name="android:soundEffectsEnabled"/><attr name="android:textAlignment"/><attr name="android:textDirection"/><attr name="android:visibility"/><attr name="android:layoutDirection"/><attr name="android:src"/></declare-styleable>
     <declare-styleable name="ViewBackgroundHelper"><attr name="android:background"/><attr format="color" name="backgroundTint"/><attr name="backgroundTintMode"><enum name="src_over" value="3"/><enum name="src_in" value="5"/><enum name="src_atop" value="9"/><enum name="multiply" value="14"/><enum name="screen" value="15"/></attr></declare-styleable>
     <declare-styleable name="ViewStubCompat"><attr name="android:layout"/><attr name="android:inflatedId"/><attr name="android:id"/></declare-styleable>
+    <declare-styleable name="WalletFragmentOptions"><attr format="enum" name="appTheme"><enum name="holo_dark" value="0"/><enum name="holo_light" value="1"/></attr><attr format="enum" name="environment"><enum name="production" value="1"/><enum name="test" value="3"/><enum name="sandbox" value="0"/><enum name="strict_sandbox" value="2"/></attr><attr format="reference" name="fragmentStyle"/><attr format="enum" name="fragmentMode"><enum name="buyButton" value="1"/><enum name="selectionDetails" value="2"/></attr></declare-styleable>
+    <declare-styleable name="WalletFragmentStyle"><attr format="dimension" name="buyButtonHeight"><enum name="match_parent" value="-1"/><enum name="wrap_content" value="-2"/></attr><attr format="dimension" name="buyButtonWidth"><enum name="match_parent" value="-1"/><enum name="wrap_content" value="-2"/></attr><attr format="enum" name="buyButtonText"><enum name="buy_with" value="5"/><enum name="logo_only" value="6"/><enum name="donate_with" value="7"/><enum name="buy_with_google" value="1"/><enum name="buy_now" value="2"/><enum name="book_now" value="3"/><enum name="donate_with_google" value="4"/></attr><attr format="enum" name="buyButtonAppearance"><enum name="google_wallet_classic" value="1"/><enum name="google_wallet_grayscale" value="2"/><enum name="google_wallet_monochrome" value="3"/><enum name="android_pay_dark" value="4"/><enum name="android_pay_light" value="5"/><enum name="android_pay_light_with_border" value="6"/><enum name="classic" value="1"/><enum name="grayscale" value="2"/><enum name="monochrome" value="3"/></attr><attr format="reference" name="maskedWalletDetailsTextAppearance"/><attr format="reference" name="maskedWalletDetailsHeaderTextAppearance"/><attr format="reference|color" name="maskedWalletDetailsBackground"/><attr format="reference" name="maskedWalletDetailsButtonTextAppearance"/><attr format="reference|color" name="maskedWalletDetailsButtonBackground"/><attr format="color" name="maskedWalletDetailsLogoTextColor"/><attr format="enum" name="maskedWalletDetailsLogoImageType"><enum name="google_wallet_classic" value="1"/><enum name="google_wallet_monochrome" value="2"/><enum name="android_pay" value="3"/><enum name="classic" value="1"/><enum name="monochrome" value="2"/></attr></declare-styleable>
     <declare-styleable name="YearPicker"><attr name="dp_yearMin"/><attr name="dp_yearMax"/><attr name="dp_year"/><attr format="dimension|reference" name="dp_yearTextSize"/><attr format="dimension|reference" name="dp_yearItemHeight"/><attr name="dp_textHighlightColor"/><attr name="dp_textColor"/><attr name="dp_selectionColor"/><attr name="dp_animDuration"/><attr name="dp_inInterpolator"/><attr name="dp_outInterpolator"/><attr name="dp_fontFamily"/><attr name="dp_textStyle"/></declare-styleable>
     <dimen name="abc_action_bar_content_inset_material">16dp</dimen>
     <dimen name="abc_action_bar_content_inset_with_nav">72dp</dimen>
@@ -371,6 +437,29 @@
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
+    <dimen name="cast_expanded_controller_control_button_margin">12dp</dimen>
+    <dimen name="cast_intro_overlay_button_margin_bottom">50dp</dimen>
+    <dimen name="cast_intro_overlay_focus_radius">35dp</dimen>
+    <dimen name="cast_intro_overlay_title_margin_top">100dp</dimen>
+    <dimen name="cast_libraries_material_featurehighlight_center_horizontal_offset">20dp</dimen>
+    <dimen name="cast_libraries_material_featurehighlight_center_threshold">88dp</dimen>
+    <dimen name="cast_libraries_material_featurehighlight_inner_margin">20dp</dimen>
+    <dimen name="cast_libraries_material_featurehighlight_inner_radius">40dp</dimen>
+    <dimen name="cast_libraries_material_featurehighlight_outer_padding">40dp</dimen>
+    <dimen name="cast_libraries_material_featurehighlight_text_body_size">16sp</dimen>
+    <dimen name="cast_libraries_material_featurehighlight_text_header_size">20sp</dimen>
+    <dimen name="cast_libraries_material_featurehighlight_text_horizontal_margin">40dp</dimen>
+    <dimen name="cast_libraries_material_featurehighlight_text_horizontal_offset">20dp</dimen>
+    <dimen name="cast_libraries_material_featurehighlight_text_max_width">320dp</dimen>
+    <dimen name="cast_libraries_material_featurehighlight_text_vertical_space">16dp</dimen>
+    <dimen name="cast_mini_controller_control_button_margin">16dp</dimen>
+    <dimen name="cast_mini_controller_font_size_line1">15sp</dimen>
+    <dimen name="cast_mini_controller_font_size_line2">13sp</dimen>
+    <dimen name="cast_mini_controller_icon_height">64dp</dimen>
+    <dimen name="cast_mini_controller_icon_width">64dp</dimen>
+    <dimen name="cast_notification_image_size">75dp</dimen>
+    <dimen name="cast_tracks_chooser_dialog_no_message_text_size">18sp</dimen>
+    <dimen name="cast_tracks_chooser_dialog_row_text_size">18sp</dimen>
     <dimen name="charts_container_llt_height">195dp</dimen>
     <dimen name="charts_container_padding_left_right">3dp</dimen>
     <dimen name="code_dest_txv_padding_bottom">17dp</dimen>
@@ -498,6 +587,7 @@
     <dimen name="matrix_table_labels_container_height">60dp</dimen>
     <dimen name="matrix_table_view_label_height">8dp</dimen>
     <dimen name="middle_view_padding_top">15dp</dimen>
+    <dimen name="mr_media_route_controller_art_max_height">320dp</dimen>
     <dimen name="nav_drawer_header_height">190dp</dimen>
     <dimen name="nav_drawer_header_padding_left_right">16dp</dimen>
     <dimen name="nav_drawer_width">280dp</dimen>
@@ -524,6 +614,16 @@
     <dimen name="password_error_txv_width">222dp</dimen>
     <dimen name="pickfirm_spnr_margin_bottom">8dp</dimen>
     <dimen name="pickfirm_spnr_max_height">100dp</dimen>
+    <dimen name="place_autocomplete_button_padding">16dp</dimen>
+    <dimen name="place_autocomplete_powered_by_google_height">40dp</dimen>
+    <dimen name="place_autocomplete_powered_by_google_start">16dp</dimen>
+    <dimen name="place_autocomplete_prediction_height">72dp</dimen>
+    <dimen name="place_autocomplete_prediction_horizontal_margin">16dp</dimen>
+    <dimen name="place_autocomplete_prediction_primary_text">16sp</dimen>
+    <dimen name="place_autocomplete_prediction_secondary_text">14sp</dimen>
+    <dimen name="place_autocomplete_progress_horizontal_margin">16dp</dimen>
+    <dimen name="place_autocomplete_progress_size">24dp</dimen>
+    <dimen name="place_autocomplete_separator_start">72dp</dimen>
     <dimen name="profile_icon_dimens">72dp</dimen>
     <dimen name="profile_icon_margin_bottom">10dp</dimen>
     <dimen name="progressview_dimens">24dp</dimen>
@@ -613,6 +713,20 @@
     <item name="action_menu_divider" type="id"/>
     <item name="action_menu_presenter" type="id"/>
     <item name="avpa_view_tag_key" type="id"/>
+    <item name="cast_button_type_closed_caption" type="id"/>
+    <item name="cast_button_type_custom" type="id"/>
+    <item name="cast_button_type_empty" type="id"/>
+    <item name="cast_button_type_forward_30_seconds" type="id"/>
+    <item name="cast_button_type_mute_toggle" type="id"/>
+    <item name="cast_button_type_play_pause_toggle" type="id"/>
+    <item name="cast_button_type_rewind_30_seconds" type="id"/>
+    <item name="cast_button_type_skip_next" type="id"/>
+    <item name="cast_button_type_skip_previous" type="id"/>
+    <item name="cast_featurehighlight_help_text_body_view" type="id"/>
+    <item name="cast_featurehighlight_help_text_header_view" type="id"/>
+    <item name="cast_featurehighlight_view" type="id"/>
+    <item name="cast_notification_id" type="id"/>
+    <item name="crash_reporting_present" type="id"/>
     <item name="fab_expand_menu_button" type="id"/>
     <item name="fab_label" type="id"/>
     <item name="home" type="id"/>
@@ -627,6 +741,7 @@
     <integer name="app_bar_elevation_anim_duration">150</integer>
     <integer name="bottom_sheet_slide_duration">150</integer>
     <integer name="cancel_button_image_alpha">127</integer>
+    <integer name="cast_libraries_material_featurehighlight_pulse_base_alpha">138</integer>
     <integer name="design_snackbar_text_max_lines">2</integer>
     <integer name="dialogplus_animation_default_duration">300</integer>
     <integer name="google_play_services_version">9452000</integer>
@@ -662,6 +777,7 @@
     <string name="abc_shareactionprovider_share_with">Share with</string>
     <string name="abc_shareactionprovider_share_with_application">Share with %s</string>
     <string name="abc_toolbar_collapse_description">Collapse</string>
+    <string name="accept">Accept</string>
     <string name="action">action</string>
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
@@ -682,6 +798,42 @@
     <string name="back_pressed">backpressed</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="cancel">Ακυρωση</string>
+    <string name="cast_casting_to_device">Casting to %1$s</string>
+    <string name="cast_closed_captions">Closed captions</string>
+    <string name="cast_closed_captions_unavailable">Closed captions unavailable</string>
+    <string name="cast_disconnect">Disconnect</string>
+    <string name="cast_expanded_controller_background_image">Album art</string>
+    <string name="cast_expanded_controller_loading">Loading…</string>
+    <string name="cast_forward">Forward</string>
+    <string name="cast_forward_10">Forward ten seconds</string>
+    <string name="cast_forward_30">Forward thirty seconds</string>
+    <string name="cast_intro_overlay_button_text">@android:string/ok</string>
+    <string name="cast_invalid_stream_duration_text" translatable="false">--:--</string>
+    <string name="cast_invalid_stream_position_text" translatable="false">--:--</string>
+    <string name="cast_mute">Mute</string>
+    <string name="cast_notification_connected_message">Connected to <ns1:g id="name">%1$s</ns1:g></string>
+    <string name="cast_notification_connecting_message">Connecting to <ns1:g id="name">%1$s</ns1:g></string>
+    <string name="cast_notification_disconnect">Disconnect</string>
+    <string name="cast_pause">Pause</string>
+    <string name="cast_play">Play</string>
+    <string name="cast_rewind">Rewind</string>
+    <string name="cast_rewind_10">Rewind ten seconds</string>
+    <string name="cast_rewind_30">Rewind thirty seconds</string>
+    <string name="cast_seek_bar">Playback seek control</string>
+    <string name="cast_skip_next">Skip to next item</string>
+    <string name="cast_skip_prev">Skip to previous item</string>
+    <string name="cast_stop">Stop</string>
+    <string name="cast_stop_live_stream">Stop live stream</string>
+    <string name="cast_tracks_chooser_dialog_audio">Audio</string>
+    <string name="cast_tracks_chooser_dialog_cancel">Cancel</string>
+    <string name="cast_tracks_chooser_dialog_default_track_name">Track <ns1:g example="2" id="position">%1$d</ns1:g></string>
+    <string name="cast_tracks_chooser_dialog_no_audio_tracks">No Audio Tracks Available</string>
+    <string name="cast_tracks_chooser_dialog_no_text_tracks">No Text Tracks Available</string>
+    <string name="cast_tracks_chooser_dialog_no_tracks_available"> No tracks available</string>
+    <string name="cast_tracks_chooser_dialog_none">None</string>
+    <string name="cast_tracks_chooser_dialog_ok">OK</string>
+    <string name="cast_tracks_chooser_dialog_subtitles">Subtitles</string>
+    <string name="cast_unmute">Unmute</string>
     <string name="category_label">Κατηγορία</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="check_connection">Έλεγξε τη σύνδεση σου</string>
@@ -723,6 +875,8 @@
     <string name="correct_error">Παρακαλώ διόρθωσε το παραπάνω λάθος: %1$s.</string>
     <string name="correct_field">Παρακαλώ διόρθωσε το παραπάνω πεδίο: %1$s.</string>
     <string name="count_per_row">Σύνολο \nανά γραμμή</string>
+    <string name="create_calendar_message">Allow Ad to create a calendar event?</string>
+    <string name="create_calendar_title">Create calendar event</string>
     <string name="created_date_label">Ημ. δημιουργίας</string>
     <string name="dashboard_activity">DashboardActivity</string>
     <string name="dashboard_fgmt">dashboardFgmt</string>
@@ -730,6 +884,8 @@
     <string name="data_parcelable_key">data</string>
     <string name="data_picker">datapicker</string>
     <string name="database">SurveysDB</string>
+    <string name="decline">Decline</string>
+    <string name="default_web_client_id" translatable="false">948922520468-bcf9dtrq0pq3kvv9tl0m0id1kvshqerc.apps.googleusercontent.com</string>
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="details_activ_action_key">details_activ_action_key</string>
     <string name="details_title">Πληροφορίες</string>
@@ -760,6 +916,7 @@
     <string name="error_reset_password_already_requested">Το αίτημα αλλαγής κωδικού έχει ήδη σταλεί. Παρακαλώ ξαναπροσπάθησε σε %1$s.</string>
     <string name="expanded">expanded</string>
     <string name="final_animation">final</string>
+    <string name="firebase_database_url" translatable="false">https://votingsystem-89bd7.firebaseio.com</string>
     <string name="firm">Η Εταιρεία</string>
     <string name="firm_code_tag">firm_code</string>
     <string name="firm_id">firm_id</string>
@@ -770,16 +927,17 @@
     <string name="forward">forward</string>
     <string name="free_answer_hint">Γράψε την απάντηση σου εδώ.</string>
     <string name="fromshared_logo_trns">fromsharedlogoTrns</string>
-    <string name="gcm_defaultSenderId" translatable="false">747222558005</string>
+    <string name="gcm_defaultSenderId" translatable="false">948922520468</string>
     <string name="gcm_senderId">747222558005</string>
     <string name="get_firm_names">firm_names</string>
     <string name="get_firm_survey_details">firm_survey_details</string>
     <string name="get_survey_questions">survey_questions</string>
     <string name="get_survey_stats">survey_stats</string>
     <string name="gone">gone</string>
-    <string name="google_api_key" translatable="false">AIzaSyDuQx36qc3KzlcVCWbVtuPyrbyYZJlQfI8</string>
-    <string name="google_app_id" translatable="false">1:747222558005:android:7a68c1ec1157526e</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDuQx36qc3KzlcVCWbVtuPyrbyYZJlQfI8</string>
+    <string name="google_api_key" translatable="false">AIzaSyCZPGBpi9UeUHNGz6ustwbmci2Lncv7Xfw</string>
+    <string name="google_app_id" translatable="false">1:948922520468:android:3b28a2ab9893ff12</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCZPGBpi9UeUHNGz6ustwbmci2Lncv7Xfw</string>
+    <string name="google_storage_bucket" translatable="false">votingsystem-89bd7.appspot.com</string>
     <string name="happy">happy</string>
     <string name="have_survey">Έχεις έτοιμη έρευνα?</string>
     <string name="have_survey_desc">Πρότεινε τη δική σου έρευνα σχετικά με το περιβάλλον εργασίας μιας επιχείρησης.</string>
@@ -802,6 +960,17 @@
     <string name="message">Παρακαλώ περιμένετε...</string>
     <string name="middle_animation">middle</string>
     <string name="more">Περισσοτερα</string>
+    <string name="mr_media_route_button_content_description">Cast</string>
+    <string name="mr_media_route_chooser_searching">Searching for devices\u2026</string>
+    <string name="mr_media_route_chooser_title">Connect to device</string>
+    <string name="mr_media_route_controller_disconnect">Disconnect</string>
+    <string name="mr_media_route_controller_no_info_available">No info available</string>
+    <string name="mr_media_route_controller_pause">Pause</string>
+    <string name="mr_media_route_controller_play">Play</string>
+    <string name="mr_media_route_controller_settings_description">Route settings</string>
+    <string name="mr_media_route_controller_stop">Stop casting</string>
+    <string name="mr_system_route_name">System</string>
+    <string name="mr_user_route_category_name">Devices</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="network_state_update">networkStateUpdated</string>
@@ -832,6 +1001,8 @@
     <string name="pick">Επιλογη</string>
     <string name="pick_category">Επιλογή κατηγορίας</string>
     <string name="pick_firm">Επιλογή Εταιρείας</string>
+    <string name="place_autocomplete_clear_button">Clear search</string>
+    <string name="place_autocomplete_search_hint">Search</string>
     <string name="position">position</string>
     <string name="post">ΟΛΟΚΛΗΡΩΣΗ</string>
     <string name="question">question</string>
@@ -879,6 +1050,8 @@
     <string name="stats_icon">stats_icon</string>
     <string name="stats_title">Αποτελέσματα</string>
     <string name="status_bar_notification_info_overflow">999+</string>
+    <string name="store_picture_message">"Allow Ad to store image in Picture gallery?"</string>
+    <string name="store_picture_title">Save image</string>
     <string name="submit">Εγγραφή</string>
     <string name="survey">Έρευνα</string>
     <string name="survey_details_fgmt">surveyDetailsFgmt</string>
@@ -891,6 +1064,9 @@
     <string name="surveys_activity">SurveysActivity</string>
     <string name="surveys_table">Surveys</string>
     <string name="tag">tag</string>
+    <string name="tagmanager_preview_dialog_button">Continue</string>
+    <string name="tagmanager_preview_dialog_message">Preview mode updated.</string>
+    <string name="tagmanager_preview_dialog_title">Preview</string>
     <string name="theme">theme</string>
     <string name="title">title</string>
     <string name="toshared_logo_trns">tosharedlogoTrns</string>
@@ -909,6 +1085,7 @@
     <string name="view_surveys">Δες ολες τις ερευνες</string>
     <string name="visible">visible</string>
     <string name="vote">Ψήφισε!</string>
+    <string name="wallet_buy_button_place_holder">Buy with Google</string>
     <string name="welcome_text">Καλωσήρθατε!</string>
     <string name="yes">yes</string>
     <string name="your_firm">Η εταιρεία σου</string>
@@ -1955,6 +2132,23 @@
     <style name="CardView.Light">
         <item name="cardBackgroundColor">@color/cardview_light_background</item>
     </style>
+    <style name="CastExpandedController">
+        <item name="castControlButtons">@array/cast_expanded_controller_default_control_buttons</item>
+    </style>
+    <style name="CastIntroOverlay">
+        <item name="castBackgroundColor">@color/cast_intro_overlay_background_color</item>
+        <item name="castButtonBackgroundColor">@color/cast_intro_overlay_button_background_color</item>
+        <item name="castButtonText">@string/cast_intro_overlay_button_text</item>
+        <item name="castButtonTextAppearance">@style/TextAppearance.CastIntroOverlay.Button</item>
+        <item name="castFocusRadius">@dimen/cast_intro_overlay_focus_radius</item>
+        <item name="castTitleTextAppearance">@style/TextAppearance.CastIntroOverlay.Title</item>
+    </style>
+    <style name="CastMiniController">
+        <item name="castShowImageThumbnail">true</item>
+        <item name="castTitleTextAppearance">@style/TextAppearance.CastMiniController.Title</item>
+        <item name="castSubtitleTextAppearance">@style/TextAppearance.CastMiniController.Subtitle</item>
+        <item name="castControlButtons">@array/cast_mini_controller_default_control_buttons</item>
+    </style>
     <style name="CircularProgressDrawable" parent="Material.Drawable.CircularProgress">
         <item name="cpd_strokeColor">@color/accentColor</item>
     </style>
@@ -1979,6 +2173,11 @@
         <item name="android:background">@android:color/white</item>
         <item name="rd_rippleColor">@color/connection_settings_ripple_color</item>
         <item name="rd_rippleAnimDuration">400</item>
+    </style>
+    <style name="CustomCastTheme">
+        <item name="castIntroOverlayStyle">@style/CastIntroOverlay</item>
+        <item name="castMiniControllerStyle">@style/CastMiniController</item>
+        <item name="castExpandedControllerStyle">@style/CastExpandedController</item>
     </style>
     <style name="DialogNoAnimation">
         <item name="android:windowEnterAnimation">@null</item>
@@ -2584,9 +2783,9 @@
         <item name="android:listChoiceIndicatorSingle">@drawable/abc_btn_radio_material</item>
         <item name="android:listChoiceIndicatorMultiple">@drawable/abc_btn_check_material</item>
 
-        <item name="android:textSelectHandle">@drawable/abc_text_select_handle_middle_mtrl_alpha</item>
-        <item name="android:textSelectHandleLeft">@drawable/abc_text_select_handle_left_mtrl_alpha</item>
-        <item name="android:textSelectHandleRight">@drawable/abc_text_select_handle_right_mtrl_alpha</item>
+        <item name="android:textSelectHandle">@drawable/abc_text_select_handle_middle_mtrl_dark</item>
+        <item name="android:textSelectHandleLeft">@drawable/abc_text_select_handle_left_mtrl_dark</item>
+        <item name="android:textSelectHandleRight">@drawable/abc_text_select_handle_right_mtrl_dark</item>
     </style>
     <style name="Platform.AppCompat.Light" parent="android:Theme.Light">
         <item name="android:windowNoTitle">true</item>
@@ -2627,9 +2826,9 @@
         <item name="android:listChoiceIndicatorSingle">@drawable/abc_btn_radio_material</item>
         <item name="android:listChoiceIndicatorMultiple">@drawable/abc_btn_check_material</item>
 
-        <item name="android:textSelectHandle">@drawable/abc_text_select_handle_middle_mtrl_alpha</item>
-        <item name="android:textSelectHandleLeft">@drawable/abc_text_select_handle_left_mtrl_alpha</item>
-        <item name="android:textSelectHandleRight">@drawable/abc_text_select_handle_right_mtrl_alpha</item>
+        <item name="android:textSelectHandle">@drawable/abc_text_select_handle_middle_mtrl_light</item>
+        <item name="android:textSelectHandleLeft">@drawable/abc_text_select_handle_left_mtrl_light</item>
+        <item name="android:textSelectHandleRight">@drawable/abc_text_select_handle_right_mtrl_light</item>
     </style>
     <style name="Platform.ThemeOverlay.AppCompat" parent=""/>
     <style name="Platform.ThemeOverlay.AppCompat.Dark">
@@ -2779,6 +2978,14 @@
     <style name="TextAppearance.AppCompat.Widget.PopupMenu.Small" parent="Base.TextAppearance.AppCompat.Widget.PopupMenu.Small"/>
     <style name="TextAppearance.AppCompat.Widget.Switch" parent="Base.TextAppearance.AppCompat.Widget.Switch"/>
     <style name="TextAppearance.AppCompat.Widget.TextView.SpinnerItem" parent="Base.TextAppearance.AppCompat.Widget.TextView.SpinnerItem"/>
+    <style name="TextAppearance.CastIntroOverlay.Button" parent="android:style/TextAppearance">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="TextAppearance.CastIntroOverlay.Title" parent="android:style/TextAppearance.Large">
+        <item name="android:textColor">#FFFFFF</item>
+    </style>
+    <style name="TextAppearance.CastMiniController.Subtitle" parent="android:style/TextAppearance.Small"/>
+    <style name="TextAppearance.CastMiniController.Title" parent="android:style/TextAppearance.Medium"/>
     <style name="TextAppearance.Design.CollapsingToolbar.Expanded" parent="TextAppearance.AppCompat.Display1">
         <item name="android:textColor">?android:attr/textColorPrimary</item>
     </style>
@@ -2841,6 +3048,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="Theme.AppInvite.Preview" parent="Theme.AppInvite.Preview.Base">
+        <item name="android:colorBackground">@android:color/white</item>
+        <item name="android:windowBackground">@android:color/white</item>
+        <item name="android:windowIsTranslucent">true</item>
+    </style>
+    <style name="Theme.AppInvite.Preview.Base" parent="@android:style/Theme.Light.NoTitleBar"/>
     <style name="Theme.Design" parent="Theme.AppCompat">
         <item name="textColorError">@color/design_textinput_error_color_dark</item>
     </style>
@@ -2865,6 +3078,36 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
     </style>
+    <style name="Theme.IAPTheme" parent="android:Theme">
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:windowIsFloating">true</item>
+    <item name="android:backgroundDimEnabled">false</item>
+  </style>
+    <style name="Theme.MediaRouter" parent="">
+        <item name="mediaRouteButtonStyle">@style/Widget.MediaRouter.MediaRouteButton</item>
+
+        <item name="mediaRouteOffDrawable">@drawable/ic_media_route_off_mono_dark</item>
+        <item name="mediaRouteConnectingDrawable">@drawable/mr_ic_media_route_connecting_mono_dark</item>
+        <item name="mediaRouteOnDrawable">@drawable/ic_media_route_on_mono_dark</item>
+        <item name="mediaRouteSettingsDrawable">@drawable/mr_ic_settings_dark</item>
+        <item name="mediaRoutePlayDrawable">@drawable/mr_ic_play_dark</item>
+        <item name="mediaRoutePauseDrawable">@drawable/mr_ic_pause_dark</item>
+        <item name="mediaRouteCastDrawable">@drawable/mr_ic_cast_dark</item>
+    </style>
+    <style name="Theme.MediaRouter.Light" parent="">
+        <item name="mediaRouteButtonStyle">@style/Widget.MediaRouter.Light.MediaRouteButton</item>
+
+        <item name="mediaRouteOffDrawable">@drawable/ic_cast_off_light</item>
+        <item name="mediaRouteConnectingDrawable">@drawable/mr_ic_media_route_connecting_mono_light</item>
+        <item name="mediaRouteOnDrawable">@drawable/ic_cast_on_light</item>
+        <item name="mediaRouteSettingsDrawable">@drawable/mr_ic_settings_light</item>
+        <item name="mediaRoutePlayDrawable">@drawable/mr_ic_play_light</item>
+        <item name="mediaRoutePauseDrawable">@drawable/mr_ic_pause_light</item>
+        <item name="mediaRouteCastDrawable">@drawable/mr_ic_cast_light</item>
+    </style>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.AppCompat.ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar"/>
     <style name="ThemeOverlay.AppCompat.Dark" parent="Base.ThemeOverlay.AppCompat.Dark"/>
@@ -2875,6 +3118,38 @@
     <style name="ToolbarCustomTheme" parent="AppTheme">
         <item name="android:textColorSecondary">@android:color/white</item>
         <item name="android:textSize">15sp</item>
+    </style>
+    <style name="WalletFragmentDefaultButtonTextAppearance">
+        <item name="android:textColor">@color/wallet_primary_text_holo_light</item>
+        <item name="android:textColorHighlight">@color/wallet_highlighted_text_holo_light</item>
+        <item name="android:textColorHint">@color/wallet_hint_foreground_holo_light</item>
+        <item name="android:textColorLink">@color/wallet_link_text_light</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="WalletFragmentDefaultDetailsHeaderTextAppearance" parent="WalletFragmentDefaultDetailsTextAppearance">
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="WalletFragmentDefaultDetailsTextAppearance">
+        <item name="android:textColor">@color/wallet_secondary_text_holo_dark</item>
+        <item name="android:textColorHighlight">@color/wallet_highlighted_text_holo_dark</item>
+        <item name="android:textColorHint">@color/wallet_hint_foreground_holo_dark</item>
+        <item name="android:textColorLink">@color/wallet_holo_blue_light</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="WalletFragmentDefaultStyle">
+        <item name="buyButtonHeight">48dp</item>
+        <item name="buyButtonWidth">match_parent</item>
+        <item name="buyButtonText">buy_with</item>
+        <item name="buyButtonAppearance">android_pay_dark</item>
+        <item name="maskedWalletDetailsTextAppearance">@style/WalletFragmentDefaultDetailsTextAppearance</item>
+        <item name="maskedWalletDetailsHeaderTextAppearance">@style/WalletFragmentDefaultDetailsHeaderTextAppearance</item>
+        <item name="maskedWalletDetailsBackground">@color/wallet_bright_foreground_holo_light</item>
+        <item name="maskedWalletDetailsButtonBackground">@android:drawable/btn_default</item>
+        <item name="maskedWalletDetailsButtonTextAppearance">@style/WalletFragmentDefaultButtonTextAppearance</item>
+        <item name="maskedWalletDetailsLogoTextColor">@color/wallet_bright_foreground_holo_dark</item>
+        <item name="maskedWalletDetailsLogoImageType">android_pay</item>
     </style>
     <style name="Widget.AppCompat.ActionBar" parent="Base.Widget.AppCompat.ActionBar">
     </style>
@@ -3024,6 +3299,22 @@
         <item name="counterOverflowTextAppearance">@style/TextAppearance.Design.Counter.Overflow</item>
         <item name="passwordToggleDrawable">@drawable/design_ic_visibility</item>
         <item name="passwordToggleTint">@color/design_tint_password_toggle</item>
+    </style>
+    <style name="Widget.MediaRouter.Light.MediaRouteButton" parent="Widget.AppCompat.Light.ActionButton">
+        <item name="android:minWidth">56dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:contentDescription">@string/mr_media_route_button_content_description</item>
+        <item name="externalRouteEnabledDrawable">@drawable/mr_ic_media_route_mono_light</item>
+    </style>
+    <style name="Widget.MediaRouter.MediaRouteButton" parent="Widget.AppCompat.ActionButton">
+        <item name="android:minWidth">56dp</item>
+        <item name="android:minHeight">48dp</item>
+        <item name="android:padding">0dp</item>
+        <item name="android:focusable">true</item>
+        <item name="android:contentDescription">@string/mr_media_route_button_content_description</item>
+        <item name="externalRouteEnabledDrawable">@drawable/mr_ic_media_route_mono_dark</item>
     </style>
     <style name="newSurveyTitle" parent="Material.Widget.EditText.Light">
         <item name="et_dividerColor">@drawable/divider_color</item>
