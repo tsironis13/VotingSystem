@@ -25,6 +25,12 @@ public class MyFcmListenerService extends FirebaseMessagingService {
     public void onMessageReceived(RemoteMessage remoteMessage) {
         String from = remoteMessage.getFrom();
         Log.e(debugTag, from);
+        if (remoteMessage.getData().size() > 0) {
+            Log.e(debugTag, "Message data payload: " + remoteMessage.getData());
+        }
+        if (remoteMessage.getNotification() != null) {
+            Log.e(debugTag, "Message Notification Body: " + remoteMessage.getNotification().getBody());
+        }
         //generateNotification(remoteMessage.getData());
     }
 

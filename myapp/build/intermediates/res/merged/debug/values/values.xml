@@ -885,7 +885,7 @@
     <string name="data_picker">datapicker</string>
     <string name="database">SurveysDB</string>
     <string name="decline">Decline</string>
-    <string name="default_web_client_id" translatable="false">948922520468-bcf9dtrq0pq3kvv9tl0m0id1kvshqerc.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">759709592203-oqromccum253q2rijkdmo3hclie60c26.apps.googleusercontent.com</string>
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="details_activ_action_key">details_activ_action_key</string>
     <string name="details_title">Πληροφορίες</string>
@@ -916,7 +916,7 @@
     <string name="error_reset_password_already_requested">Το αίτημα αλλαγής κωδικού έχει ήδη σταλεί. Παρακαλώ ξαναπροσπάθησε σε %1$s.</string>
     <string name="expanded">expanded</string>
     <string name="final_animation">final</string>
-    <string name="firebase_database_url" translatable="false">https://votingsystem-89bd7.firebaseio.com</string>
+    <string name="firebase_database_url" translatable="false">https://votingsystem-e9722.firebaseio.com</string>
     <string name="firm">Η Εταιρεία</string>
     <string name="firm_code_tag">firm_code</string>
     <string name="firm_id">firm_id</string>
@@ -927,17 +927,17 @@
     <string name="forward">forward</string>
     <string name="free_answer_hint">Γράψε την απάντηση σου εδώ.</string>
     <string name="fromshared_logo_trns">fromsharedlogoTrns</string>
-    <string name="gcm_defaultSenderId" translatable="false">948922520468</string>
+    <string name="gcm_defaultSenderId" translatable="false">759709592203</string>
     <string name="gcm_senderId">747222558005</string>
     <string name="get_firm_names">firm_names</string>
     <string name="get_firm_survey_details">firm_survey_details</string>
     <string name="get_survey_questions">survey_questions</string>
     <string name="get_survey_stats">survey_stats</string>
     <string name="gone">gone</string>
-    <string name="google_api_key" translatable="false">AIzaSyCZPGBpi9UeUHNGz6ustwbmci2Lncv7Xfw</string>
-    <string name="google_app_id" translatable="false">1:948922520468:android:3b28a2ab9893ff12</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCZPGBpi9UeUHNGz6ustwbmci2Lncv7Xfw</string>
-    <string name="google_storage_bucket" translatable="false">votingsystem-89bd7.appspot.com</string>
+    <string name="google_api_key" translatable="false">AIzaSyBGEqJQfubayJ5XQ_piWGAhqqJ3TAPw1ss</string>
+    <string name="google_app_id" translatable="false">1:759709592203:android:3b28a2ab9893ff12</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBGEqJQfubayJ5XQ_piWGAhqqJ3TAPw1ss</string>
+    <string name="google_storage_bucket" translatable="false">votingsystem-e9722.appspot.com</string>
     <string name="happy">happy</string>
     <string name="have_survey">Έχεις έτοιμη έρευνα?</string>
     <string name="have_survey_desc">Πρότεινε τη δική σου έρευνα σχετικά με το περιβάλλον εργασίας μιας επιχείρησης.</string>

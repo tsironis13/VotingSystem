@@ -66,6 +66,7 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
 
     @Override
     public void resetPassword(ResetPassowrdBody resetPassowrdBody, final boolean isAdded, final LAMVCFinishedListener LAMVCfinishedListener) {
+        Log.e(debugTag, resetPassowrdBody.getAction());
         Call<LoginAndResetUserPasswordStuff> resetUserPasswordStuffCall = apiService.resetUserPassword(resetPassowrdBody);
         resetUserPasswordStuffCall.enqueue(new Callback<LoginAndResetUserPasswordStuff>() {
             @Override
