@@ -20,6 +20,7 @@ public class MyFcmListenerService extends FirebaseMessagingService {
 
     private static final String debugTag = MyFcmListenerService.class.getSimpleName();
     private PendingIntent resultPendingIntent;
+    private String action, title, body;
 
     @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
@@ -27,30 +28,30 @@ public class MyFcmListenerService extends FirebaseMessagingService {
         Log.e(debugTag, from);
         if (remoteMessage.getData().size() > 0) {
             Log.e(debugTag, "Message data payload: " + remoteMessage.getData());
+            action   = remoteMessage.getData().get(getResources().getString(R.string.action));
+            title    = remoteMessage.getData().get(getResources().getString(R.string.notification_title));
+            body     = remoteMessage.getData().get(getResources().getString(R.string.notification_body));
         }
         if (remoteMessage.getNotification() != null) {
             Log.e(debugTag, "Message Notification Body: " + remoteMessage.getNotification().getBody());
         }
-        //generateNotification(remoteMessage.getData());
+        generateNotification(action, title, body);
     }
 
-    private void generateNotification(Bundle data) {
-        if (data != null) {
-            if (getResources().getString(R.string.email_notification).equals(data.getString(getResources().getString(R.string.action)))) {
-                Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(getResources().getString(R.string.mailto)));
-                resultPendingIntent = PendingIntent.getActivity(this, 0, Intent.createChooser(intent, getResources().getString(R.string.open_with)), PendingIntent.FLAG_UPDATE_CURRENT);
-            }
-
-            NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(this)
-                    .setSmallIcon(R.drawable.app_logo)
-                    .setContentTitle(data.getString(getResources().getString(R.string.notification_title)))
-                    .setContentText(data.getString(getResources().getString(R.string.notification_body)))
-                    .setDefaults(Notification.DEFAULT_VIBRATE)
-                    .setContentIntent(resultPendingIntent);
-
-            int mNotificationId = 001;
-            NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
-            mNotifyMgr.notify(mNotificationId, nBuilder.build());
+    private void generateNotification(String action, String title, String body) {
+        if (getResources().getString(R.string.email_notification).equals(action)) {
+            Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(getResources().getString(R.string.mailto)));
+            resultPendingIntent = PendingIntent.getActivity(this, 0, Intent.createChooser(intent, getResources().getString(R.string.open_with)), PendingIntent.FLAG_UPDATE_CURRENT);
         }
+        NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(this)
+                .setSmallIcon(R.drawable.app_logo)
+                .setContentTitle(title)
+                .setContentText(body)
+                .setDefaults(Notification.DEFAULT_VIBRATE)
+                .setContentIntent(resultPendingIntent);
+
+        int mNotificationId = 001;
+        NotificationManager mNotifyMgr = (NotificationManager) getSystemService(NOTIFICATION_SERVICE);
+        mNotifyMgr.notify(mNotificationId, nBuilder.build());
     }
 }

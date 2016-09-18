@@ -1,6 +1,5 @@
 package com.votingsystem.tsiro.fragments;
 
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -10,22 +9,19 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.view.WindowManager;
-import android.widget.ArrayAdapter;
-
 import com.rey.material.app.DatePickerDialog;
 import com.rey.material.app.Dialog;
 import com.rey.material.app.DialogFragment;
-import com.rey.material.widget.Button;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.Spinner;
 import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.adapters.FirmNamesSpnrNothingSelectedAdapter;
 import com.votingsystem.tsiro.helperClasses.CustomSpinnerItem;
 import com.votingsystem.tsiro.votingsystem.R;
-
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -39,7 +35,6 @@ public class NewSurveyDetailsFragment extends Fragment {
     private EditText surveyTitleEdt;
     private android.widget.EditText activeSinceEdt, validUntilEdt;
     private TextView hiddenActiveSinceLabelTtv, hiddenValidUntilLabelTtv;
-    private Dialog.Builder builder;
     private boolean hiddenActiveSinceLabelActivated, hiddenValidUntilLabelActivated;
     private Spinner surveyCategorySpnr;
 
@@ -73,26 +68,26 @@ public class NewSurveyDetailsFragment extends Fragment {
         activeSinceEdt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDateDialog("active_since");
+                showDateDialog(getResources().getString(R.string.active_since_action));
             }
         });
         activeSinceEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if (b) showDateDialog("active_since");
+                if (b) showDateDialog(getResources().getString(R.string.active_since_action));
 
             }
         });
         validUntilEdt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                showDateDialog("valid_until");
+                showDateDialog(getResources().getString(R.string.valid_until_action));
             }
         });
         validUntilEdt.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
             public void onFocusChange(View view, boolean b) {
-                if (b) showDateDialog("valid_until");
+                if (b) showDateDialog(getResources().getString(R.string.valid_until_action));
             }
         });
         surveyCategorySpnr.setOnItemSelectedListener(new Spinner.OnItemSelectedListener() {
@@ -105,27 +100,32 @@ public class NewSurveyDetailsFragment extends Fragment {
     }
 
     private void showDateDialog(final String from) {
-        builder = new DatePickerDialog.Builder(R.style.Material_App_Dialog_DatePicker_Light){
+        Dialog.Builder builder = new DatePickerDialog.Builder(R.style.Material_App_Dialog_DatePicker_Light) {
             @Override
             public void onPositiveActionClicked(DialogFragment fragment) {
-                DatePickerDialog dialog = (DatePickerDialog)fragment.getDialog();
+                DatePickerDialog dialog = (DatePickerDialog) fragment.getDialog();
                 int year = dialog.getYear();
-                int month = dialog.getMonth()+1;
+                int month = dialog.getMonth() + 1;
                 int day = dialog.getDay();
-                if (from.equals("active_since")) {
-                    if (!hiddenActiveSinceLabelActivated){
+                if (from.equals(getResources().getString(R.string.active_since_action))) {
+                    if (!hiddenActiveSinceLabelActivated) {
                         hiddenActiveSinceLabelTtv.setVisibility(View.VISIBLE);
                         hiddenActiveSinceLabelActivated = true;
                     }
-                    activeSinceEdt.setText(day+"-"+(month)+"-"+year);
+                    activeSinceEdt.setText(getResources().getString(R.string.edt_date_format, day, month, year));
+                    //day - 1, because SimpleDateFormat default time system is UTC (our time zone-> UTC + 3), so for an active since date '22-9'
+                    //we have to subtract a day from the selected day (21-9 21:00 UTC after conversion becomes 22-9 00::00 UTC+3)
+                    //the actual date we want
+                    convertTimestampToEpoch(getResources().getString(R.string.active_since_format, day-1, month, year));
                 } else {
                     if (!hiddenValidUntilLabelActivated) {
                         hiddenValidUntilLabelTtv.setVisibility(View.VISIBLE);
                         hiddenValidUntilLabelActivated = true;
                     }
-                    validUntilEdt.setText(day+"-"+(month)+"-"+year);
+                    validUntilEdt.setText(getResources().getString(R.string.edt_date_format, day, month, year));
+                    convertTimestampToEpoch(getResources().getString(R.string.valid_until_format, day, month, year));
                 }
-                Log.e(debugTag, day+"-"+(month+1)+"-"+year);
+                Log.e(debugTag, day + "-" + (month) + "-" + year);
                 super.onPositiveActionClicked(fragment);
             }
 
@@ -173,6 +173,19 @@ public class NewSurveyDetailsFragment extends Fragment {
             } else {
                 textView.setHint(Html.fromHtml(required_sign + text));
             }
+        }
+    }
+
+    private long convertTimestampToEpoch(String timestamp) {
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(getResources().getString(R.string.date_format), Locale.getDefault());
+        try {
+            Date date = simpleDateFormat.parse(timestamp);
+            long epoch = date.getTime()/1000;
+            Log.e(debugTag, date.getTime()/1000+"");
+            return epoch;
+        } catch (ParseException e) {
+            e.printStackTrace();
+            return 0;
         }
     }
 }

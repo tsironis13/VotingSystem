@@ -362,6 +362,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
         } else {
             firm_id             =   0;
         }
+        if (registrationToken == null || registrationToken.equals(getResources().getString(R.string.empty_string))) registrationToken = LoginActivity.getSessionPrefs(getActivity()).getString(getResources().getString(R.string.registration_token), getResources().getString(R.string.empty_string));
         return new RegisterFormBody(getResources().getString(R.string.register_user), fields, firm_id, registrationToken);
     }
 

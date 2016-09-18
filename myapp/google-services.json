@@ -1,27 +1,27 @@
 {
   "project_info": {
-    "project_number": "759709592203",
-    "firebase_url": "https://votingsystem-e9722.firebaseio.com",
-    "project_id": "votingsystem-e9722",
-    "storage_bucket": "votingsystem-e9722.appspot.com"
+    "project_number": "756493988923",
+    "firebase_url": "https://votingsystem-6a6ab.firebaseio.com",
+    "project_id": "votingsystem-6a6ab",
+    "storage_bucket": "votingsystem-6a6ab.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:759709592203:android:3b28a2ab9893ff12",
+        "mobilesdk_app_id": "1:756493988923:android:3b28a2ab9893ff12",
         "android_client_info": {
           "package_name": "com.votingsystem.tsiro.votingsystem"
         }
       },
       "oauth_client": [
         {
-          "client_id": "759709592203-oqromccum253q2rijkdmo3hclie60c26.apps.googleusercontent.com",
+          "client_id": "756493988923-8p9kv48ais6pkoojpbak602mbmaud40g.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBGEqJQfubayJ5XQ_piWGAhqqJ3TAPw1ss"
+          "current_key": "AIzaSyDkNllRZQVi550KIrmqCHcvWBvX7wMQgWI"
         }
       ],
       "services": {

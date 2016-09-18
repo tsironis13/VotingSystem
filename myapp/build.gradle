@@ -39,9 +39,4 @@ dependencies {
     compile 'net.i2p.android.ext:floatingactionbutton:1.10.1'
 }
 
-
-
-
-
-
 apply plugin: 'com.google.gms.google-services'

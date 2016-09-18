@@ -6,4 +6,11 @@
         <!--<item name="colorAccent">@color/accentColor</item>-->
         <item name="android:colorControlHighlight">@color/accentColor</item>
     </style>
+
+    <style name="FabsLabel">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/fab_label_text_size</item>
+        <item name="android:elevation">@dimen/fab_label_elevation</item>
+    </style>
 </resources>

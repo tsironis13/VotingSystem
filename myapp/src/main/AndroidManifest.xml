@@ -72,10 +72,6 @@
             </intent-filter>
         </service>
 
-        <service
-            android:name="com.votingsystem.tsiro.services.fcm.RegistrationIntentService"
-            android:exported="false" />
-
     </application>
 
 </manifest>

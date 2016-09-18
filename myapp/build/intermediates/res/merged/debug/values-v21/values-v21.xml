@@ -227,6 +227,12 @@
     <style name="Base.Widget.AppCompat.TextView.SpinnerItem" parent="android:Widget.Material.TextView.SpinnerItem"/>
     <style name="Base.Widget.AppCompat.Toolbar.Button.Navigation" parent="android:Widget.Material.Toolbar.Button.Navigation">
     </style>
+    <style name="FabsLabel">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/fab_label_text_size</item>
+        <item name="android:elevation">@dimen/fab_label_elevation</item>
+    </style>
     <style name="Platform.AppCompat" parent="android:Theme.Material">
         <item name="android:windowNoTitle">true</item>
         <item name="android:windowActionBar">false</item>

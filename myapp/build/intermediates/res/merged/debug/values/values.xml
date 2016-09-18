@@ -518,6 +518,8 @@
     <dimen name="fa_menu_margin_right_bottom">10dp</dimen>
     <dimen name="fab_actions_spacing">16dp</dimen>
     <dimen name="fab_icon_size">24dp</dimen>
+    <dimen name="fab_label_elevation">2dp</dimen>
+    <dimen name="fab_label_text_size">12sp</dimen>
     <dimen name="fab_labels_margin">8dp</dimen>
     <dimen name="fab_plus_icon_size">14dp</dimen>
     <dimen name="fab_plus_icon_stroke">2dp</dimen>
@@ -782,6 +784,8 @@
     <string name="action_example">Example action</string>
     <string name="action_settings">Settings</string>
     <string name="active_since">Ημ. Έναρξης</string>
+    <string name="active_since_action">active_since</string>
+    <string name="active_since_format">%1$s-%2$s-%3$s 21:00:00 UTC</string>
     <string name="active_since_hint">Ενεργή από</string>
     <string name="add_new">Δημιουργια νεας</string>
     <string name="again">Προσπάθησε \nξανά</string>
@@ -884,14 +888,16 @@
     <string name="data_parcelable_key">data</string>
     <string name="data_picker">datapicker</string>
     <string name="database">SurveysDB</string>
+    <string name="date_format">dd-MM-yyyy HH:mm:ss zzz</string>
     <string name="decline">Decline</string>
-    <string name="default_web_client_id" translatable="false">759709592203-oqromccum253q2rijkdmo3hclie60c26.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">756493988923-8p9kv48ais6pkoojpbak602mbmaud40g.apps.googleusercontent.com</string>
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="details_activ_action_key">details_activ_action_key</string>
     <string name="details_title">Πληροφορίες</string>
     <string name="disagree">Διαφωνώ</string>
     <string name="done">done</string>
     <string name="editext">editext</string>
+    <string name="edt_date_format">%1$s-%2$s-%3$s</string>
     <string name="email">E-mail</string>
     <string name="email_notification">email_notification</string>
     <string name="email_tag">email</string>
@@ -916,7 +922,7 @@
     <string name="error_reset_password_already_requested">Το αίτημα αλλαγής κωδικού έχει ήδη σταλεί. Παρακαλώ ξαναπροσπάθησε σε %1$s.</string>
     <string name="expanded">expanded</string>
     <string name="final_animation">final</string>
-    <string name="firebase_database_url" translatable="false">https://votingsystem-e9722.firebaseio.com</string>
+    <string name="firebase_database_url" translatable="false">https://votingsystem-6a6ab.firebaseio.com</string>
     <string name="firm">Η Εταιρεία</string>
     <string name="firm_code_tag">firm_code</string>
     <string name="firm_id">firm_id</string>
@@ -925,19 +931,20 @@
     <string name="forgotpassword">Ξέχασες τον κωδικό σου?</string>
     <string name="forgotpassword_fgmt">forgotPasswordFgmt</string>
     <string name="forward">forward</string>
+    <string name="free_answer">Ελεύθερη απάντηση</string>
     <string name="free_answer_hint">Γράψε την απάντηση σου εδώ.</string>
     <string name="fromshared_logo_trns">fromsharedlogoTrns</string>
-    <string name="gcm_defaultSenderId" translatable="false">759709592203</string>
+    <string name="gcm_defaultSenderId" translatable="false">756493988923</string>
     <string name="gcm_senderId">747222558005</string>
     <string name="get_firm_names">firm_names</string>
     <string name="get_firm_survey_details">firm_survey_details</string>
     <string name="get_survey_questions">survey_questions</string>
     <string name="get_survey_stats">survey_stats</string>
     <string name="gone">gone</string>
-    <string name="google_api_key" translatable="false">AIzaSyBGEqJQfubayJ5XQ_piWGAhqqJ3TAPw1ss</string>
-    <string name="google_app_id" translatable="false">1:759709592203:android:3b28a2ab9893ff12</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyBGEqJQfubayJ5XQ_piWGAhqqJ3TAPw1ss</string>
-    <string name="google_storage_bucket" translatable="false">votingsystem-e9722.appspot.com</string>
+    <string name="google_api_key" translatable="false">AIzaSyDkNllRZQVi550KIrmqCHcvWBvX7wMQgWI</string>
+    <string name="google_app_id" translatable="false">1:756493988923:android:3b28a2ab9893ff12</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDkNllRZQVi550KIrmqCHcvWBvX7wMQgWI</string>
+    <string name="google_storage_bucket" translatable="false">votingsystem-6a6ab.appspot.com</string>
     <string name="happy">happy</string>
     <string name="have_survey">Έχεις έτοιμη έρευνα?</string>
     <string name="have_survey_desc">Πρότεινε τη δική σου έρευνα σχετικά με το περιβάλλον εργασίας μιας επιχείρησης.</string>
@@ -950,6 +957,7 @@
     <string name="just_text">%1$s</string>
     <string name="last_created_date">Ημ. δημιουργίας \nτελευταίας έρευνας</string>
     <string name="last_modified_date_label">Ημ.τελευταίας \nτροποποίησης</string>
+    <string name="list_selection">Επιλογή από λίστα</string>
     <string name="list_surveys">list_surveys</string>
     <string name="login_user">login_user</string>
     <string name="logout">Αποσυνδεση</string>
@@ -971,6 +979,7 @@
     <string name="mr_media_route_controller_stop">Stop casting</string>
     <string name="mr_system_route_name">System</string>
     <string name="mr_user_route_category_name">Devices</string>
+    <string name="multiple_choice">Πολλαπλής επιλογής</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="network_state_update">networkStateUpdated</string>
@@ -1011,6 +1020,7 @@
     <string name="questions">%1$s</string>
     <string name="questions_label">Ερωτήσεις</string>
     <string name="radio_button_label">\u0020\u0020%1$s</string>
+    <string name="ranking">Κατάταξη</string>
     <string name="ranking_question_note">Σημείωση: σύρε τις μπάρες με τις απαντήσεις για να τις τοποθετήσεις με τη σειρά προτίμησης σου.</string>
     <string name="recent_sear_table">Recent_searches</string>
     <string name="register">Πρώτη φορά εδώ? Εγγραφή</string>
@@ -1025,6 +1035,7 @@
     <string name="sad">sad</string>
     <string name="sagree">Συμφωνώ Απολύτως</string>
     <string name="sagree_br">Συμφωνώ \nΑπολύτως</string>
+    <string name="satisfaction_rating">Βαθμός ικανοποίησης</string>
     <string name="sdisagree">Διαφωνώ Έντονα</string>
     <string name="sdisagree_br">Διαφωνώ \nΈντονα</string>
     <string name="search">search</string>
@@ -1042,6 +1053,7 @@
     <string name="signin_fgmt">signInFgmt</string>
     <string name="signin_here">Διαθέτεις λογαριασμό?\nΣυνδέσου εδώ</string>
     <string name="skipped">Παρέλειψαν: %1$s</string>
+    <string name="slider">Ολισθητής</string>
     <string name="slider_question_note">Σημείωση: σύρε την ένδειξη στην μπάρα για να διαλέξεις την απάντηση σου.</string>
     <string name="spinner">spinner</string>
     <string name="splash_loaded">splash_loaded</string>
@@ -1080,6 +1092,8 @@
     <string name="username">Όνομα χρήστη</string>
     <string name="username_tag">username</string>
     <string name="valid_until">Ημ. Λήξης</string>
+    <string name="valid_until_action">valid_until</string>
+    <string name="valid_until_format">%1$s-%2$s-%3$s 20:59:59 UTC</string>
     <string name="valid_until_hint">Ενεργή μέχρι</string>
     <string name="vhappy">vhappy</string>
     <string name="view_surveys">Δες ολες τις ερευνες</string>
@@ -2217,6 +2231,11 @@
     <style name="Fab" parent="Material.Drawable.Ripple.Touch.Light">
         <item name="rd_rippleColor">@color/fab_ripple_color</item>
         <item name="rd_delayClick">untilRelease</item>
+    </style>
+    <style name="FabsLabel">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/fab_label_text_size</item>
     </style>
     <style name="InCircularProgressDrawable" parent="Material.Drawable.CircularProgress">
         <item name="cpd_strokeColor">@color/accentColor</item>

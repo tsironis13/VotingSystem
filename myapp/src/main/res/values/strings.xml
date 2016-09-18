@@ -77,6 +77,8 @@
     <string name="details_activ_action_key">details_activ_action_key</string>
     <string name="show_stats">show_stats</string>
     <string name="show_details">show_details</string>
+    <string name="active_since_action">active_since</string>
+    <string name="valid_until_action">valid_until</string>
     <!-- LOGIN -->
     <string name="theme">theme</string>
     <string name="app_logo">app_logo</string>
@@ -180,6 +182,16 @@
     <string name="cancel">Ακυρωση</string>
     <string name="pick_category">Επιλογή κατηγορίας</string>
     <string name="mandatory_fields">* Υποχρεωτικά πεδία.</string>
+    <string name="multiple_choice">Πολλαπλής επιλογής</string>
+    <string name="satisfaction_rating">Βαθμός ικανοποίησης</string>
+    <string name="slider">Ολισθητής</string>
+    <string name="list_selection">Επιλογή από λίστα</string>
+    <string name="ranking">Κατάταξη</string>
+    <string name="free_answer">Ελεύθερη απάντηση</string>
+    <string name="active_since_format">%1$s-%2$s-%3$s 21:00:00 UTC</string>
+    <string name="valid_until_format">%1$s-%2$s-%3$s 20:59:59 UTC</string>
+    <string name="date_format">dd-MM-yyyy HH:mm:ss zzz</string>
+    <string name="edt_date_format">%1$s-%2$s-%3$s</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>

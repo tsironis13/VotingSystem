@@ -108,6 +108,12 @@
         <item name="rd_rippleColor">@color/connection_settings_ripple_color</item>
         <item name="rd_rippleAnimDuration">400</item>
     </style>
+    <!-- FABS RELATED-->
+    <style name="FabsLabel">
+        <item name="android:background">@drawable/fab_label_background</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textSize">@dimen/fab_label_text_size</item>
+    </style>
     <!-- PROGRESS VIEWS -->
     <style name="CircularProgressDrawable" parent="Material.Drawable.CircularProgress">
         <item name="cpd_strokeColor">@color/accentColor</item>

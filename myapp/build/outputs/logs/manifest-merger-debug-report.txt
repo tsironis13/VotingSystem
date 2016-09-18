@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:2:1-81:12
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:2:1-77:12
 	package
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:3:5-50
 		INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml
@@ -96,7 +96,7 @@ MERGED from [com.google.firebase:firebase-iid:9.4.0] /home/giannis/AndroidStudio
 	android:name
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:6:22-76
 application
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:8:5-79:19
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:8:5-75:19
 MERGED from [com.github.ozodrukh:CircularReveal:1.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.github.ozodrukh/CircularReveal/1.1.1/AndroidManifest.xml:10:5-20
 MERGED from [com.android.support:support-v4:24.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/24.2.1/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-compat:24.2.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-compat/24.2.1/AndroidManifest.xml:25:5-20
@@ -5385,12 +5385,6 @@ action#com.google.firebase.INSTANCE_ID_EVENT
 ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:71:17-80
 	android:name
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:71:25-77
-service#com.votingsystem.tsiro.services.fcm.RegistrationIntentService
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:75:9-77:40
-	android:exported
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:77:13-37
-	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:76:13-89
 uses-sdk
 INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.github.ozodrukh:CircularReveal:1.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.github.ozodrukh/CircularReveal/1.1.1/AndroidManifest.xml:6:5-8:41

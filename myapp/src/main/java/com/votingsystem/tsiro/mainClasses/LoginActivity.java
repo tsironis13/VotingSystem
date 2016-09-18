@@ -54,7 +54,6 @@ import com.votingsystem.tsiro.fragments.SignInFragment;
 import com.votingsystem.tsiro.fragments.SplashScreenFragment;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.interfaces.SoftKeyboardStateListener;
-import com.votingsystem.tsiro.services.fcm.RegistrationIntentService;
 import com.votingsystem.tsiro.votingsystem.R;
 import java.io.UnsupportedEncodingException;
 import io.codetail.animation.SupportAnimator;
@@ -90,11 +89,6 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
         super.onCreate(savedInstanceState);
         getWindow().setBackgroundDrawable(getResources().getDrawable(R.drawable.background_theme));
         setContentView(R.layout.login_activity);
-        String FCMRegistrationToken = "doxpt5BoGf8:APA91bH8OtT4gOJGgkFp9KKtLPqvCgYQC7TBZhvJjz-SmYniYPM8dDBDUACcGmtiV0hzBP8dx4CCetqQ1YL5ujdBwk3ZKdqwUkP5O8m0z6fSpYAT7xisEMO1G5znqeO-8AqIrmeyEU1s";
-
-        SharedPreferences.Editor editor = PreferenceManager.getDefaultSharedPreferences(this).edit();
-        editor.putString(getResources().getString(R.string.registration_token), FCMRegistrationToken);
-        editor.apply();
 
         if (savedInstanceState == null) {
             Log.e(debugTag, "SESSION ID: "+LoginActivity.getSessionPrefs(getApplicationContext()).getInt(getResources().getString(R.string.user_id), 0));
@@ -104,8 +98,6 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
                 inputMethodManager = (InputMethodManager) getSystemService(Activity.INPUT_METHOD_SERVICE);
                 softKeyboardStateWatcher = new SoftKeyboardStateWatcher(findViewById(android.R.id.content));
 
-                Intent intent = new Intent(this, RegistrationIntentService.class);
-                startService(intent);
                 inputValidationCodes        =   AppConfig.getCodes();
                 networkStateReceiver        =   new NetworkStateReceiver();
                 registrationTokenReceiver   =   new RegistrationTokenReceiver();
@@ -206,8 +198,13 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
 
     @Override
     public void getRegistrationToken(String token) {
-        Log.e(debugTag, token);
-        if (token != null) registrationToken = token;
+        if (token != null) {
+            Log.e(debugTag, token);
+            registrationToken = token;
+            SharedPreferences.Editor editor = LoginActivity.getSessionPrefs(getApplicationContext()).edit();
+            editor.putString(getResources().getString(R.string.registration_token), token);
+            editor.apply();
+        }
     }
 
     @Override
@@ -228,11 +225,6 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     public void forgotPasswordOnClick() {
         if (settingsDialogWasOpened) settingsDialogWasOpened = false;
         forgotPasswordFgmt = new ForgotPasswordFragment();
-//        loginActivityBundle.putInt(getResources().getString(R.string.connectivity_status), connectionStatus);
-//        String refreshedToken = LoginActivity.getSessionPrefs(getApplicationContext()).getString(getResources().getString(R.string.registration_token), "");
-//        Log.e(debugTag, refreshedToken);
-        if (registrationToken == null) Log.e(debugTag, "aa");
-
         loginActivityBundle.putString(getResources().getString(R.string.registration_token), registrationToken);
         forgotPasswordFgmt.setArguments(loginActivityBundle);
         getSupportFragmentManager()

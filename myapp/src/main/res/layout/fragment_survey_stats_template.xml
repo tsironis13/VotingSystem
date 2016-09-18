@@ -122,7 +122,8 @@
             android:tag=""
             fab:fab_size="mini"
             fab:fab_icon="@drawable/hole_pie_chart"
-            fab:fab_colorNormal="@color/primaryColor" />
+            fab:fab_colorNormal="@color/primaryColor"
+            fab:fab_colorPressed="@color/primaryColorDark" />
 
         <net.i2p.android.ext.floatingactionbutton.FloatingActionButton
             android:id="@+id/barChartFAB"
@@ -131,7 +132,8 @@
             android:tag=""
             fab:fab_size="mini"
             fab:fab_icon="@drawable/bar_chart"
-            fab:fab_colorNormal="@color/primaryColor" />
+            fab:fab_colorNormal="@color/primaryColor"
+            fab:fab_colorPressed="@color/primaryColorDark"/>
 
         <net.i2p.android.ext.floatingactionbutton.FloatingActionButton
             android:id="@+id/horBarChartFAB"
@@ -140,7 +142,8 @@
             android:tag=""
             fab:fab_size="mini"
             fab:fab_icon="@drawable/hor_bar_chart"
-            fab:fab_colorNormal="@color/primaryColor" />
+            fab:fab_colorNormal="@color/primaryColor"
+            fab:fab_colorPressed="@color/primaryColorDark" />
 
         <net.i2p.android.ext.floatingactionbutton.FloatingActionButton
             android:id="@+id/pieChartFAB"
@@ -149,7 +152,8 @@
             android:tag="@string/selected"
             fab:fab_size="mini"
             fab:fab_icon="@drawable/pie_chart"
-            fab:fab_colorNormal="@color/primaryColor" />
+            fab:fab_colorNormal="@color/primaryColor"
+            fab:fab_colorPressed="@color/primaryColorDark" />
 
     </net.i2p.android.ext.floatingactionbutton.FloatingActionsMenu>
 

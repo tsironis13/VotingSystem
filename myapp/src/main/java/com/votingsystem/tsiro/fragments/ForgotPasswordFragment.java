@@ -248,6 +248,7 @@ public class ForgotPasswordFragment extends Fragment implements LAMVCView{
     private void setRegisterSpan() { commonElements.setLoginActivitySpan(registerTtv, getResources().getString(R.string.register), 16, 23, 0); }
 
     private ResetPassowrdBody fillResetPasswordFields() {
+        if (registrationToken == null || registrationToken.equals(getResources().getString(R.string.empty_string))) registrationToken = LoginActivity.getSessionPrefs(getActivity()).getString(getResources().getString(R.string.registration_token), getResources().getString(R.string.empty_string));
         return new ResetPassowrdBody(getResources().getString(R.string.reset_password), emailEdt.getText().toString(), registrationToken);
     }
 }
