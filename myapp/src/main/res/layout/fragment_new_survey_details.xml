@@ -31,19 +31,18 @@
                 android:id="@+id/surveyTitleEdt"
                 android:layout_width="match_parent"
                 android:layout_height="72dp"
-                android:paddingBottom="20dp"
+                android:paddingBottom="25dp"
                 android:inputType="text"
                 android:textSize="13sp"
                 android:textColorHint="@color/new_survey_hint_color"
                 app:et_supportMode="none"
-                app:et_inputId="@+id/wrapped_usernameEdt"
+                app:et_inputId="@+id/wrapped_surveyTitleEdt"
                 style="@style/newSurveyTitle" />
 
             <com.rey.material.widget.TextView
                 android:id="@+id/hiddenActiveSinceLabelTtv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="-21dp"
                 android:text="@string/active_since_hint"
                 android:textColor="@color/accentColor"
                 android:textSize="12sp"
@@ -53,8 +52,7 @@
                 android:id="@+id/activeSinceEdt"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="30dp"
                 android:hint="@string/active_since_hint"
                 android:textSize="13sp"
                 android:textColorHint="@color/new_survey_hint_color"
@@ -68,7 +66,6 @@
                 android:id="@+id/hiddenValidUntilLabelTtv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="-21dp"
                 android:text="@string/valid_until_hint"
                 android:textColor="@color/accentColor"
                 android:textSize="12sp"
@@ -78,8 +75,7 @@
                 android:id="@+id/validUntilEdt"
                 android:layout_width="match_parent"
                 android:layout_height="32dp"
-                android:layout_marginTop="20dp"
-                android:layout_marginBottom="20dp"
+                android:layout_marginBottom="12dp"
                 android:hint="@string/valid_until_hint"
                 android:textSize="13sp"
                 android:textColorHint="@color/new_survey_hint_color"
@@ -106,7 +102,7 @@
     </android.support.v4.widget.NestedScrollView>
 
     <net.i2p.android.ext.floatingactionbutton.FloatingActionsMenu
-        android:id="@+id/aaaa"
+        android:id="@+id/fabTypeMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"

@@ -4,6 +4,10 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-v21/survey_item_background.xml"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/add_answer_ripple_drawable.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-v21/add_answer_ripple_drawable.xml"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/ripple_navigation_selector.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/drawable-v21/ripple_navigation_selector.xml"
     },

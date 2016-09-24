@@ -36,6 +36,7 @@
     <string name="survey_stats_fgmt">surveyStatsFgmt</string>
     <string name="survey_details_fgmt">surveyDetailsFgmt</string>
     <string name="new_survey_details_fgmt">newSurveyDetails</string>
+    <string name="new_survey_question_fgmt">newSurveyQuestion</string>
     <string name="error_fgmt">errorFgmt</string>
     <string name="editext">editext</string>
     <string name="spinner">spinner</string>
@@ -50,8 +51,9 @@
     <string name="connection_status">connection_status</string>
     <string name="title">title</string>
     <string name="data_picker">datapicker</string>
+    <string name="dialog">dialog</string>
     <!-- SEARCH -->
-    <string name="search">search</string>
+    <string name="search">Aναζήτηση</string>
     <string name="search_hint">Aναζήτηση Έρευνας</string>
     <string name="arrow_back">arrow_back</string>
     <string name="clear">clear</string>
@@ -126,11 +128,11 @@
     <string name="survey_title">survey_title</string>
     <string name="question">question</string>
     <string name="position">position</string>
-    <string name="question_title">%1$s. %2$s</string>
+    <string name="question_title">%1$d. %2$s</string>
     <string name="radio_button_label">\u0020\u0020%1$s</string>
     <string name="question_btn_id">questionBtn</string>
     <string name="arrow">arrow</string>
-    <string name="page_index_text">ΕΡΩΤΗΣΗ %1$s ΑΠΟ %2$s</string>
+    <string name="page_index_text">ΕΡΩΤΗΣΗ %1$d ΑΠΟ %2$d</string>
     <string name="ranking_question_note">Σημείωση: σύρε τις μπάρες με τις απαντήσεις για να τις τοποθετήσεις με τη σειρά προτίμησης σου.</string>
     <string name="slider_question_note">Σημείωση: σύρε την ένδειξη στην μπάρα για να διαλέξεις την απάντηση σου.</string>
     <string name="free_answer_hint">Γράψε την απάντηση σου εδώ.</string>
@@ -151,7 +153,7 @@
     <string name="details_title">Πληροφορίες</string>
     <string name="answered_by">Απάντησαν: %1$s</string>
     <string name="skipped">Παρέλειψαν: %1$s</string>
-    <string name="persentage_text">%1$s%%</string>
+    <string name="persentage_text">%1$.1f%%</string>
     <string name="just_text">%1$s</string>
     <string name="count_per_row">Σύνολο \nανά γραμμή</string>
     <string name="sdisagree_br">Διαφωνώ \nΈντονα</string>
@@ -161,7 +163,7 @@
     <string name="no_answers_img">noanswersimg</string>
     <string name="chevron_right">chevron_right</string>
     <string name="type">type</string>
-    <string name="total_responses">%1$s</string>
+    <string name="total_responses">%1$d</string>
     <string name="total_responses_label">Σύνολο \nΑποκρίσεων</string>
     <string name="stats">Στατιστικά</string>
     <string name="answered_label">Απάντησαν</string>
@@ -170,8 +172,8 @@
     <string name="last_modified_date_label">Ημ.τελευταίας \nτροποποίησης</string>
     <string name="category_label">Κατηγορία</string>
     <string name="questions_label">Ερωτήσεις</string>
-    <string name="answered">%1$s</string>
-    <string name="questions">%1$s</string>
+    <string name="answered">%1$d</string>
+    <string name="questions">%1$d</string>
     <string name="stats_icon">stats_icon</string>
     <!-- NEW SURVEY -->
     <string name="new_survey">Νέα Έρευνα</string>
@@ -188,10 +190,22 @@
     <string name="list_selection">Επιλογή από λίστα</string>
     <string name="ranking">Κατάταξη</string>
     <string name="free_answer">Ελεύθερη απάντηση</string>
-    <string name="active_since_format">%1$s-%2$s-%3$s 21:00:00 UTC</string>
-    <string name="valid_until_format">%1$s-%2$s-%3$s 20:59:59 UTC</string>
+    <string name="active_since_format">%1$d-%2$d-%3$d 21:00:00 UTC</string>
+    <string name="valid_until_format">%1$d-%2$d-%3$d 20:59:59 UTC</string>
     <string name="date_format">dd-MM-yyyy HH:mm:ss zzz</string>
-    <string name="edt_date_format">%1$s-%2$s-%3$s</string>
+    <string name="edt_date_format">%1$d-%2$d-%3$d</string>
+    <string name="new_question">Nέα ερώτηση</string>
+    <string name="category_id">category_id</string>
+    <string name="discard_dialog_title">Eίσαι σίγουρος;</string>
+    <string name="discard_dialog_msg">Οι αλλαγές της συγκεκριμένης ερώτησης θα απορριφθούν.</string>
+    <string name="confirm_action">Επιβεβαιωση</string>
+    <string name="question_text">Τίτλος Ερώτησης</string>
+    <string name="answers">Απαντήσεις</string>
+    <string name="add_answer">Προσθηκη απαντησης</string>
+    <string name="answer">Απάντηση</string>
+    <string name="required_question">Η ερώτηση είναι υποχρεωτική.</string>
+    <string name="single_choice">Μονής επιλογής</string>
+    <string name="done_add_question">Υποβολή</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>
@@ -237,13 +251,14 @@
     <string name="surveys">Έρευνες</string>
     <string name="results">Αποτελέσματα</string>
     <string name="notifications">Ειδοποιήσεις</string>
-    <string name="settings">Ρύθμισεις</string>
+    <string name="settings">Ρυθμίσεις</string>
     <string name="logout">Αποσυνδεση</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
     <!-- OBJECT ANIMATOR -->
     <string name="float_type">float</string>
     <string name="translation_y">translationY</string>
+    <string name="alpha">alpha</string>
     <!-- DIALOGS -->
     <!-- Mandatory Dialog -->
     <string name="mandatory_dialog_title">Η ερώτηση είναι υποχρεωτική.\nΠαρακαλώ συμπλήρωσε την για να συνεχίσεις.</string>

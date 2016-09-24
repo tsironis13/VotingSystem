@@ -5,7 +5,7 @@
     android:id="@+id/pickCategory"
     android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:singleLine="true"
+    android:maxLines="1"
     android:textSize="13sp"
     android:textColor="#b3b3b3"
     android:ellipsize="marquee" />

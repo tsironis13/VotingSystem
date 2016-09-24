@@ -6,7 +6,7 @@
     android:layout_height="50dp"
     android:gravity="center_vertical"
     android:paddingLeft="14dp"
-    android:singleLine="true"
+    android:maxLines="1"
     android:textSize="12sp"
     android:ellipsize="marquee"
     style="@style/SpinnerItem" />

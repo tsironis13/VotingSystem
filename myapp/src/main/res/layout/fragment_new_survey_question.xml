@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="12dp">
+
+            <com.rey.material.widget.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/question_text"
+                android:textSize="20sp"
+                android:textColor="@color/accentColor" />
+
+            <com.rey.material.widget.EditText
+                android:id="@+id/questionTitleEdt"
+                android:layout_width="match_parent"
+                android:layout_height="72dp"
+                android:paddingBottom="25dp"
+                android:inputType="text"
+                android:textSize="13sp"
+                android:textColorHint="@color/new_survey_hint_color"
+                app:et_supportMode="none"
+                app:et_inputId="@+id/wrapped_questionTitleEdt"
+                style="@style/newSurveyTitle" />
+
+            <com.rey.material.widget.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="10dp"
+                android:text="@string/answers"
+                android:textSize="20sp"
+                android:textColor="@color/accentColor" />
+
+            <com.rey.material.widget.LinearLayout
+                android:id="@+id/answersContainerLlt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <com.rey.material.widget.Button
+                android:id="@+id/addAnswerViewBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginBottom="25dp"
+                android:paddingLeft="10dp"
+                android:paddingRight="10dp"
+                android:text="@string/add_answer"
+                android:textSize="12sp"
+                android:textColor="@android:color/white"
+                android:background="@drawable/add_answer_ripple_drawable" />
+
+            <com.rey.material.widget.TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingBottom="15dp"
+                android:text="@string/settings"
+                android:textSize="20sp"
+                android:textColor="@color/accentColor" />
+
+            <com.rey.material.widget.RadioButton
+                android:id="@+id/switches_rb1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-5dp"
+                android:textSize="16sp"
+                android:text="@string/single_choice"
+                android:textColor="@android:color/black"
+                android:checked="true"
+                android:gravity="center_vertical" />
+
+            <com.rey.material.widget.RadioButton
+                android:id="@+id/switches_rb2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="-5dp"
+                android:layout_marginBottom="10dp"
+                android:textSize="16sp"
+                android:text="@string/multiple_choice"
+                android:textColor="@android:color/black"
+                android:checked="false"
+                android:gravity="center_vertical" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="100">
+
+                <com.rey.material.widget.TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="88"
+                    android:text="@string/required_question"
+                    android:textSize="16sp"
+                    android:textColor="@android:color/black" />
+
+                <com.rey.material.widget.Switch
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="12"
+                    style="@style/Switch" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingTop="5dp"
+            android:paddingBottom="10dp">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/view_height"
+                android:background="@color/view_color" />
+
+            <com.rey.material.widget.RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingRight="12dp"
+                android:paddingLeft="12dp"
+                android:paddingTop="30dp"
+                android:paddingBottom="30dp">
+
+                <com.rey.material.widget.Button
+                    android:layout_width="100dp"
+                    android:layout_height="36dp"
+                    android:text="Cancel"
+                    android:background="@null"
+                    android:layout_alignParentLeft="true"
+                    style="@style/FlatButton" />
+
+                <com.rey.material.widget.Button
+                    android:layout_width="100dp"
+                    android:layout_height="36dp"
+                    android:text="Save"
+                    android:background="@null"
+                    android:layout_alignParentRight="true"
+                    style="@style/FlatButton" />
+
+            </com.rey.material.widget.RelativeLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</ScrollView>

@@ -77,11 +77,20 @@
     <style name="pickDataEdt" parent="Material.Widget.EditText.Light">
         <item name="android:color">@color/primaryColor</item>
     </style>
+    <style name="FlatButton" parent="Material.Drawable.Ripple.Touch.Light">
+        <item name="rd_backgroundColor">#cce6ff</item>
+        <item name="rd_rippleColor">#cce6ff</item>
+        <item name="rd_cornerRadius">2dp</item>
+        <item name="rd_delayClick">untilRelease</item>
+        <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Button</item>
+        <item name="android:textColor">@color/primaryColor</item>
+    </style>
     <!-- SURVEY QUESTIONS -->
     <style name="Fab" parent="Material.Drawable.Ripple.Touch.Light">
         <item name="rd_rippleColor">@color/fab_ripple_color</item>
         <item name="rd_delayClick">untilRelease</item>
     </style>
+    <style name="Switch" parent="Material.Widget.Switch" />
     <!-- SPINNER -->
     <style name="Spinner" parent="Material.Drawable.Ripple">
         <item name="spn_dividerColor">@android:color/transparent</item>
@@ -138,6 +147,11 @@
         <item name="pv_progressStyle">@style/InCircularProgressDrawable</item>
     </style>
     <!-- DIALOS -->
+    <!-- Discard dialog -->
+    <style name="SimpleDialogLight" parent="Material.App.Dialog.Simple.Light">
+        <item name="di_inAnimation">@anim/anim_scale_in</item>
+        <item name="di_outAnimation">@anim/anim_scale_out</item>
+    </style>
     <style name="ConnectionSettingsBottomSheetDialog">
         <item name="android:layout_height">wrap_content</item>
         <item name="android:windowIsFloating">false</item>
