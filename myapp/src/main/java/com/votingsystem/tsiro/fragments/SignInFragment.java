@@ -1,5 +1,6 @@
 package com.votingsystem.tsiro.fragments;
 
+import android.Manifest;
 import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
@@ -9,6 +10,7 @@ import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.method.TransformationMethod;
@@ -28,11 +30,13 @@ import com.rey.material.widget.EditText;
 import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.TextView;
 //import com.squareup.leakcanary.RefWatcher;
+import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCPresenterImpl;
 import com.votingsystem.tsiro.LoginActivityMVC.LAMVCView;
 import com.votingsystem.tsiro.POJO.LoginFormBody;
 import com.votingsystem.tsiro.animation.AnimationListener;
 import com.votingsystem.tsiro.app.AppConfig;
+import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.helperClasses.CustomSpinnerItem;
 import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.mainClasses.DashboardActivity;
@@ -98,7 +102,10 @@ public class SignInFragment extends Fragment implements LAMVCView{
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) toSharedLogo.setTransitionName(getResources().getString(R.string.toshared_logo_trns));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE}, 1);
+            toSharedLogo.setTransitionName(getResources().getString(R.string.toshared_logo_trns));
+        }
 
         if (snackBar != null && snackBar.isShown()) snackBar.dismiss();
         LAMVCpresenterImpl  =   new LAMVCPresenterImpl(this);
@@ -150,16 +157,19 @@ public class SignInFragment extends Fragment implements LAMVCView{
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        Log.e(debugTag, "onDestroyView");
         LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(connectionStatusReceiver);
+//        RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
+//        refWatcher.watch(this);
     }
 
     @Override
     public void onDestroy() {
         super.onDestroy();
+        Log.e(debugTag, "onDestroy");
         if (this.LAMVCpresenterImpl !=null) LAMVCpresenterImpl.onDestroy();
         this.commonElements = null;
-        //RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
-        //refWatcher.watch(this);
+
     }
 
     @Override
@@ -238,6 +248,7 @@ public class SignInFragment extends Fragment implements LAMVCView{
 
     @Override
     public void onFailure(int code, String field, String hint, String retry_in) {
+        Log.e(debugTag, "onFailure");
         if (code == AppConfig.ERROR_INVALID_USERNAME_PASSWORD) {
             commonElements.showErrorContainerSnackbar(getResources().getString(R.string.error_invalid_username_password), null, code);
         } else if (code == AppConfig.ERROR_ACCOUNT_NOT_VERIFIED_YET) {
@@ -249,7 +260,6 @@ public class SignInFragment extends Fragment implements LAMVCView{
     }
 
     private void submitForm() {
-        Log.e(debugTag, connectionStatus+"");
         if (connectionStatus == AppConfig.NO_CONNECTION) {
             showSnackBar(AppConfig.NO_CONNECTION);
         } else {
@@ -270,7 +280,6 @@ public class SignInFragment extends Fragment implements LAMVCView{
     private void initializeSessionId(int user_id, String username, String email, int firm_id) {
         SharedPreferences.Editor editor = LoginActivity.getSessionPrefs(getActivity()).edit();
         int id = LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0);
-        Log.e(debugTag, id+"");
         if (id == 0) {
             editor.putInt(getResources().getString(R.string.user_id), user_id);
             editor.putString(getResources().getString(R.string.username_tag), username);

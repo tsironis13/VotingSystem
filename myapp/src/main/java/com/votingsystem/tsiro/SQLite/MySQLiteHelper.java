@@ -27,8 +27,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     private static final String debugTag = MySQLiteHelper.class.getSimpleName();
     private static MySQLiteHelper sInstance;
-    private Context context;
-    private static String DB_PATH;
+    private String DB_PATH;
     private SQLiteDatabase db;
 
     //Table names
@@ -66,12 +65,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + KEY_SEARCHED_AT + " INTEGER" + ")";
 
     public static MySQLiteHelper getInstance(Context context) {
-        return sInstance == null ? sInstance = new MySQLiteHelper(context) : sInstance;
+        Log.e(debugTag, sInstance+"");
+        return sInstance == null ? sInstance = new MySQLiteHelper(context.getApplicationContext()) : sInstance;
     }
 
     private MySQLiteHelper(Context context) {
         super(context, context.getResources().getString(R.string.database), null, AppConfig.VERSION);
-        this.context = context;
         DB_PATH = context.getDatabasePath(context.getResources().getString(R.string.database)).getPath();
     }
 
@@ -91,13 +90,13 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
-    public void createDatabase() {
-        boolean dbExists = checkDatabase();
+    public void createDatabase(Context context) {
+        boolean dbExists = checkDatabase(context);
 
         if (!dbExists) this.getReadableDatabase();
     }
 
-    public boolean checkDatabase() {
+    public boolean checkDatabase(Context context) {
         boolean checkDB = false;
 
         try {
@@ -112,7 +111,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public void openDatabase() throws SQLiteException {
         try {
             db = SQLiteDatabase.openDatabase(DB_PATH, null, SQLiteDatabase.OPEN_READWRITE);
-            Log.e(debugTag, db+"");
         } catch (SQLiteException e) {
             e.printStackTrace();
         }

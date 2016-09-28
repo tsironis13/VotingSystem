@@ -35,12 +35,13 @@ public class SQMVCInteractorImpl implements SQMVCInteractor {
         call.enqueue(new Callback<SurveyQuestions>() {
             @Override
             public void onResponse(Response<SurveyQuestions> response, Retrofit retrofit) {
-                List<QuestionData> firmElementList = response.body().getData();
-                if (response.body().getCode() != AppConfig.STATUS_OK) {
-                    SQMVCfinishedListener.onFailure(response.body().getCode(), 1);
-                } else {
-                    SQMVCfinishedListener.onSuccessSurveyQuestionsFetched(response.body().getTitle(), firmElementList);
-                }
+                if (response.body() != null) {
+                    List<QuestionData> firmElementList = response.body().getData();
+                    if (response.body().getCode() != AppConfig.STATUS_OK) {
+                        SQMVCfinishedListener.onFailure(response.body().getCode(), 1);
+                    } else {
+                        SQMVCfinishedListener.onSuccessSurveyQuestionsFetched(response.body().getTitle(), firmElementList);
+                    }
 //                if (firmElementList != null) {
 //                    for (int i = 0; i< firmElementList.size(); i++) {
 //                        if (firmElementList.get(i).getAnswers() != null) {
@@ -51,6 +52,9 @@ public class SQMVCInteractorImpl implements SQMVCInteractor {
 //                        }
 //                    }
 //                }
+                } else {
+                    SQMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE, 1);
+                }
             }
 
             @Override
@@ -71,16 +75,20 @@ public class SQMVCInteractorImpl implements SQMVCInteractor {
         call.enqueue(new Callback<SurveyDetails>() {
             @Override
             public void onResponse(Response<SurveyDetails> response, Retrofit retrofit) {
-                if (response.body().getCode() != AppConfig.STATUS_OK) {
-                    SQMVCfinishedListener.onFailure(response.body().getCode(), 2);
-                } else {
-                    SQMVCfinishedListener.onSuccessSurveyDetailsFetched(response.body().getData());
-                }
-                Log.e(debugTag, response.body().getData().getQuestion().size()+"");
-                for (QuestionStatsDetails details : response.body().getData().getQuestion()) {
-                    for (Stats stats: details.getStats()) {
-//                        Log.e(debugTag, "Answer title: "+stats.getTitle()+" Answer pers: "+stats.getPercentage()+"Count: "+stats.getCount());
+                if (response.body() != null) {
+                    if (response.body().getCode() != AppConfig.STATUS_OK) {
+                        SQMVCfinishedListener.onFailure(response.body().getCode(), 2);
+                    } else {
+                        SQMVCfinishedListener.onSuccessSurveyDetailsFetched(response.body().getData());
                     }
+                    Log.e(debugTag, response.body().getData().getQuestion().size()+"");
+                    for (QuestionStatsDetails details : response.body().getData().getQuestion()) {
+                        for (Stats stats: details.getStats()) {
+//                        Log.e(debugTag, "Answer title: "+stats.getTitle()+" Answer pers: "+stats.getPercentage()+"Count: "+stats.getCount());
+                        }
+                    }
+                } else {
+                    SQMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE, 2);
                 }
             }
 

@@ -269,4 +269,6 @@
     <style name="Widget.Design.AppBarLayout" parent="Base.Widget.Design.AppBarLayout">
         <item name="android:stateListAnimator">@anim/design_appbar_state_list_animator</item>
     </style>
+    <style name="leak_canary_LeakCanary.Base" parent="android:Theme.Material">
+  </style>
 </resources>

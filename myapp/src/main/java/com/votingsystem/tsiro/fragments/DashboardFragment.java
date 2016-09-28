@@ -18,6 +18,7 @@ import android.view.ViewGroup;
 
 import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
+import com.squareup.leakcanary.RefWatcher;
 import com.votingsystem.tsiro.DashboardActivityMVC.DAMVCPresenterImpl;
 import com.votingsystem.tsiro.DashboardActivityMVC.DAMVCView;
 import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
@@ -63,11 +64,9 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        Log.e(debugTag, "onActivityCreated");
         if (((AppCompatActivity)getActivity()).getSupportActionBar() != null) ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.home));
-        DAMVCpresenterImpl      = new DAMVCPresenterImpl(this);
         networkStateReceiver    = new NetworkStateReceiver();
-        networkStateReceiver.addListener(this);
-        getActivity().registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
 
         activityCreated = true;
 
@@ -86,11 +85,23 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
+    public void onResume() {
+        super.onResume();
+        DAMVCpresenterImpl = new DAMVCPresenterImpl(this);
+        networkStateReceiver.addListener(this);
+        getActivity().registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
+        Log.e(debugTag, "onResume");
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        Log.e(debugTag, "onPause");
         networkStateReceiver.removeListener(this);
         getActivity().unregisterReceiver(networkStateReceiver);
         this.DAMVCpresenterImpl.onDestroy();
+//        RefWatcher refWatcher = MyApplication.getRefWatcher(getActivity());
+//        refWatcher.watch(this);
     }
 
     @Override
@@ -112,8 +123,8 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
 
     @Override
     public void onSuccessFetchTableData(List<JnctFirmSurveysFields> jnctFirmSurveysFieldsList, List<SurveysFields> surveysFieldsList) {
-        if (!MySQLiteHelper.getInstance(getActivity()).checkDatabase()) {
-            MySQLiteHelper.getInstance(getActivity()).createDatabase();
+        if (!MySQLiteHelper.getInstance(getActivity()).checkDatabase(getActivity())) {
+            MySQLiteHelper.getInstance(getActivity()).createDatabase(getActivity());
             MySQLiteHelper.getInstance(getActivity()).openDatabase();
             if (!MySQLiteHelper.getInstance(getActivity()).isDatabaseEmpty()) {
                 MySQLiteHelper.getInstance(getActivity()).insertToDatabase(getResources().getString(R.string.jnct_table), jnctFirmSurveysFieldsList, null);

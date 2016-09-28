@@ -398,13 +398,13 @@
                     "endOffset": 12747
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/9.4.0/res/values-v11/values.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/9.6.1/res/values-v11/values.xml",
                     "position": {
                         "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 219,
+                        "startOffset": 232,
                         "endColumn": 117,
-                        "endOffset": 332
+                        "endOffset": 345
                     }
                 }
             }

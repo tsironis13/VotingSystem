@@ -34,10 +34,14 @@ public class SAMVCInteractorImpl implements SAMVCInteractor {
         allSurveys.enqueue(new Callback<AllSurveys>() {
             @Override
             public void onResponse(Response<AllSurveys> response, Retrofit retrofit) {
-                if (response.body().getCode() != AppConfig.STATUS_OK) {
-                    SAMVCfinishedListener.onFailure(response.body().getCode(), 1);
+                if (response.body() != null) {
+                    if (response.body().getCode() != AppConfig.STATUS_OK) {
+                        SAMVCfinishedListener.onFailure(response.body().getCode(), 1);
+                    } else {
+                        SAMVCfinishedListener.onSuccessSurveysFetched(response.body().getData(), allSurveysBody.getOffset(), response.body().getTotal());
+                    }
                 } else {
-                    SAMVCfinishedListener.onSuccessSurveysFetched(response.body().getData(), allSurveysBody.getOffset(), response.body().getTotal());
+                    SAMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE, 1);
                 }
             }
 
@@ -59,10 +63,14 @@ public class SAMVCInteractorImpl implements SAMVCInteractor {
         surveyDetails.enqueue(new Callback<SurveyDetails>() {
             @Override
             public void onResponse(Response<SurveyDetails> response, Retrofit retrofit) {
-                if (response.body().getCode() != AppConfig.STATUS_OK) {
-                    SAMVCfinishedListener.onFailure(response.body().getCode(), 2);
+                if (response.body() != null) {
+                    if (response.body().getCode() != AppConfig.STATUS_OK) {
+                        SAMVCfinishedListener.onFailure(response.body().getCode(), 2);
+                    } else {
+                        SAMVCfinishedListener.onSuccessSurveyDetailsFetched(response.body().getData());
+                    }
                 } else {
-                    SAMVCfinishedListener.onSuccessSurveyDetailsFetched(response.body().getData());
+                    SAMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE, 2);
                 }
             }
 

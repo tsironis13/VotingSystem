@@ -1,4 +1,6 @@
 package com.votingsystem.tsiro.app;
+import android.content.Context;
+
 import com.google.gson.Gson;
 import com.votingsystem.tsiro.rest.ApiService;
 import com.votingsystem.tsiro.rest.ServiceGenerator;

@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="default_web_client_id" translatable="false">756493988923-8p9kv48ais6pkoojpbak602mbmaud40g.apps.googleusercontent.com</string>
-    <string name="firebase_database_url" translatable="false">https://votingsystem-6a6ab.firebaseio.com</string>
-    <string name="gcm_defaultSenderId" translatable="false">756493988923</string>
-    <string name="google_api_key" translatable="false">AIzaSyDkNllRZQVi550KIrmqCHcvWBvX7wMQgWI</string>
-    <string name="google_app_id" translatable="false">1:756493988923:android:3b28a2ab9893ff12</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDkNllRZQVi550KIrmqCHcvWBvX7wMQgWI</string>
-    <string name="google_storage_bucket" translatable="false">votingsystem-6a6ab.appspot.com</string>
+    <string name="default_web_client_id" translatable="false">382588286328-ac75qkt60273698jl2mq2kba82lq2r2f.apps.googleusercontent.com</string>
+    <string name="firebase_database_url" translatable="false">https://votingsystem-6bf68.firebaseio.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">382588286328</string>
+    <string name="google_api_key" translatable="false">AIzaSyAYh89FuroWnijTqFsxJQUBiW9nSeq4ZUs</string>
+    <string name="google_app_id" translatable="false">1:382588286328:android:3b28a2ab9893ff12</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAYh89FuroWnijTqFsxJQUBiW9nSeq4ZUs</string>
+    <string name="google_storage_bucket" translatable="false">votingsystem-6bf68.appspot.com</string>
 </resources>

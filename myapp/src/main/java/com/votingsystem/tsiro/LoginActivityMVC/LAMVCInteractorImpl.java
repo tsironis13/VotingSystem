@@ -24,12 +24,12 @@ import retrofit.Retrofit;
 /**
  * Created by user on 5/2/2016.
  */
-public class LAMVCInteractorImpl implements LAMVCInteractor {
+class LAMVCInteractorImpl implements LAMVCInteractor {
 
     private static final String debugTag = LAMVCInteractorImpl.class.getSimpleName();
     private ApiService apiService;
 
-    public LAMVCInteractorImpl() {
+    LAMVCInteractorImpl() {
         apiService = RetrofitSingleton.getInstance().getApiService();
     }
 
@@ -42,12 +42,16 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
                 if (isAdded) {
                     Log.e(debugTag, response+"");
                     Log.e(debugTag, response.body()+"");
-                    if (response.body().getCode() != AppConfig.STATUS_OK) {
-                        LAMVCfinishedListener.onFailure(response.body().getCode(), response.body().getTag(), response.body().getHint(), null);
+                    if (response.body() != null) {
+                        if (response.body().getCode() != AppConfig.STATUS_OK) {
+                            LAMVCfinishedListener.onFailure(response.body().getCode(), response.body().getTag(), response.body().getHint(), null);
+                        } else {
+                            LAMVCfinishedListener.onSuccess();
+                        }
+                        Log.e(debugTag, "Code: "+response.body().getCode()+ " TAG: "+response.body().getTag()+" Hint: "+response.body().getHint());
                     } else {
-                        LAMVCfinishedListener.onSuccess();
+                        LAMVCfinishedListener.displayFeedbackMsg(AppConfig.UNAVAILABLE_SERVICE);
                     }
-                    Log.e(debugTag, "Code: "+response.body().getCode()+ " TAG: "+response.body().getTag()+" Hint: "+response.body().getHint());
                 }
             }
             @Override
@@ -72,11 +76,15 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
             @Override
             public void onResponse(Response<LoginAndResetUserPasswordStuff> response, Retrofit retrofit) {
                 if (isAdded) {
-                    if (response.body().getCode() != AppConfig.STATUS_OK) {
-                        String retry_in = (response.body().getRetryIn() != null) ? response.body().getRetryIn() : null;
-                        LAMVCfinishedListener.onFailure(response.body().getCode(), "", response.body().getHint(), retry_in);
+                    if (response.body() != null) {
+                        if (response.body().getCode() != AppConfig.STATUS_OK) {
+                            String retry_in = (response.body().getRetryIn() != null) ? response.body().getRetryIn() : null;
+                            LAMVCfinishedListener.onFailure(response.body().getCode(), "", response.body().getHint(), retry_in);
+                        } else {
+                            LAMVCfinishedListener.onSuccess();
+                        }
                     } else {
-                        LAMVCfinishedListener.onSuccess();
+                        LAMVCfinishedListener.displayFeedbackMsg(AppConfig.UNAVAILABLE_SERVICE);
                     }
                 }
             }
@@ -101,10 +109,15 @@ public class LAMVCInteractorImpl implements LAMVCInteractor {
             @Override
             public void onResponse(Response<LoginAndResetUserPasswordStuff> response, Retrofit retrofit) {
                 if (isAdded) {
-                    if (response.body().getCode() != AppConfig.STATUS_OK) {
-                        LAMVCfinishedListener.onFailure(response.body().getCode(), "", "", null);
+                    Log.e(debugTag, response.body()+"");
+                    if (response.body() != null) {
+                        if (response.body().getCode() != AppConfig.STATUS_OK) {
+                            LAMVCfinishedListener.onFailure(response.body().getCode(), "", "", null);
+                        } else {
+                            LAMVCfinishedListener.onSuccessUserSignIn(response.body().getUserId(), response.body().getUsername(), response.body().getEmail(), response.body().getFirmId());
+                        }
                     } else {
-                        LAMVCfinishedListener.onSuccessUserSignIn(response.body().getUserId(), response.body().getUsername(), response.body().getEmail(), response.body().getFirmId());
+                        LAMVCfinishedListener.displayFeedbackMsg(AppConfig.UNAVAILABLE_SERVICE);
                     }
                 }
             }

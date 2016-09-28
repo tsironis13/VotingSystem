@@ -32,7 +32,5 @@ public class MyInstanceIDListenerService extends FirebaseInstanceIdService {
             intent.putExtra(getResources().getString(R.string.registration_token), refreshedToken);
             LocalBroadcastManager.getInstance(this).sendBroadcast(intent);
         }
-        // TODO: Implement this method to send any registration to your app's servers.
-        //sendRegistrationToServer(refreshedToken);
     }
 }

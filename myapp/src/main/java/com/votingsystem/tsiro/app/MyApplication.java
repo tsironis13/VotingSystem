@@ -6,8 +6,8 @@ import android.content.Context;
 import android.util.DisplayMetrics;
 import android.util.Log;
 
-//import com.squareup.leakcanary.LeakCanary;
-//import com.squareup.leakcanary.RefWatcher;
+import com.squareup.leakcanary.LeakCanary;
+import com.squareup.leakcanary.RefWatcher;
 
 /**
  * Created by user on 10/10/2015.
@@ -15,17 +15,22 @@ import android.util.Log;
 public class MyApplication extends Application {
 
     private static MyApplication sInstance;
-    //private RefWatcher refWatcher;
+    private RefWatcher refWatcher;
 
-    //public static RefWatcher getRefWatcher(Context context) {
-        //MyApplication application = (MyApplication) context.getApplicationContext();
-        //return application.refWatcher;
-    //}
+    public static RefWatcher getRefWatcher(Context context) {
+        MyApplication application = (MyApplication) context.getApplicationContext();
+        return application.refWatcher;
+    }
 
     @Override
     public void onCreate() {
         super.onCreate();
-        //refWatcher = LeakCanary.install(this);
+        if (LeakCanary.isInAnalyzerProcess(this)) {
+            // This process is dedicated to LeakCanary for heap analysis.
+            // You should not init your app in this process.
+            return;
+        }
+        refWatcher = LeakCanary.install(this);
         //sInstance = this;
     }
 

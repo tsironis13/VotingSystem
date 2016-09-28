@@ -37,6 +37,7 @@
         <item>ΣΕ ΕΞΕΛΙΞΗ</item>
         <item>ΕΚΚΡΕΜΟΥΝ</item>
     </string-array>
+    <attr format="reference" name="MediaRouteControllerWindowBackground"/>
     <attr format="reference" name="castExpandedControllerToolbarStyle"/>
     <attr format="integer|reference" name="dp_animDuration"/>
     <attr format="integer" name="dp_day"/>
@@ -63,14 +64,26 @@
     <attr format="reference" name="drawerArrowStyle"/>
     <attr format="dimension" name="height"/>
     <attr format="boolean" name="isLightTheme"/>
+    <attr format="reference" name="mediaRouteAudioTrackDrawable"/>
     <attr format="reference" name="mediaRouteButtonStyle"/>
     <attr format="reference" name="mediaRouteCastDrawable"/>
+    <attr format="reference" name="mediaRouteChooserPrimaryTextStyle"/>
+    <attr format="reference" name="mediaRouteChooserSecondaryTextStyle"/>
+    <attr format="reference" name="mediaRouteCloseDrawable"/>
+    <attr format="reference" name="mediaRouteCollapseGroupDrawable"/>
     <attr format="reference" name="mediaRouteConnectingDrawable"/>
+    <attr format="reference" name="mediaRouteControllerPrimaryTextStyle"/>
+    <attr format="reference" name="mediaRouteControllerSecondaryTextStyle"/>
+    <attr format="reference" name="mediaRouteControllerTitleTextStyle"/>
+    <attr format="reference" name="mediaRouteDefaultIconDrawable"/>
+    <attr format="reference" name="mediaRouteExpandGroupDrawable"/>
     <attr format="reference" name="mediaRouteOffDrawable"/>
     <attr format="reference" name="mediaRouteOnDrawable"/>
     <attr format="reference" name="mediaRoutePauseDrawable"/>
     <attr format="reference" name="mediaRoutePlayDrawable"/>
-    <attr format="reference" name="mediaRouteSettingsDrawable"/>
+    <attr format="reference" name="mediaRouteSpeakerGroupIconDrawable"/>
+    <attr format="reference" name="mediaRouteSpeakerIconDrawable"/>
+    <attr format="reference" name="mediaRouteTvIconDrawable"/>
     <attr format="float" name="pv_progress"/>
     <attr format="integer" name="pv_progressMode">
         <enum name="determinate" value="0x00000000"/>
@@ -115,14 +128,18 @@
     <color name="cardview_light_background">#FFFAFAFA</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
+    <color name="cast_expanded_controller_ad_container_white_stripe_color">#1AFFFFFF</color>
+    <color name="cast_expanded_controller_ad_label_background_color">#2F000000</color>
     <color name="cast_expanded_controller_background_color">#000000</color>
     <color name="cast_expanded_controller_progress_text_color">#E5FFFFFF</color>
+    <color name="cast_expanded_controller_seek_bar_progress_background_tint_color">#7FFFFFFF</color>
     <color name="cast_expanded_controller_text_color">#FFFFFF</color>
     <color name="cast_intro_overlay_background_color">#CC000000</color>
     <color name="cast_intro_overlay_button_background_color">#BB33B5E5</color>
     <color name="cast_libraries_material_featurehighlight_outer_highlight_default_color">#2196F3</color>
     <color name="cast_libraries_material_featurehighlight_text_body_color">#FFFFFFFF</color>
     <color name="cast_libraries_material_featurehighlight_text_header_color">#FFFFFFFF</color>
+    <color name="cast_mini_controller_disabled_button_drawable_tint_color">#7FFFFFFF</color>
     <color name="colorControlHightlight">#8001579B</color>
     <color name="common_google_signin_btn_text_dark_default">@android:color/white</color>
     <color name="common_google_signin_btn_text_dark_disabled">#1F000000</color>
@@ -132,14 +149,6 @@
     <color name="common_google_signin_btn_text_light_disabled">#1F000000</color>
     <color name="common_google_signin_btn_text_light_focused">#90000000</color>
     <color name="common_google_signin_btn_text_light_pressed">#DE000000</color>
-    <color name="common_plus_signin_btn_text_dark_default">@android:color/white</color>
-    <color name="common_plus_signin_btn_text_dark_disabled">#FFAAAAAA</color>
-    <color name="common_plus_signin_btn_text_dark_focused">@android:color/white</color>
-    <color name="common_plus_signin_btn_text_dark_pressed">@android:color/white</color>
-    <color name="common_plus_signin_btn_text_light_default">#FF737373</color>
-    <color name="common_plus_signin_btn_text_light_disabled">#FFAAAAAA</color>
-    <color name="common_plus_signin_btn_text_light_focused">#FF737373</color>
-    <color name="common_plus_signin_btn_text_light_pressed">#DE000000</color>
     <color name="connection_settings_ripple_color">#E0E0E0</color>
     <color name="connection_settings_text_color">#424242</color>
     <color name="default_disabled">#aaa</color>
@@ -689,7 +698,12 @@
     <dimen name="cardview_compat_inset_shadow">1dp</dimen>
     <dimen name="cardview_default_elevation">2dp</dimen>
     <dimen name="cardview_default_radius">2dp</dimen>
-    <dimen name="cast_expanded_controller_control_button_margin">12dp</dimen>
+    <dimen name="cast_expanded_controller_ad_in_progress_label_layout_height">240dp</dimen>
+    <dimen name="cast_expanded_controller_ad_in_progress_label_layout_width">-1px</dimen>
+    <dimen name="cast_expanded_controller_control_button_margin">24dp</dimen>
+    <dimen name="cast_expanded_controller_control_toolbar_min_height">56dp</dimen>
+    <dimen name="cast_expanded_controller_margin_between_seek_bar_and_control_buttons">12dp</dimen>
+    <dimen name="cast_expanded_controller_margin_between_status_text_and_seek_bar">24dp</dimen>
     <dimen name="cast_intro_overlay_button_margin_bottom">50dp</dimen>
     <dimen name="cast_intro_overlay_focus_radius">35dp</dimen>
     <dimen name="cast_intro_overlay_title_margin_top">100dp</dimen>
@@ -842,7 +856,12 @@
     <dimen name="matrix_table_labels_container_height">60dp</dimen>
     <dimen name="matrix_table_view_label_height">8dp</dimen>
     <dimen name="middle_view_padding_top">15dp</dimen>
-    <dimen name="mr_media_route_controller_art_max_height">320dp</dimen>
+    <dimen name="mr_controller_volume_group_list_item_height">68dp</dimen>
+    <dimen name="mr_controller_volume_group_list_item_icon_size">24dp</dimen>
+    <dimen name="mr_controller_volume_group_list_max_height">288dp</dimen>
+    <dimen name="mr_controller_volume_group_list_padding_top">16dp</dimen>
+    <dimen name="mr_dialog_fixed_width_major">320dp</dimen>
+    <dimen name="mr_dialog_fixed_width_minor">320dp</dimen>
     <dimen name="nav_drawer_header_height">190dp</dimen>
     <dimen name="nav_drawer_header_padding_left_right">16dp</dimen>
     <dimen name="nav_drawer_width">280dp</dimen>
@@ -999,7 +1018,12 @@
     <integer name="cast_libraries_material_featurehighlight_pulse_base_alpha">138</integer>
     <integer name="design_snackbar_text_max_lines">2</integer>
     <integer name="dialogplus_animation_default_duration">300</integer>
-    <integer name="google_play_services_version">9452000</integer>
+    <integer name="google_play_services_version">9683000</integer>
+    <integer name="leak_canary_max_stored_leaks">7</integer>
+    <integer name="leak_canary_watch_delay_millis">5000</integer>
+    <integer name="mr_controller_volume_group_list_animation_duration_ms">400</integer>
+    <integer name="mr_controller_volume_group_list_fade_in_duration_ms">400</integer>
+    <integer name="mr_controller_volume_group_list_fade_out_duration_ms">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
@@ -1059,12 +1083,16 @@
     <string name="back_pressed">backpressed</string>
     <string name="bottom_sheet_behavior" translatable="false">android.support.design.widget.BottomSheetBehavior</string>
     <string name="cancel">Ακυρωση</string>
+    <string name="cast_ad_label">Ad</string>
     <string name="cast_casting_to_device">Casting to %1$s</string>
     <string name="cast_closed_captions">Closed captions</string>
     <string name="cast_closed_captions_unavailable">Closed captions unavailable</string>
     <string name="cast_disconnect">Disconnect</string>
+    <string name="cast_expanded_controller_ad_in_progress">Ad in progress…</string>
     <string name="cast_expanded_controller_background_image">Album art</string>
+    <string name="cast_expanded_controller_live_stream_indicator">Live stream</string>
     <string name="cast_expanded_controller_loading">Loading…</string>
+    <string name="cast_expanded_controller_skip_ad_label">Skip</string>
     <string name="cast_forward">Forward</string>
     <string name="cast_forward_10">Forward ten seconds</string>
     <string name="cast_forward_30">Forward thirty seconds</string>
@@ -1090,7 +1118,6 @@
     <string name="cast_tracks_chooser_dialog_default_track_name">Track <ns1:g example="2" id="position">%1$d</ns1:g></string>
     <string name="cast_tracks_chooser_dialog_no_audio_tracks">No Audio Tracks Available</string>
     <string name="cast_tracks_chooser_dialog_no_text_tracks">No Text Tracks Available</string>
-    <string name="cast_tracks_chooser_dialog_no_tracks_available"> No tracks available</string>
     <string name="cast_tracks_chooser_dialog_none">None</string>
     <string name="cast_tracks_chooser_dialog_ok">OK</string>
     <string name="cast_tracks_chooser_dialog_subtitles">Subtitles</string>
@@ -1107,7 +1134,7 @@
     <string msgid="2523291102206661146" name="common_google_play_services_enable_button">Enable</string>
     <string msgid="227660514972886228" name="common_google_play_services_enable_text"><ns1:g id="app_name">%1$s</ns1:g> won\'t work unless you enable Google Play services.</string>
     <string msgid="5122002158466380389" name="common_google_play_services_enable_title">Enable Google Play services</string>
-    <string msgid="7153882981874058840" name="common_google_play_services_install_button">Get Google Play services</string>
+    <string msgid="7153882981874058840" name="common_google_play_services_install_button">Install</string>
     <string msgid="2122112764540849864" name="common_google_play_services_install_text_phone"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are missing from your phone.</string>
     <string msgid="7351599665250191022" name="common_google_play_services_install_text_tablet"><ns1:g id="app_name">%1$s</ns1:g> won\'t run without Google Play services, which are missing from your tablet.</string>
     <string msgid="7215213145546190223" name="common_google_play_services_install_title">Get Google Play services</string>
@@ -1148,8 +1175,12 @@
     <string name="data_picker">datapicker</string>
     <string name="database">SurveysDB</string>
     <string name="date_format">dd-MM-yyyy HH:mm:ss zzz</string>
+    <string name="debug_menu_ad_information">Ad Information</string>
+    <string name="debug_menu_creative_preview">Creative Preview</string>
+    <string name="debug_menu_title">Select a Debug Mode</string>
+    <string name="debug_menu_troubleshooting">Troubleshooting</string>
     <string name="decline">Decline</string>
-    <string name="default_web_client_id" translatable="false">756493988923-8p9kv48ais6pkoojpbak602mbmaud40g.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">382588286328-ac75qkt60273698jl2mq2kba82lq2r2f.apps.googleusercontent.com</string>
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="details_activ_action_key">details_activ_action_key</string>
     <string name="details_title">Πληροφορίες</string>
@@ -1185,7 +1216,7 @@
     <string name="error_reset_password_already_requested">Το αίτημα αλλαγής κωδικού έχει ήδη σταλεί. Παρακαλώ ξαναπροσπάθησε σε %1$s.</string>
     <string name="expanded">expanded</string>
     <string name="final_animation">final</string>
-    <string name="firebase_database_url" translatable="false">https://votingsystem-6a6ab.firebaseio.com</string>
+    <string name="firebase_database_url" translatable="false">https://votingsystem-6bf68.firebaseio.com</string>
     <string name="firm">Η Εταιρεία</string>
     <string name="firm_code_tag">firm_code</string>
     <string name="firm_id">firm_id</string>
@@ -1197,17 +1228,17 @@
     <string name="free_answer">Ελεύθερη απάντηση</string>
     <string name="free_answer_hint">Γράψε την απάντηση σου εδώ.</string>
     <string name="fromshared_logo_trns">fromsharedlogoTrns</string>
-    <string name="gcm_defaultSenderId" translatable="false">756493988923</string>
+    <string name="gcm_defaultSenderId" translatable="false">382588286328</string>
     <string name="gcm_senderId">747222558005</string>
     <string name="get_firm_names">firm_names</string>
     <string name="get_firm_survey_details">firm_survey_details</string>
     <string name="get_survey_questions">survey_questions</string>
     <string name="get_survey_stats">survey_stats</string>
     <string name="gone">gone</string>
-    <string name="google_api_key" translatable="false">AIzaSyDkNllRZQVi550KIrmqCHcvWBvX7wMQgWI</string>
-    <string name="google_app_id" translatable="false">1:756493988923:android:3b28a2ab9893ff12</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDkNllRZQVi550KIrmqCHcvWBvX7wMQgWI</string>
-    <string name="google_storage_bucket" translatable="false">votingsystem-6a6ab.appspot.com</string>
+    <string name="google_api_key" translatable="false">AIzaSyAYh89FuroWnijTqFsxJQUBiW9nSeq4ZUs</string>
+    <string name="google_app_id" translatable="false">1:382588286328:android:3b28a2ab9893ff12</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyAYh89FuroWnijTqFsxJQUBiW9nSeq4ZUs</string>
+    <string name="google_storage_bucket" translatable="false">votingsystem-6bf68.appspot.com</string>
     <string name="happy">happy</string>
     <string name="have_survey">Έχεις έτοιμη έρευνα?</string>
     <string name="have_survey_desc">Πρότεινε τη δική σου έρευνα σχετικά με το περιβάλλον εργασίας μιας επιχείρησης.</string>
@@ -1220,6 +1251,28 @@
     <string name="just_text">%1$s</string>
     <string name="last_created_date">Ημ. δημιουργίας \nτελευταίας έρευνας</string>
     <string name="last_modified_date_label">Ημ.τελευταίας \nτροποποίησης</string>
+    <string name="leak_canary_analysis_failed">Leak analysis failed</string>
+    <string name="leak_canary_class_has_leaked">%1$s leaked %2$s</string>
+    <string name="leak_canary_could_not_save_text">LeakCanary was unable to save the analysis result.</string>
+    <string name="leak_canary_could_not_save_title">Could not save result.</string>
+    <string name="leak_canary_delete">Delete</string>
+    <string name="leak_canary_delete_all">Delete all</string>
+    <string name="leak_canary_display_activity_label">Leaks</string>
+    <string name="leak_canary_excluded_row">[Excluded] %s</string>
+    <string name="leak_canary_failure_report">"Please report this failure to http://github.com/square/leakcanary\n"</string>
+    <string name="leak_canary_leak_excluded">[Excluded] %1$s leaked %2$s</string>
+    <string name="leak_canary_leak_list_title">Leaks in %s</string>
+    <string name="leak_canary_no_leak_text">The GC was being lazy.</string>
+    <string name="leak_canary_no_leak_title">No leak found</string>
+    <string name="leak_canary_notification_message">Click for more details</string>
+    <string name="leak_canary_permission_not_granted">Please grant external storage permission, otherwise memory leaks will not be detected.</string>
+    <string name="leak_canary_permission_notification_text">Click to enable storage permission for %s.</string>
+    <string name="leak_canary_permission_notification_title">Leak detected, need permission</string>
+    <string name="leak_canary_share_heap_dump">Share heap dump</string>
+    <string name="leak_canary_share_leak">Share info</string>
+    <string name="leak_canary_share_with">Share with…</string>
+    <string name="leak_canary_storage_permission_activity_label">Storage permission</string>
+    <string name="leak_canary_toast_heap_dump">Dumping memory, app will freeze. Brrrr.</string>
     <string name="list_selection">Επιλογή από λίστα</string>
     <string name="list_surveys">list_surveys</string>
     <string name="login_user">login_user</string>
@@ -1231,15 +1284,20 @@
     <string name="message">Παρακαλώ περιμένετε...</string>
     <string name="middle_animation">middle</string>
     <string name="more">Περισσοτερα</string>
-    <string name="mr_media_route_button_content_description">Cast</string>
-    <string name="mr_media_route_chooser_searching">Searching for devices\u2026</string>
-    <string name="mr_media_route_chooser_title">Connect to device</string>
-    <string name="mr_media_route_controller_disconnect">Disconnect</string>
-    <string name="mr_media_route_controller_no_info_available">No info available</string>
-    <string name="mr_media_route_controller_pause">Pause</string>
-    <string name="mr_media_route_controller_play">Play</string>
-    <string name="mr_media_route_controller_settings_description">Route settings</string>
-    <string name="mr_media_route_controller_stop">Stop casting</string>
+    <string name="mr_button_content_description">Cast button</string>
+    <string name="mr_chooser_searching">Finding devices</string>
+    <string name="mr_chooser_title">Cast to</string>
+    <string name="mr_controller_album_art">Album art</string>
+    <string name="mr_controller_casting_screen">Casting screen</string>
+    <string name="mr_controller_close_description">Close</string>
+    <string name="mr_controller_collapse_group">Collapse</string>
+    <string name="mr_controller_disconnect">Disconnect</string>
+    <string name="mr_controller_expand_group">Expand</string>
+    <string name="mr_controller_no_info_available">No info available</string>
+    <string name="mr_controller_no_media_selected">No media selected</string>
+    <string name="mr_controller_pause">Pause</string>
+    <string name="mr_controller_play">Play</string>
+    <string name="mr_controller_stop">Stop casting</string>
     <string name="mr_system_route_name">System</string>
     <string name="mr_user_route_category_name">Devices</string>
     <string name="multiple_choice">Πολλαπλής επιλογής</string>
@@ -3385,26 +3443,65 @@
     <item name="android:backgroundDimEnabled">false</item>
   </style>
     <style name="Theme.MediaRouter" parent="">
+        <item name="android:windowNoTitle">false</item>
         <item name="mediaRouteButtonStyle">@style/Widget.MediaRouter.MediaRouteButton</item>
 
+        <item name="MediaRouteControllerWindowBackground">@drawable/mr_dialog_material_background_dark</item>
         <item name="mediaRouteOffDrawable">@drawable/ic_media_route_off_mono_dark</item>
-        <item name="mediaRouteConnectingDrawable">@drawable/mr_ic_media_route_connecting_mono_dark</item>
-        <item name="mediaRouteOnDrawable">@drawable/ic_media_route_on_mono_dark</item>
-        <item name="mediaRouteSettingsDrawable">@drawable/mr_ic_settings_dark</item>
+        <item name="mediaRouteConnectingDrawable">@drawable/mr_ic_media_route_connecting_dark</item>
+        <item name="mediaRouteOnDrawable">@drawable/mr_ic_media_route_on_dark</item>
+        <item name="mediaRouteCloseDrawable">@drawable/mr_ic_close_dark</item>
         <item name="mediaRoutePlayDrawable">@drawable/mr_ic_play_dark</item>
         <item name="mediaRoutePauseDrawable">@drawable/mr_ic_pause_dark</item>
         <item name="mediaRouteCastDrawable">@drawable/mr_ic_cast_dark</item>
+        <item name="mediaRouteAudioTrackDrawable">@drawable/ic_audiotrack</item>
+        <item name="mediaRouteDefaultIconDrawable">@drawable/ic_cast_white</item>
+        <item name="mediaRouteTvIconDrawable">@drawable/ic_tv_dark</item>
+        <item name="mediaRouteSpeakerIconDrawable">@drawable/ic_speaker_dark</item>
+        <item name="mediaRouteSpeakerGroupIconDrawable">@drawable/ic_speaker_group_dark</item>
+        <item name="mediaRouteChooserPrimaryTextStyle">@style/Widget.MediaRouter.ChooserText.Primary.Dark</item>
+        <item name="mediaRouteChooserSecondaryTextStyle">@style/Widget.MediaRouter.ChooserText.Secondary.Dark</item>
+        <item name="mediaRouteControllerTitleTextStyle">@style/Widget.MediaRouter.ControllerText.Title.Dark</item>
+        <item name="mediaRouteControllerPrimaryTextStyle">@style/Widget.MediaRouter.ControllerText.Primary.Dark</item>
+        <item name="mediaRouteControllerSecondaryTextStyle">@style/Widget.MediaRouter.ControllerText.Secondary.Dark</item>
     </style>
-    <style name="Theme.MediaRouter.Light" parent="">
+    <style name="Theme.MediaRouter.Light">
         <item name="mediaRouteButtonStyle">@style/Widget.MediaRouter.Light.MediaRouteButton</item>
 
+        <item name="MediaRouteControllerWindowBackground">@drawable/mr_dialog_material_background_light</item>
         <item name="mediaRouteOffDrawable">@drawable/ic_cast_off_light</item>
-        <item name="mediaRouteConnectingDrawable">@drawable/mr_ic_media_route_connecting_mono_light</item>
-        <item name="mediaRouteOnDrawable">@drawable/ic_cast_on_light</item>
-        <item name="mediaRouteSettingsDrawable">@drawable/mr_ic_settings_light</item>
+        <item name="mediaRouteConnectingDrawable">@drawable/mr_ic_media_route_connecting_light</item>
+        <item name="mediaRouteOnDrawable">@drawable/mr_ic_media_route_on_light</item>
+        <item name="mediaRouteCloseDrawable">@drawable/mr_ic_close_light</item>
         <item name="mediaRoutePlayDrawable">@drawable/mr_ic_play_light</item>
         <item name="mediaRoutePauseDrawable">@drawable/mr_ic_pause_light</item>
         <item name="mediaRouteCastDrawable">@drawable/mr_ic_cast_light</item>
+        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_ic_audiotrack_light</item>
+        <item name="mediaRouteDefaultIconDrawable">@drawable/ic_cast_grey</item>
+        <item name="mediaRouteTvIconDrawable">@drawable/ic_tv_light</item>
+        <item name="mediaRouteSpeakerIconDrawable">@drawable/ic_speaker_light</item>
+        <item name="mediaRouteSpeakerGroupIconDrawable">@drawable/ic_speaker_group_light</item>
+        <item name="mediaRouteChooserPrimaryTextStyle">@style/Widget.MediaRouter.ChooserText.Primary.Light</item>
+        <item name="mediaRouteChooserSecondaryTextStyle">@style/Widget.MediaRouter.ChooserText.Secondary.Light</item>
+        <item name="mediaRouteControllerTitleTextStyle">@style/Widget.MediaRouter.ControllerText.Title.Light</item>
+        <item name="mediaRouteControllerPrimaryTextStyle">@style/Widget.MediaRouter.ControllerText.Primary.Light</item>
+        <item name="mediaRouteControllerSecondaryTextStyle">@style/Widget.MediaRouter.ControllerText.Secondary.Light</item>
+    </style>
+    <style name="Theme.MediaRouter.Light.DarkControlPanel">
+        <item name="mediaRoutePlayDrawable">@drawable/mr_ic_play_dark</item>
+        <item name="mediaRoutePauseDrawable">@drawable/mr_ic_pause_dark</item>
+        <item name="mediaRouteCastDrawable">@drawable/mr_ic_cast_dark</item>
+        <item name="mediaRouteAudioTrackDrawable">@drawable/ic_audiotrack</item>
+        <item name="mediaRouteControllerPrimaryTextStyle">@style/Widget.MediaRouter.ControllerText.Primary.Dark</item>
+        <item name="mediaRouteControllerSecondaryTextStyle">@style/Widget.MediaRouter.ControllerText.Secondary.Dark</item>
+    </style>
+    <style name="Theme.MediaRouter.LightControlPanel">
+        <item name="mediaRoutePlayDrawable">@drawable/mr_ic_play_light</item>
+        <item name="mediaRoutePauseDrawable">@drawable/mr_ic_pause_light</item>
+        <item name="mediaRouteCastDrawable">@drawable/mr_ic_cast_light</item>
+        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_ic_audiotrack_light</item>
+        <item name="mediaRouteControllerPrimaryTextStyle">@style/Widget.MediaRouter.ControllerText.Primary.Light</item>
+        <item name="mediaRouteControllerSecondaryTextStyle">@style/Widget.MediaRouter.ControllerText.Secondary.Light</item>
     </style>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.AppCompat.ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar"/>
@@ -3598,22 +3695,74 @@
         <item name="passwordToggleDrawable">@drawable/design_ic_visibility</item>
         <item name="passwordToggleTint">@color/design_tint_password_toggle</item>
     </style>
+    <style name="Widget.MediaRouter.ChooserText" parent="">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textStyle">normal</item>
+    </style>
+    <style name="Widget.MediaRouter.ChooserText.Primary">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="Widget.MediaRouter.ChooserText.Primary.Dark">
+        <item name="android:textColor">#FFFFFFFF</item>
+    </style>
+    <style name="Widget.MediaRouter.ChooserText.Primary.Light">
+        <item name="android:textColor">#DE000000</item>
+    </style>
+    <style name="Widget.MediaRouter.ChooserText.Secondary">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Widget.MediaRouter.ChooserText.Secondary.Dark">
+        <item name="android:textColor">#8AFFFFFF</item>
+    </style>
+    <style name="Widget.MediaRouter.ChooserText.Secondary.Light">
+        <item name="android:textColor">#8A000000</item>
+    </style>
+    <style name="Widget.MediaRouter.ControllerText" parent="Widget.MediaRouter.ChooserText"/>
+    <style name="Widget.MediaRouter.ControllerText.Primary">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="Widget.MediaRouter.ControllerText.Primary.Dark">
+        <item name="android:textColor">#FFFFFFFF</item>
+    </style>
+    <style name="Widget.MediaRouter.ControllerText.Primary.Light">
+        <item name="android:textColor">#DE000000</item>
+    </style>
+    <style name="Widget.MediaRouter.ControllerText.Secondary">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Widget.MediaRouter.ControllerText.Secondary.Dark">
+        <item name="android:textColor">#FFFFFFFF</item>
+    </style>
+    <style name="Widget.MediaRouter.ControllerText.Secondary.Light">
+        <item name="android:textColor">#DE000000</item>
+    </style>
+    <style name="Widget.MediaRouter.ControllerText.Title">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">20sp</item>
+    </style>
+    <style name="Widget.MediaRouter.ControllerText.Title.Dark">
+        <item name="android:textColor">#FFFFFFFF</item>
+    </style>
+    <style name="Widget.MediaRouter.ControllerText.Title.Light">
+        <item name="android:textColor">#DE000000</item>
+    </style>
     <style name="Widget.MediaRouter.Light.MediaRouteButton" parent="Widget.AppCompat.Light.ActionButton">
-        <item name="android:minWidth">56dp</item>
-        <item name="android:minHeight">48dp</item>
-        <item name="android:padding">0dp</item>
-        <item name="android:focusable">true</item>
-        <item name="android:contentDescription">@string/mr_media_route_button_content_description</item>
+        <item name="android:contentDescription">@string/mr_button_content_description</item>
         <item name="externalRouteEnabledDrawable">@drawable/mr_ic_media_route_mono_light</item>
     </style>
     <style name="Widget.MediaRouter.MediaRouteButton" parent="Widget.AppCompat.ActionButton">
-        <item name="android:minWidth">56dp</item>
-        <item name="android:minHeight">48dp</item>
-        <item name="android:padding">0dp</item>
-        <item name="android:focusable">true</item>
-        <item name="android:contentDescription">@string/mr_media_route_button_content_description</item>
+        <item name="android:contentDescription">@string/mr_button_content_description</item>
         <item name="externalRouteEnabledDrawable">@drawable/mr_ic_media_route_mono_dark</item>
     </style>
+    <style name="leak_canary_LeakCanary.Base" parent="android:Theme">
+  </style>
+    <style name="leak_canary_Theme.Transparent" parent="android:Theme">
+    <item name="android:windowIsTranslucent">true</item>
+    <item name="android:windowBackground">@android:color/transparent</item>
+    <item name="android:windowContentOverlay">@null</item>
+    <item name="android:windowNoTitle">true</item>
+    <item name="android:backgroundDimEnabled">false</item>
+  </style>
     <style name="newSurveyTitle" parent="Material.Widget.EditText.Light">
         <item name="et_dividerColor">@drawable/divider_color</item>
         <item name="et_labelTextColor">@color/accentColor</item>

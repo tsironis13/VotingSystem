@@ -368,17 +368,17 @@
                     "startLine": 21,
                     "startColumn": 4,
                     "startOffset": 1999,
-                    "endColumn": 109,
-                    "endOffset": 2104
+                    "endColumn": 101,
+                    "endOffset": 2096
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
                     "position": {
-                        "startLine": 4,
+                        "startLine": 2,
                         "startColumn": 4,
-                        "startOffset": 282,
-                        "endColumn": 109,
-                        "endOffset": 387
+                        "startOffset": 55,
+                        "endColumn": 101,
+                        "endOffset": 152
                     }
                 }
             },
@@ -386,18 +386,18 @@
                 "to": {
                     "startLine": 22,
                     "startColumn": 4,
-                    "startOffset": 2109,
-                    "endColumn": 118,
-                    "endOffset": 2223
+                    "startOffset": 2101,
+                    "endColumn": 101,
+                    "endOffset": 2198
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
                     "position": {
-                        "startLine": 5,
+                        "startLine": 3,
                         "startColumn": 4,
-                        "startOffset": 392,
-                        "endColumn": 118,
-                        "endOffset": 506
+                        "startOffset": 157,
+                        "endColumn": 101,
+                        "endOffset": 254
                     }
                 }
             },
@@ -405,18 +405,18 @@
                 "to": {
                     "startLine": 23,
                     "startColumn": 4,
-                    "startOffset": 2228,
-                    "endColumn": 108,
-                    "endOffset": 2332
+                    "startOffset": 2203,
+                    "endColumn": 90,
+                    "endOffset": 2289
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
                     "position": {
-                        "startLine": 6,
+                        "startLine": 4,
                         "startColumn": 4,
-                        "startOffset": 511,
-                        "endColumn": 108,
-                        "endOffset": 615
+                        "startOffset": 259,
+                        "endColumn": 90,
+                        "endOffset": 345
                     }
                 }
             },
@@ -424,18 +424,18 @@
                 "to": {
                     "startLine": 24,
                     "startColumn": 4,
-                    "startOffset": 2337,
-                    "endColumn": 108,
-                    "endOffset": 2441
+                    "startOffset": 2294,
+                    "endColumn": 91,
+                    "endOffset": 2381
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 5,
                         "startColumn": 4,
-                        "startOffset": 620,
-                        "endColumn": 108,
-                        "endOffset": 724
+                        "startOffset": 350,
+                        "endColumn": 91,
+                        "endOffset": 437
                     }
                 }
             },
@@ -443,18 +443,18 @@
                 "to": {
                     "startLine": 25,
                     "startColumn": 4,
-                    "startOffset": 2446,
-                    "endColumn": 123,
-                    "endOffset": 2565
+                    "startOffset": 2386,
+                    "endColumn": 116,
+                    "endOffset": 2498
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 6,
                         "startColumn": 4,
-                        "startOffset": 729,
-                        "endColumn": 123,
-                        "endOffset": 848
+                        "startOffset": 442,
+                        "endColumn": 116,
+                        "endOffset": 554
                     }
                 }
             },
@@ -462,18 +462,18 @@
                 "to": {
                     "startLine": 26,
                     "startColumn": 4,
-                    "startOffset": 2570,
-                    "endColumn": 94,
-                    "endOffset": 2660
+                    "startOffset": 2503,
+                    "endColumn": 97,
+                    "endOffset": 2596
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 7,
                         "startColumn": 4,
-                        "startOffset": 853,
-                        "endColumn": 94,
-                        "endOffset": 943
+                        "startOffset": 559,
+                        "endColumn": 97,
+                        "endOffset": 652
                     }
                 }
             },
@@ -481,18 +481,18 @@
                 "to": {
                     "startLine": 27,
                     "startColumn": 4,
-                    "startOffset": 2665,
-                    "endColumn": 94,
-                    "endOffset": 2755
+                    "startOffset": 2601,
+                    "endColumn": 98,
+                    "endOffset": 2695
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 8,
                         "startColumn": 4,
-                        "startOffset": 948,
-                        "endColumn": 94,
-                        "endOffset": 1038
+                        "startOffset": 657,
+                        "endColumn": 98,
+                        "endOffset": 751
                     }
                 }
             },
@@ -500,18 +500,18 @@
                 "to": {
                     "startLine": 28,
                     "startColumn": 4,
-                    "startOffset": 2760,
-                    "endColumn": 116,
-                    "endOffset": 2872
+                    "startOffset": 2700,
+                    "endColumn": 97,
+                    "endOffset": 2793
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 9,
                         "startColumn": 4,
-                        "startOffset": 1043,
-                        "endColumn": 116,
-                        "endOffset": 1155
+                        "startOffset": 756,
+                        "endColumn": 97,
+                        "endOffset": 849
                     }
                 }
             },
@@ -519,18 +519,18 @@
                 "to": {
                     "startLine": 29,
                     "startColumn": 4,
-                    "startOffset": 2877,
-                    "endColumn": 107,
-                    "endOffset": 2980
+                    "startOffset": 2798,
+                    "endColumn": 96,
+                    "endOffset": 2890
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 10,
                         "startColumn": 4,
-                        "startOffset": 1160,
-                        "endColumn": 107,
-                        "endOffset": 1263
+                        "startOffset": 854,
+                        "endColumn": 96,
+                        "endOffset": 946
                     }
                 }
             },
@@ -538,18 +538,18 @@
                 "to": {
                     "startLine": 30,
                     "startColumn": 4,
-                    "startOffset": 2985,
-                    "endColumn": 85,
-                    "endOffset": 3066
+                    "startOffset": 2895,
+                    "endColumn": 111,
+                    "endOffset": 3002
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 11,
                         "startColumn": 4,
-                        "startOffset": 1268,
-                        "endColumn": 85,
-                        "endOffset": 1349
+                        "startOffset": 951,
+                        "endColumn": 111,
+                        "endOffset": 1058
                     }
                 }
             },
@@ -557,18 +557,18 @@
                 "to": {
                     "startLine": 31,
                     "startColumn": 4,
-                    "startOffset": 3071,
-                    "endColumn": 92,
-                    "endOffset": 3159
+                    "startOffset": 3007,
+                    "endColumn": 114,
+                    "endOffset": 3117
                 },
                 "from": {
-                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/23.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
                     "position": {
-                        "startLine": 14,
+                        "startLine": 12,
                         "startColumn": 4,
-                        "startOffset": 1354,
-                        "endColumn": 92,
-                        "endOffset": 1442
+                        "startOffset": 1063,
+                        "endColumn": 114,
+                        "endOffset": 1173
                     }
                 }
             },
@@ -576,9 +576,104 @@
                 "to": {
                     "startLine": 32,
                     "startColumn": 4,
-                    "startOffset": 3164,
+                    "startOffset": 3122,
+                    "endColumn": 84,
+                    "endOffset": 3202
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "position": {
+                        "startLine": 13,
+                        "startColumn": 4,
+                        "startOffset": 1178,
+                        "endColumn": 84,
+                        "endOffset": 1258
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 33,
+                    "startColumn": 4,
+                    "startOffset": 3207,
+                    "endColumn": 81,
+                    "endOffset": 3284
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "position": {
+                        "startLine": 14,
+                        "startColumn": 4,
+                        "startOffset": 1263,
+                        "endColumn": 81,
+                        "endOffset": 1340
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 34,
+                    "startColumn": 4,
+                    "startOffset": 3289,
+                    "endColumn": 95,
+                    "endOffset": 3380
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "position": {
+                        "startLine": 15,
+                        "startColumn": 4,
+                        "startOffset": 1345,
+                        "endColumn": 95,
+                        "endOffset": 1436
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 35,
+                    "startColumn": 4,
+                    "startOffset": 3385,
+                    "endColumn": 85,
+                    "endOffset": 3466
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "position": {
+                        "startLine": 16,
+                        "startColumn": 4,
+                        "startOffset": 1441,
+                        "endColumn": 85,
+                        "endOffset": 1522
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 36,
+                    "startColumn": 4,
+                    "startOffset": 3471,
+                    "endColumn": 92,
+                    "endOffset": 3559
+                },
+                "from": {
+                    "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/mediarouter-v7/24.0.0/res/values-gu-rIN/values-gu-rIN.xml",
+                    "position": {
+                        "startLine": 17,
+                        "startColumn": 4,
+                        "startOffset": 1527,
+                        "endColumn": 92,
+                        "endOffset": 1615
+                    }
+                }
+            },
+            {
+                "to": {
+                    "startLine": 37,
+                    "startColumn": 4,
+                    "startOffset": 3564,
                     "endColumn": 79,
-                    "endOffset": 3239
+                    "endOffset": 3639
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-gu-rIN/values-gu-rIN.xml",
@@ -593,11 +688,11 @@
             },
             {
                 "to": {
-                    "startLine": 33,
+                    "startLine": 38,
                     "startColumn": 4,
-                    "startOffset": 3244,
+                    "startOffset": 3644,
                     "endColumn": 100,
-                    "endOffset": 3340
+                    "endOffset": 3740
                 },
                 "from": {
                     "file": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.2.1/res/values-gu-rIN/values-gu-rIN.xml",

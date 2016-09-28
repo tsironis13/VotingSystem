@@ -1,8 +1,10 @@
 package com.votingsystem.tsiro.mainClasses;
 
+import android.Manifest;
 import android.app.Activity;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -60,7 +62,6 @@ import io.codetail.animation.SupportAnimator;
 import io.codetail.widget.RevealFrameLayout;
 
 public class LoginActivity extends AppCompatActivity implements NetworkStateListeners, LoginActivityCommonElementsAndMuchMore, RegistrationTokenListeners, SoftKeyboardStateListener {
-
     private static final String debugTag = LoginActivity.class.getSimpleName();
     private Bundle loginActivityBundle;
     private int connectionStatus;
