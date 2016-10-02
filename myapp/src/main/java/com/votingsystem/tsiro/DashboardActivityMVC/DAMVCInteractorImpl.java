@@ -2,8 +2,6 @@ package com.votingsystem.tsiro.DashboardActivityMVC;
 
 import android.util.Log;
 import com.votingsystem.tsiro.POJO.FirmSurveyDetails;
-import com.votingsystem.tsiro.POJO.JnctFirmSurveys;
-import com.votingsystem.tsiro.POJO.SurveysFields;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
 import com.votingsystem.tsiro.rest.ApiService;
@@ -37,33 +35,34 @@ class DAMVCInteractorImpl implements DAMVCInteractor {
                         if (response.body().getCode() != AppConfig.STATUS_OK) {
                             DAMVCfinishedListener.onFailure(AppConfig.STATUS_ERROR);
                         } else {
-                            Call<JnctFirmSurveys> call = apiService.getJnctFSData("remote_data");
-                            call.enqueue(new Callback<JnctFirmSurveys>() {
-                                @Override
-                                public void onResponse(Response<JnctFirmSurveys> innerResponse, Retrofit retrofit) {
-                                    if (innerResponse.body() != null) {
-                                        if (innerResponse.body().getCode() != AppConfig.STATUS_OK) {
-                                            DAMVCfinishedListener.onFailure(AppConfig.STATUS_ERROR);
-                                        } else {
-//                                    for (SurveysFields surveysFields : innerResponse.body().getSurveysDataList()) {
-////                                        Log.e(debugTag, surveysFields.getLastModified()+"");
+                            DAMVCfinishedListener.onSuccessDashboardDetails(response.body().getFirmName(), response.body().getTotalSurveys(), response.body().getResponses(), response.body().getLastCreatedDate(), response.body().getJnctFirmSurveysFieldsList(), response.body().getSurveysFieldsList());
+//                            Call<JnctFirmSurveys> call = apiService.getJnctFSData("remote_data");
+//                            call.enqueue(new Callback<JnctFirmSurveys>() {
+//                                @Override
+//                                public void onResponse(Response<JnctFirmSurveys> innerResponse, Retrofit retrofit) {
+//                                    if (innerResponse.body() != null) {
+//                                        if (innerResponse.body().getCode() != AppConfig.STATUS_OK) {
+//                                            DAMVCfinishedListener.onFailure(AppConfig.STATUS_ERROR);
+//                                        } else {
+////                                    for (SurveysFields surveysFields : innerResponse.body().getSurveysDataList()) {
+//////                                        Log.e(debugTag, surveysFields.getLastModified()+"");
+////                                    }
+//                                            DAMVCfinishedListener.onSuccessFetchTableData(innerResponse.body().getJnctFIrmSurveysFieldsList(), innerResponse.body().getSurveysDataList());
+//                                            DAMVCfinishedListener.onSuccessDashboardDetails(response.body().getFirmName(), response.body().getTotalSurveys(), response.body().getResponses(), response.body().getLastCreatedDate());
+//                                        }
+//                                    } else {
+//                                        DAMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE);
 //                                    }
-                                            DAMVCfinishedListener.onSuccessFetchTableData(innerResponse.body().getJnctFIrmSurveysFieldsList(), innerResponse.body().getSurveysDataList());
-                                            DAMVCfinishedListener.onSuccessDashboardDetails(response.body().getFirmName(), response.body().getTotalSurveys(), response.body().getResponses(), response.body().getLastCreatedDate());
-                                        }
-                                    } else {
-                                        DAMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE);
-                                    }
-                                }
-                                @Override
-                                public void onFailure(Throwable t) {
-                                    if (t instanceof IOException) {
-                                        DAMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE);
-                                    } else {
-                                        DAMVCfinishedListener.onFailure(AppConfig.INTERNAL_ERROR);
-                                    }
-                                }
-                            });
+//                                }
+//                                @Override
+//                                public void onFailure(Throwable t) {
+//                                    if (t instanceof IOException) {
+//                                        DAMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE);
+//                                    } else {
+//                                        DAMVCfinishedListener.onFailure(AppConfig.INTERNAL_ERROR);
+//                                    }
+//                                }
+//                            });
                         }
                     } else {
                         DAMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE);

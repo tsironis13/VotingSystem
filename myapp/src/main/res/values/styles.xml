@@ -81,7 +81,6 @@
         <item name="rd_backgroundColor">#cce6ff</item>
         <item name="rd_rippleColor">#cce6ff</item>
         <item name="rd_cornerRadius">2dp</item>
-        <item name="rd_delayClick">untilRelease</item>
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Button</item>
         <item name="android:textColor">@color/primaryColor</item>
     </style>

@@ -97,6 +97,23 @@
                 app:spn_arrowPadding="10dp"
                 style="@style/Spinner" />
 
+            <com.rey.material.widget.TextView
+                android:id="@+id/questionsLabelTtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingTop="15dp"
+                android:visibility="gone"
+                android:text="@string/questions_label"
+                android:textSize="18sp"
+                android:textColor="@color/accentColor" />
+
+            <com.rey.material.widget.LinearLayout
+                android:id="@+id/questionsContainerLlt"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingTop="10dp"
+                android:orientation="vertical" />
+
         </com.rey.material.widget.LinearLayout>
 
     </android.support.v4.widget.NestedScrollView>

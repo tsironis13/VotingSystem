@@ -20,7 +20,7 @@
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/menu/global.xml"
     },
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/menu/survey_questions_menu.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/menu/survey_questions_menu.xml"
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/menu/survey_questions_new_survey_details_menu.xml",
+        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/menu/survey_questions_new_survey_details_menu.xml"
     }
 ]

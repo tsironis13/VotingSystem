@@ -32,7 +32,6 @@ import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.OnClickListener;
 import com.orhanobut.dialogplus.ViewHolder;
 import com.rey.material.widget.Button;
-import com.rey.material.widget.FloatingActionButton;
 import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.POJO.ObjectAnimatorProperties;
@@ -140,7 +139,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
                     mandatoryQuestionsCompleted.add(mPager.getCurrentItem());
                 }
 
-                if (position + 1 == data.size()) menu.findItem(R.id.postSurveyAnswersItem).setVisible(true);
+                if (position + 1 == data.size()) menu.findItem(R.id.post).setVisible(true);
                 if (position + 1 < surveyQuestionsPagerAdapter.getCount()) {
 //                    if (floatingActionButton.getTag().equals(getResources().getString(R.string.done))) floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.forward), true);
                     if (floatingActionButton.getTag().equals(getResources().getString(R.string.done))) floatingActionButton.setImageResource(R.drawable.forward);
@@ -235,7 +234,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.survey_questions_menu, menu);
+        inflater.inflate(R.menu.survey_questions_new_survey_details_menu, menu);
         this.menu = menu;
         return true;
     }
@@ -244,7 +243,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
     public boolean onOptionsItemSelected(MenuItem item) {
         boolean pendingQuestionsToFillOut = false;
         switch (item.getItemId()) {
-            case R.id.postSurveyAnswersItem:
+            case R.id.post:
                 if (data.get(mPager.getCurrentItem()).isMandatory() == 1) {
                     if (checkMandatoryQuestionNotFilledOut(mPager.getCurrentItem(), data.get(mPager.getCurrentItem()).getTypeId())) {
                          initializeMandatoryDialogPlus(getResources().getString(R.string.mandatory_dialog_title));
@@ -317,7 +316,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
                 public void run() {
                     progressDialog.dismiss();
                     if (data != null && data.size() > 0) {
-                        if (data.size() == 1) menu.findItem(R.id.postSurveyAnswersItem).setVisible(true);
+                        if (data.size() == 1) menu.findItem(R.id.post).setVisible(true);
                         surveyQuestionsPagerAdapter = new SurveyQuestionsPagerAdapter(getSupportFragmentManager(), surveyTitle, data.get(0), data.size());
                         mPager.setAdapter(surveyQuestionsPagerAdapter);
                         //this.data = data;

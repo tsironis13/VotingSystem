@@ -52,6 +52,11 @@
     <string name="title">title</string>
     <string name="data_picker">datapicker</string>
     <string name="dialog">dialog</string>
+    <string name="tag_new">new</string>
+    <string name="key">key</string>
+    <string name="tag_answers">answers</string>
+    <string name="mandatory">mandatory</string>
+    <string name="is_single_choice">is_single_choice</string>
     <!-- SEARCH -->
     <string name="search">Aναζήτηση</string>
     <string name="search_hint">Aναζήτηση Έρευνας</string>
@@ -81,6 +86,9 @@
     <string name="show_details">show_details</string>
     <string name="active_since_action">active_since</string>
     <string name="valid_until_action">valid_until</string>
+    <string name="add">add</string>
+    <string name="edit">edit</string>
+    <string name="delete">Διαγραφη</string>
     <!-- LOGIN -->
     <string name="theme">theme</string>
     <string name="app_logo">app_logo</string>
@@ -197,7 +205,8 @@
     <string name="new_question">Nέα ερώτηση</string>
     <string name="category_id">category_id</string>
     <string name="discard_dialog_title">Eίσαι σίγουρος;</string>
-    <string name="discard_dialog_msg">Οι αλλαγές της συγκεκριμένης ερώτησης θα απορριφθούν.</string>
+    <string name="discard_question_dialog_msg">Οι αλλαγές της συγκεκριμένης ερώτησης θα απορριφθούν.</string>
+    <string name="discard_survey_dialog_msg">Οι αλλαγές της συγκεκριμένης έρευνας θα απορριφθούν.</string>
     <string name="confirm_action">Επιβεβαιωση</string>
     <string name="question_text">Τίτλος Ερώτησης</string>
     <string name="answers">Απαντήσεις</string>
@@ -206,6 +215,10 @@
     <string name="required_question">Η ερώτηση είναι υποχρεωτική.</string>
     <string name="single_choice">Μονής επιλογής</string>
     <string name="done_add_question">Υποβολή</string>
+    <string name="save">Αποθηκευση</string>
+    <string name="fill_out_required_fields">Παρακαλώ συμπλήρωσε τα υποχρεωτικά πεδία.</string>
+    <string name="add_answers_note">Πρόσθεσε τουλάχιστον 2 απαντήσεις στην συγκεκριμένη ερώτηση.</string>
+    <string name="fill_out_answers">Παρακαλώ συμπλήρωσε όλες τις απαντήσεις.</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>

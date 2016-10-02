@@ -201,21 +201,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/9.6.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="a76a6983a23788b3689524d4bed763955afbd306">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-fitness-9.6.1_ef5f07a1402e2fb32fcdc01f2a6ffe6147a63400/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/9.6.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="8c6ef5bd4072f8cda2b89d8356ea7d8acd0683aa">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.firebase-firebase-storage-9.6.1_6962c01648249f4aeb259e22f0abe389b55365ab/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-fitness/9.6.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="a76a6983a23788b3689524d4bed763955afbd306">
+        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-fitness-9.6.1_ef5f07a1402e2fb32fcdc01f2a6ffe6147a63400/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -246,15 +246,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/9.6.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="0e0e0681c26a1f575d3e4c542182dd59bab75fd6">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appinvite-9.6.1_d447cceabbd9964c760f31ee3d114886df46bdba/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-fragment/24.2.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -264,12 +255,30 @@
     </item>
     <item
         is-multidex="true"
+        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-appinvite/9.6.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="0e0e0681c26a1f575d3e4c542182dd59bab75fd6">
+        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-appinvite-9.6.1_d447cceabbd9964c760f31ee3d114886df46bdba/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.nakama.arraypageradapter/arraypageradapter/0.1.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="a4c8d598d5a2042f76b7938b31633f851246e6f8">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.nakama.arraypageradapter-arraypageradapter-0.1.1_c86c92604588a0eb2e889ec9c5b97ff179e8598c/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/9.6.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="0cae6511c5705869cacf199f8abb0ea84cd10157">
+        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-vision-9.6.1_8160d180448671f1cce3c0261f8693f38ff4ece6/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -297,15 +306,6 @@
         revision="23.0.2"
         sha1="5afc3a836f7523c7dec8ea0da5632a19b354b0a0">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/leakcanary-watcher-1.4_0aed1266922ceb0bebce25cd5876c7ca3d386855/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-vision/9.6.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="0cae6511c5705869cacf199f8abb0ea84cd10157">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-vision-9.6.1_8160d180448671f1cce3c0261f8693f38ff4ece6/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -363,15 +363,6 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/9.6.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="47bbb3ec4b31ba71e125241c090dabe70cbb4de7">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-9.6.1_ade24d5db26605c7cb1f68841b5dd672ae1eade5/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/jars/classes.jar"
         jumboMode="true"
         optimize="true"
@@ -387,6 +378,15 @@
         revision="23.0.2"
         sha1="a136366045678579300d161de97c2211c4c4f7a0">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-cast-9.6.1_b305cca58f85acbb5517969232bcf02adb89b56d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads/9.6.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="47bbb3ec4b31ba71e125241c090dabe70cbb4de7">
+        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-ads-9.6.1_ade24d5db26605c7cb1f68841b5dd672ae1eade5/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -633,21 +633,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/9.6.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="62ff84124b89177abc0c27f3e38c9732f2d41617">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-9.6.1_411644657149635aa2c51071164ed6515820ba39/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-safetynet/9.6.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="c828add497d2b7a3de7c047bf72050cd4b7521a1">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-safetynet-9.6.1_1fcf67d8a663555d77e433746f9fb45c5d59878d/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-maps/9.6.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="62ff84124b89177abc0c27f3e38c9732f2d41617">
+        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-maps-9.6.1_411644657149635aa2c51071164ed6515820ba39/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -718,7 +718,7 @@
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
-        sha1="725144ff749aa0ec709caf4ba6242272f376ff19">
+        sha1="db95e979306c85ebaf071368bfc41013187d71d8">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_55fd48879fde64a1c8fcf3a3b2ac778641306fbb/classes.dex" />
     </item>
     <item
@@ -750,21 +750,21 @@
     </item>
     <item
         is-multidex="true"
+        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="fbf69332ac27224b82f40ac4899f33a6ad3c327f">
+        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_314fd57510f9e45d9239d9f7eca09cd051b69528/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/9.6.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="526f4b02f1771fa7607ff1b89fe2e9bd0344fee8">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-analytics-9.6.1_a4aa33a8d90fdd924f3d5fec266b13202bc01ffd/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
-        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="5320bff40a2fd44c4292773b75fcf651b9c6770c">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_314fd57510f9e45d9239d9f7eca09cd051b69528/classes.dex" />
     </item>
     <item
         is-multidex="true"
@@ -786,21 +786,21 @@
     </item>
     <item
         is-multidex="true"
-        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.github.ozodrukh/CircularReveal/1.1.1/jars/classes.jar"
-        jumboMode="true"
-        optimize="true"
-        revision="23.0.2"
-        sha1="e3a3d62fab67ccb83f386a4c092bfb5747ea15a7">
-        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.ozodrukh-CircularReveal-1.1.1_70075979bac8ba86205f2f685a02f818a9febf7a/classes.dex" />
-    </item>
-    <item
-        is-multidex="true"
         jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-nearby/9.6.1/jars/classes.jar"
         jumboMode="true"
         optimize="true"
         revision="23.0.2"
         sha1="f6aa7c76cbaa867e05dbad0afab1ef0e65c4e55f">
         <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.google.android.gms-play-services-nearby-9.6.1_036e16a6238bb2de4ec34b02c0cb789ee101142a/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.github.ozodrukh/CircularReveal/1.1.1/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.2"
+        sha1="e3a3d62fab67ccb83f386a4c092bfb5747ea15a7">
+        <dex dex="/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/transforms/dex/debug/folders/1000/10/com.github.ozodrukh-CircularReveal-1.1.1_70075979bac8ba86205f2f685a02f818a9febf7a/classes.dex" />
     </item>
     <item
         is-multidex="true"

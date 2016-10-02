@@ -1064,7 +1064,9 @@
     <string name="active_since_action">active_since</string>
     <string name="active_since_format">%1$d-%2$d-%3$d 21:00:00 UTC</string>
     <string name="active_since_hint">Ενεργή από</string>
+    <string name="add">add</string>
     <string name="add_answer">Προσθηκη απαντησης</string>
+    <string name="add_answers_note">Πρόσθεσε τουλάχιστον 2 απαντήσεις στην συγκεκριμένη ερώτηση.</string>
     <string name="add_new">Δημιουργια νεας</string>
     <string name="again">Προσπάθησε \nξανά</string>
     <string name="agree">Συμφωνώ</string>
@@ -1181,15 +1183,18 @@
     <string name="debug_menu_troubleshooting">Troubleshooting</string>
     <string name="decline">Decline</string>
     <string name="default_web_client_id" translatable="false">382588286328-ac75qkt60273698jl2mq2kba82lq2r2f.apps.googleusercontent.com</string>
+    <string name="delete">Διαγραφη</string>
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="details_activ_action_key">details_activ_action_key</string>
     <string name="details_title">Πληροφορίες</string>
     <string name="dialog">dialog</string>
     <string name="disagree">Διαφωνώ</string>
-    <string name="discard_dialog_msg">Οι αλλαγές της συγκεκριμένης ερώτησης θα απορριφθούν.</string>
     <string name="discard_dialog_title">Eίσαι σίγουρος;</string>
+    <string name="discard_question_dialog_msg">Οι αλλαγές της συγκεκριμένης ερώτησης θα απορριφθούν.</string>
+    <string name="discard_survey_dialog_msg">Οι αλλαγές της συγκεκριμένης έρευνας θα απορριφθούν.</string>
     <string name="done">done</string>
     <string name="done_add_question">Υποβολή</string>
+    <string name="edit">edit</string>
     <string name="editext">editext</string>
     <string name="edt_date_format">%1$d-%2$d-%3$d</string>
     <string name="email">E-mail</string>
@@ -1215,6 +1220,8 @@
     <string name="error_passwords_mismatch">Ασυμφωνία κωδικών πρόσβασης</string>
     <string name="error_reset_password_already_requested">Το αίτημα αλλαγής κωδικού έχει ήδη σταλεί. Παρακαλώ ξαναπροσπάθησε σε %1$s.</string>
     <string name="expanded">expanded</string>
+    <string name="fill_out_answers">Παρακαλώ συμπλήρωσε όλες τις απαντήσεις.</string>
+    <string name="fill_out_required_fields">Παρακαλώ συμπλήρωσε τα υποχρεωτικά πεδία.</string>
     <string name="final_animation">final</string>
     <string name="firebase_database_url" translatable="false">https://votingsystem-6bf68.firebaseio.com</string>
     <string name="firm">Η Εταιρεία</string>
@@ -1246,9 +1253,11 @@
     <string name="hide_password">ΑΠΟΚΡΥΨΗ</string>
     <string name="home">Αρχική</string>
     <string name="input_logo">input_logo</string>
+    <string name="is_single_choice">is_single_choice</string>
     <string name="item_thumb">thumb</string>
     <string name="jnct_table">Jnct_firm_surveys</string>
     <string name="just_text">%1$s</string>
+    <string name="key">key</string>
     <string name="last_created_date">Ημ. δημιουργίας \nτελευταίας έρευνας</string>
     <string name="last_modified_date_label">Ημ.τελευταίας \nτροποποίησης</string>
     <string name="leak_canary_analysis_failed">Leak analysis failed</string>
@@ -1278,6 +1287,7 @@
     <string name="login_user">login_user</string>
     <string name="logout">Αποσυνδεση</string>
     <string name="mailto">mailto:</string>
+    <string name="mandatory">mandatory</string>
     <string name="mandatory_dialog_title">Η ερώτηση είναι υποχρεωτική.\nΠαρακαλώ συμπλήρωσε την για να συνεχίσεις.</string>
     <string name="mandatory_fields">* Υποχρεωτικά πεδία.</string>
     <string name="mandatory_note">* Η ερώτηση είναι υποχρεωτική.</string>
@@ -1361,6 +1371,7 @@
     <string name="sagree">Συμφωνώ Απολύτως</string>
     <string name="sagree_br">Συμφωνώ \nΑπολύτως</string>
     <string name="satisfaction_rating">Βαθμός ικανοποίησης</string>
+    <string name="save">Αποθηκευση</string>
     <string name="sdisagree">Διαφωνώ Έντονα</string>
     <string name="sdisagree_br">Διαφωνώ \nΈντονα</string>
     <string name="search">Aναζήτηση</string>
@@ -1402,6 +1413,8 @@
     <string name="surveys_activity">SurveysActivity</string>
     <string name="surveys_table">Surveys</string>
     <string name="tag">tag</string>
+    <string name="tag_answers">answers</string>
+    <string name="tag_new">new</string>
     <string name="tagmanager_preview_dialog_button">Continue</string>
     <string name="tagmanager_preview_dialog_message">Preview mode updated.</string>
     <string name="tagmanager_preview_dialog_title">Preview</string>
@@ -2565,7 +2578,6 @@
         <item name="rd_backgroundColor">#cce6ff</item>
         <item name="rd_rippleColor">#cce6ff</item>
         <item name="rd_cornerRadius">2dp</item>
-        <item name="rd_delayClick">untilRelease</item>
         <item name="android:textAppearance">@style/Base.TextAppearance.AppCompat.Button</item>
         <item name="android:textColor">@color/primaryColor</item>
     </style>

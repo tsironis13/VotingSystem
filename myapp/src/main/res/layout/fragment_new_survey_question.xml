@@ -37,6 +37,7 @@
                 style="@style/newSurveyTitle" />
 
             <com.rey.material.widget.TextView
+                android:id="@+id/answersTtv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingBottom="10dp"
@@ -71,7 +72,7 @@
                 android:textColor="@color/accentColor" />
 
             <com.rey.material.widget.RadioButton
-                android:id="@+id/switches_rb1"
+                android:id="@+id/singleChoiceRbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-5dp"
@@ -82,7 +83,7 @@
                 android:gravity="center_vertical" />
 
             <com.rey.material.widget.RadioButton
-                android:id="@+id/switches_rb2"
+                android:id="@+id/multipleChoiceRbtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-5dp"
@@ -108,12 +109,23 @@
                     android:textColor="@android:color/black" />
 
                 <com.rey.material.widget.Switch
+                    android:id="@+id/mandatoryQuestionSwitch"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="12"
                     style="@style/Switch" />
 
             </LinearLayout>
+
+            <com.rey.material.widget.TextView
+                android:id="@+id/mandatoryFieldsTtv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="@string/mandatory_fields"
+                android:textColor="@color/note_text_color"
+                android:textSize="@dimen/note_text_size"
+                android:textStyle="bold" />
 
         </LinearLayout>
 
@@ -138,17 +150,22 @@
                 android:paddingBottom="30dp">
 
                 <com.rey.material.widget.Button
+                    android:id="@+id/cancelBtn"
                     android:layout_width="100dp"
                     android:layout_height="36dp"
-                    android:text="Cancel"
+                    android:tag="@string/cancel"
+                    android:text="@string/cancel"
                     android:background="@null"
                     android:layout_alignParentLeft="true"
                     style="@style/FlatButton" />
 
                 <com.rey.material.widget.Button
-                    android:layout_width="100dp"
+                    android:id="@+id/saveBtn"
+                    android:layout_width="139dp"
                     android:layout_height="36dp"
-                    android:text="Save"
+                    android:paddingRight="17dp"
+                    android:paddingLeft="17dp"
+                    android:text="@string/save"
                     android:background="@null"
                     android:layout_alignParentRight="true"
                     style="@style/FlatButton" />

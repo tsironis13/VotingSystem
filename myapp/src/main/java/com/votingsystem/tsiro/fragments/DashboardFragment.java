@@ -47,7 +47,8 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
     private DAMVCPresenterImpl DAMVCpresenterImpl;
     private ProgressDialog progressDialog;
     private NetworkStateReceiver networkStateReceiver;
-    private boolean activityCreated;
+    private boolean activityCreated, dataFetched;
+    private int connectionType;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -64,10 +65,8 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        Log.e(debugTag, "onActivityCreated");
         if (((AppCompatActivity)getActivity()).getSupportActionBar() != null) ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.home));
-        networkStateReceiver    = new NetworkStateReceiver();
-
+        networkStateReceiver = new NetworkStateReceiver();
         activityCreated = true;
 
         viewAllBtn.setOnClickListener(new View.OnClickListener() {
@@ -79,7 +78,9 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
         createSurveyBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getActivity(), CreateSurveyActivity.class));
+                Intent intent = new Intent(getActivity(), CreateSurveyActivity.class);
+                intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.tag_new));
+                startActivity(intent);
             }
         });
     }
@@ -90,7 +91,14 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
         DAMVCpresenterImpl = new DAMVCPresenterImpl(this);
         networkStateReceiver.addListener(this);
         getActivity().registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
-        Log.e(debugTag, "onResume");
+        if (progressDialog != null && progressDialog.isShowing()) {
+            progressDialog.dismiss();
+            if (!dataFetched && connectionType != AppConfig.NO_CONNECTION) {
+                initializeProgressDialog();
+                DAMVCpresenterImpl.initializeDashboardDetails(isAdded(), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0));
+            }
+        }
+
     }
 
     @Override
@@ -105,7 +113,8 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
     }
 
     @Override
-    public void onSuccessDashboardDetails(final String firm_name, final int total_surveys, final int responses, final String last_created_date) {
+    public void onSuccessDashboardDetails(final String firm_name, final int total_surveys, final int responses, final String last_created_date, final List<JnctFirmSurveysFields> jnctFirmSurveysFieldsList, final List<SurveysFields> surveysFieldsList) {
+        dataFetched = true;
         if (progressDialog.isShowing()) {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
@@ -116,25 +125,21 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
                     totalSurveysTtv.setText(String.valueOf(total_surveys));
                     responsedSurveysTtv.setText(String.valueOf(responses));
                     lastCreatedDateTtv.setText(last_created_date);
+                    if (!MySQLiteHelper.getInstance(getActivity()).checkDatabase(getActivity())) {
+                        MySQLiteHelper.getInstance(getActivity()).createDatabase(getActivity());
+                        MySQLiteHelper.getInstance(getActivity()).openDatabase();
+                        if (!MySQLiteHelper.getInstance(getActivity()).isDatabaseEmpty()) {
+                            MySQLiteHelper.getInstance(getActivity()).insertToDatabase(getResources().getString(R.string.jnct_table), jnctFirmSurveysFieldsList, null);
+                            MySQLiteHelper.getInstance(getActivity()).insertToDatabase(getResources().getString(R.string.surveys_table), surveysFieldsList, null);
+                        }
+                        MySQLiteHelper.getInstance(getActivity()).closeDB();
+                    } else {
+                        MySQLiteHelper.getInstance(getActivity()).openDatabase();
+                        MySQLiteHelper.getInstance(getActivity()).isDatabaseEmpty();
+                        MySQLiteHelper.getInstance(getActivity()).closeDB();
+                    }
                 }
             }, 1500);
-        }
-    }
-
-    @Override
-    public void onSuccessFetchTableData(List<JnctFirmSurveysFields> jnctFirmSurveysFieldsList, List<SurveysFields> surveysFieldsList) {
-        if (!MySQLiteHelper.getInstance(getActivity()).checkDatabase(getActivity())) {
-            MySQLiteHelper.getInstance(getActivity()).createDatabase(getActivity());
-            MySQLiteHelper.getInstance(getActivity()).openDatabase();
-            if (!MySQLiteHelper.getInstance(getActivity()).isDatabaseEmpty()) {
-                MySQLiteHelper.getInstance(getActivity()).insertToDatabase(getResources().getString(R.string.jnct_table), jnctFirmSurveysFieldsList, null);
-                MySQLiteHelper.getInstance(getActivity()).insertToDatabase(getResources().getString(R.string.surveys_table), surveysFieldsList, null);
-            }
-            MySQLiteHelper.getInstance(getActivity()).closeDB();
-        } else {
-            MySQLiteHelper.getInstance(getActivity()).openDatabase();
-            MySQLiteHelper.getInstance(getActivity()).isDatabaseEmpty();
-            MySQLiteHelper.getInstance(getActivity()).closeDB();
         }
     }
 
@@ -156,6 +161,7 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
 
     @Override
     public void networkStatus(int connectionType) {
+        this.connectionType = connectionType;
         if (activityCreated)
             if (connectionType != AppConfig.NO_CONNECTION) {
                 initializeProgressDialog();

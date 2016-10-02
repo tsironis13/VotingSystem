@@ -10,12 +10,10 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.database.sqlite.SQLiteStatement;
 import android.os.Handler;
 import android.util.Log;
-
 import com.votingsystem.tsiro.POJO.JnctFirmSurveysFields;
 import com.votingsystem.tsiro.POJO.SurveysFields;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.votingsystem.R;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +63,6 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + KEY_SEARCHED_AT + " INTEGER" + ")";
 
     public static MySQLiteHelper getInstance(Context context) {
-        Log.e(debugTag, sInstance+"");
         return sInstance == null ? sInstance = new MySQLiteHelper(context.getApplicationContext()) : sInstance;
     }
 
@@ -122,6 +119,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @SuppressWarnings("unchecked")
     public <T> void insertToDatabase(String table, List<T> list, String text) {
+        Log.e(debugTag, list+"");
         ContentValues contentValues = new ContentValues();
         if (text == null) {
             if (list != null) {
