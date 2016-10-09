@@ -8,10 +8,10 @@ import java.util.List;
  */
 public class SurveyAnswersList {
 
-    int question_id, answer, type;
-    String text_answer;
-    List<String> answers_list;
-    HashMap<Integer, Integer> matrix_hash;
+    private int question_id, answer, type;
+    private String text_answer;
+    private List<String> answers_list;
+    private HashMap<Integer, Integer> matrix_hash;
 
     public SurveyAnswersList(int question_id, int answer, int type, String text_answer, List<String> answers_list, HashMap<Integer, Integer> matrix_hash) {
         this.question_id    =   question_id;

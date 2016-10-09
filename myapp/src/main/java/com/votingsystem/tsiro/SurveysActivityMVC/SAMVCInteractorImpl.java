@@ -21,12 +21,12 @@ import retrofit.Retrofit;
 /**
  * Created by giannis on 20/6/2016.
  */
-public class SAMVCInteractorImpl implements SAMVCInteractor {
+class SAMVCInteractorImpl implements SAMVCInteractor {
 
     private static final String debugTag = SAMVCInteractorImpl.class.getSimpleName();
     private ApiService apiService;
 
-    public SAMVCInteractorImpl() { apiService = RetrofitSingleton.getInstance().getApiService(); }
+    SAMVCInteractorImpl() { apiService = RetrofitSingleton.getInstance().getApiService(); }
 
     @Override
     public void getAllSurveys(final AllSurveysBody allSurveysBody, final SAMVCFinishedListener SAMVCfinishedListener) {

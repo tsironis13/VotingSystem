@@ -24,6 +24,7 @@ public class SurveyDetailsFragment extends Fragment {
     private View view, tView;
     private TextView surveyTitleTtv, totalResponsesTtv, answeredTtv, completionRateTtv, createdDateTtv, lastModifiedDateTtv, categoryTtv, questionsTtv;
     private LinearLayout showStatsLlt;
+    private boolean onSavedInstanceStateCalled;
 
     public static SurveyDetailsFragment newInstance(SurveyDetailsData surveyDetailsData, String type) {
         Bundle bundle = new Bundle();
@@ -51,7 +52,7 @@ public class SurveyDetailsFragment extends Fragment {
     }
 
     @Override
-    public void onActivityCreated(Bundle savedInstanceState) {
+    public void onActivityCreated(final Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         if (savedInstanceState == null) {
             getActivity().setTitle(getActivity().getResources().getString(R.string.details_title));
@@ -76,12 +77,22 @@ public class SurveyDetailsFragment extends Fragment {
                 showStatsLlt.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View view) {
-                        getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.surveyDetailsFgmtContainer, SurveyStatsFragment.newInstance(surveyDetailsData), getResources().getString(R.string.survey_stats_fgmt)).commit();
-                        Log.e(debugTag, "here");
+                        if (!onSavedInstanceStateCalled) getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.surveyDetailsFgmtContainer, SurveyStatsFragment.newInstance(surveyDetailsData), getResources().getString(R.string.survey_stats_fgmt)).commit();
                     }
                 });
             }
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        onSavedInstanceStateCalled = true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        onSavedInstanceStateCalled = false;
+    }
 }

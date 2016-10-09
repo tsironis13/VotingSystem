@@ -394,7 +394,7 @@ public class LoginActivity extends AppCompatActivity implements NetworkStateList
     }
 
     private void initializeSnackBar(String error_type, View errorView, int code) {
-        String sbText       =   "";
+        String sbText;
         boolean hasAction   =   false;
         if (code == AppConfig.NO_CONNECTION || code == AppConfig.UNAVAILABLE_SERVICE || code == AppConfig.INTERNAL_ERROR || code == AppConfig.STATUS_ERROR) {
             sbText    = getResources().getString(inputValidationCodes.get(code));

@@ -1124,7 +1124,6 @@
     <string name="cast_tracks_chooser_dialog_ok">OK</string>
     <string name="cast_tracks_chooser_dialog_subtitles">Subtitles</string>
     <string name="cast_unmute">Unmute</string>
-    <string name="category_id">category_id</string>
     <string name="category_label">Κατηγορία</string>
     <string name="character_counter_pattern" translatable="false">%1$d / %2$d</string>
     <string name="check_connection">Έλεγξε τη σύνδεση σου</string>
@@ -1319,8 +1318,10 @@
     <string name="new_question">Nέα ερώτηση</string>
     <string name="new_survey">Νέα Έρευνα</string>
     <string name="new_survey_details_fgmt">newSurveyDetails</string>
+    <string name="new_survey_question">%1$d. %2$s</string>
     <string name="new_survey_question_fgmt">newSurveyQuestion</string>
     <string name="new_survey_title">Τίτλος έρευνας</string>
+    <string name="new_user_survey_notification">new_user_survey_notification</string>
     <string name="no_answers">Δεν υπάρχουν απαντήσεις στην συγκεκριμένη ερώτηση.</string>
     <string name="no_answers_img">noanswersimg</string>
     <string name="no_completed">Δεν υπάρχουν ολοκληρωμένες έρευνες.</string>
@@ -1426,7 +1427,9 @@
     <string name="total_surveys">Σύνολο \nΕρευνών</string>
     <string name="translation_y">translationY</string>
     <string name="type">type</string>
+    <string name="type_id">type_id</string>
     <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Ξαναπροσπάθησε σύντομα.</string>
+    <string name="upload_survey">upload_survey</string>
     <string name="user_id">user_id</string>
     <string name="username">Όνομα χρήστη</string>
     <string name="username_tag">username</string>

@@ -15,6 +15,7 @@ import android.support.v7.widget.Toolbar;
 import android.text.Html;
 import android.util.Log;
 import android.util.SparseArray;
+import android.util.SparseIntArray;
 import android.view.KeyEvent;
 import android.view.View;
 import com.rey.material.app.Dialog;
@@ -24,8 +25,10 @@ import com.rey.material.widget.EditText;
 import com.rey.material.widget.LinearLayout;
 import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.TextView;
+import com.votingsystem.tsiro.CreateSurveyMVC.CSMVCView;
 import com.votingsystem.tsiro.POJO.NewSurvey;
 import com.votingsystem.tsiro.POJO.NewSurveyQuestion;
+import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.fragments.NewSurveyDetailsFragment;
 import com.votingsystem.tsiro.interfaces.UpdateNewSurveyObj;
@@ -47,14 +50,16 @@ public class CreateSurveyActivity extends AppCompatActivity implements UpdateNew
     private boolean confirmFlag;
     private LinearLayout createSurveyLlt;
     private SparseArray<NewSurveyQuestion> newSurveyQuestionSparseArray;
+    private SparseIntArray inputValidationCodes;
     private boolean snackBarIsShowing;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_survey_activity);
-        createSurveyLlt = (LinearLayout) findViewById(R.id.createSurveyLlt);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.appBar);
+        inputValidationCodes    =   AppConfig.getCodes();
+        createSurveyLlt         =   (LinearLayout) findViewById(R.id.createSurveyLlt);
+        Toolbar toolbar         =   (Toolbar) findViewById(R.id.appBar);
 
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
@@ -116,25 +121,8 @@ public class CreateSurveyActivity extends AppCompatActivity implements UpdateNew
     }
 
     @Override
-    public void addNewSurveyFields(String title, long active_since, long valid_until, int category) {
-        if (title != null && active_since != 0 && valid_until != 0 && category != 0) {
-            newSurvey.setTitle(title);
-            newSurvey.setActiveSince(active_since);
-            newSurvey.setValidUntil(valid_until);
-            newSurvey.setCategory(category);
-        }
-    }
-
-    @Override
     public NewSurvey getNewSurveyObj() {
         return (newSurvey != null) ? newSurvey : null;
-    }
-
-    @Override
-    public void logObj() {
-        Log.e(debugTag, "Title: "+newSurvey.getTitle());
-        Log.e(debugTag, "Category "+newSurvey.getCategory());
-        //        Log.e(debugTag, "Active since: "+newSurvey.getActiveSince());
     }
 
     @Override
@@ -175,13 +163,14 @@ public class CreateSurveyActivity extends AppCompatActivity implements UpdateNew
     }
 
     @Override
-    public void showSnackBar(String text, View view) {
-        initializeSnackBar(text, view);
+    public void showSnackBar(int code, View view) {
+        initializeSnackBar(code, view);
     }
 
-    private void initializeSnackBar(String text, final View view) {
+    private void initializeSnackBar(int code, final View view) {
+        String sbText = getResources().getString(inputValidationCodes.get(code));
         if (!snackBarIsShowing) {
-            Snackbar createSurveyActivitySnkBar = Snackbar.make(createSurveyLlt, text, Snackbar.LENGTH_SHORT);
+            Snackbar createSurveyActivitySnkBar = Snackbar.make(createSurveyLlt, sbText, Snackbar.LENGTH_SHORT);
             if (view != null && view instanceof FloatingActionsMenu) {
                 createSurveyActivitySnkBar.setCallback(new Snackbar.Callback() {
                     @Override
@@ -196,7 +185,7 @@ public class CreateSurveyActivity extends AppCompatActivity implements UpdateNew
                     public void run() {
                         initializeFABMenuAnimation(view, -(int)MyApplication.convertPixelToDpAndViceVersa(CreateSurveyActivity.this, 0, 97), 0);
                     }
-                }, 1800);
+                }, 1785);
             }
             View sbView = createSurveyActivitySnkBar.getView();
             sbView.setMinimumHeight((int)MyApplication.convertPixelToDpAndViceVersa(this, 0, 80));

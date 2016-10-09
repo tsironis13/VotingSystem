@@ -68,7 +68,7 @@ public class RegisterFragment extends Fragment implements LAMVCView, View.OnFocu
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
-        if (context instanceof Activity) this.commonElements    =   (LoginActivityCommonElementsAndMuchMore) context;
+        if (context instanceof Activity) this.commonElements = (LoginActivityCommonElementsAndMuchMore) context;
     }
 
     @Override

@@ -1,7 +1,10 @@
 package com.votingsystem.tsiro.fragments;
 
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
@@ -25,12 +28,20 @@ import com.rey.material.widget.ImageButton;
 import com.rey.material.widget.LinearLayout;
 import com.rey.material.widget.Spinner;
 import com.rey.material.widget.TextView;
+import com.votingsystem.tsiro.CreateSurveyMVC.CSMVCPresenterImpl;
+import com.votingsystem.tsiro.CreateSurveyMVC.CSMVCView;
+import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.POJO.NewSurvey;
 import com.votingsystem.tsiro.POJO.NewSurveyQuestion;
 import com.votingsystem.tsiro.adapters.FirmNamesSpnrNothingSelectedAdapter;
+import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
+import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
 import com.votingsystem.tsiro.helperClasses.CustomSpinnerItem;
 import com.votingsystem.tsiro.interfaces.UpdateNewSurveyObj;
+import com.votingsystem.tsiro.mainClasses.DashboardActivity;
+import com.votingsystem.tsiro.mainClasses.LoginActivity;
+import com.votingsystem.tsiro.mainClasses.SurveysActivity;
 import com.votingsystem.tsiro.votingsystem.R;
 import net.i2p.android.ext.floatingactionbutton.FloatingActionButton;
 import net.i2p.android.ext.floatingactionbutton.FloatingActionsMenu;
@@ -46,21 +57,25 @@ import static com.google.android.gms.internal.zznu.it;
 /**
  * Created by giannis on 30/7/2016.
  */
-public class NewSurveyDetailsFragment extends Fragment implements View.OnClickListener {
+public class NewSurveyDetailsFragment extends Fragment implements View.OnClickListener, CSMVCView, NetworkStateListeners {
 
     private static final String debugTag = NewSurveyDetailsFragment.class.getSimpleName();
     private View view;
     private EditText surveyTitleEdt;
     private android.widget.EditText activeSinceEdt, validUntilEdt;
     private TextView hiddenActiveSinceLabelTtv, hiddenValidUntilLabelTtv;
-    private boolean hiddenActiveSinceLabelActivated, hiddenValidUntilLabelActivated, hasQuestions;
+    private boolean hiddenActiveSinceLabelActivated, hiddenValidUntilLabelActivated, hasQuestions, spinnerLoaded;
     private Spinner surveyCategorySpnr;
     private TextView questionsLabelTtv;
     private LinearLayout questionsContainerLlt;
     private FloatingActionsMenu fabTypeMenu;
     private UpdateNewSurveyObj updateNewSurveyObj;
     private SparseArray<NewSurveyQuestion> newSurveyQuestionSparseArray;
-    private int keyAt; //used to set max sparse array key value + 1 on new question insertion
+    private int connectionType, keyAt; //used to set max sparse array key value + 1 on new question insertion
+    private long[] dates = new long[2];
+    private ProgressDialog progressDialog;
+    private NetworkStateReceiver networkStateReceiver;
+    private CSMVCPresenterImpl CSMVCpresenterImpl;
 
     public static NewSurveyDetailsFragment newInstance(String title) {
         Bundle bundle = new Bundle();
@@ -106,6 +121,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        networkStateReceiver = new NetworkStateReceiver();
         if (((AppCompatActivity)getActivity()).getSupportActionBar() != null) {
             ((AppCompatActivity)getActivity()).getSupportActionBar().setDisplayHomeAsUpEnabled(true);
             ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white);
@@ -147,7 +163,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
         });
         NewSurvey newSurvey = updateNewSurveyObj.getNewSurveyObj();
         if (newSurvey != null) {
-            if (newSurvey.getCategory() == 0) createPickCategoryItems();
+            if (!spinnerLoaded) createPickCategoryItems();
             newSurveyQuestionSparseArray = newSurvey.getNewSurveyQuestionSparseArray();
             if (questionsContainerLlt.getChildCount() != 0) questionsContainerLlt.removeAllViews();
             if (newSurveyQuestionSparseArray != null && newSurveyQuestionSparseArray.size() != 0) {
@@ -166,7 +182,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
                     questionLlt.setGravity(Gravity.CENTER_VERTICAL);
 
                     TextView questionTtv = new TextView(getActivity());
-                    questionTtv.setText(i+1+". "+newSurveyQuestion.getQuestion());
+                    questionTtv.setText(getResources().getString(R.string.new_survey_question, i+1, newSurveyQuestion.getQuestion()));
                     questionTtv.setTextColor(ContextCompat.getColor(getActivity(), android.R.color.black));
                     questionTtv.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 0.9f));
 
@@ -190,6 +206,27 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
     }
 
     @Override
+    public void onResume() {
+        super.onResume();
+        networkStateReceiver.addListener(this);
+        getActivity().registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        networkStateReceiver.removeListener(this);
+        getActivity().unregisterReceiver(networkStateReceiver);
+        if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        if (CSMVCpresenterImpl != null) CSMVCpresenterImpl.onDestroy();
+    }
+
+    @Override
     public void onClick(View view) {
         if (view instanceof ImageButton || view instanceof LinearLayout) {
             NewSurveyQuestion newSurveyQuestion = newSurveyQuestionSparseArray.get(view.getId());
@@ -205,8 +242,6 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
             String questionType = "";
             String title = surveyTitleEdt.getText().toString();
             Log.e(debugTag, title);
-            updateNewSurveyObj.addNewSurveyFields(title, 20, 20, 20);
-            updateNewSurveyObj.logObj();
             fabTypeMenu.collapse();
             switch (view.getId()) {
                 case R.id.multipleChoiceFAB:
@@ -263,12 +298,57 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         String survey   = surveyTitleEdt.getText().toString().trim();
-        int category_id = getCategoryId();
-        if (survey.matches(getResources().getString(R.string.empty_string)) || category_id == 0) {
-            updateNewSurveyObj.showSnackBar(getResources().getString(R.string.fill_out_required_fields), fabTypeMenu);
+        CustomSpinnerItem spinnerItem = getSpinnerItem();
+        List<NewSurveyQuestion> questions_list = new ArrayList<>();
+        if (spinnerItem != null && spinnerItem.getId() != 0 && !survey.matches(getResources().getString(R.string.empty_string))) {
+            if (connectionType != AppConfig.NO_CONNECTION) {
+                CSMVCpresenterImpl = new CSMVCPresenterImpl(this);
+                SparseArray<NewSurveyQuestion> newSurveyQuestionSparseArray = updateNewSurveyObj.getNewSurveyObj().getNewSurveyQuestionSparseArray();
+                if (newSurveyQuestionSparseArray != null && newSurveyQuestionSparseArray.size() > 0) {
+                    for (int i = 0; i < newSurveyQuestionSparseArray.size(); i++) {
+                        questions_list.add(newSurveyQuestionSparseArray.valueAt(i));
+                    }
+                }
+                NewSurvey newSurvey = new NewSurvey();
+                newSurvey.setUserId(LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0));
+                newSurvey.setFirmId(LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0));
+                newSurvey.setToken(LoginActivity.getSessionPrefs(getActivity()).getString(getResources().getString(R.string.registration_token), getResources().getString(R.string.empty_string)));
+                newSurvey.setAction(getResources().getString(R.string.upload_survey));
+                newSurvey.setTitle(survey);
+                newSurvey.setActiveSince(dates[0]);
+                newSurvey.setValidUntil(dates[1]);
+                newSurvey.setCategory(spinnerItem.getName());
+                newSurvey.setQuestionslist(questions_list);
+                CSMVCpresenterImpl.uploadNewUserSurvey(newSurvey);
+                initializeProgressDialog();
+            } else {
+                updateNewSurveyObj.showSnackBar(AppConfig.NO_CONNECTION, fabTypeMenu);
+            }
+        } else {
+            updateNewSurveyObj.showSnackBar(AppConfig.ERROR_EMPTY_REQUIRED_FIELDS, fabTypeMenu);
         }
-
         return true;
+    }
+
+    @Override
+    public void onSuccess() {
+        if (progressDialog.isShowing()) progressDialog.dismiss();
+        Intent intent = new Intent(getActivity(), DashboardActivity.class);
+        Bundle sessionBundle = new Bundle();
+        sessionBundle.putInt("user_id", LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0));
+        intent.putExtras(sessionBundle);
+        startActivity(intent);
+    }
+
+    @Override
+    public void onFailure(int code) {
+        if (progressDialog.isShowing()) progressDialog.dismiss();
+        updateNewSurveyObj.showSnackBar(code, fabTypeMenu);
+    }
+
+    @Override
+    public void networkStatus(int connectionType) {
+        this.connectionType = connectionType;
     }
 
     private void showDateDialog(final String from) {
@@ -288,23 +368,16 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
                     //day - 1, because SimpleDateFormat default time system is UTC (our time zone-> UTC + 3), so for an active since date '22-9'
                     //we have to subtract a day from the selected day (21-9 21:00 UTC after conversion becomes 22-9 00::00 UTC+3)
                     //the actual date we want
-                    convertTimestampToEpoch(getResources().getString(R.string.active_since_format, day-1, month, year));
+                    dates[0] = convertTimestampToEpoch(getResources().getString(R.string.active_since_format, day-1, month, year));
                 } else {
                     if (!hiddenValidUntilLabelActivated) {
                         hiddenValidUntilLabelTtv.setVisibility(View.VISIBLE);
                         hiddenValidUntilLabelActivated = true;
                     }
                     validUntilEdt.setText(getResources().getString(R.string.edt_date_format, day, month, year));
-                    convertTimestampToEpoch(getResources().getString(R.string.valid_until_format, day, month, year));
+                    dates[1] = convertTimestampToEpoch(getResources().getString(R.string.valid_until_format, day, month, year));
                 }
-                Log.e(debugTag, day + "-" + (month) + "-" + year);
                 super.onPositiveActionClicked(fragment);
-            }
-
-            @Override
-            public void onNegativeActionClicked(DialogFragment fragment) {
-                super.onNegativeActionClicked(fragment);
-                Log.e(debugTag, "negative");
             }
         };
         builder
@@ -315,18 +388,23 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
         fragment.show(getFragmentManager(), getResources().getString(R.string.data_picker));
     }
 
-    private int getCategoryId() {
-        int category_id = 0;
-        if (surveyCategorySpnr.getSelectedItemPosition() != 0 && surveyCategorySpnr != null && surveyCategorySpnr.getAdapter() != null) {
-            CustomSpinnerItem customSpinnerItem = (CustomSpinnerItem) surveyCategorySpnr.getAdapter().getItem(surveyCategorySpnr.getSelectedItemPosition() - 1);
-            category_id = customSpinnerItem.getId();
-        }
-        return category_id;
+    private void initializeProgressDialog() {
+        progressDialog = new ProgressDialog(getActivity());
+        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+        progressDialog.setMessage(getActivity().getResources().getString(R.string.message));
+        progressDialog.setCancelable(false);
+        progressDialog.show();
+    }
+
+    private CustomSpinnerItem getSpinnerItem() {
+        CustomSpinnerItem customSpinnerItem = null;
+        if (surveyCategorySpnr.getSelectedItemPosition() != 0 && surveyCategorySpnr != null && surveyCategorySpnr.getAdapter() != null) customSpinnerItem = (CustomSpinnerItem) surveyCategorySpnr.getAdapter().getItem(surveyCategorySpnr.getSelectedItemPosition() - 1);
+        return customSpinnerItem;
     }
 
     private void createPickCategoryItems() {
+        spinnerLoaded = true;
         String[] categories = getResources().getStringArray(R.array.survey_categories);
-        Log.e(debugTag, categories[0]);
         List<CustomSpinnerItem> customSpinnerItems = new ArrayList<>();
         for (int i = 0; i < categories.length; i++) {
             customSpinnerItems.add(new CustomSpinnerItem(categories[i],i+1));
@@ -341,10 +419,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
     private long convertTimestampToEpoch(String timestamp) {
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(getResources().getString(R.string.date_format), Locale.getDefault());
         try {
-            Date date = simpleDateFormat.parse(timestamp);
-            long epoch = date.getTime()/1000;
-            Log.e(debugTag, date.getTime()/1000+"");
-            return epoch;
+            return simpleDateFormat.parse(timestamp).getTime()/1000;
         } catch (ParseException e) {
             e.printStackTrace();
             return 0;

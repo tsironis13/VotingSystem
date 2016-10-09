@@ -42,6 +42,9 @@ public class AppConfig {
     public static final int ERROR_INVALID_USERNAME_PASSWORD     =   -20;
     public static final int ERROR_ACCOUNT_NOT_VERIFIED_YET      =   -21;
     public static final int ERROR_INVALID_ID                    =   -24;
+    public static final int ERROR_EMPTY_REQUIRED_FIELDS         =   -25;
+    public static final int ERROR_ADD_ANSWERS_NOTE              =   -26;
+    public static final int ERROR_FILL_OUT_ANSWERS              =   -27;
     public static final int ERROR_EMPTY_LIST                    =   -205;
     //LOGIN ACTIVITY
     public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
@@ -53,7 +56,7 @@ public class AppConfig {
 
     public static final long showhideAcceptDelay                =   4000;
 
-    public static final SparseIntArray inputValidationCodes = new SparseIntArray(3);
+    private static final SparseIntArray inputValidationCodes = new SparseIntArray(3);
 
     public static SparseIntArray getCodes() {
         inputValidationCodes.put(NO_CONNECTION, R.string.no_connection);
@@ -61,6 +64,7 @@ public class AppConfig {
         inputValidationCodes.put(UNAVAILABLE_SERVICE, R.string.unavailable_service);
         inputValidationCodes.put(INTERNAL_ERROR, R.string.error_occured);
         inputValidationCodes.put(ERROR_EMPTY_REQUIRED_FIELD, R.string.error_empty_requried_field);
+        inputValidationCodes.put(ERROR_EMPTY_REQUIRED_FIELDS, R.string.fill_out_required_fields);
         inputValidationCodes.put(ERROR_INVALID_INPUT, R.string.error_invalid_input);
         inputValidationCodes.put(ERROR_INPUT_EXISTS, R.string.error_input_exists);
         inputValidationCodes.put(ERROR_FIRM_CODE_MISMATCH, R.string.error_firm_code_mismatch);
@@ -73,6 +77,10 @@ public class AppConfig {
         inputValidationCodes.put(ERROR_INVALID_USERNAME_PASSWORD, R.string.error_invalid_username_password);
         inputValidationCodes.put(ERROR_ACCOUNT_NOT_VERIFIED_YET, R.string.error_account_not_verified_yet);
         inputValidationCodes.put(ERROR_INVALID_ID, R.string.error_invalid_id);
+        inputValidationCodes.put(ERROR_ADD_ANSWERS_NOTE, R.string.add_answers_note);
+        inputValidationCodes.put(ERROR_FILL_OUT_ANSWERS, R.string.fill_out_answers);
+
         return inputValidationCodes;
     }
+
 }

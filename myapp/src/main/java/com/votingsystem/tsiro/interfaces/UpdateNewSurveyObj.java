@@ -12,10 +12,7 @@ import java.util.List;
  */
 public interface UpdateNewSurveyObj {
     void initializeSpannableText(View view, String text, boolean required);
-    void addNewSurveyFields(String title, long active_since, long valid_until, int category);
     NewSurvey getNewSurveyObj();
     void initializeDialogs(int action, String message);
-//    method just to check if everything works as expected
-    void logObj();
-    void showSnackBar(String text, View view);
+    void showSnackBar(int code, View view);
 }

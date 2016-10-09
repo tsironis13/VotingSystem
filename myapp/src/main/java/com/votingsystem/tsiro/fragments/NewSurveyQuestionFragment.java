@@ -26,6 +26,7 @@ import com.rey.material.widget.RadioButton;
 import com.rey.material.widget.Switch;
 import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.POJO.NewSurveyQuestion;
+import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.interfaces.UpdateNewSurveyObj;
 import com.votingsystem.tsiro.votingsystem.R;
@@ -49,7 +50,7 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
     private UpdateNewSurveyObj updateNewSurveyObj;
     private String action;
     private String questionType;
-    private int key, categoryId;
+    private int key, typeId;
     private int selectedRadioBtnId = R.id.singleChoiceRbtn;
 
     @Override
@@ -62,7 +63,7 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
         Bundle bundle = new Bundle();
         bundle.putInt("key", newSurveyQuestion.getKey());
         bundle.putString("action", newSurveyQuestion.getAction());
-        bundle.putInt("category_id", newSurveyQuestion.getCategoryId());
+        bundle.putInt("type_id", newSurveyQuestion.getTypeId());
         bundle.putString("title", newSurveyQuestion.getQuestionType());
         if (newSurveyQuestion.getAction().equals("edit")) {
             if (newSurveyQuestion.getQuestion() != null) bundle.putString("question", newSurveyQuestion.getQuestion());
@@ -98,14 +99,14 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
         if (getArguments() != null) {
             key             = getArguments().getInt(getResources().getString(R.string.key));
             action          = getArguments().getString(getResources().getString(R.string.action));
-            categoryId      = getArguments().getInt(getResources().getString(R.string.category_id));
+            typeId          = getArguments().getInt(getResources().getString(R.string.type_id));
             questionType    = getArguments().getString(getResources().getString(R.string.title));
-            if (categoryId == 800 || categoryId == 400) {
+            if (typeId == 800 || typeId == 400) {
                 answersTtv.setVisibility(View.GONE);
                 answersContainerLlt.setVisibility(View.GONE);
                 addAnswerViewBtn.setVisibility(View.GONE);
             }
-            if (categoryId != 100) {
+            if (typeId != 100) {
                 singleChoiceRbtn.setVisibility(View.GONE);
                 multipleChoiceRbtn.setVisibility(View.GONE);
             }
@@ -187,11 +188,11 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
         List<String> answersList = new ArrayList<>();
         String question = questionTitleEdt.getText().toString().trim();
         if (question.matches(getResources().getString(R.string.empty_string))) {
-            updateNewSurveyObj.showSnackBar(getResources().getString(R.string.fill_out_required_fields), null);
+            updateNewSurveyObj.showSnackBar(AppConfig.ERROR_EMPTY_REQUIRED_FIELDS, null);
         } else {
-            if (categoryId != 800 && categoryId != 400) {
+            if (typeId != 800 && typeId != 400) {
                 if (answersContainerLlt.getChildCount() < 2) {
-                    updateNewSurveyObj.showSnackBar(getResources().getString(R.string.add_answers_note), null);
+                    updateNewSurveyObj.showSnackBar(AppConfig.ERROR_ADD_ANSWERS_NOTE, null);
                 } else {
                     for (int i = 0; i < answersContainerLlt.getChildCount(); i++) {
                         if (answersContainerLlt.getChildAt(i) != null && answersContainerLlt.getChildAt(i) instanceof LinearLayout) {
@@ -200,7 +201,7 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
                                 EditText answerEdt = (EditText) linearLayout.getChildAt(0);
                                 String answer = answerEdt.getText().toString().trim();
                                 if (answer.matches(getResources().getString(R.string.empty_string))) {
-                                    updateNewSurveyObj.showSnackBar(getResources().getString(R.string.fill_out_answers), null);
+                                    updateNewSurveyObj.showSnackBar(AppConfig.ERROR_FILL_OUT_ANSWERS, null);
                                     answersFilledOut = false;
                                     break;
                                 } else {
@@ -211,13 +212,13 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
                     }
                     if (answersFilledOut) {
                         boolean single_choice = false;
-                        if (categoryId == 100) if (selectedRadioBtnId == R.id.singleChoiceRbtn) single_choice = true;
-                        NewSurveyQuestion newSurveyQuestion = new NewSurveyQuestion(key, getResources().getString(R.string.edit), question, questionType, answersList, categoryId, single_choice, mandatoryQuestionSwitch.isChecked());
+                        if (typeId == 100) if (selectedRadioBtnId == R.id.singleChoiceRbtn) single_choice = true;
+                        NewSurveyQuestion newSurveyQuestion = new NewSurveyQuestion(key, getResources().getString(R.string.edit), question, questionType, answersList, typeId, single_choice, mandatoryQuestionSwitch.isChecked());
                         updateNewSurveyObj(newSurveyQuestion, action);
                     }
                 }
             } else {
-                NewSurveyQuestion newSurveyQuestion = new NewSurveyQuestion(key, getResources().getString(R.string.edit), question, questionType, null, categoryId, false, mandatoryQuestionSwitch.isChecked());
+                NewSurveyQuestion newSurveyQuestion = new NewSurveyQuestion(key, getResources().getString(R.string.edit), question, questionType, null, typeId, false, mandatoryQuestionSwitch.isChecked());
                 updateNewSurveyObj(newSurveyQuestion, action);
             }
         }

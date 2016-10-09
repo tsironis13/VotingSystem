@@ -24,6 +24,7 @@
     <string name="notification_body">body</string>
     <string name="action">action</string>
     <string name="email_notification">email_notification</string>
+    <string name="new_user_survey_notification">new_user_survey_notification</string>
     <!-- TAG -->
     <string name="tag">tag</string>
     <string name="code">code</string>
@@ -89,6 +90,7 @@
     <string name="add">add</string>
     <string name="edit">edit</string>
     <string name="delete">Διαγραφη</string>
+    <string name="upload_survey">upload_survey</string>
     <!-- LOGIN -->
     <string name="theme">theme</string>
     <string name="app_logo">app_logo</string>
@@ -203,7 +205,7 @@
     <string name="date_format">dd-MM-yyyy HH:mm:ss zzz</string>
     <string name="edt_date_format">%1$d-%2$d-%3$d</string>
     <string name="new_question">Nέα ερώτηση</string>
-    <string name="category_id">category_id</string>
+    <string name="type_id">type_id</string>
     <string name="discard_dialog_title">Eίσαι σίγουρος;</string>
     <string name="discard_question_dialog_msg">Οι αλλαγές της συγκεκριμένης ερώτησης θα απορριφθούν.</string>
     <string name="discard_survey_dialog_msg">Οι αλλαγές της συγκεκριμένης έρευνας θα απορριφθούν.</string>
@@ -219,6 +221,7 @@
     <string name="fill_out_required_fields">Παρακαλώ συμπλήρωσε τα υποχρεωτικά πεδία.</string>
     <string name="add_answers_note">Πρόσθεσε τουλάχιστον 2 απαντήσεις στην συγκεκριμένη ερώτηση.</string>
     <string name="fill_out_answers">Παρακαλώ συμπλήρωσε όλες τις απαντήσεις.</string>
+    <string name="new_survey_question">%1$d. %2$s</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>

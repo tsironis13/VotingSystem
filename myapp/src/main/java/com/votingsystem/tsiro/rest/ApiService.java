@@ -6,6 +6,7 @@ import com.votingsystem.tsiro.POJO.FirmSurveyDetails;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
 import com.votingsystem.tsiro.POJO.LoginAndResetUserPasswordStuff;
 import com.votingsystem.tsiro.POJO.LoginFormBody;
+import com.votingsystem.tsiro.POJO.NewSurvey;
 import com.votingsystem.tsiro.POJO.RegisterFormBody;
 import com.votingsystem.tsiro.POJO.RegisterUserStuff;
 import com.votingsystem.tsiro.POJO.ResetPassowrdBody;
@@ -50,6 +51,9 @@ public interface ApiService {
 
     @POST("requests/surveys.php")
     Call<SurveyDetails> uploadSurveyAnswersOrGetSurveyStats(@Body SurveyAnswersBody surveyAnswersBody);
+
+    @POST("requests/surveys.php")
+    Call<AllSurveys> uploadNewUserSurvey(@Body NewSurvey newSurvey);
 
 //    @FormUrlEncoded
 //    @POST("functions/firmRequests.php")

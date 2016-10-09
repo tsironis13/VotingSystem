@@ -11,6 +11,7 @@ import android.util.Log;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
+import com.votingsystem.tsiro.mainClasses.SurveysActivity;
 import com.votingsystem.tsiro.votingsystem.R;
 
 /**
@@ -42,6 +43,9 @@ public class MyFcmListenerService extends FirebaseMessagingService {
         if (getResources().getString(R.string.email_notification).equals(action)) {
             Intent intent = new Intent(Intent.ACTION_SENDTO, Uri.parse(getResources().getString(R.string.mailto)));
             resultPendingIntent = PendingIntent.getActivity(this, 0, Intent.createChooser(intent, getResources().getString(R.string.open_with)), PendingIntent.FLAG_UPDATE_CURRENT);
+        } else if (getResources().getString(R.string.new_user_survey_notification).equals(action)) {
+            Intent intent = new Intent(this, SurveysActivity.class);
+            resultPendingIntent = PendingIntent.getActivity(this, 0, intent, 0);
         }
         NotificationCompat.Builder nBuilder = new NotificationCompat.Builder(this)
                 .setSmallIcon(R.drawable.app_logo)

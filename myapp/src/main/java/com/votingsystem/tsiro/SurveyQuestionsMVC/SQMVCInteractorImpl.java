@@ -24,7 +24,7 @@ import retrofit.Retrofit;
 /**
  * Created by giannis on 25/6/2016.
  */
-public class SQMVCInteractorImpl implements SQMVCInteractor {
+class SQMVCInteractorImpl implements SQMVCInteractor {
 
     private static final String debugTag = SQMVCInteractorImpl.class.getSimpleName();
     private ApiService apiService = RetrofitSingleton.getInstance().getApiService();

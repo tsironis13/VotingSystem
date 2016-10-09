@@ -7,20 +7,21 @@ import java.util.List;
  */
 
 public class NewSurveyQuestion {
-    private int key;
-    private String action, question, question_type;
+    private transient int key;
+    private transient String action;
+    private String question, question_type;
     private List<String> answers_list;
-    private int category_id;
+    private int type_id;
     private boolean single_choice;
     private boolean mandatory;
 
-    public NewSurveyQuestion(int key, String action, String question, String question_type, List<String> answers_list, int category_id, boolean single_choice, boolean mandatory) {
+    public NewSurveyQuestion(int key, String action, String question, String question_type, List<String> answers_list, int type_id, boolean single_choice, boolean mandatory) {
         this.key            = key;
         this.action         = action;
         this.question       = question;
         this.question_type  = question_type;
         this.answers_list   = answers_list;
-        this.category_id    = category_id;
+        this.type_id        = type_id;
         this.single_choice  = single_choice;
         this.mandatory      = mandatory;
     }
@@ -41,9 +42,9 @@ public class NewSurveyQuestion {
 
     public void setAnswersList(List<String> answers_list) { this.answers_list = answers_list; }
 
-    public int getCategoryId() { return category_id; }
+    public int getTypeId() { return type_id; }
 
-    public void setCategoryId(int category_id) { this.category_id = category_id; }
+    public void setTypeId(int type_id) { this.type_id = type_id; }
 
     public boolean isSingleChoice() { return single_choice; }
 
