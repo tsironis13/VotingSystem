@@ -9,11 +9,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.view.animation.LinearOutSlowInInterpolator;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -21,17 +19,17 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
 import com.rey.material.widget.Button;
+import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.TextView;
-import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
-import com.votingsystem.tsiro.ObserverPattern.RecyclerViewTouchListener;
-import com.votingsystem.tsiro.POJO.AllSurveys;
+import com.votingsystem.tsiro.observerPattern.NetworkStateListeners;
+import com.votingsystem.tsiro.observerPattern.RecyclerViewTouchListener;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
 import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
-import com.votingsystem.tsiro.RecyclerViewStuff.DividerItemDecoration;
-import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCPresenterImpl;
-import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCView;
+import com.votingsystem.tsiro.recyclerViewStuff.DividerItemDecoration;
+import com.votingsystem.tsiro.spinnerLoading.SpinnerLoading;
+import com.votingsystem.tsiro.surveysActivityMVC.SAMVCPresenterImpl;
+import com.votingsystem.tsiro.surveysActivityMVC.SAMVCView;
 import com.votingsystem.tsiro.adapters.SurveysRcvAdapter;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
@@ -54,6 +52,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
     private static final String debugTag = PendingSurveysFragment.class.getSimpleName();
     private View view;
     private RelativeLayout listSurveysRlt;
+    private SpinnerLoading spinnerLoading;
     private Button retryBtn;
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView pendingSurveysRcV;
@@ -90,15 +89,15 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        if (view == null)
-            view = inflater.inflate(R.layout.fragment_pendingsurveys, container, false);
-        listSurveysRlt = (RelativeLayout) view.findViewById(R.id.listSurveysRlt);
-        codeDescTtv = (TextView) view.findViewById(R.id.codeDescTtv);
-        retryBtn = (Button) view.findViewById(R.id.retryBtn);
-        swipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLlt);
-        pendingSurveysRcV = (RecyclerView) view.findViewById(R.id.pendingSurveysRcV);
-        noSurveysImv = (ImageView) view.findViewById(R.id.noSurveysImv);
-        noSurveysTxv = (TextView) view.findViewById(R.id.noSurveysTxv);
+        if (view == null) view = inflater.inflate(R.layout.fragment_pendingsurveys, container, false);
+        listSurveysRlt      = (RelativeLayout) view.findViewById(R.id.listSurveysRlt);
+        spinnerLoading      = (SpinnerLoading) view.findViewById(R.id.spinnerLoading);
+        codeDescTtv         = (TextView) view.findViewById(R.id.codeDescTtv);
+        retryBtn            = (Button) view.findViewById(R.id.retryBtn);
+        swipeRefreshLayout  = (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLlt);
+        pendingSurveysRcV   = (RecyclerView) view.findViewById(R.id.pendingSurveysRcV);
+        noSurveysImv        = (ImageView) view.findViewById(R.id.noSurveysImv);
+        noSurveysTxv        = (TextView) view.findViewById(R.id.noSurveysTxv);
         return view;
     }
 
@@ -155,6 +154,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
     public void onSuccessSurveysFetched(List<SurveyData> newData, int offset, int total) {
         if (swipeRefreshLayout.getVisibility() == View.GONE) swipeRefreshLayout.setVisibility(View.VISIBLE);
         if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
+        spinnerLoading.setVisibility(View.GONE);
         if (total != 0) this.total = total;
         if (offset == 0) {
             this.data = newData;
@@ -178,12 +178,12 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
 
     @Override
     public void onSuccessSurveyDetailsFetched(final SurveyDetailsData surveyDetailsData) {
-        if (progressDialog.isShowing()) {
+//        if (progressDialog.isShowing()) {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    progressDialog.dismiss();
+//                    progressDialog.dismiss();
                     if (getActivity() != null) {
                         getActivity().finish();
                         Bundle bundle = new Bundle();
@@ -196,13 +196,14 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
                     }
                 }
             }, 1500);
-        }
+//        }
     }
 
     @Override
     public void onFailure(int code, int request) {
         if (swipeRefreshLayout.getVisibility() == View.GONE) swipeRefreshLayout.setVisibility(View.VISIBLE);
         if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
+        spinnerLoading.setVisibility(View.GONE);
         if (request == 1) {
             if (code == AppConfig.ERROR_EMPTY_LIST) {
                 if (pendingSurveysRcV.getLayoutManager().getItemCount() != 0) {
@@ -252,6 +253,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
     }
 
     private void initializeSurveysList() {
+        spinnerLoading.setVisibility(View.VISIBLE);
         SAMVCpresenterImpl = new SAMVCPresenterImpl(this);
         SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.pending), AppConfig.FETCHED_SURVEYS_LIMIT, 0));
 
@@ -305,17 +307,17 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Netwo
         });
     }
 
-    private void initializeProgressDialog() {
-        if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setMessage(getActivity().getResources().getString(R.string.message));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-    }
+//    private void initializeProgressDialog() {
+//        if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
+//        progressDialog = new ProgressDialog(getActivity());
+//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        progressDialog.setMessage(getActivity().getResources().getString(R.string.message));
+//        progressDialog.setCancelable(false);
+//        progressDialog.show();
+//    }
 
     private void getSurveyDetails(int surveyId) {
-        initializeProgressDialog();
+//        initializeProgressDialog();
         SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
         SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
     }

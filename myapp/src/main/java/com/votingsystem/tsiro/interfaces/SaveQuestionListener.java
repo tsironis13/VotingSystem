@@ -7,5 +7,4 @@ import android.view.View;
  */
 public interface SaveQuestionListener {
     void onBottomSheetClicked(View view);
-    void onSaveQuestion();
 }

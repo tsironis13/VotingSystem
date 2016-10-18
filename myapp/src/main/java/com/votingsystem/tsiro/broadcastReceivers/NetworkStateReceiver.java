@@ -4,9 +4,8 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.net.ConnectivityManager;
-import android.util.Log;
 
-import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
+import com.votingsystem.tsiro.observerPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.app.AppConfig;
 
 import java.util.ArrayList;

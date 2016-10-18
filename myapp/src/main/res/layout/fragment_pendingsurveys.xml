@@ -6,6 +6,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <com.votingsystem.tsiro.spinnerLoading.SpinnerLoading
+        android:id="@+id/spinnerLoading"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
     <com.rey.material.widget.TextView
         android:id="@+id/codeDescTtv"
         android:layout_width="wrap_content"

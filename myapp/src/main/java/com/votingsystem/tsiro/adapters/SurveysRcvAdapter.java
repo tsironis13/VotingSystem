@@ -32,7 +32,6 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
     private int visibleThreshold = 8;
     private int pages = 1;
     private int lastVisibleItem, totalItemCount, VIEW_PROG, connectionStatus;
-    private int VIEW_ERROR = -1;
     private boolean isLoading, onSwipe;
     private OnLoadMoreListener onLoadMoreListener;
     private String type;
@@ -124,7 +123,7 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
             if (connectionStatus != AppConfig.NO_CONNECTION) {
                 return VIEW_PROG;
             } else {
-                return VIEW_ERROR;
+                return -1;
             }
         }
     }
@@ -154,11 +153,11 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         this.connectionStatus = connectionStatus;
     }
 
-    static class SurveysItemViewHolder extends RecyclerView.ViewHolder {
+    private static class SurveysItemViewHolder extends RecyclerView.ViewHolder {
         private RelativeLayout surveyItemContainerRlt;
         private TextView title, details, responses, answered;
 
-        public SurveysItemViewHolder(View itemView) {
+        SurveysItemViewHolder(View itemView) {
             super(itemView);
             surveyItemContainerRlt  =   (RelativeLayout) itemView.findViewById(R.id.surveyItemContainerRlt);
             title                   =   (TextView) itemView.findViewById(R.id.titleTtv);
@@ -168,19 +167,19 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         }
     }
 
-    static class ProgressViewHolder extends RecyclerView.ViewHolder {
+    private static class ProgressViewHolder extends RecyclerView.ViewHolder {
         private ProgressView progressView;
 
-        public ProgressViewHolder(View view) {
+        ProgressViewHolder(View view) {
             super(view);
             progressView = (ProgressView) view.findViewById(R.id.loader);
         }
     }
 
-    static class ErrorViewHolder extends RecyclerView.ViewHolder {
+    private static class ErrorViewHolder extends RecyclerView.ViewHolder {
         private Button retryBtn;
 
-        public ErrorViewHolder(View view) {
+        ErrorViewHolder(View view) {
             super(view);
             retryBtn = (Button) view.findViewById(R.id.lretryBtn);
         }

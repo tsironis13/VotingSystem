@@ -3,11 +3,8 @@ package com.votingsystem.tsiro.broadcastReceivers;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 
-import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
-import com.votingsystem.tsiro.ObserverPattern.RegistrationTokenListeners;
-import com.votingsystem.tsiro.votingsystem.R;
+import com.votingsystem.tsiro.observerPattern.RegistrationTokenListeners;
 
 import java.util.ArrayList;
 import java.util.List;

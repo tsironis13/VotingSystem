@@ -50,7 +50,7 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
     private UpdateNewSurveyObj updateNewSurveyObj;
     private String action;
     private String questionType;
-    private int key, typeId;
+    private int key, typeId, isMandatory;
     private int selectedRadioBtnId = R.id.singleChoiceRbtn;
 
     @Override
@@ -64,11 +64,11 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
         bundle.putInt("key", newSurveyQuestion.getKey());
         bundle.putString("action", newSurveyQuestion.getAction());
         bundle.putInt("type_id", newSurveyQuestion.getTypeId());
-        bundle.putString("title", newSurveyQuestion.getQuestionType());
+        bundle.putString("title", newSurveyQuestion.getType());
         if (newSurveyQuestion.getAction().equals("edit")) {
-            if (newSurveyQuestion.getQuestion() != null) bundle.putString("question", newSurveyQuestion.getQuestion());
+            if (newSurveyQuestion.getTitle() != null) bundle.putString("question", newSurveyQuestion.getTitle());
             if (newSurveyQuestion.getAnswersList() != null && newSurveyQuestion.getAnswersList().size() > 0) bundle.putStringArrayList("answers", (ArrayList<String>) newSurveyQuestion.getAnswersList());
-            bundle.putBoolean("mandatory", newSurveyQuestion.isMandatory());
+            bundle.putInt("mandatory", newSurveyQuestion.isMandatory());
             bundle.putBoolean("is_single_choice", newSurveyQuestion.isSingleChoice());
         }
         NewSurveyQuestionFragment newSurveyDetails = new NewSurveyQuestionFragment();
@@ -106,7 +106,7 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
                 answersContainerLlt.setVisibility(View.GONE);
                 addAnswerViewBtn.setVisibility(View.GONE);
             }
-            if (typeId != 100) {
+            if (typeId != 100 && typeId != 200) {
                 singleChoiceRbtn.setVisibility(View.GONE);
                 multipleChoiceRbtn.setVisibility(View.GONE);
             }
@@ -117,7 +117,7 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
 
                 String question         = getArguments().getString(getResources().getString(R.string.question));
                 List<String> answers    = getArguments().getStringArrayList(getResources().getString(R.string.tag_answers));
-                boolean mandatory       = getArguments().getBoolean(getResources().getString(R.string.mandatory));
+                int mandatory           = getArguments().getInt(getResources().getString(R.string.mandatory));
                 boolean isSingleChoice  = getArguments().getBoolean(getResources().getString(R.string.is_single_choice));
                 if (answers != null) {
                     for (int i = 0; i < answers.size(); i++) {
@@ -125,7 +125,7 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
                     }
                 }
                 questionTitleEdt.setText(question);
-                if (mandatory) mandatoryQuestionSwitch.setChecked(true);
+                if (mandatory == 1) mandatoryQuestionSwitch.setChecked(true);
                 if (!isSingleChoice) multipleChoiceRbtn.setChecked(true);
             }
         }
@@ -190,6 +190,7 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
         if (question.matches(getResources().getString(R.string.empty_string))) {
             updateNewSurveyObj.showSnackBar(AppConfig.ERROR_EMPTY_REQUIRED_FIELDS, null);
         } else {
+            if (mandatoryQuestionSwitch.isChecked()) isMandatory = 1;
             if (typeId != 800 && typeId != 400) {
                 if (answersContainerLlt.getChildCount() < 2) {
                     updateNewSurveyObj.showSnackBar(AppConfig.ERROR_ADD_ANSWERS_NOTE, null);
@@ -212,13 +213,30 @@ public class NewSurveyQuestionFragment extends Fragment implements View.OnClickL
                     }
                     if (answersFilledOut) {
                         boolean single_choice = false;
-                        if (typeId == 100) if (selectedRadioBtnId == R.id.singleChoiceRbtn) single_choice = true;
-                        NewSurveyQuestion newSurveyQuestion = new NewSurveyQuestion(key, getResources().getString(R.string.edit), question, questionType, answersList, typeId, single_choice, mandatoryQuestionSwitch.isChecked());
+                        if (typeId == 100 || typeId == 200) {
+                            if (selectedRadioBtnId == R.id.singleChoiceRbtn) {
+                                single_choice   = true;
+                                questionType    = getResources().getString(R.string.multiple_choice_single_answer);
+                            } else {
+                                typeId          = 200;
+                                questionType    = getResources().getString(R.string.multiple_choice_many_answers);
+                            }
+                        }
+                        NewSurveyQuestion newSurveyQuestion = new NewSurveyQuestion(key, getResources().getString(R.string.edit), question, questionType, answersList, typeId, single_choice, isMandatory);
                         updateNewSurveyObj(newSurveyQuestion, action);
                     }
                 }
             } else {
-                NewSurveyQuestion newSurveyQuestion = new NewSurveyQuestion(key, getResources().getString(R.string.edit), question, questionType, null, typeId, false, mandatoryQuestionSwitch.isChecked());
+                if (typeId == 400) {
+                    answersList.add(getResources().getStringArray(R.array.satisf_rating_scale_points)[0]);
+                    answersList.add(getResources().getStringArray(R.array.satisf_rating_scale_points)[1]);
+                    answersList.add(getResources().getStringArray(R.array.satisf_rating_scale_points)[2]);
+                    answersList.add(getResources().getStringArray(R.array.satisf_rating_scale_points)[3]);
+                    answersList.add(getResources().getStringArray(R.array.satisf_rating_scale_points)[4]);
+                } else {
+                    answersList.add(getResources().getString(R.string.item));
+                }
+                NewSurveyQuestion newSurveyQuestion = new NewSurveyQuestion(key, getResources().getString(R.string.edit), question, questionType, answersList, typeId, false, isMandatory);
                 updateNewSurveyObj(newSurveyQuestion, action);
             }
         }

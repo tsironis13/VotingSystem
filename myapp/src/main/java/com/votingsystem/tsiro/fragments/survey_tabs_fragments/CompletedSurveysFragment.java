@@ -20,28 +20,24 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
 import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
-import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
-import com.votingsystem.tsiro.ObserverPattern.RecyclerViewTouchListener;
+import com.votingsystem.tsiro.observerPattern.NetworkStateListeners;
+import com.votingsystem.tsiro.observerPattern.RecyclerViewTouchListener;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
 import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
-import com.votingsystem.tsiro.RecyclerViewStuff.DividerItemDecoration;
-import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCPresenterImpl;
-import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCView;
-import com.votingsystem.tsiro.adapters.SurveysPagerAdapter;
+import com.votingsystem.tsiro.recyclerViewStuff.DividerItemDecoration;
+import com.votingsystem.tsiro.spinnerLoading.SpinnerLoading;
+import com.votingsystem.tsiro.surveysActivityMVC.SAMVCPresenterImpl;
+import com.votingsystem.tsiro.surveysActivityMVC.SAMVCView;
 import com.votingsystem.tsiro.adapters.SurveysRcvAdapter;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
-import com.votingsystem.tsiro.interfaces.LoginActivityCommonElementsAndMuchMore;
 import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
 import com.votingsystem.tsiro.interfaces.RecyclerViewClickListener;
 import com.votingsystem.tsiro.interfaces.SurveysActivityCommonElements;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.mainClasses.SurveyDetailsActivity;
-import com.votingsystem.tsiro.mainClasses.SurveyQuestionsActivity;
-import com.votingsystem.tsiro.mainClasses.SurveysActivity;
 import com.votingsystem.tsiro.parcel.SurveyData;
 import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.votingsystem.R;
@@ -56,6 +52,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
     private static final String debugTag = CompletedSurveysFragment.class.getSimpleName();
     private View view;
     private RelativeLayout listSurveysRlt;
+    private SpinnerLoading spinnerLoading;
     private Button retryBtn;
     private SwipeRefreshLayout swipeRefreshLayout;
     private RecyclerView completedSurveysRcV;
@@ -92,6 +89,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         if ( view == null ) view = inflater.inflate(R.layout.fragment_completedsurveys, container, false);
         listSurveysRlt      =   (RelativeLayout) view.findViewById(R.id.listSurveysRlt);
+        spinnerLoading      =   (SpinnerLoading) view.findViewById(R.id.spinnerLoading);
         codeDescTtv         =   (TextView) view.findViewById(R.id.codeDescTtv);
         retryBtn            =   (Button) view.findViewById(R.id.sRetryBtn);
         swipeRefreshLayout  =   (SwipeRefreshLayout) view.findViewById(R.id.swipeRefreshLlt);
@@ -152,7 +150,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
         if (swipeRefreshLayout.getVisibility() == View.GONE) swipeRefreshLayout.setVisibility(View.VISIBLE);
         if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         if (total != 0) this.total = total;
-        if (progressDialog.isShowing()) progressDialog.dismiss();
+        spinnerLoading.setVisibility(View.GONE);
             if (offset == 0) {
                 this.data = newData;
                 surveysRcvAdapter.refreshData(newData);
@@ -176,12 +174,12 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
 
     @Override
     public void onSuccessSurveyDetailsFetched(final SurveyDetailsData surveyDetailsData) {
-        if (progressDialog.isShowing()) {
+//        if (progressDialog.isShowing()) {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    progressDialog.dismiss();
+//                    progressDialog.dismiss();
                     if (getActivity() != null) {
                         getActivity().finish();
                         Bundle bundle = new Bundle();
@@ -194,14 +192,14 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
                     }
                 }
             }, 1500);
-        }
+//        }
     }
 
     @Override
     public void onFailure(int code, int request) {
         if (swipeRefreshLayout.getVisibility() == View.GONE) swipeRefreshLayout.setVisibility(View.VISIBLE);
         if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
-        if (progressDialog.isShowing()) progressDialog.dismiss();
+        spinnerLoading.setVisibility(View.GONE);
         if (request == 1) {
             if (code == AppConfig.ERROR_EMPTY_LIST) {
                 if (completedSurveysRcV.getLayoutManager().getItemCount() != 0) {
@@ -256,7 +254,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
 
     private void initializeSurveysList() {
         SAMVCpresenterImpl = new SAMVCPresenterImpl(this);
-        initializeProgressDialog();
+        spinnerLoading.setVisibility(View.VISIBLE);
         SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.completed), AppConfig.FETCHED_SURVEYS_LIMIT, 0));
 
         completedSurveysRcV.setAdapter(surveysRcvAdapter);
@@ -308,17 +306,17 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Net
             }
         });
     }
-    private void initializeProgressDialog() {
-        if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
-        progressDialog = new ProgressDialog(getActivity());
-        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-        progressDialog.setMessage(getActivity().getResources().getString(R.string.message));
-        progressDialog.setCancelable(false);
-        progressDialog.show();
-    }
+//    private void initializeProgressDialog() {
+//        if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
+//        progressDialog = new ProgressDialog(getActivity());
+//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
+//        progressDialog.setMessage(getActivity().getResources().getString(R.string.message));
+//        progressDialog.setCancelable(false);
+//        progressDialog.show();
+//    }
 
     private void getSurveyDetails(int surveyId) {
-        initializeProgressDialog();
+//        initializeProgressDialog();
         SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
         SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
     }

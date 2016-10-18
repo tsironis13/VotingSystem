@@ -15,17 +15,24 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
-    <RelativeLayout
+    <com.rey.material.widget.RelativeLayout
+        android:id="@+id/surveyQuestionsRlt"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_marginTop="@dimen/view_pager_container_margin_top">
+
+        <com.votingsystem.tsiro.spinnerLoading.SpinnerLoading
+            android:id="@+id/spinnerLoading"
+            android:layout_width="wrap_content"
+            android:layout_centerInParent="true"
+            android:layout_height="wrap_content" />
 
         <android.support.v4.view.ViewPager
             android:id="@+id/surveyQuestionsPager"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-    </RelativeLayout>
+    </com.rey.material.widget.RelativeLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/saveQuestionFab"
@@ -35,6 +42,7 @@
         android:layout_marginRight="@dimen/save_question_fab_margin_right"
         android:layout_gravity="bottom|end"
         android:src="@drawable/done"
+        android:visibility="gone"
         android:tag="@string/done"
         style="@style/Fab" />
 

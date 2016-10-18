@@ -1,18 +1,16 @@
 package com.votingsystem.tsiro.fragments;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.IntentFilter;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
-import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
+import com.votingsystem.tsiro.observerPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
 import com.votingsystem.tsiro.interfaces.SurveysQuestionsActivityCommonElements;

@@ -1,7 +1,6 @@
 package com.votingsystem.tsiro.fragments;
 
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -11,7 +10,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.helper.ItemTouchHelper;
-import android.util.Log;
 import android.util.TypedValue;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -27,8 +25,8 @@ import com.rey.material.widget.EditText;
 import com.rey.material.widget.RadioButton;
 import com.rey.material.widget.Slider;
 import com.rey.material.widget.TextView;
-import com.votingsystem.tsiro.ObserverPattern.RecyclerViewTouchListener;
-import com.votingsystem.tsiro.RecyclerViewStuff.SImpleItemTouchHelperCallback;
+import com.votingsystem.tsiro.observerPattern.RecyclerViewTouchListener;
+import com.votingsystem.tsiro.recyclerViewStuff.SImpleItemTouchHelperCallback;
 import com.votingsystem.tsiro.adapters.SurveyListPickerQuestionRcvAdapter;
 import com.votingsystem.tsiro.adapters.SurveyRankingQuestionRcvAdapter;
 import com.votingsystem.tsiro.app.MyApplication;
@@ -38,11 +36,8 @@ import com.votingsystem.tsiro.parcel.QuestionData;
 import com.votingsystem.tsiro.votingsystem.R;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by giannis on 25/6/2016.
@@ -54,7 +49,6 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
     private LinearLayout questionContainer, pageIndexLlt;
     private TextView surveyTitleTtv, questionTitleTtv, pageIndexTtv, mandatoryNoteTtv;
     private EditText freeAnswerView;
-    private QuestionData question;
     private SaveQuestionListener saveQuestionListener;
     private int selectedIndex = -1;
     private List<ImageView> icons;
@@ -109,7 +103,7 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
         if (savedInstanceState == null) {
             if (getArguments() != null) {
                 satisfactionImgsDrawables = new int[]{R.drawable.angry, R.drawable.sad, R.drawable.neutral, R.drawable.happy, R.drawable.vhappy};
-                question = getArguments().getParcelable(getResources().getString(R.string.question));
+                QuestionData question = getArguments().getParcelable(getResources().getString(R.string.question));
                 surveyTitleTtv.setText(getArguments().getString(getResources().getString(R.string.survey_title)));
 
                 if (question != null && question.getTypeId() != 0) {
@@ -203,15 +197,10 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
     }
 
     public List<Integer> getMultipleChoiceSelectedIds() {
-        boolean isChecked = false;
         List<Integer> integerList = new ArrayList<>();
         for (int i = 0; i < checkBox.length; i++) {
-            if (checkBox[i].isChecked()) {
-                integerList.add(i);
-                isChecked = true;
-            }
+            if (checkBox[i].isChecked()) integerList.add(i);
         }
-        if (!isChecked) integerList.add(-1);
         return integerList;
     }
 
@@ -271,22 +260,6 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
             icons.add(imageView);
         }
         questionContainer.addView(linearLayout);
-//        LinearLayout satisfRatingView = (LinearLayout) LayoutInflater.from(getActivity()).inflate(R.layout.question_satisfaction_rating_template, (ViewGroup) getActivity().findViewById(R.id.satisfactionLlt), false);
-//        Log.e(debugTag, satisfRatingView+"");
-//        questionContainer.addView(satisfRatingView);
-//        if (satisfRatingView != null) {
-//            angryImv      =   (ImageView) getActivity().findViewById(R.id.angryImv);
-//            sadImv        =   (ImageView) getActivity().findViewById(R.id.sadImv);
-//            neutralImv    =   (ImageView) getActivity().findViewById(R.id.neutralImv);
-//            happyImv      =   (ImageView) getActivity().findViewById(R.id.happyImv);
-//            vhappyImv     =   (ImageView) getActivity().findViewById(R.id.vhappyImv);
-//            angryImv.setOnClickListener(this);
-//            sadImv.setOnClickListener(this);
-//            neutralImv.setOnClickListener(this);
-//            happyImv.setOnClickListener(this);
-//            vhappyImv.setOnClickListener(this);
-//            icons = new ImageView[]{angryImv, sadImv, neutralImv, happyImv, vhappyImv};
-//        }
     }
 
     private void initializeSliderView(final QuestionData question) {
@@ -321,20 +294,6 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
                     textView.setText(question.getAnswers().get(newValue-1));
                 }
             });
-//            if (view != null) {
-//                Slider slider           =   (Slider) getActivity().findViewById(R.id.questionSldr);
-//                final TextView textView =   (TextView) getActivity().findViewById(R.id.questionSliderTtv);
-//                slider.setValueRange(1, question.getAnswers().size(), true);
-//
-//                textView.setText(question.getAnswers().get(0));
-//                slider.setOnPositionChangeListener(new Slider.OnPositionChangeListener() {
-//                    @Override
-//                    public void onPositionChanged(Slider view, boolean fromUser, float oldPos, float newPos, int oldValue, int newValue) {
-//                        selectedIndex = newValue - 1;
-//                        textView.setText(question.getAnswers().get(newValue-1));
-//                    }
-//                });
-//            }
         }
     }
 
@@ -487,18 +446,4 @@ public class SurveyQuestionsFragment extends Fragment implements View.OnClickLis
     public void setCurrentPageIndex(int index, int size) {
         pageIndexTtv.setText(getResources().getString(R.string.page_index_text, index, size));
     }
-
-//    public void onBottomSheetAction(String action) {
-//        if (isAdded()) {
-//            Log.e(debugTag, arrowImv+"");
-//            if (action.equals(getResources().getString(R.string.expanded))) {
-//                Log.e(debugTag, action+" ACTION");
-//                arrowImv.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.arrow_down));
-//            } else {
-//                Log.e(debugTag, action+" ACTION");
-//                arrowImv.setImageDrawable(ContextCompat.getDrawable(getActivity(), R.drawable.arrow_up));
-//            }
-//        }
-//
-//    }
 }

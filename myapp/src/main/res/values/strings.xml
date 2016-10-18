@@ -222,6 +222,9 @@
     <string name="add_answers_note">Πρόσθεσε τουλάχιστον 2 απαντήσεις στην συγκεκριμένη ερώτηση.</string>
     <string name="fill_out_answers">Παρακαλώ συμπλήρωσε όλες τις απαντήσεις.</string>
     <string name="new_survey_question">%1$d. %2$s</string>
+    <string name="multiple_choice_single_answer">Πολλαπλής Επιλογής-Μονή Απάντηση</string>
+    <string name="multiple_choice_many_answers">Πολλαπλής Επιλογής-Πολλές Απαντήσεις</string>
+    <string name="item">item</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>
@@ -264,7 +267,8 @@
     <string name="registration_token">registrationToken</string>
     <!-- NAVIGATION DRAWER -->
     <string name="firm">Η Εταιρεία</string>
-    <string name="surveys">Έρευνες</string>
+    <string name="firm_surveys">Έρευνες εταιρείας</string>
+    <string name="user_surveys">Οι έρευνες μου</string>
     <string name="results">Αποτελέσματα</string>
     <string name="notifications">Ειδοποιήσεις</string>
     <string name="settings">Ρυθμίσεις</string>
@@ -300,13 +304,13 @@
         <item>Επικοινωνία </item>
         <item>Δέσμευση</item>
     </string-array>
-    <!-- SCALE POINTS ARRAY -->
-    <string-array name="agree_array">
-        <item>Strongly disagree</item>
-        <item>Disagree</item>
-        <item>Neither Agree nor Disagree</item>
-        <item>Agree</item>
-        <item>Strongly Agree</item>
+    <!-- SATISFACTION RATING SCALE POINTS -->
+    <string-array name="satisf_rating_scale_points">
+        <item>Καθόλου</item>
+        <item>Λίγο</item>
+        <item>Ουδέτερα</item>
+        <item>Πολύ</item>
+        <item>Πάρα πολύ</item>
     </string-array>
     <!-- SURVEYS TABS -->
     <string-array name="surveys_tabs">

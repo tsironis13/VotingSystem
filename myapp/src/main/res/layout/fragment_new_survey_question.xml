@@ -163,8 +163,6 @@
                     android:id="@+id/saveBtn"
                     android:layout_width="139dp"
                     android:layout_height="36dp"
-                    android:paddingRight="17dp"
-                    android:paddingLeft="17dp"
                     android:text="@string/save"
                     android:background="@null"
                     android:layout_alignParentRight="true"

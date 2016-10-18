@@ -1,8 +1,6 @@
 package com.votingsystem.tsiro.mainClasses;
 
 import android.app.Dialog;
-import android.app.SearchManager;
-import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
@@ -14,33 +12,28 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.SearchView;
 import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.util.SparseIntArray;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.TextView;
-import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
-import com.votingsystem.tsiro.ObserverPattern.RecyclerViewTouchListener;
+import com.votingsystem.tsiro.observerPattern.NetworkStateListeners;
+import com.votingsystem.tsiro.observerPattern.RecyclerViewTouchListener;
 import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
 import com.votingsystem.tsiro.POJO.SurveysFields;
-import com.votingsystem.tsiro.RecyclerViewStuff.DividerItemDecoration;
-import com.votingsystem.tsiro.SQLite.MySQLiteHelper;
-import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCPresenter;
-import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCPresenterImpl;
-import com.votingsystem.tsiro.SurveysActivityMVC.SAMVCView;
+import com.votingsystem.tsiro.recyclerViewStuff.DividerItemDecoration;
+import com.votingsystem.tsiro.sqLite.MySQLiteHelper;
+import com.votingsystem.tsiro.surveysActivityMVC.SAMVCPresenterImpl;
+import com.votingsystem.tsiro.surveysActivityMVC.SAMVCView;
 import com.votingsystem.tsiro.adapters.SearchSurveysRcvAdapter;
 import com.votingsystem.tsiro.adapters.SurveysPagerAdapter;
 import com.votingsystem.tsiro.app.AppConfig;
@@ -51,7 +44,7 @@ import com.votingsystem.tsiro.interfaces.SurveysActivityCommonElements;
 import com.votingsystem.tsiro.parcel.SurveyData;
 import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.votingsystem.R;
-import java.util.ArrayList;
+
 import java.util.List;
 
 /**
@@ -89,7 +82,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle(getResources().getString(R.string.surveys));
+            getSupportActionBar().setTitle(getResources().getString(R.string.firm_surveys));
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {

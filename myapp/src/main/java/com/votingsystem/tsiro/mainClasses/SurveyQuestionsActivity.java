@@ -32,8 +32,9 @@ import com.orhanobut.dialogplus.DialogPlus;
 import com.orhanobut.dialogplus.OnClickListener;
 import com.orhanobut.dialogplus.ViewHolder;
 import com.rey.material.widget.Button;
+import com.rey.material.widget.RelativeLayout;
 import com.rey.material.widget.TextView;
-import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
+import com.votingsystem.tsiro.observerPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.POJO.ObjectAnimatorProperties;
 import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
 import com.votingsystem.tsiro.POJO.SurveyAnswersList;
@@ -43,8 +44,9 @@ import com.votingsystem.tsiro.fragments.ErrorFragment;
 import com.votingsystem.tsiro.interfaces.SurveysQuestionsActivityCommonElements;
 import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.POJO.SurveyQuestionBody;
-import com.votingsystem.tsiro.SurveyQuestionsMVC.SQMVCPresenterImpl;
-import com.votingsystem.tsiro.SurveyQuestionsMVC.SQMVCView;
+import com.votingsystem.tsiro.spinnerLoading.SpinnerLoading;
+import com.votingsystem.tsiro.surveyQuestionsMVC.SQMVCPresenterImpl;
+import com.votingsystem.tsiro.surveyQuestionsMVC.SQMVCView;
 import com.votingsystem.tsiro.adapters.SurveyQuestionsPagerAdapter;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.fragments.SurveyQuestionsFragment;
@@ -63,8 +65,10 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
     private static final String debugTag = SurveyQuestionsActivity.class.getSimpleName();
     private ViewPager mPager;
     private CoordinatorLayout coordinatorLayt;
+    private RelativeLayout surveyQuestionsRlt;
     private SurveyQuestionsPagerAdapter surveyQuestionsPagerAdapter;
     private android.support.design.widget.FloatingActionButton floatingActionButton;
+    private SpinnerLoading spinnerLoading;
     private HorizontalScrollView horizontalScrollView;
     private LinearLayout questionBtnLlt;
     private List<QuestionData> data;
@@ -88,10 +92,11 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.survey_questions_activity);
-
         coordinatorLayt         =   (CoordinatorLayout) findViewById(R.id.coordinatorLayt);
         Toolbar toolbar         =   (Toolbar) findViewById(R.id.appBar);
+        surveyQuestionsRlt      =   (RelativeLayout) findViewById(R.id.surveyQuestionsRlt);
         mPager                  =   (ViewPager) findViewById(R.id.surveyQuestionsPager);
+        spinnerLoading          =   (SpinnerLoading) findViewById(R.id.spinnerLoading);
         floatingActionButton    =   (android.support.design.widget.FloatingActionButton) findViewById(R.id.saveQuestionFab);
         horizontalScrollView    =   (HorizontalScrollView) findViewById(R.id.horizontalScrollView);
         questionBtnLlt          =   (LinearLayout) findViewById(R.id.questionBtnLlt);
@@ -308,13 +313,19 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
 
     @Override
     public void onSuccessSurveyQuestionsFetched(final String surveyTitle, final List<QuestionData> data) {
-        if (progressDialog.isShowing()) {
+//        if (progressDialog.isShowing()) {
             this.data = data;
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    progressDialog.dismiss();
+//                    progressDialog.dismiss();
+                    spinnerLoading.setVisibility(View.GONE);
+                    floatingActionButton.setVisibility(View.VISIBLE);
+                    ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(surveyQuestionsRlt, getResources().getString(R.string.alpha), 0 , 1);
+                    alphaAnimator.setDuration(150);
+                    alphaAnimator.start();
+
                     if (data != null && data.size() > 0) {
                         if (data.size() == 1) menu.findItem(R.id.post).setVisible(true);
                         surveyQuestionsPagerAdapter = new SurveyQuestionsPagerAdapter(getSupportFragmentManager(), surveyTitle, data.get(0), data.size());
@@ -336,17 +347,18 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
                     }
                 }
             }, 1500);
-        }
+//        }
     }
 
     @Override
     public void onSuccessSurveyDetailsFetched(final SurveyDetailsData surveyDetailsData) {
-        if (progressDialog.isShowing()) {
+//        if (progressDialog.isShowing()) {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    progressDialog.dismiss();
+//                    progressDialog.dismiss();
+                    spinnerLoading.setVisibility(View.GONE);
                     finish();
                     Bundle bundle = new Bundle();
                     bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_stats));
@@ -356,16 +368,17 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
                     startActivity(intent);
                 }
             }, 1500);
-        }
+//        }
     }
 
     @Override
     public void onFailure(int code, int request) {
         if (request == 1) {
-            if (progressDialog.isShowing()) {
-                progressDialog.dismiss();
+//            if (progressDialog.isShowing()) {
+//                progressDialog.dismiss();
+            spinnerLoading.setVisibility(View.GONE);
                 getSupportFragmentManager().beginTransaction().replace(R.id.baseSQAFrlt, ErrorFragment.newInstance(getResources().getString(R.string.survey_questions_fgmt), code), getResources().getString(R.string.error_fgmt)).commit();
-            }
+//            }
         } else {
             showErrorContainerSnackbar(getResources().getString(sparseIntArray.get(code)));
         }
@@ -393,20 +406,20 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
         }
     }
 
-    @Override
-    public void onSaveQuestion() {
-        if (mPager.getCurrentItem() + 1 < data.size() && surveyQuestionsPagerAdapter.getCount() == mPager.getCurrentItem() + 1) {
-            surveyQuestionsPagerAdapter.add(data.get(mPager.getCurrentItem()+1));
-            mPager.setCurrentItem(surveyQuestionsPagerAdapter.getCount(), true);
-        }
-    }
+//    @Override
+//    public void onSaveQuestion() {
+//        if (mPager.getCurrentItem() + 1 < data.size() && surveyQuestionsPagerAdapter.getCount() == mPager.getCurrentItem() + 1) {
+//            surveyQuestionsPagerAdapter.add(data.get(mPager.getCurrentItem()+1));
+//            mPager.setCurrentItem(surveyQuestionsPagerAdapter.getCount(), true);
+//        }
+//    }
 
     @Override
     public void networkStatus(int connectionType) {
         connectionStatus = connectionType;
         if (activityCreated)
             if (connectionType != AppConfig.NO_CONNECTION) {
-                initializeProgressDialog();
+//                initializeProgressDialog();
                 SQMVCpresenterImpl.getSurveyQuestions(new SurveyQuestionBody(getResources().getString(R.string.get_survey_questions), surveyId));
             } else {
                 floatingActionButton.setVisibility(View.GONE);

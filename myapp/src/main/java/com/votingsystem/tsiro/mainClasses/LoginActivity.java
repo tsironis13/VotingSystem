@@ -1,10 +1,8 @@
 package com.votingsystem.tsiro.mainClasses;
 
-import android.Manifest;
 import android.app.Activity;
 import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
@@ -42,9 +40,9 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.rey.material.widget.TextView;
-import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
-import com.votingsystem.tsiro.ObserverPattern.RegistrationTokenListeners;
-import com.votingsystem.tsiro.ObserverPattern.SoftKeyboardStateWatcher;
+import com.votingsystem.tsiro.observerPattern.NetworkStateListeners;
+import com.votingsystem.tsiro.observerPattern.RegistrationTokenListeners;
+import com.votingsystem.tsiro.observerPattern.SoftKeyboardStateWatcher;
 import com.votingsystem.tsiro.animation.TransitionSets;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;

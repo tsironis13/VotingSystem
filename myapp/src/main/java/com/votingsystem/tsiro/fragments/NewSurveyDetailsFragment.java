@@ -28,9 +28,9 @@ import com.rey.material.widget.ImageButton;
 import com.rey.material.widget.LinearLayout;
 import com.rey.material.widget.Spinner;
 import com.rey.material.widget.TextView;
-import com.votingsystem.tsiro.CreateSurveyMVC.CSMVCPresenterImpl;
-import com.votingsystem.tsiro.CreateSurveyMVC.CSMVCView;
-import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
+import com.votingsystem.tsiro.createSurveyMVC.CSMVCPresenterImpl;
+import com.votingsystem.tsiro.createSurveyMVC.CSMVCView;
+import com.votingsystem.tsiro.observerPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.POJO.NewSurvey;
 import com.votingsystem.tsiro.POJO.NewSurveyQuestion;
 import com.votingsystem.tsiro.adapters.FirmNamesSpnrNothingSelectedAdapter;
@@ -41,18 +41,14 @@ import com.votingsystem.tsiro.helperClasses.CustomSpinnerItem;
 import com.votingsystem.tsiro.interfaces.UpdateNewSurveyObj;
 import com.votingsystem.tsiro.mainClasses.DashboardActivity;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
-import com.votingsystem.tsiro.mainClasses.SurveysActivity;
 import com.votingsystem.tsiro.votingsystem.R;
 import net.i2p.android.ext.floatingactionbutton.FloatingActionButton;
 import net.i2p.android.ext.floatingactionbutton.FloatingActionsMenu;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-
-import static com.google.android.gms.internal.zznu.it;
 
 /**
  * Created by giannis on 30/7/2016.
@@ -182,7 +178,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
                     questionLlt.setGravity(Gravity.CENTER_VERTICAL);
 
                     TextView questionTtv = new TextView(getActivity());
-                    questionTtv.setText(getResources().getString(R.string.new_survey_question, i+1, newSurveyQuestion.getQuestion()));
+                    questionTtv.setText(getResources().getString(R.string.new_survey_question, i+1, newSurveyQuestion.getTitle()));
                     questionTtv.setTextColor(ContextCompat.getColor(getActivity(), android.R.color.black));
                     questionTtv.setLayoutParams(new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 0.9f));
 
@@ -277,7 +273,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
             getActivity().getSupportFragmentManager()
                     .beginTransaction()
                     .setCustomAnimations(R.anim.new_question_anim_enter, R.anim.new_question_anim_exit, R.anim.new_question_anim_enter, R.anim.new_question_anim_exit)
-                    .replace(R.id.createSurveyFgmtContainer, NewSurveyQuestionFragment.newInstance(new NewSurveyQuestion(keyAt+1, getResources().getString(R.string.add), null, questionType, null, categoryId, false, false)), getResources().getString(R.string.new_survey_question_fgmt))
+                    .replace(R.id.createSurveyFgmtContainer, NewSurveyQuestionFragment.newInstance(new NewSurveyQuestion(keyAt+1, getResources().getString(R.string.add), null, questionType, null, categoryId, false, 0)), getResources().getString(R.string.new_survey_question_fgmt))
                     .addToBackStack(getResources().getString(R.string.new_survey_question_fgmt))
                     .commit();
         }

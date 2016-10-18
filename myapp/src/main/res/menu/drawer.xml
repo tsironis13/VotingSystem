@@ -22,9 +22,13 @@
 
         <item
             android:id="@+id/surveys"
-            android:checked="false"
             android:icon="@drawable/surveys"
-            android:title="@string/surveys" />
+            android:title="@string/firm_surveys" />
+
+        <item
+            android:id="@+id/user_surveys"
+            android:icon="@drawable/user_surveys"
+            android:title="@string/user_surveys" />
 
         <item
             android:id="@+id/results"
@@ -55,7 +59,6 @@
 
         <item
             android:id="@+id/logout"
-            android:checked="false"
             android:icon="@drawable/logout"
             android:title="@string/logout" />
 

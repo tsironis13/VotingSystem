@@ -2,13 +2,10 @@ package com.votingsystem.tsiro.mainClasses;
 
 import android.animation.ObjectAnimator;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.provider.Settings;
 import android.support.design.widget.Snackbar;
-import android.support.v4.app.Fragment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -23,9 +20,7 @@ import com.rey.material.app.DialogFragment;
 import com.rey.material.app.SimpleDialog;
 import com.rey.material.widget.EditText;
 import com.rey.material.widget.LinearLayout;
-import com.rey.material.widget.SnackBar;
 import com.rey.material.widget.TextView;
-import com.votingsystem.tsiro.CreateSurveyMVC.CSMVCView;
 import com.votingsystem.tsiro.POJO.NewSurvey;
 import com.votingsystem.tsiro.POJO.NewSurveyQuestion;
 import com.votingsystem.tsiro.app.AppConfig;
@@ -35,10 +30,6 @@ import com.votingsystem.tsiro.interfaces.UpdateNewSurveyObj;
 import com.votingsystem.tsiro.votingsystem.R;
 
 import net.i2p.android.ext.floatingactionbutton.FloatingActionsMenu;
-
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 
 /**
  * Created by giannis on 30/7/2016.

@@ -9,18 +9,18 @@ import java.util.List;
 public class NewSurveyQuestion {
     private transient int key;
     private transient String action;
-    private String question, question_type;
-    private List<String> answers_list;
+    private String title, type;
+    private List<String> answers;
     private int type_id;
-    private boolean single_choice;
-    private boolean mandatory;
+    private transient boolean single_choice;
+    private int mandatory;
 
-    public NewSurveyQuestion(int key, String action, String question, String question_type, List<String> answers_list, int type_id, boolean single_choice, boolean mandatory) {
+    public NewSurveyQuestion(int key, String action, String title, String type, List<String> answers, int type_id, boolean single_choice, int mandatory) {
         this.key            = key;
         this.action         = action;
-        this.question       = question;
-        this.question_type  = question_type;
-        this.answers_list   = answers_list;
+        this.title          = title;
+        this.type           = type;
+        this.answers        = answers;
         this.type_id        = type_id;
         this.single_choice  = single_choice;
         this.mandatory      = mandatory;
@@ -34,13 +34,13 @@ public class NewSurveyQuestion {
 
     public void setAction(String action) { this.action = action; }
 
-    public String getQuestionType() { return question_type; }
+    public String getType() { return type; }
 
-    public void setQuestionType(String question_type) { this.question_type = question_type; }
+    public void setType(String type) { this.type = type; }
 
-    public List<String> getAnswersList() { return answers_list; }
+    public List<String> getAnswersList() { return answers; }
 
-    public void setAnswersList(List<String> answers_list) { this.answers_list = answers_list; }
+    public void setAnswersList(List<String> answers) { this.answers = answers; }
 
     public int getTypeId() { return type_id; }
 
@@ -50,11 +50,11 @@ public class NewSurveyQuestion {
 
     public void setSingleChoice(boolean single_choice) { this.single_choice = single_choice; }
 
-    public boolean isMandatory() { return mandatory; }
+    public int isMandatory() { return mandatory; }
 
-    public void setMandatory(boolean mandatory) { this.mandatory = mandatory; }
+    public void setMandatory(int mandatory) { this.mandatory = mandatory; }
 
-    public String getQuestion() { return question; }
+    public String getTitle() { return title; }
 
-    public void setQuestion(String question) { this.question = question; }
+    public void setTitle(String title) { this.title = title; }
 }

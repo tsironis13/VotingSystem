@@ -1,31 +1,22 @@
 package com.votingsystem.tsiro.mainClasses;
 
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.design.widget.NavigationView;
-import android.support.v4.view.MenuItemCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
 //import com.squareup.leakcanary.RefWatcher;
 import com.rey.material.widget.TextView;
-import com.votingsystem.tsiro.ObserverPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.app.MyApplication;
-import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
 import com.votingsystem.tsiro.fragments.*;
 import com.votingsystem.tsiro.votingsystem.R;
-
-import org.w3c.dom.Text;
 
 /**
  * Created by user on 16/11/2015.
