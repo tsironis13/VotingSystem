@@ -1,6 +1,7 @@
 package com.votingsystem.tsiro.adapters;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -29,8 +30,9 @@ public class FirmNamesSpnrNothingSelectedAdapter extends ArrayAdapter<CustomSpin
         this.layoutInflater             =   LayoutInflater.from(context);
     }
 
+    @NonNull
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(int position, View convertView, @NonNull ViewGroup parent) {
         if (position == 0) {
             return getNothingSelectedView(parent);
         } else {
@@ -39,7 +41,7 @@ public class FirmNamesSpnrNothingSelectedAdapter extends ArrayAdapter<CustomSpin
     }
 
     @Override
-    public View getDropDownView(int position, View convertView, ViewGroup parent) {
+    public View getDropDownView(int position, View convertView, @NonNull ViewGroup parent) {
         int positionToReturn;
         if (position == 0) {
             return new View(context);

@@ -20,6 +20,7 @@ import com.votingsystem.tsiro.votingsystem.R;
 public class SurveyDetailsActivity extends AppCompatActivity {
 
     private static final String debugTag = SurveyDetailsActivity.class.getSimpleName();
+    private String actionNavigate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,6 +37,7 @@ public class SurveyDetailsActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     finish();
                     Intent intent = new Intent(SurveyDetailsActivity.this, SurveysActivity.class);
+                    intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
                     startActivity(intent);
                 }
             });
@@ -45,6 +47,7 @@ public class SurveyDetailsActivity extends AppCompatActivity {
         if (savedInstanceState == null) {
             if (getIntent().getExtras() != null) {
                 String action   = getIntent().getExtras().getString(getResources().getString(R.string.details_activ_action_key));
+                actionNavigate  = getIntent().getExtras().getString(getResources().getString(R.string.action));
                 if (action != null)
                     if (action.equals(getResources().getString(R.string.show_stats))) {
                         getSupportFragmentManager().beginTransaction().replace(R.id.surveyDetailsFgmtContainer, SurveyStatsFragment.newInstance((SurveyDetailsData) getIntent().getExtras().getParcelable(getResources().getString(R.string.data_parcelable_key))), getResources().getString(R.string.survey_stats_fgmt)).commit();
@@ -62,6 +65,7 @@ public class SurveyDetailsActivity extends AppCompatActivity {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             finish();
             Intent intent = new Intent(SurveyDetailsActivity.this, SurveysActivity.class);
+            intent.putExtra(getResources().getString(R.string.action), actionNavigate);
             startActivity(intent);
         }
         return super.onKeyDown(keyCode, event);

@@ -49,7 +49,7 @@ import java.util.List;
 /**
  * Created by giannis on 19/6/2016.
  */
-public class OngoingSurveysFragment extends Fragment implements SAMVCView, NetworkStateListeners, SwipeRefreshLayout.OnRefreshListener {
+public class OngoingSurveysFragment extends Fragment implements SAMVCView, SwipeRefreshLayout.OnRefreshListener {
 
     private static final String debugTag = OngoingSurveysFragment.class.getSimpleName();
     private View view;
@@ -63,11 +63,10 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Netwo
     private SAMVCPresenterImpl SAMVCpresenterImpl;
     private SurveysRcvAdapter surveysRcvAdapter;
     private List<SurveyData> data;
-    private ProgressDialog progressDialog;
-    private NetworkStateReceiver networkStateReceiver;
-    private Bundle savedInstanceState;
-    private int connectionStatus, total;
-    private boolean surveysLoaded, fragmentCreated;
+    private int total, cPage;
+    private static int connectionStatus;
+    private boolean surveysLoaded;
+    private boolean noConnectionViewAdded;
     private SurveysActivityCommonElements commonElements;
     private SparseIntArray inputValidationCodes;
 
@@ -108,24 +107,47 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Netwo
         swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(getActivity(), R.color.accentColor));
         inputValidationCodes = AppConfig.getCodes();
         retryBtn.setTransformationMethod(null);
+        if (getArguments() != null) connectionStatus = getArguments().getInt(getResources().getString(R.string.connection_status));
         if (savedInstanceState == null) {
-            LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
             ongoingSurveysRcV.setHasFixedSize(true);
-            ongoingSurveysRcV.setLayoutManager(linearLayoutManager);
-
+            ongoingSurveysRcV.setLayoutManager(new LinearLayoutManager(getActivity()));
             if (!surveysLoaded) {
                 surveysRcvAdapter = new SurveysRcvAdapter(null, ongoingSurveysRcV, getResources().getString(R.string.ongoing));
                 ongoingSurveysRcV.setAdapter(surveysRcvAdapter);
             }
+            handleActionsBasedOnNetworkStatus();
+            ongoingSurveysRcV.addItemDecoration(new DividerItemDecoration(ContextCompat.getDrawable(getActivity(), R.drawable.divider)));
+            ongoingSurveysRcV.addOnItemTouchListener(new RecyclerViewTouchListener(getActivity(), ongoingSurveysRcV, new RecyclerViewClickListener() {
+                @Override
+                public void onClick(View view, int position) {
+                    Bundle bundle = new Bundle();
+                    if (view != null) {
+                        if (view instanceof LinearLayout) {
+                            if (connectionStatus != AppConfig.NO_CONNECTION) {
+//                            surveysRcvAdapter.notifyItemRemoved(data.size() - 1);
+                                SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.ongoing), cPage));
+                            }
+                        } else {
+                            if ((Integer) view.getTag() == 0) {
+                                getActivity().finish();
+                                Intent intent = new Intent(getActivity(), SurveyQuestionsActivity.class);
+                                bundle.putString(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
+                                bundle.putInt(getResources().getString(R.string.survey_id), data.get(position).getSurveyId());
+                                intent.putExtras(bundle);
+                                startActivity(intent);
+                            } else {
+                                Log.e(debugTag, "VOTED");
+                                if (connectionStatus != AppConfig.NO_CONNECTION) {
+                                    getSurveyDetails(data.get(position).getSurveyId());
+                                } else {
+                                    commonElements.showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(AppConfig.NO_CONNECTION)));
+                                }
+                            }
+                        }
+                    }
+                }
+            }));
         }
-        networkStateReceiver = new NetworkStateReceiver();
-        networkStateReceiver.addListener(this);
-        getActivity().registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
-
-        this.savedInstanceState = savedInstanceState;
-        fragmentCreated = true;
-        if (getArguments() != null) connectionStatus = getArguments().getInt(getResources().getString(R.string.connection_status));
-
         retryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,67 +163,65 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Netwo
     }
 
     @Override
-    public void onDestroy() {
-        super.onDestroy();
-        networkStateReceiver.removeListener(this);
-        getActivity().unregisterReceiver(networkStateReceiver);
-        //if (this.SAMVCpresenterImpl != null) SAMVCpresenterImpl.onDestroy();
-    }
-
-    @Override
-    public void onSuccessSurveysFetched(List<SurveyData> newData, int offset, int total) {
+    public void onSuccessSurveysFetched(final List<SurveyData> newData, final int page, int total) {
+        Log.e(debugTag, "TOTAL: "+newData.size()+"");
         if (swipeRefreshLayout.getVisibility() == View.GONE) swipeRefreshLayout.setVisibility(View.VISIBLE);
-        if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
+        if (swipeRefreshLayout.isRefreshing()) {
+            swipeRefreshLayout.setRefreshing(false);
+//            boolean onSwiped = true;
+        }
         if (total != 0) this.total = total;
         spinnerLoading.setVisibility(View.GONE);
-        if (offset == 0) {
-            this.data = newData;
-            surveysRcvAdapter.refreshData(newData);
-            surveysRcvAdapter.notifyDataSetChanged();
-        } else {
-            this.data.remove(data.size() - 1);
-            surveysRcvAdapter.notifyItemRemoved(data.size());
-            int y       =   0;
-            int start   =   data.size();
-            int end     =   start + newData.size();
-            for (int i = start + 1; i <= end; i++) {
-                data.add(newData.get(y));
-                surveysRcvAdapter.notifyItemInserted(this.data.size());
-                y++;
+        Handler handler = new Handler();
+        // create new runnable to make surveys list visible only when spinner loading widget is completed faded out of screen
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (page == 1) {
+                    data = newData;
+                    surveysRcvAdapter.refreshData(data);
+                    surveysRcvAdapter.notifyDataSetChanged();
+                } else {
+                    if (noConnectionViewAdded) {
+                        data.remove(data.size() - 1);
+                        surveysRcvAdapter.notifyItemRemoved(data.size());
+                        noConnectionViewAdded = false;
+                    }
+                    int y       = 0;
+                    int start   = data.size();
+                    int end     = start + newData.size();
+                    for (int i = start + 1; i <= end; i++) {
+                        data.add(newData.get(y));
+                        surveysRcvAdapter.notifyItemInserted(data.size());
+                        y++;
+                    }
+                    surveysRcvAdapter.setLoaded();
+                }
+                surveysLoaded = true;
             }
-            surveysRcvAdapter.setLoaded();
-        }
-        surveysLoaded = true;
+        }, 250);
     }
 
     @Override
     public void onSuccessSurveyDetailsFetched(final SurveyDetailsData surveyDetailsData) {
-//        if (progressDialog.isShowing()) {
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-//                    progressDialog.dismiss();
-                    if (getActivity() != null) {
-                        getActivity().finish();
-                        Bundle bundle = new Bundle();
-                        Intent intent = new Intent(getActivity(), SurveyDetailsActivity.class);
-                        bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_details));
-                        bundle.putString(getResources().getString(R.string.type), getResources().getString(R.string.ongoing));
-                        bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
-                        intent.putExtras(bundle);
-                        startActivity(intent);
-                    }
-                }
-            }, 1500);
-//        }
+        if (getActivity() != null) {
+            getActivity().finish();
+            Bundle bundle = new Bundle();
+            Intent intent = new Intent(getActivity(), SurveyDetailsActivity.class);
+            bundle.putString(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
+            bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_details));
+            bundle.putString(getResources().getString(R.string.type), getResources().getString(R.string.ongoing));
+            bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
     }
 
     @Override
     public void onFailure(int code, int request) {
         if (swipeRefreshLayout.getVisibility() == View.GONE) swipeRefreshLayout.setVisibility(View.VISIBLE);
         if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
-        spinnerLoading.setVisibility(View.GONE);
+        if (!surveysLoaded) spinnerLoading.setVisibility(View.GONE);
         if (request == 1) {
             if (code == AppConfig.ERROR_EMPTY_LIST) {
                 if (ongoingSurveysRcV.getLayoutManager().getItemCount() != 0) {
@@ -217,25 +237,18 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Netwo
         } else {
             if (isAdded()) commonElements.showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(code)));
         }
-
-    }
-
-    @Override
-    public void networkStatus(int connectionType) {
-        connectionStatus = connectionType;
-        if (savedInstanceState == null)
-            if (!surveysLoaded && connectionStatus != AppConfig.NO_CONNECTION) {
-                if (fragmentCreated) initializeSurveysList();
-            } else if (!surveysLoaded) {
-                onErrorBackgroundView(AppConfig.NO_CONNECTION);
-            }
-        fragmentCreated = false;
     }
 
     @Override
     public void onRefresh() {
         if (connectionStatus != AppConfig.NO_CONNECTION) {
-            initializeSurveysList();
+            if (data != null) {
+                surveysRcvAdapter.onSwipeToRefresh();
+                int count = surveysRcvAdapter.getItemCount();
+                data.clear();
+                surveysRcvAdapter.notifyItemRangeRemoved(0, count);
+                initializeSurveysList();
+            }
         } else {
             onErrorBackgroundView(AppConfig.NO_CONNECTION);
             if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
@@ -251,82 +264,61 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Netwo
         codeDescTtv.setText(getResources().getString(inputValidationCodes.get(code)));
     }
 
+    public static void updatedNetworkStatus(int status) {
+        connectionStatus = status;
+    }
+
+    private void handleActionsBasedOnNetworkStatus() {
+        if (connectionStatus != AppConfig.NO_CONNECTION) {
+            initializeSurveysList();
+        } else {
+            onErrorBackgroundView(AppConfig.NO_CONNECTION);
+        }
+    }
+
     private void initializeSurveysList() {
         SAMVCpresenterImpl = new SAMVCPresenterImpl(this);
-        spinnerLoading.setVisibility(View.VISIBLE);
-        SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.ongoing), AppConfig.FETCHED_SURVEYS_LIMIT, 0));
-
-        ongoingSurveysRcV.setAdapter(surveysRcvAdapter);
-        ongoingSurveysRcV.addItemDecoration(new DividerItemDecoration(ContextCompat.getDrawable(getActivity(), R.drawable.divider)));
-        ongoingSurveysRcV.addOnItemTouchListener(new RecyclerViewTouchListener(getActivity(), ongoingSurveysRcV, new RecyclerViewClickListener() {
-            @Override
-            public void onClick(View view, int position) {
-                Bundle bundle = new Bundle();
-                if (view != null) {
-                    if (view instanceof LinearLayout) {
-                        if (connectionStatus != AppConfig.NO_CONNECTION) {
-                            surveysRcvAdapter.notifyItemRemoved(data.size() - 1);
-                            SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.ongoing), AppConfig.FETCHED_SURVEYS_LIMIT, position));
-                        }
-                    } else {
-                        if ((Integer) view.getTag() == 0) {
-                            getActivity().finish();
-                            Intent intent = new Intent(getActivity(), SurveyQuestionsActivity.class);
-                            bundle.putInt(getResources().getString(R.string.survey_id), data.get(position).getSurveyId());
-                            intent.putExtras(bundle);
-                            startActivity(intent);
-                        } else {
-                            Log.e(debugTag, "VOTED");
-                            if (connectionStatus != AppConfig.NO_CONNECTION) {
-                                getSurveyDetails(data.get(position).getSurveyId());
-                            } else {
-                                commonElements.showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(AppConfig.NO_CONNECTION)));
-                            }
-                        }
-                    }
-                }
-            }
-        }));
+        if (!surveysLoaded) spinnerLoading.setVisibility(View.VISIBLE);
+        SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.ongoing), 1));
 
         surveysRcvAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
-            public void onLoadMore(int offset) {
-                surveysRcvAdapter.updateConnectionStatus(connectionStatus);
+            public void onLoadMore(int page) {
+                cPage = page;
+                /* Use Handler to avoid illegal state exception described bellow.
+                 * Cannot call this method in a scroll callback. Scroll callbacks might be run during a measure & layout pass where you cannot change the RecyclerView data. Any method call that might change the structure of the RecyclerView or the adapter contents should be postponed to the next frame.
+                 */
+                Handler handler = new Handler();
                 if (connectionStatus != AppConfig.NO_CONNECTION) {
                     if (data != null) {
                         if (ongoingSurveysRcV.getLayoutManager().getItemCount() < total) {
-                            Handler handler = new Handler();
-                            data.add(null);
-                            handler.post(new Runnable() {
-                                @Override
-                                public void run() {
-                                    surveysRcvAdapter.notifyItemChanged(data.size() - 1);
-                                }
-                            });
-                            SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.ongoing ), AppConfig.FETCHED_SURVEYS_LIMIT, offset));
+//                            data.add(null);
+//                            handler.post(new Runnable() {
+//                                @Override
+//                                public void run() {
+//                                    surveysRcvAdapter.notifyItemChanged(data.size() - 1);
+//                                }
+//                            });
+                            SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.ongoing ), page));
                         }
                     }
                 } else {
                     if (ongoingSurveysRcV.getLayoutManager().getItemCount() < total) {
                         data.add(null);
-                        surveysRcvAdapter.notifyItemInserted(data.size() - 1);
+                        handler.post(new Runnable() {
+                            @Override
+                            public void run() {
+                                surveysRcvAdapter.notifyItemInserted(data.size() - 1);
+                                noConnectionViewAdded = true;
+                            }
+                        });
                     }
                 }
             }
         });
     }
 
-//    private void initializeProgressDialog() {
-//        if (progressDialog != null && progressDialog.isShowing()) progressDialog.dismiss();
-//        progressDialog = new ProgressDialog(getActivity());
-//        progressDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-//        progressDialog.setMessage(getActivity().getResources().getString(R.string.message));
-//        progressDialog.setCancelable(false);
-//        progressDialog.show();
-//    }
-
     private void getSurveyDetails(int surveyId) {
-//        initializeProgressDialog();
         SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
         SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
     }

@@ -318,6 +318,12 @@
         <item>ΣΕ ΕΞΕΛΙΞΗ</item>
         <item>ΕΚΚΡΕΜΟΥΝ</item>
     </string-array>
+    <!-- USER SURVEYS TABS-->
+    <string-array name="user_surveys_tabs">
+        <item>ΣΕ ΕΞΕΛΙΞΗ</item>
+        <item>ΕΓΚΕΚΡΙΜΜΕΝΕΣ</item>
+        <item>ΑΠΟΡΡΙΦΘΕΙΣΕΣ</item>
+    </string-array>
     <!-- Content Description -->
     <string name="desc_list_item_icon">Item Icon</string>
 </resources>

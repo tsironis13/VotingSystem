@@ -50,7 +50,6 @@ public class AppConfig {
     public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
     public static final int PASSWORD_INPUT_TYPE                 =   129;
     //SURVEYS
-    public static final int FETCHED_SURVEYS_LIMIT               =   20;
     public static final int NAVDRAWER_ITEM_VERTICAL_HEIGHT      =   48;
     public static final int NAVDRAWER_DEFAULT_SELECTED_POSITION =   0;
 

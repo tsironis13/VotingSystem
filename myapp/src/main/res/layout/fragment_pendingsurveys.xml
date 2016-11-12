@@ -3,8 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/listSurveysRlt"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
     <com.votingsystem.tsiro.spinnerLoading.SpinnerLoading
         android:id="@+id/spinnerLoading"
@@ -58,7 +57,7 @@
         android:src="@drawable/no_surveys"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/no_surveys_imv_margin_top"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:contentDescription="@string/ongoing" />
 
     <com.rey.material.widget.TextView
@@ -69,7 +68,7 @@
         android:text="@string/no_pending"
         android:textSize="@dimen/no_surveys_txv_text_size"
         android:textColor="@color/no_surveys_txv_color"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

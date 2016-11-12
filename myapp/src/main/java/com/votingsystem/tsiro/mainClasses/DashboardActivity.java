@@ -115,13 +115,19 @@ public class DashboardActivity extends AppCompatActivity{
             public boolean onNavigationItemSelected(MenuItem item) {
                 if(item.isChecked()) item.setChecked(false);
                 else item.setChecked(true);
+                Intent intent = new Intent(DashboardActivity.this, SurveysActivity.class);
                 switch (item.getItemId()) {
                     case R.id.home:
                         break;
                     case R.id.settings:
                         break;
                     case R.id.surveys:
-                        startActivity(new Intent(DashboardActivity.this, SurveysActivity.class));
+                        intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
+                        startActivity(intent);
+                        break;
+                    case R.id.user_surveys:
+                        intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.user_surveys));
+                        startActivity(intent);
                         break;
                     case R.id.logout:
                         logUserOut(new String[] {getResources().getString(R.string.user_id), getResources().getString(R.string.username_tag), getResources().getString(R.string.email_tag), getResources().getString(R.string.firm_id)});

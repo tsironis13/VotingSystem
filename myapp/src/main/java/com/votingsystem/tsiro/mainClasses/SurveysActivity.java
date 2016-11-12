@@ -26,6 +26,11 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.votingsystem.tsiro.adapters.UserSurveysPagerAdapter;
+import com.votingsystem.tsiro.fragments.survey_tabs_fragments.CompletedSurveysFragment;
+import com.votingsystem.tsiro.fragments.survey_tabs_fragments.OngoingSurveysFragment;
+import com.votingsystem.tsiro.fragments.survey_tabs_fragments.PendingSurveysFragment;
 import com.votingsystem.tsiro.observerPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.observerPattern.RecyclerViewTouchListener;
 import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
@@ -54,10 +59,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
 
     private static final String debugTag = SurveysActivity.class.getSimpleName();
     private CoordinatorLayout coordinatorLayout;
-    private TabLayout mTabs;
-    private ViewPager mPager;
     private NetworkStateReceiver networkStateReceiver;
-    private boolean activityCreated;
     private Dialog toolbarSearchDialog;
     private SAMVCPresenterImpl SAMVCpresenterImpl;
     private List<SurveysFields> matchesList;
@@ -71,18 +73,28 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
 
         Toolbar toolbar         =   (Toolbar) findViewById(R.id.appBar);
         coordinatorLayout       =   (CoordinatorLayout) findViewById(R.id.coordinatorLayt);
-        mTabs                   =   (TabLayout) findViewById(R.id.tabs);
-        mPager                  =   (ViewPager) findViewById(R.id.surveysPager);
-        networkStateReceiver    = new NetworkStateReceiver();
-        networkStateReceiver.addListener(this);
-        inputValidationCodes = AppConfig.getCodes();
-        this.registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
+        TabLayout mTabs         =   (TabLayout) findViewById(R.id.tabs);
+        ViewPager mPager        =   (ViewPager) findViewById(R.id.surveysPager);
 
-        activityCreated = true;
+        inputValidationCodes = AppConfig.getCodes();
+
+        if (getIntent() != null) {
+            connectionStatus = getIntent().getIntExtra(getResources().getString(R.string.connection_status), 0);
+            if (getIntent().getStringExtra(getResources().getString(R.string.action)).equals(getResources().getString(R.string.firm_surveys))) {
+                mPager.setAdapter(new SurveysPagerAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.surveys_tabs), connectionStatus));
+            } else {
+                mPager.setAdapter(new UserSurveysPagerAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.user_surveys_tabs), connectionStatus));
+            }
+            mTabs.setupWithViewPager(mPager);
+        }
         setSupportActionBar(toolbar);
         if (getSupportActionBar() != null) {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-            getSupportActionBar().setTitle(getResources().getString(R.string.firm_surveys));
+            if (getIntent().getStringExtra(getResources().getString(R.string.action)).equals(getResources().getString(R.string.firm_surveys))) {
+                getSupportActionBar().setTitle(getResources().getString(R.string.firm_surveys));
+            } else {
+                getSupportActionBar().setTitle(getResources().getString(R.string.user_surveys));
+            }
             toolbar.setNavigationOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -99,8 +111,16 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onResume() {
+        super.onResume();
+        networkStateReceiver = new NetworkStateReceiver();
+        networkStateReceiver.addListener(this);
+        this.registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
         networkStateReceiver.removeListener(this);
         this.unregisterReceiver(networkStateReceiver);
     }
@@ -124,11 +144,11 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
 
     @Override
     public void networkStatus(int connectionType) {
+        Log.e(debugTag, "Connection status => "+connectionType);
         connectionStatus = connectionType;
-        if (activityCreated)
-            mPager.setAdapter(new SurveysPagerAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.surveys_tabs), connectionType));
-            mTabs.setupWithViewPager(mPager);
-            activityCreated = false;
+        CompletedSurveysFragment.updatedNetworkStatus(connectionStatus);
+        OngoingSurveysFragment.updatedNetworkStatus(connectionStatus);
+        PendingSurveysFragment.updatedNetworkStatus(connectionStatus);
     }
 
     @Override
@@ -152,6 +172,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
         this.finish();
         Bundle bundle = new Bundle();
         Intent intent = new Intent(SurveysActivity.this, SurveyDetailsActivity.class);
+        bundle.putString(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
         bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_details));
         bundle.putString(getResources().getString(R.string.type), getResources().getString(R.string.ongoing));
         bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
@@ -167,10 +188,10 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
     private void loadToolBarSearchDialog() {
         SAMVCpresenterImpl = new SAMVCPresenterImpl(this);
         View view                           = SurveysActivity.this.getLayoutInflater().inflate(R.layout.search_view_layout, null);
-        LinearLayout parentToolbarSearch    = (LinearLayout) view.findViewById(R.id.toolbarSearchLlt);
+//        LinearLayout parentToolbarSearch    = (LinearLayout) view.findViewById(R.id.toolbarSearchLlt);
         ImageView arrowBack                 = (ImageView) view.findViewById(R.id.arrowBack);
         final EditText edtToolSearch        = (EditText) view.findViewById(R.id.edt_tool_search);
-        final RecyclerView rcvSearch              = (RecyclerView) view.findViewById(R.id.rcvSearch);
+        final RecyclerView rcvSearch        = (RecyclerView) view.findViewById(R.id.rcvSearch);
         final ImageView clear               = (ImageView) view.findViewById(R.id.clear);
         final TextView txtEmpty = (TextView) view.findViewById(R.id.txt_empty);
 

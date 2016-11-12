@@ -87,6 +87,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
     private NetworkStateReceiver networkStateReceiver;
     private boolean activityCreated;
     private SparseIntArray sparseIntArray;
+    private String action;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -109,24 +110,23 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
                 public void onClick(View view) {
                     finish();
                     Intent intent = new Intent(SurveyQuestionsActivity.this, SurveysActivity.class);
+                    intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
                     startActivity(intent);
                 }
             });
         }
+        if (getIntent().getExtras() != null) action = getIntent().getExtras().getString(getResources().getString(R.string.action));
         sparseIntArray          = AppConfig.getCodes();
         activityCreated         = true;
-        networkStateReceiver    = new NetworkStateReceiver();
-        networkStateReceiver.addListener(this);
-        registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) toolbar.setElevation((float) MyApplication.convertPixelToDpAndViceVersa(this, 0, 3));
 
         if (savedInstanceState == null) {
             mandatoryQuestionsCompleted = new ArrayList<>();
-            surveyId                    = getIntent().getIntExtra(getResources().getString(R.string.survey_id), 0);
-            SQMVCpresenterImpl          = new SQMVCPresenterImpl(this);
-            objectAnimatorList              =   new ArrayList<>();
-            objectAnimatorPropertiesList    =   new ArrayList<>();
+            surveyId                        = getIntent().getIntExtra(getResources().getString(R.string.survey_id), 0);
+            SQMVCpresenterImpl              = new SQMVCPresenterImpl(this);
+            objectAnimatorList              = new ArrayList<>();
+            objectAnimatorPropertiesList    = new ArrayList<>();
         }
         mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
@@ -224,16 +224,19 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
     }
 
     @Override
-    protected void onPause() {
-        super.onPause();
-//        if (data != null) if (mPager.getCurrentItem() + 1 == data.size())floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.done), true);
+    protected void onResume() {
+        super.onResume();
+        networkStateReceiver    = new NetworkStateReceiver();
+        networkStateReceiver.addListener(this);
+        registerReceiver(networkStateReceiver, new IntentFilter(getResources().getString(R.string.connectivity_change)));
     }
 
     @Override
-    protected void onDestroy() {
-        super.onDestroy();
+    protected void onPause() {
+        super.onPause();
         networkStateReceiver.removeListener(this);
         unregisterReceiver(networkStateReceiver);
+//        if (data != null) if (mPager.getCurrentItem() + 1 == data.size())floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.done), true);
     }
 
     @Override
@@ -295,6 +298,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             finish();
             Intent intent = new Intent(SurveyQuestionsActivity.this, SurveysActivity.class);
+            intent.putExtra(getResources().getString(R.string.action), action);
             startActivity(intent);
         }
 //        if (data != null) if (keyCode == KeyEvent.KEYCODE_BACK && mPager.getCurrentItem() + 1 != data.size()) floatingActionButton.setIcon(ContextCompat.getDrawable(SurveyQuestionsActivity.this, R.drawable.done), true);
@@ -313,54 +317,51 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
 
     @Override
     public void onSuccessSurveyQuestionsFetched(final String surveyTitle, final List<QuestionData> data) {
-//        if (progressDialog.isShowing()) {
-            this.data = data;
-            Handler handler = new Handler();
-            handler.postDelayed(new Runnable() {
-                @Override
-                public void run() {
-//                    progressDialog.dismiss();
-                    spinnerLoading.setVisibility(View.GONE);
-                    floatingActionButton.setVisibility(View.VISIBLE);
-                    ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(surveyQuestionsRlt, getResources().getString(R.string.alpha), 0 , 1);
-                    alphaAnimator.setDuration(150);
-                    alphaAnimator.start();
-
-                    if (data != null && data.size() > 0) {
-                        if (data.size() == 1) menu.findItem(R.id.post).setVisible(true);
-                        surveyQuestionsPagerAdapter = new SurveyQuestionsPagerAdapter(getSupportFragmentManager(), surveyTitle, data.get(0), data.size());
-                        mPager.setAdapter(surveyQuestionsPagerAdapter);
-                        //this.data = data;
-                        fragment = surveyQuestionsPagerAdapter.getCurrentFragment();
-                        if (fragment != null && fragment instanceof SurveyQuestionsFragment) {
-                            ((SurveyQuestionsFragment) fragment).setCurrentPageIndex(1, data.size());
-                            Button button = new Button(SurveyQuestionsActivity.this);
-                            button.setOnClickListener(SurveyQuestionsActivity.this);
-                            button.setId(mPager.getCurrentItem() + 1);
-                            button.setBackgroundColor(ContextCompat.getColor(SurveyQuestionsActivity.this, R.color.accentColor));
-                            button.setTextColor(ContextCompat.getColor(SurveyQuestionsActivity.this, android.R.color.white));
-                            button.setText("1");
-                            questionBtnLlt.addView(button);
-                            button.setLayoutParams(initializeButtonParams(button));
-                            selectedIndex = 1;
-                        }
+        this.data = data;
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                spinnerLoading.setVisibility(View.GONE);
+                floatingActionButton.setVisibility(View.VISIBLE);
+                ObjectAnimator alphaAnimator = ObjectAnimator.ofFloat(surveyQuestionsRlt, getResources().getString(R.string.alpha), 0 , 1);
+                alphaAnimator.setDuration(150);
+                alphaAnimator.start();
+                if (data != null && data.size() > 0) {
+                    if (data.size() == 1) menu.findItem(R.id.post).setVisible(true);
+                    surveyQuestionsPagerAdapter = new SurveyQuestionsPagerAdapter(getSupportFragmentManager(), surveyTitle, data.get(0), data.size());
+                    mPager.setAdapter(surveyQuestionsPagerAdapter);
+                    //this.data = data;
+                    fragment = surveyQuestionsPagerAdapter.getCurrentFragment();
+                    if (fragment != null && fragment instanceof SurveyQuestionsFragment) {
+                        ((SurveyQuestionsFragment) fragment).setCurrentPageIndex(1, data.size());
+                        Button button = new Button(SurveyQuestionsActivity.this);
+                        button.setOnClickListener(SurveyQuestionsActivity.this);
+                        button.setId(mPager.getCurrentItem() + 1);
+                        button.setBackgroundColor(ContextCompat.getColor(SurveyQuestionsActivity.this, R.color.accentColor));
+                        button.setTextColor(ContextCompat.getColor(SurveyQuestionsActivity.this, android.R.color.white));
+                        button.setText("1");
+                        questionBtnLlt.addView(button);
+                        button.setLayoutParams(initializeButtonParams(button));
+                        selectedIndex = 1;
                     }
                 }
-            }, 1500);
-//        }
+            }
+        }, 1500);
     }
 
     @Override
     public void onSuccessSurveyDetailsFetched(final SurveyDetailsData surveyDetailsData) {
-//        if (progressDialog.isShowing()) {
+        if (progressDialog.isShowing()) {
             Handler handler = new Handler();
             handler.postDelayed(new Runnable() {
                 @Override
                 public void run() {
-//                    progressDialog.dismiss();
+                    progressDialog.dismiss();
                     spinnerLoading.setVisibility(View.GONE);
                     finish();
                     Bundle bundle = new Bundle();
+                    bundle.putString(getResources().getString(R.string.action), action);
                     bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_stats));
                     bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
                     Intent intent = new Intent(SurveyQuestionsActivity.this, SurveyDetailsActivity.class);
@@ -368,7 +369,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
                     startActivity(intent);
                 }
             }, 1500);
-//        }
+        }
     }
 
     @Override
@@ -419,7 +420,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
         connectionStatus = connectionType;
         if (activityCreated)
             if (connectionType != AppConfig.NO_CONNECTION) {
-//                initializeProgressDialog();
+                spinnerLoading.setVisibility(View.VISIBLE);
                 SQMVCpresenterImpl.getSurveyQuestions(new SurveyQuestionBody(getResources().getString(R.string.get_survey_questions), surveyId));
             } else {
                 floatingActionButton.setVisibility(View.GONE);
@@ -430,8 +431,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
 
     @Override
     public void onErrorFragmentRemove() {
-        initializeProgressDialog();
-        floatingActionButton.setVisibility(View.VISIBLE);
+        spinnerLoading.setVisibility(View.VISIBLE);
         SQMVCpresenterImpl.getSurveyQuestions(new SurveyQuestionBody(getResources().getString(R.string.get_survey_questions), surveyId));
     }
 

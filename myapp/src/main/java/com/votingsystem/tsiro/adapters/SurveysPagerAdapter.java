@@ -11,6 +11,7 @@ import com.votingsystem.tsiro.fragments.ErrorFragment;
 import com.votingsystem.tsiro.fragments.survey_tabs_fragments.CompletedSurveysFragment;
 import com.votingsystem.tsiro.fragments.survey_tabs_fragments.OngoingSurveysFragment;
 import com.votingsystem.tsiro.fragments.survey_tabs_fragments.PendingSurveysFragment;
+import com.votingsystem.tsiro.votingsystem.R;
 
 /**
  * Created by giannis on 19/6/2016.
@@ -30,7 +31,6 @@ public class SurveysPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        Log.e("SurveysPagerAdapter", position+"");
         switch (position) {
             case 0:
                 if (pages[position] == null) pages[position] = CompletedSurveysFragment.newInstance(connectionType);

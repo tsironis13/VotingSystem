@@ -57,7 +57,7 @@
         android:src="@drawable/no_surveys"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/no_surveys_imv_margin_top"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:contentDescription="@string/ongoing" />
 
     <com.rey.material.widget.TextView
@@ -68,7 +68,7 @@
         android:text="@string/no_ongoing"
         android:textSize="@dimen/no_surveys_txv_text_size"
         android:textColor="@color/no_surveys_txv_color"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

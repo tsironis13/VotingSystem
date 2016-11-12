@@ -13,6 +13,7 @@ import android.widget.RelativeLayout;
 import com.rey.material.widget.Button;
 import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.TextView;
+import com.votingsystem.tsiro.animation.AnimationUtils;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
@@ -31,14 +32,14 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
     private final int VIEW_ITEM = 1;
     private int visibleThreshold = 8;
     private int pages = 1;
-    private int lastVisibleItem, totalItemCount, VIEW_PROG, connectionStatus;
+    private int lastVisibleItem, totalItemCount, VIEW_PROG, previousPosition;
     private boolean isLoading, onSwipe;
     private OnLoadMoreListener onLoadMoreListener;
     private String type;
 
     public SurveysRcvAdapter(final List<SurveyData> data, RecyclerView recyclerView, String type) {
-        this.data           =   data;
-        this.type           =   type;
+        this.data   =   data;
+        this.type   =   type;
 
         if (recyclerView.getLayoutManager() instanceof LinearLayoutManager) {
             final LinearLayoutManager linearLayoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
@@ -54,11 +55,10 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
                     totalItemCount  =   linearLayoutManager.getItemCount();
                     lastVisibleItem =   linearLayoutManager.findLastVisibleItemPosition();
 //                    Log.e(debugTag, "Is Loading: "+isLoading+" Total items: "+totalItemCount+" Last visible item: "+lastVisibleItem+" Visible Threshold: "+visibleThreshold);
-                    if (!isLoading && totalItemCount <= lastVisibleItem + visibleThreshold) {
-                        if (onLoadMoreListener != null) {
-                            onLoadMoreListener.onLoadMore(pages * 20);
-                            pages++;
-                        }
+
+                    // !onSwipe because onScrolled callback is called even when recycler view is not scrolled and just onSwiped
+                    if (!onSwipe && !isLoading && totalItemCount <= lastVisibleItem + visibleThreshold) {
+                        if (onLoadMoreListener != null) onLoadMoreListener.onLoadMore(++pages);
                         isLoading = true;
                     }
                     onSwipe = false;
@@ -72,11 +72,12 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         RecyclerView.ViewHolder vh;
         View view;
         if (viewType == VIEW_ITEM) {
-            view    =   LayoutInflater.from(parent.getContext()).inflate(R.layout.survey_item, parent, false);
-            vh      =   new SurveysItemViewHolder(view);
-        } else if (viewType == VIEW_PROG) {
-            view    =   LayoutInflater.from(parent.getContext()).inflate(R.layout.surveys_recyclerview_loader, parent, false);
-            vh      =   new ProgressViewHolder(view);
+            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.survey_item, parent, false);
+            vh = new SurveysItemViewHolder(view);
+//        } else if (viewType == VIEW_PROG) {
+//            view    =   LayoutInflater.from(parent.getContext()).inflate(R.layout.surveys_recyclerview_loader, parent, false);
+//            vh      =   new ProgressViewHolder(view);
+//        } else {
         } else {
             view    =   LayoutInflater.from(parent.getContext()).inflate(R.layout.list_surveys_load_more_error_template, parent, false);
             vh      =   new ErrorViewHolder(view);
@@ -86,16 +87,17 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
+        Log.e(debugTag, "TYPE: "+type+" ITEM TITLE: "+data.get(position).getTitle());
         String details;
         if (holder instanceof SurveysItemViewHolder) {
-            ((SurveysItemViewHolder)holder).title.setText(data.get(position).getTitle());
+            ((SurveysItemViewHolder) holder).title.setText(data.get(position).getTitle());
             if (type.equals("pending")) {
                 details = "Ημ. έναρξης " + data.get(position).getActiveSince();
-                ((SurveysItemViewHolder)holder).details.setText(details);
-                ((SurveysItemViewHolder)holder).responses.setVisibility(View.GONE);
+                ((SurveysItemViewHolder) holder).details.setText(details);
+                ((SurveysItemViewHolder) holder).responses.setVisibility(View.GONE);
             } else {
                 details = "Ημ. λήξης " + data.get(position).getValidUntil();
-                ((SurveysItemViewHolder)holder).details.setText(details);
+                ((SurveysItemViewHolder) holder).details.setText(details);
             }
             if (type.equals("ongoing")) {
                 if (!data.get(position).getIsAnswered()) {
@@ -105,12 +107,23 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
                     ((SurveysItemViewHolder) holder).surveyItemContainerRlt.setTag(0);
                     ((SurveysItemViewHolder) holder).surveyItemContainerRlt.setTag(1);
                 }
-                if (data.get(position).getIsAnswered() && ((SurveysItemViewHolder) holder).answered.getVisibility() == View.VISIBLE) ((SurveysItemViewHolder) holder).answered.setVisibility(View.INVISIBLE);
+                if (data.get(position).getIsAnswered() && ((SurveysItemViewHolder) holder).answered.getVisibility() == View.VISIBLE)
+                    ((SurveysItemViewHolder) holder).answered.setVisibility(View.INVISIBLE);
             }
-            ((SurveysItemViewHolder)holder).responses.setText(String.format(Locale.getDefault(), "%d", data.get(position).getResponses()));
-        } else if (holder instanceof ProgressViewHolder) {
-            ((ProgressViewHolder)holder).progressView.start();
-        } else {
+            ((SurveysItemViewHolder) holder).responses.setText(String.format(Locale.getDefault(), "%d", data.get(position).getResponses()));
+            //Animate Recycler view items...maybe in the future
+//            if (position > previousPosition) {
+//                //going down
+//                AnimationUtils.animate(holder, true);
+//            } else {
+//                AnimationUtils.animate(holder, false);
+//            }
+//            previousPosition = position;
+        }
+//        } else if (holder instanceof ProgressViewHolder) {
+            //PROGRESS VIEW REMOVED
+//            ((ProgressViewHolder)holder).progressView.start();
+        else {
             ((ErrorViewHolder)holder).retryBtn.setTransformationMethod(null);
         }
     }
@@ -120,11 +133,12 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         if (data.get(position) != null) {
             return VIEW_ITEM;
         } else {
-            if (connectionStatus != AppConfig.NO_CONNECTION) {
-                return VIEW_PROG;
-            } else {
-                return -1;
-            }
+            return -1;
+//            if (connectionStatus != AppConfig.NO_CONNECTION) {
+//                return VIEW_PROG;
+//            } else {
+//                return -1;
+//            }
         }
     }
 
@@ -149,9 +163,9 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         isLoading = false;
     }
 
-    public void updateConnectionStatus(int connectionStatus) {
-        this.connectionStatus = connectionStatus;
-    }
+//    public void updateConnectionStatus(int connectionStatus) {
+//        this.connectionStatus = connectionStatus;
+//    }
 
     private static class SurveysItemViewHolder extends RecyclerView.ViewHolder {
         private RelativeLayout surveyItemContainerRlt;
@@ -167,14 +181,14 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         }
     }
 
-    private static class ProgressViewHolder extends RecyclerView.ViewHolder {
-        private ProgressView progressView;
-
-        ProgressViewHolder(View view) {
-            super(view);
-            progressView = (ProgressView) view.findViewById(R.id.loader);
-        }
-    }
+//    private static class ProgressViewHolder extends RecyclerView.ViewHolder {
+//        private ProgressView progressView;
+//
+//        ProgressViewHolder(View view) {
+//            super(view);
+//            progressView = (ProgressView) view.findViewById(R.id.loader);
+//        }
+//    }
 
     private static class ErrorViewHolder extends RecyclerView.ViewHolder {
         private Button retryBtn;

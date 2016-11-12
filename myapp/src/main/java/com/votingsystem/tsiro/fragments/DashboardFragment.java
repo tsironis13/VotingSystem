@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -72,7 +73,10 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
         viewAllBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getActivity(), SurveysActivity.class));
+                Intent intent = new Intent(getActivity(), SurveysActivity.class);
+                intent.putExtra(getResources().getString(R.string.connection_status), connectionType);
+                intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
+                startActivity(intent);
             }
         });
         createSurveyBtn.setOnClickListener(new View.OnClickListener() {
