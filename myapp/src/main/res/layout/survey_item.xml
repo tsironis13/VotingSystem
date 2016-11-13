@@ -6,7 +6,7 @@
     android:layout_height="@dimen/surveys_item_container_height"
     android:clickable="true"
     android:background="@drawable/survey_item_background">
-    
+
     <ImageView
         android:id="@+id/surveyThumb"
         android:layout_width="@dimen/survey_item_thumb_dimens"
@@ -15,7 +15,7 @@
         android:layout_marginTop="@dimen/survey_item_thumb_margin_top"
         android:src="@drawable/no_surveys"
         android:contentDescription="@string/item_thumb" />
-    
+
     <com.rey.material.widget.TextView
         android:id="@+id/titleTtv"
         android:layout_width="wrap_content"
@@ -23,7 +23,6 @@
         android:layout_toRightOf="@+id/surveyThumb"
         android:ellipsize="end"
         android:maxLines="2"
-
         android:layout_marginTop="@dimen/survey_item_title_margin_top"
         android:layout_marginRight="@dimen/survey_item_title_margin_right"
         android:layout_toLeftOf="@+id/responsesTtv"

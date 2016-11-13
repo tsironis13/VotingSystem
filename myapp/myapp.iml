@@ -103,6 +103,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/25.0.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.android.support/transition/25.0.0/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.daimajia.swipelayout/library/1.2.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.ozodrukh/CircularReveal/1.1.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.github.rey5137/material/1.2.2/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.android.gms/play-services-ads-lite/9.6.1/jars" />
@@ -157,6 +158,7 @@
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.firebase/firebase-storage-common/9.6.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.google.firebase/firebase-storage/9.6.1/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.nakama.arraypageradapter/arraypageradapter/0.1.1/jars" />
+      <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.nikhilpanju.recyclerviewenhanced/recyclerviewenhanced/1.1.0/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android-no-op/1.4/jars" />
       <excludeFolder url="file://$MODULE_DIR$/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/jars" />
@@ -192,6 +194,7 @@
     <orderEntry type="library" exported="" name="play-services-location-9.6.1" level="project" />
     <orderEntry type="library" exported="" name="okhttp-2.5.0" level="project" />
     <orderEntry type="library" exported="" name="material-1.2.2" level="project" />
+    <orderEntry type="library" exported="" name="recyclerviewenhanced-1.1.0" level="project" />
     <orderEntry type="library" exported="" name="support-fragment-25.0.0" level="project" />
     <orderEntry type="library" exported="" name="palette-v7-24.0.0" level="project" />
     <orderEntry type="library" exported="" name="firebase-database-connection-9.6.1" level="project" />
@@ -244,6 +247,7 @@
     <orderEntry type="library" exported="" name="CircularReveal-1.1.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-core-9.6.1" level="project" />
     <orderEntry type="library" exported="" name="leakcanary-android-1.4" level="project" />
+    <orderEntry type="library" exported="" name="library-1.2.0" level="project" />
     <orderEntry type="library" exported="" name="play-services-maps-9.6.1" level="project" />
     <orderEntry type="library" exported="" name="firebase-storage-common-9.6.1" level="project" />
     <orderEntry type="library" exported="" name="support-annotations-25.0.0" level="project" />

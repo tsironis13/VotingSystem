@@ -20,12 +20,10 @@ public class UserSurveysPagerAdapter extends FragmentStatePagerAdapter {
     private static final String debugTag = UserSurveysPagerAdapter.class.getSimpleName();
     private Fragment[] pages = new Fragment[getCount()];
     private String[] tabText;
-    private int connectionType;
 
-    public UserSurveysPagerAdapter(FragmentManager fragmentManager, String[] tabText, int connectionType) {
+    public UserSurveysPagerAdapter(FragmentManager fragmentManager, String[] tabText) {
         super(fragmentManager);
-        this.tabText        = tabText;
-        this.connectionType = connectionType;
+        this.tabText = tabText;
     }
 
     @Override

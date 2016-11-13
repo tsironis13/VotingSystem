@@ -20,6 +20,7 @@ import android.util.SparseIntArray;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.EditText;
@@ -31,6 +32,10 @@ import com.votingsystem.tsiro.adapters.UserSurveysPagerAdapter;
 import com.votingsystem.tsiro.fragments.survey_tabs_fragments.CompletedSurveysFragment;
 import com.votingsystem.tsiro.fragments.survey_tabs_fragments.OngoingSurveysFragment;
 import com.votingsystem.tsiro.fragments.survey_tabs_fragments.PendingSurveysFragment;
+import com.votingsystem.tsiro.fragments.user_survey_tabs_fragments.ApprovedUserSurveysFragment;
+import com.votingsystem.tsiro.fragments.user_survey_tabs_fragments.RejectedUserSurveysFragment;
+import com.votingsystem.tsiro.fragments.user_survey_tabs_fragments.UnderProcessUserSurveysFragment;
+import com.votingsystem.tsiro.helperClasses.CustomViewPager;
 import com.votingsystem.tsiro.observerPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.observerPattern.RecyclerViewTouchListener;
 import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
@@ -65,6 +70,8 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
     private List<SurveysFields> matchesList;
     private SparseIntArray inputValidationCodes;
     private int connectionStatus;
+    private String action;
+    private CustomViewPager mPager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -74,16 +81,18 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
         Toolbar toolbar         =   (Toolbar) findViewById(R.id.appBar);
         coordinatorLayout       =   (CoordinatorLayout) findViewById(R.id.coordinatorLayt);
         TabLayout mTabs         =   (TabLayout) findViewById(R.id.tabs);
-        ViewPager mPager        =   (ViewPager) findViewById(R.id.surveysPager);
+        mPager                  =   (CustomViewPager) findViewById(R.id.surveysPager);
 
         inputValidationCodes = AppConfig.getCodes();
 
         if (getIntent() != null) {
-            connectionStatus = getIntent().getIntExtra(getResources().getString(R.string.connection_status), 0);
-            if (getIntent().getStringExtra(getResources().getString(R.string.action)).equals(getResources().getString(R.string.firm_surveys))) {
-                mPager.setAdapter(new SurveysPagerAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.surveys_tabs), connectionStatus));
+            connectionStatus    = getIntent().getIntExtra(getResources().getString(R.string.connection_status), 0);
+            action              = getIntent().getStringExtra(getResources().getString(R.string.action));
+            if (action.equals(getResources().getString(R.string.firm_surveys))) {
+                mPager.setAdapter(new SurveysPagerAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.surveys_tabs)));
+                mPager.enablePaging(true);
             } else {
-                mPager.setAdapter(new UserSurveysPagerAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.user_surveys_tabs), connectionStatus));
+                mPager.setAdapter(new UserSurveysPagerAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.user_surveys_tabs)));
             }
             mTabs.setupWithViewPager(mPager);
         }
@@ -123,6 +132,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
         super.onPause();
         networkStateReceiver.removeListener(this);
         this.unregisterReceiver(networkStateReceiver);
+        if (SAMVCpresenterImpl != null) SAMVCpresenterImpl.onDestroy();
     }
 
     @Override
@@ -146,9 +156,15 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
     public void networkStatus(int connectionType) {
         Log.e(debugTag, "Connection status => "+connectionType);
         connectionStatus = connectionType;
-        CompletedSurveysFragment.updatedNetworkStatus(connectionStatus);
-        OngoingSurveysFragment.updatedNetworkStatus(connectionStatus);
-        PendingSurveysFragment.updatedNetworkStatus(connectionStatus);
+        if (action.equals(getResources().getString(R.string.firm_surveys))) {
+            CompletedSurveysFragment.updatedNetworkStatus(connectionStatus);
+            OngoingSurveysFragment.updatedNetworkStatus(connectionStatus);
+            PendingSurveysFragment.updatedNetworkStatus(connectionStatus);
+        } else {
+            UnderProcessUserSurveysFragment.updatedNetworkStatus(connectionStatus);
+            ApprovedUserSurveysFragment.updatedNetworkStatus(connectionStatus);
+            RejectedUserSurveysFragment.updatedNetworkStatus(connectionStatus);
+        }
     }
 
     @Override

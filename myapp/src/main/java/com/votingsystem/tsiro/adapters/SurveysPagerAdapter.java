@@ -21,25 +21,23 @@ public class SurveysPagerAdapter extends FragmentStatePagerAdapter {
     private static final String debugTag = SurveysPagerAdapter.class.getSimpleName();
     private Fragment[] pages = new Fragment[getCount()];
     private String[] tabText;
-    private int connectionType;
 
-    public SurveysPagerAdapter(FragmentManager fragmentManager, String[] tabText, int connectionType) {
+    public SurveysPagerAdapter(FragmentManager fragmentManager, String[] tabText) {
         super(fragmentManager);
-        this.tabText        = tabText;
-        this.connectionType = connectionType;
+        this.tabText = tabText;
     }
 
     @Override
     public Fragment getItem(int position) {
         switch (position) {
             case 0:
-                if (pages[position] == null) pages[position] = CompletedSurveysFragment.newInstance(connectionType);
+                if (pages[position] == null) pages[position] = CompletedSurveysFragment.newInstance();
                 return pages[position];
             case 1:
-                if (pages[position] == null) pages[position] = OngoingSurveysFragment.newInstance(connectionType);
+                if (pages[position] == null) pages[position] = OngoingSurveysFragment.newInstance();
                 return pages[position];
             case 2:
-                if (pages[position] == null) pages[position] = PendingSurveysFragment.newInstance(connectionType);
+                if (pages[position] == null) pages[position] = PendingSurveysFragment.newInstance();
                 return pages[position];
             default:
                 return null;
@@ -55,7 +53,6 @@ public class SurveysPagerAdapter extends FragmentStatePagerAdapter {
     public int getCount() {
         return 3;
     }
-
 
 //    private List<SurveyData> filterSurveyDataBasedOnType(List<SurveyData> data, String type) {
 //        List<SurveyData> filteredList = new ArrayList<SurveyData>();

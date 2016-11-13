@@ -29,8 +29,8 @@ public class SAMVCPresenterImpl implements SAMVCPresenter, SAMVCFinishedListener
     }
 
     @Override
-    public void onSuccessSurveysFetched(List<SurveyData> data, int offset, int total) {
-        SAMVCview.onSuccessSurveysFetched(data, offset, total);
+    public void onSuccessSurveysFetched(List<SurveyData> data, int page, int total) {
+        SAMVCview.onSuccessSurveysFetched(data, page, total);
     }
 
     @Override

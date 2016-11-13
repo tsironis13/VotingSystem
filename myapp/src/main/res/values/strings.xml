@@ -78,6 +78,7 @@
     <string name="middle_animation">middle</string>
     <string name="final_animation">final</string>
     <string name="list_surveys">list_surveys</string>
+    <string name="list_user_surveys">list_user_surveys</string>
     <string name="get_survey_questions">survey_questions</string>
     <string name="on_fab_clicked">on_fab_clicked</string>
     <string name="on_question_btn_clicked">on_question_btn_clicked</string>
@@ -126,9 +127,14 @@
     <string name="completed">completed</string>
     <string name="ongoing">ongoing</string>
     <string name="pending">pending</string>
+    <string name="under_process">under_process</string>
+    <string name="approved">approved</string>
+    <string name="rejected">rejected</string>
     <string name="no_completed">Δεν υπάρχουν ολοκληρωμένες έρευνες.</string>
     <string name="no_ongoing">Δεν υπάρχουν έρευνες σε εξέλιξη.</string>
     <string name="no_pending">Δεν υπάρχουν έρευνες που εκκρεμούν.</string>
+    <string name="no_approved">Δεν υπάρχουν εγκεκριμμένες έρευνες.</string>
+    <string name="no_rejected">Δεν υπάρχουν απορριφθείσες έρευνες.</string>
     <string name="active_since">Ημ. Έναρξης</string>
     <string name="valid_until">Ημ. Λήξης</string>
     <string name="item_thumb">thumb</string>

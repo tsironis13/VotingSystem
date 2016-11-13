@@ -540,6 +540,7 @@
     <declare-styleable name="SnackbarLayout"><attr name="android:maxWidth"/><attr name="elevation"/><attr format="dimension" name="maxActionInlineWidth"/></declare-styleable>
     <declare-styleable name="Spinner"><attr name="android:prompt"/><attr name="popupTheme"/><attr name="android:popupBackground"/><attr name="android:dropDownWidth"/><attr name="android:entries"/><attr name="android:gravity"/><attr name="android:minWidth"/><attr name="android:minHeight"/><attr format="boolean" name="spn_disableChildrenWhenDisabled"/><attr format="boolean" name="spn_labelEnable"/><attr format="reference|dimension" name="spn_labelPadding"/><attr format="reference|dimension" name="spn_labelTextSize"/><attr format="reference|color" name="spn_labelTextColor"/><attr format="reference" name="spn_labelTextAppearance"/><attr format="integer" name="spn_labelEllipsize"><enum name="start" value="0x00000001"/><enum name="middle" value="0x00000002"/><enum name="end" value="0x00000003"/><enum name="marquee" value="0x00000004"/></attr><attr format="string|reference" name="spn_label"/><attr format="reference" name="spn_popupItemAnimation"/><attr format="integer" name="spn_popupItemAnimOffset"/><attr format="reference|color" name="spn_arrowColor"/><attr format="reference|dimension" name="spn_arrowSize"/><attr format="reference|dimension" name="spn_arrowPadding"/><attr format="integer" name="spn_arrowAnimDuration"/><attr format="reference" name="spn_arrowInterpolator"/><attr format="boolean" name="spn_arrowAnimClockwise"/><attr format="boolean" name="spn_arrowSwitchMode"/><attr format="reference|color" name="spn_dividerColor"/><attr format="reference|dimension" name="spn_dividerHeight"/><attr format="reference|dimension" name="spn_dividerPadding"/><attr format="reference|integer" name="spn_dividerAnimDuration"/></declare-styleable>
     <declare-styleable name="SpinnerLoading"><attr format="color" name="circle_color"/><attr format="color" name="circle_color_move"/></declare-styleable>
+    <declare-styleable name="SwipeLayout"><attr name="drag_edge"><flag name="left" value="1"/><flag name="right" value="2"/><flag name="top" value="4"/><flag name="bottom" value="8"/></attr><attr format="dimension" name="leftEdgeSwipeOffset"/><attr format="dimension" name="rightEdgeSwipeOffset"/><attr format="dimension" name="topEdgeSwipeOffset"/><attr format="dimension" name="bottomEdgeSwipeOffset"/><attr format="enum" name="show_mode"><enum name="lay_down" value="0"/><enum name="pull_out" value="1"/></attr><attr format="boolean" name="clickToClose"/></declare-styleable>
     <declare-styleable name="Switch"><attr format="reference|dimension" name="sw_trackSize"/><attr format="reference|color" name="sw_trackColor"/><attr format="integer" name="sw_trackCap"><enum name="butt" value="0x00000000"/><enum name="round" value="0x00000001"/><enum name="square" value="0x00000002"/></attr><attr format="reference|color" name="sw_thumbColor"/><attr format="reference|dimension" name="sw_thumbRadius"/><attr format="reference|dimension" name="sw_thumbElevation"/><attr format="reference|integer" name="sw_animDuration"/><attr format="reference" name="sw_interpolator"/><attr name="android:gravity"/><attr name="android:checked"/></declare-styleable>
     <declare-styleable name="SwitchCompat"><attr name="android:thumb"/><attr format="color" name="thumbTint"/><attr name="thumbTintMode">
             
@@ -1108,6 +1109,7 @@
     <string name="app_logo">app_logo</string>
     <string name="app_name">VotingSystem</string>
     <string name="appbar_scrolling_view_behavior" translatable="false">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
+    <string name="approved">approved</string>
     <string name="arrow">arrow</string>
     <string name="arrow_back">arrow_back</string>
     <string name="back_pressed">backpressed</string>
@@ -1313,6 +1315,7 @@
     <string name="leak_canary_toast_heap_dump">Dumping memory, app will freeze. Brrrr.</string>
     <string name="list_selection">Επιλογή από λίστα</string>
     <string name="list_surveys">list_surveys</string>
+    <string name="list_user_surveys">list_user_surveys</string>
     <string name="login_user">login_user</string>
     <string name="logout">Αποσυνδεση</string>
     <string name="mailto">mailto:</string>
@@ -1356,10 +1359,12 @@
     <string name="new_user_survey_notification">new_user_survey_notification</string>
     <string name="no_answers">Δεν υπάρχουν απαντήσεις στην συγκεκριμένη ερώτηση.</string>
     <string name="no_answers_img">noanswersimg</string>
+    <string name="no_approved">Δεν υπάρχουν εγκεκριμμένες έρευνες.</string>
     <string name="no_completed">Δεν υπάρχουν ολοκληρωμένες έρευνες.</string>
     <string name="no_connection">Αδυναμία σύνδεσης στο δίκτυο.</string>
     <string name="no_ongoing">Δεν υπάρχουν έρευνες σε εξέλιξη.</string>
     <string name="no_pending">Δεν υπάρχουν έρευνες που εκκρεμούν.</string>
+    <string name="no_rejected">Δεν υπάρχουν απορριφθείσες έρευνες.</string>
     <string name="note">Σημείωση: η έρευνα θα είναι διαθέσιμη προς ψήφιση αφού εγκριθεί από το διαχειριστή μέσα σε διάστημα 24 ωρών.</string>
     <string name="notification_body">body</string>
     <string name="notification_title">title</string>
@@ -1394,6 +1399,7 @@
     <string name="register_fgmt">registerFgmt</string>
     <string name="register_user">register_user</string>
     <string name="registration_token">registrationToken</string>
+    <string name="rejected">rejected</string>
     <string name="required_question">Η ερώτηση είναι υποχρεωτική.</string>
     <string name="reset_password">reset_password</string>
     <string name="responsed_surveys">Απαντημένες \nΈρευνες</string>
@@ -1460,6 +1466,7 @@
     <string name="type">type</string>
     <string name="type_id">type_id</string>
     <string name="unavailable_service">Η υπηρεσία είναι μη διαθέσιμη. Ξαναπροσπάθησε σύντομα.</string>
+    <string name="under_process">under_process</string>
     <string name="upload_survey">upload_survey</string>
     <string name="user_id">user_id</string>
     <string name="user_surveys">Οι έρευνες μου</string>

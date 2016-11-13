@@ -62,7 +62,6 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Swipe
     private SAMVCPresenterImpl SAMVCpresenterImpl;
     private SurveysRcvAdapter surveysRcvAdapter;
     private List<SurveyData> data;
-    private ProgressDialog progressDialog;
     private int total, cPage;
     private static int connectionStatus;
     private boolean surveysLoaded, noConnectionViewAdded, onSwiped;
@@ -72,12 +71,8 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Swipe
     public PendingSurveysFragment() {
     }
 
-    public static PendingSurveysFragment newInstance(int connectionStatus) {
-        Bundle bundle = new Bundle();
-        bundle.putInt("connection_status", connectionStatus);
-        PendingSurveysFragment pendingSurveysFragment = new PendingSurveysFragment();
-        pendingSurveysFragment.setArguments(bundle);
-        return pendingSurveysFragment;
+    public static PendingSurveysFragment newInstance() {
+        return new PendingSurveysFragment();
     }
 
     @Override
@@ -108,7 +103,6 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Swipe
         swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(getActivity(), R.color.accentColor));
         inputValidationCodes = AppConfig.getCodes();
         retryBtn.setTransformationMethod(null);
-        if (getArguments() != null) connectionStatus = getArguments().getInt(getResources().getString(R.string.connection_status));
         if (savedInstanceState == null) {
             LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity());
             pendingSurveysRcV.setHasFixedSize(true);
@@ -126,7 +120,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Swipe
                         if (view instanceof LinearLayout) {
                             if (connectionStatus != AppConfig.NO_CONNECTION) {
                                 surveysRcvAdapter.notifyItemRemoved(data.size() - 1);
-                                SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.pending), cPage));
+                                SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.pending), cPage, -1));
                             }
                         } else {
                             if (connectionStatus != AppConfig.NO_CONNECTION) {
@@ -256,6 +250,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Swipe
     }
 
     public static void updatedNetworkStatus(int status) {
+        Log.e(debugTag, "newtork status updated");
         connectionStatus = status;
     }
 
@@ -270,7 +265,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Swipe
     private void initializeSurveysList() {
         SAMVCpresenterImpl = new SAMVCPresenterImpl(this);
         if (!surveysLoaded) spinnerLoading.setVisibility(View.VISIBLE);
-        SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.pending), 1));
+        SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.pending), 1, -1));
 
         surveysRcvAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
@@ -292,7 +287,7 @@ public class PendingSurveysFragment extends Fragment implements SAMVCView, Swipe
 //                                    surveysRcvAdapter.notifyItemChanged(data.size() - 1);
 //                                }
 //                            });
-                            SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.pending), page));
+                            SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.pending), page, -1));
                         }
                     }
                 } else {

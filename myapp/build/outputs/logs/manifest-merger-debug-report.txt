@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:2:1-79:12
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:2:1-80:12
 	package
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:3:5-50
 		INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml
@@ -48,7 +48,7 @@ MERGED from [com.squareup.leakcanary:leakcanary-android:1.4] /home/giannis/Andro
 	android:name
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:7:22-78
 application
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:9:5-77:19
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:9:5-78:19
 MERGED from [com.github.ozodrukh:CircularReveal:1.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.github.ozodrukh/CircularReveal/1.1.1/AndroidManifest.xml:10:5-20
 MERGED from [com.android.support:design:25.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/25.0.0/AndroidManifest.xml:25:5-20
 MERGED from [com.android.support:support-v4:25.0.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/support-v4/25.0.0/AndroidManifest.xml:25:5-20
@@ -106,6 +106,7 @@ MERGED from [com.google.android.gms:play-services-vision:9.6.1] /home/giannis/An
 MERGED from [com.google.android.gms:play-services-wearable:9.6.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-wearable/9.6.1/AndroidManifest.xml:18:5-19
 MERGED from [com.nakama.arraypageradapter:arraypageradapter:0.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.nakama.arraypageradapter/arraypageradapter/0.1.1/AndroidManifest.xml:11:5-15:19
 MERGED from [net.i2p.android.ext:floatingactionbutton:1.10.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/AndroidManifest.xml:12:5-20
+MERGED from [com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.nikhilpanju.recyclerviewenhanced/recyclerviewenhanced/1.1.0/AndroidManifest.xml:13:5-17:19
 MERGED from [com.google.firebase:firebase-core:9.6.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-core/9.6.1/AndroidManifest.xml:5:5-20
 MERGED from [com.squareup.leakcanary:leakcanary-android:1.4] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/AndroidManifest.xml:28:5-57:19
 	android:label
@@ -191,27 +192,27 @@ ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/Andro
 	android:name
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:55:13-83
 service#com.votingsystem.tsiro.services.fcm.MyFcmListenerService
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:62:9-67:19
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:63:9-68:19
 	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:63:13-84
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:64:13-84
 intent-filter#com.google.firebase.MESSAGING_EVENT
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:64:13-66:29
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:65:13-67:29
 action#com.google.firebase.MESSAGING_EVENT
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:65:17-78
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:66:17-78
 	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:65:25-75
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:66:25-75
 service#com.votingsystem.tsiro.services.fcm.MyInstanceIDListenerService
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:69:9-75:19
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:70:9-76:19
 	android:exported
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:71:13-37
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:72:13-37
 	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:70:13-91
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:71:13-91
 intent-filter#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:72:13-74:29
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:73:13-75:29
 action#com.google.firebase.INSTANCE_ID_EVENT
-ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:73:17-80
+ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:74:17-80
 	android:name
-		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:73:25-77
+		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:74:25-77
 uses-sdk
 INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.github.ozodrukh:CircularReveal:1.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.github.ozodrukh/CircularReveal/1.1.1/AndroidManifest.xml:6:5-8:41
@@ -284,6 +285,8 @@ MERGED from [com.google.android.gms:play-services-wearable:9.6.1] /home/giannis/
 MERGED from [com.nakama.arraypageradapter:arraypageradapter:0.1.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.nakama.arraypageradapter/arraypageradapter/0.1.1/AndroidManifest.xml:7:5-9:41
 MERGED from [com.orhanobut:dialogplus:1.11] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/AndroidManifest.xml:6:5-8:41
 MERGED from [net.i2p.android.ext:floatingactionbutton:1.10.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/net.i2p.android.ext/floatingactionbutton/1.10.1/AndroidManifest.xml:8:5-10:41
+MERGED from [com.daimajia.swipelayout:library:1.2.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.daimajia.swipelayout/library/1.2.0/AndroidManifest.xml:6:5-8:41
+MERGED from [com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.nikhilpanju.recyclerviewenhanced/recyclerviewenhanced/1.1.0/AndroidManifest.xml:7:5-9:41
 MERGED from [com.google.firebase:firebase-core:9.6.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.firebase/firebase-core/9.6.1/AndroidManifest.xml:4:5-42
 MERGED from [com.squareup.leakcanary:leakcanary-android:1.4] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/AndroidManifest.xml:20:5-22:41
 	tools:overrideLibrary
@@ -522,6 +525,10 @@ category#android.intent.category.BROWSABLE
 ADDED from [com.google.android.gms:play-services-tagmanager-api:9.6.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager-api/9.6.1/AndroidManifest.xml:30:17-77
 	android:name
 		ADDED from [com.google.android.gms:play-services-tagmanager-api:9.6.1] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.google.android.gms/play-services-tagmanager-api/9.6.1/AndroidManifest.xml:30:27-75
+uses-permission#android.permission.VIBRATE
+ADDED from [com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.nikhilpanju.recyclerviewenhanced/recyclerviewenhanced/1.1.0/AndroidManifest.xml:11:5-66
+	android:name
+		ADDED from [com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.nikhilpanju.recyclerviewenhanced/recyclerviewenhanced/1.1.0/AndroidManifest.xml:11:22-63
 uses-permission#android.permission.READ_EXTERNAL_STORAGE
 ADDED from [com.squareup.leakcanary:leakcanary-android:1.4] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/AndroidManifest.xml:25:5-80
 	android:name
@@ -569,4 +576,4 @@ ADDED from [com.squareup.leakcanary:leakcanary-android:1.4] /home/giannis/Androi
 	android:name
 		ADDED from [com.squareup.leakcanary:leakcanary-android:1.4] /home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.squareup.leakcanary/leakcanary-android/1.4/AndroidManifest.xml:51:13-93
 android:uses-permission#android.permission.READ_EXTERNAL_STORAGE
-IMPLIED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:2:1-79:12 reason: com.squareup.leakcanary requested WRITE_EXTERNAL_STORAGE
+IMPLIED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:2:1-80:12 reason: com.squareup.leakcanary requested WRITE_EXTERNAL_STORAGE

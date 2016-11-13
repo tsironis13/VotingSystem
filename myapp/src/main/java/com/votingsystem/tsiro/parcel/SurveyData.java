@@ -9,7 +9,7 @@ import android.os.Parcelable;
 public class SurveyData implements Parcelable {
 
     private int survey_id, responses;
-    private String title, type, active_since, valid_until;
+    private String title, type, active_since, valid_until, created_date;
     private boolean answered;
 
     public SurveyData() {}
@@ -21,6 +21,7 @@ public class SurveyData implements Parcelable {
         title           =   in.readString();
         active_since    =   in.readString();
         valid_until     =   in.readString();
+        created_date    =   in.readString();
         type            =   in.readString();
     }
 
@@ -64,6 +65,10 @@ public class SurveyData implements Parcelable {
 
     public void setValidUntil(String valid_until) { this.valid_until = valid_until; }
 
+    public String getCreatedDate() { return created_date; }
+
+    public void setCreatedDate(String created_date) { this.created_date = created_date; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -77,6 +82,7 @@ public class SurveyData implements Parcelable {
         dest.writeString(title);
         dest.writeString(active_since);
         dest.writeString(valid_until);
+        dest.writeString(created_date);
         dest.writeString(type);
     }
 }

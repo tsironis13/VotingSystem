@@ -1,7 +1,5 @@
 package com.votingsystem.tsiro.adapters;
 
-import android.content.Context;
-import android.os.Build;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -10,12 +8,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.daimajia.swipe.SwipeLayout;
 import com.rey.material.widget.Button;
-import com.rey.material.widget.ProgressView;
 import com.rey.material.widget.TextView;
-import com.votingsystem.tsiro.animation.AnimationUtils;
-import com.votingsystem.tsiro.app.AppConfig;
-import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
 import com.votingsystem.tsiro.parcel.SurveyData;
 import com.votingsystem.tsiro.votingsystem.R;
@@ -32,12 +27,12 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
     private final int VIEW_ITEM = 1;
     private int visibleThreshold = 8;
     private int pages = 1;
-    private int lastVisibleItem, totalItemCount, VIEW_PROG, previousPosition;
+    private int lastVisibleItem, totalItemCount, VIEW_PROG;
     private boolean isLoading, onSwipe;
     private OnLoadMoreListener onLoadMoreListener;
     private String type;
 
-    public SurveysRcvAdapter(final List<SurveyData> data, RecyclerView recyclerView, String type) {
+    public SurveysRcvAdapter(final List<SurveyData> data, RecyclerView recyclerView, final String type) {
         this.data   =   data;
         this.type   =   type;
 
@@ -72,8 +67,14 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         RecyclerView.ViewHolder vh;
         View view;
         if (viewType == VIEW_ITEM) {
-            view = LayoutInflater.from(parent.getContext()).inflate(R.layout.survey_item, parent, false);
-            vh = new SurveysItemViewHolder(view);
+            Log.e(debugTag, type+"");
+            if (!type.equals("under_process")) {
+                view    = LayoutInflater.from(parent.getContext()).inflate(R.layout.survey_item, parent, false);
+                vh      = new SurveysItemViewHolder(view);
+            } else {
+                view    = LayoutInflater.from(parent.getContext()).inflate(R.layout.under_process_survey_item, parent, false);
+                vh      = new UnderProcessSurveysItemViewHolder(view);
+            }
 //        } else if (viewType == VIEW_PROG) {
 //            view    =   LayoutInflater.from(parent.getContext()).inflate(R.layout.surveys_recyclerview_loader, parent, false);
 //            vh      =   new ProgressViewHolder(view);
@@ -87,7 +88,6 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
 
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, int position) {
-        Log.e(debugTag, "TYPE: "+type+" ITEM TITLE: "+data.get(position).getTitle());
         String details;
         if (holder instanceof SurveysItemViewHolder) {
             ((SurveysItemViewHolder) holder).title.setText(data.get(position).getTitle());
@@ -95,11 +95,14 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
                 details = "Ημ. έναρξης " + data.get(position).getActiveSince();
                 ((SurveysItemViewHolder) holder).details.setText(details);
                 ((SurveysItemViewHolder) holder).responses.setVisibility(View.GONE);
-            } else {
+            } else if (type.equals("completed") || type.equals("ongoing") || type.equals("approved")) {
                 details = "Ημ. λήξης " + data.get(position).getValidUntil();
                 ((SurveysItemViewHolder) holder).details.setText(details);
+            } else {
+                details = "Ημ. δημιουργίας " + data.get(position).getCreatedDate();
+                ((SurveysItemViewHolder) holder).details.setText(details);
             }
-            if (type.equals("ongoing")) {
+            if (type.equals("ongoing") || type.equals("approved")) {
                 if (!data.get(position).getIsAnswered()) {
                     ((SurveysItemViewHolder) holder).answered.setVisibility(View.VISIBLE);
                     ((SurveysItemViewHolder) holder).surveyItemContainerRlt.setTag(0);
@@ -111,14 +114,8 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
                     ((SurveysItemViewHolder) holder).answered.setVisibility(View.INVISIBLE);
             }
             ((SurveysItemViewHolder) holder).responses.setText(String.format(Locale.getDefault(), "%d", data.get(position).getResponses()));
-            //Animate Recycler view items...maybe in the future
-//            if (position > previousPosition) {
-//                //going down
-//                AnimationUtils.animate(holder, true);
-//            } else {
-//                AnimationUtils.animate(holder, false);
-//            }
-//            previousPosition = position;
+        } else if (holder instanceof UnderProcessSurveysItemViewHolder) {
+
         }
 //        } else if (holder instanceof ProgressViewHolder) {
             //PROGRESS VIEW REMOVED
@@ -163,10 +160,6 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         isLoading = false;
     }
 
-//    public void updateConnectionStatus(int connectionStatus) {
-//        this.connectionStatus = connectionStatus;
-//    }
-
     private static class SurveysItemViewHolder extends RecyclerView.ViewHolder {
         private RelativeLayout surveyItemContainerRlt;
         private TextView title, details, responses, answered;
@@ -178,6 +171,19 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
             details                 =   (TextView) itemView.findViewById(R.id.detailsTtv);
             responses               =   (TextView) itemView.findViewById(R.id.responsesTtv);
             answered                =   (TextView) itemView.findViewById(R.id.answeredTtv);
+        }
+    }
+
+    private static class UnderProcessSurveysItemViewHolder extends RecyclerView.ViewHolder {
+
+        private SwipeLayout swipeLayout;
+        android.widget.TextView mainText, subText;
+
+        UnderProcessSurveysItemViewHolder(View itemView) {
+
+            super(itemView);
+                mainText = (android.widget.TextView) itemView.findViewById(R.id.mainText);
+                subText = (android.widget.TextView) itemView.findViewById(R.id.subText);
         }
     }
 

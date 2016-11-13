@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/listSurveysRlt"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <com.votingsystem.tsiro.spinnerLoading.SpinnerLoading
+        android:id="@+id/spinnerLoading"
+        android:layout_width="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_height="wrap_content"
+        android:visibility="gone" />
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/codeDescTtv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/code_dest_txv_padding_bottom"
+        android:visibility="gone"
+        android:gravity="center"
+        android:layout_above="@+id/sRetryBtn"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/code_dest_txv_text_size"
+        android:textColor="@android:color/black"
+        android:textStyle="bold" />
+
+    <com.rey.material.widget.Button
+        android:id="@+id/sRetryBtn"
+        android:layout_width="@dimen/action_btn_width"
+        android:layout_height="@dimen/action_btn_height"
+        android:text="@string/retry"
+        android:textColor="@android:color/white"
+        android:background="@drawable/ripple_drawable"
+        android:layout_centerVertical="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone" />
+
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/swipeRefreshLlt"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rejectedSurveysRcV"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/surveys_rcv_margin_top" />
+
+    </android.support.v4.widget.SwipeRefreshLayout>
+
+    <ImageView
+        android:id="@+id/noSurveysImv"
+        android:layout_width="@dimen/no_surveys_imv_width"
+        android:layout_height="@dimen/no_surveys_imv_height"
+        android:src="@drawable/no_surveys"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/no_surveys_imv_margin_top"
+        android:visibility="gone"
+        android:contentDescription="@string/ongoing" />
+
+    <com.rey.material.widget.TextView
+        android:id="@+id/noSurveysTxv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/noSurveysImv"
+        android:text="@string/no_rejected"
+        android:textSize="@dimen/no_surveys_txv_text_size"
+        android:textColor="@color/no_surveys_txv_color"
+        android:visibility="gone"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

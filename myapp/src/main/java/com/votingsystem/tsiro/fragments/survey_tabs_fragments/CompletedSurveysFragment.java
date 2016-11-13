@@ -69,12 +69,8 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Swi
 
     public CompletedSurveysFragment() {}
 
-    public static CompletedSurveysFragment newInstance(int connectionStatus) {
-        Bundle bundle = new Bundle();
-        bundle.putInt("connection_status", connectionStatus);
-        CompletedSurveysFragment completedSurveysFragment = new CompletedSurveysFragment();
-        completedSurveysFragment.setArguments(bundle);
-        return completedSurveysFragment;
+    public static CompletedSurveysFragment newInstance() {
+        return new CompletedSurveysFragment();
     }
 
     @Override
@@ -104,7 +100,6 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Swi
         swipeRefreshLayout.setColorSchemeColors(ContextCompat.getColor(getActivity(), R.color.accentColor));
         inputValidationCodes = AppConfig.getCodes();
         retryBtn.setTransformationMethod(null);
-        if (getArguments() != null) connectionStatus = getArguments().getInt(getResources().getString(R.string.connection_status));
         if (savedInstanceState == null) {
             completedSurveysRcV.setHasFixedSize(true);
             completedSurveysRcV.setLayoutManager(new LinearLayoutManager(getActivity()));
@@ -123,7 +118,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Swi
                         if (view instanceof LinearLayout) {
                             if (connectionStatus != AppConfig.NO_CONNECTION) {
 //                            surveysRcvAdapter.notifyItemRemoved(data.size() - 1);
-                                SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.completed), cPage));
+                                SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.completed), cPage, -1));
                             }
                         } else {
                             if (connectionStatus != AppConfig.NO_CONNECTION) {
@@ -265,7 +260,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Swi
     private void initializeSurveysList() {
         SAMVCpresenterImpl = new SAMVCPresenterImpl(this);
         if (!surveysLoaded) spinnerLoading.setVisibility(View.VISIBLE);
-        SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.completed), 1));
+        SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.completed), 1, -1));
 
         surveysRcvAdapter.setOnLoadMoreListener(new OnLoadMoreListener() {
             @Override
@@ -287,7 +282,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Swi
 //                                    surveysRcvAdapter.notifyItemChanged(data.size() - 1);
 //                                }
 //                            });
-                            SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.completed), page));
+                            SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.completed), page, -1));
                         }
                     }
                 } else {

@@ -29,7 +29,7 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v4.view.ViewPager
+    <com.votingsystem.tsiro.helperClasses.CustomViewPager
         android:id="@+id/surveysPager"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
