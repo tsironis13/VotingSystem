@@ -27,7 +27,7 @@ public class QuestionStatsDetails implements Parcelable {
         this.stats          =   stats;
     }
 
-    protected QuestionStatsDetails(Parcel in) {
+    private QuestionStatsDetails(Parcel in) {
         title           = in.readString();
         type_id         = in.readInt();
         answered        = in.readInt();

@@ -10,5 +10,6 @@ import java.util.List;
 
 public interface USAMVCView {
     void onSuccessSurveysFetched(List<SurveyData> data, int offset, int total);
+    void onSuccessUserSurveyDeletion(int survey_id);
     void onFailure(int code, int request);
 }

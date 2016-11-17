@@ -2,6 +2,7 @@ package com.votingsystem.tsiro.fragments.user_survey_tabs_fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -20,16 +21,19 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.daimajia.swipe.SwipeLayout;
+import com.nikhilpanju.recyclerviewenhanced.OnActivityTouchListener;
 import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener;
 import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
+import com.votingsystem.tsiro.POJO.NewSurvey;
 import com.votingsystem.tsiro.adapters.SurveysRcvAdapter;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
 import com.votingsystem.tsiro.interfaces.SurveysActivityCommonElements;
+import com.votingsystem.tsiro.mainClasses.CreateSurveyActivity;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
+import com.votingsystem.tsiro.parcel.QuestionData;
 import com.votingsystem.tsiro.parcel.SurveyData;
 import com.votingsystem.tsiro.recyclerViewStuff.DividerItemDecoration;
 import com.votingsystem.tsiro.spinnerLoading.SpinnerLoading;
@@ -46,7 +50,7 @@ import static com.votingsystem.tsiro.votingsystem.R.layout.view;
  * Created by giannis on 19/10/2016.
  */
 
-public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCView, SwipeRefreshLayout.OnRefreshListener{
+public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCView, SwipeRefreshLayout.OnRefreshListener, RecyclerTouchListener.OnSwipeListener {
 
     private static final String debugTag = UnderProcessUserSurveysFragment.class.getSimpleName();
     private View view;
@@ -65,7 +69,7 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
     private SurveysActivityCommonElements commonElements;
     private static int connectionStatus;
     private int total, cPage;
-    private SwipeLayout sample2;
+    private RecyclerTouchListener onTouchListener;
 
     public UnderProcessUserSurveysFragment() {}
 
@@ -108,19 +112,11 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
                 underProcessSurveysRcV.setAdapter(surveysRcvAdapter);
             }
             handleActionsBasedOnNetworkStatus();
-//            RelativeLayout relativeLayout = (RelativeLayout) getActivity().findViewById(R.id.kalase);
-//            relativeLayout.setOnTouchListener(new View.OnTouchListener() {
-//                @Override
-//                public boolean onTouch(View view, MotionEvent motionEvent) {
-//                    Log.e(debugTag, "oNTOUCHED");
-//                    return false;
-//                }
-//            });
             underProcessSurveysRcV.addItemDecoration(new DividerItemDecoration(ContextCompat.getDrawable(getActivity(), R.drawable.divider)));
-            RecyclerTouchListener onTouchListener = new RecyclerTouchListener(getActivity(), underProcessSurveysRcV);
+            onTouchListener = new RecyclerTouchListener(getActivity(), underProcessSurveysRcV);
             onTouchListener
-                    .setIndependentViews(R.id.rowButton)
-                    .setViewsToFade(R.id.rowButton)
+//                    .setIndependentViews(R.id.rowButton)
+//                    .setViewsToFade(R.id.rowButton)
                     .setClickable(new RecyclerTouchListener.OnRowClickListener() {
                         @Override
                         public void onRowClicked(int position) {
@@ -130,32 +126,29 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
                         @Override
                         public void onIndependentViewClicked(int independentViewID, int position) {
                             Toast.makeText(getActivity(), "Button in row " + (position + 1) + " clicked!", Toast.LENGTH_LONG).show();
-//                            ToastUtil.makeToast(getApplicationContext(), "Button in row " + (position + 1) + " clicked!");
                         }
                     })
-                    .setLongClickable(true, new RecyclerTouchListener.OnRowLongClickListener() {
-                        @Override
-                        public void onRowLongClicked(int position) {
-//                            ToastUtil.makeToast(getApplicationContext(), "Row " + (position + 1) + " long clicked!");
-                        }
-                    })
-                    .setSwipeOptionViews(R.id.add, R.id.edit, R.id.change)
-                    .setSwipeable(R.id.rowFG, R.id.rowBG, new RecyclerTouchListener.OnSwipeOptionsClickListener() {
+                    .setSwipeOptionViews(R.id.edit, R.id.delete)
+                    .setSwipeable(R.id.surveyItemContainerRlt, R.id.revealRowLlt, new RecyclerTouchListener.OnSwipeOptionsClickListener() {
                         @Override
                         public void onSwipeOptionClicked(int viewID, int position) {
-                            String message = "";
-                            if (viewID == R.id.add) {
-                                message += "Add";
-                            } else if (viewID == R.id.edit) {
-                                message += "Edit";
-                            } else if (viewID == R.id.change) {
-                                message += "Change";
+                            if (viewID == R.id.edit) {
+                                Intent intent = new Intent(getActivity(), CreateSurveyActivity.class);
+                                intent.putExtra(getResources().getString(R.string.data), data.get(position));
+                                intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.edit));
+                                startActivity(intent);
+                                Log.e(debugTag, "TYPE: "+data.get(position).getType()+" category: "+data.get(position).getCategory());
+                            } else if (viewID == R.id.delete) {
+                                if (USAMVCpresenterImpl != null) {
+                                    NewSurvey newSurvey = new NewSurvey();
+                                    newSurvey.setId(data.get(position).getSurveyId());
+                                    newSurvey.setAction(getResources().getString(R.string.manipulate_user_survey));
+                                    newSurvey.setSubaction(getResources().getString(R.string.del));
+                                    USAMVCpresenterImpl.deleteUserSurvey(newSurvey, position);
+                                }
                             }
-                            message += " clicked for row " + (position + 1);
-//                            ToastUtil.makeToast(getApplicationContext(), message);
                         }
                     });
-            underProcessSurveysRcV.addOnItemTouchListener(onTouchListener);
         }
         retryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -169,6 +162,33 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
                 }
             }
         });
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        if (underProcessSurveysRcV != null) underProcessSurveysRcV.addOnItemTouchListener(onTouchListener);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        if (underProcessSurveysRcV != null) underProcessSurveysRcV.removeOnItemTouchListener(onTouchListener);
+    }
+
+    @Override
+    public void onSwipeOptionsClosed() {}
+
+    @Override
+    public void onSwipeOptionsOpened() {}
+
+    @Override
+    public void onSuccessUserSurveyDeletion(int adapter_position) {
+        if (data != null && surveysRcvAdapter != null) {
+            data.remove(adapter_position);
+            surveysRcvAdapter.notifyItemRemoved(adapter_position);
+            if (isAdded()) commonElements.showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(AppConfig.SUCCESS_USER_SURVEY_DELETED)));
+        }
     }
 
     @Override
@@ -246,6 +266,10 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
             onErrorBackgroundView(AppConfig.NO_CONNECTION);
             if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         }
+    }
+
+    public void closeVisibleBG() {
+        if (onTouchListener != null) onTouchListener.closeVisibleBG(this);
     }
 
     public static void updatedNetworkStatus(int status) {

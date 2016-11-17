@@ -16,7 +16,7 @@ public class MatrixStats implements Parcelable{
         this.count      = count;
     }
 
-    protected MatrixStats(Parcel in) {
+    private MatrixStats(Parcel in) {
         percentage  = in.readFloat();
         count       = in.readInt();
     }

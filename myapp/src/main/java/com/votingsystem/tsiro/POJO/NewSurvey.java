@@ -8,13 +8,17 @@ import java.util.List;
  */
 public class NewSurvey {
 
-    private int user_id, firm_id;
-    private String action, title, category, token;
+    private int id, user_id, firm_id;
+    private String action, sub_action, title, category, token;
     private long active_since, valid_until;
     private SparseArray<NewSurveyQuestion> surveyQuestionSparseArray;
     private List<NewSurveyQuestion> questions_list;
 
     public NewSurvey(){}
+
+    public int getId() { return id; }
+
+    public void setId(int id) { this.id = id; }
 
     public int getUserId() { return user_id; }
 
@@ -31,6 +35,10 @@ public class NewSurvey {
     public String getAction() { return action; }
 
     public void setAction(String action) { this.action = action; }
+
+    public String getSubaction() { return sub_action; }
+
+    public void setSubaction(String sub_action) { this.sub_action = sub_action; }
 
     public String getTitle() { return title; }
 

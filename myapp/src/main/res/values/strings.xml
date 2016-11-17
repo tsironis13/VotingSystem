@@ -90,8 +90,9 @@
     <string name="valid_until_action">valid_until</string>
     <string name="add">add</string>
     <string name="edit">edit</string>
+    <string name="del">delete</string>
     <string name="delete">Διαγραφη</string>
-    <string name="upload_survey">upload_survey</string>
+    <string name="manipulate_user_survey">manipulate_user_survey</string>
     <!-- LOGIN -->
     <string name="theme">theme</string>
     <string name="app_logo">app_logo</string>
@@ -231,6 +232,8 @@
     <string name="multiple_choice_single_answer">Πολλαπλής Επιλογής-Μονή Απάντηση</string>
     <string name="multiple_choice_many_answers">Πολλαπλής Επιλογής-Πολλές Απαντήσεις</string>
     <string name="item">item</string>
+    <string name="edit_survey">Επεξεργασία έρευνας</string>
+    <string name="success_user_survey_deletion">H έρευνα διαγράφηκε με επιτυχια!</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>

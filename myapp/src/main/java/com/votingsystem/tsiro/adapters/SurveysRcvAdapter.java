@@ -6,9 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-
-import com.daimajia.swipe.SwipeLayout;
 import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
@@ -67,14 +66,12 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         RecyclerView.ViewHolder vh;
         View view;
         if (viewType == VIEW_ITEM) {
-            Log.e(debugTag, type+"");
             if (!type.equals("under_process")) {
-                view    = LayoutInflater.from(parent.getContext()).inflate(R.layout.survey_item, parent, false);
-                vh      = new SurveysItemViewHolder(view);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.survey_item, parent, false);
             } else {
-                view    = LayoutInflater.from(parent.getContext()).inflate(R.layout.under_process_survey_item, parent, false);
-                vh      = new UnderProcessSurveysItemViewHolder(view);
+                view = LayoutInflater.from(parent.getContext()).inflate(R.layout.under_process_survey_item, parent, false);
             }
+            vh = new SurveysItemViewHolder(view);
 //        } else if (viewType == VIEW_PROG) {
 //            view    =   LayoutInflater.from(parent.getContext()).inflate(R.layout.surveys_recyclerview_loader, parent, false);
 //            vh      =   new ProgressViewHolder(view);
@@ -114,8 +111,6 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
                     ((SurveysItemViewHolder) holder).answered.setVisibility(View.INVISIBLE);
             }
             ((SurveysItemViewHolder) holder).responses.setText(String.format(Locale.getDefault(), "%d", data.get(position).getResponses()));
-        } else if (holder instanceof UnderProcessSurveysItemViewHolder) {
-
         }
 //        } else if (holder instanceof ProgressViewHolder) {
             //PROGRESS VIEW REMOVED
@@ -171,19 +166,6 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
             details                 =   (TextView) itemView.findViewById(R.id.detailsTtv);
             responses               =   (TextView) itemView.findViewById(R.id.responsesTtv);
             answered                =   (TextView) itemView.findViewById(R.id.answeredTtv);
-        }
-    }
-
-    private static class UnderProcessSurveysItemViewHolder extends RecyclerView.ViewHolder {
-
-        private SwipeLayout swipeLayout;
-        android.widget.TextView mainText, subText;
-
-        UnderProcessSurveysItemViewHolder(View itemView) {
-
-            super(itemView);
-                mainText = (android.widget.TextView) itemView.findViewById(R.id.mainText);
-                subText = (android.widget.TextView) itemView.findViewById(R.id.subText);
         }
     }
 

@@ -6,6 +6,7 @@ import java.util.List;
  * Created by user on 12/11/2015.
  */
 public class Firm {
+
     private String action;
     private int code;
     private List<FirmElement> firm_element;

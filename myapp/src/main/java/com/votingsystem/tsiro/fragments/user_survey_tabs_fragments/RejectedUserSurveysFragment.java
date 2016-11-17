@@ -109,6 +109,9 @@ public class RejectedUserSurveysFragment extends Fragment implements USAMVCView,
     }
 
     @Override
+    public void onSuccessUserSurveyDeletion(int survey_id) {}
+
+    @Override
     public void onSuccessSurveysFetched(final List<SurveyData> newData, final int page, int total) {
         if (swipeRefreshLayout.getVisibility() == View.GONE) swipeRefreshLayout.setVisibility(View.VISIBLE);
         if (swipeRefreshLayout.isRefreshing()) {

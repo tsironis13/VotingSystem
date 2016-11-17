@@ -183,6 +183,8 @@
     <dimen name="fragment_survey_details_items_container_margin_top_bottom">10dp</dimen>
     <!-- NEW SURVEY -->
     <dimen name="fab_remove_answer_margin_top">-5dp</dimen>
+    <!-- USER SURVEYS -->
+    <dimen name="under_process_actions_container_width">80dp</dimen>
     <!--add staff -->
     <dimen name="fab_label_text_size">12sp</dimen>
     <dimen name="fab_label_elevation">2dp</dimen>

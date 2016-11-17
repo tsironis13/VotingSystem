@@ -9,5 +9,6 @@ import java.util.List;
 
 interface USAMVCFinishedListener {
     void onSuccessSurveysFetched(List<SurveyData> data, int page, int total);
+    void onSuccessUserSurveyDeletion(int survey_id);
     void onFailure(int code, int request);
 }

@@ -16,12 +16,12 @@ public class QuestionData implements Parcelable {
 
     public QuestionData() {}
 
-    protected QuestionData(Parcel in) {
-        type_id = in.readInt();
-        mandatory = in.readInt();
-        type = in.readString();
-        title = in.readString();
-        answers = in.createStringArrayList();
+    private QuestionData(Parcel in) {
+        type_id     = in.readInt();
+        mandatory   = in.readInt();
+        type        = in.readString();
+        title       = in.readString();
+        answers     = in.createStringArrayList();
     }
 
     public static final Creator<QuestionData> CREATOR = new Creator<QuestionData>() {

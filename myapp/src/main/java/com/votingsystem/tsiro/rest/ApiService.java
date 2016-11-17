@@ -55,6 +55,10 @@ public interface ApiService {
     @POST("requests/surveys.php")
     Call<AllSurveys> uploadNewUserSurvey(@Body NewSurvey newSurvey);
 
+    @POST("requests/surveys.php")
+    Call<AllSurveys> deleteUserSurvey(@Body NewSurvey newSurvey);
+
+
 //    @FormUrlEncoded
 //    @POST("functions/firmRequests.php")
 //    Call<Firm> getFirmByNameAndCode(@Field("action") String action, @Field("firm-name") String firmName, @Field("firm-code") String firmCode);

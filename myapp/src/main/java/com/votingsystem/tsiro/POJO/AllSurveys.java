@@ -7,6 +7,7 @@ import java.util.List;
  * Created by giannis on 20/6/2016.
  */
 public class AllSurveys {
+
     private int code, total;
     private List<SurveyData> data;
 

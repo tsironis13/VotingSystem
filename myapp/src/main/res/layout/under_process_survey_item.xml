@@ -1,205 +1,180 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/kalase"
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+    android:layout_height="wrap_content">
 
     <LinearLayout
-        android:id="@+id/rowBG"
+        android:id="@+id/revealRowLlt"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/surveys_item_container_height"
         android:layout_alignParentRight="true"
-        android:gravity="right"
         android:orientation="horizontal">
 
-
-        <RelativeLayout
-            android:id="@+id/add"
-            android:layout_width="85dp"
+        <LinearLayout
+            android:id="@+id/edit"
+            android:layout_width="@dimen/under_process_actions_container_width"
             android:layout_height="match_parent"
             android:background="@color/primaryColor"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical">
+            android:gravity="center"
+            android:clickable="true">
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:background="?android:selectableItemBackground"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:src="@drawable/ic_edit"
-                    android:tint="@android:color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="4dp"
-                    android:ellipsize="end"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="Add"
-                    android:textColor="@android:color/white"
-                    android:textSize="12sp"/>
-            </LinearLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/edit"
-            android:layout_width="85dp"
-            android:layout_height="match_parent"
-            android:background="@color/accentColor"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:background="?android:selectableItemBackground"
-                android:gravity="center"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:src="@drawable/ic_edit"
-                    android:tint="@android:color/white"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="4dp"
-                    android:ellipsize="end"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="Edit"
-                    android:textColor="@android:color/white"
-                    android:textSize="12sp"/>
-            </LinearLayout>
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/change"
-            android:layout_width="85dp"
-            android:layout_height="match_parent"
-            android:background="@color/primaryColorDark"
-            android:clickable="true"
-            android:focusable="true"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_centerInParent="true"
-                android:background="?android:selectableItemBackground"
-                android:gravity="center_vertical|left"
-                android:orientation="vertical">
-
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:tint="@android:color/white"
-                    app:srcCompat="@drawable/ic_edit"/>
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
-                    android:layout_marginTop="4dp"
-                    android:ellipsize="end"
-                    android:gravity="center"
-                    android:maxLines="1"
-                    android:text="Change"
-                    android:textColor="@android:color/white"
-                    android:textSize="12sp"/>
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/rowFG"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@android:color/white"
-        android:clickable="true"
-        android:elevation="4dp"
-        android:focusable="true"
-        android:orientation="horizontal"
-        android:visibility="visible">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="?attr/selectableItemBackground"
-            android:orientation="horizontal"
-            android:paddingBottom="16dp"
-            android:paddingLeft="16dp"
-            android:paddingTop="16dp">
-
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical"
-                android:layout_weight="6"
-                android:orientation="vertical">
-
-                <TextView
-                    android:id="@+id/mainText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:maxLines="1"
-                    android:text="No Calls Found"
-                    android:textSize="16sp"
-                    android:textStyle="bold"
-                    tools:text="Row 1"/>
-
-                <TextView
-                    android:id="@+id/subText"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:maxLines="1"
-                    tools:text="Some text ..."/>
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/rowButton"
-                style="?attr/buttonBarButtonStyle"
+            <ImageView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right|center_vertical"
-                android:gravity="right|center_vertical"
-                android:text="Button" />
+                android:layout_gravity="center"
+                android:src="@drawable/ic_edit"
+                android:tint="@android:color/white"
+                android:contentDescription="@string/edit" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/delete"
+            android:layout_width="@dimen/under_process_actions_container_width"
+            android:layout_height="match_parent"
+            android:background="@color/delete_action_background_color"
+            android:clickable="true"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:src="@drawable/ic_delete"
+                android:contentDescription="@string/del" />
 
         </LinearLayout>
 
     </LinearLayout>
 
-    <View
+    <RelativeLayout
+        android:id="@+id/surveyItemContainerRlt"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:layout_alignParentBottom="true"
-        android:background="#67676767"
-        android:elevation="5dp"/>
+        android:layout_height="@dimen/surveys_item_container_height"
+        android:clickable="true"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/surveyThumb"
+            android:layout_width="@dimen/survey_item_thumb_dimens"
+            android:layout_height="@dimen/survey_item_thumb_dimens"
+            android:layout_marginLeft="@dimen/survey_item_thumb_margin_left"
+            android:layout_marginTop="@dimen/survey_item_thumb_margin_top"
+            android:src="@drawable/no_surveys"
+            android:contentDescription="@string/item_thumb" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/titleTtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/surveyThumb"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:layout_marginTop="@dimen/survey_item_title_margin_top"
+            android:layout_marginRight="@dimen/survey_item_title_margin_right"
+            android:layout_toLeftOf="@+id/responsesTtv"
+            android:layout_marginLeft="@dimen/survey_item_title_margin_left"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/survey_item_title_text_size"
+            android:textStyle="bold" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/detailsTtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/surveyThumb"
+            android:layout_below="@+id/titleTtv"
+            android:layout_marginTop="@dimen/survey_item_details_answered_margin_top"
+            android:layout_marginLeft="@dimen/survey_item_details_margin_left"
+            android:textSize="@dimen/survey_item_details_text_size"
+            android:textColor="@color/survey_item_details_text_color" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/responsesTtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/survey_item_responses_margin_top_right"
+            android:layout_marginRight="@dimen/survey_item_responses_margin_top_right"
+            android:textSize="@dimen/survey_item_responses_text_size"
+            android:textStyle="bold"
+            android:textColor="@android:color/black" />
+
+        <com.rey.material.widget.TextView
+            android:id="@+id/answeredTtv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/responsesTtv"
+            android:layout_alignBaseline="@+id/detailsTtv"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="@dimen/survey_item_details_answered_margin_top"
+            android:layout_marginRight="@dimen/survey_item_answered_margin_right"
+            android:text="@string/vote"
+            android:textSize="@dimen/survey_item_answered_text_size"
+            android:textColor="@color/accentColor"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+    </RelativeLayout>
+
+
+<!--<LinearLayout-->
+        <!--android:id="@+id/rowFG"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="match_parent"-->
+        <!--android:background="@android:color/white"-->
+        <!--android:clickable="true"-->
+        <!--android:focusable="true"-->
+        <!--android:orientation="horizontal">-->
+
+        <!--<LinearLayout-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="?attr/selectableItemBackground"-->
+            <!--android:orientation="horizontal"-->
+            <!--android:paddingBottom="16dp"-->
+            <!--android:paddingLeft="16dp"-->
+            <!--android:paddingTop="16dp">-->
+
+            <!--<LinearLayout-->
+                <!--android:layout_width="0dp"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="center_vertical"-->
+                <!--android:layout_weight="6"-->
+                <!--android:orientation="vertical">-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/mainText"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:maxLines="1"-->
+                    <!--android:text="No Calls Found"-->
+                    <!--android:textSize="16sp"-->
+                    <!--android:textStyle="bold"-->
+                    <!--tools:text="Row 1"/>-->
+
+                <!--<TextView-->
+                    <!--android:id="@+id/subText"-->
+                    <!--android:layout_width="wrap_content"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="2dp"-->
+                    <!--android:maxLines="1"-->
+                    <!--tools:text="Some text ..."/>-->
+            <!--</LinearLayout>-->
+
+            <!--<Button-->
+                <!--android:id="@+id/rowButton"-->
+                <!--style="?attr/buttonBarButtonStyle"-->
+                <!--android:layout_width="wrap_content"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:layout_gravity="right|center_vertical"-->
+                <!--android:gravity="right|center_vertical"-->
+                <!--android:text="Button" />-->
+
+        <!--</LinearLayout>-->
+
+    <!--</LinearLayout>-->
+
 </RelativeLayout>

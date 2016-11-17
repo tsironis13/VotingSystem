@@ -46,6 +46,7 @@ public class AppConfig {
     public static final int ERROR_ADD_ANSWERS_NOTE              =   -26;
     public static final int ERROR_FILL_OUT_ANSWERS              =   -27;
     public static final int ERROR_EMPTY_LIST                    =   -205;
+    public static final int SUCCESS_USER_SURVEY_DELETED         =   1000;
     //LOGIN ACTIVITY
     public static final int VISIBLE_PASSWORD_INPUT_TYPE         =   145;
     public static final int PASSWORD_INPUT_TYPE                 =   129;
@@ -78,6 +79,7 @@ public class AppConfig {
         inputValidationCodes.put(ERROR_INVALID_ID, R.string.error_invalid_id);
         inputValidationCodes.put(ERROR_ADD_ANSWERS_NOTE, R.string.add_answers_note);
         inputValidationCodes.put(ERROR_FILL_OUT_ANSWERS, R.string.fill_out_answers);
+        inputValidationCodes.put(SUCCESS_USER_SURVEY_DELETED, R.string.success_user_survey_deletion);
 
         return inputValidationCodes;
     }

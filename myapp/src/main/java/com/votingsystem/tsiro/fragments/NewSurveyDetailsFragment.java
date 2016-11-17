@@ -41,6 +41,7 @@ import com.votingsystem.tsiro.helperClasses.CustomSpinnerItem;
 import com.votingsystem.tsiro.interfaces.UpdateNewSurveyObj;
 import com.votingsystem.tsiro.mainClasses.DashboardActivity;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
+import com.votingsystem.tsiro.parcel.SurveyData;
 import com.votingsystem.tsiro.votingsystem.R;
 import net.i2p.android.ext.floatingactionbutton.FloatingActionButton;
 import net.i2p.android.ext.floatingactionbutton.FloatingActionsMenu;
@@ -59,7 +60,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
     private View view;
     private EditText surveyTitleEdt;
     private android.widget.EditText activeSinceEdt, validUntilEdt;
-    private TextView hiddenActiveSinceLabelTtv, hiddenValidUntilLabelTtv;
+    private TextView hiddenActiveSinceLabelTtv, hiddenValidUntilLabelTtv, selectionItem;
     private boolean hiddenActiveSinceLabelActivated, hiddenValidUntilLabelActivated, hasQuestions, spinnerLoaded;
     private Spinner surveyCategorySpnr;
     private TextView questionsLabelTtv;
@@ -67,15 +68,19 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
     private FloatingActionsMenu fabTypeMenu;
     private UpdateNewSurveyObj updateNewSurveyObj;
     private SparseArray<NewSurveyQuestion> newSurveyQuestionSparseArray;
-    private int connectionType, keyAt; //used to set max sparse array key value + 1 on new question insertion
+    //id (Survey id to update)
+    private int id, connectionType, keyAt; //used to set max sparse array key value + 1 on new question insertion
     private long[] dates = new long[2];
     private ProgressDialog progressDialog;
     private NetworkStateReceiver networkStateReceiver;
     private CSMVCPresenterImpl CSMVCpresenterImpl;
+    private String subAction, category;
 
-    public static NewSurveyDetailsFragment newInstance(String title) {
+    public static NewSurveyDetailsFragment newInstance(String title, String action, SurveyData data) {
         Bundle bundle = new Bundle();
         bundle.putString("title", title);
+        bundle.putString("action", action);
+        bundle.putParcelable("data", data);
         NewSurveyDetailsFragment newSurveyDetails = new NewSurveyDetailsFragment();
         newSurveyDetails.setArguments(bundle);
         return newSurveyDetails;
@@ -123,8 +128,35 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
             ((AppCompatActivity)getActivity()).getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_arrow_back_white);
         }
         updateNewSurveyObj.initializeSpannableText(surveyTitleEdt, getResources().getString(R.string.new_survey_title), true);
+        if (!spinnerLoaded) createPickCategoryItems();
         if (getArguments() != null) {
             if (((AppCompatActivity)getActivity()).getSupportActionBar() != null) ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getArguments().getString(getResources().getString(R.string.title)));
+            subAction = getResources().getString(R.string.add);
+            if (getArguments().getString(getResources().getString(R.string.action)).equals(getResources().getString(R.string.edit))) {
+                subAction = getResources().getString(R.string.edit);
+                SurveyData data = getArguments().getParcelable(getResources().getString(R.string.data));
+                if (data != null) {
+                    id                  = data.getSurveyId();
+                    dates[0]            = data.getActiveSinceEpoch();
+                    dates[1]            = data.getValidUntilEpoch();
+                    category            = data.getCategory();
+                    if (data.getTitle() != null) surveyTitleEdt.setText(data.getTitle());
+                    if (data.getActiveSince() != null) {
+                        activeSinceEdt.setText(data.getActiveSince());
+                        hiddenActiveSinceLabelTtv.setVisibility(View.VISIBLE);
+                    }
+                    if (data.getValidUntil() != null) {
+                        validUntilEdt.setText(data.getValidUntil());
+                        hiddenValidUntilLabelTtv.setVisibility(View.VISIBLE);
+                    }
+                    for (int i = 0; i < surveyCategorySpnr.getAdapter().getCount() - 1; i++) {
+                        if (category.equals(surveyCategorySpnr.getAdapter().getItem(i).toString())) {
+                            surveyCategorySpnr.setSelection(i+1);
+                            break;
+                        }
+                    }
+                }
+            }
         }
         activeSinceEdt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -159,7 +191,6 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
         });
         NewSurvey newSurvey = updateNewSurveyObj.getNewSurveyObj();
         if (newSurvey != null) {
-            if (!spinnerLoaded) createPickCategoryItems();
             newSurveyQuestionSparseArray = newSurvey.getNewSurveyQuestionSparseArray();
             if (questionsContainerLlt.getChildCount() != 0) questionsContainerLlt.removeAllViews();
             if (newSurveyQuestionSparseArray != null && newSurveyQuestionSparseArray.size() != 0) {
@@ -306,13 +337,15 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
                     }
                 }
                 NewSurvey newSurvey = new NewSurvey();
+                if (subAction.equals(getResources().getString(R.string.edit))) newSurvey.setId(id);
                 newSurvey.setUserId(LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0));
                 newSurvey.setFirmId(LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0));
                 newSurvey.setToken(LoginActivity.getSessionPrefs(getActivity()).getString(getResources().getString(R.string.registration_token), getResources().getString(R.string.empty_string)));
-                newSurvey.setAction(getResources().getString(R.string.upload_survey));
-                newSurvey.setTitle(survey);
+                newSurvey.setAction(getResources().getString(R.string.manipulate_user_survey));
+                newSurvey.setSubaction(subAction);
                 newSurvey.setActiveSince(dates[0]);
                 newSurvey.setValidUntil(dates[1]);
+                newSurvey.setTitle(survey);
                 newSurvey.setCategory(spinnerItem.getName());
                 newSurvey.setQuestionslist(questions_list);
                 CSMVCpresenterImpl.uploadNewUserSurvey(newSurvey);
@@ -408,7 +441,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
         surveyCategorySpnr.setAdapter(new FirmNamesSpnrNothingSelectedAdapter(getActivity(), R.layout.category_spinner_selection_item, customSpinnerItems));
         FirmNamesSpnrNothingSelectedAdapter firmNamesSpnrNothingSelectedAdapter = (FirmNamesSpnrNothingSelectedAdapter) surveyCategorySpnr.getAdapter();
         firmNamesSpnrNothingSelectedAdapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
-        TextView selectionItem = (TextView) getActivity().findViewById(R.id.pickCategory);
+        selectionItem = (TextView) getActivity().findViewById(R.id.pickCategory);
         updateNewSurveyObj.initializeSpannableText(selectionItem, "<font color='#B3B3B3'>Επιλογή κατηγορίας</font>", true);
     }
 

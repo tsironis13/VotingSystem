@@ -15,6 +15,8 @@ import android.util.SparseArray;
 import android.util.SparseIntArray;
 import android.view.KeyEvent;
 import android.view.View;
+import android.widget.Toast;
+
 import com.rey.material.app.Dialog;
 import com.rey.material.app.DialogFragment;
 import com.rey.material.app.SimpleDialog;
@@ -27,9 +29,13 @@ import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.MyApplication;
 import com.votingsystem.tsiro.fragments.NewSurveyDetailsFragment;
 import com.votingsystem.tsiro.interfaces.UpdateNewSurveyObj;
+import com.votingsystem.tsiro.parcel.QuestionData;
+import com.votingsystem.tsiro.parcel.SurveyData;
 import com.votingsystem.tsiro.votingsystem.R;
 
 import net.i2p.android.ext.floatingactionbutton.FloatingActionsMenu;
+
+import java.util.List;
 
 /**
  * Created by giannis on 30/7/2016.
@@ -40,7 +46,6 @@ public class CreateSurveyActivity extends AppCompatActivity implements UpdateNew
     private NewSurvey newSurvey;
     private boolean confirmFlag;
     private LinearLayout createSurveyLlt;
-    private SparseArray<NewSurveyQuestion> newSurveyQuestionSparseArray;
     private SparseIntArray inputValidationCodes;
     private boolean snackBarIsShowing;
 
@@ -68,16 +73,38 @@ public class CreateSurveyActivity extends AppCompatActivity implements UpdateNew
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
             toolbar.setElevation((float) MyApplication.convertPixelToDpAndViceVersa(this, 0, 3));
         }
-        getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.createSurveyFgmtContainer, NewSurveyDetailsFragment.newInstance(getResources().getString(R.string.new_survey)), getResources().getString(R.string.new_survey_details_fgmt))
-                .addToBackStack(getResources().getString(R.string.new_survey_details_fgmt))
-                .commit();
-        if (getIntent().getStringExtra(getResources().getString(R.string.action)).equals(getResources().getString(R.string.tag_new))) {
-            newSurveyQuestionSparseArray = new SparseArray<>();
-        }
+        String title, action;
+        SurveyData data = null;
+        SparseArray<NewSurveyQuestion> newSurveyQuestionSparseArray = new SparseArray<>();
         newSurvey = new NewSurvey();
         newSurvey.setNewSurveyQuestionSparseArray(newSurveyQuestionSparseArray);
+        if (getIntent().getStringExtra(getResources().getString(R.string.action)).equals(getResources().getString(R.string.tag_new))) {
+            title   = getResources().getString(R.string.new_survey);
+            action  = getResources().getString(R.string.tag_new);
+        } else {
+            title   = getResources().getString(R.string.edit_survey);
+            action  = getResources().getString(R.string.edit);
+            if (getIntent().getExtras().getParcelable(getResources().getString(R.string.data)) != null){
+                data = getIntent().getExtras().getParcelable(getResources().getString(R.string.data));
+                if (data != null && data.getQuestions() != null && data.getQuestions().size() != 0) {
+                    for (int i = 0; i < data.getQuestions().size(); i++) {
+                        String qTitle           = data.getQuestions().get(i).getTitle();
+                        String qType            = data.getQuestions().get(i).getType();
+                        List<String> answers    = data.getQuestions().get(i).getAnswers();
+                        int qtypeId             = data.getQuestions().get(i).getTypeId();
+                        boolean isSingleChoice = qtypeId == 100;
+                        int isMandatory         = data.getQuestions().get(i).isMandatory();
+                        NewSurveyQuestion newSurveyQuestion = new NewSurveyQuestion(i, getResources().getString(R.string.edit), qTitle, qType, answers, qtypeId, isSingleChoice, isMandatory);
+                        newSurveyQuestionSparseArray.put(i, newSurveyQuestion);
+                    }
+                }
+            }
+        }
+        getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.createSurveyFgmtContainer, NewSurveyDetailsFragment.newInstance(title, action, data), getResources().getString(R.string.new_survey_details_fgmt))
+                .addToBackStack(getResources().getString(R.string.new_survey_details_fgmt))
+                .commit();
     }
 
     @Override

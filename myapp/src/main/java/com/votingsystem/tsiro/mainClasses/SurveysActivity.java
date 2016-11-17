@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.support.design.widget.CoordinatorLayout;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
@@ -27,7 +29,10 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.nikhilpanju.recyclerviewenhanced.OnActivityTouchListener;
+import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener;
 import com.votingsystem.tsiro.adapters.UserSurveysPagerAdapter;
 import com.votingsystem.tsiro.fragments.survey_tabs_fragments.CompletedSurveysFragment;
 import com.votingsystem.tsiro.fragments.survey_tabs_fragments.OngoingSurveysFragment;
@@ -60,7 +65,7 @@ import java.util.List;
 /**
  * Created by giannis on 19/6/2016.
  */
-public class SurveysActivity extends AppCompatActivity implements NetworkStateListeners, SurveysActivityCommonElements, SAMVCView{
+public class SurveysActivity extends AppCompatActivity implements NetworkStateListeners, SurveysActivityCommonElements, SAMVCView, RecyclerTouchListener.RecyclerTouchListenerHelper{
 
     private static final String debugTag = SurveysActivity.class.getSimpleName();
     private CoordinatorLayout coordinatorLayout;
@@ -72,6 +77,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
     private int connectionStatus;
     private String action;
     private CustomViewPager mPager;
+    private OnActivityTouchListener onActivityTouchListener;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -92,7 +98,23 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
                 mPager.setAdapter(new SurveysPagerAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.surveys_tabs)));
                 mPager.enablePaging(true);
             } else {
-                mPager.setAdapter(new UserSurveysPagerAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.user_surveys_tabs)));
+                final UserSurveysPagerAdapter userSurveysPagerAdapter = new UserSurveysPagerAdapter(getSupportFragmentManager(), getResources().getStringArray(R.array.user_surveys_tabs));
+                mPager.setAdapter(userSurveysPagerAdapter);
+                mPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+                    @Override
+                    public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {}
+
+                    @Override
+                    public void onPageSelected(int position) {
+                        if (position == 1 || position == 2) {
+                            Fragment fragment = userSurveysPagerAdapter.getItem(0);
+                            if (fragment != null && fragment instanceof UnderProcessUserSurveysFragment) ((UnderProcessUserSurveysFragment) fragment).closeVisibleBG();
+                        }
+                    }
+
+                    @Override
+                    public void onPageScrollStateChanged(int state) {}
+                });
             }
             mTabs.setupWithViewPager(mPager);
         }
@@ -117,6 +139,17 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
         }
         //SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), 2));
 //        initializeTabsViewPager();
+    }
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (onActivityTouchListener != null) onActivityTouchListener.getTouchCoordinates(ev);
+        return super.dispatchTouchEvent(ev);
+    }
+
+    @Override
+    public void setOnActivityTouchListener(OnActivityTouchListener listener) {
+        this.onActivityTouchListener = listener;
     }
 
     @Override

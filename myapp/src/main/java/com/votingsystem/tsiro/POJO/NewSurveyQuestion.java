@@ -7,6 +7,7 @@ import java.util.List;
  */
 
 public class NewSurveyQuestion {
+
     private transient int key;
     private transient String action;
     private String title, type;

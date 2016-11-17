@@ -42,6 +42,8 @@
     <color name="ranking_question_item_llt_background">#FAFAFA</color>
     <color name="question_item_text_color">#424242</color>
     <color name="free_answer_edt_hint_color">#9E9E9E</color>
+    <!-- USER SURVEYS -->
+    <color name="delete_action_background_color">#E53935</color>
     <!-- SURVEY DETAILS -->
     <color name="no_value_color">#26000000</color>
     <color name="matrix_table_txv_label_background_color">#F5F5F5</color>
