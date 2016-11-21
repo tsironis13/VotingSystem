@@ -58,6 +58,7 @@
     <string name="tag_answers">answers</string>
     <string name="mandatory">mandatory</string>
     <string name="is_single_choice">is_single_choice</string>
+    <string name="content_desc">content_desc</string>
     <!-- SEARCH -->
     <string name="search">Aναζήτηση</string>
     <string name="search_hint">Aναζήτηση Έρευνας</string>
@@ -207,8 +208,8 @@
     <string name="list_selection">Επιλογή από λίστα</string>
     <string name="ranking">Κατάταξη</string>
     <string name="free_answer">Ελεύθερη απάντηση</string>
-    <string name="active_since_format">%1$d-%2$d-%3$d 21:00:00 UTC</string>
-    <string name="valid_until_format">%1$d-%2$d-%3$d 20:59:59 UTC</string>
+    <string name="active_since_format">%1$d-%2$d-%3$d %4$d:00:00 UTC</string>
+    <string name="valid_until_format">%1$d-%2$d-%3$d %4$d:59:59 UTC</string>
     <string name="date_format">dd-MM-yyyy HH:mm:ss zzz</string>
     <string name="edt_date_format">%1$d-%2$d-%3$d</string>
     <string name="new_question">Nέα ερώτηση</string>
@@ -234,6 +235,7 @@
     <string name="item">item</string>
     <string name="edit_survey">Επεξεργασία έρευνας</string>
     <string name="success_user_survey_deletion">H έρευνα διαγράφηκε με επιτυχια!</string>
+    <string name="delete_survey_dialog_message">Η συγκεκριμένη έρευνα θα διαγραφεί οριστικά.</string>
     <!-- REGISTER -->
     <string name="clear_success_icon">clearSuccessIcon</string>
     <string name="confirm_password">confirmpassword</string>
@@ -284,6 +286,7 @@
     <string name="logout">Αποσυνδεση</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="email_label">username@email.com</string>
     <!-- OBJECT ANIMATOR -->
     <string name="float_type">float</string>
     <string name="translation_y">translationY</string>
@@ -294,7 +297,7 @@
     <string name="complete_all_mandatory_questions">Παρακαλώ συμπλήρωσε όλες τις υποχρεωτικές ερωτήσεις.</string>
     <string name="confirm_btn_text">OK</string>
     <!-- Progress Dialog -->
-    <string name="message">Παρακαλώ περιμένετε...</string>
+    <string name="message">Παρακαλώ περιμένετε…</string>
     <!-- MENUS -->
     <!-- Survey questions menu -->
     <string name="post">ΟΛΟΚΛΗΡΩΣΗ</string>

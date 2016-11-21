@@ -1095,7 +1095,7 @@
     <string name="action_settings">Settings</string>
     <string name="active_since">Ημ. Έναρξης</string>
     <string name="active_since_action">active_since</string>
-    <string name="active_since_format">%1$d-%2$d-%3$d 21:00:00 UTC</string>
+    <string name="active_since_format">%1$d-%2$d-%3$d %4$d:00:00 UTC</string>
     <string name="active_since_hint">Ενεργή από</string>
     <string name="add">add</string>
     <string name="add_answer">Προσθηκη απαντησης</string>
@@ -1197,6 +1197,7 @@
     <string name="connection_status">connection_status</string>
     <string name="connectivity_change">android.net.conn.CONNECTIVITY_CHANGE</string>
     <string name="connectivity_status">connectivityStatus</string>
+    <string name="content_desc">content_desc</string>
     <string name="correct_error">Παρακαλώ διόρθωσε το παραπάνω λάθος: %1$s.</string>
     <string name="correct_field">Παρακαλώ διόρθωσε το παραπάνω πεδίο: %1$s.</string>
     <string name="count_per_row">Σύνολο \nανά γραμμή</string>
@@ -1218,6 +1219,7 @@
     <string name="default_web_client_id" translatable="false">382588286328-ac75qkt60273698jl2mq2kba82lq2r2f.apps.googleusercontent.com</string>
     <string name="del">delete</string>
     <string name="delete">Διαγραφη</string>
+    <string name="delete_survey_dialog_message">Η συγκεκριμένη έρευνα θα διαγραφεί οριστικά.</string>
     <string name="desc_list_item_icon">Item Icon</string>
     <string name="details_activ_action_key">details_activ_action_key</string>
     <string name="details_title">Πληροφορίες</string>
@@ -1233,6 +1235,7 @@
     <string name="editext">editext</string>
     <string name="edt_date_format">%1$d-%2$d-%3$d</string>
     <string name="email">E-mail</string>
+    <string name="email_label">username@email.com</string>
     <string name="email_notification">email_notification</string>
     <string name="email_tag">email</string>
     <string name="empty_field">Παρακαλώ συμπλήρωσε τo παραπάνω πεδίo: %1$s.</string>
@@ -1330,7 +1333,7 @@
     <string name="mandatory_fields">* Υποχρεωτικά πεδία.</string>
     <string name="mandatory_note">* Η ερώτηση είναι υποχρεωτική.</string>
     <string name="manipulate_user_survey">manipulate_user_survey</string>
-    <string name="message">Παρακαλώ περιμένετε...</string>
+    <string name="message">Παρακαλώ περιμένετε…</string>
     <string name="middle_animation">middle</string>
     <string name="more">Περισσοτερα</string>
     <string name="mr_button_content_description">Cast button</string>
@@ -1481,7 +1484,7 @@
     <string name="username_tag">username</string>
     <string name="valid_until">Ημ. Λήξης</string>
     <string name="valid_until_action">valid_until</string>
-    <string name="valid_until_format">%1$d-%2$d-%3$d 20:59:59 UTC</string>
+    <string name="valid_until_format">%1$d-%2$d-%3$d %4$d:59:59 UTC</string>
     <string name="valid_until_hint">Ενεργή μέχρι</string>
     <string name="vhappy">vhappy</string>
     <string name="view_surveys">Δες ολες τις ερευνες</string>

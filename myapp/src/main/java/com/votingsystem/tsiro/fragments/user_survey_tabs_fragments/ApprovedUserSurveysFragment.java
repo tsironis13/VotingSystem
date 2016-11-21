@@ -2,6 +2,7 @@ package com.votingsystem.tsiro.fragments.user_survey_tabs_fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
@@ -19,14 +20,21 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
 import com.rey.material.widget.Button;
+import com.rey.material.widget.LinearLayout;
 import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
+import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
 import com.votingsystem.tsiro.adapters.SurveysRcvAdapter;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
+import com.votingsystem.tsiro.interfaces.RecyclerViewClickListener;
 import com.votingsystem.tsiro.interfaces.SurveysActivityCommonElements;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
+import com.votingsystem.tsiro.mainClasses.SurveyDetailsActivity;
+import com.votingsystem.tsiro.mainClasses.SurveyQuestionsActivity;
+import com.votingsystem.tsiro.observerPattern.RecyclerViewTouchListener;
 import com.votingsystem.tsiro.parcel.SurveyData;
+import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.recyclerViewStuff.DividerItemDecoration;
 import com.votingsystem.tsiro.spinnerLoading.SpinnerLoading;
 import com.votingsystem.tsiro.userSurveysActivityMVC.USAMVCPresenterImpl;
@@ -101,6 +109,32 @@ public class ApprovedUserSurveysFragment extends Fragment implements USAMVCView,
             }
             handleActionsBasedOnNetworkStatus();
             approvedSurveysRcV.addItemDecoration(new DividerItemDecoration(ContextCompat.getDrawable(getActivity(), R.drawable.divider)));
+            approvedSurveysRcV.addOnItemTouchListener(new RecyclerViewTouchListener(getActivity(), approvedSurveysRcV, new RecyclerViewClickListener() {
+                @Override
+                public void onClick(View view, int position) {
+                    Bundle bundle = new Bundle();
+                    if (view != null) {
+                        if (view instanceof LinearLayout) {
+                            if (connectionStatus != AppConfig.NO_CONNECTION) USAMVCpresenterImpl.getSurveysBasedOnSpecificUserId(new AllSurveysBody(getResources().getString(R.string.list_user_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), -1, getResources().getString(R.string.approved), cPage, 1));
+                        } else {
+                            if ((Integer) view.getTag() == 0) {
+                                getActivity().finish();
+                                Intent intent = new Intent(getActivity(), SurveyQuestionsActivity.class);
+                                bundle.putString(getResources().getString(R.string.action), getResources().getString(R.string.user_surveys));
+                                bundle.putInt(getResources().getString(R.string.survey_id), data.get(position).getSurveyId());
+                                intent.putExtras(bundle);
+                                startActivity(intent);
+                            } else {
+                                if (connectionStatus != AppConfig.NO_CONNECTION) {
+                                    getSurveyDetails(data.get(position).getSurveyId());
+                                } else {
+                                    commonElements.showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(AppConfig.NO_CONNECTION)));
+                                }
+                            }
+                        }
+                    }
+                }
+            }));
         }
         retryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -156,6 +190,23 @@ public class ApprovedUserSurveysFragment extends Fragment implements USAMVCView,
                 surveysLoaded = true;
             }
         }, 250);
+    }
+
+    @Override
+    public void onSuccessSurveyDetailsFetched(SurveyDetailsData data) {
+        if (getActivity() != null) {
+            getActivity().finish();
+            Bundle bundle = new Bundle();
+            Intent intent = new Intent(getActivity(), SurveyDetailsActivity.class);
+            bundle.putString(getResources().getString(R.string.action), getResources().getString(R.string.user_surveys));
+            bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_details));
+            // pass type (ongoing here is the same with underprocess) into bundle to show or hide show stats Llt (showStatsLlt) inside SurveyDetailsFragment
+            // depending the type of survey
+            bundle.putString(getResources().getString(R.string.type), getResources().getString(R.string.ongoing));
+            bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), data);
+            intent.putExtras(bundle);
+            startActivity(intent);
+        }
     }
 
     @Override
@@ -259,5 +310,10 @@ public class ApprovedUserSurveysFragment extends Fragment implements USAMVCView,
                 }
             }
         });
+    }
+
+    private void getSurveyDetails(int surveyId) {
+        SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
+        USAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
     }
 }

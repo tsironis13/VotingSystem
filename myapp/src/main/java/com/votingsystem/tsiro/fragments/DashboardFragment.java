@@ -101,7 +101,6 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
                 DAMVCpresenterImpl.initializeDashboardDetails(isAdded(), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0));
             }
         }
-
     }
 
     @Override
@@ -116,6 +115,7 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
 
     @Override
     public void onSuccessDashboardDetails(final String firm_name, final int total_surveys, final int responses, final String last_created_date, final List<JnctFirmSurveysFields> jnctFirmSurveysFieldsList, final List<SurveysFields> surveysFieldsList) {
+        Log.e(debugTag, "SIZE: "+surveysFieldsList.size());
         dataFetched = true;
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

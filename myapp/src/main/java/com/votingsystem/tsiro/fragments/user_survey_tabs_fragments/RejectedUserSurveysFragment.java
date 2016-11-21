@@ -25,6 +25,7 @@ import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
 import com.votingsystem.tsiro.interfaces.SurveysActivityCommonElements;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.parcel.SurveyData;
+import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.recyclerViewStuff.DividerItemDecoration;
 import com.votingsystem.tsiro.spinnerLoading.SpinnerLoading;
 import com.votingsystem.tsiro.userSurveysActivityMVC.USAMVCPresenterImpl;
@@ -149,6 +150,9 @@ public class RejectedUserSurveysFragment extends Fragment implements USAMVCView,
             }
         }, 250);
     }
+
+    @Override
+    public void onSuccessSurveyDetailsFetched(SurveyDetailsData data) {}
 
     @Override
     public void onFailure(int code, int request) {

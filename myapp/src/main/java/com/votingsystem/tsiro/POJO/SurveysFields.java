@@ -5,17 +5,22 @@ package com.votingsystem.tsiro.POJO;
  */
 public class SurveysFields {
 
-    private int survey_id, responses, last_modified_date;
+    private int survey_id, user_id, responses, last_modified_date;
     private String title;
 
-    public SurveysFields(int survey_id, int responses, int last_modified_date, String title) {
+    public SurveysFields(int survey_id, int user_id, int responses, int last_modified_date, String title) {
         this.survey_id          = survey_id;
+        this.user_id            = user_id;
         this.responses          = responses;
         this.last_modified_date = last_modified_date;
         this.title              = title;
     }
 
     public int getSurveyId() { return survey_id; }
+
+    public int getUserId() { return user_id; }
+
+    public void setUserId(int user_id) { this.user_id = user_id; }
 
     public int getResponses() { return responses; }
 

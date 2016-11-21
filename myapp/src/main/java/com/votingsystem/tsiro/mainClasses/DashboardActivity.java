@@ -8,6 +8,7 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MenuItem;
 import android.view.View;
@@ -28,6 +29,9 @@ public class DashboardActivity extends AppCompatActivity{
     private DrawerLayout drawerLayout;
     private NavigationView navigationView;
     private Bundle userBundle;
+    private int navigation_item_clicked;
+    private Intent intent;
+    private MenuItem menuItem;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,13 +81,25 @@ public class DashboardActivity extends AppCompatActivity{
         ActionBarDrawerToggle actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close) {
 
             @Override
-            public void onDrawerOpened(View drawerView) {
-                super.onDrawerOpened(drawerView);
-            }
+            public void onDrawerOpened(View drawerView) { super.onDrawerOpened(drawerView); }
 
             @Override
             public void onDrawerClosed(View drawerView) {
                 super.onDrawerClosed(drawerView);
+                if (menuItem != null) menuItem.setChecked(false);
+                switch (navigation_item_clicked) {
+                    case 1:
+                        intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
+                        startActivity(intent);
+                        break;
+                    case 2:
+                        intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.user_surveys));
+                        startActivity(intent);
+                        break;
+                    case 3:
+                        logUserOut(new String[] {getResources().getString(R.string.user_id), getResources().getString(R.string.username_tag), getResources().getString(R.string.email_tag), getResources().getString(R.string.firm_id)});
+                        break;
+                }
             }
         };
         drawerLayout.addDrawerListener(actionBarDrawerToggle);
@@ -110,30 +126,24 @@ public class DashboardActivity extends AppCompatActivity{
         //navigationView.setItemTextColor(getResources().getColorStateList(R.color.custom_radio_button));
         //navigationView.setItemBackgroundResource(R.drawable.test);
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
+                menuItem = item;
                 if(item.isChecked()) item.setChecked(false);
                 else item.setChecked(true);
-                Intent intent = new Intent(DashboardActivity.this, SurveysActivity.class);
+                drawerLayout.closeDrawers();
+                intent = new Intent(DashboardActivity.this, SurveysActivity.class);
                 switch (item.getItemId()) {
-                    case R.id.home:
-                        break;
-                    case R.id.settings:
-                        break;
                     case R.id.surveys:
-                        intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
-                        startActivity(intent);
+                        navigation_item_clicked = 1;
                         break;
                     case R.id.user_surveys:
-                        intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.user_surveys));
-                        startActivity(intent);
+                        navigation_item_clicked = 2;
                         break;
                     case R.id.logout:
-                        logUserOut(new String[] {getResources().getString(R.string.user_id), getResources().getString(R.string.username_tag), getResources().getString(R.string.email_tag), getResources().getString(R.string.firm_id)});
+                        navigation_item_clicked = 3;
                         break;
                 }
-                drawerLayout.closeDrawers();
                 return true;
             }
         });

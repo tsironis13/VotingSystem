@@ -37,7 +37,7 @@ public class SurveyDetailsActivity extends AppCompatActivity {
                 public void onClick(View view) {
                     finish();
                     Intent intent = new Intent(SurveyDetailsActivity.this, SurveysActivity.class);
-                    intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
+                    intent.putExtra(getResources().getString(R.string.action), actionNavigate);
                     startActivity(intent);
                 }
             });

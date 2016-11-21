@@ -204,6 +204,8 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Swipe
             Intent intent = new Intent(getActivity(), SurveyDetailsActivity.class);
             bundle.putString(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
             bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_details));
+            //pass type into bundle to show or hide show stats Llt (showStatsLlt) inside SurveyDetailsFragment
+            // depending the type of survey
             bundle.putString(getResources().getString(R.string.type), getResources().getString(R.string.ongoing));
             bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
             intent.putExtras(bundle);

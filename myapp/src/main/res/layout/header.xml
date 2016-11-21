@@ -13,7 +13,8 @@
         android:layout_height="@dimen/profile_icon_dimens"
         android:layout_above="@+id/userDetailsContainer"
         android:layout_marginBottom="@dimen/profile_icon_margin_bottom"
-        android:background="@drawable/user_icon" />
+        android:background="@drawable/user_icon"
+        android:contentDescription="@string/content_desc" />
 
     <RelativeLayout
         android:id="@+id/userDetailsContainer"
@@ -33,7 +34,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentBottom="true"
             android:layout_below="@+id/username"
-            android:text="username@email.com"
+            android:text="@string/email_label"
             android:textColor="@android:color/white" />
 
     </RelativeLayout>

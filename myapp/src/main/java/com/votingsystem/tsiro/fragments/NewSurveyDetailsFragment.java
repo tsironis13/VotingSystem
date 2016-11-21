@@ -50,6 +50,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Created by giannis on 30/7/2016.
@@ -388,6 +389,12 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
                 int year = dialog.getYear();
                 int month = dialog.getMonth() + 1;
                 int day = dialog.getDay();
+
+                TimeZone timeZone   = TimeZone.getDefault();
+                int timeZoneOffset  = timeZone.getRawOffset()/1000;
+                int activeSinceHour = timeZoneOffset == 7200 ? 22 : 21;
+                int validUntilHour  = timeZoneOffset == 7200 ? 21 : 20;
+
                 if (from.equals(getResources().getString(R.string.active_since_action))) {
                     if (!hiddenActiveSinceLabelActivated) {
                         hiddenActiveSinceLabelTtv.setVisibility(View.VISIBLE);
@@ -397,14 +404,16 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
                     //day - 1, because SimpleDateFormat default time system is UTC (our time zone-> UTC + 3), so for an active since date '22-9'
                     //we have to subtract a day from the selected day (21-9 21:00 UTC after conversion becomes 22-9 00::00 UTC+3)
                     //the actual date we want
-                    dates[0] = convertTimestampToEpoch(getResources().getString(R.string.active_since_format, day-1, month, year));
+                    dates[0] = convertTimestampToEpoch(getResources().getString(R.string.active_since_format, day-1, month, year, activeSinceHour));
+                    Log.e(debugTag, "Active since epoch: "+dates[0]);
                 } else {
                     if (!hiddenValidUntilLabelActivated) {
                         hiddenValidUntilLabelTtv.setVisibility(View.VISIBLE);
                         hiddenValidUntilLabelActivated = true;
                     }
                     validUntilEdt.setText(getResources().getString(R.string.edt_date_format, day, month, year));
-                    dates[1] = convertTimestampToEpoch(getResources().getString(R.string.valid_until_format, day, month, year));
+                    dates[1] = convertTimestampToEpoch(getResources().getString(R.string.valid_until_format, day, month, year, validUntilHour));
+                    Log.e(debugTag, "Valid until epoch: "+dates[1]);
                 }
                 super.onPositiveActionClicked(fragment);
             }
@@ -446,6 +455,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
     }
 
     private long convertTimestampToEpoch(String timestamp) {
+        Log.e(debugTag, "TIMESTAMP Passed: "+timestamp);
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat(getResources().getString(R.string.date_format), Locale.getDefault());
         try {
             return simpleDateFormat.parse(timestamp).getTime()/1000;

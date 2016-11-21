@@ -110,7 +110,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
                 public void onClick(View view) {
                     finish();
                     Intent intent = new Intent(SurveyQuestionsActivity.this, SurveysActivity.class);
-                    intent.putExtra(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
+                    intent.putExtra(getResources().getString(R.string.action), action);
                     startActivity(intent);
                 }
             });

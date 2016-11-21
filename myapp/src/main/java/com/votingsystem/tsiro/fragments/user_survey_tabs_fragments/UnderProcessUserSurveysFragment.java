@@ -2,6 +2,7 @@ package com.votingsystem.tsiro.fragments.user_survey_tabs_fragments;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -23,6 +24,9 @@ import android.widget.Toast;
 
 import com.nikhilpanju.recyclerviewenhanced.OnActivityTouchListener;
 import com.nikhilpanju.recyclerviewenhanced.RecyclerTouchListener;
+import com.rey.material.app.Dialog;
+import com.rey.material.app.DialogFragment;
+import com.rey.material.app.SimpleDialog;
 import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
@@ -35,6 +39,7 @@ import com.votingsystem.tsiro.mainClasses.CreateSurveyActivity;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
 import com.votingsystem.tsiro.parcel.QuestionData;
 import com.votingsystem.tsiro.parcel.SurveyData;
+import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.recyclerViewStuff.DividerItemDecoration;
 import com.votingsystem.tsiro.spinnerLoading.SpinnerLoading;
 import com.votingsystem.tsiro.userSurveysActivityMVC.USAMVCPresenterImpl;
@@ -61,7 +66,7 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
     private RecyclerView underProcessSurveysRcV;
     private ImageView noSurveysImv;
     private TextView noSurveysTxv, codeDescTtv;
-    private boolean surveysLoaded, noConnectionViewAdded, onSwiped;
+    private boolean surveysLoaded, onSwiped, confirmFlag;
     private SurveysRcvAdapter surveysRcvAdapter;
     private SparseIntArray inputValidationCodes;
     private USAMVCPresenterImpl USAMVCpresenterImpl;
@@ -139,13 +144,7 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
                                 startActivity(intent);
                                 Log.e(debugTag, "TYPE: "+data.get(position).getType()+" category: "+data.get(position).getCategory());
                             } else if (viewID == R.id.delete) {
-                                if (USAMVCpresenterImpl != null) {
-                                    NewSurvey newSurvey = new NewSurvey();
-                                    newSurvey.setId(data.get(position).getSurveyId());
-                                    newSurvey.setAction(getResources().getString(R.string.manipulate_user_survey));
-                                    newSurvey.setSubaction(getResources().getString(R.string.del));
-                                    USAMVCpresenterImpl.deleteUserSurvey(newSurvey, position);
-                                }
+                                initializeConfirmDeletionDialog(position);
                             }
                         }
                     });
@@ -210,11 +209,11 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
                     surveysRcvAdapter.refreshData(data);
                     surveysRcvAdapter.notifyDataSetChanged();
                 } else {
-                    if (noConnectionViewAdded) {
-                        data.remove(data.size() - 1);
-                        surveysRcvAdapter.notifyItemRemoved(data.size());
-                        noConnectionViewAdded = false;
-                    }
+//                    if (noConnectionViewAdded) {
+//                        data.remove(data.size() - 1);
+//                        surveysRcvAdapter.notifyItemRemoved(data.size());
+//                        noConnectionViewAdded = false;
+//                    }
                     int y       =   0;
                     int start   =   data.size();
                     int end     =   start + newData.size();
@@ -229,6 +228,9 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
             }
         }, 250);
     }
+
+    @Override
+    public void onSuccessSurveyDetailsFetched(SurveyDetailsData data) {}
 
     @Override
     public void onFailure(int code, int request) {
@@ -267,6 +269,41 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
             if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         }
     }
+
+    public void initializeConfirmDeletionDialog(final int position) {
+        Dialog.Builder builder = new SimpleDialog.Builder(R.style.SimpleDialogLight){
+            @Override
+            public void onPositiveActionClicked(DialogFragment fragment) {
+                confirmFlag = true;
+                super.onPositiveActionClicked(fragment);
+            }
+
+            @Override
+            public void onDismiss(DialogInterface dialog) {
+                super.onDismiss(dialog);
+                //confirmFlag used to animated pop fragment from back stack on dialog dismiss
+                if (confirmFlag) {
+                    if (USAMVCpresenterImpl != null) {
+                        NewSurvey newSurvey = new NewSurvey();
+                        newSurvey.setId(data.get(position).getSurveyId());
+                        newSurvey.setAction(getResources().getString(R.string.manipulate_user_survey));
+                        newSurvey.setSubaction(getResources().getString(R.string.del));
+                        USAMVCpresenterImpl.deleteUserSurvey(newSurvey, position);
+                    }
+                }
+                confirmFlag = false;
+            }
+        };
+        ((SimpleDialog.Builder)builder)
+                .message(getResources().getString(R.string.delete_survey_dialog_message))
+                .title(getResources().getString(R.string.discard_dialog_title))
+                .positiveAction(getResources().getString(R.string.confirm_action))
+                .negativeAction(getResources().getString(R.string.cancel));
+
+        DialogFragment fragment = DialogFragment.newInstance(builder);
+        fragment.show(getActivity().getSupportFragmentManager(), getResources().getString(R.string.dialog));
+    }
+
 
     public void closeVisibleBG() {
         if (onTouchListener != null) onTouchListener.closeVisibleBG(this);
@@ -321,17 +358,17 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
                             USAMVCpresenterImpl.getSurveysBasedOnSpecificUserId(new AllSurveysBody(getResources().getString(R.string.list_user_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), -1, getResources().getString(R.string.under_process), page, -1));
                         }
                     }
-                } else {
-                    if (underProcessSurveysRcV.getLayoutManager().getItemCount() < total) {
-                        data.add(null);
-                        handler.post(new Runnable() {
-                            @Override
-                            public void run() {
-                                surveysRcvAdapter.notifyItemInserted(data.size() - 1);
-                                noConnectionViewAdded = true;
-                            }
-                        });
-                    }
+//                } else {
+//                    if (underProcessSurveysRcV.getLayoutManager().getItemCount() < total) {
+//                        data.add(null);
+//                        handler.post(new Runnable() {
+//                            @Override
+//                            public void run() {
+//                                surveysRcvAdapter.notifyItemInserted(data.size() - 1);
+//                                noConnectionViewAdded = true;
+//                            }
+//                        });
+//                    }
                 }
             }
         });

@@ -2,7 +2,10 @@ package com.votingsystem.tsiro.userSurveysActivityMVC;
 
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
 import com.votingsystem.tsiro.POJO.NewSurvey;
+import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
 import com.votingsystem.tsiro.parcel.SurveyData;
+import com.votingsystem.tsiro.parcel.SurveyDetailsData;
+
 import java.util.List;
 
 /**
@@ -23,9 +26,18 @@ public class USAMVCPresenterImpl implements USAMVCPresenter, USAMVCFinishedListe
         this.USAMVCinteractorImpl.getAllSurveys(allSurveysBody, this);
     }
 
+    public void getSurveyDetails(SurveyAnswersBody surveyAnswersBody) {
+        this.USAMVCinteractorImpl.getSurveyStats(surveyAnswersBody, this);
+    }
+
     @Override
     public void onSuccessSurveysFetched(List<SurveyData> data, int page, int total) {
         USAMVCview.onSuccessSurveysFetched(data, page, total);
+    }
+
+    @Override
+    public void onSuccessSurveyDetailsFetched(SurveyDetailsData data) {
+        USAMVCview.onSuccessSurveyDetailsFetched(data);
     }
 
     public void deleteUserSurvey(NewSurvey newSurvey, int adapter_position) {

@@ -1,6 +1,7 @@
 package com.votingsystem.tsiro.userSurveysActivityMVC;
 
 import com.votingsystem.tsiro.parcel.SurveyData;
+import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 
 import java.util.List;
 
@@ -11,5 +12,6 @@ import java.util.List;
 public interface USAMVCView {
     void onSuccessSurveysFetched(List<SurveyData> data, int offset, int total);
     void onSuccessUserSurveyDeletion(int survey_id);
+    void onSuccessSurveyDetailsFetched(SurveyDetailsData data);
     void onFailure(int code, int request);
 }

@@ -35,6 +35,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     //Survey table - column names
     private static final String KEY_TITLE           = "title";
+    private static final String KEY_USER_ID         = "user_id";
     private static final String KEY_RESPONSES       = "responses";
     private static final String KEY_LAST_MODIFIED   = "last_modified";
 
@@ -48,7 +49,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     //Table create statements
     private static final String CREATE_TABLE_SURVEY = "CREATE TABLE "
-            + TABLE_SURVEYS + "(" + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_TITLE + " TEXT, "
+            + TABLE_SURVEYS + "(" + KEY_ID + " INTEGER PRIMARY KEY, " + KEY_USER_ID + " INTEGER, " + KEY_TITLE + " TEXT, "
             + KEY_RESPONSES + " INTEGER, " + KEY_LAST_MODIFIED + " INTEGER" + ")";
 
     private static final String CREATE_TABLE_JNCT_FIRM_SURVEYS = "CREATE TABLE "
@@ -116,7 +117,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 
     @SuppressWarnings("unchecked")
     public <T> void insertToDatabase(String table, List<T> list, String text) {
-        Log.e(debugTag, list+"");
+//        Log.e(debugTag, list+"");
         ContentValues contentValues = new ContentValues();
         if (text == null) {
             if (list != null) {
@@ -131,6 +132,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
                     List<SurveysFields> surveysFieldsList = (List<SurveysFields>) list;
                     for (SurveysFields surveysFields : surveysFieldsList) {
                         contentValues.put(KEY_ID, surveysFields.getSurveyId());
+                        contentValues.put(KEY_USER_ID, surveysFields.getUserId());
                         contentValues.put(KEY_TITLE, surveysFields.getTitle());
                         contentValues.put(KEY_RESPONSES, surveysFields.getResponses());
                         contentValues.put(KEY_LAST_MODIFIED, surveysFields.getLastModified());
@@ -147,21 +149,21 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         while (cursor.moveToNext()) {
 //            Log.e(debugTag, cursor.getColumnName(1)+ ": "+cursor.getInt(1)+" "+ cursor.getColumnName(3)+": "+cursor.getInt(3));
         }
-        Log.e(debugTag, count+"");
+//        Log.e(debugTag, count+"");
         cursor.close();
         return count != 0;
     }
 
-    public List<SurveysFields> getFirmSurveys(int firm_id, String search_text) {
+    public List<SurveysFields> getFirmSurveys(int firm_id, int user_id, String search_text) {
         List<SurveysFields> matches = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT * FROM Surveys " +
                                         "LEFT JOIN Jnct_firm_surveys ON Surveys.id = Jnct_Firm_Surveys.survey_id\n" +
-                                        "WHERE Jnct_firm_surveys.firm_id = " + firm_id +" AND Surveys.title LIKE '%" + search_text + "%'", null);
+                                        "WHERE Surveys.user_id = " + user_id + " AND Jnct_firm_surveys.firm_id = " + firm_id +" AND Surveys.title LIKE '%" + search_text + "%'", null);
         int count = cursor.getCount();
-        Log.e(debugTag, count+"");
+//        Log.e(debugTag, count+"");
         while (cursor.moveToNext()) {
 //            Log.e(debugTag, cursor.getColumnName(1)+ ": "+cursor.getString(1));
-            matches.add(new SurveysFields(cursor.getInt(0), cursor.getInt(2), cursor.getInt(3), cursor.getString(1)));
+            matches.add(new SurveysFields(cursor.getInt(0), cursor.getInt(1), cursor.getInt(3), cursor.getInt(4), cursor.getString(2)));
         }
         cursor.close();
         return matches;

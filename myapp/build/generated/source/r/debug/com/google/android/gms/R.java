@@ -520,20 +520,20 @@ public final class R {
 		public static final int common_open_on_phone = 0x7f090049;
 		public static final int common_signin_button_text = 0x7f09004a;
 		public static final int common_signin_button_text_long = 0x7f09004b;
-		public static final int create_calendar_message = 0x7f0900b9;
-		public static final int create_calendar_title = 0x7f0900ba;
-		public static final int debug_menu_ad_information = 0x7f0900c3;
-		public static final int debug_menu_creative_preview = 0x7f0900c4;
-		public static final int debug_menu_title = 0x7f0900c5;
-		public static final int debug_menu_troubleshooting = 0x7f0900c6;
-		public static final int decline = 0x7f0900c7;
+		public static final int create_calendar_message = 0x7f0900ba;
+		public static final int create_calendar_title = 0x7f0900bb;
+		public static final int debug_menu_ad_information = 0x7f0900c4;
+		public static final int debug_menu_creative_preview = 0x7f0900c5;
+		public static final int debug_menu_title = 0x7f0900c6;
+		public static final int debug_menu_troubleshooting = 0x7f0900c7;
+		public static final int decline = 0x7f0900c8;
 		public static final int place_autocomplete_clear_button = 0x7f09005c;
 		public static final int place_autocomplete_search_hint = 0x7f09005d;
-		public static final int store_picture_message = 0x7f090184;
-		public static final int store_picture_title = 0x7f090185;
-		public static final int tagmanager_preview_dialog_button = 0x7f090194;
-		public static final int tagmanager_preview_dialog_message = 0x7f090195;
-		public static final int tagmanager_preview_dialog_title = 0x7f090196;
+		public static final int store_picture_message = 0x7f090187;
+		public static final int store_picture_title = 0x7f090188;
+		public static final int tagmanager_preview_dialog_button = 0x7f090197;
+		public static final int tagmanager_preview_dialog_message = 0x7f090198;
+		public static final int tagmanager_preview_dialog_title = 0x7f090199;
 		public static final int wallet_buy_button_place_holder = 0x7f090060;
 	}
 	public static final class style {

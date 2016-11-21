@@ -76,7 +76,6 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
     private SparseIntArray inputValidationCodes;
     private int connectionStatus;
     private String action;
-    private CustomViewPager mPager;
     private OnActivityTouchListener onActivityTouchListener;
 
     @Override
@@ -87,7 +86,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
         Toolbar toolbar         =   (Toolbar) findViewById(R.id.appBar);
         coordinatorLayout       =   (CoordinatorLayout) findViewById(R.id.coordinatorLayt);
         TabLayout mTabs         =   (TabLayout) findViewById(R.id.tabs);
-        mPager                  =   (CustomViewPager) findViewById(R.id.surveysPager);
+        final CustomViewPager mPager  = (CustomViewPager) findViewById(R.id.surveysPager);
 
         inputValidationCodes = AppConfig.getCodes();
 
@@ -107,13 +106,18 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
                     @Override
                     public void onPageSelected(int position) {
                         if (position == 1 || position == 2) {
+                            mPager.enablePaging(true);
                             Fragment fragment = userSurveysPagerAdapter.getItem(0);
                             if (fragment != null && fragment instanceof UnderProcessUserSurveysFragment) ((UnderProcessUserSurveysFragment) fragment).closeVisibleBG();
+                        } else {
+                            mPager.enablePaging(false);
                         }
                     }
 
                     @Override
-                    public void onPageScrollStateChanged(int state) {}
+                    public void onPageScrollStateChanged(int state) {
+
+                    }
                 });
             }
             mTabs.setupWithViewPager(mPager);
@@ -221,7 +225,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
         this.finish();
         Bundle bundle = new Bundle();
         Intent intent = new Intent(SurveysActivity.this, SurveyDetailsActivity.class);
-        bundle.putString(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
+        bundle.putString(getResources().getString(R.string.action), action);
         bundle.putString(getResources().getString(R.string.details_activ_action_key), getResources().getString(R.string.show_details));
         bundle.putString(getResources().getString(R.string.type), getResources().getString(R.string.ongoing));
         bundle.putParcelable(getResources().getString(R.string.data_parcelable_key), surveyDetailsData);
@@ -276,7 +280,10 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
                 Log.e(debugTag, "char seq => "+charSequence+" i =>" + i+" i1 => "+ i1+" i2 => "+ i2);
                 MySQLiteHelper.getInstance(SurveysActivity.this).openDatabase();
-                matchesList = MySQLiteHelper.getInstance(SurveysActivity.this).getFirmSurveys(LoginActivity.getSessionPrefs(SurveysActivity.this).getInt(getResources().getString(R.string.firm_id), 0), charSequence.toString());
+                int user_id = 0;
+                if (!action.equals(getResources().getString(R.string.firm_surveys))) user_id = LoginActivity.getSessionPrefs(SurveysActivity.this).getInt(getResources().getString(R.string.user_id), 0);
+
+                matchesList = MySQLiteHelper.getInstance(SurveysActivity.this).getFirmSurveys(LoginActivity.getSessionPrefs(SurveysActivity.this).getInt(getResources().getString(R.string.firm_id), 0), user_id, charSequence.toString());
                 searchSurveysRcvAdapter.setData(matchesList);
                 if (i >= 0 && i2 == 1) {
                     clear.setVisibility(View.VISIBLE);
