@@ -75,7 +75,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
     private ProgressDialog progressDialog;
     private NetworkStateReceiver networkStateReceiver;
     private CSMVCPresenterImpl CSMVCpresenterImpl;
-    private String subAction, category;
+    private String subAction;
 
     public static NewSurveyDetailsFragment newInstance(String title, String action, SurveyData data) {
         Bundle bundle = new Bundle();
@@ -140,7 +140,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
                     id                  = data.getSurveyId();
                     dates[0]            = data.getActiveSinceEpoch();
                     dates[1]            = data.getValidUntilEpoch();
-                    category            = data.getCategory();
+                    String category = data.getCategory();
                     if (data.getTitle() != null) surveyTitleEdt.setText(data.getTitle());
                     if (data.getActiveSince() != null) {
                         activeSinceEdt.setText(data.getActiveSince());
