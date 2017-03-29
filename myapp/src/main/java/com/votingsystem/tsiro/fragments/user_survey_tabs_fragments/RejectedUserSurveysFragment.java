@@ -14,6 +14,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 import com.rey.material.widget.Button;
@@ -22,8 +23,10 @@ import com.votingsystem.tsiro.POJO.AllSurveysBody;
 import com.votingsystem.tsiro.adapters.SurveysRcvAdapter;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
+import com.votingsystem.tsiro.interfaces.RecyclerViewClickListener;
 import com.votingsystem.tsiro.interfaces.SurveysActivityCommonElements;
 import com.votingsystem.tsiro.mainClasses.LoginActivity;
+import com.votingsystem.tsiro.observerPattern.RecyclerViewTouchListener;
 import com.votingsystem.tsiro.parcel.SurveyData;
 import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.recyclerViewStuff.DividerItemDecoration;
@@ -94,6 +97,13 @@ public class RejectedUserSurveysFragment extends Fragment implements USAMVCView,
             }
             handleActionsBasedOnNetworkStatus();
             rejectedSurveysRcV.addItemDecoration(new DividerItemDecoration(ContextCompat.getDrawable(getActivity(), R.drawable.divider)));
+            rejectedSurveysRcV.addOnItemTouchListener(new RecyclerViewTouchListener(getActivity(), rejectedSurveysRcV, new RecyclerViewClickListener() {
+                @Override
+                public void onClick(View view, int position) {
+
+
+                }
+            }));
         }
         retryBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -184,8 +194,8 @@ public class RejectedUserSurveysFragment extends Fragment implements USAMVCView,
                 int count = surveysRcvAdapter.getItemCount();
                 data.clear();
                 surveysRcvAdapter.notifyItemRangeRemoved(0, count);
-                initializeSurveysList();
             }
+            initializeSurveysList();
         } else {
             onErrorBackgroundView(AppConfig.NO_CONNECTION);
             if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);

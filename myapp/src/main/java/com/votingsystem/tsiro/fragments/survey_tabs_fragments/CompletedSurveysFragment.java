@@ -3,7 +3,6 @@ package com.votingsystem.tsiro.fragments.survey_tabs_fragments;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.v4.app.Fragment;
@@ -21,7 +20,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import com.rey.material.widget.Button;
 import com.rey.material.widget.TextView;
-import com.votingsystem.tsiro.observerPattern.NetworkStateListeners;
 import com.votingsystem.tsiro.observerPattern.RecyclerViewTouchListener;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
 import com.votingsystem.tsiro.POJO.SurveyAnswersBody;
@@ -31,7 +29,6 @@ import com.votingsystem.tsiro.surveysActivityMVC.SAMVCPresenterImpl;
 import com.votingsystem.tsiro.surveysActivityMVC.SAMVCView;
 import com.votingsystem.tsiro.adapters.SurveysRcvAdapter;
 import com.votingsystem.tsiro.app.AppConfig;
-import com.votingsystem.tsiro.broadcastReceivers.NetworkStateReceiver;
 import com.votingsystem.tsiro.interfaces.OnLoadMoreListener;
 import com.votingsystem.tsiro.interfaces.RecyclerViewClickListener;
 import com.votingsystem.tsiro.interfaces.SurveysActivityCommonElements;
@@ -40,8 +37,6 @@ import com.votingsystem.tsiro.mainClasses.SurveyDetailsActivity;
 import com.votingsystem.tsiro.parcel.SurveyData;
 import com.votingsystem.tsiro.parcel.SurveyDetailsData;
 import com.votingsystem.tsiro.votingsystem.R;
-
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -228,8 +223,8 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Swi
                 int count = surveysRcvAdapter.getItemCount();
                 data.clear();
                 surveysRcvAdapter.notifyItemRangeRemoved(0, count);
-                initializeSurveysList();
             }
+            initializeSurveysList();
         } else {
             onErrorBackgroundView(AppConfig.NO_CONNECTION);
             if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
@@ -302,7 +297,7 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Swi
     }
 
     private void getSurveyDetails(int surveyId) {
-        SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
+        SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), false, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
         SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
     }
 

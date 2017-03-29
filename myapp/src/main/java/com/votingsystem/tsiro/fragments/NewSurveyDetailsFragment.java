@@ -140,7 +140,7 @@ public class NewSurveyDetailsFragment extends Fragment implements View.OnClickLi
                     id                  = data.getSurveyId();
                     dates[0]            = data.getActiveSinceEpoch();
                     dates[1]            = data.getValidUntilEpoch();
-                    String category = data.getCategory();
+                    String category     = data.getCategory();
                     if (data.getTitle() != null) surveyTitleEdt.setText(data.getTitle());
                     if (data.getActiveSince() != null) {
                         activeSinceEdt.setText(data.getActiveSince());

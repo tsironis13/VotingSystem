@@ -122,6 +122,7 @@ public class ApprovedUserSurveysFragment extends Fragment implements USAMVCView,
                                 Intent intent = new Intent(getActivity(), SurveyQuestionsActivity.class);
                                 bundle.putString(getResources().getString(R.string.action), getResources().getString(R.string.user_surveys));
                                 bundle.putInt(getResources().getString(R.string.survey_id), data.get(position).getSurveyId());
+                                bundle.putString(getResources().getString(R.string.survey_title), data.get(position).getTitle());
                                 intent.putExtras(bundle);
                                 startActivity(intent);
                             } else {
@@ -239,8 +240,8 @@ public class ApprovedUserSurveysFragment extends Fragment implements USAMVCView,
                 int count = surveysRcvAdapter.getItemCount();
                 data.clear();
                 surveysRcvAdapter.notifyItemRangeRemoved(0, count);
-                initializeSurveysList();
             }
+            initializeSurveysList();
         } else {
             onErrorBackgroundView(AppConfig.NO_CONNECTION);
             if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
@@ -313,7 +314,7 @@ public class ApprovedUserSurveysFragment extends Fragment implements USAMVCView,
     }
 
     private void getSurveyDetails(int surveyId) {
-        SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
+        SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), false, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
         USAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
     }
 }

@@ -66,6 +66,7 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        getActivity().getWindow().setBackgroundDrawable(null);
         if (((AppCompatActivity)getActivity()).getSupportActionBar() != null) ((AppCompatActivity)getActivity()).getSupportActionBar().setTitle(getResources().getString(R.string.home));
         networkStateReceiver = new NetworkStateReceiver();
         activityCreated = true;
@@ -115,7 +116,7 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
 
     @Override
     public void onSuccessDashboardDetails(final String firm_name, final int total_surveys, final int responses, final String last_created_date, final List<JnctFirmSurveysFields> jnctFirmSurveysFieldsList, final List<SurveysFields> surveysFieldsList) {
-        Log.e(debugTag, "SIZE: "+surveysFieldsList.size());
+//        Log.e(debugTag, "SIZE: "+surveysFieldsList.size());
         dataFetched = true;
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

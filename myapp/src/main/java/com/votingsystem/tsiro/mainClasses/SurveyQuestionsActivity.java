@@ -87,7 +87,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
     private NetworkStateReceiver networkStateReceiver;
     private boolean activityCreated;
     private SparseIntArray sparseIntArray;
-    private String action;
+    private String action, surveyTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -115,7 +115,10 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
                 }
             });
         }
-        if (getIntent().getExtras() != null) action = getIntent().getExtras().getString(getResources().getString(R.string.action));
+        if (getIntent().getExtras() != null) {
+            action = getIntent().getExtras().getString(getResources().getString(R.string.action));
+            surveyTitle = getIntent().getExtras().getString(getResources().getString(R.string.survey_title));
+        }
         sparseIntArray          = AppConfig.getCodes();
         activityCreated         = true;
 
@@ -278,10 +281,10 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
                                 break;
                             }
                         }
-                        for (int i = 0; i < mandatoryQuestionsCompleted.size(); i++) {
-                            Log.e(debugTag, "Index"+mandatoryQuestionsCompleted.get(i)+ " Question iD: "+ data.get(mandatoryQuestionsCompleted.get(i)).getTypeId());
-                            Log.e(debugTag, checkMandatoryQuestionNotFilledOut(mandatoryQuestionsCompleted.get(i), data.get(mandatoryQuestionsCompleted.get(i)).getTypeId())+"");
-                        }
+//                        for (int i = 0; i < mandatoryQuestionsCompleted.size(); i++) {
+//                            Log.e(debugTag, "Index"+mandatoryQuestionsCompleted.get(i)+ " Question iD: "+ data.get(mandatoryQuestionsCompleted.get(i)).getTypeId());
+//                            Log.e(debugTag, checkMandatoryQuestionNotFilledOut(mandatoryQuestionsCompleted.get(i), data.get(mandatoryQuestionsCompleted.get(i)).getTypeId())+"");
+//                        }
                         if (!pendingQuestionsToFillOut) storeQuestionsAnswers();
                     } else {
                         showErrorContainerSnackbar(getResources().getString(sparseIntArray.get(AppConfig.NO_CONNECTION)));
@@ -316,7 +319,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
     }
 
     @Override
-    public void onSuccessSurveyQuestionsFetched(final String surveyTitle, final List<QuestionData> data) {
+    public void onSuccessSurveyQuestionsFetched(final List<QuestionData> data) {
         this.data = data;
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -374,6 +377,7 @@ public class SurveyQuestionsActivity extends AppCompatActivity implements SQMVCV
 
     @Override
     public void onFailure(int code, int request) {
+        if (progressDialog.isShowing()) progressDialog.dismiss();
         if (request == 1) {
 //            if (progressDialog.isShowing()) {
 //                progressDialog.dismiss();

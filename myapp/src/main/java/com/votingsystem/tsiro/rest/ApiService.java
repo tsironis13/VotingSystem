@@ -1,6 +1,7 @@
 package com.votingsystem.tsiro.rest;
 
 import com.votingsystem.tsiro.POJO.AllSurveys;
+import com.votingsystem.tsiro.POJO.DashboardBody;
 import com.votingsystem.tsiro.POJO.Firm;
 import com.votingsystem.tsiro.POJO.FirmSurveyDetails;
 import com.votingsystem.tsiro.POJO.AllSurveysBody;
@@ -26,30 +27,28 @@ import retrofit.http.POST;
  */
 public interface ApiService {
 
-    @POST("requests/users.php")
+    @POST("mobileactions.php")
     Call<RegisterUserStuff> registerUser(@Body RegisterFormBody registerFormBody);
 
-    @POST("requests/users.php")
+    @POST("mobileactions.php")
     Call<LoginAndResetUserPasswordStuff> resetUserPassword(@Body ResetPassowrdBody resetPassowrdBody);
 
-    @POST("requests/users.php")
+    @POST("mobileactions.php")
     Call<LoginAndResetUserPasswordStuff> loginUser(@Body LoginFormBody loginFormBody);
 
-    @FormUrlEncoded
-    @POST("requests/firms.php")
-    Call<Firm> getFirmNames(@Field("action") String action);
+    @POST("mobileactions.php")
+    Call<Firm> getFirmNames(@Body Firm firm);
 
-    @FormUrlEncoded
-    @POST("requests/firms.php")
-    Call<FirmSurveyDetails> getFirmSurveyDetails(@Field("action") String action, @Field("user_id") int user_id, @Field("firm_id") int firm_id);
+    @POST("mobileactions.php")
+    Call<FirmSurveyDetails> getFirmSurveyDetails(@Body DashboardBody dashboardBody);
 
-    @POST("requests/surveys.php")
+    @POST("mobileactions.php")
     Call<AllSurveys> getAllSurveys(@Body AllSurveysBody getAllSurveysBody);
 
-    @POST("requests/surveys.php")
+    @POST("mobileactions.php")
     Call<SurveyQuestions> getSurveyQuestions(@Body SurveyQuestionBody surveyQuestionBody);
 
-    @POST("requests/surveys.php")
+    @POST("mobileactions.php")
     Call<SurveyDetails> uploadSurveyAnswersOrGetSurveyStats(@Body SurveyAnswersBody surveyAnswersBody);
 
     @POST("requests/surveys.php")

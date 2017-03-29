@@ -127,6 +127,7 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Swipe
                                 Intent intent = new Intent(getActivity(), SurveyQuestionsActivity.class);
                                 bundle.putString(getResources().getString(R.string.action), getResources().getString(R.string.firm_surveys));
                                 bundle.putInt(getResources().getString(R.string.survey_id), data.get(position).getSurveyId());
+                                bundle.putString(getResources().getString(R.string.survey_title), data.get(position).getTitle());
                                 intent.putExtras(bundle);
                                 startActivity(intent);
                             } else {
@@ -215,6 +216,7 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Swipe
 
     @Override
     public void onFailure(int code, int request) {
+        Log.e(debugTag, "onFailure");
         if (swipeRefreshLayout.getVisibility() == View.GONE) swipeRefreshLayout.setVisibility(View.VISIBLE);
         if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
         if (!surveysLoaded) spinnerLoading.setVisibility(View.GONE);
@@ -237,14 +239,15 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Swipe
 
     @Override
     public void onRefresh() {
+        Log.e(debugTag, "onRefresh");
         if (connectionStatus != AppConfig.NO_CONNECTION) {
             if (data != null) {
                 surveysRcvAdapter.onSwipeToRefresh();
                 int count = surveysRcvAdapter.getItemCount();
                 data.clear();
                 surveysRcvAdapter.notifyItemRangeRemoved(0, count);
-                initializeSurveysList();
             }
+            initializeSurveysList();
         } else {
             onErrorBackgroundView(AppConfig.NO_CONNECTION);
             if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);
@@ -315,7 +318,7 @@ public class OngoingSurveysFragment extends Fragment implements SAMVCView, Swipe
     }
 
     private void getSurveyDetails(int surveyId) {
-        SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
+        SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), false, LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), surveyId, null);
         SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
     }
 

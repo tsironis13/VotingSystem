@@ -40,7 +40,7 @@ class SQMVCInteractorImpl implements SQMVCInteractor {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
                         SQMVCfinishedListener.onFailure(response.body().getCode(), 1);
                     } else {
-                        SQMVCfinishedListener.onSuccessSurveyQuestionsFetched(response.body().getTitle(), firmElementList);
+                        SQMVCfinishedListener.onSuccessSurveyQuestionsFetched(firmElementList);
                     }
 //                if (firmElementList != null) {
 //                    for (int i = 0; i< firmElementList.size(); i++) {
@@ -76,17 +76,18 @@ class SQMVCInteractorImpl implements SQMVCInteractor {
             @Override
             public void onResponse(Response<SurveyDetails> response, Retrofit retrofit) {
                 if (response.body() != null) {
+                    Log.e(debugTag, response.body().getCode()+"");
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
                         SQMVCfinishedListener.onFailure(response.body().getCode(), 2);
                     } else {
                         SQMVCfinishedListener.onSuccessSurveyDetailsFetched(response.body().getData());
                     }
                     Log.e(debugTag, response.body().getData().getQuestion().size()+"");
-                    for (QuestionStatsDetails details : response.body().getData().getQuestion()) {
-                        for (Stats stats: details.getStats()) {
+//                    for (QuestionStatsDetails details : response.body().getData().getQuestion()) {
+//                        for (Stats stats: details.getStats()) {
 //                        Log.e(debugTag, "Answer title: "+stats.getTitle()+" Answer pers: "+stats.getPercentage()+"Count: "+stats.getCount());
-                        }
-                    }
+//                        }
+//                    }
                 } else {
                     SQMVCfinishedListener.onFailure(AppConfig.UNAVAILABLE_SERVICE, 2);
                 }

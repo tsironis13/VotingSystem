@@ -125,7 +125,8 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
                     .setClickable(new RecyclerTouchListener.OnRowClickListener() {
                         @Override
                         public void onRowClicked(int position) {
-                            Toast.makeText(getActivity(), "Row " + (position + 1) + " clicked!", Toast.LENGTH_LONG).show();
+                            onTouchListener.openSwipeOptions(position);
+//                            Toast.makeText(getActivity(), "Row " + (position + 1) + " clicked!", Toast.LENGTH_LONG).show();
                         }
 
                         @Override
@@ -262,8 +263,8 @@ public class UnderProcessUserSurveysFragment extends Fragment implements USAMVCV
                 int count = surveysRcvAdapter.getItemCount();
                 data.clear();
                 surveysRcvAdapter.notifyItemRangeRemoved(0, count);
-                initializeSurveysList();
             }
+            initializeSurveysList();
         } else {
             onErrorBackgroundView(AppConfig.NO_CONNECTION);
             if (swipeRefreshLayout.isRefreshing()) swipeRefreshLayout.setRefreshing(false);

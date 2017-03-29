@@ -33,7 +33,9 @@ class SAMVCInteractorImpl implements SAMVCInteractor {
         allSurveys.enqueue(new Callback<AllSurveys>() {
             @Override
             public void onResponse(Response<AllSurveys> response, Retrofit retrofit) {
+//                Log.e(debugTag, response.body()+"");
                 if (response.body() != null) {
+//                    Log.e(debugTag, response.body().getCode()+"");
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
                         SAMVCfinishedListener.onFailure(response.body().getCode(), 1);
                     } else {

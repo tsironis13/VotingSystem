@@ -1,6 +1,8 @@
 package com.votingsystem.tsiro.dashboardActivityMVC;
 
 import android.util.Log;
+
+import com.votingsystem.tsiro.POJO.DashboardBody;
 import com.votingsystem.tsiro.POJO.FirmSurveyDetails;
 import com.votingsystem.tsiro.app.AppConfig;
 import com.votingsystem.tsiro.app.RetrofitSingleton;
@@ -26,12 +28,13 @@ class DAMVCInteractorImpl implements DAMVCInteractor {
     @Override
     public void getDashboardFirmDetails(final boolean isAdded, int user_id, int firm_id, final DAMVCFinishedListener DAMVCfinishedListener) {
         Log.e(debugTag, user_id+"  "+firm_id);
-        Call<FirmSurveyDetails> call = apiService.getFirmSurveyDetails("firm_survey_details", user_id, firm_id);
+        Call<FirmSurveyDetails> call = apiService.getFirmSurveyDetails(new DashboardBody("dashboard_details", user_id, firm_id));
         call.enqueue(new Callback<FirmSurveyDetails>() {
             @Override
             public void onResponse(final Response<FirmSurveyDetails> response, Retrofit retrofit) {
                 if (isAdded) {
                     if (response.body() != null) {
+                        Log.e(debugTag, response.body().getCode()+"");
                         if (response.body().getCode() != AppConfig.STATUS_OK) {
                             DAMVCfinishedListener.onFailure(AppConfig.STATUS_ERROR);
                         } else {

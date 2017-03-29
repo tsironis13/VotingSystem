@@ -1,19 +1,19 @@
 [
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_out.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/anim/design_bottom_sheet_slide_out.xml"
+        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/anim/design_bottom_sheet_slide_out.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/new_question_anim_exit.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/anim/new_question_anim_exit.xml"
     },
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/slide_out_top.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/anim/slide_out_top.xml"
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
+        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/anim/abc_slide_out_top.xml"
     },
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/anim/abc_slide_out_top.xml"
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/slide_out_top.xml",
+        "source": "/home/giannis/.android/build-cache/248e724ff559c4ffcb832e9abc55a6872b614800/output/res/anim/slide_out_top.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/anim_scale_out.xml",
@@ -25,7 +25,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/abc_fade_in.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/anim/abc_fade_in.xml"
+        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/anim/abc_fade_in.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/enter.xml",
@@ -33,7 +33,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/abc_popup_enter.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/anim/abc_popup_enter.xml"
+        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/anim/abc_popup_enter.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/anim_out.xml",
@@ -41,19 +41,19 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/abc_slide_in_bottom.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/anim/abc_slide_in_bottom.xml"
+        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/anim/abc_slide_in_bottom.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/slide_in_bottom.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/anim/slide_in_bottom.xml"
+        "source": "/home/giannis/.android/build-cache/248e724ff559c4ffcb832e9abc55a6872b614800/output/res/anim/slide_in_bottom.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/design_snackbar_out.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/anim/design_snackbar_out.xml"
+        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/anim/design_snackbar_out.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/fade_in_center.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/anim/fade_in_center.xml"
+        "source": "/home/giannis/.android/build-cache/248e724ff559c4ffcb832e9abc55a6872b614800/output/res/anim/fade_in_center.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/anim_scale_in.xml",
@@ -61,23 +61,23 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/abc_grow_fade_in_from_bottom.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/anim/abc_grow_fade_in_from_bottom.xml"
+        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/anim/abc_grow_fade_in_from_bottom.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/slide_out_bottom.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/anim/slide_out_bottom.xml"
+        "source": "/home/giannis/.android/build-cache/248e724ff559c4ffcb832e9abc55a6872b614800/output/res/anim/slide_out_bottom.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/anim/abc_slide_in_top.xml"
+        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/anim/abc_slide_in_top.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/design_fab_in.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/anim/design_fab_in.xml"
+        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/anim/design_fab_in.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/design_bottom_sheet_slide_in.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/anim/design_bottom_sheet_slide_in.xml"
+        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/anim/design_bottom_sheet_slide_in.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/new_question_anim_enter.xml",
@@ -85,11 +85,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/design_fab_out.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/anim/design_fab_out.xml"
+        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/anim/design_fab_out.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/abc_slide_out_bottom.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/anim/abc_slide_out_bottom.xml"
+        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/anim/abc_slide_out_bottom.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/slide_in.xml",
@@ -97,7 +97,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/slide_in_top.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/anim/slide_in_top.xml"
+        "source": "/home/giannis/.android/build-cache/248e724ff559c4ffcb832e9abc55a6872b614800/output/res/anim/slide_in_top.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/pop_enter.xml",
@@ -113,15 +113,15 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/fade_out_center.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.orhanobut/dialogplus/1.11/res/anim/fade_out_center.xml"
+        "source": "/home/giannis/.android/build-cache/248e724ff559c4ffcb832e9abc55a6872b614800/output/res/anim/fade_out_center.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/design_snackbar_in.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/design/25.0.1/res/anim/design_snackbar_in.xml"
+        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/anim/design_snackbar_in.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/abc_popup_exit.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/anim/abc_popup_exit.xml"
+        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/anim/abc_popup_exit.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/anim_in.xml",
@@ -129,10 +129,10 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/abc_shrink_fade_out_from_bottom.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/anim/abc_shrink_fade_out_from_bottom.xml"
+        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/anim/abc_shrink_fade_out_from_bottom.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/anim/abc_fade_out.xml",
-        "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/exploded-aar/com.android.support/appcompat-v7/25.0.1/res/anim/abc_fade_out.xml"
+        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/anim/abc_fade_out.xml"
     }
 ]

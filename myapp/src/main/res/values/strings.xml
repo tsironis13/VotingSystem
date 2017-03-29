@@ -332,7 +332,7 @@
     </string-array>
     <!-- USER SURVEYS TABS-->
     <string-array name="user_surveys_tabs">
-        <item>ΣΕ ΕΞΕΛΙΞΗ</item>
+        <item>ΕΚΚΡΕΜΟΥΝ</item>
         <item>ΕΓΚΕΚΡΙΜΜΕΝΕΣ</item>
         <item>ΑΠΟΡΡΙΦΘΕΙΣΕΣ</item>
     </string-array>

@@ -137,11 +137,14 @@ class LAMVCInteractorImpl implements LAMVCInteractor {
 
     @Override
     public void populateFirmNamesSpnr(final ArrayList<CustomSpinnerItem> firmNameWithIDArrayList, final LAMVCFinishedListener LAMVCFinishedListener) {
-        Call<Firm> call = apiService.getFirmNames("firm_names");
+        Firm firm = new Firm();
+        firm.setAction("get_firm_names");
+        Call<Firm> call = apiService.getFirmNames(firm);
         call.enqueue(new Callback<Firm>() {
             @Override
             public void onResponse(Response<Firm> response, Retrofit retrofit) {
-                if (response.body().getCode() == AppConfig.STATUS_OK) {
+                Log.e(debugTag, response.body()+"");
+                if (response.body() != null && response.body().getCode() == AppConfig.STATUS_OK) {
                     List<Firm.FirmElement> firmElementList = response.body().getFirm_element();
                     for (int i = 0; i < firmElementList.size(); i++) {
                         Log.d(debugTag, "firm_id: " + firmElementList.get(i).getFirm_id() + " firm_name: " + firmElementList.get(i).getFirm_name());

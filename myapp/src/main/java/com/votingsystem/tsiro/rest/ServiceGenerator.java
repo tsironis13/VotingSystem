@@ -1,9 +1,7 @@
 package com.votingsystem.tsiro.rest;
 
 import android.util.Log;
-
 import com.google.gson.Gson;
-
 import com.squareup.okhttp.OkHttpClient;
 import com.votingsystem.tsiro.app.AppConfig;
 import retrofit.GsonConverterFactory;
@@ -17,9 +15,11 @@ public class ServiceGenerator {
     private static OkHttpClient okHttpClient = new OkHttpClient();
 
     public static <S> S createService(Class<S> serviceClass) {
+
         Retrofit.Builder builder = new Retrofit.Builder()
                                        .baseUrl(AppConfig.BASE_URL)
                                        .addConverterFactory(GsonConverterFactory.create());
+
         Retrofit retrofit = builder.client(okHttpClient).build();
         Log.d("Service Generator: ", retrofit.toString());
         return retrofit.create(serviceClass);

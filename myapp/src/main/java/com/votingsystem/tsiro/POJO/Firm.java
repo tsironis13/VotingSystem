@@ -9,7 +9,7 @@ public class Firm {
 
     private String action;
     private int code;
-    private List<FirmElement> firm_element;
+    private List<FirmElement> data;
 
     public Firm() {}
 
@@ -19,12 +19,12 @@ public class Firm {
 
     public int getCode() { return code; }
 
-    public List<FirmElement> getFirm_element() { return firm_element; }
+    public List<FirmElement> getFirm_element() { return data; }
 
 
     public class FirmElement{
         private int firm_id;
-        private String firm_name, city, address;
+        private String firm_name;
 
         public int getFirm_id() { return this.firm_id; }
 

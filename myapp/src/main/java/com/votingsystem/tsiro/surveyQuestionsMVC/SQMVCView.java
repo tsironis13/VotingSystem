@@ -9,7 +9,7 @@ import java.util.List;
  * Created by giannis on 25/6/2016.
  */
 public interface SQMVCView {
-    void onSuccessSurveyQuestionsFetched(String surveyTitle, List<QuestionData> data);
+    void onSuccessSurveyQuestionsFetched(List<QuestionData> data);
     void onSuccessSurveyDetailsFetched(SurveyDetailsData surveyDetailsData);
     void onFailure(int code, int request);
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2">
+<resources xmlns:ns1="urn:oasis:names:tc:xliff:document:1.2" xmlns:ns2="http://schemas.android.com/tools">
     <array name="cast_expanded_controller_default_control_buttons">
         <item>@id/cast_button_type_closed_caption</item>
         <item>@id/cast_button_type_skip_previous</item>
@@ -38,11 +38,10 @@
         <item>ΕΚΚΡΕΜΟΥΝ</item>
     </string-array>
     <string-array name="user_surveys_tabs">
-        <item>ΣΕ ΕΞΕΛΙΞΗ</item>
+        <item>ΕΚΚΡΕΜΟΥΝ</item>
         <item>ΕΓΚΕΚΡΙΜΜΕΝΕΣ</item>
         <item>ΑΠΟΡΡΙΦΘΕΙΣΕΣ</item>
     </string-array>
-    <attr format="reference" name="MediaRouteControllerWindowBackground"/>
     <attr format="reference" name="castExpandedControllerToolbarStyle"/>
     <attr format="integer|reference" name="dp_animDuration"/>
     <attr format="integer" name="dp_day"/>
@@ -71,23 +70,15 @@
     <attr format="boolean" name="isLightTheme"/>
     <attr format="reference" name="mediaRouteAudioTrackDrawable"/>
     <attr format="reference" name="mediaRouteButtonStyle"/>
-    <attr format="reference" name="mediaRouteCastDrawable"/>
-    <attr format="reference" name="mediaRouteChooserPrimaryTextStyle"/>
-    <attr format="reference" name="mediaRouteChooserSecondaryTextStyle"/>
     <attr format="reference" name="mediaRouteCloseDrawable"/>
-    <attr format="reference" name="mediaRouteCollapseGroupDrawable"/>
-    <attr format="reference" name="mediaRouteConnectingDrawable"/>
-    <attr format="reference" name="mediaRouteControllerPrimaryTextStyle"/>
-    <attr format="reference" name="mediaRouteControllerSecondaryTextStyle"/>
-    <attr format="reference" name="mediaRouteControllerTitleTextStyle"/>
+    <attr format="reference" name="mediaRouteControlPanelThemeOverlay"/>
     <attr format="reference" name="mediaRouteDefaultIconDrawable"/>
-    <attr format="reference" name="mediaRouteExpandGroupDrawable"/>
-    <attr format="reference" name="mediaRouteOffDrawable"/>
-    <attr format="reference" name="mediaRouteOnDrawable"/>
     <attr format="reference" name="mediaRoutePauseDrawable"/>
     <attr format="reference" name="mediaRoutePlayDrawable"/>
     <attr format="reference" name="mediaRouteSpeakerGroupIconDrawable"/>
     <attr format="reference" name="mediaRouteSpeakerIconDrawable"/>
+    <attr format="reference" name="mediaRouteStopDrawable"/>
+    <attr format="reference" name="mediaRouteTheme"/>
     <attr format="reference" name="mediaRouteTvIconDrawable"/>
     <attr format="float" name="pv_progress"/>
     <attr format="integer" name="pv_progressMode">
@@ -129,8 +120,8 @@
     <color name="bright_foreground_material_light">@android:color/black</color>
     <color name="button_material_dark">#ff5a595b</color>
     <color name="button_material_light">#ffd6d7d7</color>
-    <color name="cardview_dark_background">#FF202020</color>
-    <color name="cardview_light_background">#FFFAFAFA</color>
+    <color name="cardview_dark_background">#FF424242</color>
+    <color name="cardview_light_background">#FFFFFFFF</color>
     <color name="cardview_shadow_end_color">#03000000</color>
     <color name="cardview_shadow_start_color">#37000000</color>
     <color name="cast_expanded_controller_ad_container_white_stripe_color">#1AFFFFFF</color>
@@ -288,7 +279,7 @@
     <declare-styleable name="ActivityChooserView"><attr format="string" name="initialActivityCount"/><attr format="reference" name="expandActivityOverflowButtonDrawable"/></declare-styleable>
     <declare-styleable name="AddFloatingActionButton"><attr format="color" name="fab_plusIconColor"/></declare-styleable>
     <declare-styleable name="AdsAttrs"><attr format="string" name="adSize"/><attr format="string" name="adSizes"/><attr format="string" name="adUnitId"/></declare-styleable>
-    <declare-styleable name="AlertDialog"><attr name="android:layout"/><attr format="reference" name="buttonPanelSideLayout"/><attr format="reference" name="listLayout"/><attr format="reference" name="multiChoiceItemLayout"/><attr format="reference" name="singleChoiceItemLayout"/><attr format="reference" name="listItemLayout"/></declare-styleable>
+    <declare-styleable name="AlertDialog"><attr name="android:layout"/><attr format="reference" name="buttonPanelSideLayout"/><attr format="reference" name="listLayout"/><attr format="reference" name="multiChoiceItemLayout"/><attr format="reference" name="singleChoiceItemLayout"/><attr format="reference" name="listItemLayout"/><attr format="boolean" name="showTitle"/></declare-styleable>
     <declare-styleable name="AppBarLayout"><attr name="elevation"/><attr name="android:background"/><attr format="boolean" name="expanded"/></declare-styleable>
     <declare-styleable name="AppBarLayoutStates"><attr format="boolean" name="state_collapsed"/><attr format="boolean" name="state_collapsible"/></declare-styleable>
     <declare-styleable name="AppBarLayout_Layout"><attr name="layout_scrollFlags">
@@ -336,7 +327,7 @@
         </attr><attr format="boolean" name="behavior_hideable"/><attr format="boolean" name="behavior_skipCollapsed"/></declare-styleable>
     <declare-styleable name="BottomSheetDialog"><attr format="reference|integer" name="bsd_inDuration"/><attr format="reference" name="bsd_inInterpolator"/><attr format="reference|integer" name="bsd_outDuration"/><attr format="reference" name="bsd_outInterpolator"/><attr format="reference|boolean" name="bsd_cancelable"/><attr format="reference|boolean" name="bsd_canceledOnTouchOutside"/><attr format="reference|float" name="bsd_dimAmount"/><attr name="android:layout_height"/></declare-styleable>
     <declare-styleable name="ButtonBarLayout"><attr format="boolean" name="allowStacking"/></declare-styleable>
-    <declare-styleable name="CardView"><attr format="color" name="cardBackgroundColor"/><attr format="dimension" name="cardCornerRadius"/><attr format="dimension" name="cardElevation"/><attr format="dimension" name="cardMaxElevation"/><attr format="boolean" name="cardUseCompatPadding"/><attr format="boolean" name="cardPreventCornerOverlap"/><attr format="dimension" name="contentPadding"/><attr format="dimension" name="contentPaddingLeft"/><attr format="dimension" name="contentPaddingRight"/><attr format="dimension" name="contentPaddingTop"/><attr format="dimension" name="contentPaddingBottom"/></declare-styleable>
+    <declare-styleable name="CardView"><attr format="color" name="cardBackgroundColor"/><attr format="dimension" name="cardCornerRadius"/><attr format="dimension" name="cardElevation"/><attr format="dimension" name="cardMaxElevation"/><attr format="boolean" name="cardUseCompatPadding"/><attr format="boolean" name="cardPreventCornerOverlap"/><attr format="dimension" name="contentPadding"/><attr format="dimension" name="contentPaddingLeft"/><attr format="dimension" name="contentPaddingRight"/><attr format="dimension" name="contentPaddingTop"/><attr format="dimension" name="contentPaddingBottom"/><attr name="android:minWidth"/><attr name="android:minHeight"/></declare-styleable>
     <declare-styleable name="CastExpandedController"><attr name="castControlButtons"/></declare-styleable>
     <declare-styleable name="CastIntroOverlay"><attr format="color|reference" name="castBackgroundColor"/><attr format="color|reference" name="castButtonBackgroundColor"/><attr format="reference" name="castButtonTextAppearance"/><attr format="string|reference" name="castButtonText"/><attr format="reference" name="castTitleTextAppearance"/><attr format="dimension|reference" name="castFocusRadius"/></declare-styleable>
     <declare-styleable name="CastMiniController"><attr format="boolean" name="castShowImageThumbnail"/><attr name="castTitleTextAppearance"/><attr format="reference" name="castSubtitleTextAppearance"/><attr format="reference" name="castControlButtons"/></declare-styleable>
@@ -506,7 +497,7 @@
     <declare-styleable name="ListPopupWindow"><attr name="android:dropDownVerticalOffset"/><attr name="android:dropDownHorizontalOffset"/></declare-styleable>
     <declare-styleable name="LoadingImageView"><attr format="enum" name="imageAspectRatioAdjust"><enum name="none" value="0"/><enum name="adjust_width" value="1"/><enum name="adjust_height" value="2"/></attr><attr format="float" name="imageAspectRatio"/><attr format="boolean" name="circleCrop"/></declare-styleable>
     <declare-styleable name="MapAttrs"><attr format="enum" name="mapType"><enum name="none" value="0"/><enum name="normal" value="1"/><enum name="satellite" value="2"/><enum name="terrain" value="3"/><enum name="hybrid" value="4"/></attr><attr format="float" name="cameraBearing"/><attr format="float" name="cameraTargetLat"/><attr format="float" name="cameraTargetLng"/><attr format="float" name="cameraTilt"/><attr format="float" name="cameraZoom"/><attr format="boolean" name="liteMode"/><attr format="boolean" name="uiCompass"/><attr format="boolean" name="uiRotateGestures"/><attr format="boolean" name="uiScrollGestures"/><attr format="boolean" name="uiTiltGestures"/><attr format="boolean" name="uiZoomControls"/><attr format="boolean" name="uiZoomGestures"/><attr format="boolean" name="useViewLifecycle"/><attr format="boolean" name="zOrderOnTop"/><attr format="boolean" name="uiMapToolbar"/><attr format="boolean" name="ambientEnabled"/><attr format="float" name="cameraMinZoomPreference"/><attr format="float" name="cameraMaxZoomPreference"/><attr format="float" name="latLngBoundsSouthWestLatitude"/><attr format="float" name="latLngBoundsSouthWestLongitude"/><attr format="float" name="latLngBoundsNorthEastLatitude"/><attr format="float" name="latLngBoundsNorthEastLongitude"/></declare-styleable>
-    <declare-styleable name="MediaRouteButton"><attr format="reference" name="externalRouteEnabledDrawable"/><attr name="android:minWidth"/><attr name="android:minHeight"/></declare-styleable>
+    <declare-styleable name="MediaRouteButton"><attr format="reference" name="externalRouteEnabledDrawable"/><attr name="buttonTint"/><attr name="android:minWidth"/><attr name="android:minHeight"/></declare-styleable>
     <declare-styleable name="MenuGroup"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:checkableBehavior"/><attr name="android:visible"/><attr name="android:enabled"/></declare-styleable>
     <declare-styleable name="MenuItem"><attr name="android:id"/><attr name="android:menuCategory"/><attr name="android:orderInCategory"/><attr name="android:title"/><attr name="android:titleCondensed"/><attr name="android:icon"/><attr name="android:alphabeticShortcut"/><attr name="android:numericShortcut"/><attr name="android:checkable"/><attr name="android:checked"/><attr name="android:visible"/><attr name="android:enabled"/><attr name="android:onClick"/><attr name="showAsAction">
             
@@ -527,6 +518,7 @@
     <declare-styleable name="PopupWindowBackgroundState"><attr format="boolean" name="state_above_anchor"/></declare-styleable>
     <declare-styleable name="ProgressView"><attr format="boolean" name="pv_autostart"/><attr format="boolean" name="pv_circular"/><attr format="reference" name="pv_progressStyle"/><attr name="pv_progressMode"/><attr name="pv_progress"/><attr name="pv_secondaryProgress"/></declare-styleable>
     <declare-styleable name="RadioButtonDrawable"><attr format="reference|dimension" name="rbd_width"/><attr format="reference|dimension" name="rbd_height"/><attr format="reference|dimension" name="rbd_strokeSize"/><attr format="reference|dimension" name="rbd_radius"/><attr format="reference|dimension" name="rbd_innerRadius"/><attr format="reference|color" name="rbd_strokeColor"/><attr format="reference|integer" name="rbd_animDuration"/></declare-styleable>
+    <declare-styleable name="RecycleListView"><attr format="dimension" name="paddingBottomNoButtons"/><attr format="dimension" name="paddingTopNoTitle"/></declare-styleable>
     <declare-styleable name="RecyclerView"><attr format="string" name="layoutManager"/><attr name="android:orientation"/><attr name="android:descendantFocusability"/><attr format="integer" name="spanCount"/><attr format="boolean" name="reverseLayout"/><attr format="boolean" name="stackFromEnd"/></declare-styleable>
     <declare-styleable name="RippleDrawable"><attr format="reference|color" name="rd_backgroundColor"/><attr format="reference|integer" name="rd_backgroundAnimDuration"/><attr format="reference|dimension|integer" name="rd_maxRippleRadius"><enum name="match_view" value="0x00000000"/></attr><attr format="reference|color" name="rd_rippleColor"/><attr format="reference|integer" name="rd_rippleAnimDuration"/><attr format="reference" name="rd_inInterpolator"/><attr format="reference" name="rd_outInterpolator"/><attr format="integer" name="rd_maskType"><enum name="rectangle" value="0x00000000"/><enum name="oval" value="0x00000001"/></attr><attr format="integer" name="rd_rippleType"><enum name="touch" value="0x00000000"/><enum name="wave" value="0x00000001"/></attr><attr format="reference|dimension" name="rd_cornerRadius"/><attr format="reference|dimension" name="rd_topLeftCornerRadius"/><attr format="reference|dimension" name="rd_topRightCornerRadius"/><attr format="reference|dimension" name="rd_bottomLeftCornerRadius"/><attr format="reference|dimension" name="rd_bottomRightCornerRadius"/><attr format="reference|dimension" name="rd_padding"/><attr format="reference|dimension" name="rd_leftPadding"/><attr format="reference|dimension" name="rd_topPadding"/><attr format="reference|dimension" name="rd_rightPadding"/><attr format="reference|dimension" name="rd_bottomPadding"/><attr format="integer" name="rd_delayClick"><enum name="none" value="0x00000000"/><enum name="untilRelease" value="0x00000001"/><enum name="afterRelease" value="0x00000002"/></attr></declare-styleable>
     <declare-styleable name="RippleView"><attr name="rd_style"/><attr name="rd_enable"/></declare-styleable>
@@ -651,11 +643,13 @@
     <item name="abc_dialog_fixed_height_minor" type="dimen">100%</item>
     <item name="abc_dialog_fixed_width_major" type="dimen">320dp</item>
     <item name="abc_dialog_fixed_width_minor" type="dimen">320dp</item>
-    <dimen name="abc_dialog_list_padding_vertical_material">8dp</dimen>
+    <dimen name="abc_dialog_list_padding_bottom_no_buttons">8dp</dimen>
+    <dimen name="abc_dialog_list_padding_top_no_title">8dp</dimen>
     <item name="abc_dialog_min_width_major" type="dimen">65%</item>
     <item name="abc_dialog_min_width_minor" type="dimen">95%</item>
     <dimen name="abc_dialog_padding_material">24dp</dimen>
     <dimen name="abc_dialog_padding_top_material">18dp</dimen>
+    <dimen name="abc_dialog_title_divider_material">8dp</dimen>
     <item format="float" name="abc_disabled_alpha_material_dark" type="dimen">0.30</item>
     <item format="float" name="abc_disabled_alpha_material_light" type="dimen">0.26</item>
     <dimen name="abc_dropdownitem_icon_width">32dip</dimen>
@@ -1039,6 +1033,8 @@
     <item name="progress_circular" type="id"/>
     <item name="progress_horizontal" type="id"/>
     <item name="split_action_bar" type="id"/>
+    <item name="textinput_counter" type="id"/>
+    <item name="textinput_error" type="id"/>
     <item name="transition_current_scene" type="id"/>
     <item name="transition_scene_layoutid_cache" type="id"/>
     <item name="up" type="id"/>
@@ -1052,11 +1048,13 @@
     <integer name="design_snackbar_text_max_lines">2</integer>
     <integer name="dialogplus_animation_default_duration">300</integer>
     <integer name="google_play_services_version">9683000</integer>
+    <integer name="hide_password_duration">320</integer>
     <integer name="leak_canary_max_stored_leaks">7</integer>
     <integer name="leak_canary_watch_delay_millis">5000</integer>
     <integer name="mr_controller_volume_group_list_animation_duration_ms">400</integer>
     <integer name="mr_controller_volume_group_list_fade_in_duration_ms">400</integer>
     <integer name="mr_controller_volume_group_list_fade_out_duration_ms">200</integer>
+    <integer name="show_password_duration">200</integer>
     <integer name="status_bar_notification_info_maxnum">999</integer>
     <string name="abc_action_bar_home_description">Navigate home</string>
     <string name="abc_action_bar_home_description_format">%1$s, %2$s</string>
@@ -1337,6 +1335,9 @@
     <string name="middle_animation">middle</string>
     <string name="more">Περισσοτερα</string>
     <string name="mr_button_content_description">Cast button</string>
+    <string name="mr_cast_button_connected">Cast button. Connected</string>
+    <string name="mr_cast_button_connecting">Cast button. Connecting</string>
+    <string name="mr_cast_button_disconnected">Cast button. Disconnected</string>
     <string name="mr_chooser_searching">Finding devices</string>
     <string name="mr_chooser_title">Cast to</string>
     <string name="mr_controller_album_art">Album art</string>
@@ -1349,7 +1350,9 @@
     <string name="mr_controller_no_media_selected">No media selected</string>
     <string name="mr_controller_pause">Pause</string>
     <string name="mr_controller_play">Play</string>
-    <string name="mr_controller_stop">Stop casting</string>
+    <string name="mr_controller_stop">Stop</string>
+    <string name="mr_controller_stop_casting">Stop casting</string>
+    <string name="mr_controller_volume_slider">Volume slider</string>
     <string name="mr_system_route_name">System</string>
     <string name="mr_user_route_category_name">Devices</string>
     <string name="multiple_choice">Πολλαπλής επιλογής</string>
@@ -1386,6 +1389,11 @@
     <string name="page_index_text">ΕΡΩΤΗΣΗ %1$d ΑΠΟ %2$d</string>
     <string name="password">Κωδικός πρόσβασης</string>
     <string name="password_tag">password</string>
+    <string name="password_toggle_content_description">Toggle password visibility</string>
+    <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
+    <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
+    <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
     <string name="pending">pending</string>
     <string name="persentage_text">%1$.1f%%</string>
     <string name="pick">Επιλογη</string>
@@ -1528,6 +1536,13 @@
         <item name="android:windowEnterAnimation">@anim/abc_grow_fade_in_from_bottom</item>
         <item name="android:windowExitAnimation">@anim/abc_shrink_fade_out_from_bottom</item>
     </style>
+    <style name="Base.CardView" parent="android:Widget">
+        <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
+        <item name="cardElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardMaxElevation">@dimen/cardview_default_elevation</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="cardPreventCornerOverlap">true</item>
+    </style>
     <style name="Base.DialogWindowTitle.AppCompat" parent="android:Widget">
         <item name="android:maxLines">1</item>
         <item name="android:scrollHorizontally">true</item>
@@ -1666,6 +1681,12 @@
     <style name="Base.TextAppearance.AppCompat.Widget.ActionMode.Subtitle" parent="TextAppearance.AppCompat.Widget.ActionBar.Subtitle"/>
     <style name="Base.TextAppearance.AppCompat.Widget.ActionMode.Title" parent="TextAppearance.AppCompat.Widget.ActionBar.Title"/>
     <style name="Base.TextAppearance.AppCompat.Widget.Button" parent="TextAppearance.AppCompat.Button"/>
+    <style name="Base.TextAppearance.AppCompat.Widget.Button.Borderless.Colored" parent="Base.TextAppearance.AppCompat.Widget.Button">
+        <item name="android:textColor">@color/abc_btn_colored_borderless_text_material</item>
+    </style>
+    <style name="Base.TextAppearance.AppCompat.Widget.Button.Colored">
+        <item name="android:textColor">@color/abc_btn_colored_text_material</item>
+    </style>
     <style name="Base.TextAppearance.AppCompat.Widget.Button.Inverse" parent="TextAppearance.AppCompat.Button">
         <item name="android:textColor">?android:textColorPrimaryInverse</item>
     </style>
@@ -1961,10 +1982,10 @@
         <item name="listDividerAlertDialog">@null</item>
 
         
-        <item name="windowFixedWidthMajor">0dp</item>
-        <item name="windowFixedWidthMinor">0dp</item>
-        <item name="windowFixedHeightMajor">0dp</item>
-        <item name="windowFixedHeightMinor">0dp</item>
+        <item name="windowFixedWidthMajor">@null</item>
+        <item name="windowFixedWidthMinor">@null</item>
+        <item name="windowFixedHeightMajor">@null</item>
+        <item name="windowFixedHeightMinor">@null</item>
     </style>
     <style name="Base.V7.Theme.AppCompat.Dialog" parent="Base.Theme.AppCompat">
         <item name="android:colorBackground">?attr/colorBackgroundFloating</item>
@@ -2141,10 +2162,10 @@
         <item name="listDividerAlertDialog">@null</item>
 
         
-        <item name="windowFixedWidthMajor">0dp</item>
-        <item name="windowFixedWidthMinor">0dp</item>
-        <item name="windowFixedHeightMajor">0dp</item>
-        <item name="windowFixedHeightMinor">0dp</item>
+        <item name="windowFixedWidthMajor">@null</item>
+        <item name="windowFixedWidthMinor">@null</item>
+        <item name="windowFixedHeightMajor">@null</item>
+        <item name="windowFixedHeightMinor">@null</item>
     </style>
     <style name="Base.V7.Theme.AppCompat.Light.Dialog" parent="Base.Theme.AppCompat.Light">
         <item name="android:colorBackground">?attr/colorBackgroundFloating</item>
@@ -2189,6 +2210,11 @@
         <item name="listPreferredItemPaddingRight">24dip</item>
 
         <item name="android:listDivider">@null</item>
+
+        <item name="windowFixedWidthMajor">@null</item>
+        <item name="windowFixedWidthMinor">@null</item>
+        <item name="windowFixedHeightMajor">@null</item>
+        <item name="windowFixedHeightMinor">@null</item>
     </style>
     <style name="Base.V7.Widget.AppCompat.AutoCompleteTextView" parent="android:Widget.AutoCompleteTextView">
         <item name="android:dropDownSelector">?attr/listChoiceBackgroundIndicator</item>
@@ -2302,16 +2328,15 @@
         <item name="android:background">@drawable/abc_btn_borderless_material</item>
     </style>
     <style name="Base.Widget.AppCompat.Button.Borderless.Colored">
-        <item name="android:textColor">@color/abc_btn_colored_borderless_text_material</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Widget.Button.Borderless.Colored</item>
     </style>
     <style name="Base.Widget.AppCompat.Button.ButtonBar.AlertDialog" parent="Widget.AppCompat.Button.Borderless.Colored">
         <item name="android:minWidth">64dp</item>
-        <item name="android:maxLines">2</item>
         <item name="android:minHeight">@dimen/abc_alert_dialog_button_bar_height</item>
     </style>
     <style name="Base.Widget.AppCompat.Button.Colored">
         <item name="android:background">@drawable/abc_btn_colored_material</item>
-        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Widget.Button.Inverse</item>
+        <item name="android:textAppearance">@style/TextAppearance.AppCompat.Widget.Button.Colored</item>
     </style>
     <style name="Base.Widget.AppCompat.Button.Small">
         <item name="android:minHeight">48dip</item>
@@ -2523,13 +2548,7 @@
         <item name="tabTextAppearance">@style/TextAppearance.Design.Tab</item>
         <item name="tabSelectedTextColor">?android:textColorPrimary</item>
     </style>
-    <style name="CardView">
-        <item name="cardBackgroundColor">@color/cardview_light_background</item>
-        <item name="cardCornerRadius">@dimen/cardview_default_radius</item>
-        <item name="cardElevation">@dimen/cardview_default_elevation</item>
-        <item name="cardMaxElevation">@dimen/cardview_default_elevation</item>
-        <item name="cardUseCompatPadding">false</item>
-        <item name="cardPreventCornerOverlap">true</item>
+    <style name="CardView" parent="Base.CardView">
     </style>
     <style name="CardView.Dark">
         <item name="cardBackgroundColor">@color/cardview_dark_background</item>
@@ -3414,6 +3433,8 @@
     </style>
     <style name="TextAppearance.AppCompat.Widget.ActionMode.Title.Inverse" parent="TextAppearance.AppCompat.Widget.ActionMode.Title"/>
     <style name="TextAppearance.AppCompat.Widget.Button" parent="Base.TextAppearance.AppCompat.Widget.Button"/>
+    <style name="TextAppearance.AppCompat.Widget.Button.Borderless.Colored" parent="Base.TextAppearance.AppCompat.Widget.Button.Borderless.Colored"/>
+    <style name="TextAppearance.AppCompat.Widget.Button.Colored" parent="Base.TextAppearance.AppCompat.Widget.Button.Colored"/>
     <style name="TextAppearance.AppCompat.Widget.Button.Inverse" parent="Base.TextAppearance.AppCompat.Widget.Button.Inverse"/>
     <style name="TextAppearance.AppCompat.Widget.DropDownItem" parent="Base.TextAppearance.AppCompat.Widget.DropDownItem">
     </style>
@@ -3452,6 +3473,9 @@
         <item name="android:textColor">?android:textColorSecondary</item>
         <item name="textAllCaps">true</item>
     </style>
+    <style name="TextAppearance.MediaRouter.PrimaryText" parent="TextAppearance.AppCompat.Subhead"/>
+    <style name="TextAppearance.MediaRouter.SecondaryText" parent="TextAppearance.AppCompat.Body1"/>
+    <style name="TextAppearance.MediaRouter.Title" parent="TextAppearance.AppCompat.Title"/>
     <style name="TextAppearance.StatusBar.EventContent" parent=""/>
     <style name="TextAppearance.StatusBar.EventContent.Info" parent=""/>
     <style name="TextAppearance.StatusBar.EventContent.Line2" parent=""/>
@@ -3530,66 +3554,43 @@
     <item name="android:windowIsFloating">true</item>
     <item name="android:backgroundDimEnabled">false</item>
   </style>
-    <style name="Theme.MediaRouter" parent="">
-        <item name="android:windowNoTitle">false</item>
+    <style name="Theme.MediaRouter" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="windowNoTitle">true</item>
         <item name="mediaRouteButtonStyle">@style/Widget.MediaRouter.MediaRouteButton</item>
 
-        <item name="MediaRouteControllerWindowBackground">@drawable/mr_dialog_material_background_dark</item>
-        <item name="mediaRouteOffDrawable">@drawable/ic_media_route_off_mono_dark</item>
-        <item name="mediaRouteConnectingDrawable">@drawable/mr_ic_media_route_connecting_dark</item>
-        <item name="mediaRouteOnDrawable">@drawable/mr_ic_media_route_on_dark</item>
-        <item name="mediaRouteCloseDrawable">@drawable/mr_ic_close_dark</item>
-        <item name="mediaRoutePlayDrawable">@drawable/mr_ic_play_dark</item>
-        <item name="mediaRoutePauseDrawable">@drawable/mr_ic_pause_dark</item>
-        <item name="mediaRouteCastDrawable">@drawable/mr_ic_cast_dark</item>
-        <item name="mediaRouteAudioTrackDrawable">@drawable/ic_audiotrack</item>
-        <item name="mediaRouteDefaultIconDrawable">@drawable/ic_cast_white</item>
-        <item name="mediaRouteTvIconDrawable">@drawable/ic_tv_dark</item>
-        <item name="mediaRouteSpeakerIconDrawable">@drawable/ic_speaker_dark</item>
-        <item name="mediaRouteSpeakerGroupIconDrawable">@drawable/ic_speaker_group_dark</item>
-        <item name="mediaRouteChooserPrimaryTextStyle">@style/Widget.MediaRouter.ChooserText.Primary.Dark</item>
-        <item name="mediaRouteChooserSecondaryTextStyle">@style/Widget.MediaRouter.ChooserText.Secondary.Dark</item>
-        <item name="mediaRouteControllerTitleTextStyle">@style/Widget.MediaRouter.ControllerText.Title.Dark</item>
-        <item name="mediaRouteControllerPrimaryTextStyle">@style/Widget.MediaRouter.ControllerText.Primary.Dark</item>
-        <item name="mediaRouteControllerSecondaryTextStyle">@style/Widget.MediaRouter.ControllerText.Secondary.Dark</item>
+        <item name="mediaRouteCloseDrawable">@drawable/mr_dialog_close_dark</item>
+        <item name="mediaRoutePlayDrawable">@drawable/mr_media_play_dark</item>
+        <item name="mediaRoutePauseDrawable">@drawable/mr_media_pause_dark</item>
+        <item name="mediaRouteStopDrawable">@drawable/mr_media_stop_dark</item>
+        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_vol_type_audiotrack_dark</item>
+        <item name="mediaRouteDefaultIconDrawable">@drawable/ic_mr_button_disconnected_dark</item>
+        <item name="mediaRouteTvIconDrawable">@drawable/ic_vol_type_tv_dark</item>
+        <item name="mediaRouteSpeakerIconDrawable">@drawable/ic_vol_type_speaker_dark</item>
+        <item name="mediaRouteSpeakerGroupIconDrawable">@drawable/ic_vol_type_speaker_group_dark</item>
+
+        <item name="mediaRouteControlPanelThemeOverlay">@null</item>
     </style>
-    <style name="Theme.MediaRouter.Light">
+    <style name="Theme.MediaRouter.Light" parent="ThemeOverlay.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
         <item name="mediaRouteButtonStyle">@style/Widget.MediaRouter.Light.MediaRouteButton</item>
 
-        <item name="MediaRouteControllerWindowBackground">@drawable/mr_dialog_material_background_light</item>
-        <item name="mediaRouteOffDrawable">@drawable/ic_cast_off_light</item>
-        <item name="mediaRouteConnectingDrawable">@drawable/mr_ic_media_route_connecting_light</item>
-        <item name="mediaRouteOnDrawable">@drawable/mr_ic_media_route_on_light</item>
-        <item name="mediaRouteCloseDrawable">@drawable/mr_ic_close_light</item>
-        <item name="mediaRoutePlayDrawable">@drawable/mr_ic_play_light</item>
-        <item name="mediaRoutePauseDrawable">@drawable/mr_ic_pause_light</item>
-        <item name="mediaRouteCastDrawable">@drawable/mr_ic_cast_light</item>
-        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_ic_audiotrack_light</item>
-        <item name="mediaRouteDefaultIconDrawable">@drawable/ic_cast_grey</item>
-        <item name="mediaRouteTvIconDrawable">@drawable/ic_tv_light</item>
-        <item name="mediaRouteSpeakerIconDrawable">@drawable/ic_speaker_light</item>
-        <item name="mediaRouteSpeakerGroupIconDrawable">@drawable/ic_speaker_group_light</item>
-        <item name="mediaRouteChooserPrimaryTextStyle">@style/Widget.MediaRouter.ChooserText.Primary.Light</item>
-        <item name="mediaRouteChooserSecondaryTextStyle">@style/Widget.MediaRouter.ChooserText.Secondary.Light</item>
-        <item name="mediaRouteControllerTitleTextStyle">@style/Widget.MediaRouter.ControllerText.Title.Light</item>
-        <item name="mediaRouteControllerPrimaryTextStyle">@style/Widget.MediaRouter.ControllerText.Primary.Light</item>
-        <item name="mediaRouteControllerSecondaryTextStyle">@style/Widget.MediaRouter.ControllerText.Secondary.Light</item>
+        <item name="mediaRouteCloseDrawable">@drawable/mr_dialog_close_light</item>
+        <item name="mediaRoutePlayDrawable">@drawable/mr_media_play_light</item>
+        <item name="mediaRoutePauseDrawable">@drawable/mr_media_pause_light</item>
+        <item name="mediaRouteStopDrawable">@drawable/mr_media_stop_light</item>
+        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_vol_type_audiotrack_light</item>
+        <item name="mediaRouteDefaultIconDrawable">@drawable/ic_mr_button_grey</item>
+        <item name="mediaRouteTvIconDrawable">@drawable/ic_vol_type_tv_light</item>
+        <item name="mediaRouteSpeakerIconDrawable">@drawable/ic_vol_type_speaker_light</item>
+        <item name="mediaRouteSpeakerGroupIconDrawable">@drawable/ic_vol_type_speaker_group_light</item>
+
+        <item name="mediaRouteControlPanelThemeOverlay">@null</item>
     </style>
     <style name="Theme.MediaRouter.Light.DarkControlPanel">
-        <item name="mediaRoutePlayDrawable">@drawable/mr_ic_play_dark</item>
-        <item name="mediaRoutePauseDrawable">@drawable/mr_ic_pause_dark</item>
-        <item name="mediaRouteCastDrawable">@drawable/mr_ic_cast_dark</item>
-        <item name="mediaRouteAudioTrackDrawable">@drawable/ic_audiotrack</item>
-        <item name="mediaRouteControllerPrimaryTextStyle">@style/Widget.MediaRouter.ControllerText.Primary.Dark</item>
-        <item name="mediaRouteControllerSecondaryTextStyle">@style/Widget.MediaRouter.ControllerText.Secondary.Dark</item>
+        <item name="mediaRouteControlPanelThemeOverlay">@style/ThemeOverlay.MediaRouter.Dark</item>
     </style>
     <style name="Theme.MediaRouter.LightControlPanel">
-        <item name="mediaRoutePlayDrawable">@drawable/mr_ic_play_light</item>
-        <item name="mediaRoutePauseDrawable">@drawable/mr_ic_pause_light</item>
-        <item name="mediaRouteCastDrawable">@drawable/mr_ic_cast_light</item>
-        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_ic_audiotrack_light</item>
-        <item name="mediaRouteControllerPrimaryTextStyle">@style/Widget.MediaRouter.ControllerText.Primary.Light</item>
-        <item name="mediaRouteControllerSecondaryTextStyle">@style/Widget.MediaRouter.ControllerText.Secondary.Light</item>
+        <item name="mediaRouteControlPanelThemeOverlay">@style/ThemeOverlay.MediaRouter.Light</item>
     </style>
     <style name="ThemeOverlay.AppCompat" parent="Base.ThemeOverlay.AppCompat"/>
     <style name="ThemeOverlay.AppCompat.ActionBar" parent="Base.ThemeOverlay.AppCompat.ActionBar"/>
@@ -3598,6 +3599,19 @@
     <style name="ThemeOverlay.AppCompat.Dialog" parent="Base.ThemeOverlay.AppCompat.Dialog"/>
     <style name="ThemeOverlay.AppCompat.Dialog.Alert" parent="Base.ThemeOverlay.AppCompat.Dialog.Alert"/>
     <style name="ThemeOverlay.AppCompat.Light" parent="Base.ThemeOverlay.AppCompat.Light"/>
+    <style name="ThemeOverlay.MediaRouter.Dark" parent="ThemeOverlay.AppCompat.Dark">
+        <item name="mediaRoutePlayDrawable">@drawable/mr_media_play_dark</item>
+        <item name="mediaRoutePauseDrawable">@drawable/mr_media_pause_dark</item>
+        <item name="mediaRouteStopDrawable">@drawable/mr_media_stop_dark</item>
+        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_vol_type_audiotrack_dark</item>
+
+    </style>
+    <style name="ThemeOverlay.MediaRouter.Light" parent="ThemeOverlay.AppCompat.Light">
+        <item name="mediaRoutePlayDrawable">@drawable/mr_media_play_light</item>
+        <item name="mediaRoutePauseDrawable">@drawable/mr_media_pause_light</item>
+        <item name="mediaRouteStopDrawable">@drawable/mr_media_stop_light</item>
+        <item name="mediaRouteAudioTrackDrawable">@drawable/mr_vol_type_audiotrack_light</item>
+    </style>
     <style name="ToolbarCustomTheme" parent="AppTheme">
         <item name="android:textColorSecondary">@android:color/white</item>
         <item name="android:textSize">15sp</item>
@@ -3738,7 +3752,7 @@
     </style>
     <style name="Widget.Design.BottomSheet.Modal" parent="android:Widget">
         <item name="android:background">?android:attr/colorBackground</item>
-        <item name="android:elevation">@dimen/design_bottom_sheet_modal_elevation</item>
+        <item name="android:elevation" ns2:ignore="NewApi">@dimen/design_bottom_sheet_modal_elevation</item>
         <item name="behavior_peekHeight">auto</item>
         <item name="behavior_hideable">true</item>
         <item name="behavior_skipCollapsed">false</item>
@@ -3786,67 +3800,15 @@
         <item name="errorTextAppearance">@style/TextAppearance.Design.Error</item>
         <item name="counterTextAppearance">@style/TextAppearance.Design.Counter</item>
         <item name="counterOverflowTextAppearance">@style/TextAppearance.Design.Counter.Overflow</item>
-        <item name="passwordToggleDrawable">@drawable/design_ic_visibility</item>
+        <item name="passwordToggleDrawable">@drawable/design_password_eye</item>
         <item name="passwordToggleTint">@color/design_tint_password_toggle</item>
-    </style>
-    <style name="Widget.MediaRouter.ChooserText" parent="">
-        <item name="android:fontFamily">sans-serif</item>
-        <item name="android:textStyle">normal</item>
-    </style>
-    <style name="Widget.MediaRouter.ChooserText.Primary">
-        <item name="android:textSize">16sp</item>
-    </style>
-    <style name="Widget.MediaRouter.ChooserText.Primary.Dark">
-        <item name="android:textColor">#FFFFFFFF</item>
-    </style>
-    <style name="Widget.MediaRouter.ChooserText.Primary.Light">
-        <item name="android:textColor">#DE000000</item>
-    </style>
-    <style name="Widget.MediaRouter.ChooserText.Secondary">
-        <item name="android:textSize">14sp</item>
-    </style>
-    <style name="Widget.MediaRouter.ChooserText.Secondary.Dark">
-        <item name="android:textColor">#8AFFFFFF</item>
-    </style>
-    <style name="Widget.MediaRouter.ChooserText.Secondary.Light">
-        <item name="android:textColor">#8A000000</item>
-    </style>
-    <style name="Widget.MediaRouter.ControllerText" parent="Widget.MediaRouter.ChooserText"/>
-    <style name="Widget.MediaRouter.ControllerText.Primary">
-        <item name="android:textSize">16sp</item>
-    </style>
-    <style name="Widget.MediaRouter.ControllerText.Primary.Dark">
-        <item name="android:textColor">#FFFFFFFF</item>
-    </style>
-    <style name="Widget.MediaRouter.ControllerText.Primary.Light">
-        <item name="android:textColor">#DE000000</item>
-    </style>
-    <style name="Widget.MediaRouter.ControllerText.Secondary">
-        <item name="android:textSize">14sp</item>
-    </style>
-    <style name="Widget.MediaRouter.ControllerText.Secondary.Dark">
-        <item name="android:textColor">#FFFFFFFF</item>
-    </style>
-    <style name="Widget.MediaRouter.ControllerText.Secondary.Light">
-        <item name="android:textColor">#DE000000</item>
-    </style>
-    <style name="Widget.MediaRouter.ControllerText.Title">
-        <item name="android:fontFamily">sans-serif-medium</item>
-        <item name="android:textSize">20sp</item>
-    </style>
-    <style name="Widget.MediaRouter.ControllerText.Title.Dark">
-        <item name="android:textColor">#FFFFFFFF</item>
-    </style>
-    <style name="Widget.MediaRouter.ControllerText.Title.Light">
-        <item name="android:textColor">#DE000000</item>
+        <item name="passwordToggleContentDescription">@string/password_toggle_content_description</item>
     </style>
     <style name="Widget.MediaRouter.Light.MediaRouteButton" parent="Widget.AppCompat.Light.ActionButton">
-        <item name="android:contentDescription">@string/mr_button_content_description</item>
-        <item name="externalRouteEnabledDrawable">@drawable/mr_ic_media_route_mono_light</item>
+        <item name="externalRouteEnabledDrawable">@drawable/mr_button_light</item>
     </style>
     <style name="Widget.MediaRouter.MediaRouteButton" parent="Widget.AppCompat.ActionButton">
-        <item name="android:contentDescription">@string/mr_button_content_description</item>
-        <item name="externalRouteEnabledDrawable">@drawable/mr_ic_media_route_mono_dark</item>
+        <item name="externalRouteEnabledDrawable">@drawable/mr_button_dark</item>
     </style>
     <style name="leak_canary_LeakCanary.Base" parent="android:Theme">
   </style>

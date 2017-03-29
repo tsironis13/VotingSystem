@@ -29,8 +29,8 @@ public class SQMVCPresenterImpl implements SQMVCPresenter, SQMVCFinishedListener
     }
 
     @Override
-    public void onSuccessSurveyQuestionsFetched(String surveyTitle, List<QuestionData> data) {
-        SQMVCview.onSuccessSurveyQuestionsFetched(surveyTitle, data);
+    public void onSuccessSurveyQuestionsFetched(List<QuestionData> data) {
+        SQMVCview.onSuccessSurveyQuestionsFetched(data);
     }
 
     @Override
