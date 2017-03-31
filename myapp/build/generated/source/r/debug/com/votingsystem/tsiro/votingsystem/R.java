@@ -7884,6 +7884,7 @@ containing a value of this type.
         public static final int Animation_AppCompat_DropDownUp=0x7f0c00a9;
         public static final int Animation_Design_BottomSheetDialog=0x7f0c00aa;
         /** <item name="android:windowTranslucentStatus">true</item>
+ Customize your theme here. 
          */
         public static final int AppTheme=0x7f0c0042;
         public static final int AppTheme_Base=0x7f0c00ab;

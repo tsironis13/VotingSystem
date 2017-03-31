@@ -261,7 +261,6 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Swi
             @Override
             public void onLoadMore(int page) {
                 cPage = page;
-                Log.e(debugTag, "onLoadMore "+ page);
                 /* Use Handler to avoid illegal state exception described bellow.
                  * Cannot call this method in a scroll callback. Scroll callbacks might be run during a measure & layout pass where you cannot change the RecyclerView data. Any method call that might change the structure of the RecyclerView or the adapter contents should be postponed to the next frame.
                  */
@@ -270,13 +269,6 @@ public class CompletedSurveysFragment extends Fragment implements SAMVCView, Swi
                 if (connectionStatus != AppConfig.NO_CONNECTION) {
                     if (data != null) {
                         if (completedSurveysRcV.getLayoutManager().getItemCount() < total) {
-//                            data.add(null);
-//                            handler.post(new Runnable() {
-//                                @Override
-//                                public void run() {
-//                                    surveysRcvAdapter.notifyItemChanged(data.size() - 1);
-//                                }
-//                            });
                             SAMVCpresenterImpl.getSurveysBasedOnSpecificFirmId(new AllSurveysBody(getResources().getString(R.string.list_surveys), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.user_id), 0), LoginActivity.getSessionPrefs(getActivity()).getInt(getResources().getString(R.string.firm_id), 0), getResources().getString(R.string.completed), page, -1));
                         }
                     }

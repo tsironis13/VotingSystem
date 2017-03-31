@@ -88,7 +88,7 @@ public class SurveysRcvAdapter extends RecyclerView.Adapter {
         String details;
         if (holder instanceof SurveysItemViewHolder) {
             ((SurveysItemViewHolder) holder).title.setText(data.get(position).getTitle());
-            Log.e(debugTag, type);
+//            Log.e(debugTag, type);
             if (type.equals("pending")) {
                 details = "Ημ. έναρξης " + data.get(position).getActiveSince();
                 ((SurveysItemViewHolder) holder).details.setText(details);

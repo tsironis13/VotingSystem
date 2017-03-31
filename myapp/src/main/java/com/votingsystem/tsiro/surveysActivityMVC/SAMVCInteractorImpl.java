@@ -39,6 +39,7 @@ class SAMVCInteractorImpl implements SAMVCInteractor {
                     if (response.body().getCode() != AppConfig.STATUS_OK) {
                         SAMVCfinishedListener.onFailure(response.body().getCode(), 1);
                     } else {
+//                        Log.e(debugTag, response.body().getData()+"");
                         SAMVCfinishedListener.onSuccessSurveysFetched(response.body().getData(), allSurveysBody.getPage(), response.body().getTotal());
                     }
                 } else {

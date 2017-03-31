@@ -50,9 +50,9 @@ MERGED from [com.squareup.leakcanary:leakcanary-android:1.4] /home/giannis/.andr
 application
 ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:9:5-78:19
 MERGED from [com.github.ozodrukh:CircularReveal:1.1.1] /home/giannis/.android/build-cache/2b0e7df75f4d8907cbec603741dbae2ef6363f35/output/AndroidManifest.xml:10:5-20
-MERGED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:transition:25.3.0] /home/giannis/.android/build-cache/8a9e7c9b0bb1d6b2774a2a3f35e40b136cf80a99/output/AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:cardview-v7:25.3.0] /home/giannis/.android/build-cache/81ac4fe1d3894e3af399bba36bf0caebed73deb3/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:transition:25.3.0] /home/giannis/.android/build-cache/5b6b55d19445ebef09ba45fcd59aaed1ef07e442/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:cardview-v7:25.3.0] /home/giannis/.android/build-cache/9d7aa35500305c0c3ce8ba75efd540aec181e54d/output/AndroidManifest.xml:26:5-20
 MERGED from [com.google.android.gms:play-services:9.6.1] /home/giannis/.android/build-cache/0234e2d2371253dd43e564b5ee95e089dc2c266d/output/AndroidManifest.xml:5:5-20
 MERGED from [com.google.android.gms:play-services-ads-lite:9.6.1] /home/giannis/.android/build-cache/25de28958b6ec925a5dffc7f4e8d067ac89e68d4/output/AndroidManifest.xml:23:5-27:19
 MERGED from [com.google.android.gms:play-services-analytics:9.6.1] /home/giannis/.android/build-cache/740f09b805c730850636a691207b748594bdcf27/output/AndroidManifest.xml:26:5-19
@@ -60,8 +60,8 @@ MERGED from [com.google.android.gms:play-services-appinvite:9.6.1] /home/giannis
 MERGED from [com.google.android.gms:play-services-auth:9.6.1] /home/giannis/.android/build-cache/57ea9e7af8cd137ba0ff7e3a4d204b45bb30ef09/output/AndroidManifest.xml:19:5-25:19
 MERGED from [com.google.android.gms:play-services-cast-framework:9.6.1] /home/giannis/.android/build-cache/ee037c95ca4b2e3491c9b5963c2ad967eed935c5/output/AndroidManifest.xml:4:5-8:19
 MERGED from [com.google.android.gms:play-services-cast:9.6.1] /home/giannis/.android/build-cache/c2cd4c138b1e0c1c096e6aa66560139838db97dd/output/AndroidManifest.xml:18:5-19
-MERGED from [com.android.support:mediarouter-v7:25.3.0] /home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:palette-v7:25.3.0] /home/giannis/.android/build-cache/a80f872d0fbe2b22e7d997e3a414d6ea65576c70/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:mediarouter-v7:25.3.0] /home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:palette-v7:25.3.0] /home/giannis/.android/build-cache/ef0607ded55fa608e41e1e86ad5714060bd77e3c/output/AndroidManifest.xml:26:5-20
 MERGED from [com.google.android.gms:play-services-clearcut:9.6.1] /home/giannis/.android/build-cache/cdef28295bda1d544fc316904395402559b13776/output/AndroidManifest.xml:18:5-19
 MERGED from [com.google.firebase:firebase-config:9.6.1] /home/giannis/.android/build-cache/dd0058b2d7b9c90262df5cdfbdddacca8f8e0fc6/output/AndroidManifest.xml:18:5-19
 MERGED from [com.google.android.gms:play-services-awareness:9.6.1] /home/giannis/.android/build-cache/6d81f5350f09b26b5e98234be9d430bb6ab13cda/output/AndroidManifest.xml:18:5-19
@@ -92,9 +92,9 @@ MERGED from [com.google.android.gms:play-services-base:9.6.1] /home/giannis/.and
 MERGED from [com.nakama.arraypageradapter:arraypageradapter:0.1.1] /home/giannis/.android/build-cache/eaab4844fb0f2a9bff260e458f48da04773a8f25/output/AndroidManifest.xml:11:5-15:19
 MERGED from [net.i2p.android.ext:floatingactionbutton:1.10.1] /home/giannis/.android/build-cache/429b78795b60bcf96f77af3bc652fdcd677a0ac2/output/AndroidManifest.xml:12:5-20
 MERGED from [com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0] /home/giannis/.android/build-cache/cfa78e965063c1ced284d5cb7135dfde62923939/output/AndroidManifest.xml:13:5-17:19
-MERGED from [com.android.support:appcompat-v7:25.3.0] /home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:animated-vector-drawable:25.3.0] /home/giannis/.android/build-cache/7c33609fea14774d8d69243bcdcd81005a4bf17e/output/AndroidManifest.xml:26:5-20
-MERGED from [com.android.support:support-vector-drawable:25.3.0] /home/giannis/.android/build-cache/761f0512d12190aa5ffe09b9a30409d74a1dbde0/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:appcompat-v7:25.3.0] /home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:animated-vector-drawable:25.3.0] /home/giannis/.android/build-cache/17367c198a5e9239792a4b2afc4f1f8780565a7a/output/AndroidManifest.xml:26:5-20
+MERGED from [com.android.support:support-vector-drawable:25.3.0] /home/giannis/.android/build-cache/9f4427a55b9d9e5d9b1791545ebf328fc4f3286e/output/AndroidManifest.xml:26:5-20
 MERGED from [com.google.firebase:firebase-core:9.6.1] /home/giannis/.android/build-cache/a9fc5b65023bedb53b7bfcc4420bc7471a4f874e/output/AndroidManifest.xml:5:5-20
 MERGED from [com.google.firebase:firebase-analytics:9.6.1] /home/giannis/.android/build-cache/f6a91f55c11b08a1b1f8aa6cf9413aa6d77e994f/output/AndroidManifest.xml:24:5-33:19
 MERGED from [com.google.firebase:firebase-analytics-impl:9.6.1] /home/giannis/.android/build-cache/ec8ceb6baba3ae4f711876a6d2d7d3d50754fb57/output/AndroidManifest.xml:24:5-28:19
@@ -102,12 +102,12 @@ MERGED from [com.google.firebase:firebase-iid:9.6.1] /home/giannis/.android/buil
 MERGED from [com.google.firebase:firebase-common:9.6.1] /home/giannis/.android/build-cache/88933204531f6b1daa6871bde4c872fc96f8e97a/output/AndroidManifest.xml:4:5-7:19
 MERGED from [com.google.android.gms:play-services-tasks:9.6.1] /home/giannis/.android/build-cache/53c5c3d9498d1bcd88b87a5c24db9109d93de8e2/output/AndroidManifest.xml:4:5-19
 MERGED from [com.google.android.gms:play-services-basement:9.6.1] /home/giannis/.android/build-cache/558ab4e6335d57be667fb8a7f45f20f994870c5f/output/AndroidManifest.xml:19:5-21:19
-MERGED from [com.android.support:support-v4:25.3.0] /home/giannis/.android/build-cache/9ea39748c124523e76d238957ddf84b1441802e5/output/AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-fragment:25.3.0] /home/giannis/.android/build-cache/f7c0610b9e509749b5f676abb688254601e2dbce/output/AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-media-compat:25.3.0] /home/giannis/.android/build-cache/88e9112a892875583bcc7a710badf233f210439f/output/AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-core-ui:25.3.0] /home/giannis/.android/build-cache/a98a43a92807dd2d77a3e81a02824b6a3ff25135/output/AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-core-utils:25.3.0] /home/giannis/.android/build-cache/1b80f62d1bedc36b834542bb59c191a57e857e9c/output/AndroidManifest.xml:29:5-20
-MERGED from [com.android.support:support-compat:25.3.0] /home/giannis/.android/build-cache/2de3c50a7283af39f90e126751dccd5cc5f3218b/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-v4:25.3.0] /home/giannis/.android/build-cache/15e5f32cf0548222422ea1941a0854e411796ca2/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-fragment:25.3.0] /home/giannis/.android/build-cache/d4b75b6d8c16c1fc18fae2a2665a56304002e896/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-media-compat:25.3.0] /home/giannis/.android/build-cache/0209bca77646381c93f0e45ccb69bac4492f9452/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-ui:25.3.0] /home/giannis/.android/build-cache/54dcb90dee607b671fea387a00ac5e6daebb7253/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-core-utils:25.3.0] /home/giannis/.android/build-cache/8df4af1f3fc9efa36f29213f52f6dc137e5cb904/output/AndroidManifest.xml:29:5-20
+MERGED from [com.android.support:support-compat:25.3.0] /home/giannis/.android/build-cache/c9e94ca661917595db6864dc7451911e04681c18/output/AndroidManifest.xml:29:5-20
 MERGED from [com.squareup.leakcanary:leakcanary-android:1.4] /home/giannis/.android/build-cache/54b48efb6ab356b81ba9e8abc473d28600c17ebc/output/AndroidManifest.xml:28:5-57:19
 	android:label
 		ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml:13:9-41
@@ -216,10 +216,10 @@ ADDED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/Andro
 uses-sdk
 INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.github.ozodrukh:CircularReveal:1.1.1] /home/giannis/.android/build-cache/2b0e7df75f4d8907cbec603741dbae2ef6363f35/output/AndroidManifest.xml:6:5-8:41
-MERGED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/AndroidManifest.xml:21:5-23:62
-MERGED from [com.android.support:transition:25.3.0] /home/giannis/.android/build-cache/8a9e7c9b0bb1d6b2774a2a3f35e40b136cf80a99/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/AndroidManifest.xml:21:5-23:62
+MERGED from [com.android.support:transition:25.3.0] /home/giannis/.android/build-cache/5b6b55d19445ebef09ba45fcd59aaed1ef07e442/output/AndroidManifest.xml:20:5-44
 MERGED from [com.github.rey5137:material:1.2.2] /home/giannis/.android/build-cache/6937fe26212670ad31fc01e2becc2dfc6172fda1/output/AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:cardview-v7:25.3.0] /home/giannis/.android/build-cache/81ac4fe1d3894e3af399bba36bf0caebed73deb3/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:cardview-v7:25.3.0] /home/giannis/.android/build-cache/9d7aa35500305c0c3ce8ba75efd540aec181e54d/output/AndroidManifest.xml:20:5-43
 MERGED from [com.google.android.gms:play-services:9.6.1] /home/giannis/.android/build-cache/0234e2d2371253dd43e564b5ee95e089dc2c266d/output/AndroidManifest.xml:4:5-42
 MERGED from [com.google.android.gms:play-services-ads:9.6.1] /home/giannis/.android/build-cache/c9871afbe455184cd0ba07590b6d7c5ee2a4adc6/output/AndroidManifest.xml:17:5-42
 MERGED from [com.google.android.gms:play-services-ads-lite:9.6.1] /home/giannis/.android/build-cache/25de28958b6ec925a5dffc7f4e8d067ac89e68d4/output/AndroidManifest.xml:22:5-42
@@ -229,8 +229,8 @@ MERGED from [com.google.android.gms:play-services-auth:9.6.1] /home/giannis/.and
 MERGED from [com.google.android.gms:play-services-auth-base:9.6.1] /home/giannis/.android/build-cache/11fb8608fb4a41674172d984b1c961ec05499a3c/output/AndroidManifest.xml:4:5-42
 MERGED from [com.google.android.gms:play-services-cast-framework:9.6.1] /home/giannis/.android/build-cache/ee037c95ca4b2e3491c9b5963c2ad967eed935c5/output/AndroidManifest.xml:3:5-42
 MERGED from [com.google.android.gms:play-services-cast:9.6.1] /home/giannis/.android/build-cache/c2cd4c138b1e0c1c096e6aa66560139838db97dd/output/AndroidManifest.xml:17:5-42
-MERGED from [com.android.support:mediarouter-v7:25.3.0] /home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:palette-v7:25.3.0] /home/giannis/.android/build-cache/a80f872d0fbe2b22e7d997e3a414d6ea65576c70/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:mediarouter-v7:25.3.0] /home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:palette-v7:25.3.0] /home/giannis/.android/build-cache/ef0607ded55fa608e41e1e86ad5714060bd77e3c/output/AndroidManifest.xml:20:5-43
 MERGED from [com.google.android.gms:play-services-clearcut:9.6.1] /home/giannis/.android/build-cache/cdef28295bda1d544fc316904395402559b13776/output/AndroidManifest.xml:17:5-42
 MERGED from [com.google.firebase:firebase-config:9.6.1] /home/giannis/.android/build-cache/dd0058b2d7b9c90262df5cdfbdddacca8f8e0fc6/output/AndroidManifest.xml:17:5-42
 MERGED from [com.google.android.gms:play-services-awareness:9.6.1] /home/giannis/.android/build-cache/6d81f5350f09b26b5e98234be9d430bb6ab13cda/output/AndroidManifest.xml:17:5-42
@@ -270,10 +270,10 @@ MERGED from [com.nakama.arraypageradapter:arraypageradapter:0.1.1] /home/giannis
 MERGED from [com.orhanobut:dialogplus:1.11] /home/giannis/.android/build-cache/248e724ff559c4ffcb832e9abc55a6872b614800/output/AndroidManifest.xml:6:5-8:41
 MERGED from [net.i2p.android.ext:floatingactionbutton:1.10.1] /home/giannis/.android/build-cache/429b78795b60bcf96f77af3bc652fdcd677a0ac2/output/AndroidManifest.xml:8:5-10:41
 MERGED from [com.nikhilpanju.recyclerviewenhanced:recyclerviewenhanced:1.1.0] /home/giannis/.android/build-cache/cfa78e965063c1ced284d5cb7135dfde62923939/output/AndroidManifest.xml:7:5-9:41
-MERGED from [com.android.support:recyclerview-v7:25.3.0] /home/giannis/.android/build-cache/cffd2c32cc828072bc1ecd86fd4bea19e98dafdb/output/AndroidManifest.xml:20:5-43
-MERGED from [com.android.support:appcompat-v7:25.3.0] /home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/AndroidManifest.xml:21:5-23:78
-MERGED from [com.android.support:animated-vector-drawable:25.3.0] /home/giannis/.android/build-cache/7c33609fea14774d8d69243bcdcd81005a4bf17e/output/AndroidManifest.xml:20:5-44
-MERGED from [com.android.support:support-vector-drawable:25.3.0] /home/giannis/.android/build-cache/761f0512d12190aa5ffe09b9a30409d74a1dbde0/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:recyclerview-v7:25.3.0] /home/giannis/.android/build-cache/2e27c0bacf4a18c826b04460122d872947a4226a/output/AndroidManifest.xml:20:5-43
+MERGED from [com.android.support:appcompat-v7:25.3.0] /home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/AndroidManifest.xml:21:5-23:78
+MERGED from [com.android.support:animated-vector-drawable:25.3.0] /home/giannis/.android/build-cache/17367c198a5e9239792a4b2afc4f1f8780565a7a/output/AndroidManifest.xml:20:5-44
+MERGED from [com.android.support:support-vector-drawable:25.3.0] /home/giannis/.android/build-cache/9f4427a55b9d9e5d9b1791545ebf328fc4f3286e/output/AndroidManifest.xml:20:5-43
 MERGED from [com.google.firebase:firebase-core:9.6.1] /home/giannis/.android/build-cache/a9fc5b65023bedb53b7bfcc4420bc7471a4f874e/output/AndroidManifest.xml:4:5-42
 MERGED from [com.google.firebase:firebase-analytics:9.6.1] /home/giannis/.android/build-cache/f6a91f55c11b08a1b1f8aa6cf9413aa6d77e994f/output/AndroidManifest.xml:17:5-42
 MERGED from [com.google.firebase:firebase-analytics-impl:9.6.1] /home/giannis/.android/build-cache/ec8ceb6baba3ae4f711876a6d2d7d3d50754fb57/output/AndroidManifest.xml:17:5-42
@@ -281,15 +281,15 @@ MERGED from [com.google.firebase:firebase-iid:9.6.1] /home/giannis/.android/buil
 MERGED from [com.google.firebase:firebase-common:9.6.1] /home/giannis/.android/build-cache/88933204531f6b1daa6871bde4c872fc96f8e97a/output/AndroidManifest.xml:3:5-42
 MERGED from [com.google.android.gms:play-services-tasks:9.6.1] /home/giannis/.android/build-cache/53c5c3d9498d1bcd88b87a5c24db9109d93de8e2/output/AndroidManifest.xml:3:5-42
 MERGED from [com.google.android.gms:play-services-basement:9.6.1] /home/giannis/.android/build-cache/558ab4e6335d57be667fb8a7f45f20f994870c5f/output/AndroidManifest.xml:17:5-42
-MERGED from [com.android.support:support-v4:25.3.0] /home/giannis/.android/build-cache/9ea39748c124523e76d238957ddf84b1441802e5/output/AndroidManifest.xml:21:5-23:54
-MERGED from [com.android.support:support-fragment:25.3.0] /home/giannis/.android/build-cache/f7c0610b9e509749b5f676abb688254601e2dbce/output/AndroidManifest.xml:21:5-23:60
-MERGED from [com.android.support:support-media-compat:25.3.0] /home/giannis/.android/build-cache/88e9112a892875583bcc7a710badf233f210439f/output/AndroidManifest.xml:21:5-23:63
-MERGED from [com.android.support:support-core-ui:25.3.0] /home/giannis/.android/build-cache/a98a43a92807dd2d77a3e81a02824b6a3ff25135/output/AndroidManifest.xml:21:5-23:58
-MERGED from [com.android.support:support-core-utils:25.3.0] /home/giannis/.android/build-cache/1b80f62d1bedc36b834542bb59c191a57e857e9c/output/AndroidManifest.xml:21:5-23:61
-MERGED from [com.android.support:support-compat:25.3.0] /home/giannis/.android/build-cache/2de3c50a7283af39f90e126751dccd5cc5f3218b/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-v4:25.3.0] /home/giannis/.android/build-cache/15e5f32cf0548222422ea1941a0854e411796ca2/output/AndroidManifest.xml:21:5-23:54
+MERGED from [com.android.support:support-fragment:25.3.0] /home/giannis/.android/build-cache/d4b75b6d8c16c1fc18fae2a2665a56304002e896/output/AndroidManifest.xml:21:5-23:60
+MERGED from [com.android.support:support-media-compat:25.3.0] /home/giannis/.android/build-cache/0209bca77646381c93f0e45ccb69bac4492f9452/output/AndroidManifest.xml:21:5-23:63
+MERGED from [com.android.support:support-core-ui:25.3.0] /home/giannis/.android/build-cache/54dcb90dee607b671fea387a00ac5e6daebb7253/output/AndroidManifest.xml:21:5-23:58
+MERGED from [com.android.support:support-core-utils:25.3.0] /home/giannis/.android/build-cache/8df4af1f3fc9efa36f29213f52f6dc137e5cb904/output/AndroidManifest.xml:21:5-23:61
+MERGED from [com.android.support:support-compat:25.3.0] /home/giannis/.android/build-cache/c9e94ca661917595db6864dc7451911e04681c18/output/AndroidManifest.xml:21:5-23:58
 MERGED from [com.squareup.leakcanary:leakcanary-android:1.4] /home/giannis/.android/build-cache/54b48efb6ab356b81ba9e8abc473d28600c17ebc/output/AndroidManifest.xml:20:5-22:41
 	tools:overrideLibrary
-		ADDED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/AndroidManifest.xml:23:9-59
+		ADDED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/AndroidManifest.xml:23:9-59
 	android:targetSdkVersion
 		INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml
 		INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml
@@ -297,25 +297,25 @@ MERGED from [com.squareup.leakcanary:leakcanary-android:1.4] /home/giannis/.andr
 		INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml
 		INJECTED from /home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/AndroidManifest.xml
 meta-data#android.support.VERSION
-ADDED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:transition:25.3.0] /home/giannis/.android/build-cache/8a9e7c9b0bb1d6b2774a2a3f35e40b136cf80a99/output/AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:cardview-v7:25.3.0] /home/giannis/.android/build-cache/81ac4fe1d3894e3af399bba36bf0caebed73deb3/output/AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:mediarouter-v7:25.3.0] /home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:palette-v7:25.3.0] /home/giannis/.android/build-cache/a80f872d0fbe2b22e7d997e3a414d6ea65576c70/output/AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:recyclerview-v7:25.3.0] /home/giannis/.android/build-cache/cffd2c32cc828072bc1ecd86fd4bea19e98dafdb/output/AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:appcompat-v7:25.3.0] /home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:animated-vector-drawable:25.3.0] /home/giannis/.android/build-cache/7c33609fea14774d8d69243bcdcd81005a4bf17e/output/AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:support-vector-drawable:25.3.0] /home/giannis/.android/build-cache/761f0512d12190aa5ffe09b9a30409d74a1dbde0/output/AndroidManifest.xml:22:5-24:34
-MERGED from [com.android.support:support-v4:25.3.0] /home/giannis/.android/build-cache/9ea39748c124523e76d238957ddf84b1441802e5/output/AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-fragment:25.3.0] /home/giannis/.android/build-cache/f7c0610b9e509749b5f676abb688254601e2dbce/output/AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-media-compat:25.3.0] /home/giannis/.android/build-cache/88e9112a892875583bcc7a710badf233f210439f/output/AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-core-ui:25.3.0] /home/giannis/.android/build-cache/a98a43a92807dd2d77a3e81a02824b6a3ff25135/output/AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-core-utils:25.3.0] /home/giannis/.android/build-cache/1b80f62d1bedc36b834542bb59c191a57e857e9c/output/AndroidManifest.xml:25:5-27:34
-MERGED from [com.android.support:support-compat:25.3.0] /home/giannis/.android/build-cache/2de3c50a7283af39f90e126751dccd5cc5f3218b/output/AndroidManifest.xml:25:5-27:34
+ADDED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:transition:25.3.0] /home/giannis/.android/build-cache/5b6b55d19445ebef09ba45fcd59aaed1ef07e442/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:cardview-v7:25.3.0] /home/giannis/.android/build-cache/9d7aa35500305c0c3ce8ba75efd540aec181e54d/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:mediarouter-v7:25.3.0] /home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:palette-v7:25.3.0] /home/giannis/.android/build-cache/ef0607ded55fa608e41e1e86ad5714060bd77e3c/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:recyclerview-v7:25.3.0] /home/giannis/.android/build-cache/2e27c0bacf4a18c826b04460122d872947a4226a/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:appcompat-v7:25.3.0] /home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:animated-vector-drawable:25.3.0] /home/giannis/.android/build-cache/17367c198a5e9239792a4b2afc4f1f8780565a7a/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-vector-drawable:25.3.0] /home/giannis/.android/build-cache/9f4427a55b9d9e5d9b1791545ebf328fc4f3286e/output/AndroidManifest.xml:22:5-24:34
+MERGED from [com.android.support:support-v4:25.3.0] /home/giannis/.android/build-cache/15e5f32cf0548222422ea1941a0854e411796ca2/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-fragment:25.3.0] /home/giannis/.android/build-cache/d4b75b6d8c16c1fc18fae2a2665a56304002e896/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-media-compat:25.3.0] /home/giannis/.android/build-cache/0209bca77646381c93f0e45ccb69bac4492f9452/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-ui:25.3.0] /home/giannis/.android/build-cache/54dcb90dee607b671fea387a00ac5e6daebb7253/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-core-utils:25.3.0] /home/giannis/.android/build-cache/8df4af1f3fc9efa36f29213f52f6dc137e5cb904/output/AndroidManifest.xml:25:5-27:34
+MERGED from [com.android.support:support-compat:25.3.0] /home/giannis/.android/build-cache/c9e94ca661917595db6864dc7451911e04681c18/output/AndroidManifest.xml:25:5-27:34
 	android:value
-		ADDED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/AndroidManifest.xml:27:9-31
+		ADDED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/AndroidManifest.xml:27:9-31
 	android:name
-		ADDED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/AndroidManifest.xml:26:9-47
+		ADDED from [com.android.support:design:25.3.0] /home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/AndroidManifest.xml:26:9-47
 activity#com.google.android.gms.ads.AdActivity
 ADDED from [com.google.android.gms:play-services-ads-lite:9.6.1] /home/giannis/.android/build-cache/25de28958b6ec925a5dffc7f4e8d067ac89e68d4/output/AndroidManifest.xml:25:9-232
 	android:configChanges

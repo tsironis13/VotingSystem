@@ -122,12 +122,12 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         if (text == null) {
             if (list != null) {
                 if (list.get(0) instanceof JnctFirmSurveysFields) {
-                    List<JnctFirmSurveysFields> jnctFirmSurveysFieldsList = (List<JnctFirmSurveysFields>) list;
-                    for (JnctFirmSurveysFields jnctList : jnctFirmSurveysFieldsList) {
-                        contentValues.put(KEY_FIRM_ID, jnctList.getFirmIdFk());
-                        contentValues.put(KEY_SURVEY_ID, jnctList.getSurveyIdFk());
-                        db.insert(table, null, contentValues);
-                    }
+//                    List<JnctFirmSurveysFields> jnctFirmSurveysFieldsList = (List<JnctFirmSurveysFields>) list;
+//                    for (JnctFirmSurveysFields jnctList : jnctFirmSurveysFieldsList) {
+//                        contentValues.put(KEY_FIRM_ID, jnctList.getFirmIdFk());
+//                        contentValues.put(KEY_SURVEY_ID, jnctList.getSurveyIdFk());
+//                        db.insert(table, null, contentValues);
+//                    }
                 } else {
                     List<SurveysFields> surveysFieldsList = (List<SurveysFields>) list;
                     for (SurveysFields surveysFields : surveysFieldsList) {
@@ -157,15 +157,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public List<SurveysFields> getFirmSurveys(int firm_id, int user_id, String search_text) {
         List<SurveysFields> matches = new ArrayList<>();
         Cursor cursor = db.rawQuery("SELECT * FROM Surveys " +
-                                        "LEFT JOIN Jnct_firm_surveys ON Surveys.id = Jnct_Firm_Surveys.survey_id\n" +
-                                        "WHERE Surveys.user_id = " + user_id + " AND Jnct_firm_surveys.firm_id = " + firm_id +" AND Surveys.title LIKE '%" + search_text + "%'", null);
+                "WHERE Surveys.user_id = " + user_id + " AND Surveys.title LIKE '%" + search_text + "%'", null);
+//        Cursor cursor = db.rawQuery("SELECT * FROM Surveys " +
+//                                        "LEFT JOIN Jnct_firm_surveys ON Surveys.id = Jnct_Firm_Surveys.survey_id\n" +
+//                                        "WHERE Surveys.user_id = " + user_id + " AND Jnct_firm_surveys.firm_id = " + firm_id +" AND Surveys.title LIKE '%" + search_text + "%'", null);
         int count = cursor.getCount();
-//        Log.e(debugTag, count+"");
+//        Log.e(debugTag, count+" COUNTARIA");
         while (cursor.moveToNext()) {
 //            Log.e(debugTag, cursor.getColumnName(1)+ ": "+cursor.getString(1));
             matches.add(new SurveysFields(cursor.getInt(0), cursor.getInt(1), cursor.getInt(3), cursor.getInt(4), cursor.getString(2)));
         }
         cursor.close();
         return matches;
+    }
+
+    public void emptyTables() {
+        db.delete(TABLE_SURVEYS, null, null);
+//        db.delete(TABLE_JNCT_FIRM_SURVEYS, null, null);
     }
 }

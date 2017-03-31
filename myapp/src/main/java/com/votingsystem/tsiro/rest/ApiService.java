@@ -51,10 +51,10 @@ public interface ApiService {
     @POST("mobileactions.php")
     Call<SurveyDetails> uploadSurveyAnswersOrGetSurveyStats(@Body SurveyAnswersBody surveyAnswersBody);
 
-    @POST("requests/surveys.php")
+    @POST("mobileactions.php")
     Call<AllSurveys> uploadNewUserSurvey(@Body NewSurvey newSurvey);
 
-    @POST("requests/surveys.php")
+    @POST("mobileactions.php")
     Call<AllSurveys> deleteUserSurvey(@Body NewSurvey newSurvey);
 
 

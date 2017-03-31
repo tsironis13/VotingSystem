@@ -117,6 +117,7 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
     @Override
     public void onSuccessDashboardDetails(final String firm_name, final int total_surveys, final int responses, final String last_created_date, final List<JnctFirmSurveysFields> jnctFirmSurveysFieldsList, final List<SurveysFields> surveysFieldsList) {
 //        Log.e(debugTag, "SIZE: "+surveysFieldsList.size());
+//        Log.e(debugTag, surveysFieldsList+"");
         dataFetched = true;
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
@@ -131,13 +132,15 @@ public class DashboardFragment extends Fragment implements DAMVCView, NetworkSta
                     MySQLiteHelper.getInstance(getActivity()).createDatabase(getActivity());
                     MySQLiteHelper.getInstance(getActivity()).openDatabase();
                     if (!MySQLiteHelper.getInstance(getActivity()).isDatabaseEmpty()) {
-                        MySQLiteHelper.getInstance(getActivity()).insertToDatabase(getResources().getString(R.string.jnct_table), jnctFirmSurveysFieldsList, null);
+//                        MySQLiteHelper.getInstance(getActivity()).insertToDatabase(getResources().getString(R.string.jnct_table), jnctFirmSurveysFieldsList, null);
                         MySQLiteHelper.getInstance(getActivity()).insertToDatabase(getResources().getString(R.string.surveys_table), surveysFieldsList, null);
                     }
                     MySQLiteHelper.getInstance(getActivity()).closeDB();
                 } else {
                     MySQLiteHelper.getInstance(getActivity()).openDatabase();
-                    MySQLiteHelper.getInstance(getActivity()).isDatabaseEmpty();
+                    MySQLiteHelper.getInstance(getActivity()).emptyTables();
+                    MySQLiteHelper.getInstance(getActivity()).insertToDatabase(getResources().getString(R.string.surveys_table), surveysFieldsList, null);
+//                    MySQLiteHelper.getInstance(getActivity()).isDatabaseEmpty();
                     MySQLiteHelper.getInstance(getActivity()).closeDB();
                 }
             }

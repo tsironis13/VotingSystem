@@ -314,7 +314,7 @@ public class SurveysActivity extends AppCompatActivity implements NetworkStateLi
                 Log.e(debugTag, matchesList.get(position).getSurveyId()+"");
                 if (connectionStatus != AppConfig.NO_CONNECTION) {
                     showErrorContainerSnackbar(getResources().getString(inputValidationCodes.get(AppConfig.NO_CONNECTION)));
-                    SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), true, LoginActivity.getSessionPrefs(SurveysActivity.this).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(SurveysActivity.this).getInt(getResources().getString(R.string.user_id), 0), matchesList.get(position).getSurveyId(), null);
+                    SurveyAnswersBody surveyAnswersBody = new SurveyAnswersBody(getResources().getString(R.string.get_survey_stats), false, LoginActivity.getSessionPrefs(SurveysActivity.this).getInt(getResources().getString(R.string.firm_id), 0), LoginActivity.getSessionPrefs(SurveysActivity.this).getInt(getResources().getString(R.string.user_id), 0), matchesList.get(position).getSurveyId(), null);
                     SAMVCpresenterImpl.getSurveyDetails(surveyAnswersBody);
                 }
             }

@@ -4,12 +4,12 @@
         "source": "/home/giannis/.android/build-cache/a2d9134bbb13ed0baed61255e4f12ec8a6a6fffd/output/res/layout/place_autocomplete_progress.xml"
     },
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
-    },
-    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/cast_tracks_chooser_dialog_row_layout.xml",
         "source": "/home/giannis/.android/build-cache/ee037c95ca4b2e3491c9b5963c2ad967eed935c5/output/res/layout/cast_tracks_chooser_dialog_row_layout.xml"
+    },
+    {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_action_bar_view_list_nav_layout.xml",
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_action_bar_view_list_nav_layout.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/login_activity.xml",
@@ -17,27 +17,27 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/mr_chooser_dialog.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/layout/mr_chooser_dialog.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/layout/mr_chooser_dialog.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_action_menu_item_layout.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_action_menu_item_layout.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_action_menu_item_layout.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/question_slider_template.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/question_slider_template.xml"
     },
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_navigation_menu.xml"
-    },
-    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/mandatory_dialog.xml",
         "source": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/src/main/res/layout/mandatory_dialog.xml"
     },
     {
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_navigation_menu.xml",
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_navigation_menu.xml"
+    },
+    {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/mr_controller_volume_item.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/layout/mr_controller_volume_item.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/layout/mr_controller_volume_item.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/spinner_dropdown_item.xml",
@@ -45,19 +45,19 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/mr_volume_control.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/layout/mr_volume_control.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/layout/mr_volume_control.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_screen_simple.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_screen_simple.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_screen_simple.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_alert_dialog_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_alert_dialog_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_alert_dialog_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_list_menu_item_layout.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_list_menu_item_layout.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_list_menu_item_layout.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_survey_stats_template.xml",
@@ -73,19 +73,19 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_select_dialog_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_select_dialog_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_select_dialog_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_layout_snackbar_include.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_layout_snackbar_include.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_layout_snackbar_include.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/notification_template_part_time.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/notification_template_part_time.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/notification_template_part_time.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_screen_content_include.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_screen_content_include.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_screen_content_include.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/place_autocomplete_item_prediction.xml",
@@ -109,7 +109,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_action_bar_title_item.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_action_bar_title_item.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_action_bar_title_item.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/surveys_activity.xml",
@@ -117,7 +117,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/notification_template_part_chronometer.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/notification_template_part_chronometer.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/notification_template_part_chronometer.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/toolbar_search_view.xml",
@@ -125,7 +125,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_search_view.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_search_view.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_search_view.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_survey_questions.xml",
@@ -141,7 +141,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_screen_toolbar.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_screen_toolbar.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_screen_toolbar.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/under_process_survey_item.xml",
@@ -165,23 +165,23 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_action_mode_close_item_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_action_mode_close_item_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_action_mode_close_item_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_menu_item_action_area.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_menu_item_action_area.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_menu_item_action_area.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/select_dialog_item_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/select_dialog_item_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/select_dialog_item_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_list_menu_item_radio.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_list_menu_item_radio.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_list_menu_item_radio.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/notification_template_media.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/notification_template_media.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/notification_template_media.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_signin.xml",
@@ -189,7 +189,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_navigation_menu_item.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_navigation_menu_item.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_navigation_menu_item.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_dashboard.xml",
@@ -201,11 +201,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_navigation_item.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_navigation_item.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_navigation_item.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_dialog_title_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_dialog_title_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_dialog_title_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/app_bar.xml",
@@ -213,7 +213,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_alert_dialog_button_bar_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_alert_dialog_button_bar_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_alert_dialog_button_bar_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_error.xml",
@@ -225,11 +225,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_screen_simple_overlay_action_mode.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_screen_simple_overlay_action_mode.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_screen_simple_overlay_action_mode.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/select_dialog_singlechoice_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/select_dialog_singlechoice_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/select_dialog_singlechoice_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/place_autocomplete_fragment.xml",
@@ -261,7 +261,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_alert_dialog_title_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_alert_dialog_title_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_alert_dialog_title_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/cast_help_text.xml",
@@ -277,7 +277,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/notification_template_icon_group.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/notification_template_icon_group.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/notification_template_icon_group.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/dialog_list.xml",
@@ -293,11 +293,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/notification_action.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/notification_action.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/notification_action.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_popup_menu_header_item_layout.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_popup_menu_header_item_layout.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_popup_menu_header_item_layout.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/view.xml",
@@ -305,15 +305,15 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/notification_action_tombstone.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/notification_action_tombstone.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/notification_action_tombstone.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/mr_chooser_list_item.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/layout/mr_chooser_list_item.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/layout/mr_chooser_list_item.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/support_simple_spinner_dropdown_item.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/support_simple_spinner_dropdown_item.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/support_simple_spinner_dropdown_item.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/base_container.xml",
@@ -321,7 +321,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_bottom_navigation_item.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_bottom_navigation_item.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_bottom_navigation_item.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_pendingsurveys.xml",
@@ -337,11 +337,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_search_dropdown_item_icons_2line.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_search_dropdown_item_icons_2line.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_search_dropdown_item_icons_2line.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/mr_controller_material_dialog_b.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/layout/mr_controller_material_dialog_b.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/layout/mr_controller_material_dialog_b.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_new_survey_details.xml",
@@ -365,11 +365,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_bottom_sheet_dialog.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_bottom_sheet_dialog.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_bottom_sheet_dialog.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_layout_snackbar.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_layout_snackbar.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_layout_snackbar.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_ongoingsurveys.xml",
@@ -377,7 +377,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/notification_template_custom_big.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/notification_template_custom_big.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/notification_template_custom_big.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/list_surveys_load_more_error_template.xml",
@@ -385,7 +385,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_action_mode_bar.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_action_mode_bar.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_action_mode_bar.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/survey_questions_activity.xml",
@@ -393,15 +393,15 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_action_menu_layout.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_action_menu_layout.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_action_menu_layout.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_layout_tab_icon.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_layout_tab_icon.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_layout_tab_icon.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_navigation_item_separator.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_navigation_item_separator.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_navigation_item_separator.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/matrix_table.xml",
@@ -409,11 +409,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/mr_playback_control.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/layout/mr_playback_control.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/layout/mr_playback_control.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_list_menu_item_checkbox.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_list_menu_item_checkbox.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_list_menu_item_checkbox.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/list_picker_question_answer_item.xml",
@@ -429,11 +429,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view_list_item.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_activity_chooser_view_list_item.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_activity_chooser_view_list_item.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_navigation_item_header.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_navigation_item_header.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_navigation_item_header.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/search_view_layout.xml",
@@ -441,7 +441,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_activity_chooser_view.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_activity_chooser_view.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_activity_chooser_view.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/fragment_register.xml",
@@ -449,11 +449,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_text_input_password_icon.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_text_input_password_icon.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_text_input_password_icon.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_popup_menu_item_layout.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_popup_menu_item_layout.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_popup_menu_item_layout.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/leak_canary_ref_row.xml",
@@ -461,7 +461,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_navigation_item_subheader.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_navigation_item_subheader.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_navigation_item_subheader.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/header.xml",
@@ -477,7 +477,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/notification_template_media_custom.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/notification_template_media_custom.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/notification_template_media_custom.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/survey_details_activity.xml",
@@ -489,7 +489,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_expanded_menu_layout.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_expanded_menu_layout.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_expanded_menu_layout.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/question_ranking_template.xml",
@@ -497,22 +497,22 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/notification_template_lines_media.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/notification_template_lines_media.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/notification_template_lines_media.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/design_layout_tab_text.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/layout/design_layout_tab_text.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/layout/design_layout_tab_text.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_list_menu_item_icon.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_list_menu_item_icon.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_list_menu_item_icon.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/abc_action_bar_up_container.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/abc_action_bar_up_container.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/abc_action_bar_up_container.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/layout/select_dialog_multichoice_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/layout/select_dialog_multichoice_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/layout/select_dialog_multichoice_material.xml"
     }
 ]

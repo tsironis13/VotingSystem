@@ -1,7 +1,7 @@
 [
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_dark.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_list_selector_holo_dark.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_list_selector_holo_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_expanded_controller_mute.xml",
@@ -25,11 +25,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_dark.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_item_background_holo_dark.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_item_background_holo_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_ic_search_api_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_ic_search_api_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_ic_search_api_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_mini_controller_progress_drawable.xml",
@@ -37,23 +37,23 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_btn_colored_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_btn_colored_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_btn_colored_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_ic_arrow_drop_right_black_24dp.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_ic_arrow_drop_right_black_24dp.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_ratingbar_indicator_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_ratingbar_indicator_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_ratingbar_indicator_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_media_pause_light.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_media_pause_light.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_media_pause_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_spinner_textfield_background_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_spinner_textfield_background_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_spinner_textfield_background_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_notification_rewind.xml",
@@ -65,7 +65,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_btn_borderless_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_btn_borderless_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_btn_borderless_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_mini_controller_play.xml",
@@ -77,11 +77,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_media_stop_light.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_media_stop_light.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_media_stop_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_edit_text_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_edit_text_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_edit_text_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_mini_controller_forward30.xml",
@@ -89,35 +89,35 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_btn_check_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_btn_check_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_btn_check_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/notification_bg.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/notification_bg.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/notification_bg.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_ic_ab_back_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_ic_ab_back_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_ic_ab_back_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_tab_indicator_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_tab_indicator_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_tab_indicator_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_button_connected_light.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_button_connected_light.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_button_connected_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/design_snackbar_background.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/drawable/design_snackbar_background.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/drawable/design_snackbar_background.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_media_play_dark.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_media_play_dark.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_media_play_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_ic_clear_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_ic_clear_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_ic_clear_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_mini_controller_closed_caption.xml",
@@ -125,7 +125,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_vector_test.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_vector_test.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_vector_test.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/radio_button_not_checked.xml",
@@ -133,7 +133,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_btn_default_mtrl_shape.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_btn_default_mtrl_shape.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_btn_default_mtrl_shape.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_expanded_controller_stop.xml",
@@ -148,20 +148,20 @@
         "source": "/home/giannis/.android/build-cache/54b48efb6ab356b81ba9e8abc473d28600c17ebc/output/res/drawable/leak_canary_toast_background.xml"
     },
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_seekbar_tick_mark_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_seekbar_tick_mark_material.xml"
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_dialog_material_background_dark.xml",
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_dialog_material_background_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_icon_light.xml",
         "source": "/home/giannis/.android/build-cache/8d6d19e68d296b91362c823a8a06ba462b749b8d/output/res/drawable/common_google_signin_btn_icon_light.xml"
     },
     {
-        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_dialog_material_background_dark.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_dialog_material_background_dark.xml"
+        "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_seekbar_tick_mark_material.xml",
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_seekbar_tick_mark_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_dialog_material_background.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_dialog_material_background.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_dialog_material_background.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_notification_forward.xml",
@@ -169,7 +169,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_ratingbar_small_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_ratingbar_small_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_ratingbar_small_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/radio_button_checked.xml",
@@ -177,27 +177,27 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_group_collapse.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_group_collapse.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_group_collapse.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_dialog_material_background_light.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_dialog_material_background_light.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_dialog_material_background_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_cab_background_top_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_cab_background_top_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_cab_background_top_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_seekbar_track_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_seekbar_track_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_seekbar_track_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_vol_type_audiotrack_dark.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_vol_type_audiotrack_dark.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_vol_type_audiotrack_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_cab_background_internal_bg.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_cab_background_internal_bg.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_cab_background_internal_bg.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_mini_controller_rewind30.xml",
@@ -209,7 +209,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_switch_thumb_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_switch_thumb_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_switch_thumb_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/navigation_selector.xml",
@@ -229,7 +229,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_seekbar_thumb_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_seekbar_thumb_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_seekbar_thumb_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_mini_controller_skip_next.xml",
@@ -241,7 +241,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/notification_bg_low.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/notification_bg_low.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/notification_bg_low.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/login_fields_container.xml",
@@ -257,7 +257,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_dialog_close_dark.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_dialog_close_dark.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_dialog_close_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_mini_controller_pause.xml",
@@ -265,11 +265,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_button_connected_dark.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_button_connected_dark.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_button_connected_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/design_bottom_navigation_item_background.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/drawable/design_bottom_navigation_item_background.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/drawable/design_bottom_navigation_item_background.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_mini_controller_pause_large.xml",
@@ -277,11 +277,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/design_fab_background.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/drawable/design_fab_background.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/drawable/design_fab_background.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/notification_tile_bg.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/notification_tile_bg.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/notification_tile_bg.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_notification_pause.xml",
@@ -301,7 +301,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/navigation_empty_icon.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/drawable/navigation_empty_icon.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/drawable/navigation_empty_icon.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/fab_label_background.xml",
@@ -309,11 +309,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_button_connecting_dark.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_button_connecting_dark.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_button_connecting_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_ratingbar_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_ratingbar_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_ratingbar_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_mini_controller_play_large.xml",
@@ -325,7 +325,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_ic_menu_overflow_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_ic_menu_overflow_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_ic_menu_overflow_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/sign_in_btn_container.xml",
@@ -333,23 +333,23 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/design_password_eye.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/drawable/design_password_eye.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/drawable/design_password_eye.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_item_background_holo_light.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_item_background_holo_light.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_item_background_holo_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_group_expand.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_group_expand.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_group_expand.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_list_selector_holo_light.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_list_selector_holo_light.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_list_selector_holo_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_media_pause_dark.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_media_pause_dark.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_media_pause_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_notification_forward10.xml",
@@ -361,7 +361,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_textfield_search_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_textfield_search_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_textfield_search_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/test.xml",
@@ -381,11 +381,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_light.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_list_selector_background_transition_holo_light.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_list_selector_background_transition_holo_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_text_cursor_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_text_cursor_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_text_cursor_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_notification_forward30.xml",
@@ -405,11 +405,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_btn_radio_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_btn_radio_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_btn_radio_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_ic_voice_search_api_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_ic_voice_search_api_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_ic_voice_search_api_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_mini_controller_gradient_light.xml",
@@ -417,19 +417,19 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_button_light.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_button_light.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_button_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_list_selector_background_transition_holo_dark.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_list_selector_background_transition_holo_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/abc_ic_go_search_api_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/abc_ic_go_search_api_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/abc_ic_go_search_api_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_media_play_light.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_media_play_light.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_media_play_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_notification_disconnect.xml",
@@ -437,7 +437,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_media_stop_dark.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_media_stop_dark.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_media_stop_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/common_google_signin_btn_text_light.xml",
@@ -445,7 +445,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_vol_type_audiotrack_light.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_vol_type_audiotrack_light.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_vol_type_audiotrack_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_notification_skip_next.xml",
@@ -453,15 +453,15 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/notification_icon_background.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable/notification_icon_background.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable/notification_icon_background.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_dialog_close_light.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_dialog_close_light.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_dialog_close_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_button_dark.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_button_dark.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_button_dark.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_ic_notification_skip_prev.xml",
@@ -473,7 +473,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/mr_button_connecting_light.xml",
-        "source": "/home/giannis/.android/build-cache/78484e226978769ca376c3c5374545d73373d166/output/res/drawable/mr_button_connecting_light.xml"
+        "source": "/home/giannis/.android/build-cache/66c88aa2e713e8b8b1ebd664a2f063c508e539e3/output/res/drawable/mr_button_connecting_light.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable/cast_expanded_controller_bg_gradient_light.xml",

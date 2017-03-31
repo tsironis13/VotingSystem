@@ -5,7 +5,7 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/design_password_eye.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/drawable-v21/design_password_eye.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/drawable-v21/design_password_eye.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/add_answer_ripple_drawable.xml",
@@ -13,15 +13,15 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/avd_show_password.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/drawable-v21/avd_show_password.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/drawable-v21/avd_show_password.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/notification_action_background.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable-v21/notification_action_background.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable-v21/notification_action_background.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/avd_hide_password.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/drawable-v21/avd_hide_password.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/drawable-v21/avd_hide_password.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/ripple_navigation_selector.xml",
@@ -29,11 +29,11 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/abc_edit_text_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable-v21/abc_edit_text_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable-v21/abc_edit_text_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/abc_btn_colored_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable-v21/abc_btn_colored_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable-v21/abc_btn_colored_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/ripple_drawable.xml",
@@ -41,10 +41,10 @@
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/abc_action_bar_item_background_material.xml",
-        "source": "/home/giannis/.android/build-cache/c3cb248bbe34fab18a7a19e6257445032d829b15/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
+        "source": "/home/giannis/.android/build-cache/0fb02458bc686bf4308579ef546be1b82e47510e/output/res/drawable-v21/abc_action_bar_item_background_material.xml"
     },
     {
         "merged": "/home/giannis/AndroidStudioProjects/VotingSystem/myapp/build/intermediates/res/merged/debug/drawable-v21/design_bottom_navigation_item_background.xml",
-        "source": "/home/giannis/.android/build-cache/4772524a3decfb2e02f75e66847d7befe3904d7c/output/res/drawable-v21/design_bottom_navigation_item_background.xml"
+        "source": "/home/giannis/.android/build-cache/23e7d9c01f3b7c13e9230457e415a5a808a85482/output/res/drawable-v21/design_bottom_navigation_item_background.xml"
     }
 ]
