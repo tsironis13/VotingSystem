@@ -13,7 +13,8 @@ import java.util.Map;
  * Created by user on 10/10/2015.
  */
 public class AppConfig {
-    public static final String BASE_URL                         =   "https://kinimaliontarion.gr/giannis/votingsystem-api/";
+//    public static final String BASE_URL                         =   "https://kinimaliontarion.gr/giannis/votingsystem-api/";
+    public static final String BASE_URL                         = "http://votingsystem.gr/api/";
     //public static final String BASE_URL                         =   "http://192.168.100.192/Ptixiaki/";
     public static final String SESSION_PREFS                    =   "sessionPrefs";
     public static final String KEY_USER_LEARNED_PREFS           =   "user_learned_prefs";

@@ -120,7 +120,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
 //        Log.e(debugTag, list+"");
         ContentValues contentValues = new ContentValues();
         if (text == null) {
-            if (list != null) {
+            if (list != null && list.size() != 0) {
                 if (list.get(0) instanceof JnctFirmSurveysFields) {
 //                    List<JnctFirmSurveysFields> jnctFirmSurveysFieldsList = (List<JnctFirmSurveysFields>) list;
 //                    for (JnctFirmSurveysFields jnctList : jnctFirmSurveysFieldsList) {
